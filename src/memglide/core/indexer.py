@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import re
+import sqlite3
 import subprocess
 import threading
 import time
@@ -16,11 +18,20 @@ from typing import Any
 import pathspec
 
 from memglide.core.parsing import import_parts, parse_sources
+from memglide.core.query import (
+    INDEX_VERSION,
+    explicit_identifier,
+    explicit_path,
+    term_variants,
+    tokens,
+)
 from memglide.security.paths import DEFAULT_IGNORED, read_source, secret_path
 from memglide.storage.database import Database, DomainError, new_id
 
 MAX_INDEXED_FILES = 20_000
 MAX_INDEX_BYTES = 100 * 1024 * 1024
+FTS_QUERY_BATCH_SIZE = 64
+MAX_FTS_RANK_TERMS = 32
 
 
 def _identifier(*parts: str) -> str:
@@ -52,42 +63,89 @@ def _git(root: Path, *args: str) -> str:
 
 
 def _tokens(text: str) -> list[str]:
-    text = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", text)
-    stop = {
-        "find",
-        "where",
-        "what",
-        "which",
-        "how",
-        "is",
-        "are",
-        "the",
-        "a",
-        "an",
-        "in",
-        "of",
-        "to",
-        "for",
-        "does",
-        "do",
-        "and",
-        "or",
-        "this",
-        "that",
-        "with",
-        "handled",
-        "functions",
-        "files",
-    }
-    return [
-        part for part in re.findall(r"[\w]+", text.lower().replace("_", " ")) if part not in stop
-    ]
+    return tokens(text)
 
 
 class Indexer:
     def __init__(self, db: Database):
         self.db = db
         self._lock = threading.RLock()
+
+    @staticmethod
+    def _document_frequencies(
+        conn: Any, project_id: str, expressions: dict[str, str]
+    ) -> dict[str, int]:
+        """Use exact FTS vocabulary counts without repeatedly loading source payloads.
+
+        A vocabulary row counts documents globally. It is project-correct only
+        when all indexed files belong to this project. Multiple matching surface
+        forms still require a union count, not a sum that double-counts documents.
+        Non-ASCII terms use MATCH's own unicode61 normalization as before.
+        """
+        frequencies: dict[str, int] = {}
+        if not expressions:
+            return frequencies
+        if not conn.execute(
+            "SELECT 1 FROM files WHERE project_id=? LIMIT 1", (project_id,)
+        ).fetchone():
+            return dict.fromkeys(expressions, 0)
+        vocabulary: dict[str, int] | None = None
+        single_project = not conn.execute(
+            "SELECT 1 FROM files WHERE project_id<>? LIMIT 1", (project_id,)
+        ).fetchone()
+        if single_project:
+            try:
+                conn.execute(
+                    "CREATE VIRTUAL TABLE IF NOT EXISTS temp.memglide_term_stats "
+                    "USING fts5vocab(main,file_search,row)"
+                )
+                vocabulary_forms = sorted(
+                    {form for word in expressions for form in term_variants(word) if form.isascii()}
+                )
+                vocabulary = {}
+                for offset in range(0, len(vocabulary_forms), 500):
+                    batch = vocabulary_forms[offset : offset + 500]
+                    placeholders = ",".join("?" for _ in batch)
+                    for row in conn.execute(
+                        f"SELECT term,doc FROM temp.memglide_term_stats WHERE term IN ({placeholders})",
+                        batch,
+                    ):
+                        vocabulary[row["term"]] = row["doc"]
+            except sqlite3.OperationalError as error:
+                if "no such module: fts5vocab" not in str(error):
+                    raise
+        scope_prepared = False
+        for word, expression in expressions.items():
+            forms = term_variants(word)
+            if vocabulary is not None and all(form.isascii() for form in forms):
+                counts = [vocabulary[form] for form in forms if form in vocabulary]
+                if len(counts) <= 1:
+                    frequencies[word] = counts[0] if counts else 0
+                    continue
+            if single_project:
+                frequencies[word] = conn.execute(
+                    "SELECT count(*) FROM file_search WHERE file_search MATCH ?", (expression,)
+                ).fetchone()[0]
+            else:
+                if not scope_prepared:
+                    conn.execute(
+                        "CREATE TEMP TABLE IF NOT EXISTS memglide_project_docs(doc INTEGER PRIMARY KEY)"
+                    )
+                    conn.execute("DELETE FROM temp.memglide_project_docs")
+                    conn.execute(
+                        "INSERT INTO temp.memglide_project_docs SELECT rowid FROM file_search WHERE project_id=?",
+                        (project_id,),
+                    )
+                    scope_prepared = True
+                # Read the project's document IDs once. Per-term membership
+                # checks then use integers, without loading UNINDEXED project_id
+                # and its source payload for every matching posting.
+                frequencies[word] = conn.execute(
+                    "SELECT count(*) FROM file_search CROSS JOIN temp.memglide_project_docs p "
+                    "ON p.doc=file_search.rowid WHERE file_search MATCH ?",
+                    (expression,),
+                ).fetchone()[0]
+        return frequencies
 
     @staticmethod
     def _project_output(project: dict[str, Any]) -> dict[str, Any]:
@@ -295,6 +353,9 @@ class Indexer:
                 if full or p not in existing or existing[p]["hash"] != pair[1]
             }
             removed = set(existing) - set(sources)
+            refresh_search = (
+                json.loads(project["index_stats"]).get("search_index_version") != INDEX_VERSION
+            )
             parsed = parse_sources({path: content for path, (content, _) in changed.items()})
             for path, result in parsed.items():
                 if result.error:
@@ -406,6 +467,23 @@ class Indexer:
                                 0,
                             ),
                         )
+                # Upgrade only lexical fields for unchanged source. Symbol identities,
+                # hashes, source versions and parse timestamps retain their provenance.
+                if refresh_search:
+                    identifiers: dict[str, list[str]] = {}
+                    for symbol in conn.execute(
+                        "SELECT path,name,qualified_name FROM symbols WHERE project_id=? ORDER BY path,start_line,id",
+                        (project_id,),
+                    ):
+                        identifiers.setdefault(symbol["path"], []).append(
+                            f"{symbol['name']} {symbol['qualified_name']} "
+                            + " ".join(_tokens(symbol["name"]))
+                        )
+                    for path in sorted(set(sources) - set(changed)):
+                        conn.execute(
+                            "UPDATE file_search SET identifiers=? WHERE project_id=? AND path=?",
+                            (" ".join(identifiers.get(path, [])), project_id, path),
+                        )
                 self._resolve(conn, project_id)
                 modified = {
                     p for p in changed if p in existing and sources[p][1] != existing[p]["hash"]
@@ -433,6 +511,10 @@ class Indexer:
                     "deleted": len(removed),
                     "file_count": file_count,
                     "symbol_count": symbol_count,
+                    "search_index_version": INDEX_VERSION,
+                    "search_index_refreshed": (
+                        len(sources) - len(changed) if refresh_search else 0
+                    ),
                     "languages": languages,
                     "ignored": len(ignored),
                     "ignored_files": ignored,
@@ -769,7 +851,35 @@ class Indexer:
         )
         words = set(_tokens(query))
         exact = query.strip().lower()
+        # Use document frequency from this project, rather than allowing a common
+        # class noun to outweigh several rarer task terms. FTS is parameterized and
+        # the tokenizer never passes query operators through to SQLite.
+        expressions = {
+            word: "(" + " OR ".join(f'"{form}"' for form in term_variants(word)) + ")"
+            for word in sorted(words)
+        }
+        term_weights: dict[str, float] = {}
+        with self.db.connect() as conn:
+            conn.execute("BEGIN")
+            document_count = conn.execute(
+                "SELECT count(*) FROM files WHERE project_id=?", (project_id,)
+            ).fetchone()[0]
+            for word, frequency in self._document_frequencies(
+                conn, project_id, expressions
+            ).items():
+                if frequency:
+                    term_weights[word] = math.log1p(
+                        (document_count - frequency + 0.5) / (frequency + 0.5)
+                    )
+        total_weight = sum(term_weights.values()) or 1.0
+
+        def overlap(value: str) -> float:
+            return sum(term_weights.get(word, 0) for word in words & set(_tokens(value))) / (
+                total_weight
+            )
+
         candidates: list[tuple[float, str, dict[str, Any]]] = []
+        requested_scores: dict[str, float] = {}
         rows = self.db.rows(
             "SELECT s.*,f.hash,f.language,f.structural FROM symbols s JOIN files f ON f.id=s.file_id WHERE s.project_id=? ORDER BY s.path,s.start_line,s.id",
             (project_id,),
@@ -777,35 +887,32 @@ class Indexer:
         for row in rows:
             score = 0.0
             reasons = []
+            requested = False
             if exact in {row["name"].lower(), row["qualified_name"].lower(), row["id"]}:
                 score += weights["exact_symbol"]
                 reasons.append("exact symbol match")
-            elif re.search(
-                r"(?<![\w])" + re.escape(row["name"].lower()) + r"(?![\w])", query.lower()
-            ):
+                requested = True
+            elif explicit_identifier(query, row["name"], row["qualified_name"]):
                 score += weights["exact_symbol"] * 0.625
                 reasons.append("explicit symbol in query")
-            symbol_words = set(_tokens(row["name"]))
-            overlap = len(words & symbol_words)
-            if overlap:
-                score += weights["identifier"] * overlap / max(len(words), 1)
+                requested = True
+            identifier_overlap = overlap(row["name"])
+            if identifier_overlap:
+                score += weights["identifier"] * identifier_overlap
                 reasons.append("matching identifier")
-            if exact in row["path"].lower():
+            if explicit_path(query, row["path"]):
                 score += weights["symbol_path"]
                 reasons.append("matching path")
-            if words & set(_tokens(row["signature"])):
-                score += (
-                    weights["signature"]
-                    * len(words & set(_tokens(row["signature"])))
-                    / max(len(words), 1)
-                )
+            signature_overlap = overlap(row["signature"])
+            if signature_overlap:
+                score += weights["signature"] * signature_overlap
                 reasons.append("matching signature")
             if score:
                 candidates.append((score, "; ".join(reasons), row))
+            if requested:
+                requested_scores[row["id"]] = score
         if re.search(r"\b(call(?:s|ers)?|depend(?:s|ents|encies)?)\b", query.lower()):
-            matched_ids = {
-                row["id"] for score, _, row in candidates if score >= weights["exact_symbol"] * 0.58
-            }
+            matched_ids = set(requested_scores)
             if matched_ids:
                 graph = self.db.rows(
                     "SELECT * FROM dependencies WHERE project_id=? AND resolved=1 ORDER BY source_file,id",
@@ -816,38 +923,46 @@ class Indexer:
                     for edge in graph
                     if edge["target_symbol"] in matched_ids and edge["source_symbol"]
                 }
+                caller_score = max(requested_scores.values()) + weights["exact_symbol"] / 12
                 for row in rows:
-                    if row["id"] in caller_ids:
+                    if row["id"] in caller_ids and caller_score > 0:
                         candidates.append(
                             (
-                                weights["exact_symbol"] * (11 / 12),
+                                caller_score,
                                 "resolved caller of requested symbol",
                                 row,
                             )
                         )
         fts_rows: dict[str, float] = {}
         if words:
-            fts = " OR ".join('"' + word.replace('"', '""') + '"*' for word in sorted(words))
-            for row in self.db.rows(
-                "SELECT path,bm25(file_search) AS rank FROM file_search WHERE file_search MATCH ? AND project_id=? ORDER BY rank,path LIMIT 100",
-                (fts, project_id),
-            ):
-                fts_rows[row["path"]] = -row["rank"]
+            # Every term participates in the identifier/path field scores. Bound
+            # expensive BM25 candidate generation to informative terms selected
+            # by project document frequency, rather than prompt position.
+            ranked_terms = sorted(term_weights, key=lambda word: (-term_weights[word], word))
+            parts = [expressions[word] for word in ranked_terms[:MAX_FTS_RANK_TERMS]]
+            for offset in range(0, len(parts), FTS_QUERY_BATCH_SIZE):
+                fts = " OR ".join(parts[offset : offset + FTS_QUERY_BATCH_SIZE])
+                for row in self.db.rows(
+                    "SELECT path,bm25(file_search,0.0,3.0,2.0,1.0) AS rank FROM file_search WHERE file_search MATCH ? AND project_id=? ORDER BY rank,path LIMIT 100",
+                    (fts, project_id),
+                ):
+                    fts_rows[row["path"]] = fts_rows.get(row["path"], 0) - row["rank"]
         for row in self.db.rows(
             "SELECT * FROM files WHERE project_id=? ORDER BY path", (project_id,)
         ):
-            path_words = set(_tokens(row["path"]))
             score = 0.0
             reasons = []
-            if exact in row["path"].lower():
+            if explicit_path(query, row["path"]):
                 score += weights["file_path"]
                 reasons.append("matching file path")
-            if words & path_words:
-                score += weights["path_terms"] * len(words & path_words) / max(len(words), 1)
+            path_overlap = overlap(row["path"])
+            if path_overlap:
+                score += weights["path_terms"] * path_overlap
                 reasons.append("matching path terms")
             if row["path"] in fts_rows:
-                score += weights["full_text"] + min(fts_rows[row["path"]], weights["full_text"])
-                reasons.append("full-text match")
+                relevance = fts_rows[row["path"]]
+                score += weights["full_text"] * (1 + 4 * relevance / (1 + relevance))
+                reasons.append("full-text BM25 match")
             if score:
                 candidates.append((score, "; ".join(reasons), row))
         candidates.sort(

@@ -1,0 +1,87 @@
+{
+  "captured_at": "2026-10-16T16:39:39.485345+00:00",
+  "attestation": "captured_source_state_before_probe",
+  "git_head": "39e8df30565783a686270f8a6f422e56e41e3776",
+  "source_dirty_entries": [
+    " M src/memglide/api/app.py",
+    " M src/memglide/cli.py",
+    " M src/memglide/core/context.py",
+    " M src/memglide/core/indexer.py",
+    " M src/memglide/integrations/mcp_server.py",
+    " M src/memglide/memory/engine.py",
+    "?? src/memglide/core/query.py"
+  ],
+  "source_files": {
+    "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+    "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+    "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/api/app.py": "b789245d01bbc0d93771137889b5971e0980864c971b612dd87e84ab430d6ac2",
+    "src/memglide/cli.py": "0a4cc01bafe7e2d2c43171984fa05c01cafeeba113a432d5f62706560a1d3989",
+    "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/core/context.py": "d94123bf425545944c25d13c96eae30810e5cd5ba013657fdf7b86cc42f5b30d",
+    "src/memglide/core/indexer.py": "39dbf06317769630c3b44044275455f9bf883f7b0b7f651a0b70efaa6348543a",
+    "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+    "src/memglide/core/query.py": "781f44a138491a23c1283feb54f0ff6ab83b20264bc658d9776f4518b9b85567",
+    "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+    "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/integrations/codex.py": "c641a0ecaa6d50251e41fd3540930654f601a776b16c25d9644295dd6f3e1276",
+    "src/memglide/integrations/mcp_server.py": "80f1ed60fcfd7951ced1f7b957c46661c71fe8eac3cb8bd1eb62c5b75c99dff8",
+    "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/memory/engine.py": "524a42285ebed31bb14d7b2948847fd1f83b88f1cfc1eb695a650bb4400e598f",
+    "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+    "src/memglide/service.py": "f346d2c4162346eab3c4e8abb16c18a9bd0dee2b8bc2599a489312a72162dbd2",
+    "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/storage/database.py": "b8b866bca23b40ec567d73a9c650d9189d8c179ce267bd2a05d0273181723932"
+  },
+  "source_tree_sha256": "26371ec4dd5eca2baee7d3bd2bf470ae32306ee0a85294f5c6fe537f139ce43d",
+  "measurement_files": {
+    "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0",
+    "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c"
+  },
+  "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state",
+  "source_unchanged_during_probe": true,
+  "after_probe": {
+    "captured_at": "2026-10-16T16:43:55.985628+00:00",
+    "attestation": "captured_source_state_before_probe",
+    "git_head": "39e8df30565783a686270f8a6f422e56e41e3776",
+    "source_dirty_entries": [
+      " M src/memglide/api/app.py",
+      " M src/memglide/cli.py",
+      " M src/memglide/core/context.py",
+      " M src/memglide/core/indexer.py",
+      " M src/memglide/integrations/mcp_server.py",
+      " M src/memglide/memory/engine.py",
+      "?? src/memglide/core/query.py"
+    ],
+    "source_files": {
+      "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/api/app.py": "b789245d01bbc0d93771137889b5971e0980864c971b612dd87e84ab430d6ac2",
+      "src/memglide/cli.py": "0a4cc01bafe7e2d2c43171984fa05c01cafeeba113a432d5f62706560a1d3989",
+      "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/core/context.py": "d94123bf425545944c25d13c96eae30810e5cd5ba013657fdf7b86cc42f5b30d",
+      "src/memglide/core/indexer.py": "39dbf06317769630c3b44044275455f9bf883f7b0b7f651a0b70efaa6348543a",
+      "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "src/memglide/core/query.py": "781f44a138491a23c1283feb54f0ff6ab83b20264bc658d9776f4518b9b85567",
+      "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+      "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/integrations/codex.py": "c641a0ecaa6d50251e41fd3540930654f601a776b16c25d9644295dd6f3e1276",
+      "src/memglide/integrations/mcp_server.py": "80f1ed60fcfd7951ced1f7b957c46661c71fe8eac3cb8bd1eb62c5b75c99dff8",
+      "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/memory/engine.py": "524a42285ebed31bb14d7b2948847fd1f83b88f1cfc1eb695a650bb4400e598f",
+      "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "src/memglide/service.py": "f346d2c4162346eab3c4e8abb16c18a9bd0dee2b8bc2599a489312a72162dbd2",
+      "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/storage/database.py": "b8b866bca23b40ec567d73a9c650d9189d8c179ce267bd2a05d0273181723932"
+    },
+    "source_tree_sha256": "26371ec4dd5eca2baee7d3bd2bf470ae32306ee0a85294f5c6fe537f139ce43d",
+    "measurement_files": {
+      "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0",
+      "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c"
+    },
+    "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state"
+  }
+}

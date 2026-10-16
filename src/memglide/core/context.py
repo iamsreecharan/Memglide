@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 import re
@@ -9,6 +10,7 @@ import time
 from pathlib import PurePosixPath
 from typing import Any
 
+from memglide.core.query import tokens
 from memglide.memory.engine import MemoryEngine
 from memglide.security.paths import read_source
 from memglide.storage.database import Database, DomainError, new_id
@@ -56,12 +58,13 @@ class ContextEngine:
 
     @staticmethod
     def _words(value: str) -> set[str]:
-        return set(re.findall(r"[a-z0-9_]+", value.casefold()))
+        return set(tokens(value))
 
     @classmethod
     def _query_intent(cls, query: str) -> str | None:
         """Small explicit query rules, never inferred or generated summaries."""
-        words = cls._words(query)
+        # Intent rules use the original inflections, unlike relevance matching.
+        words = set(re.findall(r"[a-z0-9_]+", query.casefold()))
         if words & {"session", "task"} and words & {"changed", "changes", "change", "modified"}:
             return "session_changes"
         if words & {"try", "tried", "attempt", "attempts", "attempted", "failures"} and words & {
@@ -191,7 +194,7 @@ class ContextEngine:
                 )
             for dep in deps:
                 found[self._dependency_key(dep)] = self._dependency_view(dep)
-        return [found[key] for key in sorted(found)][:100]
+        return [found[key] for key in sorted(found)]
 
     def _related_tests(self, project_id: str, candidates: list[dict[str, Any]]) -> list[str]:
         stems = {PurePosixPath(c["path"]).stem for c in candidates[:10]}
@@ -210,7 +213,7 @@ class ContextEngine:
             )
             if is_test and any(stem in name for stem in stems):
                 tests.append(path)
-        return tests[:20]
+        return tests
 
     def _expand_candidates(
         self,
@@ -223,13 +226,15 @@ class ContextEngine:
         if level == 1:
             return candidates
         keys: list[str] = []
-        for dep in dependencies:
+        # Expansion is bounded separately from the graph's reported omissions.
+        # Direct search results stay first; optional neighbors never displace them.
+        for dep in dependencies[:100]:
             if dep.get("resolved") and dep.get("target_file"):
                 keys.append(dep.get("target_symbol") or dep["target_file"])
             if level == 3 and dep.get("source_file"):
                 keys.append(dep.get("source_symbol") or dep["source_file"])
         if level == 3:
-            keys.extend(tests)
+            keys.extend(tests[:20])
         seen = {(c["path"], c.get("start_line", 0), c.get("end_line", 0)) for c in candidates}
         for key in dict.fromkeys(keys):
             try:
@@ -295,12 +300,66 @@ class ContextEngine:
             response["estimated_tokens"] = total
             response["passport"]["estimated_tokens_returned"] = total
 
+    @classmethod
+    def _dependency_preview(cls, dependency: dict[str, Any]) -> dict[str, Any]:
+        """Bound repeated graph text without changing the full dependency endpoint."""
+        full = cls._dependency_view(dependency)
+        preview = dict(full)
+        shortened = []
+        for field in ("reference", "source_symbol", "target_symbol"):
+            value = preview.get(field)
+            if isinstance(value, str) and len(value) > 160:
+                preview[field] = value[:157] + "..."
+                shortened.append(field)
+        if shortened:
+            preview["preview_truncated_fields"] = shortened
+            preview["reference_length"] = len(str(full.get("reference") or ""))
+        # Hash the complete relationship, so previews remain identifiable when
+        # two large expressions have the same prefix. This is not a source hash.
+        preview["id"] = hashlib.sha256(
+            json.dumps(full, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()[:20]
+        return preview
+
+    @staticmethod
+    def _graph_estimate(
+        dependencies: list[dict[str, Any]],
+        tests: list[str],
+        summary: dict[str, Any],
+        warnings: list[str],
+        next_tests: list[str],
+    ) -> int:
+        """Count every serialized copy, including the legacy passport arrays.
+
+        The projection conservatively includes its own containers and all graph
+        warnings/recommendations. Object arrays remain compatible with existing
+        consumers; deduplication in Python would not deduplicate serialized JSON.
+        """
+        return estimate_tokens(
+            {
+                "dependencies": dependencies,
+                "warnings": warnings,
+                "passport": {
+                    "dependencies": dependencies,
+                    "unresolved_dependencies": [
+                        dependency for dependency in dependencies if not dependency.get("resolved")
+                    ],
+                    "related_tests": tests,
+                    "dependency_summary": summary,
+                    "missing_context": warnings,
+                    "recommended_next_retrievals": next_tests,
+                },
+            }
+        )
+
     def _build_passport(
         self,
         response: dict[str, Any],
         all_deps: list[dict[str, Any]],
         related_tests: list[str],
         missing: list[str],
+        *,
+        include_graph: bool = False,
     ) -> None:
         items = response["items"]
         source_hashes = {item["path"]: item["hash"] for item in items}
@@ -309,18 +368,15 @@ class ContextEngine:
                 if source.get("current"):
                     source_hashes[source["path"]] = source["hash"]
         paths = set(source_hashes)
-        deps = [d for d in all_deps if d["source_file"] in paths or d.get("target_file") in paths]
-        response["dependencies"] = deps
-        unresolved = [d for d in deps if not d.get("resolved")]
+        relevant = [
+            dependency
+            for dependency in all_deps
+            if dependency["source_file"] in paths or dependency.get("target_file") in paths
+        ]
         if any(memory.get("freshness") != "Current" for memory in response["memories"]):
             missing = [
                 *missing,
                 "Selected session claims lack verified source references; inspect their provenance before relying on them.",
-            ]
-        if unresolved:
-            missing = [
-                *missing,
-                "Some static references could not be resolved; inspect their imports and callers.",
             ]
         if response["level"] == 1 and items:
             missing = [
@@ -332,28 +388,20 @@ class ContextEngine:
                 *missing,
                 "Some submitted memories have no source references and require independent verification.",
             ]
-        next_steps = []
+        base_next = []
         if response["level"] < 3:
-            next_steps.append(
+            base_next.append(
                 f"expand_context({response['retrieval_id']}, level={response['level'] + 1})"
             )
         if response["truncated"]:
-            next_steps.append("Repeat with a larger budget or a more specific symbol query.")
-        if related_tests:
-            next_steps.extend(
-                "Inspect test " + path for path in related_tests[:3] if path not in paths
-            )
+            base_next.append("Repeat with a larger budget or a more specific symbol query.")
         if not items:
-            next_steps.append(
-                "Reindex the project and query an exact symbol or relative file path."
-            )
-        response["warnings"] = list(dict.fromkeys(missing))
-        response["passport"] = {
+            base_next.append("Reindex the project and query an exact symbol or relative file path.")
+        passport = {
             "retrieval_id": response["retrieval_id"],
             "session_id": response["session_id"],
             "query": response["query"],
             "level": response["level"],
-            "status": "Partial" if missing or response["truncated"] else "Current",
             "selected_files": [
                 {"path": path, "hash": source_hashes[path]} for path in sorted(paths)
             ],
@@ -368,27 +416,109 @@ class ContextEngine:
             ],
             "verified_source_hashes": source_hashes,
             "selected_memory_ids": [memory["id"] for memory in response["memories"]],
-            "dependencies": deps,
-            "unresolved_dependencies": unresolved,
-            "related_tests": related_tests,
-            "missing_context": list(dict.fromkeys(missing)),
+            "selected_memory_versions": {
+                memory["id"]: memory["version"] for memory in response["memories"]
+            },
             "source_freshness": "Current",
             "evidence_quality": "Structural discovery"
             if response["level"] == 1
             else "Current source evidence; task sufficiency requires inspection",
             "token_budget": response["budget"],
             "estimated_tokens_returned": response["estimated_tokens"],
-            "recommended_next_retrievals": next_steps,
         }
+        response["passport"] = passport
         if "session_events" in response:
-            response["passport"]["session_event_ids"] = [
-                event["id"] for event in response["session_events"]
-            ]
-            response["passport"]["session_event_scope"] = response["session_event_scope"]
-        if any(memory["freshness"] == "Stale" for memory in response["memories"]):
-            response["passport"]["status"] = "Stale"
-            response["passport"]["source_freshness"] = "Stale"
-        self._refresh_estimate(response)
+            passport["session_event_ids"] = [event["id"] for event in response["session_events"]]
+            passport["session_event_scope"] = response["session_event_scope"]
+
+        # Keep optional graph metadata below an independent limit, and fit it
+        # only after sources. The floor accommodates the omission notice itself
+        # at small budgets; the complete response must still fit the user budget.
+        graph_budget = min(1200, max(256, response["budget"] // 5))
+        unresolved_count = sum(not dependency.get("resolved") for dependency in relevant)
+
+        def apply_graph(deps: list[dict[str, Any]], tests: list[str]) -> int:
+            omitted = len(relevant) - len(deps)
+            shortened = sum(bool(dep.get("preview_truncated_fields")) for dep in deps)
+            omitted_tests = len(related_tests) - len(tests)
+            graph_warnings = []
+            if omitted or omitted_tests or shortened:
+                graph_warnings.append(
+                    "Dependency/test graph is partial; get_dependencies returns full references."
+                )
+            if unresolved_count and not omitted:
+                graph_warnings.append(
+                    "Some static references could not be resolved; inspect their imports and callers."
+                )
+            next_tests = ["Inspect test " + path for path in tests[:3] if path not in paths]
+            summary: dict[str, Any] = {
+                "scope": "First 10 search candidates; selected files only",
+                "total_references": len(relevant),
+                "returned_references": len(deps),
+                "omitted_references": omitted,
+                "unresolved_references": unresolved_count,
+                "truncated_previews": shortened,
+                "omitted_related_tests": omitted_tests,
+                "graph_token_budget": graph_budget,
+                "estimated_graph_tokens": 0,
+            }
+            for _ in range(5):
+                graph_tokens = self._graph_estimate(
+                    deps, tests, summary, graph_warnings, next_tests
+                )
+                if graph_tokens == summary["estimated_graph_tokens"]:
+                    break
+                summary["estimated_graph_tokens"] = graph_tokens
+            response["dependencies"] = deps
+            response["warnings"] = list(dict.fromkeys([*missing, *graph_warnings]))
+            passport.update(
+                {
+                    "dependencies": deps,
+                    "unresolved_dependencies": [d for d in deps if not d.get("resolved")],
+                    "related_tests": tests,
+                    "dependency_summary": summary,
+                    "missing_context": response["warnings"],
+                    "recommended_next_retrievals": [*base_next, *next_tests],
+                    "status": "Partial"
+                    if response["warnings"] or response["truncated"]
+                    else "Current",
+                }
+            )
+            if any(memory["freshness"] == "Stale" for memory in response["memories"]):
+                passport["status"] = "Stale"
+                passport["source_freshness"] = "Stale"
+            self._refresh_estimate(response)
+            return int(summary["estimated_graph_tokens"])
+
+        selected: list[dict[str, Any]] = []
+        selected_tests: list[str] = []
+        empty_graph_tokens = apply_graph(selected, selected_tests)
+        if not include_graph:
+            return
+        # A generous caller budget must not cause a small source answer to grow
+        # into mostly graph metadata. Above the small compatibility allowance,
+        # bound graph cost to half the answer's non-graph evidence/envelope.
+        non_graph_tokens = max(0, response["estimated_tokens"] - empty_graph_tokens)
+        graph_budget = min(graph_budget, max(512, non_graph_tokens // 2))
+        apply_graph(selected, selected_tests)
+        # Evaluate only a bounded preview window. Counts still cover every
+        # discovered relationship, so this limit never hides omitted edges.
+        for dependency in relevant[:100]:
+            preview = self._dependency_preview(dependency)
+            trial = [*selected, preview]
+            cost = apply_graph(trial, selected_tests)
+            if cost <= graph_budget and response["estimated_tokens"] <= response["budget"]:
+                selected = trial
+            else:
+                apply_graph(selected, selected_tests)
+        for path in related_tests[:100]:
+            trial_tests = [*selected_tests, path]
+            cost = apply_graph(selected, trial_tests)
+            if cost <= graph_budget and response["estimated_tokens"] <= response["budget"]:
+                selected_tests = trial_tests
+            else:
+                apply_graph(selected, selected_tests)
+        apply_graph(selected, selected_tests)
 
     def get_context(
         self,
@@ -397,6 +527,7 @@ class ContextEngine:
         level: int = 1,
         budget: int | None = None,
         known_memory_ids: list[str] | None = None,
+        known_memory_versions: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         session = self.memory.status(session_id)
         if level not in (1, 2, 3):
@@ -411,6 +542,21 @@ class ContextEngine:
             or any(not isinstance(value, str) or len(value) > 128 for value in known_memory_ids)
         ):
             raise DomainError("known_memory_ids must contain at most 1000 memory identifiers")
+        if known_memory_versions is not None and (
+            not isinstance(known_memory_versions, dict)
+            or len(known_memory_versions) > 1000
+            or any(
+                not isinstance(memory_id, str)
+                or not memory_id
+                or len(memory_id) > 128
+                or not isinstance(version, str)
+                or re.fullmatch(r"[0-9a-f]{64}", version) is None
+                for memory_id, version in known_memory_versions.items()
+            )
+        ):
+            raise DomainError(
+                "known_memory_versions must map at most 1000 memory identifiers to 64-character lowercase SHA-256 versions"
+            )
         project_id = session["project_id"]
         project = self.db.project(project_id)
         query = query.strip() or session["task"].strip()
@@ -444,16 +590,18 @@ class ContextEngine:
         tests = self._related_tests(project_id, candidates)
         candidates = self._expand_candidates(project_id, candidates, dependencies, tests, level)
         memories = self._select_memories(session_id, query, session["task"], intent)
-        known = set(known_memory_ids or [])
+        # Legacy known IDs remain accepted, but cannot identify which version
+        # this particular client has seen when several clients share a session.
+        acknowledged_versions = known_memory_versions or {}
         memories = [
             {
                 **{
                     key: memory[key]
-                    for key in ("id", "category", "updated_at", "freshness", "sources")
+                    for key in ("id", "category", "updated_at", "freshness", "sources", "version")
                 },
                 "content_omitted": True,
             }
-            if memory["id"] in known
+            if acknowledged_versions.get(memory["id"]) == memory["version"]
             else memory
             for memory in memories
         ]
@@ -599,6 +747,7 @@ class ContextEngine:
             raise DomainError(
                 f"Budget is too small for retrieval metadata; use at least {response['estimated_tokens']} estimated tokens"
             )
+        self._build_passport(response, dependencies, tests, missing, include_graph=True)
         self.memory.touch(session_id)
         created = time.time()
         with self.db.connect() as conn:
@@ -644,6 +793,7 @@ class ContextEngine:
         level: int | None = None,
         budget: int | None = None,
         known_memory_ids: list[str] | None = None,
+        known_memory_versions: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         self.memory.status(session_id)
         previous = self.db.one(
@@ -660,6 +810,7 @@ class ContextEngine:
             next_level,
             previous["budget"] if budget is None else budget,
             known_memory_ids,
+            known_memory_versions,
         )
 
     def get_passport(self, session_id: str, retrieval_id: str) -> dict[str, Any]:
@@ -684,10 +835,13 @@ class ContextEngine:
             except (OSError, DomainError):
                 stale_files.append(file["path"])
         for memory_id in passport.get("selected_memory_ids", []):
-            memory = self.db.one(
-                "SELECT stale FROM memories WHERE id=? AND session_id=?", (memory_id, session_id)
-            )
-            if memory is None or memory["stale"]:
+            try:
+                memory = self.memory.get_memory_snapshot(session_id, memory_id)
+            except DomainError:
+                stale_memories.append(memory_id)
+                continue
+            version = passport.get("selected_memory_versions", {}).get(memory_id)
+            if memory["stale"] or version != memory["version"]:
                 stale_memories.append(memory_id)
         if stale_files or stale_memories:
             passport["status"] = "Stale"
@@ -699,9 +853,7 @@ class ContextEngine:
                 for path, digest in passport["verified_source_hashes"].items()
                 if path not in stale_files
             }
-            warning = (
-                "Selected source changed or disappeared; reindex and retrieve current evidence."
-            )
+            warning = "Selected source or memory changed or disappeared; retrieve current evidence."
             passport["missing_context"] = list(
                 dict.fromkeys([*passport["missing_context"], warning])
             )

@@ -177,14 +177,32 @@ def context(
     known_memory_id: list[str] | None = typer.Option(
         None,
         "--known-memory-id",
-        help="Repeat for memories whose content the caller already retains.",
+        help="Legacy memory ID hint; exact versions are required to omit content safely.",
+    ),
+    known_memory_version: list[str] | None = typer.Option(
+        None,
+        "--known-memory-version",
+        help="Repeat MEMORY_ID=VERSION for exact memory revisions the caller retains.",
     ),
 ) -> None:
     """Retrieve discovery (1), focused (2), or expanded (3) context and passport."""
+    versions: dict[str, str] = {}
+    for value in known_memory_version or []:
+        memory_id, separator, version = value.partition("=")
+        if not separator or not memory_id or not version:
+            raise typer.BadParameter("Use MEMORY_ID=VERSION for --known-memory-version")
+        if memory_id in versions and versions[memory_id] != version:
+            raise typer.BadParameter("Conflicting versions for the same memory ID")
+        versions[memory_id] = version
     _invoke(
         ctx,
         lambda s: s.context.get_context(
-            session_id, query, level, budget, known_memory_ids=known_memory_id
+            session_id,
+            query,
+            level,
+            budget,
+            known_memory_ids=known_memory_id,
+            known_memory_versions=versions or None,
         ),
     )
 

@@ -306,28 +306,50 @@ describe("dashboard workflows", () => {
     const pending = new Promise<void>((resolve) => {
       release = resolve;
     });
+    let sessionsRequested!: () => void;
+    const sessionsStarted = new Promise<void>((resolve) => {
+      sessionsRequested = resolve;
+    });
+    let passportRequested!: () => void;
+    const passportLoaded = new Promise<void>((resolve) => {
+      passportRequested = resolve;
+    });
     vi.stubGlobal(
       "fetch",
       vi.fn(async (input: string, options?: RequestInit) => {
-        if (input.startsWith("/api/sessions?")) await pending;
-        return originalFetch(input, options);
+        if (input.startsWith("/api/sessions?")) {
+          sessionsRequested();
+          await pending;
+        }
+        const result = await originalFetch(input, options);
+        if (input.startsWith("/api/context/r1/passport?")) passportRequested();
+        return result;
       }),
     );
     mount("/passport?retrieval=r1&session=s1");
-    expect(
-      await screen.findByRole("heading", { name: "Partial evidence" }),
-    ).toBeInTheDocument();
-    release();
-    await waitFor(() =>
-      expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue(
-        "s1",
-      ),
-    );
-    await userEvent.selectOptions(
-      screen.getByRole("combobox", { name: "SESSION" }),
-      "s2",
-    );
-    expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s2");
+    try {
+      // Wait for the lazy screen and both requests before checking the race;
+      // cold module transformation is independent of session alignment.
+      await sessionsStarted;
+      await passportLoaded;
+      expect(
+        await screen.findByRole("heading", { name: "Partial evidence" }),
+      ).toBeInTheDocument();
+      expect(screen.getByRole("combobox", { name: "SESSION" })).toBeDisabled();
+      release();
+      await waitFor(() =>
+        expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue(
+          "s1",
+        ),
+      );
+      await userEvent.selectOptions(
+        screen.getByRole("combobox", { name: "SESSION" }),
+        "s2",
+      );
+      expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s2");
+    } finally {
+      release();
+    }
   });
 
   it("opens a passport URL for its own session without losing the pending query during auto-selection", async () => {

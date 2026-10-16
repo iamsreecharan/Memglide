@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { expect, it, vi } from "vitest";
 import { Button, Modal } from "../src/components/ui";
+import { DependencyList } from "../src/components/Evidence";
 
 it("keeps a busy action disabled even when its ordinary disabled condition is false", async () => {
   const action = vi.fn();
@@ -42,4 +43,23 @@ it("keeps modal keyboard focus stable across input rerenders and handles Escape"
   expect(input).toHaveFocus();
   await userEvent.keyboard("{Escape}");
   expect(closed).toHaveBeenCalledOnce();
+});
+
+it("identifies shortened relationship evidence without marking ordinary references as previews", () => {
+  const { rerender } = render(
+    <DependencyList
+      items={[{
+        source_file: "src/request.ts",
+        reference: "builder.map(...",
+        resolved: false,
+        preview_truncated_fields: ["reference"],
+        reference_length: 500,
+      }]}
+    />,
+  );
+  expect(screen.getByText("Relationship preview")).toBeInTheDocument();
+  expect(screen.getByText("Unresolved")).toBeInTheDocument();
+  rerender(<DependencyList items={[{ source_file: "src/request.ts", reference: "verify", resolved: true }]} />);
+  expect(screen.queryByText("Relationship preview")).not.toBeInTheDocument();
+  expect(screen.getByText("Resolved")).toBeInTheDocument();
 });

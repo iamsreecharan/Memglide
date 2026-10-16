@@ -13,7 +13,7 @@ uv run memglide setup codex
 codex mcp get memglide --json
 ```
 
-The setup command uses the supported `codex mcp add memglide -- …` interface with the absolute Python executable of the running installation and `-m memglide.cli mcp`. It observes existing configuration first, preserves an existing server named `memglide`, and verifies that the entry exists after registration. If setup cannot read the configuration safely, it stops without replacing it. Configuration registration is different from a live connection.
+The setup command uses the supported `codex mcp add memglide -- …` interface with the absolute Python executable of the running installation and `-I -m memglide.cli mcp`. Python's isolated import mode prevents a repository package or `PYTHONPATH` from shadowing the installed server. Install Memglide in that Python environment; a source-only `PYTHONPATH` is insufficient. It observes existing configuration first, preserves an existing server named `memglide`, and verifies that the entry exists after registration. If setup cannot read the configuration safely, it stops without replacing it. Configuration registration is different from a live connection. Registrations created by an earlier version are preserved; inspect and deliberately replace their command through Codex's supported commands to adopt isolated startup.
 
 For a separate shared database, use an absolute path explicitly when registering:
 
@@ -25,10 +25,10 @@ uv run memglide --db /absolute/path/to/state/memglide.db serve
 
 This bakes the `--db` selector into the registered command. Alternatively set `MEMGLIDE_HOME` before launching both Memglide and Codex. Shell variables from a one-off setup command do not automatically become persistent configuration for later Codex processes.
 
-Manual registration after a built-wheel installation on a suitable `PATH`:
+Prefer `memglide setup codex` for isolated imports. Manual registration after a built-wheel installation, using the absolute Python path of that installation:
 
 ```sh
-codex mcp add memglide -- memglide mcp
+codex mcp add memglide -- /absolute/path/to/python -I -m memglide.cli mcp
 codex mcp get memglide --json
 ```
 
@@ -56,6 +56,18 @@ Restart Codex after configuration changes. In Codex, request `list_projects`; co
 | `end_session` | End work; history remains until expiry or manual clearing. |
 
 Use IDs returned by tools. Expired or ended sessions reject further work; start a new session. A memory/retrieval from another session cannot be addressed through your session ID. Project approval happens in the local CLI/dashboard, not through an arbitrary MCP path argument.
+
+Memory responses include an exact `version`. For `get_context` and
+`expand_context`, optionally pass `known_memory_versions` as a mapping of memory
+IDs to the versions your client actually retains. Only matching revisions may
+omit their content; edited claims are returned in full. `known_memory_ids` remains
+accepted as a legacy hint but cannot establish a revision. Passports snapshot
+selected memory versions and become stale when those claims change.
+
+Dependency previews and omitted relationship counts are explicit. A Partial
+passport may have current source hashes while omitting graph details. Retrieve
+full relationships with `get_dependencies`; a preview does not replace the
+complete static dependency record.
 
 Only protocol traffic goes to stdout in STDIO mode. Diagnostics use stderr. A server that merely starts is not an integration test: `tests/test_transports.py` uses an actual SDK client to discover tools and invoke all 14 tools. It also tests supported Codex registration commands in an isolated configuration directory. See `PROGRESS.md` for the exact validation observed in this checkout, including any Codex-specific limits.
 

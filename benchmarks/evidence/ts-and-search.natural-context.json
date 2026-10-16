@@ -1,0 +1,813 @@
+{
+  "tool": "get_context",
+  "arguments": {
+    "session_id": "8f1e8343362d41c9bb1ea509d55d37ca",
+    "query": "In this Typescript Atlas document-service repository, Fix document search so every normalized query token must appear in a record's title or body. Preserve case-insensitive alphanumeric tokenization, empty-query results, ascending ID order for tied results, and input immutability. Partial-token substrings do not count. Verify the DocumentService search path.\n\nImplement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.",
+    "level": 2,
+    "budget": 8000
+  },
+  "response": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"retrieval_id\": \"bc84eae3d79744f8b4fa771a72359ac9\",\n  \"session_id\": \"8f1e8343362d41c9bb1ea509d55d37ca\",\n  \"project_id\": \"d4f3e5fce15d46d5b4b8de0309bc1989\",\n  \"query\": \"In this Typescript Atlas document-service repository, Fix document search so every normalized query token must appear in a record's title or body. Preserve case-insensitive alphanumeric tokenization, empty-query results, ascending ID order for tied results, and input immutability. Partial-token substrings do not count. Verify the DocumentService search path.\\n\\nImplement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.\",\n  \"level\": 2,\n  \"budget\": 8000,\n  \"estimated_tokens\": 7871,\n  \"token_estimate_method\": \"ceil(UTF-8 JSON bytes / 3); includes metadata; estimate, not measured usage\",\n  \"items\": [\n    {\n      \"path\": \"src/repository.ts\",\n      \"symbol\": \"Document\",\n      \"signature\": \"type Document = { id: string; body: unknown; revision: number };\",\n      \"start_line\": 1,\n      \"end_line\": 1,\n      \"hash\": \"cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f\",\n      \"language\": \"typescript\",\n      \"kind\": \"type\",\n      \"structural\": true,\n      \"parse_error\": null,\n      \"score\": 77.10770000000001,\n      \"reason\": \"explicit symbol in query; matching identifier; matching signature\",\n      \"snippet\": \"export type Document = { id: string; body: unknown; revision: number };\\n\",\n      \"freshness\": \"Current\",\n      \"full_source\": false\n    },\n    {\n      \"path\": \"src/service.ts\",\n      \"symbol\": \"DocumentService\",\n      \"signature\": \"class DocumentService\",\n      \"start_line\": 9,\n      \"end_line\": 28,\n      \"hash\": \"de7c3a42b315eab67c46c79aa40bb6ab0e0e768f9d7aaa28142b14d2cb0e6775\",\n      \"language\": \"typescript\",\n      \"kind\": \"class\",\n      \"structural\": true,\n      \"parse_error\": null,\n      \"score\": 76.92309999999999,\n      \"reason\": \"explicit symbol in query; matching identifier; matching signature\",\n      \"snippet\": \"export class DocumentService {\\n  readonly repository = new Repository();\\n  readonly cache: TTLCache<unknown>;\\n  constructor(capacity = 64) { this.cache = new TTLCache(capacity); }\\n  cachedDocument(id: string, now: number): unknown { return this.cache.get(id, { now }); }\\n  listDocuments(cursor?: string, limit = 20) {\\n    return page([...this.repository.records.values()], { cursor, limit });\\n  }\\n  dependenciesFor(graph: Record<string, string[]>, id: string): string[] {\\n    return dependencies(graph, id);\\n  }\\n  searchDocuments(records: SearchDocument[], query: string): SearchDocument[] {\\n    return search(records, query);\\n  }\\n  storageKey(root: string, relative: string): string { return resolveUnder(root, relative); }\\n  authorized(scopes: string[], resource: string, action: string): boolean {\\n    return canAccess(scopes, resource, action);\\n  }\\n  featureEnabled(value: unknown): boolean { return parseFlag(value); }\\n}\\n\",\n      \"freshness\": \"Current\",\n      \"full_source\": false\n    },\n    {\n      \"path\": \"src/repository.ts\",\n      \"symbol\": \"Repository\",\n      \"signature\": \"class Repository\",\n      \"start_line\": 5,\n      \"end_line\": 30,\n      \"hash\": \"cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f\",\n      \"language\": \"typescript\",\n      \"kind\": \"class\",\n      \"structural\": true,\n      \"parse_error\": null,\n      \"score\": 75.9615,\n      \"reason\": \"explicit symbol in query; matching identifier; matching signature\",\n      \"snippet\": \"export class Repository {\\n  readonly records = new Map<string, Document>();\\n  readonly events = new Map<string, Event>();\\n\\n  create(id: string, body: unknown): Document {\\n    const record = { id, body: structuredClone(body), revision: 1 };\\n    this.records.set(id, record);\\n    return structuredClone(record);\\n  }\\n\\n  update(id: string, body: unknown, options: { expected_revision: number }): Document {\\n    const current = this.records.get(id)!;\\n    if (options.expected_revision > current.revision) {\\n      throw new ConflictError(\\\"revision conflict\\\");\\n    }\\n    const updated = { id, body: structuredClone(body), revision: current.revision + 1 };\\n    this.records.set(id, updated);\\n    return structuredClone(updated);\\n  }\\n\\n  putEvent(key: string, payload: unknown): Event {\\n    const event = { key, payload: structuredClone(payload), sequence: this.events.size + 1 };\\n    this.events.set(key, event);\\n    return structuredClone(event);\\n  }\\n}\\n\",\n      \"freshness\": \"Current\",\n      \"full_source\": false\n    },\n    {\n      \"path\": \"AGENTS.md\",\n      \"symbol\": \"AGENTS.md\",\n      \"signature\": \"\",\n      \"start_line\": 1,\n      \"end_line\": 7,\n      \"hash\": \"810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8\",\n      \"language\": \"text\",\n      \"kind\": \"file\",\n      \"structural\": false,\n      \"parse_error\": null,\n      \"score\": 20.0,\n      \"reason\": \"full-text match\",\n      \"snippet\": \"# Development\\n\\nUse this isolated checkout. Production code is in\\nsrc/. Run `node --test tests/*.test.mjs`.\\nTests must remain offline and deterministic. Preserve public interfaces.\\nDo not inspect or alter benchmark machinery or grading files outside\\nthis repository. Implement fixes in source, not by weakening tests.\\n\",\n      \"freshness\": \"Current\",\n      \"full_source\": false\n    }\n  ],\n  \"memories\": [],\n  \"dependencies\": [\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"structuredClone\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"this.records.get\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"this.records.set\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n      \"target_file\": \"src/repository.ts\",\n      \"target_symbol\": \"6ec35f5d2482350ef23cf93188a2ff37\",\n      \"kind\": \"call\",\n      \"reference\": \"ConflictError\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"5cea6cf504bbc326cea8d8609d721728\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"structuredClone\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"5cea6cf504bbc326cea8d8609d721728\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"this.events.set\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"70c488a8701c11128a9e32255da88de7\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"structuredClone\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"70c488a8701c11128a9e32255da88de7\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"this.records.set\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/repository.ts\",\n      \"source_symbol\": \"723e2b1fc0a1c6ab92a84c0621bf5966\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"Map\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"0480ab28be311f7e9dac3cb8c9551cb8\",\n      \"target_file\": \"src/cache.ts\",\n      \"target_symbol\": \"befb41330fce60d215fd321fdcaa592d\",\n      \"kind\": \"call\",\n      \"reference\": \"TTLCache\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"29dfc4c196f1126b76cdcedab78ad553\",\n      \"target_file\": \"src/config.ts\",\n      \"target_symbol\": \"38442d678de4d0ff37ba489cccb5eb57\",\n      \"kind\": \"call\",\n      \"reference\": \"parseFlag\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"3db19e364d4c632881debae1a663ed1b\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"this.repository.records.values\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"3db19e364d4c632881debae1a663ed1b\",\n      \"target_file\": \"src/pagination.ts\",\n      \"target_symbol\": \"38e6412043cbbc3d58f5271d86349e8a\",\n      \"kind\": \"call\",\n      \"reference\": \"page\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"6d941436527bdc794fcd815c135d7b01\",\n      \"target_file\": null,\n      \"target_symbol\": null,\n      \"kind\": \"call\",\n      \"reference\": \"this.cache.get\",\n      \"resolved\": false\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"968351f197c08d6ded9389504825ae81\",\n      \"target_file\": \"src/graph.ts\",\n      \"target_symbol\": \"f54e2d7b88f09dfc32b8b49d2f88f0fa\",\n      \"kind\": \"call\",\n      \"reference\": \"dependencies\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"9df9d23928220020faaac5ad6d550aa9\",\n      \"target_file\": \"src/security.ts\",\n      \"target_symbol\": \"ce167331f12d6d0f5a3fd9949b767d94\",\n      \"kind\": \"call\",\n      \"reference\": \"canAccess\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/cache.ts\",\n      \"target_symbol\": \"befb41330fce60d215fd321fdcaa592d\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./cache.ts\\\", \\\"TTLCache\\\", \\\"TTLCache\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/config.ts\",\n      \"target_symbol\": \"38442d678de4d0ff37ba489cccb5eb57\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./config.ts\\\", \\\"parseFlag\\\", \\\"parseFlag\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/graph.ts\",\n      \"target_symbol\": \"f54e2d7b88f09dfc32b8b49d2f88f0fa\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./graph.ts\\\", \\\"dependencies\\\", \\\"dependencies\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/pagination.ts\",\n      \"target_symbol\": \"38e6412043cbbc3d58f5271d86349e8a\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./pagination.ts\\\", \\\"page\\\", \\\"page\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/repository.ts\",\n      \"target_symbol\": \"723e2b1fc0a1c6ab92a84c0621bf5966\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./repository.ts\\\", \\\"Repository\\\", \\\"Repository\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/search.ts\",\n      \"target_symbol\": \"9808c83b29e8bf15c4cf76ea1797778d\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./search.ts\\\", \\\"search\\\", \\\"search\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/search.ts\",\n      \"target_symbol\": \"fc81f0d4d152827bb089c2f6bbeda5b0\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./search.ts\\\", \\\"SearchDocument\\\", \\\"SearchDocument\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/security.ts\",\n      \"target_symbol\": \"904beb12b27b0832b02972c8042f17df\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./security.ts\\\", \\\"resolveUnder\\\", \\\"resolveUnder\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/security.ts\",\n      \"target_symbol\": \"ce167331f12d6d0f5a3fd9949b767d94\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"./security.ts\\\", \\\"canAccess\\\", \\\"canAccess\\\"]\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"d59a27ed1ebee2139e0428a974c0ac36\",\n      \"target_file\": \"src/repository.ts\",\n      \"target_symbol\": \"723e2b1fc0a1c6ab92a84c0621bf5966\",\n      \"kind\": \"call\",\n      \"reference\": \"Repository\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"d7a91d6569895161a4676aaf4d7a2280\",\n      \"target_file\": \"src/security.ts\",\n      \"target_symbol\": \"904beb12b27b0832b02972c8042f17df\",\n      \"kind\": \"call\",\n      \"reference\": \"resolveUnder\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"src/service.ts\",\n      \"source_symbol\": \"ebf1ccbe3d49b2c9bc41b6457124a69e\",\n      \"target_file\": \"src/search.ts\",\n      \"target_symbol\": \"9808c83b29e8bf15c4cf76ea1797778d\",\n      \"kind\": \"call\",\n      \"reference\": \"search\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"tests/smoke.test.mjs\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/service.ts\",\n      \"target_symbol\": \"d59a27ed1ebee2139e0428a974c0ac36\",\n      \"kind\": \"call\",\n      \"reference\": \"DocumentService\",\n      \"resolved\": true\n    },\n    {\n      \"source_file\": \"tests/smoke.test.mjs\",\n      \"source_symbol\": null,\n      \"target_file\": \"src/service.ts\",\n      \"target_symbol\": \"d59a27ed1ebee2139e0428a974c0ac36\",\n      \"kind\": \"import\",\n      \"reference\": \"import:[\\\"../src/service.ts\\\", \\\"DocumentService\\\", \\\"DocumentService\\\"]\",\n      \"resolved\": true\n    }\n  ],\n  \"warnings\": [\n    \"Budget omitted 21 candidate implementation(s) or references.\",\n    \"Some static references could not be resolved; inspect their imports and callers.\"\n  ],\n  \"truncated\": true,\n  \"passport\": {\n    \"retrieval_id\": \"bc84eae3d79744f8b4fa771a72359ac9\",\n    \"session_id\": \"8f1e8343362d41c9bb1ea509d55d37ca\",\n    \"query\": \"In this Typescript Atlas document-service repository, Fix document search so every normalized query token must appear in a record's title or body. Preserve case-insensitive alphanumeric tokenization, empty-query results, ascending ID order for tied results, and input immutability. Partial-token substrings do not count. Verify the DocumentService search path.\\n\\nImplement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.\",\n    \"level\": 2,\n    \"status\": \"Partial\",\n    \"selected_files\": [\n      {\n        \"path\": \"AGENTS.md\",\n        \"hash\": \"810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8\"\n      },\n      {\n        \"path\": \"src/repository.ts\",\n        \"hash\": \"cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f\"\n      },\n      {\n        \"path\": \"src/service.ts\",\n        \"hash\": \"de7c3a42b315eab67c46c79aa40bb6ab0e0e768f9d7aaa28142b14d2cb0e6775\"\n      }\n    ],\n    \"selected_symbols\": [\n      {\n        \"path\": \"src/repository.ts\",\n        \"symbol\": \"Document\",\n        \"start_line\": 1,\n        \"end_line\": 1\n      },\n      {\n        \"path\": \"src/service.ts\",\n        \"symbol\": \"DocumentService\",\n        \"start_line\": 9,\n        \"end_line\": 28\n      },\n      {\n        \"path\": \"src/repository.ts\",\n        \"symbol\": \"Repository\",\n        \"start_line\": 5,\n        \"end_line\": 30\n      },\n      {\n        \"path\": \"AGENTS.md\",\n        \"symbol\": \"AGENTS.md\",\n        \"start_line\": 1,\n        \"end_line\": 7\n      }\n    ],\n    \"verified_source_hashes\": {\n      \"src/repository.ts\": \"cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f\",\n      \"src/service.ts\": \"de7c3a42b315eab67c46c79aa40bb6ab0e0e768f9d7aaa28142b14d2cb0e6775\",\n      \"AGENTS.md\": \"810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8\"\n    },\n    \"selected_memory_ids\": [],\n    \"dependencies\": [\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"structuredClone\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.records.get\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.records.set\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n        \"target_file\": \"src/repository.ts\",\n        \"target_symbol\": \"6ec35f5d2482350ef23cf93188a2ff37\",\n        \"kind\": \"call\",\n        \"reference\": \"ConflictError\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"5cea6cf504bbc326cea8d8609d721728\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"structuredClone\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"5cea6cf504bbc326cea8d8609d721728\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.events.set\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"70c488a8701c11128a9e32255da88de7\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"structuredClone\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"70c488a8701c11128a9e32255da88de7\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.records.set\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"723e2b1fc0a1c6ab92a84c0621bf5966\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"Map\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"0480ab28be311f7e9dac3cb8c9551cb8\",\n        \"target_file\": \"src/cache.ts\",\n        \"target_symbol\": \"befb41330fce60d215fd321fdcaa592d\",\n        \"kind\": \"call\",\n        \"reference\": \"TTLCache\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"29dfc4c196f1126b76cdcedab78ad553\",\n        \"target_file\": \"src/config.ts\",\n        \"target_symbol\": \"38442d678de4d0ff37ba489cccb5eb57\",\n        \"kind\": \"call\",\n        \"reference\": \"parseFlag\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"3db19e364d4c632881debae1a663ed1b\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.repository.records.values\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"3db19e364d4c632881debae1a663ed1b\",\n        \"target_file\": \"src/pagination.ts\",\n        \"target_symbol\": \"38e6412043cbbc3d58f5271d86349e8a\",\n        \"kind\": \"call\",\n        \"reference\": \"page\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"6d941436527bdc794fcd815c135d7b01\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.cache.get\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"968351f197c08d6ded9389504825ae81\",\n        \"target_file\": \"src/graph.ts\",\n        \"target_symbol\": \"f54e2d7b88f09dfc32b8b49d2f88f0fa\",\n        \"kind\": \"call\",\n        \"reference\": \"dependencies\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"9df9d23928220020faaac5ad6d550aa9\",\n        \"target_file\": \"src/security.ts\",\n        \"target_symbol\": \"ce167331f12d6d0f5a3fd9949b767d94\",\n        \"kind\": \"call\",\n        \"reference\": \"canAccess\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/cache.ts\",\n        \"target_symbol\": \"befb41330fce60d215fd321fdcaa592d\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./cache.ts\\\", \\\"TTLCache\\\", \\\"TTLCache\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/config.ts\",\n        \"target_symbol\": \"38442d678de4d0ff37ba489cccb5eb57\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./config.ts\\\", \\\"parseFlag\\\", \\\"parseFlag\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/graph.ts\",\n        \"target_symbol\": \"f54e2d7b88f09dfc32b8b49d2f88f0fa\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./graph.ts\\\", \\\"dependencies\\\", \\\"dependencies\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/pagination.ts\",\n        \"target_symbol\": \"38e6412043cbbc3d58f5271d86349e8a\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./pagination.ts\\\", \\\"page\\\", \\\"page\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/repository.ts\",\n        \"target_symbol\": \"723e2b1fc0a1c6ab92a84c0621bf5966\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./repository.ts\\\", \\\"Repository\\\", \\\"Repository\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/search.ts\",\n        \"target_symbol\": \"9808c83b29e8bf15c4cf76ea1797778d\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./search.ts\\\", \\\"search\\\", \\\"search\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/search.ts\",\n        \"target_symbol\": \"fc81f0d4d152827bb089c2f6bbeda5b0\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./search.ts\\\", \\\"SearchDocument\\\", \\\"SearchDocument\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/security.ts\",\n        \"target_symbol\": \"904beb12b27b0832b02972c8042f17df\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./security.ts\\\", \\\"resolveUnder\\\", \\\"resolveUnder\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/security.ts\",\n        \"target_symbol\": \"ce167331f12d6d0f5a3fd9949b767d94\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"./security.ts\\\", \\\"canAccess\\\", \\\"canAccess\\\"]\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"d59a27ed1ebee2139e0428a974c0ac36\",\n        \"target_file\": \"src/repository.ts\",\n        \"target_symbol\": \"723e2b1fc0a1c6ab92a84c0621bf5966\",\n        \"kind\": \"call\",\n        \"reference\": \"Repository\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"d7a91d6569895161a4676aaf4d7a2280\",\n        \"target_file\": \"src/security.ts\",\n        \"target_symbol\": \"904beb12b27b0832b02972c8042f17df\",\n        \"kind\": \"call\",\n        \"reference\": \"resolveUnder\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"ebf1ccbe3d49b2c9bc41b6457124a69e\",\n        \"target_file\": \"src/search.ts\",\n        \"target_symbol\": \"9808c83b29e8bf15c4cf76ea1797778d\",\n        \"kind\": \"call\",\n        \"reference\": \"search\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"tests/smoke.test.mjs\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/service.ts\",\n        \"target_symbol\": \"d59a27ed1ebee2139e0428a974c0ac36\",\n        \"kind\": \"call\",\n        \"reference\": \"DocumentService\",\n        \"resolved\": true\n      },\n      {\n        \"source_file\": \"tests/smoke.test.mjs\",\n        \"source_symbol\": null,\n        \"target_file\": \"src/service.ts\",\n        \"target_symbol\": \"d59a27ed1ebee2139e0428a974c0ac36\",\n        \"kind\": \"import\",\n        \"reference\": \"import:[\\\"../src/service.ts\\\", \\\"DocumentService\\\", \\\"DocumentService\\\"]\",\n        \"resolved\": true\n      }\n    ],\n    \"unresolved_dependencies\": [\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"structuredClone\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.records.get\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"0e2e6f38f207fe017bdce4a5599671fe\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.records.set\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"5cea6cf504bbc326cea8d8609d721728\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"structuredClone\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"5cea6cf504bbc326cea8d8609d721728\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.events.set\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"70c488a8701c11128a9e32255da88de7\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"structuredClone\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"70c488a8701c11128a9e32255da88de7\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.records.set\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/repository.ts\",\n        \"source_symbol\": \"723e2b1fc0a1c6ab92a84c0621bf5966\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"Map\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"3db19e364d4c632881debae1a663ed1b\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.repository.records.values\",\n        \"resolved\": false\n      },\n      {\n        \"source_file\": \"src/service.ts\",\n        \"source_symbol\": \"6d941436527bdc794fcd815c135d7b01\",\n        \"target_file\": null,\n        \"target_symbol\": null,\n        \"kind\": \"call\",\n        \"reference\": \"this.cache.get\",\n        \"resolved\": false\n      }\n    ],\n    \"related_tests\": [\n      \"tests/smoke.test.mjs\"\n    ],\n    \"missing_context\": [\n      \"Budget omitted 21 candidate implementation(s) or references.\",\n      \"Some static references could not be resolved; inspect their imports and callers.\"\n    ],\n    \"source_freshness\": \"Current\",\n    \"evidence_quality\": \"Current source evidence; task sufficiency requires inspection\",\n    \"token_budget\": 8000,\n    \"estimated_tokens_returned\": 7871,\n    \"recommended_next_retrievals\": [\n      \"expand_context(bc84eae3d79744f8b4fa771a72359ac9, level=3)\",\n      \"Repeat with a larger budget or a more specific symbol query.\",\n      \"Inspect test tests/smoke.test.mjs\"\n    ]\n  }\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structured_content": {
+      "retrieval_id": "bc84eae3d79744f8b4fa771a72359ac9",
+      "session_id": "8f1e8343362d41c9bb1ea509d55d37ca",
+      "project_id": "d4f3e5fce15d46d5b4b8de0309bc1989",
+      "query": "In this Typescript Atlas document-service repository, Fix document search so every normalized query token must appear in a record's title or body. Preserve case-insensitive alphanumeric tokenization, empty-query results, ascending ID order for tied results, and input immutability. Partial-token substrings do not count. Verify the DocumentService search path.\n\nImplement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.",
+      "level": 2,
+      "budget": 8000,
+      "estimated_tokens": 7871,
+      "token_estimate_method": "ceil(UTF-8 JSON bytes / 3); includes metadata; estimate, not measured usage",
+      "items": [
+        {
+          "path": "src/repository.ts",
+          "symbol": "Document",
+          "signature": "type Document = { id: string; body: unknown; revision: number };",
+          "start_line": 1,
+          "end_line": 1,
+          "hash": "cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f",
+          "language": "typescript",
+          "kind": "type",
+          "structural": true,
+          "parse_error": null,
+          "score": 77.10770000000001,
+          "reason": "explicit symbol in query; matching identifier; matching signature",
+          "snippet": "export type Document = { id: string; body: unknown; revision: number };\n",
+          "freshness": "Current",
+          "full_source": false
+        },
+        {
+          "path": "src/service.ts",
+          "symbol": "DocumentService",
+          "signature": "class DocumentService",
+          "start_line": 9,
+          "end_line": 28,
+          "hash": "de7c3a42b315eab67c46c79aa40bb6ab0e0e768f9d7aaa28142b14d2cb0e6775",
+          "language": "typescript",
+          "kind": "class",
+          "structural": true,
+          "parse_error": null,
+          "score": 76.92309999999999,
+          "reason": "explicit symbol in query; matching identifier; matching signature",
+          "snippet": "export class DocumentService {\n  readonly repository = new Repository();\n  readonly cache: TTLCache<unknown>;\n  constructor(capacity = 64) { this.cache = new TTLCache(capacity); }\n  cachedDocument(id: string, now: number): unknown { return this.cache.get(id, { now }); }\n  listDocuments(cursor?: string, limit = 20) {\n    return page([...this.repository.records.values()], { cursor, limit });\n  }\n  dependenciesFor(graph: Record<string, string[]>, id: string): string[] {\n    return dependencies(graph, id);\n  }\n  searchDocuments(records: SearchDocument[], query: string): SearchDocument[] {\n    return search(records, query);\n  }\n  storageKey(root: string, relative: string): string { return resolveUnder(root, relative); }\n  authorized(scopes: string[], resource: string, action: string): boolean {\n    return canAccess(scopes, resource, action);\n  }\n  featureEnabled(value: unknown): boolean { return parseFlag(value); }\n}\n",
+          "freshness": "Current",
+          "full_source": false
+        },
+        {
+          "path": "src/repository.ts",
+          "symbol": "Repository",
+          "signature": "class Repository",
+          "start_line": 5,
+          "end_line": 30,
+          "hash": "cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f",
+          "language": "typescript",
+          "kind": "class",
+          "structural": true,
+          "parse_error": null,
+          "score": 75.9615,
+          "reason": "explicit symbol in query; matching identifier; matching signature",
+          "snippet": "export class Repository {\n  readonly records = new Map<string, Document>();\n  readonly events = new Map<string, Event>();\n\n  create(id: string, body: unknown): Document {\n    const record = { id, body: structuredClone(body), revision: 1 };\n    this.records.set(id, record);\n    return structuredClone(record);\n  }\n\n  update(id: string, body: unknown, options: { expected_revision: number }): Document {\n    const current = this.records.get(id)!;\n    if (options.expected_revision > current.revision) {\n      throw new ConflictError(\"revision conflict\");\n    }\n    const updated = { id, body: structuredClone(body), revision: current.revision + 1 };\n    this.records.set(id, updated);\n    return structuredClone(updated);\n  }\n\n  putEvent(key: string, payload: unknown): Event {\n    const event = { key, payload: structuredClone(payload), sequence: this.events.size + 1 };\n    this.events.set(key, event);\n    return structuredClone(event);\n  }\n}\n",
+          "freshness": "Current",
+          "full_source": false
+        },
+        {
+          "path": "AGENTS.md",
+          "symbol": "AGENTS.md",
+          "signature": "",
+          "start_line": 1,
+          "end_line": 7,
+          "hash": "810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8",
+          "language": "text",
+          "kind": "file",
+          "structural": false,
+          "parse_error": null,
+          "score": 20.0,
+          "reason": "full-text match",
+          "snippet": "# Development\n\nUse this isolated checkout. Production code is in\nsrc/. Run `node --test tests/*.test.mjs`.\nTests must remain offline and deterministic. Preserve public interfaces.\nDo not inspect or alter benchmark machinery or grading files outside\nthis repository. Implement fixes in source, not by weakening tests.\n",
+          "freshness": "Current",
+          "full_source": false
+        }
+      ],
+      "memories": [],
+      "dependencies": [
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "structuredClone",
+          "resolved": false
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "this.records.get",
+          "resolved": false
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "this.records.set",
+          "resolved": false
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+          "target_file": "src/repository.ts",
+          "target_symbol": "6ec35f5d2482350ef23cf93188a2ff37",
+          "kind": "call",
+          "reference": "ConflictError",
+          "resolved": true
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "5cea6cf504bbc326cea8d8609d721728",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "structuredClone",
+          "resolved": false
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "5cea6cf504bbc326cea8d8609d721728",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "this.events.set",
+          "resolved": false
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "70c488a8701c11128a9e32255da88de7",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "structuredClone",
+          "resolved": false
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "70c488a8701c11128a9e32255da88de7",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "this.records.set",
+          "resolved": false
+        },
+        {
+          "source_file": "src/repository.ts",
+          "source_symbol": "723e2b1fc0a1c6ab92a84c0621bf5966",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "Map",
+          "resolved": false
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "0480ab28be311f7e9dac3cb8c9551cb8",
+          "target_file": "src/cache.ts",
+          "target_symbol": "befb41330fce60d215fd321fdcaa592d",
+          "kind": "call",
+          "reference": "TTLCache",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "29dfc4c196f1126b76cdcedab78ad553",
+          "target_file": "src/config.ts",
+          "target_symbol": "38442d678de4d0ff37ba489cccb5eb57",
+          "kind": "call",
+          "reference": "parseFlag",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "3db19e364d4c632881debae1a663ed1b",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "this.repository.records.values",
+          "resolved": false
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "3db19e364d4c632881debae1a663ed1b",
+          "target_file": "src/pagination.ts",
+          "target_symbol": "38e6412043cbbc3d58f5271d86349e8a",
+          "kind": "call",
+          "reference": "page",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "6d941436527bdc794fcd815c135d7b01",
+          "target_file": null,
+          "target_symbol": null,
+          "kind": "call",
+          "reference": "this.cache.get",
+          "resolved": false
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "968351f197c08d6ded9389504825ae81",
+          "target_file": "src/graph.ts",
+          "target_symbol": "f54e2d7b88f09dfc32b8b49d2f88f0fa",
+          "kind": "call",
+          "reference": "dependencies",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "9df9d23928220020faaac5ad6d550aa9",
+          "target_file": "src/security.ts",
+          "target_symbol": "ce167331f12d6d0f5a3fd9949b767d94",
+          "kind": "call",
+          "reference": "canAccess",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/cache.ts",
+          "target_symbol": "befb41330fce60d215fd321fdcaa592d",
+          "kind": "import",
+          "reference": "import:[\"./cache.ts\", \"TTLCache\", \"TTLCache\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/config.ts",
+          "target_symbol": "38442d678de4d0ff37ba489cccb5eb57",
+          "kind": "import",
+          "reference": "import:[\"./config.ts\", \"parseFlag\", \"parseFlag\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/graph.ts",
+          "target_symbol": "f54e2d7b88f09dfc32b8b49d2f88f0fa",
+          "kind": "import",
+          "reference": "import:[\"./graph.ts\", \"dependencies\", \"dependencies\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/pagination.ts",
+          "target_symbol": "38e6412043cbbc3d58f5271d86349e8a",
+          "kind": "import",
+          "reference": "import:[\"./pagination.ts\", \"page\", \"page\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/repository.ts",
+          "target_symbol": "723e2b1fc0a1c6ab92a84c0621bf5966",
+          "kind": "import",
+          "reference": "import:[\"./repository.ts\", \"Repository\", \"Repository\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/search.ts",
+          "target_symbol": "9808c83b29e8bf15c4cf76ea1797778d",
+          "kind": "import",
+          "reference": "import:[\"./search.ts\", \"search\", \"search\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/search.ts",
+          "target_symbol": "fc81f0d4d152827bb089c2f6bbeda5b0",
+          "kind": "import",
+          "reference": "import:[\"./search.ts\", \"SearchDocument\", \"SearchDocument\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/security.ts",
+          "target_symbol": "904beb12b27b0832b02972c8042f17df",
+          "kind": "import",
+          "reference": "import:[\"./security.ts\", \"resolveUnder\", \"resolveUnder\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": null,
+          "target_file": "src/security.ts",
+          "target_symbol": "ce167331f12d6d0f5a3fd9949b767d94",
+          "kind": "import",
+          "reference": "import:[\"./security.ts\", \"canAccess\", \"canAccess\"]",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "d59a27ed1ebee2139e0428a974c0ac36",
+          "target_file": "src/repository.ts",
+          "target_symbol": "723e2b1fc0a1c6ab92a84c0621bf5966",
+          "kind": "call",
+          "reference": "Repository",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "d7a91d6569895161a4676aaf4d7a2280",
+          "target_file": "src/security.ts",
+          "target_symbol": "904beb12b27b0832b02972c8042f17df",
+          "kind": "call",
+          "reference": "resolveUnder",
+          "resolved": true
+        },
+        {
+          "source_file": "src/service.ts",
+          "source_symbol": "ebf1ccbe3d49b2c9bc41b6457124a69e",
+          "target_file": "src/search.ts",
+          "target_symbol": "9808c83b29e8bf15c4cf76ea1797778d",
+          "kind": "call",
+          "reference": "search",
+          "resolved": true
+        },
+        {
+          "source_file": "tests/smoke.test.mjs",
+          "source_symbol": null,
+          "target_file": "src/service.ts",
+          "target_symbol": "d59a27ed1ebee2139e0428a974c0ac36",
+          "kind": "call",
+          "reference": "DocumentService",
+          "resolved": true
+        },
+        {
+          "source_file": "tests/smoke.test.mjs",
+          "source_symbol": null,
+          "target_file": "src/service.ts",
+          "target_symbol": "d59a27ed1ebee2139e0428a974c0ac36",
+          "kind": "import",
+          "reference": "import:[\"../src/service.ts\", \"DocumentService\", \"DocumentService\"]",
+          "resolved": true
+        }
+      ],
+      "warnings": [
+        "Budget omitted 21 candidate implementation(s) or references.",
+        "Some static references could not be resolved; inspect their imports and callers."
+      ],
+      "truncated": true,
+      "passport": {
+        "retrieval_id": "bc84eae3d79744f8b4fa771a72359ac9",
+        "session_id": "8f1e8343362d41c9bb1ea509d55d37ca",
+        "query": "In this Typescript Atlas document-service repository, Fix document search so every normalized query token must appear in a record's title or body. Preserve case-insensitive alphanumeric tokenization, empty-query results, ascending ID order for tied results, and input immutability. Partial-token substrings do not count. Verify the DocumentService search path.\n\nImplement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.",
+        "level": 2,
+        "status": "Partial",
+        "selected_files": [
+          {
+            "path": "AGENTS.md",
+            "hash": "810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8"
+          },
+          {
+            "path": "src/repository.ts",
+            "hash": "cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f"
+          },
+          {
+            "path": "src/service.ts",
+            "hash": "de7c3a42b315eab67c46c79aa40bb6ab0e0e768f9d7aaa28142b14d2cb0e6775"
+          }
+        ],
+        "selected_symbols": [
+          {
+            "path": "src/repository.ts",
+            "symbol": "Document",
+            "start_line": 1,
+            "end_line": 1
+          },
+          {
+            "path": "src/service.ts",
+            "symbol": "DocumentService",
+            "start_line": 9,
+            "end_line": 28
+          },
+          {
+            "path": "src/repository.ts",
+            "symbol": "Repository",
+            "start_line": 5,
+            "end_line": 30
+          },
+          {
+            "path": "AGENTS.md",
+            "symbol": "AGENTS.md",
+            "start_line": 1,
+            "end_line": 7
+          }
+        ],
+        "verified_source_hashes": {
+          "src/repository.ts": "cf31ce91eed47b4980171e62b09f15a974f49815f9dbcc78a59d324755f65f8f",
+          "src/service.ts": "de7c3a42b315eab67c46c79aa40bb6ab0e0e768f9d7aaa28142b14d2cb0e6775",
+          "AGENTS.md": "810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8"
+        },
+        "selected_memory_ids": [],
+        "dependencies": [
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "structuredClone",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.records.get",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.records.set",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+            "target_file": "src/repository.ts",
+            "target_symbol": "6ec35f5d2482350ef23cf93188a2ff37",
+            "kind": "call",
+            "reference": "ConflictError",
+            "resolved": true
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "5cea6cf504bbc326cea8d8609d721728",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "structuredClone",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "5cea6cf504bbc326cea8d8609d721728",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.events.set",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "70c488a8701c11128a9e32255da88de7",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "structuredClone",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "70c488a8701c11128a9e32255da88de7",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.records.set",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "723e2b1fc0a1c6ab92a84c0621bf5966",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "Map",
+            "resolved": false
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "0480ab28be311f7e9dac3cb8c9551cb8",
+            "target_file": "src/cache.ts",
+            "target_symbol": "befb41330fce60d215fd321fdcaa592d",
+            "kind": "call",
+            "reference": "TTLCache",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "29dfc4c196f1126b76cdcedab78ad553",
+            "target_file": "src/config.ts",
+            "target_symbol": "38442d678de4d0ff37ba489cccb5eb57",
+            "kind": "call",
+            "reference": "parseFlag",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "3db19e364d4c632881debae1a663ed1b",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.repository.records.values",
+            "resolved": false
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "3db19e364d4c632881debae1a663ed1b",
+            "target_file": "src/pagination.ts",
+            "target_symbol": "38e6412043cbbc3d58f5271d86349e8a",
+            "kind": "call",
+            "reference": "page",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "6d941436527bdc794fcd815c135d7b01",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.cache.get",
+            "resolved": false
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "968351f197c08d6ded9389504825ae81",
+            "target_file": "src/graph.ts",
+            "target_symbol": "f54e2d7b88f09dfc32b8b49d2f88f0fa",
+            "kind": "call",
+            "reference": "dependencies",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "9df9d23928220020faaac5ad6d550aa9",
+            "target_file": "src/security.ts",
+            "target_symbol": "ce167331f12d6d0f5a3fd9949b767d94",
+            "kind": "call",
+            "reference": "canAccess",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/cache.ts",
+            "target_symbol": "befb41330fce60d215fd321fdcaa592d",
+            "kind": "import",
+            "reference": "import:[\"./cache.ts\", \"TTLCache\", \"TTLCache\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/config.ts",
+            "target_symbol": "38442d678de4d0ff37ba489cccb5eb57",
+            "kind": "import",
+            "reference": "import:[\"./config.ts\", \"parseFlag\", \"parseFlag\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/graph.ts",
+            "target_symbol": "f54e2d7b88f09dfc32b8b49d2f88f0fa",
+            "kind": "import",
+            "reference": "import:[\"./graph.ts\", \"dependencies\", \"dependencies\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/pagination.ts",
+            "target_symbol": "38e6412043cbbc3d58f5271d86349e8a",
+            "kind": "import",
+            "reference": "import:[\"./pagination.ts\", \"page\", \"page\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/repository.ts",
+            "target_symbol": "723e2b1fc0a1c6ab92a84c0621bf5966",
+            "kind": "import",
+            "reference": "import:[\"./repository.ts\", \"Repository\", \"Repository\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/search.ts",
+            "target_symbol": "9808c83b29e8bf15c4cf76ea1797778d",
+            "kind": "import",
+            "reference": "import:[\"./search.ts\", \"search\", \"search\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/search.ts",
+            "target_symbol": "fc81f0d4d152827bb089c2f6bbeda5b0",
+            "kind": "import",
+            "reference": "import:[\"./search.ts\", \"SearchDocument\", \"SearchDocument\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/security.ts",
+            "target_symbol": "904beb12b27b0832b02972c8042f17df",
+            "kind": "import",
+            "reference": "import:[\"./security.ts\", \"resolveUnder\", \"resolveUnder\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": null,
+            "target_file": "src/security.ts",
+            "target_symbol": "ce167331f12d6d0f5a3fd9949b767d94",
+            "kind": "import",
+            "reference": "import:[\"./security.ts\", \"canAccess\", \"canAccess\"]",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "d59a27ed1ebee2139e0428a974c0ac36",
+            "target_file": "src/repository.ts",
+            "target_symbol": "723e2b1fc0a1c6ab92a84c0621bf5966",
+            "kind": "call",
+            "reference": "Repository",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "d7a91d6569895161a4676aaf4d7a2280",
+            "target_file": "src/security.ts",
+            "target_symbol": "904beb12b27b0832b02972c8042f17df",
+            "kind": "call",
+            "reference": "resolveUnder",
+            "resolved": true
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "ebf1ccbe3d49b2c9bc41b6457124a69e",
+            "target_file": "src/search.ts",
+            "target_symbol": "9808c83b29e8bf15c4cf76ea1797778d",
+            "kind": "call",
+            "reference": "search",
+            "resolved": true
+          },
+          {
+            "source_file": "tests/smoke.test.mjs",
+            "source_symbol": null,
+            "target_file": "src/service.ts",
+            "target_symbol": "d59a27ed1ebee2139e0428a974c0ac36",
+            "kind": "call",
+            "reference": "DocumentService",
+            "resolved": true
+          },
+          {
+            "source_file": "tests/smoke.test.mjs",
+            "source_symbol": null,
+            "target_file": "src/service.ts",
+            "target_symbol": "d59a27ed1ebee2139e0428a974c0ac36",
+            "kind": "import",
+            "reference": "import:[\"../src/service.ts\", \"DocumentService\", \"DocumentService\"]",
+            "resolved": true
+          }
+        ],
+        "unresolved_dependencies": [
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "structuredClone",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.records.get",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "0e2e6f38f207fe017bdce4a5599671fe",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.records.set",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "5cea6cf504bbc326cea8d8609d721728",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "structuredClone",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "5cea6cf504bbc326cea8d8609d721728",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.events.set",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "70c488a8701c11128a9e32255da88de7",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "structuredClone",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "70c488a8701c11128a9e32255da88de7",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.records.set",
+            "resolved": false
+          },
+          {
+            "source_file": "src/repository.ts",
+            "source_symbol": "723e2b1fc0a1c6ab92a84c0621bf5966",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "Map",
+            "resolved": false
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "3db19e364d4c632881debae1a663ed1b",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.repository.records.values",
+            "resolved": false
+          },
+          {
+            "source_file": "src/service.ts",
+            "source_symbol": "6d941436527bdc794fcd815c135d7b01",
+            "target_file": null,
+            "target_symbol": null,
+            "kind": "call",
+            "reference": "this.cache.get",
+            "resolved": false
+          }
+        ],
+        "related_tests": [
+          "tests/smoke.test.mjs"
+        ],
+        "missing_context": [
+          "Budget omitted 21 candidate implementation(s) or references.",
+          "Some static references could not be resolved; inspect their imports and callers."
+        ],
+        "source_freshness": "Current",
+        "evidence_quality": "Current source evidence; task sufficiency requires inspection",
+        "token_budget": 8000,
+        "estimated_tokens_returned": 7871,
+        "recommended_next_retrievals": [
+          "expand_context(bc84eae3d79744f8b4fa771a72359ac9, level=3)",
+          "Repeat with a larger budget or a more specific symbol query.",
+          "Inspect test tests/smoke.test.mjs"
+        ]
+      }
+    },
+    "is_error": false,
+    "result_type": "complete"
+  }
+}

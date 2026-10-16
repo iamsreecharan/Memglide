@@ -45,4 +45,4 @@ check_untyped_defs = true
 artifacts = ["src/memglide/web/**"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "frontend", "scripts", "tests", "examples", "docs", "*.md", "LICENSE", "uv.lock", "pyproject.toml", ".python-version", ".gitignore"]
+include = ["src", "frontend", "scripts", "tests", "benchmarks", "examples", "docs", "*.md", "LICENSE", "uv.lock", "pyproject.toml", ".python-version", ".gitignore"]

@@ -1,0 +1,339 @@
+{
+  "version": "1.0.0",
+  "creation_policy": "Manually authored and locked before candidate measurement. Independent of Atlas development tasks; 12 operational intents mirrored across two languages, not 24 independent intents. Primary targets declare a relevant file, not exhaustive relevance judgments. Fixture code is indexed, never executed by this experiment.",
+  "repositories": {
+    "orion-python-holdout-v1": {
+      "language": "python",
+      "files": {
+        "orion/__init__.py": "\"\"\"Offline operations toolkit for retrieval evaluation.\"\"\"\n",
+        "orion/inventory.py": "def release_reservation(stock, reservations, order_id):\n    \"\"\"Cancelled warehouse orders restore reserved units exactly once.\"\"\"\n    quantity = reservations.pop(order_id, 0)\n    stock[\"available\"] += quantity\n    return quantity\n",
+        "orion/irrigation.py": "def valve_state(moisture, *, low, high, currently_open, preview=False):\n    \"\"\"Greenhouse moisture hysteresis avoids oscillating irrigation actuators.\"\"\"\n    if preview:\n        return currently_open\n    return moisture < (high if currently_open else low)\n",
+        "orion/timetable.py": "def elapsed_minutes(departure, arrival):\n    \"\"\"Night train timetable clock pairs wrap midnight in a 24-hour day.\"\"\"\n    def minute(clock):\n        hour, minute = map(int, clock.split(\":\"))\n        return hour * 60 + minute\n    return (minute(arrival) - minute(departure)) % (24 * 60)\n",
+        "orion/uploads.py": "def accept_chunk(buffer, offset, payload):\n    \"\"\"Resume camera uploads by byte offset; retries must have identical bytes.\"\"\"\n    if offset < len(buffer) and bytes(buffer[offset:offset + len(payload)]) == payload:\n        return len(buffer)\n    if offset != len(buffer):\n        raise ValueError(\"upload gap or conflicting overlap\")\n    buffer.extend(payload)\n    return len(buffer)\n",
+        "orion/calibration.py": "import math\n\n\ndef calibrated_celsius(reading, offset):\n    \"\"\"Subtract probe calibration in Fahrenheit before converting to Celsius.\"\"\"\n    if not math.isfinite(reading) or not math.isfinite(offset):\n        raise ValueError(\"non-finite temperature\")\n    return (reading - offset - 32) * 5 / 9\n",
+        "orion/routing.py": "def reachable_stops(routes, depot):\n    \"\"\"Courier route reachability terminates even when a cycle returns to the depot.\"\"\"\n    visited = {depot}\n    pending = list(routes.get(depot, []))\n    while pending:\n        stop = pending.pop()\n        if stop not in visited:\n            visited.add(stop)\n            pending.extend(routes.get(stop, []))\n    return sorted(visited - {depot})\n",
+        "orion/redaction.py": "def scrub_diagnostic(value):\n    \"\"\"Recursively redact credentials in exported diagnostics without mutation.\"\"\"\n    if isinstance(value, list):\n        return [scrub_diagnostic(item) for item in value]\n    if isinstance(value, dict):\n        return {key: \"[redacted]\" if key in {\"password\", \"access_token\"}\n                else scrub_diagnostic(item) for key, item in value.items()}\n    return value\n",
+        "orion/packing.py": "def pack_crates(weights, capacity):\n    \"\"\"First-fit decreasing shipping parcels; deterministic crate assignment.\"\"\"\n    crates = []\n    for weight in sorted(weights, reverse=True):\n        if weight <= 0 or weight > capacity:\n            raise ValueError(\"parcel exceeds crate capacity\")\n        for crate in crates:\n            if sum(crate) + weight <= capacity:\n                crate.append(weight)\n                break\n        else:\n            crates.append([weight])\n    return crates\n",
+        "orion/occupancy.py": "def peak_guests(bookings):\n    \"\"\"Venue occupancy sweep treats departure before arrival at a shared timestamp.\"\"\"\n    events = [(start, 1) for start, end in bookings] + [(end, -1) for start, end in bookings]\n    current = peak = 0\n    for timestamp, delta in sorted(events):\n        current += delta\n        peak = max(peak, current)\n    return peak\n",
+        "orion/sampling.py": "def reservoir_sample(observations, size, random_integer):\n    \"\"\"One-pass bounded uniform reservoir sample for a vibration stream.\"\"\"\n    selected = []\n    for index, observation in enumerate(observations):\n        if len(selected) < size:\n            selected.append(observation)\n        elif size > 0:\n            slot = random_integer(0, index)\n            if slot < size:\n                selected[slot] = observation\n    return selected\n",
+        "orion/receipts.py": "import hashlib\nimport hmac\n\n\ndef verify_receipt(payload, secret, supplied):\n    \"\"\"Verify incoming webhook receipt HMAC over unmodified payload bytes.\"\"\"\n    expected = hmac.new(secret, payload, hashlib.sha256).hexdigest()\n    return hmac.compare_digest(expected, supplied)\n",
+        "orion/dispatch.py": "def next_vehicle(queue):\n    \"\"\"Emergency dispatch prioritizes urgency, retaining insertion order for ties.\"\"\"\n    if not queue:\n        return None\n    index = max(range(len(queue)), key=lambda index: queue[index][\"urgency\"])\n    return queue.pop(index)\n",
+        "orion/operations.py": "from .inventory import release_reservation\nfrom .receipts import verify_receipt\nfrom .dispatch import next_vehicle\n\n\ndef cancel_order(stock, reservations, order_id):\n    \"\"\"Application boundary for restoring a cancelled warehouse reservation.\"\"\"\n    return release_reservation(stock, reservations, order_id)\n\n\ndef receive_webhook(payload, secret, signature, handler):\n    \"\"\"Reject an unverified webhook receipt before dispatching its original bytes.\"\"\"\n    if not verify_receipt(payload, secret, signature):\n        raise ValueError(\"invalid webhook signature\")\n    return handler(payload)\n\n\ndef serve_vehicle(queue):\n    return next_vehicle(queue)\n",
+        "orion/records.py": "def normalize_record(record):\n    \"\"\"Generic application record adapter: preserve keys and remove empty fields.\"\"\"\n    return {key: value for key, value in record.items() if value is not None}\n",
+        "README.md": "# Orion operations toolkit\n\nLocal modules handle warehouse inventory, greenhouse controls, trains, camera transfers, probes, couriers, diagnostics, shipping, venues, vibration observations, webhook receipts and emergency vehicles. The operations boundary delegates to these modules. No external services are used by this retrieval fixture.\n",
+        ".gitignore": "__pycache__/\n*.pyc\n"
+      }
+    },
+    "orion-typescript-holdout-v1": {
+      "language": "typescript",
+      "files": {
+        "src/inventory.ts": "export function releaseReservation(stock: { available: number }, reservations: Map<string, number>, orderId: string): number {\n  // Cancelled warehouse orders restore reserved units exactly once.\n  const quantity = reservations.get(orderId) ?? 0;\n  reservations.delete(orderId);\n  stock.available += quantity;\n  return quantity;\n}\n",
+        "src/irrigation.ts": "export function valveState(moisture: number, low: number, high: number, currentlyOpen: boolean, preview = false): boolean {\n  // Greenhouse moisture hysteresis avoids oscillating irrigation actuators.\n  if (preview) return currentlyOpen;\n  return moisture < (currentlyOpen ? high : low);\n}\n",
+        "src/timetable.ts": "export function elapsedMinutes(departure: string, arrival: string): number {\n  // Night train timetable clock pairs wrap midnight in a 24-hour day.\n  const minute = (clock: string): number => {\n    const [hour, minute] = clock.split(\":\").map(Number);\n    return hour * 60 + minute;\n  };\n  return (minute(arrival) - minute(departure) + 24 * 60) % (24 * 60);\n}\n",
+        "src/uploads.ts": "export function acceptChunk(buffer: number[], offset: number, payload: readonly number[]): number {\n  // Resume camera uploads by byte offset; retries must have identical bytes.\n  if (offset < buffer.length && payload.every((byte, i) => buffer[offset + i] === byte)) return buffer.length;\n  if (offset !== buffer.length) throw new Error(\"upload gap or conflicting overlap\");\n  buffer.push(...payload);\n  return buffer.length;\n}\n",
+        "src/calibration.ts": "export function calibratedCelsius(reading: number, offset: number): number {\n  // Subtract probe calibration in Fahrenheit before converting to Celsius.\n  if (!Number.isFinite(reading) || !Number.isFinite(offset)) throw new Error(\"non-finite temperature\");\n  return (reading - offset - 32) * 5 / 9;\n}\n",
+        "src/routing.ts": "export function reachableStops(routes: Record<string, string[]>, depot: string): string[] {\n  // Courier route reachability terminates even when a cycle returns to the depot.\n  const visited = new Set([depot]);\n  const pending = [...(routes[depot] ?? [])];\n  while (pending.length) {\n    const stop = pending.pop()!;\n    if (!visited.has(stop)) { visited.add(stop); pending.push(...(routes[stop] ?? [])); }\n  }\n  return [...visited].filter(stop => stop !== depot).sort();\n}\n",
+        "src/redaction.ts": "export function scrubDiagnostic(value: unknown): unknown {\n  // Recursively redact credentials in exported diagnostics without mutation.\n  if (Array.isArray(value)) return value.map(scrubDiagnostic);\n  if (value !== null && typeof value === \"object\") {\n    return Object.fromEntries(Object.entries(value).map(([key, item]) =>\n      [key, [\"password\", \"access_token\"].includes(key) ? \"[redacted]\" : scrubDiagnostic(item)]));\n  }\n  return value;\n}\n",
+        "src/packing.ts": "export function packCrates(weights: readonly number[], capacity: number): number[][] {\n  // First-fit decreasing shipping parcels; deterministic crate assignment.\n  const crates: number[][] = [];\n  for (const weight of [...weights].sort((a, b) => b - a)) {\n    if (weight <= 0 || weight > capacity) throw new Error(\"parcel exceeds crate capacity\");\n    const crate = crates.find(items => items.reduce((sum, item) => sum + item, 0) + weight <= capacity);\n    if (crate) crate.push(weight); else crates.push([weight]);\n  }\n  return crates;\n}\n",
+        "src/occupancy.ts": "export function peakGuests(bookings: readonly [number, number][]): number {\n  // Venue occupancy sweep treats departure before arrival at a shared timestamp.\n  const events = bookings.flatMap(([start, end]) => [[start, 1], [end, -1]]);\n  events.sort((a, b) => a[0] - b[0] || a[1] - b[1]);\n  let current = 0, peak = 0;\n  for (const [, delta] of events) { current += delta; peak = Math.max(peak, current); }\n  return peak;\n}\n",
+        "src/sampling.ts": "export function reservoirSample<T>(observations: Iterable<T>, size: number, randomInteger: (low: number, high: number) => number): T[] {\n  // One-pass bounded uniform reservoir sample for a vibration stream.\n  const selected: T[] = [];\n  let index = 0;\n  for (const observation of observations) {\n    if (selected.length < size) selected.push(observation);\n    else if (size > 0) { const slot = randomInteger(0, index); if (slot < size) selected[slot] = observation; }\n    index++;\n  }\n  return selected;\n}\n",
+        "src/receipts.ts": "import { createHmac, timingSafeEqual } from \"node:crypto\";\n\nexport function verifyReceipt(payload: Uint8Array, secret: string, supplied: string): boolean {\n  // Verify incoming webhook receipt HMAC over unmodified payload bytes.\n  const expected = createHmac(\"sha256\", secret).update(payload).digest(\"hex\");\n  const left = new TextEncoder().encode(expected), right = new TextEncoder().encode(supplied);\n  return left.length === right.length && timingSafeEqual(left, right);\n}\n",
+        "src/dispatch.ts": "export function nextVehicle<T extends { urgency: number }>(queue: T[]): T | undefined {\n  // Emergency dispatch prioritizes urgency, retaining insertion order for ties.\n  if (!queue.length) return undefined;\n  let best = 0;\n  for (let i = 1; i < queue.length; i++) if (queue[i].urgency > queue[best].urgency) best = i;\n  return queue.splice(best, 1)[0];\n}\n",
+        "src/operations.ts": "import { releaseReservation } from \"./inventory\";\nimport { verifyReceipt } from \"./receipts\";\nimport { nextVehicle } from \"./dispatch\";\n\nexport function cancelOrder(stock: { available: number }, reservations: Map<string, number>, orderId: string): number {\n  // Application boundary for restoring a cancelled warehouse reservation.\n  return releaseReservation(stock, reservations, orderId);\n}\n\nexport function receiveWebhook(payload: Uint8Array, secret: string, signature: string, handler: (payload: Uint8Array) => unknown): unknown {\n  // Reject an unverified webhook receipt before dispatching its original bytes.\n  if (!verifyReceipt(payload, secret, signature)) throw new Error(\"invalid webhook signature\");\n  return handler(payload);\n}\n\nexport function serveVehicle(queue: { urgency: number }[]): { urgency: number } | undefined {\n  return nextVehicle(queue);\n}\n",
+        "src/records.ts": "export function normalizeRecord(record: Record<string, unknown>): Record<string, unknown> {\n  // Generic application record adapter: preserve keys and remove empty fields.\n  return Object.fromEntries(Object.entries(record).filter(([, value]) => value !== null));\n}\n",
+        "README.md": "# Orion operations toolkit\n\nLocal modules handle warehouse inventory, greenhouse controls, trains, camera transfers, probes, couriers, diagnostics, shipping, venues, vibration observations, webhook receipts and emergency vehicles. The operations boundary delegates to these modules. No external services are used by this retrieval fixture.\n",
+        ".gitignore": "__pycache__/\n*.pyc\n"
+      }
+    }
+  },
+  "queries": [
+    {
+      "id": "holdout-python-inventory",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "A warehouse order was cancelled after six units were reserved. Locate the production operation that restores those units to available stock and clears the reservation, so a duplicate cancellation cannot increase inventory twice.",
+      "primary_target": "orion/inventory.py",
+      "target_files": [
+        "orion/inventory.py"
+      ],
+      "declared_symbol": "release_reservation",
+      "paired_intent": "inventory"
+    },
+    {
+      "id": "holdout-python-irrigation",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "Greenhouse watering oscillates around the moisture threshold. Find where a dry bed opens a valve but a currently open valve remains open until the upper hysteresis threshold is reached; the preview mode must leave the actuator unchanged.",
+      "primary_target": "orion/irrigation.py",
+      "target_files": [
+        "orion/irrigation.py"
+      ],
+      "declared_symbol": "valve_state",
+      "paired_intent": "irrigation"
+    },
+    {
+      "id": "holdout-python-timetable",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "A night train departs at 23:55 and arrives at 00:15 on the next day. Find the elapsed-journey calculation that wraps midnight and returns twenty minutes, rather than a negative duration.",
+      "primary_target": "orion/timetable.py",
+      "target_files": [
+        "orion/timetable.py"
+      ],
+      "declared_symbol": "elapsed_minutes",
+      "paired_intent": "timetable"
+    },
+    {
+      "id": "holdout-python-uploads",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "An interrupted camera transfer resumes by byte offset. Locate the receiving code that accepts the next payload, treats an identical retried chunk as a no-op, and rejects a gap or conflicting overlap before changing the buffer.",
+      "primary_target": "orion/uploads.py",
+      "target_files": [
+        "orion/uploads.py"
+      ],
+      "declared_symbol": "accept_chunk",
+      "paired_intent": "uploads"
+    },
+    {
+      "id": "holdout-python-calibration",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "Sensor readings arrive in Fahrenheit with a probe-specific offset. Locate the conversion that subtracts the calibration offset before converting into Celsius, and rejects a non-finite measurement.",
+      "primary_target": "orion/calibration.py",
+      "target_files": [
+        "orion/calibration.py"
+      ],
+      "declared_symbol": "calibrated_celsius",
+      "paired_intent": "calibration"
+    },
+    {
+      "id": "holdout-python-routing",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "Courier routes can point back to earlier stops. Find the traversal that collects every reachable stop while preventing a cycle from recursing forever and excluding the initial depot from the answer.",
+      "primary_target": "orion/routing.py",
+      "target_files": [
+        "orion/routing.py"
+      ],
+      "declared_symbol": "reachable_stops",
+      "paired_intent": "routing"
+    },
+    {
+      "id": "holdout-python-redaction",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "Before exporting diagnostic entries, credentials must be removed even inside arrays of nested objects. Locate the recursive redaction code that replaces password and access-token values without mutating the submitted record.",
+      "primary_target": "orion/redaction.py",
+      "target_files": [
+        "orion/redaction.py"
+      ],
+      "declared_symbol": "scrub_diagnostic",
+      "paired_intent": "redaction"
+    },
+    {
+      "id": "holdout-python-packing",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "Prepare a shipping plan by assigning heavier parcels first to the first crate that still has room. Find this deterministic first-fit decreasing implementation, including its rejection of a parcel heavier than the crate capacity.",
+      "primary_target": "orion/packing.py",
+      "target_files": [
+        "orion/packing.py"
+      ],
+      "declared_symbol": "pack_crates",
+      "paired_intent": "packing"
+    },
+    {
+      "id": "holdout-python-occupancy",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "A venue needs the maximum number of guests present simultaneously. Find the interval sweep where a departure at an exact timestamp is processed before an arrival at that same timestamp, so adjacent bookings do not overlap.",
+      "primary_target": "orion/occupancy.py",
+      "target_files": [
+        "orion/occupancy.py"
+      ],
+      "declared_symbol": "peak_guests",
+      "paired_intent": "occupancy"
+    },
+    {
+      "id": "holdout-python-sampling",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "A vibration feed is too large to retain in full. Locate the bounded reservoir sampling routine that consumes the stream once, uses the injected random-number generator, and gives each observation the same chance of being retained.",
+      "primary_target": "orion/sampling.py",
+      "target_files": [
+        "orion/sampling.py"
+      ],
+      "declared_symbol": "reservoir_sample",
+      "paired_intent": "sampling"
+    },
+    {
+      "id": "holdout-python-receipts",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "An incoming webhook receipt carries a hexadecimal HMAC signature. Find where the expected digest is computed over the original bytes and checked with constant-time equality; this check must happen before the receipt is dispatched.",
+      "primary_target": "orion/receipts.py",
+      "target_files": [
+        "orion/receipts.py"
+      ],
+      "declared_symbol": "verify_receipt",
+      "paired_intent": "receipts"
+    },
+    {
+      "id": "holdout-python-dispatch",
+      "language": "python",
+      "repository": "orion-python-holdout-v1",
+      "prompt": "Emergency vehicles with equal urgency should leave in their original insertion order. Locate the stable priority selection that serves higher urgency first, keeps ties FIFO, and returns no vehicle when the queue is empty.",
+      "primary_target": "orion/dispatch.py",
+      "target_files": [
+        "orion/dispatch.py"
+      ],
+      "declared_symbol": "next_vehicle",
+      "paired_intent": "dispatch"
+    },
+    {
+      "id": "holdout-typescript-inventory",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "A warehouse order was cancelled after six units were reserved. Locate the production operation that restores those units to available stock and clears the reservation, so a duplicate cancellation cannot increase inventory twice.",
+      "primary_target": "src/inventory.ts",
+      "target_files": [
+        "src/inventory.ts"
+      ],
+      "declared_symbol": "releaseReservation",
+      "paired_intent": "inventory"
+    },
+    {
+      "id": "holdout-typescript-irrigation",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "Greenhouse watering oscillates around the moisture threshold. Find where a dry bed opens a valve but a currently open valve remains open until the upper hysteresis threshold is reached; the preview mode must leave the actuator unchanged.",
+      "primary_target": "src/irrigation.ts",
+      "target_files": [
+        "src/irrigation.ts"
+      ],
+      "declared_symbol": "valveState",
+      "paired_intent": "irrigation"
+    },
+    {
+      "id": "holdout-typescript-timetable",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "A night train departs at 23:55 and arrives at 00:15 on the next day. Find the elapsed-journey calculation that wraps midnight and returns twenty minutes, rather than a negative duration.",
+      "primary_target": "src/timetable.ts",
+      "target_files": [
+        "src/timetable.ts"
+      ],
+      "declared_symbol": "elapsedMinutes",
+      "paired_intent": "timetable"
+    },
+    {
+      "id": "holdout-typescript-uploads",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "An interrupted camera transfer resumes by byte offset. Locate the receiving code that accepts the next payload, treats an identical retried chunk as a no-op, and rejects a gap or conflicting overlap before changing the buffer.",
+      "primary_target": "src/uploads.ts",
+      "target_files": [
+        "src/uploads.ts"
+      ],
+      "declared_symbol": "acceptChunk",
+      "paired_intent": "uploads"
+    },
+    {
+      "id": "holdout-typescript-calibration",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "Sensor readings arrive in Fahrenheit with a probe-specific offset. Locate the conversion that subtracts the calibration offset before converting into Celsius, and rejects a non-finite measurement.",
+      "primary_target": "src/calibration.ts",
+      "target_files": [
+        "src/calibration.ts"
+      ],
+      "declared_symbol": "calibratedCelsius",
+      "paired_intent": "calibration"
+    },
+    {
+      "id": "holdout-typescript-routing",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "Courier routes can point back to earlier stops. Find the traversal that collects every reachable stop while preventing a cycle from recursing forever and excluding the initial depot from the answer.",
+      "primary_target": "src/routing.ts",
+      "target_files": [
+        "src/routing.ts"
+      ],
+      "declared_symbol": "reachableStops",
+      "paired_intent": "routing"
+    },
+    {
+      "id": "holdout-typescript-redaction",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "Before exporting diagnostic entries, credentials must be removed even inside arrays of nested objects. Locate the recursive redaction code that replaces password and access-token values without mutating the submitted record.",
+      "primary_target": "src/redaction.ts",
+      "target_files": [
+        "src/redaction.ts"
+      ],
+      "declared_symbol": "scrubDiagnostic",
+      "paired_intent": "redaction"
+    },
+    {
+      "id": "holdout-typescript-packing",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "Prepare a shipping plan by assigning heavier parcels first to the first crate that still has room. Find this deterministic first-fit decreasing implementation, including its rejection of a parcel heavier than the crate capacity.",
+      "primary_target": "src/packing.ts",
+      "target_files": [
+        "src/packing.ts"
+      ],
+      "declared_symbol": "packCrates",
+      "paired_intent": "packing"
+    },
+    {
+      "id": "holdout-typescript-occupancy",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "A venue needs the maximum number of guests present simultaneously. Find the interval sweep where a departure at an exact timestamp is processed before an arrival at that same timestamp, so adjacent bookings do not overlap.",
+      "primary_target": "src/occupancy.ts",
+      "target_files": [
+        "src/occupancy.ts"
+      ],
+      "declared_symbol": "peakGuests",
+      "paired_intent": "occupancy"
+    },
+    {
+      "id": "holdout-typescript-sampling",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "A vibration feed is too large to retain in full. Locate the bounded reservoir sampling routine that consumes the stream once, uses the injected random-number generator, and gives each observation the same chance of being retained.",
+      "primary_target": "src/sampling.ts",
+      "target_files": [
+        "src/sampling.ts"
+      ],
+      "declared_symbol": "reservoirSample",
+      "paired_intent": "sampling"
+    },
+    {
+      "id": "holdout-typescript-receipts",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "An incoming webhook receipt carries a hexadecimal HMAC signature. Find where the expected digest is computed over the original bytes and checked with constant-time equality; this check must happen before the receipt is dispatched.",
+      "primary_target": "src/receipts.ts",
+      "target_files": [
+        "src/receipts.ts"
+      ],
+      "declared_symbol": "verifyReceipt",
+      "paired_intent": "receipts"
+    },
+    {
+      "id": "holdout-typescript-dispatch",
+      "language": "typescript",
+      "repository": "orion-typescript-holdout-v1",
+      "prompt": "Emergency vehicles with equal urgency should leave in their original insertion order. Locate the stable priority selection that serves higher urgency first, keeps ties FIFO, and returns no vehicle when the queue is empty.",
+      "primary_target": "src/dispatch.ts",
+      "target_files": [
+        "src/dispatch.ts"
+      ],
+      "declared_symbol": "nextVehicle",
+      "paired_intent": "dispatch"
+    }
+  ]
+}

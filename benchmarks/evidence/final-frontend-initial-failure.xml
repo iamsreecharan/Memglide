@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="16" failures="1" errors="0" time="12.77963275">
+    <testsuite name="tests/api.test.ts" timestamp="2026-10-16T17:18:33.613Z" hostname="9ae8f5dd8674" tests="2" failures="0" errors="0" skipped="0" time="0.030082897">
+        <testcase classname="tests/api.test.ts" name="local API transport &gt; adds browser mutation protection and reports structured server errors" time="0.021686413">
+        </testcase>
+        <testcase classname="tests/api.test.ts" name="local API transport &gt; distinguishes an unavailable local service and URL-encodes query filters" time="0.005062752">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/ui.test.tsx" timestamp="2026-10-16T17:18:33.624Z" hostname="9ae8f5dd8674" tests="3" failures="0" errors="0" skipped="0" time="1.940393421">
+        <testcase classname="tests/ui.test.tsx" name="keeps a busy action disabled even when its ordinary disabled condition is false" time="0.787173008">
+        </testcase>
+        <testcase classname="tests/ui.test.tsx" name="keeps modal keyboard focus stable across input rerenders and handles Escape" time="1.04354543">
+        </testcase>
+        <testcase classname="tests/ui.test.tsx" name="identifies shortened relationship evidence without marking ordinary references as previews" time="0.106793403">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/workflows.test.tsx" timestamp="2026-10-16T17:18:33.627Z" hostname="9ae8f5dd8674" tests="11" failures="1" errors="0" skipped="0" time="10.809156432">
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; waits for delayed sessions before confirming passport URL alignment" time="2.080622136">
+            <failure message="Unable to find role=&quot;heading&quot; and name &quot;Partial evidence&quot;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;div
+      class=&quot;app-shell&quot;
+    &gt;
+      &lt;a
+        class=&quot;skip-link&quot;
+        href=&quot;#main&quot;
+      &gt;
+        Skip to content
+      &lt;/a&gt;
+      &lt;aside
+        class=&quot;sidebar&quot;
+      &gt;
+        &lt;a
+          aria-label=&quot;Memglide overview&quot;
+          class=&quot;brand&quot;
+          data-discover=&quot;true&quot;
+          href=&quot;/&quot;
+        &gt;
+          &lt;span
+            class=&quot;brand-mark&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              fill=&quot;none&quot;
+              height=&quot;22&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;22&quot;
+            &gt;
+              &lt;path
+                d=&quot;M3 18V6h4l5 8 5-8h4v12h-4v-6l-5 7-5-7v6H3Z&quot;
+                fill=&quot;currentColor&quot;
+              /&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          &lt;span&gt;
+            memglide
+            &lt;span
+              class=&quot;brand-dot&quot;
+            &gt;
+              .
+            &lt;/span&gt;
+          &lt;/span&gt;
+          &lt;span
+            class=&quot;version&quot;
+          &gt;
+            V1
+          &lt;/span&gt;
+        &lt;/a&gt;
+        &lt;div
+          class=&quot;sidebar-label&quot;
+        &gt;
+          WORKSPACE
+        &lt;/div&gt;
+        &lt;nav
+          aria-label=&quot;Main navigation&quot;
+        &gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-layout-dashboard&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;12&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;16&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Overview
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/projects&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-folder-git-2&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M18 19a5 5 0 0 1-5-5v8&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;13&quot;
+                cy=&quot;12&quot;
+                r=&quot;2&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;20&quot;
+                cy=&quot;19&quot;
+                r=&quot;2&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Projects
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/memory&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-brain-circuit&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 13a4.5 4.5 0 0 0 3-4&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M6.003 5.125A3 3 0 0 0 6.401 6.5&quot;
+              ...
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;div
+      class=&quot;app-shell&quot;
+    &gt;
+      &lt;a
+        class=&quot;skip-link&quot;
+        href=&quot;#main&quot;
+      &gt;
+        Skip to content
+      &lt;/a&gt;
+      &lt;aside
+        class=&quot;sidebar&quot;
+      &gt;
+        &lt;a
+          aria-label=&quot;Memglide overview&quot;
+          class=&quot;brand&quot;
+          data-discover=&quot;true&quot;
+          href=&quot;/&quot;
+        &gt;
+          &lt;span
+            class=&quot;brand-mark&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              fill=&quot;none&quot;
+              height=&quot;22&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;22&quot;
+            &gt;
+              &lt;path
+                d=&quot;M3 18V6h4l5 8 5-8h4v12h-4v-6l-5 7-5-7v6H3Z&quot;
+                fill=&quot;currentColor&quot;
+              /&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          &lt;span&gt;
+            memglide
+            &lt;span
+              class=&quot;brand-dot&quot;
+            &gt;
+              .
+            &lt;/span&gt;
+          &lt;/span&gt;
+          &lt;span
+            class=&quot;version&quot;
+          &gt;
+            V1
+          &lt;/span&gt;
+        &lt;/a&gt;
+        &lt;div
+          class=&quot;sidebar-label&quot;
+        &gt;
+          WORKSPACE
+        &lt;/div&gt;
+        &lt;nav
+          aria-label=&quot;Main navigation&quot;
+        &gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-layout-dashboard&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;12&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;16&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Overview
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/projects&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-folder-git-2&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M18 19a5 5 0 0 1-5-5v8&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;13&quot;
+                cy=&quot;12&quot;
+                r=&quot;2&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;20&quot;
+                cy=&quot;19&quot;
+                r=&quot;2&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Projects
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/memory&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-brain-circuit&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 13a4.5 4.5 0 0 0 3-4&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M6.003 5.125A3 3 0 0 0 6.401 6.5&quot;
+              ..." type="TestingLibraryElementError">
+TestingLibraryElementError: Unable to find role=&quot;heading&quot; and name &quot;Partial evidence&quot;
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;div
+      class=&quot;app-shell&quot;
+    &gt;
+      &lt;a
+        class=&quot;skip-link&quot;
+        href=&quot;#main&quot;
+      &gt;
+        Skip to content
+      &lt;/a&gt;
+      &lt;aside
+        class=&quot;sidebar&quot;
+      &gt;
+        &lt;a
+          aria-label=&quot;Memglide overview&quot;
+          class=&quot;brand&quot;
+          data-discover=&quot;true&quot;
+          href=&quot;/&quot;
+        &gt;
+          &lt;span
+            class=&quot;brand-mark&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              fill=&quot;none&quot;
+              height=&quot;22&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;22&quot;
+            &gt;
+              &lt;path
+                d=&quot;M3 18V6h4l5 8 5-8h4v12h-4v-6l-5 7-5-7v6H3Z&quot;
+                fill=&quot;currentColor&quot;
+              /&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          &lt;span&gt;
+            memglide
+            &lt;span
+              class=&quot;brand-dot&quot;
+            &gt;
+              .
+            &lt;/span&gt;
+          &lt;/span&gt;
+          &lt;span
+            class=&quot;version&quot;
+          &gt;
+            V1
+          &lt;/span&gt;
+        &lt;/a&gt;
+        &lt;div
+          class=&quot;sidebar-label&quot;
+        &gt;
+          WORKSPACE
+        &lt;/div&gt;
+        &lt;nav
+          aria-label=&quot;Main navigation&quot;
+        &gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-layout-dashboard&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;12&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;16&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Overview
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/projects&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-folder-git-2&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M18 19a5 5 0 0 1-5-5v8&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;13&quot;
+                cy=&quot;12&quot;
+                r=&quot;2&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;20&quot;
+                cy=&quot;19&quot;
+                r=&quot;2&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Projects
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/memory&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-brain-circuit&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 13a4.5 4.5 0 0 0 3-4&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M6.003 5.125A3 3 0 0 0 6.401 6.5&quot;
+              ...
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;div
+      class=&quot;app-shell&quot;
+    &gt;
+      &lt;a
+        class=&quot;skip-link&quot;
+        href=&quot;#main&quot;
+      &gt;
+        Skip to content
+      &lt;/a&gt;
+      &lt;aside
+        class=&quot;sidebar&quot;
+      &gt;
+        &lt;a
+          aria-label=&quot;Memglide overview&quot;
+          class=&quot;brand&quot;
+          data-discover=&quot;true&quot;
+          href=&quot;/&quot;
+        &gt;
+          &lt;span
+            class=&quot;brand-mark&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              fill=&quot;none&quot;
+              height=&quot;22&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;22&quot;
+            &gt;
+              &lt;path
+                d=&quot;M3 18V6h4l5 8 5-8h4v12h-4v-6l-5 7-5-7v6H3Z&quot;
+                fill=&quot;currentColor&quot;
+              /&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          &lt;span&gt;
+            memglide
+            &lt;span
+              class=&quot;brand-dot&quot;
+            &gt;
+              .
+            &lt;/span&gt;
+          &lt;/span&gt;
+          &lt;span
+            class=&quot;version&quot;
+          &gt;
+            V1
+          &lt;/span&gt;
+        &lt;/a&gt;
+        &lt;div
+          class=&quot;sidebar-label&quot;
+        &gt;
+          WORKSPACE
+        &lt;/div&gt;
+        &lt;nav
+          aria-label=&quot;Main navigation&quot;
+        &gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-layout-dashboard&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;3&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;9&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;14&quot;
+                y=&quot;12&quot;
+              /&gt;
+              &lt;rect
+                height=&quot;5&quot;
+                rx=&quot;1&quot;
+                width=&quot;7&quot;
+                x=&quot;3&quot;
+                y=&quot;16&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Overview
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/projects&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-folder-git-2&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M18 19a5 5 0 0 1-5-5v8&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;13&quot;
+                cy=&quot;12&quot;
+                r=&quot;2&quot;
+              /&gt;
+              &lt;circle
+                cx=&quot;20&quot;
+                cy=&quot;19&quot;
+                r=&quot;2&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;
+              Projects
+            &lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a
+            class=&quot;nav-item  &quot;
+            data-discover=&quot;true&quot;
+            href=&quot;/memory&quot;
+          &gt;
+            &lt;svg
+              aria-hidden=&quot;true&quot;
+              class=&quot;lucide lucide-brain-circuit&quot;
+              fill=&quot;none&quot;
+              height=&quot;18&quot;
+              stroke=&quot;currentColor&quot;
+              stroke-linecap=&quot;round&quot;
+              stroke-linejoin=&quot;round&quot;
+              stroke-width=&quot;1.6&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              width=&quot;18&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                d=&quot;M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M9 13a4.5 4.5 0 0 0 3-4&quot;
+              /&gt;
+              &lt;path
+                d=&quot;M6.003 5.125A3 3 0 0 0 6.401 6.5&quot;
+              ...
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/workflows.test.tsx:318:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; opens a passport URL for its own session without losing the pending query during auto-selection" time="1.479367461">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; keeps ended sessions available for deletion without recalling their memories" time="0.847423906">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; renders ignored file paths and exclusion reasons from the index" time="0.341227897">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; shows real empty states and registers a repository through the API" time="0.55041682">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; starts and selects sessions and clears their cached task data on deletion" time="1.114838815">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; searches and filters memories and saves explicit provenance" time="2.001747012">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; retrieves ranked evidence, expands depth, and renders source hashes and passport warnings" time="0.739485739">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; persists settings and applies the saved theme from the backend" time="0.817372983">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; filters actual timeline events and exposes event detail" time="0.437107188">
+        </testcase>
+        <testcase classname="tests/workflows.test.tsx" name="dashboard workflows &gt; reports service errors without displaying invented overview metrics" time="0.392461328">
+        </testcase>
+    </testsuite>
+</testsuites>

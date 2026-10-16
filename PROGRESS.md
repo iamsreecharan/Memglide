@@ -1,5 +1,12 @@
 # Memglide V1 verification record
 
+The original V1 results below are historical. Subsequent retrieval, memory-version
+and MCP import-isolation fixes, the current verification totals, all strategy
+tradeoffs and the latest authentication-blocked Codex attempt are recorded in
+[benchmarks/improvements.md](benchmarks/improvements.md) and its
+[JSON evidence index](benchmarks/improvements.json). Original reports remain
+unchanged; component retrieval gains do not establish Codex savings.
+
 V1 is implemented and passes the local Linux acceptance workflow. All twelve implementation milestones are complete for the tested platform. Native Windows/macOS execution and a live Codex model session remain unverified; these are not claimed below.
 
 ## Implemented milestones
@@ -54,3 +61,78 @@ Local artifacts: `dist/memglide-0.1.0-py3-none-any.whl` and `dist/memglide-0.1.0
 Reusable `install_script` and `start_skill` were saved to the cloud environment draft, including project-local caches, production frontend bundling, restart commands and functional readiness checks. Saving does not publish a snapshot or prove fresh-task restoration. Review/save the draft and publish through environment settings when you want to reuse that snapshot; publication and a new cloud-task restore have not been tested here.
 
 Implementation and validation ran locally. The user subsequently authorized publishing this repository to GitHub. No deployment or package publication was performed. See docs/limitations.md for the supported trust model, static graph and tokenizer limits, filesystem requirements and unverified platform/Codex behavior. Repository changes remain available for user review.
+
+## Independent verification and Codex benchmark (2026-10-16)
+
+The existing application suites were rerun: 126 backend tests (including 69
+security/storage cases and all 14 tools through the real STDIO MCP client),
+15 frontend tests and two production Chromium workflows passed. No application
+fixes were required. Frozen installation, Ruff, mypy, TypeScript, Vite and package
+builds passed. Detailed commands and evidence are in
+[benchmarks/validation.md](benchmarks/validation.md).
+
+The new benchmark has 24 maintenance tasks, split evenly between Python and
+TypeScript. Every task's baseline fails its held-out behavior check, and every
+reference fix passes. Its default plan has 96 coding runs: two configurations
+and two repetitions per task. It uses identical per-language starting commits,
+prompts and model settings, separate worktrees, fresh B databases, balanced arm
+order, external grading and supported Codex JSONL/structured output. Necessary B
+indexing is counted separately and in end-to-end timing. Diagnostics do not warm
+the model database. All planned rows, failures and unavailable measurements are
+retained.
+
+The final full Python suite passed **186 tests**, including 60 new benchmark
+checks; frontend/browser counts above are additional. Earlier diagnostic
+invocations exposed read-only Codex state and a proxy HTTP 403. Writable isolated
+state with an authentication symlink resolved startup. The formal readiness
+request then reached the provider but failed with HTTP 401 and a token-refresh
+error requiring sign-in again. Therefore **none of the 96 coding runs executed**.
+Usage, cost per successful task and A/B benefits remain unknown. See
+[benchmarks/report.md](benchmarks/report.md) and its JSON companion; configured
+MCP availability is not counted as actual Codex invocation.
+
+Independent component probes made 168 actual official-SDK MCP calls across 24
+isolated worktrees. Returned evidence hashes were current in all 24 probes, and
+all 24 controlled source edits produced stale old passports and refreshed source
+hashes/snippets. Natural full task prompts returned the declared fix file in
+**16/24** cases. The eight misses are preserved and diagnosed in the report. These
+are limited retrieval/freshness diagnostics, not model coding results or savings.
+
+The `chatgpt.com` network addition was saved to the environment draft after the
+earlier proxy denial. Saving does not apply or publish it; the latest request's
+concrete blocker is unusable Codex authentication. Refresh that authentication
+and rerun the documented experiment before making any comparison claim.
+
+## Retrieval fixes and final verification (2026-10-16)
+
+The final source passed **266 Python checks**, **16 frontend checks**, and **two
+production Chromium workflows**: **284 distinct checks**, without double-counting
+repeated executions. Ruff format/check, mypy (21 source files), the frozen lock,
+TypeScript/Vite build, frontend bundling, package content audit and an isolated
+installed-wheel retrieval/API smoke check passed. One frontend test timeout was
+fixed through explicit request synchronization; the initial failed evidence is
+retained, and no product source change or arbitrary timeout increase was needed.
+
+Online research informed five tested policies and a rejected score calibration.
+IDF lexical won among new candidates, while legacy ranked development targets
+first more often (8/24 versus 6/24). Reused validation is explicitly disclosed.
+The combined changes returned declared files and visible declarations in 24/24
+fresh official-SDK probes, versus V1's 16/24 and 15/24. Exact symbol identity fell
+from 8/24 to 4/24; whole-file/class snippets explain this proxy disagreement.
+All 24 hash and controlled-edit checks passed, across 168 real SDK calls.
+
+The final seven-call workflow still averaged 8.2465 seconds versus V1's 5.1211;
+all individual measurements and 116 numerical regression observations remain
+visible. A separate controlled 20,000-file stress check reduced long-common-query
+mean time from 67.7045 to 4.0437 seconds, with identical candidates, scores and
+hashes in two reversed-order repeats. All 48 previously evaluated ranking inputs
+also retained exact public candidates and scores. No semantic completeness or
+universal ranking/performance improvement is claimed.
+
+The latest Codex readiness request (17:10 UTC) still failed HTTP 401 because its
+authentication token cannot be refreshed. All 96 coding slots remain unrun,
+with unknown success rate, usage, cost and savings. See the detailed
+[improvement assessment](benchmarks/improvements.md), [JSON](benchmarks/improvements.json),
+[final verification](benchmarks/validation-improved.md), and
+[latest A/B report](benchmarks/codex-ab-improved.md). Original V1 reports remain
+unchanged. Valid environment Codex sign-in is required to complete that experiment.

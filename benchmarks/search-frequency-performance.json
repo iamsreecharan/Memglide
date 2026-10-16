@@ -1,0 +1,1440 @@
+{
+  "created_at": "2026-10-16T17:07:38.735968+00:00",
+  "scope": "Paired exact document-frequency implementations on the same manually populated 20,000-file/78 MB index. Both rank at most 32 informative FTS terms. This is a local search stress check, not a coding model benchmark or indexing measurement.",
+  "source_before": {
+    "captured_at": "2026-10-16T17:07:38.765227+00:00",
+    "attestation": "captured_source_state_before_probe",
+    "git_head": "39e8df30565783a686270f8a6f422e56e41e3776",
+    "source_dirty_entries": [
+      " M src/memglide/api/app.py",
+      " M src/memglide/cli.py",
+      " M src/memglide/core/context.py",
+      " M src/memglide/core/indexer.py",
+      " M src/memglide/integrations/codex.py",
+      " M src/memglide/integrations/mcp_server.py",
+      " M src/memglide/memory/engine.py",
+      "?? src/memglide/core/query.py"
+    ],
+    "source_files": {
+      "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/api/app.py": "b789245d01bbc0d93771137889b5971e0980864c971b612dd87e84ab430d6ac2",
+      "src/memglide/cli.py": "0a4cc01bafe7e2d2c43171984fa05c01cafeeba113a432d5f62706560a1d3989",
+      "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/core/context.py": "d94123bf425545944c25d13c96eae30810e5cd5ba013657fdf7b86cc42f5b30d",
+      "src/memglide/core/indexer.py": "d71181f44519883c93dafab1df7b0ce5587c61d0e242b52a4187e6e15df60f7f",
+      "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "src/memglide/core/query.py": "781f44a138491a23c1283feb54f0ff6ab83b20264bc658d9776f4518b9b85567",
+      "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+      "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/integrations/codex.py": "99e3d527187cfc457b4c574a1127a1c6fb738db6b4d4e9a7f8a42c56d5879d76",
+      "src/memglide/integrations/mcp_server.py": "80f1ed60fcfd7951ced1f7b957c46661c71fe8eac3cb8bd1eb62c5b75c99dff8",
+      "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/memory/engine.py": "524a42285ebed31bb14d7b2948847fd1f83b88f1cfc1eb695a650bb4400e598f",
+      "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "src/memglide/service.py": "f346d2c4162346eab3c4e8abb16c18a9bd0dee2b8bc2599a489312a72162dbd2",
+      "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/storage/database.py": "b8b866bca23b40ec567d73a9c650d9189d8c179ce267bd2a05d0273181723932"
+    },
+    "source_tree_sha256": "b0fd2cc1f3997d1a0d19ab97addaaef00abe2e859a1cacf570162b6fc231df94",
+    "measurement_files": {
+      "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0",
+      "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c"
+    },
+    "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state"
+  },
+  "fixture_report_sha256": "bfea8ad6f305d2092412469e07a49ea4ca182e0123277219b9f5d3e4f891d733",
+  "conditions": "Same process, DB, source bytes, query, refresh=False and limit=20. Shared unflushed OS/SQLite caches; alternate order in repeat 2. Process CPU only; no model, cost, remote resource or exact filesystem-read telemetry. Prior implementation uses the retained project_id-payload COUNT query; optimized uses exact vocabulary or row-ID membership.",
+  "runs": [
+    {
+      "case": "short_common",
+      "repeat": 1,
+      "policy": "prior_payload_count",
+      "order_within_pair": 1,
+      "wall_seconds": 2.9705327279953053,
+      "process_cpu_seconds": 2.583253009,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    },
+    {
+      "case": "short_common",
+      "repeat": 1,
+      "policy": "optimized_exact_count",
+      "order_within_pair": 2,
+      "wall_seconds": 1.1382160930006648,
+      "process_cpu_seconds": 1.1379670259999997,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    },
+    {
+      "case": "long_absent",
+      "repeat": 1,
+      "policy": "prior_payload_count",
+      "order_within_pair": 1,
+      "wall_seconds": 1.0599814520028303,
+      "process_cpu_seconds": 1.0467328119999992,
+      "returned_candidates": []
+    },
+    {
+      "case": "long_absent",
+      "repeat": 1,
+      "policy": "optimized_exact_count",
+      "order_within_pair": 2,
+      "wall_seconds": 0.9550417290010955,
+      "process_cpu_seconds": 0.9543974839999994,
+      "returned_candidates": []
+    },
+    {
+      "case": "long_common",
+      "repeat": 1,
+      "policy": "prior_payload_count",
+      "order_within_pair": 1,
+      "wall_seconds": 66.12686635299906,
+      "process_cpu_seconds": 65.675751796,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    },
+    {
+      "case": "long_common",
+      "repeat": 1,
+      "policy": "optimized_exact_count",
+      "order_within_pair": 2,
+      "wall_seconds": 1.7405541769985575,
+      "process_cpu_seconds": 1.7294856460000005,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    },
+    {
+      "case": "short_common",
+      "repeat": 2,
+      "policy": "optimized_exact_count",
+      "order_within_pair": 1,
+      "wall_seconds": 1.2310228850037674,
+      "process_cpu_seconds": 1.2270149109999977,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    },
+    {
+      "case": "short_common",
+      "repeat": 2,
+      "policy": "prior_payload_count",
+      "order_within_pair": 2,
+      "wall_seconds": 4.726635843006079,
+      "process_cpu_seconds": 4.5812915699999905,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0003,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    },
+    {
+      "case": "long_absent",
+      "repeat": 2,
+      "policy": "optimized_exact_count",
+      "order_within_pair": 1,
+      "wall_seconds": 3.52828496699658,
+      "process_cpu_seconds": 3.495716766000001,
+      "returned_candidates": []
+    },
+    {
+      "case": "long_absent",
+      "repeat": 2,
+      "policy": "prior_payload_count",
+      "order_within_pair": 2,
+      "wall_seconds": 3.5436942189990077,
+      "process_cpu_seconds": 3.5243563730000034,
+      "returned_candidates": []
+    },
+    {
+      "case": "long_common",
+      "repeat": 2,
+      "policy": "optimized_exact_count",
+      "order_within_pair": 1,
+      "wall_seconds": 6.346897651004838,
+      "process_cpu_seconds": 6.206253649000004,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    },
+    {
+      "case": "long_common",
+      "repeat": 2,
+      "policy": "prior_payload_count",
+      "order_within_pair": 2,
+      "wall_seconds": 69.28206299399608,
+      "process_cpu_seconds": 69.205517904,
+      "returned_candidates": [
+        {
+          "path": "document_00000.txt",
+          "symbol": "document_00000.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00001.txt",
+          "symbol": "document_00001.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00002.txt",
+          "symbol": "document_00002.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00003.txt",
+          "symbol": "document_00003.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00004.txt",
+          "symbol": "document_00004.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00005.txt",
+          "symbol": "document_00005.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00006.txt",
+          "symbol": "document_00006.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00007.txt",
+          "symbol": "document_00007.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00008.txt",
+          "symbol": "document_00008.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00009.txt",
+          "symbol": "document_00009.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00010.txt",
+          "symbol": "document_00010.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00011.txt",
+          "symbol": "document_00011.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00012.txt",
+          "symbol": "document_00012.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00013.txt",
+          "symbol": "document_00013.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00014.txt",
+          "symbol": "document_00014.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00015.txt",
+          "symbol": "document_00015.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00016.txt",
+          "symbol": "document_00016.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00017.txt",
+          "symbol": "document_00017.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00018.txt",
+          "symbol": "document_00018.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        },
+        {
+          "path": "document_00019.txt",
+          "symbol": "document_00019.txt",
+          "score": 10.0013,
+          "reason": "full-text BM25 match; search excerpt truncated; use get_symbol with full_source_reference for complete evidence",
+          "hash": "ef7ad28411713abdd38c6fce4513a661cf95517d7e6cb1897de59ff5d7fc1cfb"
+        }
+      ]
+    }
+  ],
+  "source_after": {
+    "captured_at": "2026-10-16T17:10:21.494134+00:00",
+    "attestation": "captured_source_state_before_probe",
+    "git_head": "39e8df30565783a686270f8a6f422e56e41e3776",
+    "source_dirty_entries": [
+      " M src/memglide/api/app.py",
+      " M src/memglide/cli.py",
+      " M src/memglide/core/context.py",
+      " M src/memglide/core/indexer.py",
+      " M src/memglide/integrations/codex.py",
+      " M src/memglide/integrations/mcp_server.py",
+      " M src/memglide/memory/engine.py",
+      "?? src/memglide/core/query.py"
+    ],
+    "source_files": {
+      "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/api/app.py": "b789245d01bbc0d93771137889b5971e0980864c971b612dd87e84ab430d6ac2",
+      "src/memglide/cli.py": "0a4cc01bafe7e2d2c43171984fa05c01cafeeba113a432d5f62706560a1d3989",
+      "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/core/context.py": "d94123bf425545944c25d13c96eae30810e5cd5ba013657fdf7b86cc42f5b30d",
+      "src/memglide/core/indexer.py": "d71181f44519883c93dafab1df7b0ce5587c61d0e242b52a4187e6e15df60f7f",
+      "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "src/memglide/core/query.py": "781f44a138491a23c1283feb54f0ff6ab83b20264bc658d9776f4518b9b85567",
+      "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+      "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/integrations/codex.py": "99e3d527187cfc457b4c574a1127a1c6fb738db6b4d4e9a7f8a42c56d5879d76",
+      "src/memglide/integrations/mcp_server.py": "80f1ed60fcfd7951ced1f7b957c46661c71fe8eac3cb8bd1eb62c5b75c99dff8",
+      "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/memory/engine.py": "524a42285ebed31bb14d7b2948847fd1f83b88f1cfc1eb695a650bb4400e598f",
+      "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "src/memglide/service.py": "f346d2c4162346eab3c4e8abb16c18a9bd0dee2b8bc2599a489312a72162dbd2",
+      "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/storage/database.py": "b8b866bca23b40ec567d73a9c650d9189d8c179ce267bd2a05d0273181723932"
+    },
+    "source_tree_sha256": "b0fd2cc1f3997d1a0d19ab97addaaef00abe2e859a1cacf570162b6fc231df94",
+    "measurement_files": {
+      "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0",
+      "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c"
+    },
+    "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state"
+  },
+  "source_unchanged": true,
+  "all_pairs_identical": true,
+  "summary": {
+    "short_common": {
+      "prior_payload_count": {
+        "wall_seconds": {
+          "n": 2,
+          "mean": 3.848584285500692,
+          "median": 3.848584285500692,
+          "min": 2.9705327279953053,
+          "max": 4.726635843006079
+        },
+        "process_cpu_seconds": {
+          "n": 2,
+          "mean": 3.582272289499995,
+          "median": 3.582272289499995,
+          "min": 2.583253009,
+          "max": 4.5812915699999905
+        }
+      },
+      "optimized_exact_count": {
+        "wall_seconds": {
+          "n": 2,
+          "mean": 1.1846194890022161,
+          "median": 1.1846194890022161,
+          "min": 1.1382160930006648,
+          "max": 1.2310228850037674
+        },
+        "process_cpu_seconds": {
+          "n": 2,
+          "mean": 1.1824909684999987,
+          "median": 1.1824909684999987,
+          "min": 1.1379670259999997,
+          "max": 1.2270149109999977
+        }
+      }
+    },
+    "long_absent": {
+      "prior_payload_count": {
+        "wall_seconds": {
+          "n": 2,
+          "mean": 2.301837835500919,
+          "median": 2.301837835500919,
+          "min": 1.0599814520028303,
+          "max": 3.5436942189990077
+        },
+        "process_cpu_seconds": {
+          "n": 2,
+          "mean": 2.2855445925000013,
+          "median": 2.2855445925000013,
+          "min": 1.0467328119999992,
+          "max": 3.5243563730000034
+        }
+      },
+      "optimized_exact_count": {
+        "wall_seconds": {
+          "n": 2,
+          "mean": 2.2416633479988377,
+          "median": 2.2416633479988377,
+          "min": 0.9550417290010955,
+          "max": 3.52828496699658
+        },
+        "process_cpu_seconds": {
+          "n": 2,
+          "mean": 2.225057125,
+          "median": 2.225057125,
+          "min": 0.9543974839999994,
+          "max": 3.495716766000001
+        }
+      }
+    },
+    "long_common": {
+      "prior_payload_count": {
+        "wall_seconds": {
+          "n": 2,
+          "mean": 67.70446467349757,
+          "median": 67.70446467349757,
+          "min": 66.12686635299906,
+          "max": 69.28206299399608
+        },
+        "process_cpu_seconds": {
+          "n": 2,
+          "mean": 67.44063485000001,
+          "median": 67.44063485000001,
+          "min": 65.675751796,
+          "max": 69.205517904
+        }
+      },
+      "optimized_exact_count": {
+        "wall_seconds": {
+          "n": 2,
+          "mean": 4.043725914001698,
+          "median": 4.043725914001698,
+          "min": 1.7405541769985575,
+          "max": 6.346897651004838
+        },
+        "process_cpu_seconds": {
+          "n": 2,
+          "mean": 3.9678696475000024,
+          "median": 3.9678696475000024,
+          "min": 1.7294856460000005,
+          "max": 6.206253649000004
+        }
+      }
+    }
+  },
+  "executed_measurement_script_sha256": "3810626658bd4491449ef178cc991a83e921e9f4cf4d4629b4fa0a25dec16573",
+  "measurement_script_attestation": "Captured after the run, before argparse portability refactor; original script retained in .local/search-frequency-executed.py. Timing loop and measured SQL match the public runner."
+}

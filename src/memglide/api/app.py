@@ -112,6 +112,7 @@ class ContextRequest(BaseModel):
     level: int = Field(1, ge=1, le=3)
     budget: int | None = Field(None, ge=256, le=100000)
     known_memory_ids: list[str] | None = Field(None, max_length=1000)
+    known_memory_versions: dict[str, str] | None = Field(None, max_length=1000)
 
 
 class ExpandRequest(BaseModel):
@@ -119,6 +120,7 @@ class ExpandRequest(BaseModel):
     level: int | None = Field(None, ge=1, le=3)
     budget: int | None = Field(None, ge=256, le=100000)
     known_memory_ids: list[str] | None = Field(None, max_length=1000)
+    known_memory_versions: dict[str, str] | None = Field(None, max_length=1000)
 
 
 class ContextResult(Record):
@@ -330,6 +332,7 @@ def create_app(service: Any = None) -> FastAPI:
             body.level,
             body.budget,
             known_memory_ids=body.known_memory_ids,
+            known_memory_versions=body.known_memory_versions,
         )
 
     @app.post("/api/context/{retrieval_id}/expand", response_model=ContextResult)
@@ -340,6 +343,7 @@ def create_app(service: Any = None) -> FastAPI:
             body.level,
             body.budget,
             known_memory_ids=body.known_memory_ids,
+            known_memory_versions=body.known_memory_versions,
         )
 
     @app.get("/api/context/{retrieval_id}/passport", response_model=Record)

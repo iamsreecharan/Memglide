@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "scope": "Wheel/sdist required-file, source equality, generated frontend and exclusion audit. Archive hashes are external sidecars under .local/final-dist to avoid self-reference. Final archives are rebuilt and audited after evidence generation.",
+  "checks": [
+    "Python source bytes match wheel",
+    "Required source, protocol, tests, documentation and locks match sdist",
+    "Wheel includes built frontend JS/CSS and HTML",
+    "No caches, authentication state, databases, worktrees or symlinks in either artifact"
+  ],
+  "required_sdist_files": [
+    "benchmarks/corpus.py",
+    "benchmarks/run.py",
+    "benchmarks/search_frequency.py",
+    "benchmarks/telemetry.py",
+    "benchmarks/verify_rank_equivalence.py",
+    "docs/mcp.md",
+    "frontend/package-lock.json",
+    "pyproject.toml",
+    "src/memglide/core/context.py",
+    "src/memglide/core/query.py",
+    "src/memglide/integrations/codex.py",
+    "tests/test_mcp_import_isolation.py",
+    "tests/test_memory_versions.py",
+    "uv.lock"
+  ]
+}

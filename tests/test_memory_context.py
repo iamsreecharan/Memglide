@@ -331,7 +331,7 @@ def test_passport_tracks_included_memory_references_and_invalidation(env: Any) -
     assert "tokens.py" in context.get_passport(session, result["retrieval_id"])["stale_files"]
 
 
-def test_explicit_known_memories_return_current_references_without_repeating_content(
+def test_explicit_known_versions_return_current_references_without_repeating_content(
     env: Any,
 ) -> None:
     _, memory, context, _, session = env
@@ -344,7 +344,11 @@ def test_explicit_known_memories_return_current_references_without_repeating_con
     )
     initial = context.get_context(session, "authenticate", level=1)
     assert initial["memories"][0]["content"] == saved["content"]
-    compact = context.get_context(session, "authenticate", known_memory_ids=[saved["id"]])
+    compact = context.get_context(
+        session,
+        "authenticate",
+        known_memory_versions={saved["id"]: saved["version"]},
+    )
     reference = compact["memories"][0]
     assert reference["id"] == saved["id"] and reference["content_omitted"]
     assert "content" not in reference and "provenance" not in reference
@@ -355,11 +359,16 @@ def test_explicit_known_memories_return_current_references_without_repeating_con
         == initial["passport"]["verified_source_hashes"]
     )
     expanded = context.expand_context(
-        session, initial["retrieval_id"], known_memory_ids=[saved["id"]]
+        session,
+        initial["retrieval_id"],
+        known_memory_versions={saved["id"]: saved["version"]},
     )
     assert expanded["memories"][0]["content_omitted"]
     # Without an explicit caller declaration, the retrieval remains self-contained.
     assert "content" in context.get_context(session, "authenticate")["memories"][0]
+    # An ID alone does not identify which version an independent reader retained.
+    hinted = context.get_context(session, "authenticate", known_memory_ids=[saved["id"]])
+    assert hinted["memories"][0]["content"] == saved["content"]
 
 
 def test_change_intent_uses_recorded_events_and_current_real_index_sources(env: Any) -> None:

@@ -77,7 +77,9 @@ def setup_codex(db_path: str | None = None) -> dict[str, Any]:
         raise DomainError(
             "Cannot safely inspect existing Codex configuration. Resolve codex mcp list --json before retrying; no configuration was changed."
         )
-    command = [sys.executable, "-m", "memglide.cli"]
+    # A registered repository is untrusted data. Isolated imports prevent its
+    # working directory or PYTHONPATH from shadowing the installed MCP package.
+    command = [sys.executable, "-I", "-m", "memglide.cli"]
     if db_path:
         command.extend(["--db", str(Path(db_path).resolve())])
     command.append("mcp")
@@ -94,7 +96,7 @@ def setup_codex(db_path: str | None = None) -> dict[str, Any]:
         ) from error
     if result.returncode:
         raise DomainError(
-            "Codex registration failed. Verify Codex configuration permissions and run codex mcp add memglide -- <python> -m memglide.cli mcp."
+            "Codex registration failed. Verify Codex configuration permissions and run codex mcp add memglide -- <python> -I -m memglide.cli mcp."
         )
     verified = registration_status()
     if not verified["registered"]:

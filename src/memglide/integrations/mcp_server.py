@@ -89,7 +89,7 @@ def create_server(service: Any = None) -> MCPServer[Any]:
         }
 
     @server.tool(
-        description="Retrieve task context: level 1 discovery, 2 focused evidence, 3 expanded evidence. Inspect warnings."
+        description="Retrieve task context: level 1 discovery, 2 focused evidence, 3 expanded evidence. Inspect warnings. To omit retained memory content, acknowledge exact returned versions using known_memory_versions {memory_id: version}; IDs alone do not identify a revision."
     )
     def get_context(
         session_id: str,
@@ -97,6 +97,7 @@ def create_server(service: Any = None) -> MCPServer[Any]:
         level: Annotated[int, Field(ge=1, le=3)] = 1,
         budget: Annotated[int | None, Field(ge=256, le=100000)] = None,
         known_memory_ids: Annotated[list[str] | None, Field(max_length=1000)] = None,
+        known_memory_versions: Annotated[dict[str, str] | None, Field(max_length=1000)] = None,
     ) -> dict[str, Any]:
         return call(
             service.context.get_context,
@@ -105,6 +106,7 @@ def create_server(service: Any = None) -> MCPServer[Any]:
             level,
             budget,
             known_memory_ids=known_memory_ids,
+            known_memory_versions=known_memory_versions,
         )
 
     @server.tool(
@@ -116,6 +118,7 @@ def create_server(service: Any = None) -> MCPServer[Any]:
         level: Annotated[int | None, Field(ge=1, le=3)] = None,
         budget: Annotated[int | None, Field(ge=256, le=100000)] = None,
         known_memory_ids: Annotated[list[str] | None, Field(max_length=1000)] = None,
+        known_memory_versions: Annotated[dict[str, str] | None, Field(max_length=1000)] = None,
     ) -> dict[str, Any]:
         return call(
             service.context.expand_context,
@@ -124,6 +127,7 @@ def create_server(service: Any = None) -> MCPServer[Any]:
             level,
             budget,
             known_memory_ids=known_memory_ids,
+            known_memory_versions=known_memory_versions,
         )
 
     @server.tool(

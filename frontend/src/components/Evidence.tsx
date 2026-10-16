@@ -99,6 +99,9 @@ export function DependencyList({ items }: { items: (Dependency | string)[] }) {
                   {dependency.kind ?? "reference"}: {dependency.reference}
                 </p>
               )}
+              {Boolean(dependency.preview_truncated_fields?.length) && (
+                <Badge tone="neutral">Relationship preview</Badge>
+              )}
             </div>
             <Badge tone={dependency.resolved ? "green" : "amber"}>
               {dependency.resolved ? "Resolved" : "Unresolved"}

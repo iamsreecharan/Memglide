@@ -139,6 +139,28 @@ class MemoryEngine:
         ]
         return hashlib.sha256(json.dumps(payload, ensure_ascii=False).encode()).hexdigest()
 
+    @staticmethod
+    def version(memory: dict[str, Any]) -> str:
+        """Identify an exact submitted claim independently of clocks and deduplication.
+
+        A memory's ID survives edits, and its deduplication fingerprint deliberately
+        normalizes whitespace and omits provenance. Neither identifies the evidence
+        a caller actually received. Ignore live source-check fields here: the stored
+        source hashes identify the claim's references, while freshness is validated
+        separately against current files.
+        """
+        payload = {
+            "category": memory["category"],
+            "content": memory["content"],
+            "provenance": memory["provenance"],
+            "sources": sorted(
+                (source["path"], source["hash"]) for source in memory.get("sources", [])
+            ),
+        }
+        return hashlib.sha256(
+            json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()
+
     def _capture_sources(
         self, project_id: str, sources: list[dict[str, Any]]
     ) -> list[dict[str, str]]:
@@ -232,12 +254,20 @@ class MemoryEngine:
         if stale and not memory["stale"]:
             self.db.execute("UPDATE memories SET stale=1 WHERE id=?", (memory["id"],))
         result = {k: v for k, v in memory.items() if k != "fingerprint"}
-        return {
+        view = {
             **result,
             "stale": stale,
             "sources": sources,
             "freshness": "Stale" if stale else ("Current" if sources else "Requires inspection"),
         }
+        view["version"] = self.version(view)
+        return view
+
+    def get_memory_snapshot(self, session_id: str, memory_id: str) -> dict[str, Any]:
+        """Read one owned, current memory snapshot without extending session TTL."""
+        session = self.status(session_id)
+        memory = self._get_memory(session_id, memory_id)
+        return self._memory_view(memory, session["project_id"])
 
     def recall_memory(
         self, session_id: str, query: str = "", category: str | None = None

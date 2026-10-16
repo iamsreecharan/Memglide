@@ -31,7 +31,16 @@ Python AST and Tree-sitter extract structure. Static resolution is deliberately 
 
 Changed JS/TS/TSX files are parsed in bounded batches by an isolated trusted Python worker using the pinned native grammar dependencies. The worker receives source as data, never imports indexed modules, and has a 30-second batch timeout. A native fault, timeout, or parse failure becomes explicit missing structural evidence with filename/text search still available. Successful batch results are retained. The API, CLI, and MCP process can continue and report the partial index.
 
-The selection engine combines exact identifiers, normalized search terms, paths, FTS5 evidence, dependency traversal, and current session findings. It prioritizes deterministic candidates, deduplicates evidence, checks source versions, and budgets serialized output using UTF-8 byte estimates. There are no embeddings or generated LLM summaries.
+The selection engine combines exact identifiers, normalized search terms, paths, FTS5 evidence, dependency traversal, and current session findings. Search and context ranking share acronym/camel/snake splitting and regular plural normalization. Corpus document frequency weights specific terms; SQLite BM25 evidence retains its score discrimination instead of assigning the same large bonus to every match. Strong symbol boosts require an exact lookup or an explicit code reference, rather than a generic prose noun. Existing FTS identifier rows are refreshed once when their normalization version changes, without reparsing unchanged sources or rewriting their hashes/timestamps.
+
+For long queries, all normalized terms participate in identifier/path scoring.
+Full-text candidate generation uses at most 32 terms chosen by project document
+frequency, which favors specific terms wherever they occur in the query. This
+bounds BM25 work on large indexes; it is a candidate shortlist, not a guarantee
+that every matching file will be returned. Query exact symbols/paths or expand
+the retrieval when evidence is insufficient.
+
+Selection fits direct source evidence before optional graph metadata. A separate graph allowance counts every serialized copy, including legacy passport arrays, and is also bounded against the size of the source response. Long relationship expressions become explicitly marked previews with stable identities; omissions and available full-reference inspection are disclosed. This preserves the existing dependency object API while preventing graph fan-out from displacing source. The estimator includes the complete serialized response. There are no embeddings or generated LLM summaries.
 
 Search hits contain bounded excerpts rather than duplicate full-source payloads. Their excerpt ranges and truncation flags are distinct from the symbol's full range. An explicit `get_symbol` lookup can return the complete current source within the configured file-size limit; progressive context remains governed by its application-JSON budget.
 
@@ -39,7 +48,7 @@ Search hits contain bounded excerpts rather than duplicate full-source payloads.
 2. **Focused evidence:** selected implementations and direct dependencies.
 3. **Expanded evidence:** broader source, callers/dependencies, and related tests where found.
 
-A Context Passport records selected source hashes, files/symbols, resolved and unresolved dependencies, discovered tests, freshness, budget, incomplete evidence, and recommended next inspections. It reports the evidence returned; it never certifies that all context needed for a change has been found. When a file changes, previous evidence must be treated as stale. Reindex and retrieve again before relying on it.
+A Context Passport records selected source hashes, files/symbols, resolved and unresolved dependencies, discovered tests, freshness, budget, incomplete evidence, and recommended next inspections. It also snapshots exact memory versions derived from content, category, provenance and stored source hashes. Changing a selected claim invalidates its previous passport even when the source file and clock have not changed. Version acknowledgements are explicit client input; another client reading a newer version cannot make an older client's acknowledgement current. It reports the evidence returned; it never certifies that all context needed for a change has been found. When evidence changes, retrieve again before relying on it.
 
 ## Runtime configuration
 

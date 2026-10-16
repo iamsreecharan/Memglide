@@ -72,6 +72,13 @@ def test_http_complete_route_workflow(application: Any):
         )
         assert created.status_code == 201, created.text
         mid = created.json()["id"]
+        first_context = client.post(
+            "/api/context",
+            json={"session_id": sid, "query": "Authentication", "budget": 8000},
+            headers=HEADER,
+        )
+        assert first_context.status_code == 200, first_context.text
+        assert next(m for m in first_context.json()["memories"] if m["id"] == mid)["content"]
         known_context = client.post(
             "/api/context",
             json={
@@ -79,6 +86,7 @@ def test_http_complete_route_workflow(application: Any):
                 "query": "Authentication",
                 "budget": 8000,
                 "known_memory_ids": [mid],
+                "known_memory_versions": {mid: created.json()["version"]},
             },
             headers=HEADER,
         )
@@ -318,12 +326,19 @@ async def test_actual_mcp_stdio_client_discovers_and_calls_every_tool(applicatio
             sources=[{"path": "auth.py"}],
         )
         assert (await invoke("recall_memory", session_id=sid, query="verification"))["memories"]
+        first_memory_context = await invoke(
+            "get_context", session_id=sid, query="Token verification", budget=8000
+        )
+        assert next(m for m in first_memory_context["memories"] if m["id"] == memory["id"])[
+            "content"
+        ]
         known_context = await invoke(
             "get_context",
             session_id=sid,
             query="Token verification",
             budget=8000,
             known_memory_ids=[memory["id"]],
+            known_memory_versions={memory["id"]: memory["version"]},
         )
         known_memory = next(m for m in known_context["memories"] if m["id"] == memory["id"])
         assert known_memory["content_omitted"] and "content" not in known_memory
@@ -362,6 +377,17 @@ def test_actual_codex_supported_registration_preserves_existing():
         result = json.loads(first.stdout)
         assert result["changed"] and result["registered"]
         assert result["connection"] == "not_observable"
+        registered = subprocess.run(
+            ["codex", "mcp", "get", "memglide", "--json"],
+            env=codex_test_env,
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=15,
+        )
+        transport = json.loads(registered.stdout)["transport"]
+        assert transport["command"] == sys.executable
+        assert transport["args"] == ["-I", "-m", "memglide.cli", "mcp"]
         before = (Path(directory) / "config.toml").read_bytes()
         second = subprocess.run(
             command, env=codex_test_env, capture_output=True, text=True, timeout=45

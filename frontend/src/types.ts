@@ -73,6 +73,7 @@ export interface ContextItem {
 }
 
 export interface Dependency {
+  id?: string;
   source_file?: string;
   source_symbol?: string | null;
   target_file?: string | null;
@@ -80,6 +81,8 @@ export interface Dependency {
   reference?: string;
   kind?: string;
   resolved?: number | boolean;
+  preview_truncated_fields?: string[];
+  reference_length?: number;
   [key: string]: unknown;
 }
 

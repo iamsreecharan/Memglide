@@ -62,6 +62,17 @@ npm --prefix frontend run build
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for browser tests and packaging. [PROGRESS.md](PROGRESS.md) records observed validation and outstanding limitations; source-file presence alone is not a completion claim.
 
+The [Codex A/B benchmark](benchmarks/README.md) provides 24 Python/TypeScript tasks,
+isolated runs, independent grading and conservative telemetry. The retained
+[Markdown report](benchmarks/report.md) and [JSON report](benchmarks/report.json)
+record the original authentication-blocked live experiment. The
+[retrieval improvement assessment](benchmarks/improvements.md) and
+[JSON evidence index](benchmarks/improvements.json) cover the subsequent fixes,
+strategy comparisons, performance measurements and retained regressions.
+Declared-target coverage in independent MCP probes improved from 16/24 to 24/24.
+The [latest Codex attempt](benchmarks/codex-ab-improved.md) remains blocked by
+invalid authentication. No Codex coding, token or cost benefit has been established.
+
 ## Documentation
 
 - [Architecture and storage](docs/architecture.md)
