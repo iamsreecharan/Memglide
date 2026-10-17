@@ -1,0 +1,246 @@
+"""Paired context/indexer timing with frozen source snapshots and memory engine.
+
+The baseline must be a trusted local Git commit: its Python modules are imported.
+No indexed fixture code is executed. This measures synchronous context requests,
+not MCP startup, model use, token usage or cost.
+"""
+
+from __future__ import annotations
+
+import argparse
+import cProfile
+import hashlib
+import importlib.util
+import io
+import json
+import pstats
+import sqlite3
+import subprocess
+import sys
+import time
+from collections import Counter
+from pathlib import Path
+from typing import Any
+
+from benchmarks.corpus import build_repository
+
+ROOT = Path("/workspace/Memglide")
+DEFAULT_BASELINE = "e6e10a8f588c9236c7303a83780219d027a1c702"
+TASK = (
+    "Fix document search so every normalized query token must appear in a record's title or body. "
+    "Preserve case-insensitive alphanumeric tokenization, empty-query results, ascending ID order "
+    "for tied results, and input immutability. Partial-token substrings do not count. "
+    "Verify the DocumentService search path."
+)
+CASES = [
+    {"case": "natural", "query": TASK, "level": 2, "budget": 8000},
+    {"case": "small_budget", "query": TASK, "level": 2, "budget": 1800},
+    {"case": "full_source", "query": "src/search.ts", "level": 3, "budget": 8000},
+]
+SOURCES = {
+    "context": "src/memglide/core/context.py",
+    "database": "src/memglide/storage/database.py",
+    "indexer": "src/memglide/core/indexer.py",
+    "memory": "src/memglide/memory/engine.py",
+}
+
+
+def digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_module(name: str, path: Path) -> Any:
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ValueError(f"Cannot load trusted measurement module: {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def normalized_response(response: dict[str, Any]) -> dict[str, Any]:
+    """Ignore only request/session IDs, including their occurrences in next steps."""
+    text = json.dumps(response, sort_keys=True)
+    for key in ("retrieval_id", "session_id"):
+        text = text.replace(response[key], "<" + key + ">")
+    return json.loads(text)
+
+
+def compare_pairs(before: list[dict[str, Any]], after: list[dict[str, Any]]) -> dict[str, Any]:
+    """Missing, failed or differently requested observations never count as equal."""
+    pairs = []
+    old_rows = {row["pair_id"]: row for row in before}
+    new_rows = {row["pair_id"]: row for row in after}
+    duplicates = {
+        arm: sorted(
+            key for key, count in Counter(row["pair_id"] for row in rows).items() if count > 1
+        )
+        for arm, rows in (("before", before), ("after", after))
+    }
+    for pair_id in sorted(old_rows.keys() | new_rows.keys()):
+        old, new = old_rows.get(pair_id), new_rows.get(pair_id)
+        comparable = bool(
+            old
+            and new
+            and old["status"] == new["status"] == "ok"
+            and old["request"] == new["request"]
+            and isinstance(old.get("result"), dict)
+            and isinstance(new.get("result"), dict)
+        )
+        equivalent = bool(
+            comparable and normalized_response(old["result"]) == normalized_response(new["result"])
+        )
+        pairs.append({"pair_id": pair_id, "comparable": comparable, "equivalent": equivalent})
+    return {
+        "pairs": pairs,
+        "duplicate_pair_ids": duplicates,
+        "all_equivalent": bool(pairs)
+        and not any(duplicates.values())
+        and all(p["equivalent"] for p in pairs),
+    }
+
+
+def paired_run(output: Path, baseline: str, repeats: int = 3) -> dict[str, Any]:
+    output = output.resolve()
+    if output.exists() and any(output.iterdir()):
+        raise ValueError(
+            "Use an empty output directory; retained measurements are never overwritten"
+        )
+    output.mkdir(parents=True, exist_ok=True)
+    commit = subprocess.run(
+        ["git", "rev-parse", "--verify", baseline + "^{commit}"],
+        cwd=ROOT,
+        check=True,
+        text=True,
+        capture_output=True,
+    ).stdout.strip()
+    frozen = output / "before"
+    frozen.mkdir()
+    for key, relative in SOURCES.items():
+        (frozen / f"{key}.py").write_bytes(
+            subprocess.run(
+                ["git", "show", f"{commit}:{relative}"], cwd=ROOT, check=True, capture_output=True
+            ).stdout
+        )
+    candidate = output / "after-source"
+    candidate.mkdir()
+    for key in ("context", "database", "indexer"):
+        (candidate / f"{key}.py").write_bytes((ROOT / SOURCES[key]).read_bytes())
+    fixture = output / "fixture"
+    build_repository("typescript", fixture)
+    subprocess.run(["git", "init", "-q", str(fixture)], check=True)
+    indexmod = load_module("perf_frozen_indexer", frozen / "indexer.py")
+    memorymod = load_module("perf_frozen_memory", frozen / "memory.py")
+    baseline_db = load_module("perf_baseline_database", frozen / "database.py")
+    db = baseline_db.Database(output / "seed.sqlite")
+    project = indexmod.Indexer(db).add_project(str(fixture))["id"]
+    fixture_hashes = {
+        str(path.relative_to(fixture)): digest(path)
+        for path in fixture.rglob("*")
+        if path.is_file() and ".git" not in path.relative_to(fixture).parts
+    }
+    protocol = {
+        "scope": "Direct synchronous get_context; excludes MCP/server startup/model calls.",
+        "task": TASK,
+        "cases": CASES,
+        "repeats": repeats,
+        "order": "before/after on odd repeats, after/before on even; case order reversed on even",
+        "sessions": "Fresh per arm; reused for all measured requests in that arm.",
+        "caching": "Same seed DB cloned per arm; OS caches not flushed; no query warmup. First natural request is first context retrieval, later queries share warm process.",
+        "baseline_commit": commit,
+        "harness_sha256": digest(Path(__file__)),
+        "shared_modules": {
+            path: digest(ROOT / path)
+            for path in ("src/memglide/core/query.py", "src/memglide/security/paths.py")
+        },
+    }
+    protocol_hash = hashlib.sha256(json.dumps(protocol, sort_keys=True).encode()).hexdigest()
+    after_indexer = load_module("perf_after_indexer", candidate / "indexer.py")
+    engines, reports = {}, {}
+    for arm in ("before", "after"):
+        paths = (
+            {key: frozen / f"{key}.py" for key in ("context", "database", "indexer")}
+            if arm == "before"
+            else {key: candidate / f"{key}.py" for key in ("context", "database", "indexer")}
+        )
+        context = load_module(f"perf_{arm}_context", paths["context"])
+        database = load_module(f"perf_{arm}_database", paths["database"])
+        dbpath = output / f"{arm}.sqlite"
+        with sqlite3.connect(output / "seed.sqlite") as source, sqlite3.connect(dbpath) as dest:
+            source.backup(dest)
+        db = database.Database(dbpath)
+        memory = memorymod.MemoryEngine(db)
+        session = memory.start_session(project, TASK)["id"]
+        engines[arm] = (context.ContextEngine(db, (indexmod if arm == "before" else after_indexer).Indexer(db), memory), session)
+        reports[arm] = {
+            "phase": arm,
+            "protocol": protocol,
+            "protocol_sha256": protocol_hash,
+            "fixture": {"files": fixture_hashes},
+            "owned_source_sha256": {key: digest(path) for key, path in paths.items()},
+            "frozen_source_sha256": {
+                key: digest(frozen / f"{key}.py") for key in ("indexer", "memory")
+            },
+            "runs": [],
+        }
+    for repeat in range(1, repeats + 1):
+        for case in CASES if repeat % 2 else list(reversed(CASES)):
+            for arm in ("before", "after") if repeat % 2 else ("after", "before"):
+                engine, session = engines[arm]
+                started, cpu = time.perf_counter(), time.process_time()
+                row = {
+                    "case": case["case"],
+                    "repeat": repeat,
+                    "pair_id": f"{case['case']}:{repeat}",
+                    "request": case,
+                }
+                try:
+                    row.update(
+                        status="ok",
+                        result=engine.get_context(
+                            session, case["query"], case["level"], case["budget"]
+                        ),
+                    )
+                except Exception as exc:
+                    row.update(status="failed", error=f"{type(exc).__name__}: {exc}")
+                row.update(
+                    wall_seconds=time.perf_counter() - started,
+                    cpu_seconds=time.process_time() - cpu,
+                )
+                reports[arm]["runs"].append(row)
+                # Persist every observation outside its timing interval, even if
+                # another run or a later diagnostic fails or is interrupted.
+                (output / f"{arm}-paired.json").write_text(json.dumps(reports[arm], indent=2))
+    for arm in ("before", "after"):
+        engine, session = engines[arm]
+        profiler = cProfile.Profile()
+        try:
+            profiler.runcall(engine.get_context, session, TASK, 2, 8000)
+        except Exception as exc:
+            reports[arm]["profile_error"] = f"{type(exc).__name__}: {exc}"
+        stream = io.StringIO()
+        pstats.Stats(profiler, stream=stream).strip_dirs().sort_stats("cumulative").print_stats(40)
+        (output / f"{arm}-profile.txt").write_text(stream.getvalue())
+        (output / f"{arm}-paired.json").write_text(json.dumps(reports[arm], indent=2))
+    comparison = compare_pairs(reports["before"]["runs"], reports["after"]["runs"])
+    comparison.update(protocol_sha256=protocol_hash)
+    (output / "paired-equivalence.json").write_text(json.dumps(comparison, indent=2))
+    return comparison
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--baseline", default=DEFAULT_BASELINE, help="Trusted local Git commit")
+    parser.add_argument("--repeats", type=int, default=3)
+    args = parser.parse_args()
+    if not 1 <= args.repeats <= 100:
+        parser.error("repeats must be between 1 and 100")
+    comparison = paired_run(args.output, args.baseline, args.repeats)
+    print(json.dumps(comparison, indent=2))
+    return 0 if comparison["all_equivalent"] else 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

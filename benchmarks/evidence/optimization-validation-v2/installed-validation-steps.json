@@ -1,0 +1,63 @@
+[
+  {
+    "command": [
+      "uv",
+      "export",
+      "--frozen",
+      "--no-dev",
+      "--no-emit-project",
+      "--format",
+      "requirements-txt",
+      "--output-file",
+      "/workspace/Memglide/.local/optimization-v2/runtime-requirements.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "uv",
+      "venv",
+      "--python",
+      "3.12.14",
+      "/workspace/Memglide/.local/optimization-v2/installed-env"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/workspace/Memglide/.local/optimization-v2/installed-env/bin/python",
+      "--require-hashes",
+      "--requirements",
+      "/workspace/Memglide/.local/optimization-v2/runtime-requirements.txt"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--python",
+      "/workspace/Memglide/.local/optimization-v2/installed-env/bin/python",
+      "--no-deps",
+      "/workspace/Memglide/.local/optimization-v2/dist-final/memglide-0.1.0-py3-none-any.whl"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/workspace/Memglide/.local/optimization-v2/installed-env/bin/python",
+      "-I",
+      "/workspace/Memglide/.local/refinement-package/verify_installed.py",
+      "--state",
+      "/workspace/Memglide/.local/optimization-v2/installed-state",
+      "--report",
+      "/workspace/Memglide/.local/optimization-v2/installed-smoke.json"
+    ],
+    "exit_code": 0
+  }
+]

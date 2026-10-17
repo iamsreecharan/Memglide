@@ -1,0 +1,24 @@
+test_failure_has_no_partial_write (__main__.BehaviorTests.test_failure_has_no_partial_write) ... FAIL
+test_snapshot_and_exact_drain (__main__.BehaviorTests.test_snapshot_and_exact_drain) ... FAIL
+
+======================================================================
+FAIL: test_failure_has_no_partial_write (__main__.BehaviorTests.test_failure_has_no_partial_write)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern2/baseline/held_out.py", line 11, in test_failure_has_no_partial_write
+    with self.assertRaises(ValueError): api.transfer(balances, *args)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_snapshot_and_exact_drain (__main__.BehaviorTests.test_snapshot_and_exact_drain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern2/baseline/held_out.py", line 18, in test_snapshot_and_exact_drain
+    self.assertEqual(balances["a"],0)
+AssertionError: 999 != 0
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

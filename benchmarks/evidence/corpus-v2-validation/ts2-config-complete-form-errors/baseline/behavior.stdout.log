@@ -1,0 +1,51 @@
+TAP version 13
+# Subtest: all errors stable order and no coercion
+not ok 1 - all errors stable order and no coercion
+  ---
+  duration_ms: 3.239136
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern37/baseline/held_out.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'email',
+    -   'password',
+    -   'confirmation',
+    -   'age'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'email'
+    1: 'password'
+    2: 'confirmation'
+    3: 'age'
+  actual:
+    0: 'email'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern37/baseline/held_out.test.mjs:7:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: boundaries whitespace and immutability
+ok 2 - boundaries whitespace and immutability
+  ---
+  duration_ms: 0.952109
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 198.757353

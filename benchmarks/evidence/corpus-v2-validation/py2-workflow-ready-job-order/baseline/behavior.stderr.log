@@ -1,0 +1,38 @@
+test_detachment_and_limits (__main__.BehaviorTests.test_detachment_and_limits) ... FAIL
+test_due_priority_and_stable_ties (__main__.BehaviorTests.test_due_priority_and_stable_ties) ... FAIL
+
+======================================================================
+FAIL: test_detachment_and_limits (__main__.BehaviorTests.test_detachment_and_limits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern10/baseline/held_out.py", line 16, in test_detachment_and_limits
+    result=api.ready_jobs(jobs,0,5); result[0]["data"].append(2); self.assertEqual(jobs[0]["data"],[1])
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [1, 2] != [1]
+
+First list contains 1 additional elements.
+First extra element 1:
+2
+
+- [1, 2]
++ [1]
+
+======================================================================
+FAIL: test_due_priority_and_stable_ties (__main__.BehaviorTests.test_due_priority_and_stable_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern10/baseline/held_out.py", line 10, in test_due_priority_and_stable_ties
+    self.assertEqual([j["id"] for j in api.ready_jobs(jobs,1,3)],["a","b","low"])
+AssertionError: Lists differ: ['low', 'a', 'b'] != ['a', 'b', 'low']
+
+First differing element 0:
+'low'
+'a'
+
+- ['low', 'a', 'b']
++ ['a', 'b', 'low']
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

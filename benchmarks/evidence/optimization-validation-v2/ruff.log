@@ -1,0 +1,12 @@
+I001 [*] Import block is un-sorted or un-formatted
+ --> .pytest_tmp_agent/test_actual_mcp_stdio_client_d0/source/app.py:1:1
+  |
+1 | from auth import authenticate_user
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2 |
+3 | def login(token):
+  |
+help: Organize imports
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

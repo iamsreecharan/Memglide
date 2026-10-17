@@ -1,0 +1,1045 @@
+{
+  "corpus_version": "2.0.0",
+  "tasks": [
+    {
+      "id": "py2-ledger-weighted-allocation",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Distribute nonnegative integer cents using largest remainders: floor each proportional share, then award leftover cents by descending remainder and original index for ties. Reject negative/non-integer amounts or weights and zero total weight; preserve input. Both the ledger module and public API must agree.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/weighted_allocation.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.weighted_allocation.allocate",
+        "ledger.api.allocate"
+      ],
+      "oracle_id": "weighted-allocation",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-signed-tax-rounding",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Compute tax in integer cents at a nonnegative integer basis-point rate (0 through 10000). Round the rational result to nearest cent with exact halves away from zero, including refunds. Reject booleans and non-integers. Keep integer accuracy for large amounts.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/signed_tax_rounding.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.signed_tax_rounding.tax_cents",
+        "ledger.api.tax_cents"
+      ],
+      "oracle_id": "signed-tax-rounding",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-atomic-transfer",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Make transfers atomic. Require distinct existing account IDs, a positive integer amount (not bool), and sufficient source funds. Any invalid request raises ValueError before either balance changes. Successful transfer mutates the supplied balance mapping once and returns a detached snapshot.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/atomic_transfer.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.atomic_transfer.transfer",
+        "ledger.api.transfer"
+      ],
+      "oracle_id": "atomic-transfer",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-statement-timezones",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Select statement records in the half-open interval [start,end), comparing instants across timezone offsets. Accept only timezone-aware datetime objects in bounds and record timestamps, reject reversed bounds, sort chronologically with stable ties, and return deeply detached records without changing inputs.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/statement_timezones.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.statement_timezones.statement",
+        "ledger.api.statement"
+      ],
+      "oracle_id": "statement-timezones",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-csv-bank-import",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Parse CSV bank exports with exactly the columns reference,amount,memo in any header order, accepting an optional UTF-8 BOM, quoted commas/newlines and CRLF. Preserve reference and memo strings, parse signed decimal integer amounts, reject missing/extra/duplicate columns and malformed amounts or rows. Empty input is invalid; a header-only file returns [].\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/csv_bank_import.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.csv_bank_import.parse_bank_csv",
+        "ledger.api.parse_bank_csv"
+      ],
+      "oracle_id": "csv-bank-import",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-nested-redaction",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Deeply redact JSON-like values by replacing values of dictionary keys matching the supplied sensitive key names case-insensitively with '[REDACTED]'. Recurse through dictionaries and lists, match whole keys, preserve unrelated falsy values, and never mutate or alias mutable input objects.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/nested_redaction.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.nested_redaction.redact",
+        "ledger.api.redact"
+      ],
+      "oracle_id": "nested-redaction",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-currency-netting",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Net signed integer-cent ledger entries independently by uppercase three-letter currency. Normalize currency case, reject non-ASCII currency codes and boolean/non-integer amounts, retain currencies whose net is zero, return keys sorted lexically and preserve input.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/currency_netting.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.currency_netting.net_by_currency",
+        "ledger.api.net_by_currency"
+      ],
+      "oracle_id": "currency-netting",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-audit-hash-chain",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Build a deterministic SHA-256 audit chain. For each JSON event, hash UTF-8 bytes of previous hexadecimal digest + newline + json.dumps(event, sort_keys=True, separators=(',', ':'), ensure_ascii=False). The initial previous digest is 64 zeroes. Return one digest per event, preserve inputs, and ensure a change to an earlier event changes all later digests.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/audit_hash_chain.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.audit_hash_chain.audit_chain",
+        "ledger.api.audit_chain"
+      ],
+      "oracle_id": "audit-hash-chain",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-invoice-line-discounts",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Calculate an invoice total by applying the percentage discount to each unit price, rounding each discounted unit half up to cents, then multiplying by that line's nonnegative integer quantity and summing. Accept only nonnegative integer cents/quantities and discount integer basis points 0..10000 (booleans invalid). Do not round only after aggregating the invoice.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/invoice_line_discounts.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.invoice_line_discounts.invoice_total",
+        "ledger.api.invoice_total"
+      ],
+      "oracle_id": "invoice-line-discounts",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-ledger-reconciliation-version-merge",
+      "language": "python",
+      "repository": "ledger-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "ledger-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python ledger application, Reconcile imported versions by record ID. Keep the highest nonnegative integer version for each ID; equal versions retain the first record. Return IDs sorted lexically and deep-copy selected records so neither input mutation nor result mutation affects the other. Reject boolean, negative or non-integer versions.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "ledger/reconciliation_version_merge.py",
+        "ledger/api.py"
+      ],
+      "expected_symbols": [
+        "ledger.reconciliation_version_merge.reconcile",
+        "ledger.api.reconcile"
+      ],
+      "oracle_id": "reconciliation-version-merge",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-ready-job-order",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Return up to limit runnable jobs (status='queued' and due<=now), highest integer priority first, preserving original order for equal priorities. limit must be a nonnegative integer excluding bool. Return detached job dictionaries and leave the caller's order and payloads intact.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/ready_job_order.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.ready_job_order.ready_jobs",
+        "workflow.api.ready_jobs"
+      ],
+      "oracle_id": "ready-job-order",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-interval-coalescing",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Coalesce overlapping or touching half-open integer intervals into sorted disjoint intervals. Drop empty intervals, reject reversed bounds, preserve the input collection, and return fresh two-item lists. Chained overlap must extend the current merged endpoint rather than replacing it with a shorter nested endpoint.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/interval_coalescing.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.interval_coalescing.coalesce",
+        "workflow.api.coalesce"
+      ],
+      "oracle_id": "interval-coalescing",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-capped-backoff",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Compute deterministic exponential retry delay min(cap, base*2**attempt), where attempt starts at zero. All inputs must be nonnegative integers excluding booleans. Very large attempt counts must return promptly without building enormous integers; zero base or cap returns zero.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/capped_backoff.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.capped_backoff.backoff",
+        "workflow.api.backoff"
+      ],
+      "oracle_id": "capped-backoff",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-utf8-batch-budget",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Pack strings into ordered batches without exceeding max_bytes UTF-8 bytes per batch (no delimiter cost). Preserve order and duplicates, reject any single oversized string and nonpositive or boolean budgets, produce no empty batches, and do not mutate input. Empty strings may share a batch.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/utf8_batch_budget.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.utf8_batch_budget.batch_messages",
+        "workflow.api.batch_messages"
+      ],
+      "oracle_id": "utf8-batch-budget",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-deep-settings-overlay",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Apply a settings overlay: recursively merge dictionaries, replace lists and scalar values, and treat an explicit null override as a literal null rather than deletion. Deep-copy both unchanged and replaced mutable values so results do not alias either input. Preserve both inputs.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/deep_settings_overlay.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.deep_settings_overlay.overlay",
+        "workflow.api.overlay"
+      ],
+      "oracle_id": "deep-settings-overlay",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-strict-template-expansion",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Render ${name} placeholders, where names match [A-Za-z_][A-Za-z0-9_]*. Dollar escaping $$ emits one literal dollar and prevents placeholder interpretation across that escape. Missing names raise KeyError; malformed placeholders or dangling dollar signs raise ValueError. Convert provided values with str and do not recursively interpolate replacement text.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/strict_template_expansion.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.strict_template_expansion.render",
+        "workflow.api.render"
+      ],
+      "oracle_id": "strict-template-expansion",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-deterministic-build-order",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Topologically order a dependency graph whose keys are jobs and values are prerequisite IDs. Include IDs mentioned only as prerequisites. Whenever multiple jobs are ready, choose the lexicographically smallest ID. Reject any cycle with ValueError and preserve the original graph, including duplicate edges.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/deterministic_build_order.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.deterministic_build_order.build_order",
+        "workflow.api.build_order"
+      ],
+      "oracle_id": "deterministic-build-order",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-atomic-pointer-updates",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Apply a list of (JSON-pointer,value) replacements atomically to a deep copy of a nested dictionary document. Pointers must begin '/', decode ~1 as slash and ~0 as tilde, reject invalid ~ escapes, and name existing keys at every segment. Empty pointer replaces the whole document. Missing paths raise KeyError; inputs and replacement values must never alias the result.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/atomic_pointer_updates.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.atomic_pointer_updates.apply_updates",
+        "workflow.api.apply_updates"
+      ],
+      "oracle_id": "atomic-pointer-updates",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-bounded-async-execution",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Run an async operation on items with at most concurrency calls in flight, preserving result order. concurrency must be a positive integer excluding bool. On the first operation error cancel and await remaining work, propagate that same error, and leave no pending tasks; empty input returns [] without invoking the operation.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/bounded_async_execution.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.bounded_async_execution.map_async",
+        "workflow.api.map_async"
+      ],
+      "oracle_id": "bounded-async-execution",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py2-workflow-incremental-utf8-lines",
+      "language": "python",
+      "repository": "workflow-python-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "workflow-python-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Python workflow application, Decode an iterable of byte chunks as strict UTF-8 and split on LF, removing a preceding CR from CRLF lines. Handle multi-byte codepoints and CRLF split across chunks, retain empty interior lines, emit a nonempty unterminated final line, and do not invent an extra line after a trailing LF. Invalid or truncated UTF-8 raises UnicodeDecodeError.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "workflow/incremental_utf8_lines.py",
+        "workflow/api.py"
+      ],
+      "expected_symbols": [
+        "workflow.incremental_utf8_lines.decode_lines",
+        "workflow.api.decode_lines"
+      ],
+      "oracle_id": "incremental-utf8-lines",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "ts2-stream-decimal-money-parser",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Parse a signed decimal money string into integer cents without floating-point rounding. Accept an optional + or -, one or more ASCII integer digits, and optionally one or two fractional digits. Reject whitespace, exponent notation, missing integer digits, extra precision, and results outside safe-integer range. Negative zero becomes zero.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/decimal_money_parser.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.decimal_money_parser.parseCents",
+        "src.api.parseCents"
+      ],
+      "oracle_id": "decimal-money-parser",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-half-open-window-join",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Join two collections of half-open numeric windows. Return {left,right,start,end} for every pair with positive-length overlap, in original left order then original right order. Touching endpoints and empty windows do not overlap. Reject any reversed interval. Do not mutate inputs; result ID fields are strings.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/half_open_window_join.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.half_open_window_join.joinWindows",
+        "src.api.joinWindows"
+      ],
+      "oracle_id": "half-open-window-join",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-fragmented-ndjson",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Parse fragmented newline-delimited JSON. Chunk boundaries have no meaning; concatenate fragments before recognizing LF/CRLF records. Ignore whitespace-only lines, parse a nonempty final unterminated line, preserve falsy JSON values and order, and reject malformed JSON rather than silently dropping it.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/fragmented_ndjson.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.fragmented_ndjson.parseNdjson",
+        "src.api.parseNdjson"
+      ],
+      "oracle_id": "fragmented-ndjson",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-event-time-rolling-counts",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, For each event in original input order, count all events whose timestamps lie in (event.at-width,event.at], including that event and other equal-timestamp events. Input arrival order may differ from event time. width must be positive finite; event timestamps must be finite. Preserve inputs and return {id,count} in input order.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/event_time_rolling_counts.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.event_time_rolling_counts.rollingCounts",
+        "src.api.rollingCounts"
+      ],
+      "oracle_id": "event-time-rolling-counts",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-keyed-upsert-order",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Collapse rows by string key: the last row for a key wins, while output key positions retain first insertion order. Keys such as '__proto__' and 'constructor' are ordinary keys. Return deep copies, retain falsy payloads, and do not modify the input.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/keyed_upsert_order.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.keyed_upsert_order.upsertRows",
+        "src.api.upsertRows"
+      ],
+      "oracle_id": "keyed-upsert-order",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-bounded-run-length-decode",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Decode {value,count} runs with a hard total-output cap. Counts and maxItems must be nonnegative safe integers; zero runs contribute nothing. Validate the full output size before allocating and reject overflow or cap excess. Each repeated object value must be an independent deep copy, also detached from input.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/bounded_run_length_decode.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.bounded_run_length_decode.decodeRuns",
+        "src.api.decodeRuns"
+      ],
+      "oracle_id": "bounded-run-length-decode",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-simultaneous-text-edits",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Apply non-overlapping text edits using UTF-16 offsets into the original string, regardless of edit input order. start/end are safe integers with 0<=start<=end<=text.length. Reject overlapping replacements and two edits with the same start; adjacent edits are valid. Return the edited string, preserve edits, and validate everything before applying.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/simultaneous_text_edits.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.simultaneous_text_edits.applyEdits",
+        "src.api.applyEdits"
+      ],
+      "oracle_id": "simultaneous-text-edits",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-transactional-accumulator",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Apply a batch of counter deltas atomically: unknown keys start at zero, amounts and resulting balances must be safe integers, and no resulting balance may be negative. On failure preserve the entire original state. On success update state and return a detached snapshot. Treat '__proto__' as an ordinary own counter key, never inherited data.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/transactional_accumulator.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.transactional_accumulator.accumulate",
+        "src.api.accumulate"
+      ],
+      "oracle_id": "transactional-accumulator",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-abort-aware-delay-plan",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Plan sequential work under a relative deadline. Include each zero-based task index only if its cumulative finish time is at most deadline; once a task cannot fit, stop rather than skipping it. Delays and deadline must be nonnegative finite numbers, preserve inputs, and reject nonfinite accumulated totals.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/abort_aware_delay_plan.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.abort_aware_delay_plan.delayPlan",
+        "src.api.delayPlan"
+      ],
+      "oracle_id": "abort-aware-delay-plan",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-stream-escaped-record-codec",
+      "language": "typescript",
+      "repository": "stream-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "stream-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript stream application, Decode a pipe-delimited record where backslash escapes only pipe and backslash. Retain empty and trailing fields, preserve all other characters, and reject unknown escapes or a dangling backslash. Decode in a single left-to-right pass so an escaped backslash does not escape the following separator.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/escaped_record_codec.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.escaped_record_codec.decodeRecord",
+        "src.api.decodeRecord"
+      ],
+      "oracle_id": "escaped-record-codec",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-repeated-query-values",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Parse a query string, optionally beginning '?', into own-property arrays of strings. Decode percent escapes and '+' as space separately for each key/value, split on only the first '=', accumulate repeated keys in arrival order, accept flags as empty values, ignore empty '&' fields and reject malformed URI escapes. Prototype-looking names must remain ordinary own keys.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/repeated_query_values.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.repeated_query_values.parseQuery",
+        "src.api.parseQuery"
+      ],
+      "oracle_id": "repeated-query-values",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-safe-local-redirects",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Resolve redirect targets against an HTTP(S) base and allow them only when the normalized URL has exactly the same origin (scheme, hostname, effective port). Reject credentials, non-HTTP(S) schemes, cross-origin and malformed URLs. Return pathname+search+hash, preserving percent encodings; relative targets and normalized default ports are allowed.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/safe_local_redirects.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.safe_local_redirects.localRedirect",
+        "src.api.localRedirect"
+      ],
+      "oracle_id": "safe-local-redirects",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-unicode-ascii-slugs",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Generate an ASCII slug by Unicode NFKD normalization, removing combining marks, lowercasing, replacing each maximal run of non-ASCII-alphanumeric characters with one hyphen, and trimming edge hyphens. The empty result is valid. Unicode compatibility characters such as fullwidth Latin must normalize before filtering.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/unicode_ascii_slugs.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.unicode_ascii_slugs.slugify",
+        "src.api.slugify"
+      ],
+      "oracle_id": "unicode-ascii-slugs",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-quoted-env-values",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Parse offline .env lines of KEY=VALUE with optional 'export ', blank lines and full-line comments. Keys match [A-Za-z_][A-Za-z0-9_]*; last duplicate wins. Unquoted values trim surrounding whitespace and comments beginning '#'; single/double-quoted values preserve spaces and '#', require a closing matching quote and permit only whitespace or a comment afterwards. Double quotes decode newline, carriage-return, tab, backslash and double-quote escape sequences; single quotes are literal. Reject malformed assignments and unknown double-quote escapes.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/quoted_env_values.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.quoted_env_values.parseEnv",
+        "src.api.parseEnv"
+      ],
+      "oracle_id": "quoted-env-values",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-semantic-version-precedence",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Compare strict semantic versions and return -1, 0 or 1. Core is three nonnegative integers without leading zeroes; optional prerelease identifiers are ASCII alphanumeric/hyphen, dot-separated, with numeric identifiers disallowing leading zeroes. Numeric identifiers compare numerically and precede nonnumeric identifiers; a shorter equal-prefix prerelease precedes a longer one; release versions outrank prereleases. Ignore valid build metadata. Reject invalid syntax and preserve exact comparison of arbitrarily large numeric identifiers.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/semantic_version_precedence.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.semantic_version_precedence.compareVersions",
+        "src.api.compareVersions"
+      ],
+      "oracle_id": "semantic-version-precedence",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-strict-pointer-lookup",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Read a JSON pointer without losing falsy values. Empty pointer returns the root; decode ~1 then ~0, reject invalid escapes, require own object keys, and use canonical nonnegative decimal indices for arrays (no leading zero except 0, '-' or out-of-range). Missing paths throw. Return a deep copy, including for the root.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/strict_pointer_lookup.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.strict_pointer_lookup.lookup",
+        "src.api.lookup"
+      ],
+      "oracle_id": "strict-pointer-lookup",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-utf8-feature-cohorts",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Assign users deterministically to rollout cohorts. Compute unsigned 32-bit FNV-1a over UTF-8 bytes of salt + ':' + user (offset 2166136261, prime 16777619, wrapping after each multiply), then include iff hash % 10000 < basisPoints. Validate integer basis points 0..10000. Unicode must hash as UTF-8 bytes, not UTF-16 code units.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/utf8_feature_cohorts.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.utf8_feature_cohorts.inCohort",
+        "src.api.inCohort"
+      ],
+      "oracle_id": "utf8-feature-cohorts",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-complete-form-errors",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Validate a signup form and return every applicable error in this fixed order: email, password, confirmation, age. Email is a string matching nonwhitespace@nonwhitespace.dot-nonwhitespace; password is a string of at least 8 characters; confirmation must exactly equal a string password; age is an integer 18..120. Do not coerce fields, stop early or mutate input. Return [] for valid input.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/complete_form_errors.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.complete_form_errors.validateSignup",
+        "src.api.validateSignup"
+      ],
+      "oracle_id": "complete-form-errors",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-specific-route-matching",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Match slash-separated routes containing literal segments or ':name' single-segment parameters. Decode request segments exactly once and reject malformed escapes or decoded slash/backslash. Require equal segment counts. Pick the matching route with the most literal segments, preserving input order for ties; return {id,params} or null. Literal comparisons use decoded path values; do not mutate route order.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/specific_route_matching.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.specific_route_matching.matchRoute",
+        "src.api.matchRoute"
+      ],
+      "oracle_id": "specific-route-matching",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts2-config-casefold-header-collection",
+      "language": "typescript",
+      "repository": "config-typescript-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_v2.build_repository",
+        "repository": "config-typescript-v2",
+        "version": "2.0.0"
+      },
+      "prompt": "In this Typescript config application, Collect HTTP-style headers case-insensitively into a lower-case-keyed map of string arrays, retaining first key appearance order and all duplicate values in arrival order (including Set-Cookie). Trim outer value whitespace, reject CR/LF in names or values and names outside ASCII HTTP token syntax. Prototype-looking valid names are ordinary own keys. Do not mutate inputs or combine values with commas.\n\nThe public API adapter and domain module must implement the same contract; check their interaction as well as the domain logic. Implement the change in production source. Run the existing offline smoke tests and add focused regression tests if useful. Preserve public interfaces. Do not inspect or modify benchmark machinery, grading files or files outside this repository. Do not change dependency/build configuration or weaken existing tests. Finish with a brief description and the tests you ran.",
+      "target_files": [
+        "src/casefold_header_collection.ts",
+        "src/api.ts"
+      ],
+      "expected_symbols": [
+        "src.casefold_header_collection.collectHeaders",
+        "src.api.collectHeaders"
+      ],
+      "oracle_id": "casefold-header-collection",
+      "checks": {
+        "held_out_behavior": true,
+        "public_api_integration": true,
+        "smoke": true,
+        "typescript_typecheck": true
+      }
+    }
+  ]
+}

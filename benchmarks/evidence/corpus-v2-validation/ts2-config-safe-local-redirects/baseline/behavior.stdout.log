@@ -1,0 +1,57 @@
+TAP version 13
+# Subtest: origin includes scheme and port
+not ok 1 - origin includes scheme and port
+  ---
+  duration_ms: 5.158083
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern31/baseline/held_out.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern31/baseline/held_out.test.mjs:7:159)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: relative normalization malformed URL and encoding
+not ok 2 - relative normalization malformed URL and encoding
+  ---
+  duration_ms: 1.075048
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern31/baseline/held_out.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '/c%20d?q=%2F'
+    - '/c%20d?q=%2F#x'
+                   ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '/c%20d?q=%2F#x'
+  actual: '/c%20d?q=%2F'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern31/baseline/held_out.test.mjs:12:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 244.799046

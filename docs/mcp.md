@@ -91,3 +91,68 @@ Use normal source tools whenever Memglide evidence is missing, stale, or insuffi
 ```
 
 Memglide cannot access hidden model thoughts, automatically capture discoveries that were never submitted, or remove/rewrite Codex's internally managed conversation history. A retrieval budget controls its tool response, not the client's entire model input. No billed-token saving follows from response size alone.
+
+## Optional project-bound agent profile
+
+For a coding agent working in one approved repository, the opt-in `agent` profile
+advertises two tools instead of the default fourteen. Register the repository
+first and use the ID from `memglide project list`. The supported setup command
+registers the bound profile with Codex:
+
+```sh
+uv run memglide --db /absolute/path/to/memglide.db setup codex --project REGISTERED_PROJECT_ID
+```
+
+Like the default setup, this preserves an existing `memglide` registration. Inspect
+and deliberately replace that entry through Codex's supported commands when
+switching profiles. The equivalent STDIO command is:
+
+```sh
+/absolute/path/to/python -I -m memglide.cli --db /absolute/path/to/memglide.db mcp --profile agent --project REGISTERED_PROJECT_ID
+```
+
+Use this command in your client's supported MCP configuration. The ordinary
+`mcp` command and `setup codex` without `--project` retain
+the full API above. The profile accepts only an existing project ID; it cannot
+register a root from a model-supplied path or access another project's sessions.
+
+`fetch_context(query, budget=4000)` starts a private expiring session as needed
+and executes the same level 2 context engine in one call. Provide a non-empty task,
+exact symbol, or relative path. The response keeps the returned source snippets
+intact, records one source hash per file, and includes retrieval ID, source
+freshness, truncation, warnings and related test paths. Repeated project, session,
+query, graph and passport metadata are omitted. A planning budget is a bounded
+JSON-byte estimate, not measured model usage. Increase it or narrow the query if
+needed; omitted evidence remains explicit and the response does not promise that
+all relevant code is present.
+
+The default remains 4000 because selection uses the shared engine's full planning
+envelope before this adapter removes metadata. Reducing that input budget can
+discard useful code even when the final compact reply is small. Match the budget
+to the required source evidence, rather than reducing it solely to shrink replies.
+
+These two tools return one JSON text block through the SDK's native
+`CallToolResult` interface. They advertise no structured-output schema and do not
+repeat the source payload in `structuredContent`. This avoids duplicate source
+copies when clients inspect the full MCP envelope; it does not establish any
+particular reduction in model input. The default fourteen-tool profile retains
+its structured-output interface.
+
+Use `verify_context()` when reusing older evidence and source freshness is
+uncertain, such as after possible external edits. It checks the latest retrieval's
+selected source hashes directly from disk. Pass a previously returned
+`retrieval_id` to check an earlier retrieval from the same server. It returns
+status, changed/missing paths and warnings without repeating source bodies. An
+edit can correctly make earlier evidence Stale; fetch again when the next
+decision requires current source. Every fetch already refreshes source evidence.
+Task completion alone does not require an extra verification call. Current source
+hashes do not establish semantic completeness or test correctness.
+
+The bound server synchronously scans its approved project on fetch and validates
+selected hashes on verification. It does not run a background repository watcher
+or provide a continuous project activity feed. New files are discovered on the
+next fetch; deleted or symlink-replaced selected files become stale. Its private
+session ends when the transport closes. The profile exposes no memory mutation
+tools and does not reuse persistent history across separate server processes.
+This reduces protocol work; actual token, latency or cost benefits require a
+matched live benchmark.

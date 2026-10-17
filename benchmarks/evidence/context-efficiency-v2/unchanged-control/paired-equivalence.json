@@ -1,0 +1,25 @@
+{
+  "pairs": [
+    {
+      "pair_id": "full_source:1",
+      "comparable": true,
+      "equivalent": true
+    },
+    {
+      "pair_id": "natural:1",
+      "comparable": true,
+      "equivalent": true
+    },
+    {
+      "pair_id": "small_budget:1",
+      "comparable": true,
+      "equivalent": true
+    }
+  ],
+  "duplicate_pair_ids": {
+    "before": [],
+    "after": []
+  },
+  "all_equivalent": true,
+  "protocol_sha256": "06ecec93bae22b0defb88f649fd5701ea1fe7f6ee985339a9ca999764a44f4e2"
+}

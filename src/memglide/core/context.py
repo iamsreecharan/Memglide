@@ -21,6 +21,36 @@ def estimate_tokens(value: Any) -> int:
     return math.ceil(len(json.dumps(value, ensure_ascii=False).encode("utf-8")) / 3)
 
 
+class _RequestSources:
+    """Bounded verified snapshots used only while packing one context response.
+
+    Every retained source is securely read again before the response is stored.
+    Neither these bytes nor successful validation survive the request.
+    """
+
+    def __init__(self, root: str, max_size: int):
+        self.root = root
+        self.max_size = max_size
+        self.contents: dict[str, tuple[str, str]] = {}
+        self.cached_bytes = 0
+
+    def read(self, path: str) -> tuple[str, str]:
+        if path in self.contents:
+            return self.contents[path]
+        source = read_source(self.root, path, self.max_size)
+        # A broad query may examine many large files that do not fit. Bound the
+        # additional snapshot memory rather than retaining every examined file.
+        size = len(source[0].encode("utf-8"))
+        if self.cached_bytes + size <= 8 * 1024 * 1024:
+            self.contents[path] = source
+            self.cached_bytes += size
+        return source
+
+    def clear(self) -> None:
+        self.contents.clear()
+        self.cached_bytes = 0
+
+
 class ContextEngine:
     def __init__(self, db: Database, indexer: Any, memory: MemoryEngine):
         self.db = db
@@ -204,10 +234,19 @@ class ContextEngine:
         )
 
     def _source_item(
-        self, project: dict[str, Any], candidate: dict[str, Any], level: int
+        self,
+        project: dict[str, Any],
+        candidate: dict[str, Any],
+        level: int,
+        *,
+        sources: _RequestSources | None = None,
     ) -> dict[str, Any]:
         path = str(candidate["path"])
-        text, current_hash = read_source(project["path"], path, self.db.settings()["max_file_size"])
+        text, current_hash = (
+            sources.read(path)
+            if sources is not None
+            else read_source(project["path"], path, self.db.settings()["max_file_size"])
+        )
         expected = candidate.get("hash")
         if expected and expected != current_hash:
             raise DomainError("Indexed source changed; reindex " + path, 409)
@@ -241,14 +280,23 @@ class ContextEngine:
         self, project_id: str, candidates: list[dict[str, Any]]
     ) -> list[dict[str, Any]]:
         found: dict[tuple[str, ...], dict[str, Any]] = {}
+        metadata_dependencies = getattr(self.indexer, "_context_dependencies", None)
+
+        def dependencies(key: str) -> list[dict[str, Any]]:
+            if metadata_dependencies is not None:
+                return list(metadata_dependencies(project_id, key, direction="both"))
+            return list(self.indexer.dependencies(project_id, key, direction="both", refresh=False))
+
         for candidate in candidates[:10]:
-            key = candidate.get("id") or candidate.get("symbol") or candidate["path"]
+            key = (
+                candidate["path"]
+                if candidate.get("kind") == "file"
+                else candidate.get("id") or candidate.get("symbol") or candidate["path"]
+            )
             try:
-                deps = self.indexer.dependencies(project_id, key, direction="both", refresh=False)
+                deps = dependencies(key)
             except DomainError:
-                deps = self.indexer.dependencies(
-                    project_id, candidate["path"], direction="both", refresh=False
-                )
+                deps = dependencies(candidate["path"])
             for dep in deps:
                 found[self._dependency_key(dep)] = self._dependency_view(dep)
         return [found[key] for key in sorted(found)]
@@ -271,6 +319,12 @@ class ContextEngine:
             if is_test and any(stem in name for stem in stems):
                 tests.append(path)
         return tests
+
+    def _indexed_candidate(self, project_id: str, key: str) -> dict[str, Any]:
+        metadata_lookup = getattr(self.indexer, "_get_context_candidate", None)
+        if metadata_lookup is not None:
+            return dict(metadata_lookup(project_id, key))
+        return dict(self.indexer.get_symbol(project_id, key, refresh=False))
 
     def _expand_candidates(
         self,
@@ -295,7 +349,7 @@ class ContextEngine:
         seen = {(c["path"], c.get("start_line", 0), c.get("end_line", 0)) for c in candidates}
         for key in dict.fromkeys(keys):
             try:
-                related = self.indexer.get_symbol(project_id, key, refresh=False)
+                related = self._indexed_candidate(project_id, key)
             except DomainError:
                 continue
             identity = (related["path"], related.get("start_line", 0), related.get("end_line", 0))
@@ -655,8 +709,13 @@ class ContextEngine:
         if not query:
             raise DomainError("Provide a context query or start the session with a task")
         intent = self._query_intent(query)
+        metadata_search = getattr(self.indexer, "_search_context_candidates", None)
         candidates = self._rank(
-            self.indexer.search(project_id, query, limit=40), query, session["task"]
+            metadata_search(project_id, query, limit=40)
+            if metadata_search is not None
+            else self.indexer.search(project_id, query, limit=40),
+            query,
+            session["task"],
         )
         session_events: list[dict[str, Any]] = []
         history_warnings: list[str] = []
@@ -665,7 +724,7 @@ class ContextEngine:
             candidates = []
             for path in dict.fromkeys(event["path"] for event in session_events):
                 try:
-                    candidate = self.indexer.get_symbol(project_id, path, refresh=False)
+                    candidate = self._indexed_candidate(project_id, path)
                 except DomainError:
                     history_warnings.append(
                         "Recorded changed source is deleted, excluded, or unavailable: " + path
@@ -756,11 +815,12 @@ class ContextEngine:
                     "Some recorded file-change events could not fit; increase the budget or inspect the session timeline."
                 )
                 break
-        included: list[tuple[str, int, int]] = []
-        omitted = 0
+        omitted: list[tuple[str, int, int]] = []
+        non_source_truncated = response["truncated"]
+        sources = _RequestSources(project["path"], self.db.settings()["max_file_size"])
         for candidate in candidates:
             try:
-                item = self._source_item(project, candidate, level)
+                item = self._source_item(project, candidate, level, sources=sources)
             except (OSError, DomainError):
                 missing.append(
                     "Source changed or is unavailable: "
@@ -769,16 +829,59 @@ class ContextEngine:
                 )
                 continue
             identity = (item["path"], item["start_line"], item["end_line"])
-            if any(
-                path == identity[0]
+            overlaps = [
+                existing
+                for existing in response["items"]
+                if existing["path"] == identity[0]
                 and (
                     level == 1
-                    and identity == (path, start, end)
+                    and identity == (existing["path"], existing["start_line"], existing["end_line"])
                     or level > 1
-                    and max(start, identity[1]) <= min(end, identity[2])
+                    and max(existing["start_line"], identity[1])
+                    <= min(existing["end_line"], identity[2])
                 )
-                for path, start, end in included
-            ):
+            ]
+            if overlaps:
+                # A small declaration must not prevent a later complete parent
+                # body from supplying the rest of the task's source evidence.
+                # Replace only complete containment, never partial overlap, and
+                # evaluate the full response before changing any existing unit.
+                if (
+                    level == 1
+                    or not item["snippet"]
+                    or any(
+                        existing["snippet"]
+                        and existing["start_line"] <= identity[1]
+                        and existing["end_line"] >= identity[2]
+                        or not (
+                            identity[1] <= existing["start_line"]
+                            and identity[2] >= existing["end_line"]
+                        )
+                        for existing in overlaps
+                    )
+                ):
+                    continue
+                remaining_omitted = [
+                    unit
+                    for unit in omitted
+                    if not (
+                        unit[0] == identity[0] and identity[1] <= unit[1] and identity[2] >= unit[2]
+                    )
+                ]
+                trial = {
+                    **response,
+                    "items": [
+                        existing for existing in response["items"] if existing not in overlaps
+                    ]
+                    + [item],
+                    "truncated": bool(non_source_truncated or remaining_omitted),
+                }
+                self._build_passport(trial, dependencies, tests, missing)
+                if trial["estimated_tokens"] <= budget:
+                    response = trial
+                    omitted = remaining_omitted
+                else:
+                    omitted.append(identity)
                 continue
             response["items"].append(item)
             self._build_passport(response, dependencies, tests, missing)
@@ -788,6 +891,7 @@ class ContextEngine:
             ):
                 response["session_events"].pop()
                 response["truncated"] = True
+                non_source_truncated = True
                 missing = list(
                     dict.fromkeys(
                         [
@@ -801,30 +905,65 @@ class ContextEngine:
                 response["items"].pop()
                 # Keep a structural reference if an implementation cannot fit.
                 if level > 1:
-                    discovery = self._source_item(project, candidate, 1)
+                    discovery = self._source_item(project, candidate, 1, sources=sources)
                     discovery["reason"] += "; implementation omitted by token budget"
                     response["items"].append(discovery)
                     response["truncated"] = True
                     self._build_passport(response, dependencies, tests, missing)
                     if response["estimated_tokens"] <= budget:
-                        included.append(
-                            (discovery["path"], discovery["start_line"], discovery["end_line"])
-                        )
-                        omitted += 1
+                        omitted.append(identity)
                         continue
                     response["items"].pop()
-                omitted += 1
-            else:
-                included.append(identity)
+                omitted.append(identity)
         if omitted:
             response["truncated"] = True
-            missing.append(f"Budget omitted {omitted} candidate implementation(s) or references.")
+            missing.append(
+                f"Budget omitted {len(omitted)} candidate implementation(s) or references."
+            )
         for memory in memories:
             response["memories"].append(memory)
             self._build_passport(response, dependencies, tests, missing)
             if response["estimated_tokens"] > budget:
                 response["memories"].pop()
                 response["truncated"] = True
+
+        # Packing several declarations from a file uses one immutable snapshot.
+        # Verify every retained path after packing, including source-backed
+        # memories, so an edit/deletion/symlink swap cannot hide behind that
+        # request-local snapshot or leave obsolete source marked Current.
+        sources.clear()
+        expected_hashes: dict[str, set[str]] = {}
+        for item in response["items"]:
+            expected_hashes.setdefault(item["path"], set()).add(item["hash"])
+        for memory in response["memories"]:
+            for source in memory["sources"]:
+                if source.get("current"):
+                    expected_hashes.setdefault(source["path"], set()).add(source["hash"])
+        changed_paths = set()
+        for path, expected in expected_hashes.items():
+            try:
+                _, current_hash = read_source(
+                    project["path"], path, self.db.settings()["max_file_size"]
+                )
+                if expected == {current_hash}:
+                    continue
+            except (OSError, DomainError):
+                pass
+            changed_paths.add(path)
+            missing.append("Source changed or is unavailable: " + path + "; reindex and retry.")
+        if changed_paths:
+            response["items"] = [
+                item for item in response["items"] if item["path"] not in changed_paths
+            ]
+            response["memories"] = [
+                memory
+                for memory in response["memories"]
+                if not any(
+                    source.get("current") and source["path"] in changed_paths
+                    for source in memory["sources"]
+                )
+            ]
+            response["truncated"] = True
         self._build_passport(response, dependencies, tests, missing)
         # Final warnings and passport metadata also consume budget. Remove whole
         # evidence units instead of silently cutting source in the middle.

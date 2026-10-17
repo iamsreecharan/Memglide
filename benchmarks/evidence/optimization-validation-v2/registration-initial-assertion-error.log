@@ -1,0 +1,57 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.2, pluggy-1.7.0
+rootdir: /workspace/Memglide
+configfile: pyproject.toml
+plugins: asyncio-1.3.0, anyio-4.15.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 11 items / 4 deselected / 7 selected
+
+tests/test_agent_codex_registration.py .F                                [ 28%]
+tests/test_transports.py .....                                           [100%]
+
+=================================== FAILURES ===================================
+_____________ test_unknown_project_cannot_register_an_agent_server _____________
+
+tmp_path = PosixPath('/workspace/Memglide/.local/optimization-v2/registration-tests-2/test_unknown_project_cannot_re0')
+
+    def test_unknown_project_cannot_register_an_agent_server(tmp_path: Path) -> None:
+        config = tmp_path / "codex"
+        config.mkdir()
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-I",
+                "-m",
+                "memglide.cli",
+                "--db",
+                str(tmp_path / "state.db"),
+                "setup",
+                "codex",
+                "--project",
+                "unapproved-project",
+            ],
+            env={**os.environ, "CODEX_HOME": str(config)},
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+        assert result.returncode != 0
+>       assert "Unknown project" in result.stderr
+E       AssertionError: assert 'Unknown project' in 'Error: Unknown or unregistered project\n'
+E        +  where 'Error: Unknown or unregistered project\n' = CompletedProcess(args=['/workspace/Memglide/.venv/bin/python', '-I', '-m', 'memglide.cli', '--db', '/workspace/Memglid...codex', '--project', 'unapproved-project'], returncode=1, stdout='', stderr='Error: Unknown or unregistered project\n').stderr
+
+tests/test_agent_codex_registration.py:99: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/typer/__init__.py:24
+  /workspace/Memglide/.venv/lib/python3.12/site-packages/typer/__init__.py:24: DeprecationWarning: 'click.utils.get_binary_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_binary_stream as get_binary_stream
+
+.venv/lib/python3.12/site-packages/typer/__init__.py:25
+  /workspace/Memglide/.venv/lib/python3.12/site-packages/typer/__init__.py:25: DeprecationWarning: 'click.utils.get_text_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_text_stream as get_text_stream
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /workspace/Memglide/.local/optimization-v2/registration-tests-2.xml -
+=========================== short test summary info ============================
+FAILED tests/test_agent_codex_registration.py::test_unknown_project_cannot_register_an_agent_server
+============ 1 failed, 6 passed, 4 deselected, 2 warnings in 5.45s =============

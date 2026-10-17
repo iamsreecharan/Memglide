@@ -1,0 +1,71 @@
+{
+  "task_id": "py2-workflow-ready-job-order",
+  "repository": "workflow-python-v2",
+  "corpus_version": "2.0.0",
+  "passed": false,
+  "success": false,
+  "exit_code": 1,
+  "commands": [
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern10/baseline/held_out.py"
+      ],
+      "exit_code": 1,
+      "counts": {
+        "tests": 2,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern10/baseline/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern10/baseline/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 10
+      },
+      "stdout_path": "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern10/baseline/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern10/baseline/smoke.stderr.log"
+    }
+  ],
+  "test_count": 12,
+  "protected_files_unchanged": true,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "306f48680f02b4f7673be457e39e946429cd198a515f9fac4ed8b63a393170ef",
+      "actual_sha256": "306f48680f02b4f7673be457e39e946429cd198a515f9fac4ed8b63a393170ef"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "ef66c92a79dd098a77cb320d77788af14342c70d54d123e8afeafecc2176dfad",
+      "actual_sha256": "ef66c92a79dd098a77cb320d77788af14342c70d54d123e8afeafecc2176dfad"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "tests/test_smoke.py",
+      "unchanged": true,
+      "expected_sha256": "905a3106a061f4d55dae7f89fab5fcbf1c50f17a398bca9ef24e273c86aa47d6",
+      "actual_sha256": "905a3106a061f4d55dae7f89fab5fcbf1c50f17a398bca9ef24e273c86aa47d6"
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

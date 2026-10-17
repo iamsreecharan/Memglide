@@ -70,9 +70,16 @@ def test_treatment_preapproves_only_the_actual_memglide_tools(tmp_path):
     # Compare the host allowlist with the actual public transport declarations,
     # so adding/renaming a tool requires a deliberate authorization decision.
     source = run.ROOT / "src/memglide/integrations/mcp_server.py"
+    factory = next(
+        node
+        for node in ast.parse(source.read_text()).body
+        if isinstance(node, ast.FunctionDef) and node.name == "create_server"
+    )
+    # Default-profile tools are direct declarations after the agent branch's
+    # early return; the nested compact profile has its own transport tests.
     declared_tools = {
         node.name
-        for node in ast.walk(ast.parse(source.read_text()))
+        for node in factory.body
         if isinstance(node, ast.FunctionDef)
         and any(
             isinstance(decorator, ast.Call)

@@ -1,0 +1,47 @@
+test_bound_order_and_empty (__main__.BehaviorTests.test_bound_order_and_empty) ... FAIL
+test_error_cleanup_and_validation (__main__.BehaviorTests.test_error_cleanup_and_validation) ... FAIL
+
+======================================================================
+FAIL: test_bound_order_and_empty (__main__.BehaviorTests.test_bound_order_and_empty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern18/baseline/held_out.py", line 19, in test_bound_order_and_empty
+    asyncio.run(scenario())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern18/baseline/held_out.py", line 17, in scenario
+    self.assertLessEqual(peak,2); self.assertEqual(active,0)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 5 not less than or equal to 2
+
+======================================================================
+FAIL: test_error_cleanup_and_validation (__main__.BehaviorTests.test_error_cleanup_and_validation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern18/baseline/held_out.py", line 34, in test_error_cleanup_and_validation
+    asyncio.run(scenario())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern18/baseline/held_out.py", line 30, in scenario
+    with self.assertRaises(RuntimeError) as caught: await api.map_async([0,1,2,3],operation,2)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.010s
+
+FAILED (failures=2)

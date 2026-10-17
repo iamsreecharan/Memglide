@@ -1,0 +1,38 @@
+
+> memglide-dashboard@0.1.0 test
+> vitest --run --reporter=verbose --reporter=junit --outputFile.junit=../.local/optimization-v2/frontend.xml
+
+
+ RUN  v5.0.5 /workspace/Memglide/frontend
+
+ ✓ tests/api.test.ts > local API transport > adds browser mutation protection and reports structured server errors 32ms
+ ✓ tests/api.test.ts > local API transport > distinguishes an unavailable local service and URL-encodes query filters 3ms
+ ✓ tests/ui.test.tsx > keeps a busy action disabled even when its ordinary disabled condition is false 412ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > waits for delayed sessions before confirming passport URL alignment 562ms
+ ✓ tests/ui.test.tsx > keeps modal keyboard focus stable across input rerenders and handles Escape 283ms
+ ✓ tests/ui.test.tsx > identifies shortened relationship evidence without marking ordinary references as previews 40ms
+ ✓ tests/ui.test.tsx > focuses an enabled editor control and traps keyboard navigation inside the dialog 173ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > opens a passport URL for its own session without losing the pending query during auto-selection 215ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > keeps ended sessions available for deletion without recalling their memories 310ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > renders ignored file paths and exclusion reasons from the index 130ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > shows real empty states and registers a repository through the API 258ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > starts and selects sessions and clears their cached task data on deletion 453ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > dismisses a memory draft when background cleanup selects another session 367ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > keeps a deletion confirmation bound to its original session on /memory 173ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > keeps a deletion confirmation bound to its original session on /settings 329ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > does not end a replacement session when the original confirmation target disappears 512ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > keeps a new-session draft assigned to the project that opened it 479ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > does not select an old project's new session after a delayed refresh completes 420ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > searches and filters memories and saves explicit provenance 1158ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > retrieves ranked evidence, expands depth, and renders source hashes and passport warnings 505ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > persists settings and applies the saved theme from the backend 527ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > retains a settings draft after a rejected save and permits a successful retry 311ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > filters actual timeline events and exposes event detail 295ms
+ ✓ tests/workflows.test.tsx > dashboard workflows > reports service errors without displaying invented overview metrics 59ms
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  22:44:03
+   Duration  11.81s (tests 44%, environment 42%, setup 6%, import 6%, transform 2%)
+
+JUNIT report written to /workspace/Memglide/.local/optimization-v2/frontend.xml

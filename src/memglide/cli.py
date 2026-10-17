@@ -214,20 +214,50 @@ def passport(ctx: typer.Context, session_id: str, retrieval_id: str) -> None:
 
 
 @app.command("mcp")
-def mcp(ctx: typer.Context) -> None:
+def mcp(
+    ctx: typer.Context,
+    profile: str = typer.Option(
+        "default", "--profile", help="Tool interface: default or project-bound agent."
+    ),
+    project: str | None = typer.Option(
+        None, "--project", help="Existing approved project ID; required for the agent profile."
+    ),
+) -> None:
     """Run the official MCP v2 STDIO server; diagnostics use stderr."""
+    if profile not in {"default", "agent"}:
+        raise typer.BadParameter("Choose default or agent", param_hint="--profile")
+    if profile == "agent" and not project:
+        raise typer.BadParameter(
+            "The agent profile needs an approved project ID", param_hint="--project"
+        )
+    if profile == "default" and project is not None:
+        raise typer.BadParameter(
+            "Use --profile agent with a project binding", param_hint="--project"
+        )
     from memglide.integrations.mcp_server import run_server
 
-    run_server(ctx.obj.get("db_path"))
+    try:
+        if profile == "default":
+            run_server(ctx.obj.get("db_path"))
+        else:
+            run_server(ctx.obj.get("db_path"), profile=profile, project_id=project)
+    except (DomainError, OSError, sqlite3.Error) as error:
+        errors.print(f"Error: {error}", markup=False)
+        raise typer.Exit(1) from None
 
 
 @setup_app.command("codex")
-def setup_codex_command(ctx: typer.Context) -> None:
+def setup_codex_command(
+    ctx: typer.Context,
+    project: str | None = typer.Option(
+        None, "--project", help="Bind the compact agent interface to this approved project ID."
+    ),
+) -> None:
     """Register the STDIO server with Codex, preserving an existing registration."""
     from memglide.integrations.codex import setup_codex
 
     try:
-        console.print_json(json.dumps(setup_codex(ctx.obj.get("db_path"))))
+        console.print_json(json.dumps(setup_codex(ctx.obj.get("db_path"), project_id=project)))
     except (DomainError, OSError) as error:
         errors.print(f"Error: {error}", markup=False)
         raise typer.Exit(1) from None

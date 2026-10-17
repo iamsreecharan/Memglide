@@ -1,0 +1,116 @@
+TAP version 13
+# Subtest: last values first positions and special keys
+not ok 1 - last values first positions and special keys
+  ---
+  duration_ms: 7.144649
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern24/baseline/held_out.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        {
+    +     key: '__proto__',
+    +     payload: false
+    -     key: 'b',
+    -     payload: 0
+        },
+        {
+          key: 'a',
+          payload: 2
+        },
+        {
+    +     key: 'b',
+    +     payload: 0
+    -     key: '__proto__',
+    -     payload: false
+        },
+        {
+          key: 'constructor',
+          payload: null
+        }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      key: 'b'
+      payload: 0
+    1:
+      key: 'a'
+      payload: 2
+    2:
+      key: '__proto__'
+      payload: false
+    3:
+      key: 'constructor'
+      payload: ~
+  actual:
+    0:
+      key: '__proto__'
+      payload: false
+    1:
+      key: 'a'
+      payload: 2
+    2:
+      key: 'b'
+      payload: 0
+    3:
+      key: 'constructor'
+      payload: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern24/baseline/held_out.test.mjs:8:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: deep copy isolation
+not ok 2 - deep copy isolation
+  ---
+  duration_ms: 1.230038
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern24/baseline/held_out.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        items: [
+          1,
+    +     2
+        ]
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    items:
+      0: 1
+  actual:
+    items:
+      0: 1
+      1: 2
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern24/baseline/held_out.test.mjs:14:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 251.014161

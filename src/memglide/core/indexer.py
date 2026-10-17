@@ -830,6 +830,43 @@ class Indexer:
     def search(
         self, project_id: str, query: str, limit: int = 20, *, refresh: bool = True
     ) -> list[dict[str, Any]]:
+        return self._search(project_id, query, limit, refresh=refresh, metadata_only=False)
+
+    def _search_context_candidates(
+        self, project_id: str, query: str, limit: int = 20
+    ) -> list[dict[str, Any]]:
+        """Internal index metadata; ContextEngine must verify selected source bytes.
+
+        Search ranking needs indexed declarations, not repeated source snippets.
+        This still refreshes the index and never labels metadata Current.
+        """
+        return self._search(project_id, query, limit, refresh=True, metadata_only=True)
+
+    @staticmethod
+    def _context_candidate(row: dict[str, Any], score: float, reason: str) -> dict[str, Any]:
+        name = row.get("name", PurePosixPath(row["path"]).name)
+        return {
+            **row,
+            "symbol": row.get("qualified_name", name),
+            "name": name,
+            "signature": row.get("signature", ""),
+            "kind": row.get("kind", "file"),
+            "start_line": row.get("start_line", 1),
+            "end_line": row.get("end_line"),
+            "score": round(score, 4),
+            "reason": reason,
+            "structural": bool(row["structural"]),
+        }
+
+    def _search(
+        self,
+        project_id: str,
+        query: str,
+        limit: int,
+        *,
+        refresh: bool,
+        metadata_only: bool,
+    ) -> list[dict[str, Any]]:
         self.db.project(project_id)
         if not query.strip():
             return []
@@ -1004,7 +1041,11 @@ class Indexer:
         for score, reason, row in candidates:
             if row["id"] in returned:
                 continue
-            candidate = self._candidate(project, row, score, reason, snippet_limit=1600)
+            candidate = (
+                self._context_candidate(row, score, reason)
+                if metadata_only
+                else self._candidate(project, row, score, reason, snippet_limit=1600)
+            )
             if candidate:
                 output.append(candidate)
                 returned.add(row["id"])
@@ -1013,6 +1054,15 @@ class Indexer:
         return output
 
     def get_symbol(self, project_id: str, symbol: str, *, refresh: bool = True) -> dict[str, Any]:
+        return self._get_symbol(project_id, symbol, refresh=refresh, metadata_only=False)
+
+    def _get_context_candidate(self, project_id: str, symbol: str) -> dict[str, Any]:
+        """Resolve indexed metadata without emitting unverified source evidence."""
+        return self._get_symbol(project_id, symbol, refresh=False, metadata_only=True)
+
+    def _get_symbol(
+        self, project_id: str, symbol: str, *, refresh: bool, metadata_only: bool
+    ) -> dict[str, Any]:
         project = self.db.project(project_id)
         if refresh:
             self.reindex(project_id)
@@ -1033,6 +1083,8 @@ class Indexer:
             rows = exact_ids
         if len(rows) > 1:
             raise DomainError("Symbol is ambiguous; use its ID or path:qualified_name", 409)
+        if metadata_only:
+            return self._context_candidate(rows[0], 120, "explicit source reference")
         candidate = self._candidate(project, rows[0], 120, "explicit source reference")
         if not candidate:
             raise DomainError(
@@ -1042,6 +1094,26 @@ class Indexer:
 
     def dependencies(
         self, project_id: str, symbol_or_path: str, direction: str = "both", *, refresh: bool = True
+    ) -> list[dict[str, Any]]:
+        return self._dependencies(
+            project_id, symbol_or_path, direction, refresh=refresh, metadata_only=False
+        )
+
+    def _context_dependencies(
+        self, project_id: str, symbol_or_path: str, direction: str = "both"
+    ) -> list[dict[str, Any]]:
+        return self._dependencies(
+            project_id, symbol_or_path, direction, refresh=False, metadata_only=True
+        )
+
+    def _dependencies(
+        self,
+        project_id: str,
+        symbol_or_path: str,
+        direction: str,
+        *,
+        refresh: bool,
+        metadata_only: bool,
     ) -> list[dict[str, Any]]:
         self.db.project(project_id)
         if direction not in {"both", "in", "out", "incoming", "outgoing", "callers", "callees"}:
@@ -1053,7 +1125,9 @@ class Indexer:
         )
         symbol = None
         if not file:
-            symbol = self.get_symbol(project_id, symbol_or_path, refresh=False)
+            symbol = self._get_symbol(
+                project_id, symbol_or_path, refresh=False, metadata_only=metadata_only
+            )
         target_reference = file["path"] if file else (symbol or {})["id"]
         clauses = []
         params: list[Any] = [project_id]

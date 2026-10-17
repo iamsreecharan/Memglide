@@ -1,0 +1,30 @@
+test_independent_nets_and_zero_groups (__main__.BehaviorTests.test_independent_nets_and_zero_groups) ... FAIL
+test_validation_and_no_mutation (__main__.BehaviorTests.test_validation_and_no_mutation) ... FAIL
+
+======================================================================
+FAIL: test_independent_nets_and_zero_groups (__main__.BehaviorTests.test_independent_nets_and_zero_groups)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern6/baseline/held_out.py", line 10, in test_independent_nets_and_zero_groups
+    self.assertEqual(api.net_by_currency(rows),{"EUR":5,"USD":0})
+AssertionError: {'EUR': -2, 'USD': -5} != {'EUR': 5, 'USD': 0}
+- {'EUR': -2, 'USD': -5}
+?         ^^         ^^
+
++ {'EUR': 5, 'USD': 0}
+?         ^         ^
+
+
+======================================================================
+FAIL: test_validation_and_no_mutation (__main__.BehaviorTests.test_validation_and_no_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern6/baseline/held_out.py", line 16, in test_validation_and_no_mutation
+    with self.assertRaises(ValueError): api.net_by_currency([row])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

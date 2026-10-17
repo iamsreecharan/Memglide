@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: decimal-money-parser
+ok 1 - decimal-money-parser
+  ---
+  duration_ms: 3.302049
+  type: 'test'
+  ...
+# Subtest: half-open-window-join
+ok 2 - half-open-window-join
+  ---
+  duration_ms: 5.161393
+  type: 'test'
+  ...
+# Subtest: fragmented-ndjson
+ok 3 - fragmented-ndjson
+  ---
+  duration_ms: 0.38328
+  type: 'test'
+  ...
+# Subtest: event-time-rolling-counts
+ok 4 - event-time-rolling-counts
+  ---
+  duration_ms: 0.461977
+  type: 'test'
+  ...
+# Subtest: keyed-upsert-order
+ok 5 - keyed-upsert-order
+  ---
+  duration_ms: 0.786915
+  type: 'test'
+  ...
+# Subtest: bounded-run-length-decode
+ok 6 - bounded-run-length-decode
+  ---
+  duration_ms: 0.717624
+  type: 'test'
+  ...
+# Subtest: simultaneous-text-edits
+ok 7 - simultaneous-text-edits
+  ---
+  duration_ms: 0.304203
+  type: 'test'
+  ...
+# Subtest: transactional-accumulator
+ok 8 - transactional-accumulator
+  ---
+  duration_ms: 0.253226
+  type: 'test'
+  ...
+# Subtest: abort-aware-delay-plan
+ok 9 - abort-aware-delay-plan
+  ---
+  duration_ms: 0.305533
+  type: 'test'
+  ...
+# Subtest: escaped-record-codec
+ok 10 - escaped-record-codec
+  ---
+  duration_ms: 0.599286
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 240.0785

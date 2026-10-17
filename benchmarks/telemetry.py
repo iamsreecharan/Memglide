@@ -9,6 +9,7 @@ CPU, RSS, or a complete filesystem read trace; these remain unavailable.
 from __future__ import annotations
 
 import json
+import re
 import shlex
 from collections import Counter
 from pathlib import Path, PurePosixPath
@@ -131,6 +132,63 @@ def _mcp_success(item: dict[str, Any]) -> tuple[bool | None, str]:
     return True, "Completed CLI tool item returned a result without an explicit error"
 
 
+def _compact_operation_proof(item: dict[str, Any]) -> str | None:
+    """Credit compact aliases only from matching actual MCP response evidence.
+
+    Tool names and model summaries alone cannot establish that fetch_context
+    returned source. Conflicting structured/text JSON results are rejected.
+    """
+    result = item.get("result")
+    if not isinstance(result, dict):
+        return None
+    candidates = []
+    for key in ("structured_content", "structuredContent"):
+        if isinstance(result.get(key), dict):
+            candidates.append(result[key])
+    for block in result.get("content", []):
+        if not isinstance(block, dict) or block.get("type") != "text":
+            continue
+        try:
+            candidate = json.loads(block.get("text", ""))
+        except (ValueError, TypeError):
+            continue
+        if isinstance(candidate, dict):
+            candidates.append(candidate)
+    if not candidates or any(candidate != candidates[0] for candidate in candidates[1:]):
+        return None
+    value = candidates[0]
+    if not isinstance(value.get("retrieval_id"), str) or not value["retrieval_id"]:
+        return None
+    if item.get("tool") == "verify_context":
+        return (
+            "get_context_passport"
+            if value.get("operation") == "get_context_passport"
+            and isinstance(value.get("status"), str)
+            and isinstance(value.get("source_freshness"), str)
+            and isinstance(value.get("stale_files"), list)
+            else None
+        )
+    if item.get("tool") != "fetch_context" or value.get("operation") != "get_context":
+        return None
+    source_hashes, items = value.get("source_hashes"), value.get("items")
+    if not isinstance(source_hashes, dict) or not isinstance(items, list) or not items:
+        return None
+    source_items = 0
+    for evidence in items:
+        if not isinstance(evidence, dict):
+            return None
+        path, snippet = evidence.get("path"), evidence.get("snippet")
+        if (
+            not isinstance(path, str)
+            or not path
+            or not isinstance(snippet, str)
+            or re.fullmatch(r"[0-9a-f]{64}", str(source_hashes.get(path, ""))) is None
+        ):
+            return None
+        source_items += bool(snippet.strip())
+    return "get_context" if source_items else None
+
+
 def parse_codex_jsonl(source: str | Path) -> dict[str, Any]:
     """Parse an event file (Path), or JSONL content (str), retaining failures.
 
@@ -204,6 +262,7 @@ def parse_codex_jsonl(source: str | Path) -> dict[str, Any]:
     for identifier, item in items.items():
         if item.get("type") == "mcp_tool_call":
             success, success_reason = _mcp_success(item)
+            compact_operation = _compact_operation_proof(item) if success is True else None
             mcp_calls.append(
                 {
                     "id": identifier,
@@ -214,6 +273,7 @@ def parse_codex_jsonl(source: str | Path) -> dict[str, Any]:
                     "error": item.get("error"),
                     "successful": success,
                     "success_evidence": success_reason,
+                    "verified_compact_operation": compact_operation,
                 }
             )
         elif item.get("type") == "command_execution":
@@ -268,7 +328,29 @@ def parse_codex_jsonl(source: str | Path) -> dict[str, Any]:
         else None,
         "memglide_successful_get_context_count": sum(
             str(call.get("server", "")).lower() == "memglide"
-            and call.get("tool") == "get_context"
+            and (
+                call.get("tool") == "get_context"
+                or call.get("tool") == "fetch_context"
+                and call.get("verified_compact_operation") == "get_context"
+            )
+            and call["successful"] is True
+            for call in mcp_calls
+        )
+        if events
+        else None,
+        "memglide_successful_fetch_context_count": sum(
+            str(call.get("server", "")).lower() == "memglide"
+            and call.get("tool") == "fetch_context"
+            and call.get("verified_compact_operation") == "get_context"
+            and call["successful"] is True
+            for call in mcp_calls
+        )
+        if events
+        else None,
+        "memglide_successful_verify_context_count": sum(
+            str(call.get("server", "")).lower() == "memglide"
+            and call.get("tool") == "verify_context"
+            and call.get("verified_compact_operation") == "get_context_passport"
             and call["successful"] is True
             for call in mcp_calls
         )

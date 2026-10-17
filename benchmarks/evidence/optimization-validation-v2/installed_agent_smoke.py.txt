@@ -1,0 +1,58 @@
+"""Validate the installed compact profile with native MCP, outside the checkout."""
+import asyncio
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+
+import memglide
+from mcp.client.session import ClientSession
+from mcp.client.stdio import StdioServerParameters, stdio_client
+
+base = Path('/workspace/Memglide/.local/optimization-v2')
+assert Path(memglide.__file__).resolve().is_relative_to(Path(sys.prefix).resolve())
+assert sys.flags.isolated
+
+async def check():
+    database = base/'installed-agent.db'
+    assert not database.exists()
+    with tempfile.TemporaryDirectory(prefix='memglide-installed-agent-',dir='/tmp') as folder:
+        repo=Path(folder)
+        subprocess.run(['git','init','-q',str(repo)],check=True)
+        source=repo/'arithmetic.py'
+        source.write_text('def multiply(value):\n    return value * 2\n')
+        native=subprocess.run([sys.executable,'-I','-m','memglide.cli','--db',str(database),'project','add',str(repo)],cwd='/tmp',capture_output=True,text=True,check=True)
+        project=json.loads(native.stdout)['id']
+        server=StdioServerParameters(command=sys.executable,args=['-I','-m','memglide.cli','--db',str(database),'mcp','--profile','agent','--project',project])
+        async with stdio_client(server) as (read,write):
+            async with ClientSession(read,write) as client:
+                await client.initialize()
+                tools={t.name for t in (await client.list_tools()).tools}
+                assert tools=={'fetch_context','verify_context'}
+                first=await client.call_tool('fetch_context',{'query':'multiply'})
+                assert not first.is_error
+                payload=json.loads(first.content[0].text)
+                assert len(first.content)==1 and first.structured_content is None
+                assert payload['source_hashes']['arithmetic.py']==hashlib.sha256(source.read_bytes()).hexdigest()
+                assert any('return value * 2' in item['snippet'] for item in payload['items'])
+                before=source.stat()
+                source.write_text('def multiply(value):\n    return value * 3\n')
+                os.utime(source,ns=(before.st_atime_ns,before.st_mtime_ns))
+                verified=await client.call_tool('verify_context',{})
+                stale=json.loads(verified.content[0].text)
+                assert not verified.is_error and stale['status']=='Stale'
+                assert 'arithmetic.py' in stale['stale_files']
+                updated=await client.call_tool('fetch_context',{'query':'multiply'})
+                current=json.loads(updated.content[0].text)
+                assert current['source_hashes']['arithmetic.py']==hashlib.sha256(source.read_bytes()).hexdigest()
+                assert any('return value * 3' in item['snippet'] for item in current['items'])
+                rejected=await client.call_tool('verify_context',{'retrieval_id':'foreign-retrieval'})
+                assert rejected.is_error
+                result={'passed':True,'installed_package':str(Path(memglide.__file__).resolve()),'tool_names':sorted(tools),'single_json_payload':True,'actual_source_retrieval':True,'same_size_restored_timestamp_edit_detected':True,'refreshed_hash_matches':True,'foreign_retrieval_rejected':True,'remote_model_requests':0}
+                (base/'installed-agent-smoke.json').write_text(json.dumps(result,indent=2)+'\n')
+                print(json.dumps(result))
+
+asyncio.run(check())

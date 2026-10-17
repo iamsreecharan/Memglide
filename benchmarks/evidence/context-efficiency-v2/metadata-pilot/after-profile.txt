@@ -1,0 +1,48 @@
+         93896 function calls (92568 primitive calls) in 0.377 seconds
+
+   Ordered by: cumulative time
+   List reduced from 388 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.377    0.377 context.py:655(get_context)
+        1    0.001    0.001    0.375    0.375 context.py:669(_get_context)
+        1    0.000    0.000    0.156    0.156 indexer.py:835(_search_context_candidates)
+        1    0.001    0.001    0.156    0.156 indexer.py:861(_search)
+        1    0.000    0.000    0.119    0.119 indexer.py:336(reindex)
+       82    0.005    0.000    0.104    0.001 database.py:99(rows)
+  210/204    0.002    0.000    0.101    0.000 {built-in method builtins.next}
+      176    0.001    0.000    0.096    0.001 database.py:87(connect)
+    94/92    0.000    0.000    0.080    0.001 contextlib.py:141(__exit__)
+      386    0.072    0.000    0.072    0.000 {method 'execute' of 'sqlite3.Connection' objects}
+       33    0.002    0.000    0.070    0.002 paths.py:97(read_source)
+        1    0.001    0.001    0.058    0.058 context.py:279(_candidate_dependencies)
+       66    0.002    0.000    0.056    0.001 paths.py:65(safe_path)
+        1    0.001    0.001    0.055    0.055 indexer.py:211(_scan)
+       10    0.000    0.000    0.055    0.006 context.py:285(dependencies)
+       10    0.000    0.000    0.055    0.006 indexer.py:1102(_context_dependencies)
+       10    0.000    0.000    0.055    0.006 indexer.py:1109(_dependencies)
+       47    0.000    0.000    0.055    0.001 database.py:103(one)
+       18    0.000    0.000    0.045    0.002 indexer.py:1063(_get_symbol)
+       88    0.043    0.000    0.043    0.000 {method 'close' of 'sqlite3.Connection' objects}
+       33    0.000    0.000    0.039    0.001 database.py:149(project)
+       11    0.002    0.000    0.036    0.003 context.py:474(_build_passport)
+       88    0.034    0.000    0.034    0.000 {method '__exit__' of 'sqlite3.Connection' objects}
+      105    0.004    0.000    0.031    0.000 context.py:559(apply_graph)
+        3    0.001    0.000    0.029    0.010 indexer.py:44(_git)
+        3    0.000    0.000    0.028    0.009 subprocess.py:506(run)
+        1    0.000    0.000    0.027    0.027 context.py:329(_expand_candidates)
+       12    0.000    0.000    0.026    0.002 context.py:323(_indexed_candidate)
+       12    0.000    0.000    0.026    0.002 indexer.py:1059(_get_context_candidate)
+     1527    0.003    0.000    0.026    0.000 pathlib.py:551(drive)
+     1240    0.005    0.000    0.024    0.000 pathlib.py:407(_load_parts)
+      385    0.001    0.000    0.023    0.000 __init__.py:183(dumps)
+        3    0.000    0.000    0.023    0.008 subprocess.py:1165(communicate)
+        3    0.000    0.000    0.023    0.008 subprocess.py:2062(_communicate)
+        2    0.000    0.000    0.022    0.011 memory.py:109(touch)
+      315    0.002    0.000    0.022    0.000 context.py:443(_graph_estimate)
+    94/91    0.000    0.000    0.022    0.000 contextlib.py:132(__enter__)
+        6    0.000    0.000    0.022    0.004 selectors.py:402(select)
+        6    0.022    0.004    0.022    0.004 {method 'poll' of 'select.poll' objects}
+      385    0.001    0.000    0.022    0.000 encoder.py:183(encode)
+
+

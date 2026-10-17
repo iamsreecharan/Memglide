@@ -1,0 +1,29 @@
+.......................................................F..........       [100%]
+=================================== FAILURES ===================================
+_ test_domain_fix_alone_cannot_mask_independent_adapter_defect[strict-template-expansion] _
+
+tmp_path = PosixPath('/workspace/Memglide/.local/pytest-corpus-v2-development/test_domain_fix_alone_cannot_m5')
+spec = {'baseline': 'import re\ndef render(template,values):\n    pattern=re.compile(r"\\$\\$|\\$\\{([A-Za-z_][A-Za-z0-9_]*)\...or("malformed template")\n        return str(values[match.group(1)])\n    return pattern.sub(replace,template)\n', ...}
+
+    @pytest.mark.parametrize(
+        "spec",
+        [spec for spec in corpus.SPECS if spec["slug"] in corpus.FACADE_BASELINES],
+        ids=lambda spec: spec["slug"],
+    )
+    @pytest.mark.parametrize("side", ["domain", "adapter"])
+    def test_each_half_of_coordinated_fix_is_independently_required(tmp_path, spec, side):
+        root = tmp_path / "repo"
+        corpus.build_repository(spec["repository"], root)
+        language, family = corpus.REPOSITORIES[spec["repository"]]
+        directory, suffix = (family, "py") if language == "python" else ("src", "ts")
+        if side == "domain":
+>           (root / directory / f"{spec['slug'].replace('-', '_')}.{suffix}").write_text(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                spec["reference"]
+            )
+E           assert not True
+
+tests/test_benchmark_corpus_v2.py:108: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_benchmark_corpus_v2.py::test_domain_fix_alone_cannot_mask_independent_adapter_defect[strict-template-expansion]
+1 failed, 65 passed in 75.82s (0:01:15)

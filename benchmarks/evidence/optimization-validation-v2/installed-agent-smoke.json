@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "installed_package": "/workspace/Memglide/.local/optimization-v2/installed-env/lib/python3.12/site-packages/memglide/__init__.py",
+  "tool_names": [
+    "fetch_context",
+    "verify_context"
+  ],
+  "single_json_payload": true,
+  "actual_source_retrieval": true,
+  "same_size_restored_timestamp_edit_detected": true,
+  "refreshed_hash_matches": true,
+  "foreign_retrieval_rejected": true,
+  "remote_model_requests": 0
+}

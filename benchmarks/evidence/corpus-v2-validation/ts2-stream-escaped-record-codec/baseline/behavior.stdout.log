@@ -1,0 +1,81 @@
+TAP version 13
+# Subtest: escaped delimiters backslashes and empty fields
+not ok 1 - escaped delimiters backslashes and empty fields
+  ---
+  duration_ms: 5.903892
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern29/baseline/held_out.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   'a\\',
+    +   'b',
+    -   'a|b',
+        'c'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'a|b'
+    1: 'c'
+  actual:
+    0: 'a\\'
+    1: 'b'
+    2: 'c'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern29/baseline/held_out.test.mjs:7:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: invalid escapes and repeated escaped separators
+not ok 2 - invalid escapes and repeated escaped separators
+  ---
+  duration_ms: 2.011507
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern29/baseline/held_out.test.mjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   '\\',
+    +   '\\',
+    +   ''
+    -   '||'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: '||'
+  actual:
+    0: '\\'
+    1: '\\'
+    2: ''
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern29/baseline/held_out.test.mjs:15:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 290.494103

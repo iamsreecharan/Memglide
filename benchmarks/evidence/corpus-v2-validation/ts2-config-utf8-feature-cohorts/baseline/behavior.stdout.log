@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: UTF8 reference vectors and strict threshold
+not ok 1 - UTF8 reference vectors and strict threshold
+  ---
+  duration_ms: 4.964838
+  type: 'test'
+  location: '/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern36/baseline/held_out.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern36/baseline/held_out.test.mjs:9:102)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: rate extremes determinism and validation
+ok 2 - rate extremes determinism and validation
+  ---
+  duration_ms: 2.513648
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 301.900919

@@ -64,7 +64,16 @@ def registration_status() -> dict[str, Any]:
     }
 
 
-def setup_codex(db_path: str | None = None) -> dict[str, Any]:
+def setup_codex(db_path: str | None = None, *, project_id: str | None = None) -> dict[str, Any]:
+    if project_id is not None:
+        # Bind only a registration already explicitly approved by the user.
+        from memglide.service import Service
+
+        service = Service(db_path=db_path)
+        try:
+            service.db.project(project_id)
+        finally:
+            service.close()
     executable = _codex()
     status = registration_status()
     if status["registered"]:
@@ -83,6 +92,8 @@ def setup_codex(db_path: str | None = None) -> dict[str, Any]:
     if db_path:
         command.extend(["--db", str(Path(db_path).resolve())])
     command.append("mcp")
+    if project_id is not None:
+        command.extend(["--profile", "agent", "--project", project_id])
     try:
         result = subprocess.run(
             [executable, "mcp", "add", "memglide", "--", *command],
@@ -106,5 +117,10 @@ def setup_codex(db_path: str | None = None) -> dict[str, Any]:
     return {
         **verified,
         "changed": True,
-        "message": "Registered and verified configuration. Restart Codex and invoke list_projects to verify a live connection.",
+        "profile": "agent" if project_id is not None else "default",
+        "message": (
+            "Registered project-bound agent configuration. Restart Codex and invoke fetch_context to verify a live connection."
+            if project_id is not None
+            else "Registered and verified configuration. Restart Codex and invoke list_projects to verify a live connection."
+        ),
     }

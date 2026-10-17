@@ -1,0 +1,22 @@
+test_half_open_offsets_and_stability (__main__.BehaviorTests.test_half_open_offsets_and_stability) ... FAIL
+test_validation_and_detachment (__main__.BehaviorTests.test_validation_and_detachment) ... ok
+
+======================================================================
+FAIL: test_half_open_offsets_and_stability (__main__.BehaviorTests.test_half_open_offsets_and_stability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern3/baseline/held_out.py", line 12, in test_half_open_offsets_and_stability
+    self.assertEqual([r["id"] for r in api.statement(records,start,end)],["a","b"])
+AssertionError: Lists differ: ['a', 'b', 'end'] != ['a', 'b']
+
+First list contains 1 additional elements.
+First extra element 2:
+'end'
+
+- ['a', 'b', 'end']
++ ['a', 'b']
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1)

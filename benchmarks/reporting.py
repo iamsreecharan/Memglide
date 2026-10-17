@@ -114,7 +114,40 @@ def _fidelity(run: dict[str, Any]) -> dict[str, Any]:
     retrievals = telemetry.get("memglide_successful_get_context_count")
     unknown_retrievals = telemetry.get("memglide_get_context_success_unknown_count")
     if run.get("configuration") == "B":
-        if _number(retrievals) and retrievals > 0:
+        if isinstance(run.get("compact_protocol_fidelity"), dict):
+            fetches = telemetry.get("memglide_successful_fetch_context_count")
+            verifications = telemetry.get("memglide_successful_verify_context_count")
+            # Existing compact rows predate on-demand verification and required
+            # both operations. Never reinterpret those preserved experiments.
+            required = run["compact_protocol_fidelity"].get(
+                "required_operations", ["fetch_context", "verify_context"]
+            )
+            if run.get("execution_outcome_unknown") is True:
+                valid, reason = None, "Interrupted compact attempt has an unknown complete outcome"
+            elif required not in (["fetch_context"], ["fetch_context", "verify_context"]):
+                valid, reason = False, "Unsupported compact protocol requirement marker"
+            elif (
+                _number(fetches)
+                and fetches > 0
+                and (
+                    "verify_context" not in required or _number(verifications) and verifications > 0
+                )
+            ):
+                valid, reason = (
+                    True,
+                    "Observed compact source retrieval and every operation required by its frozen policy",
+                )
+            elif not complete:
+                valid, reason = (
+                    None,
+                    "Compact retrieval/revalidation is unverified in an incomplete event stream",
+                )
+            else:
+                valid, reason = (
+                    False,
+                    "Compact protocol is missing successful results required by its frozen policy",
+                )
+        elif _number(retrievals) and retrievals > 0:
             valid, reason = True, "Observed completed, error-free Memglide get_context result"
         elif unknown_retrievals or not complete:
             valid, reason = (

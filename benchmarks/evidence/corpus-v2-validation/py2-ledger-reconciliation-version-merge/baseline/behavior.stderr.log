@@ -1,0 +1,42 @@
+test_deep_copy_and_version_types (__main__.BehaviorTests.test_deep_copy_and_version_types) ... FAIL
+test_latest_first_tie_and_sorted (__main__.BehaviorTests.test_latest_first_tie_and_sorted) ... FAIL
+
+======================================================================
+FAIL: test_deep_copy_and_version_types (__main__.BehaviorTests.test_deep_copy_and_version_types)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern9/baseline/held_out.py", line 13, in test_deep_copy_and_version_types
+    self.assertEqual(rows[0]["body"]["tags"],[1]); rows[0]["body"]["tags"].append(3); self.assertEqual(result[0]["body"]["tags"],[1,2])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [1, 2] != [1]
+
+First list contains 1 additional elements.
+First extra element 1:
+2
+
+- [1, 2]
++ [1]
+
+======================================================================
+FAIL: test_latest_first_tie_and_sorted (__main__.BehaviorTests.test_latest_first_tie_and_sorted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/pytest-corpus-v2-final/test_all_baselines_fail_extern9/baseline/held_out.py", line 10, in test_latest_first_tie_and_sorted
+    self.assertEqual([(r["id"],r["value"]) for r in api.reconcile(rows)],[("a","first"),("b","new")])
+AssertionError: Lists differ: [('a', 'tie'), ('b', 'new')] != [('a', 'first'), ('b', 'new')]
+
+First differing element 0:
+('a', 'tie')
+('a', 'first')
+
+- [('a', 'tie'), ('b', 'new')]
+?          --
+
++ [('a', 'first'), ('b', 'new')]
+?         ++++
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)
