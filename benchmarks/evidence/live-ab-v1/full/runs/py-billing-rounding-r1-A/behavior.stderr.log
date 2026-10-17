@@ -1,0 +1,7 @@
+test_half_up_and_exact_integer_arithmetic (__main__.BehaviorTests.test_half_up_and_exact_integer_arithmetic) ... ok
+test_validation_and_zero (__main__.BehaviorTests.test_validation_and_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

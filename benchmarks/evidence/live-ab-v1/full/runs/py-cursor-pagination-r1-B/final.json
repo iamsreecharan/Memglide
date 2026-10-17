@@ -1,0 +1,1 @@
+{"summary":"Fixed pagination to select IDs strictly greater than the cursor. Added regression coverage for ascending traversal without duplicates, deleted cursors, null final cursors, input preservation, limit validation, and DocumentService integration. No commit made.","tests_run":["python -m unittest discover -s tests -v — all 6 tests passed","git diff --check — passed"]}

@@ -1,0 +1,12 @@
+test_disabled_capacity_and_nonpositive_ttl_remain_noops (test_cache.TTLCacheTests.test_disabled_capacity_and_nonpositive_ttl_remain_noops) ... ok
+test_expired_recent_key_does_not_evict_live_key (test_cache.TTLCacheTests.test_expired_recent_key_does_not_evict_live_key) ... ok
+test_miss_does_not_change_eviction_order (test_cache.TTLCacheTests.test_miss_does_not_change_eviction_order) ... ok
+test_successful_get_refreshes_recency_without_extending_ttl (test_cache.TTLCacheTests.test_successful_get_refreshes_recency_without_extending_ttl) ... ok
+test_update_refreshes_recency_and_keeps_capacity (test_cache.TTLCacheTests.test_update_refreshes_recency_and_keeps_capacity) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

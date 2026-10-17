@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: successful read refreshes recency
+ok 1 - successful read refreshes recency
+  ---
+  duration_ms: 3.110117
+  type: 'test'
+  ...
+# Subtest: updates misses and expiration
+ok 2 - updates misses and expiration
+  ---
+  duration_ms: 0.246898
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 273.329664

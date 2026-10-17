@@ -1,0 +1,1 @@
+{"summary":"Fixed optimistic updates to require an exact revision match. Added regression tests for stale/future conflicts, unchanged storage after rejection, single revision increments, and body mutation isolation. Existing tests preserved; no commits made.","tests_run":["python -m unittest discover -s tests -v — all 4 tests passed","git diff --check — passed"]}

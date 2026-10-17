@@ -1,0 +1,9 @@
+test_matching_revision_increments_once_and_isolates_bodies (test_repository.RepositoryUpdateTests.test_matching_revision_increments_once_and_isolates_bodies) ... ok
+test_mismatched_revisions_leave_document_unchanged (test_repository.RepositoryUpdateTests.test_mismatched_revisions_leave_document_unchanged) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

@@ -1,0 +1,7 @@
+test_exact_and_resource_wildcard (__main__.BehaviorTests.test_exact_and_resource_wildcard) ... ok
+test_partial_and_unrelated_scopes_denied (__main__.BehaviorTests.test_partial_and_unrelated_scopes_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.010s
+
+OK

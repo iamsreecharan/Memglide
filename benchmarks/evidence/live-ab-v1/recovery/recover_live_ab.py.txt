@@ -1,0 +1,117 @@
+"""Continue remaining original assignments without replacing interrupted evidence."""
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+
+from benchmarks import run as runner
+from benchmarks.compare_components import capture_provenance
+from benchmarks.reporting import build_report, write_report
+from benchmarks.telemetry import parse_codex_jsonl
+
+root = runner.ROOT
+output = root / '.local/benchmarks/device-auth-ab-full-v1'
+checkpoint = output / 'runs.json'
+original_bytes = checkpoint.read_bytes()
+original = json.loads(original_bytes)
+assert len(original) == 89 and all(x['status'] == 'completed' for x in original)
+plan = json.loads((output / 'plan.json').read_text())
+active = json.loads((root / '.local/live-ab-active.json').read_text())
+provenance = capture_provenance(root)
+assert provenance['source_tree_sha256'] == active['application_source_sha256']
+assert hashlib.sha256((root/'benchmarks/run.py').read_bytes()).hexdigest() == active['runner_sha256']
+assert runner.git(root, 'rev-parse', '--short=7', 'HEAD') == active['frozen_commit']
+snapshot = output / 'recovery-original-89-runs.json'
+assert not snapshot.exists()
+snapshot.write_bytes(original_bytes)
+repositories = {language: {'path': str(output/'repositories'/language), 'commit': runner.git(output/'repositories'/language, 'rev-parse', 'HEAD')} for language in ['python','typescript']}
+row = plan['runs'][89]
+assert row['run_id'] == 'ts-lru-eviction-r2-B'
+artifacts = output/'runs'/row['run_id']
+worktree = output/'worktrees'/row['run_id']
+assert not (artifacts/'result.json').exists()
+interrupted = {
+    **row, 'attempted': True, 'status': 'harness_error',
+    'interruption_kind': 'execution_session_disconnected',
+    'errors': ['Exec-server transport disconnected; benchmark process no longer present. Original partial evidence retained; no model failure inferred.'],
+    'artifacts': str(artifacts), 'worktree': str(worktree),
+    'starting_commit': repositories[row['language']]['commit'],
+    'prompt_sha256': hashlib.sha256((artifacts/'prompt.txt').read_bytes()).hexdigest(),
+    'started_at': None, 'finished_at': None,
+    'interruption_observed_at': runner.utc_now(),
+    'exit_code': None, 'timed_out': None,
+    'wall_time_seconds': None, 'end_to_end_wall_seconds': None,
+    'overhead': {}, 'setup': {},
+    'telemetry': parse_codex_jsonl(artifacts/'events.jsonl'),
+    'grader': {'success': None, 'reason': 'Execution interrupted before original independent grading; do not infer task correctness'},
+    'protected_file_violations': None,
+    'actual_cost_usd': None, 'computed_cost_usd': None,
+}
+runner.preserve_changes(worktree, artifacts, repositories[row['language']]['commit'])
+runner.write_json(artifacts/'result.json', interrupted)
+runs = [*original, interrupted]
+runner.write_json(checkpoint, runs)
+arguments = argparse.Namespace(codex=shutil.which('codex'), model='gpt-6.1-sol', effort='low', timeout=180)
+environment = os.environ.copy()
+environment['CODEX_HOME'] = (root/'.local/codex-device-login-selected.txt').read_text().strip()
+environment.update({'NO_COLOR':'1','CI':'1','MEMGLIDE_HOME':str(output/'state')})
+metadata = {
+    'started_at': None, 'finished_at': None,
+    'model': arguments.model, 'reasoning_effort': arguments.effort,
+    'repeats':2,'repetitions':2,'random_seed':20261016,
+    'codex_version': subprocess.check_output([arguments.codex,'--version'],text=True).strip(),
+    'repositories':repositories,'output_directory':str(output),
+    'memglide_source_before': {
+        'attestation':'Prelaunch manifest retained the commit and aggregate source hash; original in-memory detailed metadata was lost on disconnect',
+        'git_head': runner.git(root,'rev-parse','HEAD'),
+        'source_tree_sha256': active['application_source_sha256'],
+    },
+    'memglide_source_after': None,
+    'source_unchanged_during_experiment': None,
+    'measurement_sha256': {str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [root/'benchmarks/run.py',root/'benchmarks/telemetry.py',root/'benchmarks/reporting.py',root/'benchmarks/corpus.py',root/'benchmarks/tasks.json']},
+    'preflight_runs': [{
+        'artifacts':str(output/'preflight'),
+        'scope':'Original readiness call, excluded from task comparisons. Reparsed raw usage; original process timing/exit metadata lost on disconnect.',
+        'telemetry':parse_codex_jsonl(output/'preflight/events.jsonl'),
+        'wall_time_seconds':None,'exit_code':None,
+    }],
+    'recovery': {
+        'observed_at':runner.utc_now(), 'original_completed_checkpoint_count':89,
+        'original_checkpoint_sha256':hashlib.sha256(original_bytes).hexdigest(),
+        'interrupted_run_id':row['run_id'],'continuation_orders':[91,92,93,94,95,96],
+        'policy':'No original run is replaced. Original run90 remains an interrupted attempt in the main96. Continue remaining six original assignments using unchanged run_task and existing commits/schema/settings. Any later retry is separate supplemental evidence.',
+        'metadata_limitations':'Original metadata was only written after all runs; its in-memory start timestamp and host snapshot were lost. Current host metadata below is a recovery-time observation. No reconstructed timestamp, timing, exit code or CPU value is presented as a measurement.',
+        'recovery_host':runner.host_metadata(),
+    },
+    'methodology': {
+        'repositories':'Two synthetic multi-module Python/TypeScript fixtures, 24 IDs representing12 mirrored intents; external hidden oracles',
+        'isolation':'Fresh detached worktrees from unchanged per-language seed commit; new state/index per B run',
+        'prompt':runner.COMMON_INSTRUCTIONS,
+        'settings':'Same model/effort/schema/sandbox/instructions, only B required scoped Memglide MCP configuration differs',
+        'caching':'Counterbalanced ordering across repeats. Provider and OS caches not flushable; cached tokens recorded. Execution interruption adds a disclosed pause before order91.',
+        'timing':'Codex process plus B fresh-index timing; excludes grader and worktree preparation. Run90 timing unavailable after interruption.',
+        'cost':'Provider billed cost/model-call counts unavailable; remain null',
+        'failed_runs':'Original interruption retained in96 planned rows; no silent retries or replacement',
+    },
+}
+runner.write_json(output/'metadata.json',metadata)
+runner.write_json(output/'recovery.json', metadata['recovery'])
+task_map = {t['id']:t for t in plan['tasks']}
+for next_row in plan['runs'][90:]:
+    print(f"[{next_row['order']}/96] {next_row['run_id']} (continuation after recorded interruption)",flush=True)
+    result = runner.run_task(next_row, task_map[next_row['task_id']], repositories[next_row['language']], output, output/'final-response-schema.json', arguments, environment)
+    runs.append(result)
+    runner.write_json(checkpoint,runs)
+    metadata['recovery']['last_completed_order']=next_row['order']
+    runner.write_json(output/'metadata.json',metadata)
+metadata['finished_at']=runner.utc_now()
+metadata['memglide_source_after']=capture_provenance(root)
+metadata['source_unchanged_during_experiment']=metadata['memglide_source_after']['source_tree_sha256']==active['application_source_sha256']
+metadata['source_snapshot_scope']='Prelaunch recorded aggregate matches recovery/end snapshot. This is not continuous runtime attestation.'
+assert runs[:89] == original
+runner.write_json(output/'metadata.json',metadata)
+write_report(build_report(runs,plan['tasks'],metadata),output/'report.json',output/'report.md')
+print('Original96 assignments resolved; interrupted run90 remains in main report.',flush=True)

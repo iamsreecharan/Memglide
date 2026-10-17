@@ -1,0 +1,7 @@
+test_successful_read_refreshes_recency (__main__.BehaviorTests.test_successful_read_refreshes_recency) ... ok
+test_updates_misses_and_expiration (__main__.BehaviorTests.test_updates_misses_and_expiration) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

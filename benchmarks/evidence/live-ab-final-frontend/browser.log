@@ -1,0 +1,12 @@
+
+> memglide-dashboard@0.1.0 e2e
+> playwright test --reporter=list,json
+
+
+Running 3 tests using 1 worker
+
+  ✓  1 e2e/workflow.spec.ts:25:1 › production dashboard completes the repository, session, memory, retrieval, and evidence workflow (23.2s)
+  ✓  2 e2e/workflow.spec.ts:150:1 › background cleanup cannot redirect a session deletion confirmation to another task (2.4s)
+  ✓  3 e2e/workflow.spec.ts:180:1 › production routes retain useful empty and error states and fit desktop and tablet (9.8s)
+
+  3 passed (47.1s)

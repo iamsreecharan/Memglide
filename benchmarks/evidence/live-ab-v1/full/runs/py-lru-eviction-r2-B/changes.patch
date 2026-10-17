@@ -1,0 +1,10 @@
+diff --git a/atlas/cache.py b/atlas/cache.py
+index 8f121d1..342a530 100644
+--- a/atlas/cache.py
++++ b/atlas/cache.py
+@@ -24,4 +24,5 @@ class TTLCache:
+         if now > expires:
+             self.entries.pop(key, None)
+             return None
++        self.entries.move_to_end(key)
+         return value

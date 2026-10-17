@@ -1,0 +1,13 @@
+diff --git a/src/search.ts b/src/search.ts
+index 8f3b74c..5e96c89 100644
+--- a/src/search.ts
++++ b/src/search.ts
+@@ -9,7 +9,7 @@ export function search(records: SearchDocument[], query: string): SearchDocument
+     const found = tokens(record.title + " " + record.body);
+     const score = [...wanted].filter(word => found.has(word)).length;
+     return { record, score };
+-  }).filter(item => item.score > 0)
++  }).filter(item => item.score === wanted.size)
+     .sort((a, b) => b.score - a.score || a.record.id.localeCompare(b.record.id))
+     .map(item => item.record);
+ }

@@ -1,0 +1,10 @@
+test_all_tokens_across_title_and_body_in_id_order (test_search.SearchTests.test_all_tokens_across_title_and_body_in_id_order) ... ok
+test_empty_normalized_query (test_search.SearchTests.test_empty_normalized_query) ... ok
+test_partial_tokens_do_not_match (test_search.SearchTests.test_partial_tokens_do_not_match) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

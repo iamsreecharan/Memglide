@@ -1,0 +1,1 @@
+{"summary":"Fixed POSIX storage-key containment by normalizing paths and enforcing root equality or a slash-separated descendant. Added regression tests for prefix-sibling traversal, absolute keys, and valid normalized paths. Preserved the service API and existing tests; no commit made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

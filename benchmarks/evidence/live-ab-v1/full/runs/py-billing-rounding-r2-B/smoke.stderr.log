@@ -1,0 +1,12 @@
+test_full_period_and_zero_amounts (test_billing.BillingTests.test_full_period_and_zero_amounts) ... ok
+test_large_values_remain_exact (test_billing.BillingTests.test_large_values_remain_exact) ... ok
+test_rejects_invalid_integer_arguments (test_billing.BillingTests.test_rejects_invalid_integer_arguments) ... ok
+test_rejects_invalid_periods_even_for_zero_charge (test_billing.BillingTests.test_rejects_invalid_periods_even_for_zero_charge) ... ok
+test_rounds_half_up (test_billing.BillingTests.test_rounds_half_up) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

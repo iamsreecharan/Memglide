@@ -1,0 +1,11 @@
+test_booleans_are_unchanged (test_config.FeatureFlagTests.test_booleans_are_unchanged) ... ok
+test_invalid_values_are_rejected (test_config.FeatureFlagTests.test_invalid_values_are_rejected) ... ok
+test_none_uses_default (test_config.FeatureFlagTests.test_none_uses_default) ... ok
+test_supported_strings (test_config.FeatureFlagTests.test_supported_strings) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

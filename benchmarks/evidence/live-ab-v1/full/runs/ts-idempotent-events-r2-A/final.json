@@ -1,0 +1,1 @@
+{"summary":"Fixed event idempotency: duplicate keys return a clone of the original event without overwriting payload or sequence. New keys retain consecutive sequences. Added regression tests for duplicates and mutation isolation. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

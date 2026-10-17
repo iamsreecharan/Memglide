@@ -1,0 +1,1 @@
+{"summary":"Implemented transitive dependency discovery with unique, ascending IDs, cycle protection, missing-entry handling, and no graph mutation. Preserved DocumentService integration and added regression tests. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

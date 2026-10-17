@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "scope": "Independent read-only audit of primary96; supplemental attempt excluded",
+  "report_sha256": "764a63946ea5b3954ce921f8219032a65aa38b0baea4f6b8334bfe74a1bcb083",
+  "checkpoint_sha256": "e31733b9ec85cefa8a09e4f5b5fb005158657eb7e84b8ce0f4b790fc091bf873",
+  "checks": {
+    "exact_96_unique_runs": 1,
+    "24_bilingual_tasks": 1,
+    "original_plan_order_preserved": 1,
+    "original_89_records_unchanged": 1,
+    "original_checkpoint_exact_bytes": 1,
+    "metadata_reconstruction_explicit": 1,
+    "source_unchanged_attestation": 1,
+    "current_runtime_frozen": 1,
+    "runner_frozen": 1,
+    "raw_telemetry_matches_record": 96,
+    "raw_stream_json_parseable": 96,
+    "direct_raw_usage_sum": 95,
+    "actual_prompt_hash_matches": 96,
+    "prompt_matches_frozen_task": 96,
+    "native_command_matches_frozen_protocol": 96,
+    "recorded_seed_commit_matches": 96,
+    "B_scoped_required_policy": 48,
+    "B_actual_successful_retrieval": 47,
+    "completed_raw_MCP_no_error": 260,
+    "raw_grade_matches_record": 95,
+    "independent_grade_and_protection_pass": 95,
+    "external_grader_commands_pass": 95,
+    "test_counts_consistent": 95,
+    "protected_file_current_hash_matches": 474,
+    "external_oracle_unmodified": 95,
+    "unavailable_cost_calls_reads_remain_null": 96,
+    "A_no_MCP": 48,
+    "only_interrupted90_ungraded": 1,
+    "interrupted_telemetry_not_estimated": 1,
+    "interrupted_fidelity_unknown": 1,
+    "counterbalanced_repetitions": 24,
+    "all_pairs_have_two_arms": 48,
+    "paired_commit_and_prompt_equal": 48,
+    "47_verified_pairs": 1,
+    "arm_success_denominator": 2,
+    "aggregate_metric_coverage": 50,
+    "aggregate_mean_median": 50,
+    "cost_per_success_unknown": 4,
+    "paired_deltas_recomputed": 25,
+    "B_incomplete_totals_withheld": 1,
+    "95_complete_usage_and_grades": 1
+  },
+  "check_count": 2385,
+  "errors": [
+    {
+      "check": "completed_raw_MCP_no_error",
+      "detail": "py-selective-retry-r1-B"
+    },
+    {
+      "check": "completed_raw_MCP_no_error",
+      "detail": "py-lru-eviction-r2-B"
+    }
+  ],
+  "error_count": 2,
+  "command_scope_findings": [],
+  "command_scope_finding_count": 0,
+  "interpretation": "Command findings are narrow heuristic review flags, not proof of a policy violation or complete filesystem tracing",
+  "observed_counts": {
+    "primary_runs": 96,
+    "complete_usage_streams": 95,
+    "completed_external_grades": 95,
+    "external_test_count_across_runs": 558,
+    "verified_pairs": 47,
+    "observed_commands": 425,
+    "observed_MCP_items_including_partial90": 260
+  },
+  "source": {
+    "runtime_sha256": "20cc181bc45cecacc6e96f40e4a470112dd1581212eac7acece46c44f7270454",
+    "runner_sha256": "ccf8d44ca7ea8286a8a9241b030eaa76ca339ec15032aeb95cb4e256ef500a26"
+  },
+  "limitations": [
+    "Original detailed host/startup metadata was lost; reconstructed metadata is not an original observation.",
+    "A/B actual invoiced costs, underlying model-call counts and exact filesystem reads remain unavailable.",
+    "Incomplete interrupted row remains in all-attempt completion denominators and makes B full totals unavailable."
+  ]
+}

@@ -32,6 +32,8 @@ asyncio_mode = "auto"
 
 [tool.ruff]
 line-length = 100
+# Preserved benchmark oracles and recovery scripts are immutable evidence.
+extend-exclude = ["benchmarks/evidence"]
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "I"]

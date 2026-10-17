@@ -1,0 +1,120 @@
+{
+  "run_id": "ts-lru-eviction-r2-B",
+  "task_id": "ts-lru-eviction",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 2,
+  "order": 90,
+  "attempted": true,
+  "status": "harness_error",
+  "interruption_kind": "execution_session_disconnected",
+  "errors": [
+    "Exec-server transport disconnected; benchmark process no longer present. Original partial evidence retained; no model failure inferred."
+  ],
+  "artifacts": "/workspace/Memglide/.local/benchmarks/device-auth-ab-full-v1/runs/ts-lru-eviction-r2-B",
+  "worktree": "/workspace/Memglide/.local/benchmarks/device-auth-ab-full-v1/worktrees/ts-lru-eviction-r2-B",
+  "starting_commit": "064e2cb7a6f8ede292c7d4fcd2c9829757c2c97a",
+  "prompt_sha256": "dcd1f0583dbca5913040804f99e465e2370b72dbad5341fba86e5e29d0a55144",
+  "started_at": null,
+  "finished_at": null,
+  "interruption_observed_at": "2026-10-17T22:13:50.315642+00:00",
+  "exit_code": null,
+  "timed_out": null,
+  "wall_time_seconds": null,
+  "end_to_end_wall_seconds": null,
+  "overhead": {},
+  "setup": {},
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 11,
+    "parse_errors": [],
+    "completed_turns": 0,
+    "failed_turns": 0,
+    "stream_terminal": false,
+    "usage": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "output_tokens": null
+    },
+    "usage_unavailable_reasons": {
+      "input_tokens": "Total usage unavailable: event stream is empty, truncated, contains unparsed lines, or includes a failed turn whose usage may be unreported",
+      "cached_input_tokens": "Total usage unavailable: event stream is empty, truncated, contains unparsed lines, or includes a failed turn whose usage may be unreported",
+      "output_tokens": "Total usage unavailable: event stream is empty, truncated, contains unparsed lines, or includes a failed turn whose usage may be unreported"
+    },
+    "observed_completed_turn_usage": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "output_tokens": null
+    },
+    "usage_coverage_complete": false,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 2,
+    "mcp_calls": [
+      {
+        "id": "item_2",
+        "server": "memglide",
+        "tool": "list_projects",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      },
+      {
+        "id": "item_4",
+        "server": "memglide",
+        "tool": "start_session",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      }
+    ],
+    "mcp_counts_complete": false,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 2,
+    "memglide_successful_get_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 2,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"pwd && rg --files -g '\"'!node_modules'\"' -g '\"'!package-lock.json'\"' -g '\"'!yarn.lock'\"'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'cat src/cache.ts tests/smoke.test.mjs package.json AGENTS.md'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "src/cache.ts",
+      "tests/smoke.test.mjs",
+      "package.json",
+      "AGENTS.md"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "grader": {
+    "success": null,
+    "reason": "Execution interrupted before original independent grading; do not infer task correctness"
+  },
+  "protected_file_violations": null,
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

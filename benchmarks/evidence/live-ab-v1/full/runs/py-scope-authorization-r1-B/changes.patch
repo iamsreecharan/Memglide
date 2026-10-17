@@ -1,0 +1,13 @@
+diff --git a/atlas/security.py b/atlas/security.py
+index 37b96eb..f01234e 100644
+--- a/atlas/security.py
++++ b/atlas/security.py
+@@ -3,7 +3,7 @@ from pathlib import PurePosixPath
+ 
+ def can_access(scopes, resource, action):
+     required = resource + ":" + action
+-    return any(scope in required or scope == resource + ":*" for scope in scopes)
++    return any(scope == required or scope == resource + ":*" for scope in scopes)
+ 
+ 
+ def resolve_under(root, relative):

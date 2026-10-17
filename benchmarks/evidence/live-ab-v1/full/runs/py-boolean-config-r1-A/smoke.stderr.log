@@ -1,0 +1,10 @@
+test_invalid_values_are_rejected_through_parser_and_service (test_config.FeatureFlagTests.test_invalid_values_are_rejected_through_parser_and_service) ... ok
+test_null_uses_default (test_config.FeatureFlagTests.test_null_uses_default) ... ok
+test_supported_values_through_parser_and_service (test_config.FeatureFlagTests.test_supported_values_through_parser_and_service) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

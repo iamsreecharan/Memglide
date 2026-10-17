@@ -73,8 +73,18 @@ Declared-target coverage in independent MCP probes improved from 16/24 to 24/24.
 The [current refinement assessment](benchmarks/refinements.md) records subsequent
 performance, lifecycle and dashboard fixes, including failed retrieval cases and
 reused validation after correcting selection defects. The
-[latest Codex attempt](benchmarks/codex-ab-refined.md) remains blocked by invalid
-authentication. No Codex coding, token or cost benefit has been established.
+[earlier Codex attempt](benchmarks/codex-ab-refined.md) retains the original
+authentication failure. Device login subsequently enabled a real comparison:
+the [authenticated A/B assessment](benchmarks/live-ab-assessment.md),
+[individual runs and statistics](benchmarks/codex-ab-authenticated.md) and
+[JSON results](benchmarks/codex-ab-authenticated.json) cover 24 tasks, two arms
+and two repeats. A passed 48/48; B passed 47/48, with one infrastructure
+interruption retained as ungraded. A separate retry passed and remains separate.
+Across 47 verified pairs, B used 2.75 times the input tokens and took 46.5% longer
+including fresh indexing. This experiment does not support a token, speed or
+coding-completion benefit. Billed cost and cost per successful task are unavailable.
+[Observed context results](benchmarks/codex-live-context.md) distinguish declared
+target coverage from unmeasured semantic completeness and independent freshness.
 
 ## Documentation
 

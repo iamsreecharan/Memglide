@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-17T22:22:25.657796+00:00",
+  "application_source_sha256": "20cc181bc45cecacc6e96f40e4a470112dd1581212eac7acece46c44f7270454",
+  "scope": "Final validation after all primary and supplemental model measurements finished; frozen application unchanged",
+  "python": {
+    "command": "UV_CACHE_DIR=$PWD/.cache/uv uv run pytest --basetemp=.local/validation/live-ab-final-pytest-2 --junitxml=.local/validation/live-ab-final-pytest-2.xml",
+    "exit_code": 0,
+    "counts": {
+      "tests": 391,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "passed": 391,
+    "elapsed_seconds": 72.12,
+    "coverage": "Complete configured Python suite: unit/integration/security/storage/native MCP/client/CLI and benchmark tooling checks"
+  },
+  "initial_validation_failure": {
+    "counts": {
+      "tests": 391,
+      "failures": 6,
+      "errors": 0,
+      "skipped": 0
+    },
+    "passed": 385,
+    "exit_code": 1,
+    "elapsed_seconds": 83.37,
+    "cause": "Coordinator ran Python corpus checks while npm ci replaced shared frontend/node_modules/TypeScript compiler. Six baseline fixture typechecks observed missing native executable, ETXTBSY or missing global declarations. Dependency installation was completed before the full passing rerun.",
+    "classification": "Validation scheduling/dependency-install race; no application change required",
+    "formal_benchmark_affected": false,
+    "preservation": "Initial log, XML and all six typecheck stdout/stderr retained"
+  },
+  "static_checks": {
+    "uv_sync_frozen": {
+      "exit_code": 0,
+      "stdout": "Checked 56 packages in 0.98ms"
+    },
+    "uv_lock_check": {
+      "exit_code": 0,
+      "stdout": "Resolved 59 packages in 3ms"
+    },
+    "ruff_check": {
+      "exit_code": 0
+    },
+    "ruff_format_check": {
+      "exit_code": 0,
+      "files": 70
+    },
+    "mypy_src": {
+      "exit_code": 0,
+      "files": 21
+    },
+    "evidence_lint_scope": {
+      "configuration": "tool.ruff.extend-exclude = [\"benchmarks/evidence\"]",
+      "reason": "Immutable recorded grader/recovery Python source is evidence, not implementation to reformat. All70 authored application/benchmark/test Python files remain linted and formatted.",
+      "initial_post_evidence_lint_findings": 158,
+      "initial_post_evidence_format_files": 54,
+      "final_lint_exit_code": 0,
+      "final_format_exit_code": 0,
+      "timing": "Ruff-only configuration changed after the passing complete suite; no application or benchmark implementation changed."
+    }
+  },
+  "frontend": {
+    "summary": "benchmarks/live-ab-final-frontend-validation.json",
+    "unit_passed": 24,
+    "production_browser_passed": 3,
+    "build_typecheck_bundle_passed": true,
+    "unchanged_bundled_assets": 19
+  },
+  "distinct_application_and_tooling_checks": 418,
+  "counting_scope": "391 Python +24 frontend +3 browser. Repeated benchmark grader executions and independent audit assertions are excluded; initial failed validation is not added to the distinct total.",
+  "package_scope": "Application Python and all19 bundled frontend assets match the already validated runtime recorded in benchmarks/validation-refined.json; no new distribution or fresh-platform claim is made here.",
+  "limitations": [
+    "Two upstream Typer/Click deprecation warnings remain.",
+    "Native Windows/macOS execution was not performed.",
+    "Passing configured tests does not prove absence of every defect."
+  ],
+  "evidence": [
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-pytest.log",
+      "source": ".local/validation/live-ab-final-pytest.log",
+      "bytes": 11706,
+      "sha256": "e196ccb445a8525ea889a0bae921230ebc64a1198ae7d45320ed0088e1a988a5"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-pytest.xml",
+      "source": ".local/validation/live-ab-final-pytest.xml",
+      "bytes": 62759,
+      "sha256": "f80d52aaf21ba059b64335408dadfa8eb4f956a0af2d003124a33846e67ae1a7"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/final-pytest.log",
+      "source": ".local/validation/live-ab-final-pytest-2.log",
+      "bytes": 3477,
+      "sha256": "53cdd91489ff9ed70afe273b90816cfa4161c8010e54ba9f590b25a8d018eaa3"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/final-pytest.xml",
+      "source": ".local/validation/live-ab-final-pytest-2.xml",
+      "bytes": 54515,
+      "sha256": "d8887760c06617af7a6885c8d889238ce413b37e040d1e2b57ce87ed8486cbb2"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/ruff.log",
+      "source": ".local/validation/live-ab-final-ruff.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/mypy.log",
+      "source": ".local/validation/live-ab-final-mypy.log",
+      "bytes": 44,
+      "sha256": "3253c7a5a8535995ce0dc8b25611174b1763d2c9ff1bbb0a29e2e90cca3ca91e"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-12-typecheck.stdout.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a12/baseline_grade/typecheck.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-12-typecheck.stderr.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a12/baseline_grade/typecheck.stderr.log",
+      "bytes": 676,
+      "sha256": "241748d0b0d2093980eeb73abb1794eb1686233e0994ddb6d7abadb133378803"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-13-typecheck.stdout.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a13/baseline_grade/typecheck.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-13-typecheck.stderr.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a13/baseline_grade/typecheck.stderr.log",
+      "bytes": 676,
+      "sha256": "241748d0b0d2093980eeb73abb1794eb1686233e0994ddb6d7abadb133378803"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-14-typecheck.stdout.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a14/baseline_grade/typecheck.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-14-typecheck.stderr.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a14/baseline_grade/typecheck.stderr.log",
+      "bytes": 676,
+      "sha256": "241748d0b0d2093980eeb73abb1794eb1686233e0994ddb6d7abadb133378803"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-15-typecheck.stdout.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a15/baseline_grade/typecheck.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-15-typecheck.stderr.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a15/baseline_grade/typecheck.stderr.log",
+      "bytes": 490,
+      "sha256": "8adda04b0dfe971e553168edd2c4304276a54149bd3a34b3ee4a5a21e2a42634"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-16-typecheck.stdout.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a16/baseline_grade/typecheck.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-16-typecheck.stderr.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a16/baseline_grade/typecheck.stderr.log",
+      "bytes": 490,
+      "sha256": "ab090c0f089e92b0c3ce03c85d5d179ffb37930890948709e4e2c5cd73314e98"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-17-typecheck.stdout.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a17/baseline_grade/typecheck.stdout.log",
+      "bytes": 505,
+      "sha256": "8aca2483d54c03a08172ecf20e4c904a6429632cc36412c1fca05b621fc80c39"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/initial-fixture-17-typecheck.stderr.log",
+      "source": ".local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a17/baseline_grade/typecheck.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/evidence-lint-initial.log",
+      "source": ".local/validation/live-ab-final-ruff-after-evidence.log",
+      "bytes": 46797,
+      "sha256": "3793a81667b9584b939e278a93b9d7c2908921d4154915c9174641a77e52e67e"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/evidence-format-initial.log",
+      "source": ".local/validation/live-ab-final-format-after-evidence.log",
+      "bytes": 5132,
+      "sha256": "5eb104e84d80ef236b55942060f8c83d6bceeff0ac4f684d8dfcac906fed6c7d"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/final-ruff.log",
+      "source": ".local/validation/live-ab-final-ruff-evidence-excluded.log",
+      "bytes": 176,
+      "sha256": "ef4adeb3a5e33b1c57367772db1d77eb5b4d58fd3c77e14ea813d7d66f43fe20"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-backend/final-format.log",
+      "source": ".local/validation/live-ab-final-format-evidence-excluded.log",
+      "bytes": 27,
+      "sha256": "71569ff9f54f638bbfa980480f05bfadc7eb0908775c997623d7184712a4e476"
+    }
+  ],
+  "publication_credential_scan": {
+    "pattern_matches_in_two_xml_files": 14,
+    "classification": "All14 matches exactly equal synthetic credential test literals from tracked tests/test_security_storage.py; confirmed by AST constant evaluation without reading credentials. XML retained verbatim.",
+    "fixture_source_sha256": "bb8aee17612136ce8bf257cd701c6e26e2def32e13fd3b65e7cdcf6f1769fd8d",
+    "unknown_credential_patterns": 0,
+    "actual_credential_findings": 0,
+    "limitations": "Pattern scanning and classification are guards, not proof against every possible secret."
+  }
+}

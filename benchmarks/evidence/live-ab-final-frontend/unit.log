@@ -1,0 +1,35 @@
+
+> memglide-dashboard@0.1.0 test
+> vitest --run --reporter=default --reporter=junit --outputFile.junit=../.local/validation/live-ab-final-frontend-unit.xml
+
+
+ RUN  v5.0.5 /workspace/Memglide/frontend
+
+ ✓ tests/api.test.ts (2 tests) 34ms
+ ✓ tests/ui.test.tsx (4 tests) 675ms
+   ✓ keeps a busy action disabled even when its ordinary disabled condition is false 315ms
+ ✓ tests/workflows.test.tsx (18 tests) 11093ms
+   ✓ dashboard workflows (18)
+     ✓ waits for delayed sessions before confirming passport URL alignment 967ms
+     ✓ keeps ended sessions available for deletion without recalling their memories 431ms
+     ✓ renders ignored file paths and exclusion reasons from the index 804ms
+     ✓ shows real empty states and registers a repository through the API 546ms
+     ✓ starts and selects sessions and clears their cached task data on deletion 893ms
+     ✓ dismisses a memory draft when background cleanup selects another session 745ms
+     ✓ keeps a deletion confirmation bound to its original session on /memory 372ms
+     ✓ keeps a deletion confirmation bound to its original session on /settings 420ms
+     ✓ does not end a replacement session when the original confirmation target disappears 420ms
+     ✓ keeps a new-session draft assigned to the project that opened it 724ms
+     ✓ does not select an old project's new session after a delayed refresh completes 733ms
+     ✓ searches and filters memories and saves explicit provenance 1466ms
+     ✓ retrieves ranked evidence, expands depth, and renders source hashes and passport warnings 684ms
+     ✓ persists settings and applies the saved theme from the backend 628ms
+     ✓ retains a settings draft after a rejected save and permits a successful retry 408ms
+     ✓ filters actual timeline events and exposes event detail 339ms
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  22:18:58
+   Duration  14.06s (tests 59%, environment 29%, import 5%, setup 4%, transform 3%)
+
+JUNIT report written to /workspace/Memglide/.local/validation/live-ab-final-frontend-unit.xml

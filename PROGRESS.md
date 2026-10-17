@@ -1,15 +1,33 @@
 # Memglide V1 verification record
 
-The original V1 results below are historical. Current refinement results are in
+The original V1 results below are historical. The current authenticated Codex
+comparison is in [benchmarks/live-ab-assessment.md](benchmarks/live-ab-assessment.md)
+and [its JSON analysis](benchmarks/live-ab-assessment.json), with
+[all 96 primary runs](benchmarks/codex-ab-authenticated.json) and
+[actual MCP context observations](benchmarks/codex-live-context.md).
+A passed 48/48; B passed 47/48, with one exec-server interruption left ungraded.
+The separate successful retry does not replace that interruption. Across 47
+verified pairs B used 2.75 times the input tokens and took 46.5% longer including
+fresh indexing. Billed cost and cost per successful task remain unavailable;
+this experiment does not establish a benefit. Original authentication failures
+and startup pilots remain preserved as historical evidence.
+
+The [final validation record](benchmarks/live-ab-final-validation.md) reports
+418 distinct passing checks: 391 Python, 24 frontend and three production-browser
+tests. It also retains the initial six compiler-install race failures and their
+successful full rerun. Application source and bundled frontend assets stayed
+unchanged throughout the authenticated experiment and final verification.
+
+Earlier refinement results are in
 [benchmarks/refinements.md](benchmarks/refinements.md) and its
 [JSON evidence index](benchmarks/refinements.json). Earlier retrieval, memory-version
 and MCP import-isolation fixes, the current verification totals, all strategy
-tradeoffs and the latest authentication-blocked Codex attempt are recorded in
+tradeoffs and earlier authentication-blocked Codex attempts are recorded in
 [benchmarks/improvements.md](benchmarks/improvements.md) and its
 [JSON evidence index](benchmarks/improvements.json). Original reports remain
 unchanged; component retrieval gains do not establish Codex savings.
 
-V1 is implemented and passes the local Linux acceptance workflow. All twelve implementation milestones are complete for the tested platform. Native Windows/macOS execution and a live Codex model session remain unverified; these are not claimed below.
+V1 is implemented and passes the local Linux acceptance workflow. All twelve implementation milestones are complete for the tested platform. Authenticated Codex execution is now verified by the comparison above. Native Windows/macOS execution remains unverified.
 
 ## Implemented milestones
 

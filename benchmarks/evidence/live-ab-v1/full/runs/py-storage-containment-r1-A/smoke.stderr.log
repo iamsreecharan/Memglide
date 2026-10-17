@@ -1,0 +1,11 @@
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+test_filesystem_root (test_storage.StorageKeyTests.test_filesystem_root) ... ok
+test_normalized_keys_within_root (test_storage.StorageKeyTests.test_normalized_keys_within_root) ... ok
+test_normalizes_storage_root (test_storage.StorageKeyTests.test_normalizes_storage_root) ... ok
+test_rejects_absolute_and_escaping_keys (test_storage.StorageKeyTests.test_rejects_absolute_and_escaping_keys) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

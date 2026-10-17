@@ -1,0 +1,21 @@
+diff --git a/src/graph.ts b/src/graph.ts
+index 1ca86b2..bc854b3 100644
+--- a/src/graph.ts
++++ b/src/graph.ts
+@@ -1,3 +1,15 @@
+ export function dependencies(graph: Record<string, string[]>, start: string): string[] {
+-  return [...new Set(graph[start] ?? [])].filter(item => item !== start).sort();
++  const visited = new Set<string>([start]);
++  const pending = [start];
++  while (pending.length > 0) {
++    const id = pending.pop()!;
++    const neighbors = Object.prototype.hasOwnProperty.call(graph, id) ? graph[id] : [];
++    for (const dependency of neighbors ?? []) {
++      if (visited.has(dependency)) continue;
++      visited.add(dependency);
++      pending.push(dependency);
++    }
++  }
++  visited.delete(start);
++  return [...visited].sort();
+ }

@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: walk and no mutation
+ok 1 - walk and no mutation
+  ---
+  duration_ms: 4.305748
+  type: 'test'
+  ...
+# Subtest: deleted cursor and service
+ok 2 - deleted cursor and service
+  ---
+  duration_ms: 1.296165
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 201.364193

@@ -1,0 +1,1 @@
+{"summary":"Fixed cursor pagination with consistent ascending ID ordering and strictly exclusive cursors, including deleted cursors. Preserved limit validation, input records, and null final cursors. Added DocumentService integration regressions; no commit made.","tests_run":["node --test tests/*.test.mjs — passed smoke and pagination tests","git diff --check — passed"]}

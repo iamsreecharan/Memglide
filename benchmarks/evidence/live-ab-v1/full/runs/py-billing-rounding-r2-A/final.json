@@ -1,0 +1,1 @@
+{"summary":"Implemented exact integer half-up prorated billing, preserving validation, full-period charges, and zero-day behavior. Added regression tests for rounding and large integers. No TypeScript source exists in this repository. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 6 tests passed","git diff --check — passed"]}

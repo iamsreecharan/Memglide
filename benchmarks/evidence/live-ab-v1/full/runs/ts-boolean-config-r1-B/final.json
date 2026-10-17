@@ -1,0 +1,1 @@
+{"summary":"Fixed strict feature flag parsing, preserving booleans and defaults, accepting supported strings with case and whitespace normalization, and rejecting all other values. Added regression tests covering DocumentService. No commits made.","tests_run":["node --test tests/*.test.mjs — passed smoke and regression tests","git diff --check — passed"]}

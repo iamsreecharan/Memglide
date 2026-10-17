@@ -1,0 +1,20 @@
+diff --git a/atlas/security.py b/atlas/security.py
+index 37b96eb..1b30a86 100644
+--- a/atlas/security.py
++++ b/atlas/security.py
+@@ -1,4 +1,4 @@
+-from pathlib import PurePosixPath
++import posixpath
+ 
+ 
+ def can_access(scopes, resource, action):
+@@ -18,7 +18,7 @@ def resolve_under(root, relative):
+         elif part not in ("", "."):
+             parts.append(part)
+     candidate = "/" + "/".join(parts)
+-    root_path = str(PurePosixPath(root))
+-    if not candidate.startswith(root_path):
++    root_path = posixpath.normpath(root)
++    if candidate != root_path and not candidate.startswith(root_path.rstrip("/") + "/"):
+         raise ValueError("key escapes storage root")
+     return candidate

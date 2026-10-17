@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "scope": "Post-benchmark frontend regression validation; no additional model requests",
+  "application_source_changes": [],
+  "dependency_installation": {
+    "command": "npm ci",
+    "cwd": "frontend",
+    "exit_code": 0,
+    "packages_added": 134
+  },
+  "production_build": {
+    "command": "npm run build",
+    "cwd": "frontend",
+    "exit_code": 0,
+    "includes": [
+      "TypeScript --noEmit",
+      "Vite production build"
+    ]
+  },
+  "packaged_asset_verification": {
+    "built_files": 19,
+    "packaged_files": 19,
+    "byte_identical": true,
+    "mismatched_files": []
+  },
+  "bundle": {
+    "command": "UV_CACHE_DIR=$PWD/.cache/uv uv run python scripts/bundle_frontend.py",
+    "cwd": ".",
+    "exit_code": 0,
+    "run_only_after_byte_identical_check": true,
+    "tracked_application_changes": false
+  },
+  "frontend_unit": {
+    "command": "npm test -- --run --reporter=default --reporter=junit --outputFile.junit=../.local/validation/live-ab-final-frontend-unit.xml",
+    "cwd": "frontend",
+    "exit_code": 0,
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "test_files": 3,
+    "junit_reported_seconds": 11.80166429
+  },
+  "production_browser": {
+    "command": "MEMGLIDE_E2E_PORT=18766 PLAYWRIGHT_JSON_OUTPUT_FILE=/workspace/Memglide/.local/validation/live-ab-final-frontend-browser.json npm run e2e -- --reporter=list,json",
+    "cwd": "frontend",
+    "exit_code": 0,
+    "passed": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "duration_seconds": 47.093641000000005,
+    "global_errors": 0,
+    "browser": "Chromium",
+    "service_bind": "127.0.0.1:18766",
+    "test_retries": 0
+  },
+  "warnings": [
+    "Node emitted the existing NO_COLOR/FORCE_COLOR precedence warning; no check failed."
+  ],
+  "raw_evidence": [
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/install.log",
+      "bytes": 27,
+      "sha256": "28de94bed41e560ed6e494c67a4209bd596a559e6b015b0ef31b6eeb6ce5ea17"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/build.log",
+      "bytes": 1586,
+      "sha256": "6c820a3221290c064427ff7d00080c2eac5317a15509a6de5a6c2b47c427127a"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/unit.log",
+      "bytes": 2091,
+      "sha256": "24b80d35718120b2cd83bf17c3d3b1676685e6d7c30023899612a121cfa76510"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/unit.xml",
+      "bytes": 5389,
+      "sha256": "0158ad25ff900e4f1b195bf634cc29c34ad53543e030b07138b74a3d6b453645"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/assets.json",
+      "bytes": 4078,
+      "sha256": "94e3d398ed4d4f47a90ad0b49cc3514940e5fe5ee5e346e90fb1af99981b3b3f"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/bundle.log",
+      "bytes": 48,
+      "sha256": "60d2ff7ef040c8b2b4d3c192787fde1c3203f492edc48985b71798b63da8878e"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/browser.log",
+      "bytes": 528,
+      "sha256": "a5f3c0045c636a8faf63d7e76c412bc23b9f75b57edf9c4fd3991fa6f5c7fc1c"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/browser.stderr.log",
+      "bytes": 794,
+      "sha256": "4d5d89090fcea05fe61529afe030652878b30d2ae1200dfd6315be0b1a36d30c"
+    },
+    {
+      "path": "benchmarks/evidence/live-ab-final-frontend/browser.json",
+      "bytes": 13624,
+      "sha256": "1de425d965c57c6d5bc5fcac2470ec16a8825520c9a67e13ac108607d0526dfc"
+    }
+  ],
+  "browser_started_at_utc": "2026-10-17T22:19:20.933Z",
+  "checked_at_utc": "2026-10-17T22:20:48.826061+00:00"
+}

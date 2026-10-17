@@ -1,0 +1,1 @@
+{"summary":"Fixed POSIX storage-key containment by normalizing paths and enforcing slash-separated boundaries. Added regression coverage for traversal, absolute keys, and valid nested keys. Preserved the service API and existing tests; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 5 tests passed","git diff --check — passed"]}

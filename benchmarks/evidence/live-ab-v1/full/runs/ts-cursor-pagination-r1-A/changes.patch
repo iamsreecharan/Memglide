@@ -1,0 +1,18 @@
+diff --git a/src/pagination.ts b/src/pagination.ts
+index 3f02113..6ed2e20 100644
+--- a/src/pagination.ts
++++ b/src/pagination.ts
+@@ -6,9 +6,10 @@ export function page<T extends Identified>(
+   if (!Number.isInteger(limit) || limit < 1 || limit > 100) {
+     throw new Error("limit must be between 1 and 100");
+   }
+-  let ordered = [...records].sort((a, b) => a.id.localeCompare(b.id));
+-  if (options.cursor !== undefined) {
+-    ordered = ordered.filter(item => item.id >= options.cursor!);
++  let ordered = [...records].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
++  const cursor = options.cursor;
++  if (cursor !== undefined) {
++    ordered = ordered.filter(item => item.id > cursor);
+   }
+   const selected = ordered.slice(0, limit);
+   return { items: selected,

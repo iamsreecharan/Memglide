@@ -1,0 +1,12 @@
+test_booleans_are_preserved (test_config.FeatureFlagTests.test_booleans_are_preserved) ... ok
+test_invalid_values_are_rejected (test_config.FeatureFlagTests.test_invalid_values_are_rejected) ... ok
+test_null_uses_default (test_config.FeatureFlagTests.test_null_uses_default) ... ok
+test_service_booleans_and_null (test_config.FeatureFlagTests.test_service_booleans_and_null) ... ok
+test_supported_strings (test_config.FeatureFlagTests.test_supported_strings) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+OK

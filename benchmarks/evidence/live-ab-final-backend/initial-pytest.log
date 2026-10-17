@@ -1,0 +1,171 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.0.2, pluggy-1.7.0
+rootdir: /workspace/Memglide
+configfile: pyproject.toml
+testpaths: tests
+plugins: asyncio-1.3.0, anyio-4.15.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 391 items
+
+tests/test_benchmark_comparison.py ..............                        [  3%]
+tests/test_benchmark_corpus.py ...............FFFFFF.........            [ 11%]
+tests/test_benchmark_probe.py ......                                     [ 12%]
+tests/test_benchmark_runner.py .............                             [ 16%]
+tests/test_benchmark_telemetry.py ....................                   [ 21%]
+tests/test_context_budgeting.py ........                                 [ 23%]
+tests/test_context_diagnostics.py ..                                     [ 23%]
+tests/test_context_focus.py .......................                      [ 29%]
+tests/test_context_performance.py ......                                 [ 31%]
+tests/test_context_request_scope.py ............                         [ 34%]
+tests/test_functional_lifecycle.py ......................                [ 39%]
+tests/test_indexing.py .........................                         [ 46%]
+tests/test_live_context_analysis.py .............                        [ 49%]
+tests/test_mcp_import_isolation.py .                                     [ 49%]
+tests/test_memory_acknowledgement.py .                                   [ 50%]
+tests/test_memory_context.py ....................                        [ 55%]
+tests/test_memory_versions.py ....................                       [ 60%]
+tests/test_query_focus.py ....                                           [ 61%]
+tests/test_refinement_reporting.py ..........                            [ 63%]
+tests/test_refinement_retrieval.py ..........................            [ 70%]
+tests/test_retrieval_experiment.py .........                             [ 72%]
+tests/test_retrieval_holdout.py ....                                     [ 73%]
+tests/test_search_relevance.py .......................                   [ 79%]
+tests/test_security_storage.py ......................................... [ 90%]
+............................                                             [ 97%]
+tests/test_transports.py .........                                       [ 99%]
+tests/test_workflow.py .                                                 [100%]
+
+=================================== FAILURES ===================================
+____ test_baseline_fails_behavior_and_reference_fix_passes[ts-ttl-boundary] ____
+
+tmp_path = PosixPath('/workspace/Memglide/.local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a12')
+task = {'checks': {'held_out_behavior': True, 'smoke': True, 'typescript_typecheck': True}, 'expected_symbols': ['src.cache.TTLCache.get'], 'id': 'ts-ttl-boundary', 'language': 'typescript', ...}
+
+    @pytest.mark.parametrize("task", task_definitions(), ids=lambda task: task["id"])
+    def test_baseline_fails_behavior_and_reference_fix_passes(tmp_path, task):
+        root = tmp_path / "repo"
+        build_repository(task["language"], root)
+        baseline = grade(task["id"], root, tmp_path / "baseline_grade")
+        assert not baseline["passed"]
+        assert baseline["protected_files_unchanged"]
+        assert baseline["commands"][0]["exit_code"] != 0
+        assert baseline["commands"][0]["counts"]["tests"] == 2
+>       assert all(command["exit_code"] == 0 for command in baseline["commands"][1:])
+E       assert False
+E        +  where False = all(<generator object test_baseline_fails_behavior_and_reference_fix_passes.<locals>.<genexpr> at 0x7f5a40f2fd30>)
+
+tests/test_benchmark_corpus.py:61: AssertionError
+____ test_baseline_fails_behavior_and_reference_fix_passes[ts-lru-eviction] ____
+
+tmp_path = PosixPath('/workspace/Memglide/.local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a13')
+task = {'checks': {'held_out_behavior': True, 'smoke': True, 'typescript_typecheck': True}, 'expected_symbols': ['src.cache.TTLCache.get'], 'id': 'ts-lru-eviction', 'language': 'typescript', ...}
+
+    @pytest.mark.parametrize("task", task_definitions(), ids=lambda task: task["id"])
+    def test_baseline_fails_behavior_and_reference_fix_passes(tmp_path, task):
+        root = tmp_path / "repo"
+        build_repository(task["language"], root)
+        baseline = grade(task["id"], root, tmp_path / "baseline_grade")
+        assert not baseline["passed"]
+        assert baseline["protected_files_unchanged"]
+        assert baseline["commands"][0]["exit_code"] != 0
+        assert baseline["commands"][0]["counts"]["tests"] == 2
+>       assert all(command["exit_code"] == 0 for command in baseline["commands"][1:])
+E       assert False
+E        +  where False = all(<generator object test_baseline_fails_behavior_and_reference_fix_passes.<locals>.<genexpr> at 0x7f5a40f2ec20>)
+
+tests/test_benchmark_corpus.py:61: AssertionError
+_ test_baseline_fails_behavior_and_reference_fix_passes[ts-cursor-pagination] __
+
+tmp_path = PosixPath('/workspace/Memglide/.local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a14')
+task = {'checks': {'held_out_behavior': True, 'smoke': True, 'typescript_typecheck': True}, 'expected_symbols': ['src.pagination.page'], 'id': 'ts-cursor-pagination', 'language': 'typescript', ...}
+
+    @pytest.mark.parametrize("task", task_definitions(), ids=lambda task: task["id"])
+    def test_baseline_fails_behavior_and_reference_fix_passes(tmp_path, task):
+        root = tmp_path / "repo"
+        build_repository(task["language"], root)
+        baseline = grade(task["id"], root, tmp_path / "baseline_grade")
+        assert not baseline["passed"]
+        assert baseline["protected_files_unchanged"]
+        assert baseline["commands"][0]["exit_code"] != 0
+        assert baseline["commands"][0]["counts"]["tests"] == 2
+>       assert all(command["exit_code"] == 0 for command in baseline["commands"][1:])
+E       assert False
+E        +  where False = all(<generator object test_baseline_fails_behavior_and_reference_fix_passes.<locals>.<genexpr> at 0x7f5a4104b780>)
+
+tests/test_benchmark_corpus.py:61: AssertionError
+_ test_baseline_fails_behavior_and_reference_fix_passes[ts-optimistic-revision] _
+
+tmp_path = PosixPath('/workspace/Memglide/.local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a15')
+task = {'checks': {'held_out_behavior': True, 'smoke': True, 'typescript_typecheck': True}, 'expected_symbols': ['src.repository.Repository.update'], 'id': 'ts-optimistic-revision', 'language': 'typescript', ...}
+
+    @pytest.mark.parametrize("task", task_definitions(), ids=lambda task: task["id"])
+    def test_baseline_fails_behavior_and_reference_fix_passes(tmp_path, task):
+        root = tmp_path / "repo"
+        build_repository(task["language"], root)
+        baseline = grade(task["id"], root, tmp_path / "baseline_grade")
+        assert not baseline["passed"]
+        assert baseline["protected_files_unchanged"]
+        assert baseline["commands"][0]["exit_code"] != 0
+        assert baseline["commands"][0]["counts"]["tests"] == 2
+>       assert all(command["exit_code"] == 0 for command in baseline["commands"][1:])
+E       assert False
+E        +  where False = all(<generator object test_baseline_fails_behavior_and_reference_fix_passes.<locals>.<genexpr> at 0x7f5a40f2d7d0>)
+
+tests/test_benchmark_corpus.py:61: AssertionError
+_ test_baseline_fails_behavior_and_reference_fix_passes[ts-scope-authorization] _
+
+tmp_path = PosixPath('/workspace/Memglide/.local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a16')
+task = {'checks': {'held_out_behavior': True, 'smoke': True, 'typescript_typecheck': True}, 'expected_symbols': ['src.security.canAccess'], 'id': 'ts-scope-authorization', 'language': 'typescript', ...}
+
+    @pytest.mark.parametrize("task", task_definitions(), ids=lambda task: task["id"])
+    def test_baseline_fails_behavior_and_reference_fix_passes(tmp_path, task):
+        root = tmp_path / "repo"
+        build_repository(task["language"], root)
+        baseline = grade(task["id"], root, tmp_path / "baseline_grade")
+        assert not baseline["passed"]
+        assert baseline["protected_files_unchanged"]
+        assert baseline["commands"][0]["exit_code"] != 0
+        assert baseline["commands"][0]["counts"]["tests"] == 2
+>       assert all(command["exit_code"] == 0 for command in baseline["commands"][1:])
+E       assert False
+E        +  where False = all(<generator object test_baseline_fails_behavior_and_reference_fix_passes.<locals>.<genexpr> at 0x7f5a40f2f6b0>)
+
+tests/test_benchmark_corpus.py:61: AssertionError
+_ test_baseline_fails_behavior_and_reference_fix_passes[ts-storage-containment] _
+
+tmp_path = PosixPath('/workspace/Memglide/.local/validation/live-ab-final-pytest/test_baseline_fails_behavior_a17')
+task = {'checks': {'held_out_behavior': True, 'smoke': True, 'typescript_typecheck': True}, 'expected_symbols': ['src.security.resolveUnder'], 'id': 'ts-storage-containment', 'language': 'typescript', ...}
+
+    @pytest.mark.parametrize("task", task_definitions(), ids=lambda task: task["id"])
+    def test_baseline_fails_behavior_and_reference_fix_passes(tmp_path, task):
+        root = tmp_path / "repo"
+        build_repository(task["language"], root)
+        baseline = grade(task["id"], root, tmp_path / "baseline_grade")
+        assert not baseline["passed"]
+        assert baseline["protected_files_unchanged"]
+        assert baseline["commands"][0]["exit_code"] != 0
+        assert baseline["commands"][0]["counts"]["tests"] == 2
+>       assert all(command["exit_code"] == 0 for command in baseline["commands"][1:])
+E       assert False
+E        +  where False = all(<generator object test_baseline_fails_behavior_and_reference_fix_passes.<locals>.<genexpr> at 0x7f5a40f2ec20>)
+
+tests/test_benchmark_corpus.py:61: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/typer/__init__.py:24
+  /workspace/Memglide/.venv/lib/python3.12/site-packages/typer/__init__.py:24: DeprecationWarning: 'click.utils.get_binary_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_binary_stream as get_binary_stream
+
+.venv/lib/python3.12/site-packages/typer/__init__.py:25
+  /workspace/Memglide/.venv/lib/python3.12/site-packages/typer/__init__.py:25: DeprecationWarning: 'click.utils.get_text_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_text_stream as get_text_stream
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /workspace/Memglide/.local/validation/live-ab-final-pytest.xml -
+=========================== short test summary info ============================
+FAILED tests/test_benchmark_corpus.py::test_baseline_fails_behavior_and_reference_fix_passes[ts-ttl-boundary]
+FAILED tests/test_benchmark_corpus.py::test_baseline_fails_behavior_and_reference_fix_passes[ts-lru-eviction]
+FAILED tests/test_benchmark_corpus.py::test_baseline_fails_behavior_and_reference_fix_passes[ts-cursor-pagination]
+FAILED tests/test_benchmark_corpus.py::test_baseline_fails_behavior_and_reference_fix_passes[ts-optimistic-revision]
+FAILED tests/test_benchmark_corpus.py::test_baseline_fails_behavior_and_reference_fix_passes[ts-scope-authorization]
+FAILED tests/test_benchmark_corpus.py::test_baseline_fails_behavior_and_reference_fix_passes[ts-storage-containment]
+============= 6 failed, 385 passed, 2 warnings in 83.37s (0:01:23) =============

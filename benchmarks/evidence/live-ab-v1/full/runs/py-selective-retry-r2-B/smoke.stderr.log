@@ -1,0 +1,11 @@
+test_exhaustion_preserves_final_failure_and_total_attempts (test_retry.RetryTests.test_exhaustion_preserves_final_failure_and_total_attempts) ... ok
+test_other_exceptions_escape_without_retry (test_retry.RetryTests.test_other_exceptions_escape_without_retry) ... ok
+test_requires_at_least_one_attempt_before_calling_operation (test_retry.RetryTests.test_requires_at_least_one_attempt_before_calling_operation) ... ok
+test_returns_first_success_including_falsey_results (test_retry.RetryTests.test_returns_first_success_including_falsey_results) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK

@@ -1,0 +1,9 @@
+test_exact_scope_and_resource_wildcard_grant_access (test_authorization.AuthorizationTests.test_exact_scope_and_resource_wildcard_grant_access) ... ok
+test_nonmatching_scopes_deny_access (test_authorization.AuthorizationTests.test_nonmatching_scopes_deny_access) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

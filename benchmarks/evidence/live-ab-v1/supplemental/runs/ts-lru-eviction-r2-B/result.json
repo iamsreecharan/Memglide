@@ -1,0 +1,285 @@
+{
+  "run_id": "ts-lru-eviction-r2-B",
+  "task_id": "ts-lru-eviction",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 2,
+  "order": 90,
+  "attempted": true,
+  "started_at": "2026-10-17T22:17:13.297095+00:00",
+  "errors": [],
+  "artifacts": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B",
+  "worktree": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/worktrees/ts-lru-eviction-r2-B",
+  "starting_commit": "064e2cb7a6f8ede292c7d4fcd2c9829757c2c97a",
+  "prompt_sha256": "dcd1f0583dbca5913040804f99e465e2370b72dbad5341fba86e5e29d0a55144",
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "setup": {
+    "project_id": "ea93242d8a484a22862cc2866db88b4e",
+    "index_wall_seconds": 0.2408354929999632,
+    "wall_seconds": 0.2408354929999632,
+    "index_local_cpu_seconds": 0.05972993899999998,
+    "cpu_seconds": 0.05972993899999998,
+    "scope": "Required fresh project index only; no sessions or context retrieval before the model"
+  },
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 40.41495690000005,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 419762176,
+    "cpu_seconds": 9.52,
+    "memglide_peak_rss_bytes": 85192704,
+    "memglide_cpu_seconds": 4.18,
+    "observed_processes": 47,
+    "observed_memglide_processes": 10,
+    "samples": 757,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 30,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 142207,
+      "cached_input_tokens": 111872,
+      "output_tokens": 1832
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 142207,
+      "cached_input_tokens": 111872,
+      "output_tokens": 1832
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 6,
+    "mcp_calls": [
+      {
+        "id": "item_2",
+        "server": "memglide",
+        "tool": "list_projects",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      },
+      {
+        "id": "item_4",
+        "server": "memglide",
+        "tool": "start_session",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      },
+      {
+        "id": "item_5",
+        "server": "memglide",
+        "tool": "get_context",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      },
+      {
+        "id": "item_10",
+        "server": "memglide",
+        "tool": "get_context_passport",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      },
+      {
+        "id": "item_11",
+        "server": "memglide",
+        "tool": "get_context",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      },
+      {
+        "id": "item_12",
+        "server": "memglide",
+        "tool": "get_context_passport",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error"
+      }
+    ],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 6,
+    "memglide_successful_get_context_count": 2,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 5,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"pwd && rg --files -g '\"'!node_modules'\"' -g '\"'!package-lock.json'\"' -g '\"'!pnpm-lock.yaml'\"' -g '\"'!yarn.lock'\"'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'cat src/cache.ts tests/smoke.test.mjs package.json && git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_6",
+        "command": "/bin/bash -lc 'cat src/service.ts AGENTS.md && node --test tests/*.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_9",
+        "command": "/bin/bash -lc 'node --test tests/*.test.mjs && git diff --check'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_13",
+        "command": "/bin/bash -lc 'git diff -- src/cache.ts && git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 2,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "src/cache.ts",
+      "tests/smoke.test.mjs",
+      "package.json",
+      "src/service.ts",
+      "AGENTS.md"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "protected_file_violations": [],
+  "grader": {
+    "task_id": "ts-lru-eviction",
+    "corpus_version": "1.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/smoke.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/benchmarks/device-auth-ab-supplemental-v1/runs/ts-lru-eviction-r2-B/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 4,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "9fd2774877401fa8bb640782cf4bd3078f862a717ea2873c55cc9b6e7dcef65e",
+        "actual_sha256": "9fd2774877401fa8bb640782cf4bd3078f862a717ea2873c55cc9b6e7dcef65e"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8",
+        "actual_sha256": "810bc49f4d939bcd1b6de231ad899a5a9a374adf9172ae45648047467b2a2ce8"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "0246caccc52f70d9afbf70cd7f0ad80e5e6db324ef515f4219860aec6e9878b7",
+        "actual_sha256": "0246caccc52f70d9afbf70cd7f0ad80e5e6db324ef515f4219860aec6e9878b7"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/smoke.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "fd5f096864dcf99ccde2e3136420921d691b4981b200a3e73bf3053a486a6511",
+        "actual_sha256": "fd5f096864dcf99ccde2e3136420921d691b4981b200a3e73bf3053a486a6511"
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "treatment_valid": true,
+  "status": "completed",
+  "common_blocker": null,
+  "finished_at": "2026-10-17T22:17:54.960599+00:00",
+  "end_to_end_wall_seconds": 40.65579239300001
+}

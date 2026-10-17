@@ -1,0 +1,1 @@
+{"summary":"Implemented exact half-up prorated billing using BigInt arithmetic. Preserved validation, full-period charges, and zero-day behavior. Added focused regression tests; no commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

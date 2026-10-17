@@ -1,0 +1,11 @@
+diff --git a/atlas/billing.py b/atlas/billing.py
+index a1e0e6b..e8cba8c 100644
+--- a/atlas/billing.py
++++ b/atlas/billing.py
+@@ -5,4 +5,5 @@ def prorated_cents(monthly_cents, active_days, period_days):
+         raise ValueError("arguments must be nonnegative integers")
+     if period_days == 0 or active_days > period_days:
+         raise ValueError("invalid billing period")
+-    return (monthly_cents * active_days) // period_days
++    cents, remainder = divmod(monthly_cents * active_days, period_days)
++    return cents + (2 * remainder >= period_days)

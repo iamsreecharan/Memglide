@@ -1,0 +1,12 @@
+file:///workspace/Memglide/frontend/node_modules/typescript/lib/getExePath.js:66
+        throw new Error("Executable not found: " + exe);
+              ^
+
+Error: Executable not found: /workspace/Memglide/frontend/node_modules/@typescript/typescript-linux-x64/lib/tsc
+    at getExePath (file:///workspace/Memglide/frontend/node_modules/typescript/lib/getExePath.js:66:15)
+    at file:///workspace/Memglide/frontend/node_modules/typescript/lib/tsc.js:6:13
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

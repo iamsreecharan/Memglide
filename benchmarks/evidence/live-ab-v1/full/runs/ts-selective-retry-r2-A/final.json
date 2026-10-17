@@ -1,0 +1,1 @@
+{"summary":"Updated retry logic to retry only TemporaryError, respect the total attempt limit, return the first success, and rethrow failures unchanged. Preserved attempt validation and added focused regression tests. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

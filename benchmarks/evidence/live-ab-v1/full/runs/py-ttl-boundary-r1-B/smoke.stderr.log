@@ -1,0 +1,11 @@
+test_document_service_cache_boundary (test_cache.TTLCacheTests.test_document_service_cache_boundary) ... ok
+test_expired_entries_are_removed (test_cache.TTLCacheTests.test_expired_entries_are_removed) ... ok
+test_overwrite_starts_new_ttl (test_cache.TTLCacheTests.test_overwrite_starts_new_ttl) ... ok
+test_reads_preserve_deadline (test_cache.TTLCacheTests.test_reads_preserve_deadline) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK

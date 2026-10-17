@@ -1,0 +1,9 @@
+test_first_event_wins_and_only_new_keys_advance_sequence (test_repository.EventRepositoryTests.test_first_event_wins_and_only_new_keys_advance_sequence) ... ok
+test_payloads_and_returned_events_are_independent_copies (test_repository.EventRepositoryTests.test_payloads_and_returned_events_are_independent_copies) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

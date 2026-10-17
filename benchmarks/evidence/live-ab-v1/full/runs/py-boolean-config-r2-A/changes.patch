@@ -1,0 +1,20 @@
+diff --git a/atlas/config.py b/atlas/config.py
+index b13de7e..6db1f06 100644
+--- a/atlas/config.py
++++ b/atlas/config.py
+@@ -1,5 +1,13 @@
+ def parse_flag(value, *, default=False):
+-    """Accept bools and case-insensitive true/false, 1/0, yes/no, on/off."""
++    """Parse a boolean flag, using default for None and rejecting invalid values."""
+     if value is None:
+         return default
+-    return bool(value)
++    if isinstance(value, bool):
++        return value
++    if isinstance(value, str):
++        normalized = value.strip().lower()
++        if normalized in ("true", "1", "yes", "on"):
++            return True
++        if normalized in ("false", "0", "no", "off"):
++            return False
++    raise ValueError("Expected a boolean or a recognized boolean string")

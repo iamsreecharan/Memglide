@@ -1,0 +1,11 @@
+test_limit_validation (test_pagination.PaginationTests.test_limit_validation) ... ok
+test_missing_cursor_is_an_exclusive_boundary (test_pagination.PaginationTests.test_missing_cursor_is_an_exclusive_boundary) ... ok
+test_service_continues_after_cursor_document_is_deleted (test_pagination.PaginationTests.test_service_continues_after_cursor_document_is_deleted) ... ok
+test_traversal_emits_each_id_once_without_mutating_records (test_pagination.PaginationTests.test_traversal_emits_each_id_once_without_mutating_records) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

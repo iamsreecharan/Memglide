@@ -1,0 +1,1 @@
+{"summary":"Fixed cache expiration to remove entries at or after the TTL deadline. Added regression coverage for unchanged expiration on reads, overwrite TTL renewal, and DocumentService cache behavior. Existing tests preserved; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 6 tests passed","git diff --check — passed"]}

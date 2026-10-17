@@ -1,0 +1,1 @@
+{"summary":"Fixed LRU eviction among live keys. Successful reads refresh recency without extending TTL; updates refresh recency, misses preserve order, and expired entries no longer displace live keys. Added focused regression tests. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 7 tests passed","git diff --check — passed"]}

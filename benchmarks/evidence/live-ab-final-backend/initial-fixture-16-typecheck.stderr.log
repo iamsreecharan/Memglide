@@ -1,0 +1,18 @@
+node:internal/process/per_thread:326
+    _execve(execPath, args, envArray);
+    ^
+
+process.execve failed with error code ETXTBSY
+
+----- Native stack trace -----
+
+ 1: 0x75f980  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0x7f0795d8f08d 
+
+----- JavaScript stack trace -----
+
+1: execve (node:internal/process/per_thread:326:5)
+2: file:///workspace/Memglide/frontend/node_modules/typescript/lib/tsc.js:11:17
+3: run (node:internal/modules/esm/module_job:439:25)
+
+

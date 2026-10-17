@@ -1,0 +1,11 @@
+test_cursor_boundaries_and_empty_pages (test_pagination.PaginationTests.test_cursor_boundaries_and_empty_pages) ... ok
+test_limit_validation (test_pagination.PaginationTests.test_limit_validation) ... ok
+test_service_continues_after_deleted_cursor (test_pagination.PaginationTests.test_service_continues_after_deleted_cursor) ... ok
+test_traversal_emits_each_document_once_without_mutating_input (test_pagination.PaginationTests.test_traversal_emits_each_document_once_without_mutating_input) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

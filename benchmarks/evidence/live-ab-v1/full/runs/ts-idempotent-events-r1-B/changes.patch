@@ -1,0 +1,14 @@
+diff --git a/src/repository.ts b/src/repository.ts
+index ac566f9..f6e2af3 100644
+--- a/src/repository.ts
++++ b/src/repository.ts
+@@ -23,6 +23,9 @@ export class Repository {
+   }
+ 
+   putEvent(key: string, payload: unknown): Event {
++    const existing = this.events.get(key);
++    if (existing) return structuredClone(existing);
++
+     const event = { key, payload: structuredClone(payload), sequence: this.events.size + 1 };
+     this.events.set(key, event);
+     return structuredClone(event);

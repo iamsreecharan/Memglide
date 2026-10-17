@@ -1,0 +1,1 @@
+{"summary":"Implemented exact integer half-up prorated billing, preserving validation, full-period charges, and zero-day behavior. Added focused regressions for rounding boundaries and large integers. Existing tests preserved; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 6 tests passed","git diff --check — passed"]}

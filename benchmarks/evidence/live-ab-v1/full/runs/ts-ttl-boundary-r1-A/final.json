@@ -1,0 +1,1 @@
+{"summary":"Fixed cache expiration to remove entries at the TTL deadline. Added regression coverage for expiration, unchanged deadlines on reads, overwrite TTL renewal, and DocumentService. Existing tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

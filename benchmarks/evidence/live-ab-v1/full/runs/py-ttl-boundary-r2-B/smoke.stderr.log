@@ -1,0 +1,11 @@
+test_document_service_expires_cached_document (test_cache.TTLCacheTests.test_document_service_expires_cached_document) ... ok
+test_first_read_after_deadline_removes_entry (test_cache.TTLCacheTests.test_first_read_after_deadline_removes_entry) ... ok
+test_overwrite_starts_new_ttl (test_cache.TTLCacheTests.test_overwrite_starts_new_ttl) ... ok
+test_reads_before_deadline_do_not_extend_expiration (test_cache.TTLCacheTests.test_reads_before_deadline_do_not_extend_expiration) ... ok
+test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
+test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

@@ -1,0 +1,1 @@
+{"summary":"Fixed optimistic updates to require exact revision equality. Added regression coverage for stale/future conflicts, unchanged storage after rejection, single revision increments, and mutation isolation. Existing tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

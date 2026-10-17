@@ -1,0 +1,1 @@
+{"summary":"Fixed TTL expiration to remove entries at or after the deadline. Added deterministic regressions for boundary expiration, unchanged deadlines on reads, overwrite TTLs, and DocumentService. Existing tests preserved; no commit made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}
