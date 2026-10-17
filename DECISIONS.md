@@ -46,3 +46,19 @@
 - Preserve the authentication-blocked A/B slots as unrun, with unavailable costs,
   success rates and token totals. An SDK retrieval improvement cannot establish
   savings or task-completion benefits versus Codex.
+- Separate generic task workflow from behavioral criteria for lexical ranking,
+  preserving explicit references and substantive test acceptance clauses. Source
+  role preferences remain deterministic heuristics rather than semantic labels.
+- Focus level-2 primary files only for a recognized task role. The first locked
+  retrieval evaluation exposed documentation-only selection and ambiguous file
+  basename anchors; preserve that failed candidate and correct the guards before
+  shipping. Replaying those queries is reused validation, not a new holdout.
+- Preserve every performance stage and its exact source hashes. The isolated
+  settings/serialization experiment predates selection changes; its equal-output
+  result must not be attributed to the final selector or to model billing.
+- Validate active session state, memory changes, TTL refresh and event creation
+  in one write transaction. Source capture stays outside the lock, followed by
+  active-state revalidation. Read-only ended-session history does not extend TTL.
+- Bind pending dashboard mutations to their original project/session targets,
+  and recheck current project selection after asynchronous refreshes. Delayed
+  destructive actions must never follow a newly selected session.

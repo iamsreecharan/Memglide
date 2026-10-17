@@ -40,12 +40,25 @@ const categories = [
 ];
 
 export default function MemoryScreen() {
+  const { projectId, sessionId } = useWorkspace();
+  // A draft and its confirmation belong to the session that opened them.
+  // Background cleanup or expiration must not move those actions to a new task.
+  return <SessionMemory key={`${projectId}:${sessionId}`} />;
+}
+
+function SessionMemory() {
   const { sessionId, session, projectId, refresh } = useWorkspace();
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [editing, setEditing] = useState<Memory | "new" | null>(null);
   const [deleting, setDeleting] = useState<Memory | null>(null);
+  useEffect(() => {
+    if (session?.ended_at) {
+      setEditing(null);
+      setDeleting(null);
+    }
+  }, [session?.ended_at]);
   useEffect(() => {
     const timeout = window.setTimeout(() => setQuery(search), 250);
     return () => window.clearTimeout(timeout);

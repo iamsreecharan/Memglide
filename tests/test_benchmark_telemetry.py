@@ -200,6 +200,8 @@ def run(
         "configuration": config,
         "repeat": 1,
         "order": 1 if config == "A" else 2,
+        "starting_commit": "a" * 40,
+        "prompt_sha256": "b" * 64,
         "status": "completed",
         "attempted": True,
         "grader": {"success": success},
@@ -326,3 +328,54 @@ def test_ungrounded_agent_success_does_not_become_grader_success() -> None:
     assert report["aggregates"]["A"]["successful_runs"] == 0
     assert report["aggregates"]["A"]["ungraded_runs"] == 1
     assert report["aggregates"]["A"]["successful_task_completion_rate"] == 0
+
+
+@pytest.mark.parametrize("field", ["starting_commit", "prompt_sha256"])
+@pytest.mark.parametrize("mismatch", [False, True])
+def test_unverified_or_unequal_pair_identity_withholds_deltas(field: str, mismatch: bool) -> None:
+    rows = [run("task", "A", True), run("task", "B", False, invokes_memglide=True)]
+    if mismatch:
+        rows[1][field] = "different"
+    else:
+        del rows[1][field]
+    report = build_report(rows, [], {"source_unchanged_during_experiment": True})
+    paired = report["paired_comparisons"]
+    assert paired["valid_pair_count"] == 0
+    assert field in paired["excluded_pairs"][0]["reason"]
+    assert paired["B_minus_A"]["input_tokens"]["mean"] is None
+    assert report["aggregates"]["B"]["attempted_runs"] == 1
+    assert report["aggregates"]["B"]["failed_grades"] == 1
+    assert report["runs"][1]["metrics"]["input_tokens"] == 100
+
+
+def test_explicit_runtime_source_change_invalidates_all_pairs_but_retains_observations() -> None:
+    rows = [run("task", "A", True, 0.1), run("task", "B", False, 0.2, invokes_memglide=True)]
+    report = build_report(rows, [], {"source_unchanged_during_experiment": False})
+    paired = report["paired_comparisons"]
+    assert paired["valid_pair_count"] == 0
+    assert "source changed" in paired["excluded_pairs"][0]["reason"]
+    assert report["aggregates"]["B"]["metrics"]["actual_cost_usd"]["total"] == 0.2
+    assert report["aggregates"]["B"]["failed_grades"] == 1
+    assert "source changed" in render_markdown(report)
+
+
+def test_matching_input_identity_is_reported_and_missing_source_attestation_stays_unknown() -> None:
+    rows = [run("task", "A", True), run("task", "B", True, invokes_memglide=True)]
+    report = build_report(rows, [], {})
+    paired = report["paired_comparisons"]
+    assert paired["valid_pair_count"] == 1
+    assert paired["pairs"][0]["verified_input_identity"] == {
+        "starting_commit": "a" * 40,
+        "prompt_sha256": "b" * 64,
+    }
+    assert paired["source_unchanged_during_experiment"] is None
+
+
+def test_equal_placeholder_strings_do_not_establish_input_identity() -> None:
+    rows = [run("task", "A", True), run("task", "B", True, invokes_memglide=True)]
+    for row in rows:
+        row["starting_commit"] = "unknown"
+        row["prompt_sha256"] = "unknown"
+    report = build_report(rows, [], {})
+    assert report["paired_comparisons"]["valid_pair_count"] == 0
+    assert "Invalid starting_commit" in report["paired_comparisons"]["excluded_pairs"][0]["reason"]

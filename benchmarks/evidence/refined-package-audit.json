@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "scope": "Wheel/sdist source-byte equality, compiled frontend, required files and exclusion audit. Archive hashes are external sidecars only; this public summary includes no archive hash or self-hash.",
+  "wheel_member_count": 45,
+  "sdist_member_count": 287,
+  "wheel_python_files_verified": 21,
+  "sdist_source_files_verified": 269,
+  "frontend_files_verified": 19,
+  "forbidden_state_and_symlink_entries": 0,
+  "required_groups": [
+    "src",
+    "tests",
+    "benchmarks",
+    "docs",
+    "scripts",
+    "frontend",
+    "uv.lock",
+    "pyproject.toml"
+  ],
+  "failures": []
+}

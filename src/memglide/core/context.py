@@ -10,7 +10,7 @@ import time
 from pathlib import PurePosixPath
 from typing import Any
 
-from memglide.core.query import tokens
+from memglide.core.query import explicit_identifier, explicit_path, preferred_source_role, tokens
 from memglide.memory.engine import MemoryEngine
 from memglide.security.paths import read_source
 from memglide.storage.database import Database, DomainError, new_id
@@ -144,6 +144,63 @@ class ContextEngine:
                 c.get("start_line", 0),
                 c.get("symbol", ""),
             ),
+        )
+
+    @staticmethod
+    def _focus_primary_candidates(
+        candidates: list[dict[str, Any]], query: str, level: int, intent: str | None
+    ) -> tuple[list[dict[str, Any]], int]:
+        """Bound ordinary level-2 breadth while preserving explicit source intent.
+
+        This limits primary search files, not resolved dependency expansion or
+        the existing token budget. All candidates in a kept file stay eligible.
+        Exact anchors can exceed the four-file limit. Broad or unclassified
+        inspection requests bypass it rather than guessing their source intent.
+        """
+        if (
+            level != 2
+            or intent == "session_changes"
+            or preferred_source_role(query) is None
+            or re.search(
+                r"\b(?:callers?|calls|references?|usages|dependents|dependencies)\b|"
+                r"\bcall[- ]sites?\b|"
+                r"\b(?:all|every|entire|whole)\s+(?:(?:matching|relevant|source)\s+)*"
+                r"(?:files?|sources?|implementations?|symbols?|repository|codebase|project)\b|"
+                r"\b(?:across|throughout)\s+(?:the\s+)?(?:repository|codebase|project)\b|"
+                r"\b(?:broad|comprehensive)\s+(?:search|context|overview|review)\b|"
+                r"\b(?:search\s+broadly|repository[- ]wide|codebase[- ]wide)\b",
+                query,
+                re.IGNORECASE,
+            )
+        ):
+            return candidates, 0
+        anchored_paths = set()
+        exact = query.strip().casefold()
+        for candidate in candidates:
+            name = str(candidate.get("name") or candidate.get("symbol") or "")
+            qualified = str(candidate.get("qualified_name") or candidate.get("symbol") or name)
+            file_candidate = (
+                candidate.get("kind") == "file" or name == PurePosixPath(candidate["path"]).name
+            )
+            declaration_anchor = not file_candidate and (
+                exact in {value.casefold() for value in (name, qualified) if value}
+                or (bool(name) and explicit_identifier(query, name, qualified))
+            )
+            if (
+                explicit_path(query, candidate["path"])
+                or exact == str(candidate.get("id", "")).casefold()
+                or declaration_anchor
+                or "resolved caller of requested symbol" in str(candidate.get("reason", ""))
+            ):
+                anchored_paths.add(candidate["path"])
+        kept_paths = set(anchored_paths)
+        for candidate in candidates:
+            if len(kept_paths) >= 4:
+                break
+            kept_paths.add(candidate["path"])
+        omitted_paths = {candidate["path"] for candidate in candidates} - kept_paths
+        return [candidate for candidate in candidates if candidate["path"] in kept_paths], len(
+            omitted_paths
         )
 
     def _source_item(
@@ -293,10 +350,18 @@ class ContextEngine:
     @staticmethod
     def _refresh_estimate(response: dict[str, Any]) -> None:
         # Include the number itself, the envelope, and the complete embedded passport.
+        # Only these two integers change while finding the fixed point. Serialize
+        # the potentially large source payload once and adjust their digit counts.
+        size = len(json.dumps(response, ensure_ascii=False).encode("utf-8"))
         for _ in range(5):
-            total = estimate_tokens(response)
+            total = math.ceil(size / 3)
             if total == response["estimated_tokens"]:
                 return
+            size += (
+                2 * len(str(total))
+                - len(str(response["estimated_tokens"]))
+                - len(str(response["passport"]["estimated_tokens_returned"]))
+            )
             response["estimated_tokens"] = total
             response["passport"]["estimated_tokens_returned"] = total
 
@@ -437,7 +502,9 @@ class ContextEngine:
         graph_budget = min(1200, max(256, response["budget"] // 5))
         unresolved_count = sum(not dependency.get("resolved") for dependency in relevant)
 
-        def apply_graph(deps: list[dict[str, Any]], tests: list[str]) -> int:
+        def apply_graph(
+            deps: list[dict[str, Any]], tests: list[str], *, refresh_estimate: bool = True
+        ) -> int:
             omitted = len(relevant) - len(deps)
             shortened = sum(bool(dep.get("preview_truncated_fields")) for dep in deps)
             omitted_tests = len(related_tests) - len(tests)
@@ -487,7 +554,8 @@ class ContextEngine:
             if any(memory["freshness"] == "Stale" for memory in response["memories"]):
                 passport["status"] = "Stale"
                 passport["source_freshness"] = "Stale"
-            self._refresh_estimate(response)
+            if refresh_estimate:
+                self._refresh_estimate(response)
             return int(summary["estimated_graph_tokens"])
 
         selected: list[dict[str, Any]] = []
@@ -506,18 +574,28 @@ class ContextEngine:
         for dependency in relevant[:100]:
             preview = self._dependency_preview(dependency)
             trial = [*selected, preview]
-            cost = apply_graph(trial, selected_tests)
+            previous_estimate = response["estimated_tokens"]
+            cost = apply_graph(trial, selected_tests, refresh_estimate=False)
+            if cost <= graph_budget:
+                self._refresh_estimate(response)
             if cost <= graph_budget and response["estimated_tokens"] <= response["budget"]:
                 selected = trial
             else:
-                apply_graph(selected, selected_tests)
+                response["estimated_tokens"] = previous_estimate
+                passport["estimated_tokens_returned"] = previous_estimate
+                apply_graph(selected, selected_tests, refresh_estimate=False)
         for path in related_tests[:100]:
             trial_tests = [*selected_tests, path]
-            cost = apply_graph(selected, trial_tests)
+            previous_estimate = response["estimated_tokens"]
+            cost = apply_graph(selected, trial_tests, refresh_estimate=False)
+            if cost <= graph_budget:
+                self._refresh_estimate(response)
             if cost <= graph_budget and response["estimated_tokens"] <= response["budget"]:
                 selected_tests = trial_tests
             else:
-                apply_graph(selected, selected_tests)
+                response["estimated_tokens"] = previous_estimate
+                passport["estimated_tokens_returned"] = previous_estimate
+                apply_graph(selected, selected_tests, refresh_estimate=False)
         apply_graph(selected, selected_tests)
 
     def get_context(
@@ -528,6 +606,20 @@ class ContextEngine:
         budget: int | None = None,
         known_memory_ids: list[str] | None = None,
         known_memory_versions: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
+        with self.db.settings_snapshot():
+            return self._get_context(
+                session_id, query, level, budget, known_memory_ids, known_memory_versions
+            )
+
+    def _get_context(
+        self,
+        session_id: str,
+        query: str,
+        level: int,
+        budget: int | None,
+        known_memory_ids: list[str] | None,
+        known_memory_versions: dict[str, str] | None,
     ) -> dict[str, Any]:
         session = self.memory.status(session_id)
         if level not in (1, 2, 3):
@@ -586,6 +678,9 @@ class ContextEngine:
                         "score": 100,
                     }
                 )
+        candidates, focused_omissions = self._focus_primary_candidates(
+            candidates, query, level, intent
+        )
         dependencies = self._candidate_dependencies(project_id, candidates)
         tests = self._related_tests(project_id, candidates)
         candidates = self._expand_candidates(project_id, candidates, dependencies, tests, level)
@@ -618,7 +713,7 @@ class ContextEngine:
             "memories": [],
             "dependencies": [],
             "warnings": [],
-            "truncated": False,
+            "truncated": bool(focused_omissions),
             "passport": {},
         }
         if intent == "session_changes":
@@ -627,6 +722,11 @@ class ContextEngine:
                 "Project activity observed since session start; events do not identify the actor or attribute edits to this session. Only recorded changes are shown."
             )
         missing: list[str] = history_warnings
+        if focused_omissions:
+            missing.append(
+                f"Focused level 2 selection omitted {focused_omissions} primary candidate file(s); "
+                "other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+            )
         stats = json.loads(self.db.project(project_id)["index_stats"])
         if stats.get("partial"):
             missing.append(
@@ -814,6 +914,10 @@ class ContextEngine:
         )
 
     def get_passport(self, session_id: str, retrieval_id: str) -> dict[str, Any]:
+        with self.db.settings_snapshot():
+            return self._get_passport(session_id, retrieval_id)
+
+    def _get_passport(self, session_id: str, retrieval_id: str) -> dict[str, Any]:
         session = self.memory.status(session_id)
         row = self.db.one(
             "SELECT data FROM passports WHERE retrieval_id=? AND session_id=?",

@@ -10,7 +10,8 @@ import hashlib
 import json
 import sqlite3
 import time
-from typing import Any
+from contextlib import contextmanager
+from typing import Any, Callable, Iterator
 
 from memglide.security.paths import SECRET_PATTERN, UNQUOTED_SECRET, read_source
 from memglide.storage.database import Database, DomainError, new_id
@@ -73,32 +74,96 @@ class MemoryEngine:
         }
 
     def status(self, session_id: str, project_id: str | None = None) -> dict[str, Any]:
-        session = self.db.one("SELECT * FROM sessions WHERE id=?", (session_id,))
-        if session is None or (project_id is not None and project_id != session["project_id"]):
-            raise DomainError("Unknown session for this project", 404)
-        if time.time() >= min(session["expires_at"], session["absolute_expires_at"]):
-            self.db.execute("DELETE FROM sessions WHERE id=?", (session_id,))
-            raise DomainError("Session expired; start a new session", 410)
+        session = self.history_status(session_id, project_id)
         if session["ended_at"] is not None:
             raise DomainError("Session has ended; start a new session", 410)
-        return self._session_view(session)
+        return session
+
+    def history_status(self, session_id: str, project_id: str | None = None) -> dict[str, Any]:
+        """Inspect retained lifecycle metadata, including ended sessions, without activity.
+
+        History never permits further work or revives an expired session. Project
+        ownership is checked before expiration cleanup to avoid disclosing another
+        project's session lifecycle.
+        """
+        while True:
+            session = self.db.one("SELECT * FROM sessions WHERE id=?", (session_id,))
+            if session is None or (project_id is not None and project_id != session["project_id"]):
+                raise DomainError("Unknown session for this project", 404)
+            now = time.time()
+            if now < min(session["expires_at"], session["absolute_expires_at"]):
+                return self._session_view(session)
+            # A useful request may have renewed the session after this read. Check
+            # its current deadline again in the DELETE so a stale status snapshot
+            # cannot erase a newly renewed session and its associated evidence.
+            with self.db.connect() as conn:
+                deleted = conn.execute(
+                    "DELETE FROM sessions WHERE id=? AND (expires_at<=? OR absolute_expires_at<=?)",
+                    (session_id, now, now),
+                ).rowcount
+            if deleted:
+                raise DomainError("Session expired; start a new session", 410)
+            # Another request renewed or cleared the row. Inspect its current
+            # lifecycle and ownership instead of reporting the obsolete snapshot.
 
     def touch(self, session_id: str) -> None:
         """Refresh explicit useful activity, always capped by the absolute limit."""
         self.status(session_id)
-        now = time.time()
-        ttl = float(self.db.settings()["session_ttl_minutes"]) * 60
-        self.db.execute(
-            "UPDATE sessions SET last_activity=?,expires_at=MIN(absolute_expires_at,?) WHERE id=?",
-            (now, now + ttl, session_id),
-        )
+        with self._active_write(session_id):
+            pass
+
+    @contextmanager
+    def _active_write(
+        self, session_id: str, *, refresh: bool = True
+    ) -> Iterator[tuple[sqlite3.Connection, dict[str, Any], Callable[[str, dict[str, Any]], None]]]:
+        """Check lifecycle and commit a mutation under the same SQLite write lock.
+
+        Source capture and input validation happen first. A session can end or
+        expire during that work; rechecking after BEGIN IMMEDIATE prevents a late
+        mutation or TTL refresh from slipping past that transition.
+        """
+        settings = self.db.settings()
+        with self.db.connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            row = conn.execute("SELECT * FROM sessions WHERE id=?", (session_id,)).fetchone()
+            if row is None:
+                raise DomainError("Unknown session for this project", 404)
+            session = dict(row)
+            now = time.time()
+            if now >= min(session["expires_at"], session["absolute_expires_at"]):
+                raise DomainError("Session expired; start a new session", 410)
+            if session["ended_at"] is not None:
+                raise DomainError("Session has ended; start a new session", 410)
+
+            def event(kind: str, detail: dict[str, Any]) -> None:
+                if settings["event_logging"]:
+                    conn.execute(
+                        "INSERT INTO events VALUES(?,?,?,?,?,?)",
+                        (
+                            new_id(),
+                            session["project_id"],
+                            session_id,
+                            kind,
+                            json.dumps(detail),
+                            time.time(),
+                        ),
+                    )
+
+            yield conn, session, event
+            if refresh:
+                ttl = float(settings["session_ttl_minutes"]) * 60
+                conn.execute(
+                    "UPDATE sessions SET last_activity=?,expires_at=MIN(absolute_expires_at,?) WHERE id=?",
+                    (now, now + ttl, session_id),
+                )
 
     def end_session(self, session_id: str) -> dict[str, Any]:
-        session = self.status(session_id)
-        now = time.time()
-        self.db.execute("UPDATE sessions SET ended_at=? WHERE id=?", (now, session_id))
-        self.db.event(session["project_id"], session_id, "session_ended")
-        return {**session, "active": False, "ended_at": now}
+        self.status(session_id)
+        with self._active_write(session_id, refresh=False) as (conn, session, event):
+            now = time.time()
+            conn.execute("UPDATE sessions SET ended_at=? WHERE id=?", (now, session_id))
+            event("session_ended", {})
+        return self._session_view({**session, "ended_at": now})
 
     def clear_session(self, session_id: str) -> dict[str, Any]:
         # Deletion also works for expired or ended sessions, without reviving them.
@@ -201,7 +266,7 @@ class MemoryEngine:
         fingerprint = self._fingerprint(category, content, captured)
         now = time.time()
         memory_id = new_id()
-        with self.db.connect() as conn:
+        with self._active_write(session_id) as (conn, session, event):
             inserted = conn.execute(
                 "INSERT OR IGNORE INTO memories VALUES(?,?,?,?,?,?,?,?,?)",
                 (memory_id, session_id, category, content, provenance, now, now, 0, fingerprint),
@@ -217,21 +282,21 @@ class MemoryEngine:
                     "SELECT id FROM memories WHERE session_id=? AND fingerprint=?",
                     (session_id, fingerprint),
                 ).fetchone()["id"]
-        self.touch(session_id)
-        if not existing:
-            self.db.event(
-                session["project_id"],
-                session_id,
-                "memory_saved",
-                {"memory_id": memory_id, "category": category},
-            )
+            if not existing:
+                event("memory_saved", {"memory_id": memory_id, "category": category})
         memory = self._get_memory(session_id, memory_id)
         return {**self._memory_view(memory, session["project_id"]), "deduplicated": bool(existing)}
 
-    def _get_memory(self, session_id: str, memory_id: str) -> dict[str, Any]:
-        memory = self.db.one(
-            "SELECT * FROM memories WHERE id=? AND session_id=?", (memory_id, session_id)
-        )
+    def _get_memory(
+        self, session_id: str, memory_id: str, conn: sqlite3.Connection | None = None
+    ) -> dict[str, Any]:
+        query = "SELECT * FROM memories WHERE id=? AND session_id=?"
+        params = (memory_id, session_id)
+        if conn is None:
+            memory = self.db.one(query, params)
+        else:
+            row = conn.execute(query, params).fetchone()
+            memory = dict(row) if row is not None else None
         if memory is None:
             raise DomainError("Unknown memory for this session", 404)
         return memory
@@ -294,40 +359,45 @@ class MemoryEngine:
     def update_memory(
         self, session_id: str, memory_id: str, content: str, provenance: str | None = None
     ) -> dict[str, Any]:
-        session = self.status(session_id)
+        self.status(session_id)
         memory = self._get_memory(session_id, memory_id)
-        provenance = memory["provenance"] if provenance is None else provenance
-        self._validate_content(content, provenance)
-        sources = self.db.rows(
-            "SELECT path,hash FROM memory_sources WHERE memory_id=?", (memory_id,)
-        )
-        fingerprint = self._fingerprint(memory["category"], content, sources)
+        self._validate_content(content, memory["provenance"] if provenance is None else provenance)
         try:
-            self.db.execute(
-                "UPDATE memories SET content=?,provenance=?,updated_at=?,fingerprint=? WHERE id=?",
-                (content, provenance, time.time(), fingerprint, memory_id),
-            )
+            with self._active_write(session_id) as (conn, session, event):
+                memory = self._get_memory(session_id, memory_id, conn)
+                # Omitting provenance preserves the revision current at commit,
+                # including a correction another client committed meanwhile.
+                current_provenance = memory["provenance"] if provenance is None else provenance
+                sources = [
+                    dict(row)
+                    for row in conn.execute(
+                        "SELECT path,hash FROM memory_sources WHERE memory_id=?", (memory_id,)
+                    )
+                ]
+                fingerprint = self._fingerprint(memory["category"], content, sources)
+                conn.execute(
+                    "UPDATE memories SET content=?,provenance=?,updated_at=?,fingerprint=? WHERE id=?",
+                    (content, current_provenance, time.time(), fingerprint, memory_id),
+                )
+                event("memory_updated", {"memory_id": memory_id})
         except sqlite3.IntegrityError as exc:
             raise DomainError("An identical memory already exists in this session", 409) from exc
-        self.touch(session_id)
-        self.db.event(session["project_id"], session_id, "memory_updated", {"memory_id": memory_id})
         return self._memory_view(self._get_memory(session_id, memory_id), session["project_id"])
 
     def invalidate_memory(self, session_id: str, memory_id: str) -> dict[str, Any]:
-        session = self.status(session_id)
-        self._get_memory(session_id, memory_id)
-        self.db.execute(
-            "UPDATE memories SET stale=1,updated_at=? WHERE id=?", (time.time(), memory_id)
-        )
-        self.touch(session_id)
-        self.db.event(
-            session["project_id"], session_id, "memory_invalidated", {"memory_id": memory_id}
-        )
+        self.status(session_id)
+        with self._active_write(session_id) as (conn, session, event):
+            self._get_memory(session_id, memory_id, conn)
+            conn.execute(
+                "UPDATE memories SET stale=1,updated_at=? WHERE id=?", (time.time(), memory_id)
+            )
+            event("memory_invalidated", {"memory_id": memory_id})
         return self._memory_view(self._get_memory(session_id, memory_id), session["project_id"])
 
     def delete_memory(self, session_id: str, memory_id: str) -> dict[str, Any]:
-        session = self.status(session_id)
-        self._get_memory(session_id, memory_id)
-        self.db.execute("DELETE FROM memories WHERE id=?", (memory_id,))
-        self.db.event(session["project_id"], session_id, "memory_deleted", {"memory_id": memory_id})
+        self.status(session_id)
+        with self._active_write(session_id, refresh=False) as (conn, session, event):
+            self._get_memory(session_id, memory_id, conn)
+            conn.execute("DELETE FROM memories WHERE id=?", (memory_id,))
+            event("memory_deleted", {"memory_id": memory_id})
         return {"memory_id": memory_id, "deleted": True}

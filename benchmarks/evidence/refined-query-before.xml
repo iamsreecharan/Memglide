@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="27" time="3.384" timestamp="2026-10-17T19:31:50.008531+00:00" hostname="c2853459b177"><testcase classname="tests.test_query_focus" name="test_workflow_prose_does_not_replace_behavior_or_explicit_references" time="0.003" /><testcase classname="tests.test_query_focus" name="test_workflow_requests_and_code_blocks_remain_retrievable" time="0.001" /><testcase classname="tests.test_query_focus" name="test_acceptance_details_survive_test_instruction_filtering" time="0.000" /><testcase classname="tests.test_query_focus" name="test_task_role_ranking_keeps_explicit_docs_and_tests_accessible" time="0.189"><failure message="AssertionError: assert 'delivery.py' == 'README.md'&#10;  &#10;  - README.md&#10;  + delivery.py">tmp_path = PosixPath('/workspace/Memglide/.local/refinement-ranking/focused-v2/test_task_role_ranking_keeps_e0')
+
+    def test_task_role_ranking_keeps_explicit_docs_and_tests_accessible(tmp_path: Path) -&gt; None:
+        root = tmp_path / "source"
+        root.mkdir()
+        subprocess.run(["git", "init", "-q", str(root)], check=True)
+        sources = {
+            "delivery.py": (
+                "def advance_watermark(sequence):\n"
+                "    '''Validate delivery watermarks and duplicate submissions.'''\n"
+                "    return sequence\n"
+            ),
+            "README.md": "Delivery watermarks validate duplicate submissions.\n",
+            "tests/test_delivery.py": (
+                "# Delivery watermarks validate duplicate submissions.\n"
+                "def test_delivery():\n    pass\n"
+            ),
+        }
+        for path, text in sources.items():
+            destination = root / path
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(text)
+        indexer = Indexer(Database(tmp_path / "state/memglide.db"))
+        project = indexer.add_project(str(root))["id"]
+        assert (
+            indexer.search(project, "Fix delivery watermarks duplicate submissions")[0]["path"]
+            == "delivery.py"
+        )
+&gt;       assert (
+            indexer.search(project, "Update documentation for delivery watermarks")[0]["path"]
+            == "README.md"
+        )
+E       AssertionError: assert 'delivery.py' == 'README.md'
+E         
+E         - README.md
+E         + delivery.py
+
+tests/test_query_focus.py:81: AssertionError</failure></testcase><testcase classname="tests.test_search_relevance" name="test_shared_tokenizer_handles_acronyms_identifiers_and_regular_plurals" time="0.000" /><testcase classname="tests.test_search_relevance" name="test_plain_prose_nouns_are_not_explicit_identifiers[Workspace]" time="0.001" /><testcase classname="tests.test_search_relevance" name="test_plain_prose_nouns_are_not_explicit_identifiers[Envelope]" time="0.001" /><testcase classname="tests.test_search_relevance" name="test_plain_prose_nouns_are_not_explicit_identifiers[Ledger]" time="0.001" /><testcase classname="tests.test_search_relevance" name="test_code_shaped_identifiers_remain_explicit[parse_ticket]" time="0.001" /><testcase classname="tests.test_search_relevance" name="test_code_shaped_identifiers_remain_explicit[parseTicket]" time="0.002" /><testcase classname="tests.test_search_relevance" name="test_code_shaped_identifiers_remain_explicit[HTTPParser]" time="0.001" /><testcase classname="tests.test_search_relevance" name="test_code_shaped_identifiers_remain_explicit[Ledger.total]" time="0.000" /><testcase classname="tests.test_search_relevance" name="test_query_noun_does_not_outrank_specific_shipping_evidence" time="0.228" /><testcase classname="tests.test_search_relevance" name="test_rare_term_beats_ubiquitous_class_noun" time="0.183" /><testcase classname="tests.test_search_relevance" name="test_plural_camel_and_snake_forms_retrieve_same_declaration" time="0.566" /><testcase classname="tests.test_search_relevance" name="test_regular_plural_query_finds_singular_source_identifier[indexes-index]" time="0.187" /><testcase classname="tests.test_search_relevance" name="test_regular_plural_query_finds_singular_source_identifier[boxes-box]" time="0.141" /><testcase classname="tests.test_search_relevance" name="test_regular_plural_query_finds_singular_source_identifier[buses-bus]" time="0.133" /><testcase classname="tests.test_search_relevance" name="test_path_references_are_strong_without_arbitrary_prefix_matching" time="0.137" /><testcase classname="tests.test_search_relevance" name="test_zero_exact_weight_does_not_invent_requested_callees" time="0.262" /><testcase classname="tests.test_search_relevance" name="test_configured_field_weights_still_control_ranking" time="0.166" /><testcase classname="tests.test_search_relevance" name="test_existing_fts_index_upgrades_without_reparsing_or_changing_provenance" time="0.179" /><testcase classname="tests.test_search_relevance" name="test_long_queries_retain_terms_past_sqlite_batch_boundaries" time="0.145" /><testcase classname="tests.test_search_relevance" name="test_rare_late_term_survives_many_matching_common_query_terms" time="0.155" /><testcase classname="tests.test_search_relevance" name="test_vocabulary_frequencies_preserve_plural_unions_unicode_and_project_scope" time="0.178" /><testcase classname="tests.test_search_relevance" name="test_document_frequencies_fall_back_when_vocabulary_module_is_unavailable" time="0.150" /><testcase classname="tests.test_search_relevance" name="test_project_frequency_scope_resets_when_reusing_a_connection" time="0.195" /></testsuite></testsuites>

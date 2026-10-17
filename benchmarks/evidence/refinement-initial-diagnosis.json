@@ -1,0 +1,2960 @@
+{
+  "schema_version": 1,
+  "kind": "read_only_diagnosis_of_preserved_initial_fresh_evaluation",
+  "created_at_utc": "2026-10-17T19:46:02.110657+00:00",
+  "initial_artifacts": {
+    "benchmarks/refinement-retrieval.json": "4a7286e6276fe2509fc6a79e8b35399beb2d02717079a95881341101bbd2c432",
+    "benchmarks/refinement-retrieval.md": "f86997c4e1a03b815d9fe198ac6a9fd97c44f9a3666637fc75d0f8a83f75b0ac"
+  },
+  "initial_source_tree_sha256": "c966edd662ca7d9d20c9f48d3bdaabfd35427c809c4e8f6fb917d00617c5dc99",
+  "initial_manifest_sha256": "04e0825f818ebafcb037cddad2396e7df12203d5891e588c34afadf3bc10d37c",
+  "sampling": {
+    "retained_observations": 144,
+    "strategies": 3,
+    "repeats": 2,
+    "unique_query_ids": 24,
+    "mirrored_language_intents": 12,
+    "diagnosis_repeat": 1,
+    "primary_labels_per_strategy": 24,
+    "declared_dependency_labels_per_strategy": 48
+  },
+  "counting_rule": "Counts describe repeat one unique query IDs. Both repeats remain in the original report. All-body acceptance is this narrow declared retrieval criterion, not coding success.",
+  "strategies": {
+    "refined": {
+      "counts": {
+        "unique_tasks": 24,
+        "focus_omission_warning_tasks": 16,
+        "budget_omission_warning_tasks": 16,
+        "source_unavailable_warning_tasks": 0,
+        "partial_index_warning_tasks": 0,
+        "primary_labels": 24,
+        "primary_complete": 16,
+        "dependency_labels": 48,
+        "dependency_complete": 20,
+        "dependency_miss_file_absent": 26,
+        "dependency_miss_covering_candidate_in_first40": 28,
+        "dependency_miss_source_present_wrong_or_partial_body": 2,
+        "primary_miss_file_absent": 8,
+        "primary_miss_covering_candidate_in_first40": 8
+      },
+      "by_intent": {
+        "release": {
+          "tasks": 8,
+          "file_hit_at_1": 0,
+          "complete_primary_bodies": 8,
+          "complete_declared_dependency_bodies": 12,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 4,
+          "mean_returned_files": 16.75
+        },
+        "extend": {
+          "tasks": 8,
+          "file_hit_at_1": 8,
+          "complete_primary_bodies": 8,
+          "complete_declared_dependency_bodies": 8,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 4,
+          "mean_returned_files": 10
+        },
+        "revoke": {
+          "tasks": 8,
+          "file_hit_at_1": 0,
+          "complete_primary_bodies": 0,
+          "complete_declared_dependency_bodies": 0,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 0,
+          "mean_returned_files": 4
+        }
+      },
+      "all_body_acceptance_tasks": 8,
+      "mean_declared_file_precision": 0.14044798474945533,
+      "misses": [
+        {
+          "query_id": "meridian-python-media-release",
+          "label_type": "dependency",
+          "path": "src/media/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 27,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/policy.py",
+          "symbol": "extension_deadline",
+          "observed_missing_evidence": "source_present_wrong_or_partial_body",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.py"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "extension_deadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/store.py",
+          "symbol": "save_record",
+          "observed_missing_evidence": "source_present_wrong_or_partial_body",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-revoke",
+          "label_type": "primary",
+          "path": "src/media/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 12,
+              "symbol": "service.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 11,
+              "symbol": "policy.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 94,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-release",
+          "label_type": "dependency",
+          "path": "src/appointments/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 86,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-revoke",
+          "label_type": "primary",
+          "path": "src/appointments/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 8,
+              "symbol": "service.py"
+            },
+            {
+              "candidate_position": 100,
+              "symbol": "revoke"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.py"
+            },
+            {
+              "candidate_position": 99,
+              "symbol": "may_revoke"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 89,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-release",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 95,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 26 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.py",
+          "symbol": "extension_deadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.py"
+            },
+            {
+              "candidate_position": 93,
+              "symbol": "extension_deadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "save_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-revoke",
+          "label_type": "primary",
+          "path": "src/specimens/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 11,
+              "symbol": "service.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 10,
+              "symbol": "policy.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 21,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 98,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-release",
+          "label_type": "dependency",
+          "path": "src/deployments/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 89,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-revoke",
+          "label_type": "primary",
+          "path": "src/deployments/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 8,
+              "symbol": "service.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.ts"
+            },
+            {
+              "candidate_position": 91,
+              "symbol": "extensionDeadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-revoke",
+          "label_type": "primary",
+          "path": "src/media/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 12,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 8,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 30,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 96,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-revoke",
+          "label_type": "primary",
+          "path": "src/appointments/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 9,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 88,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.ts"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "extensionDeadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-revoke",
+          "label_type": "primary",
+          "path": "src/specimens/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 9,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 21,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 100,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-revoke",
+          "label_type": "primary",
+          "path": "src/deployments/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 9,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        }
+      ]
+    },
+    "previous": {
+      "counts": {
+        "unique_tasks": 24,
+        "focus_omission_warning_tasks": 16,
+        "budget_omission_warning_tasks": 16,
+        "source_unavailable_warning_tasks": 0,
+        "partial_index_warning_tasks": 0,
+        "primary_labels": 24,
+        "primary_complete": 16,
+        "dependency_labels": 48,
+        "dependency_complete": 20,
+        "dependency_miss_file_absent": 26,
+        "dependency_miss_covering_candidate_in_first40": 28,
+        "dependency_miss_source_present_wrong_or_partial_body": 2,
+        "primary_miss_file_absent": 8,
+        "primary_miss_covering_candidate_in_first40": 8
+      },
+      "by_intent": {
+        "release": {
+          "tasks": 8,
+          "file_hit_at_1": 0,
+          "complete_primary_bodies": 8,
+          "complete_declared_dependency_bodies": 12,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 4,
+          "mean_returned_files": 16.75
+        },
+        "extend": {
+          "tasks": 8,
+          "file_hit_at_1": 8,
+          "complete_primary_bodies": 8,
+          "complete_declared_dependency_bodies": 8,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 4,
+          "mean_returned_files": 10
+        },
+        "revoke": {
+          "tasks": 8,
+          "file_hit_at_1": 0,
+          "complete_primary_bodies": 0,
+          "complete_declared_dependency_bodies": 0,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 0,
+          "mean_returned_files": 4
+        }
+      },
+      "all_body_acceptance_tasks": 8,
+      "mean_declared_file_precision": 0.14044798474945533,
+      "misses": [
+        {
+          "query_id": "meridian-python-media-release",
+          "label_type": "dependency",
+          "path": "src/media/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 27,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/policy.py",
+          "symbol": "extension_deadline",
+          "observed_missing_evidence": "source_present_wrong_or_partial_body",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.py"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "extension_deadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/store.py",
+          "symbol": "save_record",
+          "observed_missing_evidence": "source_present_wrong_or_partial_body",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-revoke",
+          "label_type": "primary",
+          "path": "src/media/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 12,
+              "symbol": "service.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 11,
+              "symbol": "policy.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 94,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-release",
+          "label_type": "dependency",
+          "path": "src/appointments/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 86,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-revoke",
+          "label_type": "primary",
+          "path": "src/appointments/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 8,
+              "symbol": "service.py"
+            },
+            {
+              "candidate_position": 100,
+              "symbol": "revoke"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.py"
+            },
+            {
+              "candidate_position": 99,
+              "symbol": "may_revoke"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 89,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-release",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 95,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 26 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.py",
+          "symbol": "extension_deadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.py"
+            },
+            {
+              "candidate_position": 93,
+              "symbol": "extension_deadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "save_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 9 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-revoke",
+          "label_type": "primary",
+          "path": "src/specimens/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 11,
+              "symbol": "service.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 10,
+              "symbol": "policy.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 21,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 98,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-release",
+          "label_type": "dependency",
+          "path": "src/deployments/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 24,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 89,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-revoke",
+          "label_type": "primary",
+          "path": "src/deployments/service.py",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 8,
+              "symbol": "service.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/policy.py",
+          "symbol": "may_revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/store.py",
+          "symbol": "remove_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 18,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "remove_record"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.ts"
+            },
+            {
+              "candidate_position": 91,
+              "symbol": "extensionDeadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-revoke",
+          "label_type": "primary",
+          "path": "src/media/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 12,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 8,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-revoke",
+          "label_type": "dependency",
+          "path": "src/media/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 30,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 96,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-revoke",
+          "label_type": "primary",
+          "path": "src/appointments/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 9,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-revoke",
+          "label_type": "dependency",
+          "path": "src/appointments/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 88,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 6,
+              "symbol": "policy.ts"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "extensionDeadline"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 33 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Budget omitted 14 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-revoke",
+          "label_type": "primary",
+          "path": "src/specimens/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 9,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-revoke",
+          "label_type": "dependency",
+          "path": "src/specimens/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 21,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 100,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-revoke",
+          "label_type": "primary",
+          "path": "src/deployments/service.ts",
+          "symbol": "revoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 9,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/policy.ts",
+          "symbol": "mayRevoke",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 7,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-revoke",
+          "label_type": "dependency",
+          "path": "src/deployments/store.ts",
+          "symbol": "removeRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 15,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 92,
+              "symbol": "removeRecord"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence."
+          ]
+        }
+      ]
+    },
+    "legacy": {
+      "counts": {
+        "unique_tasks": 24,
+        "focus_omission_warning_tasks": 16,
+        "budget_omission_warning_tasks": 8,
+        "source_unavailable_warning_tasks": 0,
+        "partial_index_warning_tasks": 0,
+        "primary_labels": 24,
+        "primary_complete": 19,
+        "dependency_labels": 48,
+        "dependency_complete": 30,
+        "dependency_miss_file_absent": 18,
+        "dependency_miss_covering_candidate_in_first40": 8,
+        "primary_miss_file_absent": 5,
+        "primary_miss_covering_candidate_in_first40": 0
+      },
+      "by_intent": {
+        "release": {
+          "tasks": 8,
+          "file_hit_at_1": 0,
+          "complete_primary_bodies": 8,
+          "complete_declared_dependency_bodies": 8,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 0,
+          "mean_returned_files": 16.625
+        },
+        "extend": {
+          "tasks": 8,
+          "file_hit_at_1": 0,
+          "complete_primary_bodies": 3,
+          "complete_declared_dependency_bodies": 6,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 3,
+          "mean_returned_files": 6.25
+        },
+        "revoke": {
+          "tasks": 8,
+          "file_hit_at_1": 2,
+          "complete_primary_bodies": 8,
+          "complete_declared_dependency_bodies": 16,
+          "declared_dependency_bodies": 16,
+          "all_required_bodies_present_tasks": 8,
+          "mean_returned_files": 9
+        }
+      },
+      "all_body_acceptance_tasks": 11,
+      "mean_declared_file_precision": 0.2241625816993464,
+      "misses": [
+        {
+          "query_id": "meridian-python-media-release",
+          "label_type": "dependency",
+          "path": "src/media/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 36,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 93,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-appointments-release",
+          "label_type": "dependency",
+          "path": "src/appointments/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 26,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 87,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 26 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-release",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 36,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 96,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 26 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-extend",
+          "label_type": "primary",
+          "path": "src/specimens/service.py",
+          "symbol": "extend",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 44,
+              "symbol": "extend"
+            },
+            {
+              "candidate_position": 58,
+              "symbol": "service.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.py",
+          "symbol": "extension_deadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 57,
+              "symbol": "policy.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/store.py",
+          "symbol": "save_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 76,
+              "symbol": "store.py"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-python-deployments-release",
+          "label_type": "dependency",
+          "path": "src/deployments/store.py",
+          "symbol": "load_record",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 26,
+              "symbol": "store.py"
+            },
+            {
+              "candidate_position": 90,
+              "symbol": "load_record"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 26 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-release",
+          "label_type": "dependency",
+          "path": "src/media/store.ts",
+          "symbol": "loadRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 40,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 94,
+              "symbol": "loadRecord"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Some evidence could not fit with its metadata; increase the budget.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-extend",
+          "label_type": "primary",
+          "path": "src/media/service.ts",
+          "symbol": "extend",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 55,
+              "symbol": "extend"
+            },
+            {
+              "candidate_position": 58,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 57,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-media-extend",
+          "label_type": "dependency",
+          "path": "src/media/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 76,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-release",
+          "label_type": "dependency",
+          "path": "src/appointments/store.ts",
+          "symbol": "loadRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 34,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 86,
+              "symbol": "loadRecord"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 25 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-extend",
+          "label_type": "primary",
+          "path": "src/appointments/service.ts",
+          "symbol": "extend",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 53,
+              "symbol": "extend"
+            },
+            {
+              "candidate_position": 58,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-extend",
+          "label_type": "dependency",
+          "path": "src/appointments/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 57,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-appointments-extend",
+          "label_type": "dependency",
+          "path": "src/appointments/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 76,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-release",
+          "label_type": "dependency",
+          "path": "src/specimens/store.ts",
+          "symbol": "loadRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 40,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 98,
+              "symbol": "loadRecord"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-extend",
+          "label_type": "primary",
+          "path": "src/specimens/service.ts",
+          "symbol": "extend",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 56,
+              "symbol": "extend"
+            },
+            {
+              "candidate_position": 58,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 57,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-specimens-extend",
+          "label_type": "dependency",
+          "path": "src/specimens/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 76,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-release",
+          "label_type": "dependency",
+          "path": "src/deployments/store.ts",
+          "symbol": "loadRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 34,
+              "symbol": "store.ts"
+            },
+            {
+              "candidate_position": 90,
+              "symbol": "loadRecord"
+            }
+          ],
+          "warnings": [
+            "Budget omitted 27 candidate implementation(s) or references.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-extend",
+          "label_type": "primary",
+          "path": "src/deployments/service.ts",
+          "symbol": "extend",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 54,
+              "symbol": "extend"
+            },
+            {
+              "candidate_position": 58,
+              "symbol": "service.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-extend",
+          "label_type": "dependency",
+          "path": "src/deployments/policy.ts",
+          "symbol": "extensionDeadline",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 57,
+              "symbol": "policy.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        },
+        {
+          "query_id": "meridian-typescript-deployments-extend",
+          "label_type": "dependency",
+          "path": "src/deployments/store.ts",
+          "symbol": "saveRecord",
+          "observed_missing_evidence": "file_absent",
+          "covering_search_candidates": [
+            {
+              "candidate_position": 76,
+              "symbol": "store.ts"
+            }
+          ],
+          "warnings": [
+            "Focused level 2 selection omitted 36 primary candidate file(s); other matches may be relevant. Query an exact symbol/path or use level 3 for broader source evidence.",
+            "Dependency/test graph is partial; get_dependencies returns full references."
+          ]
+        }
+      ]
+    }
+  },
+  "query_heuristic_activation": {
+    "queries": 24,
+    "preferred_source_role_counts": {
+      "None": 24
+    },
+    "query_token_sets_unchanged": 24
+  },
+  "direct_dependency_resolution": {
+    "declared_labels": 48,
+    "correct_resolved_direct_edges": 48,
+    "witnesses": [
+      {
+        "query_id": "meridian-python-media-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "can_release",
+        "target_file": "src/media/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "1aa29f4ffd6b3c5819b19631ca270646",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/media/service.py",
+            "source_symbol": "9b2a377200c9d15df64bace5c44978a1",
+            "target_file": "src/media/policy.py",
+            "target_symbol": "7bc520f8601ece625b0036db4a1ef2c7",
+            "kind": "call",
+            "reference": "can_release",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-media-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "load_record",
+        "target_file": "src/media/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "d134ad5104f5652db2bf03c570ffb5ac",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/media/service.py",
+            "source_symbol": "9b2a377200c9d15df64bace5c44978a1",
+            "target_file": "src/media/store.py",
+            "target_symbol": "ca39ded59492fc1c14d19d06d6597a74",
+            "kind": "call",
+            "reference": "load_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-media-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extension_deadline",
+        "target_file": "src/media/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "f965215b4a182060bcb5f3cdcab6b4dd",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/media/service.py",
+            "source_symbol": "422abdacc7831913ebb0e7ff4133e361",
+            "target_file": "src/media/policy.py",
+            "target_symbol": "55fd67b0863118a5e8bda1e616aa32c5",
+            "kind": "call",
+            "reference": "extension_deadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-media-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "save_record",
+        "target_file": "src/media/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "000334aa110753978eb811769c2b0b30",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/media/service.py",
+            "source_symbol": "422abdacc7831913ebb0e7ff4133e361",
+            "target_file": "src/media/store.py",
+            "target_symbol": "b309d47ddc84f7bda52f3f406b91d452",
+            "kind": "call",
+            "reference": "save_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-media-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "may_revoke",
+        "target_file": "src/media/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "c01a131922bfe23f454cb69fa0ee1332",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/media/service.py",
+            "source_symbol": "03ec09209f98566491cf5017e7977738",
+            "target_file": "src/media/policy.py",
+            "target_symbol": "9acac321161298239d9e25d0d0307421",
+            "kind": "call",
+            "reference": "may_revoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-media-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "remove_record",
+        "target_file": "src/media/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "36565357070006632c298adaad7fe4b8",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/media/service.py",
+            "source_symbol": "03ec09209f98566491cf5017e7977738",
+            "target_file": "src/media/store.py",
+            "target_symbol": "14b8615cae983e37fb8dc7a47cedb50c",
+            "kind": "call",
+            "reference": "remove_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-appointments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "can_release",
+        "target_file": "src/appointments/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "fcabf082a195012923823da54ea2d440",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/appointments/service.py",
+            "source_symbol": "08f0967a332a6f7d557fc1c7d9c9053a",
+            "target_file": "src/appointments/policy.py",
+            "target_symbol": "e0688c77349c31a8fcf7d267d3783e13",
+            "kind": "call",
+            "reference": "can_release",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-appointments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "load_record",
+        "target_file": "src/appointments/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "ec279c77b3ca073259a2fe3cfa938251",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/appointments/service.py",
+            "source_symbol": "08f0967a332a6f7d557fc1c7d9c9053a",
+            "target_file": "src/appointments/store.py",
+            "target_symbol": "721ce5d0c6427d0d6f9e2e8218cd5601",
+            "kind": "call",
+            "reference": "load_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-appointments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extension_deadline",
+        "target_file": "src/appointments/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "31a3e2454f4236b73ea924c0ecf7ea9f",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/appointments/service.py",
+            "source_symbol": "19d5a782864a8ba647ed141d20c84655",
+            "target_file": "src/appointments/policy.py",
+            "target_symbol": "7341e57241ac4caea490f52b5816decf",
+            "kind": "call",
+            "reference": "extension_deadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-appointments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "save_record",
+        "target_file": "src/appointments/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "6eefeea1088b2157438154e73494043c",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/appointments/service.py",
+            "source_symbol": "19d5a782864a8ba647ed141d20c84655",
+            "target_file": "src/appointments/store.py",
+            "target_symbol": "0e60afe415d59ee829fcf4a0cd395da0",
+            "kind": "call",
+            "reference": "save_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-appointments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "may_revoke",
+        "target_file": "src/appointments/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "da94cd45019c609f30e669d2d11de829",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/appointments/service.py",
+            "source_symbol": "41ce243b59d6404329b010fa3d64c826",
+            "target_file": "src/appointments/policy.py",
+            "target_symbol": "9845ebf60232574bead82ea1a33ffc7f",
+            "kind": "call",
+            "reference": "may_revoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-appointments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "remove_record",
+        "target_file": "src/appointments/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "568f738223c33b4796a6c4704dca0d15",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/appointments/service.py",
+            "source_symbol": "41ce243b59d6404329b010fa3d64c826",
+            "target_file": "src/appointments/store.py",
+            "target_symbol": "2db9986a87a3f5f819ac15e4d2e5a35e",
+            "kind": "call",
+            "reference": "remove_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-specimens-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "can_release",
+        "target_file": "src/specimens/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "cf5395dff2693a153f732c6310226a62",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/specimens/service.py",
+            "source_symbol": "992bfb9e15b546c1be81bb7a6fc9f9ad",
+            "target_file": "src/specimens/policy.py",
+            "target_symbol": "119a5a18e3c575c21c7ea4da53d8251b",
+            "kind": "call",
+            "reference": "can_release",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-specimens-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "load_record",
+        "target_file": "src/specimens/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "5922313a4b338e6994378cc99f18caa7",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/specimens/service.py",
+            "source_symbol": "992bfb9e15b546c1be81bb7a6fc9f9ad",
+            "target_file": "src/specimens/store.py",
+            "target_symbol": "42fefb942977ae9b1eaaf2b8365b4dfd",
+            "kind": "call",
+            "reference": "load_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-specimens-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extension_deadline",
+        "target_file": "src/specimens/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "cbac8a008b19077be40a8687e2c41163",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/specimens/service.py",
+            "source_symbol": "38f6f0e204072c2ee2f92df6a2dbcdbf",
+            "target_file": "src/specimens/policy.py",
+            "target_symbol": "bc1f029d6ef27797013e42464f9e1e32",
+            "kind": "call",
+            "reference": "extension_deadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-specimens-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "save_record",
+        "target_file": "src/specimens/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "a154d6a4ac922457305577b53320d6d0",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/specimens/service.py",
+            "source_symbol": "38f6f0e204072c2ee2f92df6a2dbcdbf",
+            "target_file": "src/specimens/store.py",
+            "target_symbol": "9bc64337e35ae651df836bb4903f1bbe",
+            "kind": "call",
+            "reference": "save_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-specimens-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "may_revoke",
+        "target_file": "src/specimens/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "9989a293860a26d1c0aa25bfc9b30e43",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/specimens/service.py",
+            "source_symbol": "81181a7e345d4619982b656f19911042",
+            "target_file": "src/specimens/policy.py",
+            "target_symbol": "8e461f4af503408b2904a9cab0693f07",
+            "kind": "call",
+            "reference": "may_revoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-specimens-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "remove_record",
+        "target_file": "src/specimens/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "5f3fcd9736dc7578ecb6f2392c78ac27",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/specimens/service.py",
+            "source_symbol": "81181a7e345d4619982b656f19911042",
+            "target_file": "src/specimens/store.py",
+            "target_symbol": "921fba8ba762bef23c244cdb6b21faf0",
+            "kind": "call",
+            "reference": "remove_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-deployments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "can_release",
+        "target_file": "src/deployments/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "986125b2317e84c586aedd14d4dcace0",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/deployments/service.py",
+            "source_symbol": "8f26eb08d679ce645c5c0ebca774e0c9",
+            "target_file": "src/deployments/policy.py",
+            "target_symbol": "22fc6434da06b83aa1b3c177d5ed2c10",
+            "kind": "call",
+            "reference": "can_release",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-deployments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "load_record",
+        "target_file": "src/deployments/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "255358fb490b72ab55686f6aa26ef987",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/deployments/service.py",
+            "source_symbol": "8f26eb08d679ce645c5c0ebca774e0c9",
+            "target_file": "src/deployments/store.py",
+            "target_symbol": "2489ea617e09676eecab51b475c723bc",
+            "kind": "call",
+            "reference": "load_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-deployments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extension_deadline",
+        "target_file": "src/deployments/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "24fc71414b95e88938cc77a7a042d6bf",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/deployments/service.py",
+            "source_symbol": "600c234b1103161b1c92832a45b72063",
+            "target_file": "src/deployments/policy.py",
+            "target_symbol": "6404dd825c40565fcbce5579e792d3ad",
+            "kind": "call",
+            "reference": "extension_deadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-deployments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "save_record",
+        "target_file": "src/deployments/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "009bfb9d7f15e993c274fdf5fa51ef5b",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/deployments/service.py",
+            "source_symbol": "600c234b1103161b1c92832a45b72063",
+            "target_file": "src/deployments/store.py",
+            "target_symbol": "76943261371d0aca3a3fe0419d2ac27e",
+            "kind": "call",
+            "reference": "save_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-deployments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "may_revoke",
+        "target_file": "src/deployments/policy.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "12cdf65560a270771d67e33f8e45bd4d",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/deployments/service.py",
+            "source_symbol": "1287facb1d15510abea2dae89140a317",
+            "target_file": "src/deployments/policy.py",
+            "target_symbol": "e673900bf5f5cd3db5061b9c9936932b",
+            "kind": "call",
+            "reference": "may_revoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-python-deployments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "remove_record",
+        "target_file": "src/deployments/store.py",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "adaf0ada7424e1277faed908c745c074",
+            "project_id": "fef7c9d3c98847f384c825234aae823f",
+            "source_file": "src/deployments/service.py",
+            "source_symbol": "1287facb1d15510abea2dae89140a317",
+            "target_file": "src/deployments/store.py",
+            "target_symbol": "5541845ccf831fd4b6de7b205b531ef5",
+            "kind": "call",
+            "reference": "remove_record",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-media-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "canRelease",
+        "target_file": "src/media/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "d17ae15ba7cd8166db7e27b8d231f289",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/media/service.ts",
+            "source_symbol": "4a5f8a4bf76fcb218a2c855ddb0bb048",
+            "target_file": "src/media/policy.ts",
+            "target_symbol": "358b6bdeacedf95f0ca38a26bda58143",
+            "kind": "call",
+            "reference": "canRelease",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-media-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "loadRecord",
+        "target_file": "src/media/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "794b0af06c7fe34820718e1d1e48f61c",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/media/service.ts",
+            "source_symbol": "4a5f8a4bf76fcb218a2c855ddb0bb048",
+            "target_file": "src/media/store.ts",
+            "target_symbol": "be30ebc62290335535345c8216f05edb",
+            "kind": "call",
+            "reference": "loadRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-media-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extensionDeadline",
+        "target_file": "src/media/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "f15fd22b591981ccf3eb4b38727ced83",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/media/service.ts",
+            "source_symbol": "98d502ff92780a581588bfaaf7cceeeb",
+            "target_file": "src/media/policy.ts",
+            "target_symbol": "1b6388d9b4d5bb3ded92ae8603302b92",
+            "kind": "call",
+            "reference": "extensionDeadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-media-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "saveRecord",
+        "target_file": "src/media/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "5ce95bae7dbb4b6b46ceee0c496011d4",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/media/service.ts",
+            "source_symbol": "98d502ff92780a581588bfaaf7cceeeb",
+            "target_file": "src/media/store.ts",
+            "target_symbol": "14f6b00bee7f6194ba3e5bdab0cba3d0",
+            "kind": "call",
+            "reference": "saveRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-media-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "mayRevoke",
+        "target_file": "src/media/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "aa8035ef35d62bd039b88632b177c9c0",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/media/service.ts",
+            "source_symbol": "276ad3ebfd8b796fa3d058648ee88e40",
+            "target_file": "src/media/policy.ts",
+            "target_symbol": "f18983409825c527f8ff15f3821efb32",
+            "kind": "call",
+            "reference": "mayRevoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-media-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "removeRecord",
+        "target_file": "src/media/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "fd0b3330a4293c968e0a28d44a288c3f",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/media/service.ts",
+            "source_symbol": "276ad3ebfd8b796fa3d058648ee88e40",
+            "target_file": "src/media/store.ts",
+            "target_symbol": "b7f9ccd5aaf0f3d542feff412f22b719",
+            "kind": "call",
+            "reference": "removeRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-appointments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "canRelease",
+        "target_file": "src/appointments/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "bb0230a9eab54138a3b35f2f26446fd7",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/appointments/service.ts",
+            "source_symbol": "01a8dff43e42b36f70fe87e6836f953c",
+            "target_file": "src/appointments/policy.ts",
+            "target_symbol": "be88af58aa0aab94acff0ce4d93ed6f1",
+            "kind": "call",
+            "reference": "canRelease",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-appointments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "loadRecord",
+        "target_file": "src/appointments/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "56c5a92a07c0099204d4b8b0e7ba6975",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/appointments/service.ts",
+            "source_symbol": "01a8dff43e42b36f70fe87e6836f953c",
+            "target_file": "src/appointments/store.ts",
+            "target_symbol": "c93aca09d71cf61cc2c420a0091ae450",
+            "kind": "call",
+            "reference": "loadRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-appointments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extensionDeadline",
+        "target_file": "src/appointments/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "d82e64f6c4cd4def5c7022bac23c7ef0",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/appointments/service.ts",
+            "source_symbol": "a89c1f4361904a12b568769b16e9039f",
+            "target_file": "src/appointments/policy.ts",
+            "target_symbol": "b2dd5aa71a076cacc0593112e2ea1301",
+            "kind": "call",
+            "reference": "extensionDeadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-appointments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "saveRecord",
+        "target_file": "src/appointments/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "874e71ac917dd9ee9b323fa7ee0d1f20",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/appointments/service.ts",
+            "source_symbol": "a89c1f4361904a12b568769b16e9039f",
+            "target_file": "src/appointments/store.ts",
+            "target_symbol": "036af10658432199ca6300c00ea6a1b9",
+            "kind": "call",
+            "reference": "saveRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-appointments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "mayRevoke",
+        "target_file": "src/appointments/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "ffafcb76c6e065fd53479bd47b85419c",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/appointments/service.ts",
+            "source_symbol": "71688011523b643ed9280715bc17ca07",
+            "target_file": "src/appointments/policy.ts",
+            "target_symbol": "da1b127ebc693df03e744aacf1814ee9",
+            "kind": "call",
+            "reference": "mayRevoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-appointments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "removeRecord",
+        "target_file": "src/appointments/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "87506f82fdf826d88a93ffce3dba49f0",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/appointments/service.ts",
+            "source_symbol": "71688011523b643ed9280715bc17ca07",
+            "target_file": "src/appointments/store.ts",
+            "target_symbol": "89374c814d3ee66404875883074d3377",
+            "kind": "call",
+            "reference": "removeRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-specimens-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "canRelease",
+        "target_file": "src/specimens/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "3236a9b01e4df3489c03bb5be8637953",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/specimens/service.ts",
+            "source_symbol": "d442d22a08208a03f810941b82c7c28b",
+            "target_file": "src/specimens/policy.ts",
+            "target_symbol": "c3600c2f6fb8786395eabd668db3ad21",
+            "kind": "call",
+            "reference": "canRelease",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-specimens-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "loadRecord",
+        "target_file": "src/specimens/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "af62a21e411cf896074d67a90dffd583",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/specimens/service.ts",
+            "source_symbol": "d442d22a08208a03f810941b82c7c28b",
+            "target_file": "src/specimens/store.ts",
+            "target_symbol": "307956f71e218183b84977586fb07aaa",
+            "kind": "call",
+            "reference": "loadRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-specimens-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extensionDeadline",
+        "target_file": "src/specimens/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "12760d7afc4654e30fe1bdda348d1828",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/specimens/service.ts",
+            "source_symbol": "70ae20a6958b03c0b67cbd02107d52ed",
+            "target_file": "src/specimens/policy.ts",
+            "target_symbol": "ff62f3c59655f91697dd32d71c9b08b1",
+            "kind": "call",
+            "reference": "extensionDeadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-specimens-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "saveRecord",
+        "target_file": "src/specimens/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "ad516727d0c749db2474cb3a0a76f6eb",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/specimens/service.ts",
+            "source_symbol": "70ae20a6958b03c0b67cbd02107d52ed",
+            "target_file": "src/specimens/store.ts",
+            "target_symbol": "4ed5a194f6b3b9efa1a3bf3c86e6e476",
+            "kind": "call",
+            "reference": "saveRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-specimens-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "mayRevoke",
+        "target_file": "src/specimens/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "3f6a36b605989ace249f19fb2b744138",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/specimens/service.ts",
+            "source_symbol": "90e13fa78a9f9dd16c0a43f2786b3212",
+            "target_file": "src/specimens/policy.ts",
+            "target_symbol": "b32b7354dcf8f5b5e97b461fac06e17d",
+            "kind": "call",
+            "reference": "mayRevoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-specimens-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "removeRecord",
+        "target_file": "src/specimens/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "1a470169fdda034ece954ae0b4faa17b",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/specimens/service.ts",
+            "source_symbol": "90e13fa78a9f9dd16c0a43f2786b3212",
+            "target_file": "src/specimens/store.ts",
+            "target_symbol": "2fac81aa8181a5b82eb895921243e49d",
+            "kind": "call",
+            "reference": "removeRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-deployments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "canRelease",
+        "target_file": "src/deployments/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "ac63b1a02690d856635680f77cae7859",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/deployments/service.ts",
+            "source_symbol": "aa05823308879abb0381d2babf246f1a",
+            "target_file": "src/deployments/policy.ts",
+            "target_symbol": "b76a91486912cfb2e5e3a3b03ec33769",
+            "kind": "call",
+            "reference": "canRelease",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-deployments-release",
+        "primary_symbol": "release",
+        "dependency_symbol": "loadRecord",
+        "target_file": "src/deployments/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "4d28a7d84bb006bbabc356a8ee24e20e",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/deployments/service.ts",
+            "source_symbol": "aa05823308879abb0381d2babf246f1a",
+            "target_file": "src/deployments/store.ts",
+            "target_symbol": "5bd1fee25839693b2f06e405b20d1fbc",
+            "kind": "call",
+            "reference": "loadRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-deployments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "extensionDeadline",
+        "target_file": "src/deployments/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "5f08cd29539bec8da05a963e5f3b8ce4",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/deployments/service.ts",
+            "source_symbol": "f4a4bbe30cabb795c5638c5a35bd526f",
+            "target_file": "src/deployments/policy.ts",
+            "target_symbol": "7af4fe52926f76b6e2b67c5a5be855bd",
+            "kind": "call",
+            "reference": "extensionDeadline",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-deployments-extend",
+        "primary_symbol": "extend",
+        "dependency_symbol": "saveRecord",
+        "target_file": "src/deployments/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "e19881dd6598ce770a1cf6d691d64a24",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/deployments/service.ts",
+            "source_symbol": "f4a4bbe30cabb795c5638c5a35bd526f",
+            "target_file": "src/deployments/store.ts",
+            "target_symbol": "23a0e60d3bddf2918ef08de3be612b12",
+            "kind": "call",
+            "reference": "saveRecord",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-deployments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "mayRevoke",
+        "target_file": "src/deployments/policy.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "d02a198ab15105cd3fcddc99f9f9605e",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/deployments/service.ts",
+            "source_symbol": "f65af364cfbe6e0c6f4e10b0a002f007",
+            "target_file": "src/deployments/policy.ts",
+            "target_symbol": "6bcaad6918fb0013aa7677306b464718",
+            "kind": "call",
+            "reference": "mayRevoke",
+            "resolved": 1
+          }
+        ]
+      },
+      {
+        "query_id": "meridian-typescript-deployments-revoke",
+        "primary_symbol": "revoke",
+        "dependency_symbol": "removeRecord",
+        "target_file": "src/deployments/store.ts",
+        "has_correct_resolved_direct_call_edge": true,
+        "matching_edges": [
+          {
+            "id": "1db061603c746fc561b7c99d5e7eea47",
+            "project_id": "15241b64b0684f55bc8b026bd528ec71",
+            "source_file": "src/deployments/service.ts",
+            "source_symbol": "f65af364cfbe6e0c6f4e10b0a002f007",
+            "target_file": "src/deployments/store.ts",
+            "target_symbol": "94f9d1edbae3ad10981445b558bbe084",
+            "kind": "call",
+            "reference": "removeRecord",
+            "resolved": 1
+          }
+        ]
+      }
+    ],
+    "method": "Read-only SQLite joins from initial fixture databases; source symbol must match the declared primary method, dependency reference and target path."
+  },
+  "diagnosis": [
+    "Refined and previous quality is identical here because every inspection prompt has no preferred source role and unchanged lexical focus token set; the new ranking heuristics do not activate.",
+    "All eight refined revoke primary-body misses already have a covering search candidate within the first forty. Four documentation pages survive focus selection while the primary source and required helpers do not.",
+    "Refined has twenty-eight missing dependency bodies: twenty-six required files absent and two present with a different or partial body. Every missing dependency has a covering candidate within the first forty. Sixteen tasks show budget omissions and sixteen show focus omissions.",
+    "All eight exact-path extend contexts include three service files from other domains. Code inspection of the initial selector found basename identifier anchoring in addition to qualified path anchoring, consistent with excess cross-domain expansion.",
+    "Release prompts say the rule it calls; the initial broad-query calls heuristic bypasses four-file focus. These eight contexts average 16.75 files and all have budget omissions.",
+    "All forty-eight declared direct dependencies have the correct resolved graph edge. These observations support selection, anchoring and packing as the failures; they do not support unresolved graph edges as the main cause."
+  ],
+  "proposed_followups_not_measured_claims": [
+    "Guard narrowed context selection when implementation intent is unknown, preserving source recall before claiming selectivity gains.",
+    "Treat a qualified path as a specific module anchor rather than preserving every matching basename.",
+    "Distinguish a request for direct helper evidence from a broad search for all callers.",
+    "Prioritize complete source plus resolved direct helper bundles ahead of optional overlapping documentation and unrelated modules, then validate on a newly authored independent corpus."
+  ],
+  "limitations": [
+    "Procedural visible synthetic holdout, not production representativeness; twelve mirrored language intents are correlated.",
+    "Counterfactual causes are inferred from retained candidates, exact source evidence, omission warnings and initial code inspection; no isolated causal ablation was run for this diagnosis.",
+    "Direct dependency judgments cover only two declared helpers per task; neither exact body inclusion nor all-body acceptance proves semantic coding-task completeness.",
+    "Any replay after these misses is reused validation. Initial evidence remains valid for its frozen source but does not attest a later source revision.",
+    "No model calls, actual token/cost measurement or coding-task success is supplied by these local retrieval observations."
+  ]
+}

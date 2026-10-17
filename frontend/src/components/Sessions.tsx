@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Clock3, CircleStop, Plus, Trash2 } from "lucide-react";
 import { api, post } from "../api";
@@ -12,7 +12,6 @@ export default function Sessions() {
   const {
     projectId,
     sessionId,
-    project,
     session,
     projects,
     sessions,
@@ -23,24 +22,26 @@ export default function Sessions() {
     sessionsLoading,
     sessionsError,
   } = useWorkspace();
-  const [create, setCreate] = useState(false);
+  const activeProject = useRef(projectId);
+  activeProject.current = projectId;
+  const [create, setCreate] = useState<string | null>(null);
   const [task, setTask] = useState("");
-  const [confirm, setConfirm] = useState<"end" | "delete" | null>(null);
+  const [confirm, setConfirm] = useState<{ action: "end" | "delete"; session: Session } | null>(null);
   const start = useMutation({
-    mutationFn: () =>
-      post<Session>("/sessions", { project_id: projectId, task: task.trim() }),
+    mutationFn: (input: { project_id: string; task: string }) =>
+      post<Session>("/sessions", input),
     onSuccess: async (result) => {
       await refresh();
-      selectSession(result.id);
-      setCreate(false);
+      if (result.project_id === activeProject.current) selectSession(result.id);
+      setCreate(null);
       setTask("");
     },
   });
   const end = useMutation({
-    mutationFn: () =>
-      api<Session>(`/sessions/${sessionId}`, { method: "DELETE" }),
+    mutationFn: (target: Session) =>
+      api<Session>(`/sessions/${target.id}`, { method: "DELETE" }),
     onSuccess: async (ended) => {
-      client.setQueryData<Session[]>(["sessions", projectId], (previous) =>
+      client.setQueryData<Session[]>(["sessions", ended.project_id], (previous) =>
         previous?.map((item) => (item.id === ended.id ? ended : item)),
       );
       client.removeQueries({
@@ -51,23 +52,26 @@ export default function Sessions() {
       });
       setConfirm(null);
       await Promise.all([
-        client.invalidateQueries({ queryKey: ["sessions", projectId] }),
+        client.invalidateQueries({ queryKey: ["sessions", ended.project_id] }),
         client.invalidateQueries({ queryKey: ["overview"] }),
         client.invalidateQueries({ queryKey: ["events"] }),
       ]);
     },
   });
   const clear = useMutation({
-    mutationFn: () => post(`/sessions/${sessionId}/clear`),
-    onSuccess: async () => {
+    mutationFn: (target: Session) => post(`/sessions/${target.id}/clear`),
+    onSuccess: async (_result, target) => {
       setConfirm(null);
-      selectSession("");
+      client.removeQueries({ predicate: (query) =>
+        (query.queryKey[0] === "memories" && query.queryKey[1] === target.id) ||
+        (query.queryKey[0] === "passport" && query.queryKey[2] === target.id),
+      });
       await refresh();
     },
   });
   function submit(event: FormEvent) {
     event.preventDefault();
-    start.mutate();
+    if (create) start.mutate({ project_id: create, task: task.trim() });
   }
 
   return (
@@ -150,7 +154,7 @@ export default function Sessions() {
               aria-label="End selected session"
               onClick={() => {
                 end.reset();
-                setConfirm("end");
+                setConfirm({ action: "end", session });
               }}
             >
               <CircleStop size={16} />
@@ -162,7 +166,7 @@ export default function Sessions() {
               aria-label="Delete selected session and memory"
               onClick={() => {
                 clear.reset();
-                setConfirm("delete");
+                setConfirm({ action: "delete", session });
               }}
             >
               <Trash2 size={16} />
@@ -173,7 +177,7 @@ export default function Sessions() {
             disabled={!projectId}
             onClick={() => {
               start.reset();
-              setCreate(true);
+              setCreate(projectId);
             }}
           >
             <Plus size={15} />
@@ -189,8 +193,8 @@ export default function Sessions() {
       {create && (
         <Modal
           title="Start a session"
-          description={`Give your work in ${project?.name ?? "this project"} a clear task. Only meaningful activity refreshes expiration.`}
-          onClose={() => setCreate(false)}
+          description={`Give your work in ${projects.find((item) => item.id === create)?.name ?? "this project"} a clear task. Only meaningful activity refreshes expiration.`}
+          onClose={() => setCreate(null)}
         >
           <form onSubmit={submit}>
             <Field label="Task" htmlFor="session-task">
@@ -209,7 +213,7 @@ export default function Sessions() {
               <Button
                 variant="secondary"
                 type="button"
-                onClick={() => setCreate(false)}
+                onClick={() => setCreate(null)}
               >
                 Cancel
               </Button>
@@ -224,25 +228,25 @@ export default function Sessions() {
           </form>
         </Modal>
       )}
-      {confirm === "end" && (
+      {confirm?.action === "end" && (
         <Confirm
           title="End this session?"
-          description="This stops activity in the session. Its records stay in local storage until expiration or manual deletion. Start another session to continue work."
+          description={`This stops activity in “${confirm.session.task}”. Its records stay in local storage until expiration or manual deletion. Start another session to continue work.`}
           confirmLabel="End session"
           busy={end.isPending}
           error={end.error}
-          onConfirm={() => end.mutate()}
+          onConfirm={() => end.mutate(confirm.session)}
           onClose={() => setConfirm(null)}
         />
       )}
-      {confirm === "delete" && (
+      {confirm?.action === "delete" && (
         <Confirm
           title="Delete session and memory?"
-          description="This permanently removes the selected session, its memories, retrievals, passports, and events. Source code is never deleted."
+          description={`This permanently removes “${confirm.session.task}”, its memories, retrievals, passports, and events. Source code is never deleted.`}
           confirmLabel="Delete session"
           busy={clear.isPending}
           error={clear.error}
-          onConfirm={() => clear.mutate()}
+          onConfirm={() => clear.mutate(confirm.session)}
           onClose={() => setConfirm(null)}
         />
       )}

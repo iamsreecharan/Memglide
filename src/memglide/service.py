@@ -126,7 +126,7 @@ class Service:
             where.append("project_id=?")
             params.append(project_id)
         if session_id:
-            self.memory.status(session_id, project_id=project_id)
+            self.memory.history_status(session_id, project_id=project_id)
             where.append("session_id=?")
             params.append(session_id)
         if event_type:

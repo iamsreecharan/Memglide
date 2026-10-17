@@ -1,0 +1,228 @@
+{
+  "generated_at_utc": "2026-10-17T20:57:38.002451+00:00",
+  "source": {
+    "captured_at": "2026-10-17T20:57:37.768026+00:00",
+    "attestation": "captured_source_state_before_probe",
+    "git_head": "b51a26234656c647f12da3ad63d8bc1fe9380c58",
+    "source_dirty_entries": [
+      " M src/memglide/api/app.py",
+      " M src/memglide/core/context.py",
+      " M src/memglide/core/indexer.py",
+      " M src/memglide/core/query.py",
+      " M src/memglide/memory/engine.py",
+      " M src/memglide/service.py",
+      " M src/memglide/storage/database.py"
+    ],
+    "source_files": {
+      "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+      "src/memglide/cli.py": "0a4cc01bafe7e2d2c43171984fa05c01cafeeba113a432d5f62706560a1d3989",
+      "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/core/context.py": "fab6d35379a7e865e433289a1bf64fb23832d306369df9e9a348c2da460d20b3",
+      "src/memglide/core/indexer.py": "3e278aeafd0ba515308df71ac80816b7638d6d636ff3377ed1bd5081b3c2ae32",
+      "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+      "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+      "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/integrations/codex.py": "99e3d527187cfc457b4c574a1127a1c6fb738db6b4d4e9a7f8a42c56d5879d76",
+      "src/memglide/integrations/mcp_server.py": "80f1ed60fcfd7951ced1f7b957c46661c71fe8eac3cb8bd1eb62c5b75c99dff8",
+      "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/memory/engine.py": "82ff4f79c32dd2281026057098c9cffb872038640fa5ac387b1bd1ab6a5ab1d1",
+      "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "src/memglide/service.py": "6dd6f33a5adc3863ff68d6125296c84c32170085c9c20eb53c8809f02a4c2a7b",
+      "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/storage/database.py": "38a483c6e05758a8f7df743ce7965a0fe20b6ea5f13c4921788b61efa971f58e"
+    },
+    "source_tree_sha256": "20cc181bc45cecacc6e96f40e4a470112dd1581212eac7acece46c44f7270454",
+    "measurement_files": {
+      "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0",
+      "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c"
+    },
+    "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state"
+  },
+  "python": {
+    "tests": 376,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "by_module": {
+      "tests.test_benchmark_comparison": 14,
+      "tests.test_benchmark_corpus": 30,
+      "tests.test_benchmark_probe": 6,
+      "tests.test_benchmark_runner": 11,
+      "tests.test_benchmark_telemetry": 20,
+      "tests.test_context_budgeting": 8,
+      "tests.test_context_diagnostics": 2,
+      "tests.test_context_focus": 23,
+      "tests.test_context_performance": 6,
+      "tests.test_context_request_scope": 12,
+      "tests.test_functional_lifecycle": 22,
+      "tests.test_indexing": 25,
+      "tests.test_mcp_import_isolation": 1,
+      "tests.test_memory_acknowledgement": 1,
+      "tests.test_memory_context": 20,
+      "tests.test_memory_versions": 20,
+      "tests.test_query_focus": 4,
+      "tests.test_refinement_reporting": 10,
+      "tests.test_refinement_retrieval": 26,
+      "tests.test_retrieval_experiment": 9,
+      "tests.test_retrieval_holdout": 4,
+      "tests.test_search_relevance": 23,
+      "tests.test_security_storage": 69,
+      "tests.test_transports": 9,
+      "tests.test_workflow": 1
+    }
+  },
+  "frontend": {
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "by_module": {
+      "tests/api.test.ts": 2,
+      "tests/ui.test.tsx": 4,
+      "tests/workflows.test.tsx": 18
+    }
+  },
+  "production_browser": {
+    "startTime": "2026-10-17T19:51:54.157Z",
+    "duration": 46438.426,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "distinct_test_count": 403,
+  "warnings": [
+    "Two upstream Typer/Click deprecation warnings; no skipped or failed final checks."
+  ],
+  "checks": {
+    "frozen_uv_install_and_lock": true,
+    "ruff_format": true,
+    "ruff_check": true,
+    "mypy": true,
+    "typescript": true,
+    "vite_production_build": true,
+    "npm_ci_pinned_lock": true,
+    "frontend_bundle_hash_match": true,
+    "all_14_mcp_tools_real_stdio_integration": true
+  },
+  "commands": {
+    "python": "UV_CACHE_DIR=$PWD/.cache/uv uv run pytest --basetemp=.local/validation/refined-final-pytest --junitxml=.local/validation/refined-final-pytest.xml",
+    "static": [
+      "uv sync --frozen",
+      "uv lock --check",
+      "uv run ruff format --check .",
+      "uv run ruff check .",
+      "uv run mypy src"
+    ],
+    "frontend": [
+      "npm ci",
+      "npm run build",
+      "npm test -- --run --reporter=verbose --reporter=junit --outputFile.junit=../.local/validation/refined-frontend.xml"
+    ],
+    "browser": "MEMGLIDE_E2E_PORT=18765 npm run e2e -- --reporter=list,json",
+    "packaging": "bash .local/refinement-package/run.sh; exact executed helper and installed smoke scripts retained in evidence",
+    "frontend_working_directory": "frontend"
+  },
+  "package": {
+    "passed": true,
+    "scope": "Wheel/sdist source-byte equality, compiled frontend, required files and exclusion audit. Archive hashes are external sidecars only; this public summary includes no archive hash or self-hash.",
+    "wheel_python_files_verified": 21,
+    "frontend_files_verified": 19,
+    "forbidden_state_and_symlink_entries": 0,
+    "required_groups": [
+      "src",
+      "tests",
+      "benchmarks",
+      "docs",
+      "scripts",
+      "frontend",
+      "uv.lock",
+      "pyproject.toml"
+    ],
+    "failures": []
+  },
+  "package_audit_evidence": "benchmarks/evidence/refined-package-audit.json",
+  "package_release_scope": "The final release build is re-audited after reports are written; archive SHA256SUMS remain outside the source distribution to avoid self-reference.",
+  "installed_wheel_smoke": {
+    "passed": true,
+    "package_location": "/workspace/Memglide/.local/refined-wheel-env/lib/python3.12/site-packages/memglide/__init__.py",
+    "isolated_imports": true,
+    "cwd": "/tmp",
+    "doctor": "passed",
+    "indexed_files": 2,
+    "search_hits": 2,
+    "context_items": 1,
+    "estimated_planning_tokens": 993,
+    "budget": 4000,
+    "source_hashes_match": true,
+    "old_passport_detected_edit": true,
+    "refreshed_context_hash_matches": true,
+    "indexed_source_not_executed": true,
+    "loopback_api_health": true,
+    "bundled_spa_route": true,
+    "production_assets": [
+      {
+        "path": "/assets/index-CkQhvrkj.js",
+        "bytes": 323235
+      },
+      {
+        "path": "/assets/index-D9jkCmj-.css",
+        "bytes": 51841
+      }
+    ],
+    "scope": "Clean installed wheel with pinned locked dependencies; isolated CLI imports, real index/context/passport and loopback HTTP/compiled assets. No model requests or token/cost measurements."
+  },
+  "intermediate_failures": [
+    {
+      "scope": "Pre-fix active-session races",
+      "failed": 5,
+      "passed": 12,
+      "evidence": "benchmarks/evidence/refined-functional-before.log"
+    },
+    {
+      "scope": "Pre-fix selector safety guards",
+      "failed": 4,
+      "evidence": "benchmarks/evidence/selector-guard-before.xml"
+    },
+    {
+      "scope": "Pre-fix frontend target/focus/settings regressions",
+      "evidence": "benchmarks/evidence/refined-frontend-before.log"
+    },
+    {
+      "scope": "Pre-fix deferred session-start race",
+      "evidence": "benchmarks/evidence/refined-frontend-start-before.log"
+    },
+    {
+      "scope": "Query docs-role preference before final bonus",
+      "evidence": "benchmarks/evidence/refined-query-before.xml"
+    },
+    {
+      "scope": "Initial query-test temporary-directory setup failure",
+      "evidence": "benchmarks/evidence/refined-query-initial-setup-error.log"
+    }
+  ],
+  "baseline_preservation": [
+    {
+      "manifest": "benchmarks/evidence/refinement-baseline-preservation.json",
+      "count": 50,
+      "all_sha256_verified": true
+    },
+    {
+      "manifest": "benchmarks/evidence/refinement-stage1-preservation.json",
+      "count": 8,
+      "all_sha256_verified": true
+    }
+  ],
+  "model_benefit_claim_supported": false,
+  "limitations": [
+    "Linux execution only; native Windows/macOS unverified.",
+    "Application tests are not live model coding outcomes.",
+    "Codex HTTP401 preflight blocks all96 planned coding slots.",
+    "Nine reused retrieval tasks remain incomplete for declared helper bodies."
+  ]
+}

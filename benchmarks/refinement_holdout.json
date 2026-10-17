@@ -1,0 +1,1180 @@
+{
+  "schema_version": 1,
+  "name": "Meridian procedural retrieval holdout v1",
+  "creation_policy": "Authored independently of Atlas/Orion task prompts and frozen before any candidate evaluation. Visible synthetic fixtures with paired language structure are a procedural holdout, not a secret test or a representative sample of production repositories.",
+  "protocol": {
+    "version": 1,
+    "candidate_policies": [
+      "current",
+      "legacy"
+    ],
+    "legacy_revision": "39e8df30565783a686270f8a6f422e56e41e3776",
+    "ranking_freeze_required_before_first_evaluation": true,
+    "default_repeats": 2,
+    "context_level": 2,
+    "context_budget": 8000,
+    "candidate_limit": 100,
+    "candidate_order": "Rotate by query and reverse on repeat two; retain every run.",
+    "common_packer": "Same installed context engine, project settings and fixture for both rankers.",
+    "session_state": "Fresh empty session for every query/candidate/repeat; no stored memories.",
+    "caches": "Shared warm operating-system/SQLite caches, no flush or cold-cache claim.",
+    "timing": "Current-process CPU and wall time, search and context separately; no model calls.",
+    "percentile": "Nearest-rank p95 over retained successful observations; median p50.",
+    "context_size": "Measured compact UTF-8 JSON bytes and engine planning estimate; not model usage.",
+    "complete_body": "Union of returned source intervals must contain every expected line, and each line must match the immutable fixture. A symbol name or graph reference is insufficient.",
+    "required_dependencies": "Two direct helper implementations required by each primary body; imports, runtime/library semantics and transitive type declarations are outside this declared completeness judgment.",
+    "precision": "Unique returned source files in required or optional-positive paths divided by all returned source files. Exhaustive judgments apply only to this designed fixture task scope; an unjudged file is not automatically irrelevant in a real coding task.",
+    "selection": "Both current and legacy are eligible. Production selection must use development evidence; this fresh holdout validates the frozen choice and must not be used to tune it. Report all complete-body/dependency failures and precision, size, p50/p95 tradeoffs without hiding runs.",
+    "source_safety": "Write/read/parse fixture text only; never execute, import or test indexed source."
+  },
+  "protocol_sha256": "438597dbd230eca58def89e478b542d154da2b49316258182c1fd0f04d84ae51",
+  "repositories": {
+    "meridian-python-refinement-v1": {
+      "language": "python",
+      "files": {
+        "README.md": "# Meridian operations\n\nFour independent domains share deliberately ambiguous release, extend and revoke operation names. Current source is under src/. Historical exports, read models and user guides do not drive lifecycle decisions.\n",
+        "docs/appointments/extend.md": "# clinic appointment hold: extend\n\nIn src/appointments/service.py, inspect extend and its policy calculation: a clinic appointment hold extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the clinic appointment hold: release, extend and revoke. The clinician decision belongs to current source. This page has no executable implementation.\n",
+        "docs/appointments/release.md": "# clinic appointment hold: release\n\nFind the current code that releases a clinic appointment hold. I need the entire operation, the clinician eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the clinic appointment hold: release, extend and revoke. The clinician decision belongs to current source. This page has no executable implementation.\n",
+        "docs/appointments/revoke.md": "# clinic appointment hold: revoke\n\nWhere is ownership checked when withdrawing an active clinic appointment hold? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the clinic appointment hold: release, extend and revoke. The clinician decision belongs to current source. This page has no executable implementation.\n",
+        "docs/deployments/extend.md": "# production deployment approval: extend\n\nIn src/deployments/service.py, inspect extend and its policy calculation: a production deployment approval extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the production deployment approval: release, extend and revoke. The reviewer decision belongs to current source. This page has no executable implementation.\n",
+        "docs/deployments/release.md": "# production deployment approval: release\n\nFind the current code that releases a production deployment approval. I need the entire operation, the reviewer eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the production deployment approval: release, extend and revoke. The reviewer decision belongs to current source. This page has no executable implementation.\n",
+        "docs/deployments/revoke.md": "# production deployment approval: revoke\n\nWhere is ownership checked when withdrawing an active production deployment approval? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the production deployment approval: release, extend and revoke. The reviewer decision belongs to current source. This page has no executable implementation.\n",
+        "docs/media/extend.md": "# broadcast licence: extend\n\nIn src/media/service.py, inspect extend and its policy calculation: a broadcast licence extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the broadcast licence: release, extend and revoke. The territory decision belongs to current source. This page has no executable implementation.\n",
+        "docs/media/release.md": "# broadcast licence: release\n\nFind the current code that releases a broadcast licence. I need the entire operation, the territory eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the broadcast licence: release, extend and revoke. The territory decision belongs to current source. This page has no executable implementation.\n",
+        "docs/media/revoke.md": "# broadcast licence: revoke\n\nWhere is ownership checked when withdrawing an active broadcast licence? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the broadcast licence: release, extend and revoke. The territory decision belongs to current source. This page has no executable implementation.\n",
+        "docs/specimens/extend.md": "# laboratory specimen: extend\n\nIn src/specimens/service.py, inspect extend and its policy calculation: a laboratory specimen extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the laboratory specimen: release, extend and revoke. The consent decision belongs to current source. This page has no executable implementation.\n",
+        "docs/specimens/release.md": "# laboratory specimen: release\n\nFind the current code that releases a laboratory specimen. I need the entire operation, the consent eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the laboratory specimen: release, extend and revoke. The consent decision belongs to current source. This page has no executable implementation.\n",
+        "docs/specimens/revoke.md": "# laboratory specimen: revoke\n\nWhere is ownership checked when withdrawing an active laboratory specimen? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the laboratory specimen: release, extend and revoke. The consent decision belongs to current source. This page has no executable implementation.\n",
+        "legacy/appointments.py": "# Retired clinic appointment hold release extend revoke implementation. Not imported by current source.\ndef release(value):\n    return value\n\ndef extend(value):\n    return value\n\ndef revoke(value):\n    return value\n",
+        "legacy/deployments.py": "# Retired production deployment approval release extend revoke implementation. Not imported by current source.\ndef release(value):\n    return value\n\ndef extend(value):\n    return value\n\ndef revoke(value):\n    return value\n",
+        "legacy/media.py": "# Retired broadcast licence release extend revoke implementation. Not imported by current source.\ndef release(value):\n    return value\n\ndef extend(value):\n    return value\n\ndef revoke(value):\n    return value\n",
+        "legacy/specimens.py": "# Retired laboratory specimen release extend revoke implementation. Not imported by current source.\ndef release(value):\n    return value\n\ndef extend(value):\n    return value\n\ndef revoke(value):\n    return value\n",
+        "src/__init__.py": "raise RuntimeError(\"Index source text; never import this fixture\")\n",
+        "src/appointments/__init__.py": "\"\"\"Domain package; fixture text only.\"\"\"\n",
+        "src/appointments/policy.py": "\"\"\"Decision rules for the clinic appointment hold, not transport or reporting.\"\"\"\n\ndef can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the clinician requirement and lifecycle state.\"\"\"\n    gate = record.get(\"clinician\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")\n\n\ndef extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a clinic appointment hold extension to 24 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 24\n    return min(current + hours, maximum)\n\n\ndef may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active clinic appointment hold withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)\n",
+        "src/appointments/service.py": "\"\"\"Current clinic appointment hold lifecycle implementation.\"\"\"\n\nfrom .policy import can_release, extension_deadline, may_revoke\nfrom .store import load_record, save_record, remove_record\n\n\ndef release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this clinic appointment hold after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A clinic hold needs its assigned clinician before it can be released.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)\n\n\ndef extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the clinic appointment hold while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)\n\n\ndef revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active clinic appointment hold; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)\n",
+        "src/appointments/store.py": "\"\"\"In-memory clinic appointment hold records used by the current domain service.\"\"\"\n\ndef load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])\n\n\ndef save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])\n\n\ndef remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous\n",
+        "src/appointments/views/audit.py": "\"\"\"Read-only clinic appointment hold audit; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"audit: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/calendar.py": "\"\"\"Read-only clinic appointment hold calendar; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"calendar: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/dashboard.py": "\"\"\"Read-only clinic appointment hold dashboard; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"dashboard: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/export.py": "\"\"\"Read-only clinic appointment hold export; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"export: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/history.py": "\"\"\"Read-only clinic appointment hold history; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"history: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/metrics.py": "\"\"\"Read-only clinic appointment hold metrics; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"metrics: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/notifications.py": "\"\"\"Read-only clinic appointment hold notifications; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"notifications: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/presentation.py": "\"\"\"Read-only clinic appointment hold presentation; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"presentation: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/receipts.py": "\"\"\"Read-only clinic appointment hold receipts; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"receipts: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/routing.py": "\"\"\"Read-only clinic appointment hold routing; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"routing: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/summary.py": "\"\"\"Read-only clinic appointment hold summary; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"summary: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/appointments/views/translations.py": "\"\"\"Read-only clinic appointment hold translations; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"translations: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/__init__.py": "\"\"\"Domain package; fixture text only.\"\"\"\n",
+        "src/deployments/policy.py": "\"\"\"Decision rules for the production deployment approval, not transport or reporting.\"\"\"\n\ndef can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the reviewer requirement and lifecycle state.\"\"\"\n    gate = record.get(\"reviewer\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")\n\n\ndef extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a production deployment approval extension to 12 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 12\n    return min(current + hours, maximum)\n\n\ndef may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active production deployment approval withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)\n",
+        "src/deployments/service.py": "\"\"\"Current production deployment approval lifecycle implementation.\"\"\"\n\nfrom .policy import can_release, extension_deadline, may_revoke\nfrom .store import load_record, save_record, remove_record\n\n\ndef release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this production deployment approval after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A production deployment needs an assigned reviewer before release.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)\n\n\ndef extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the production deployment approval while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)\n\n\ndef revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active production deployment approval; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)\n",
+        "src/deployments/store.py": "\"\"\"In-memory production deployment approval records used by the current domain service.\"\"\"\n\ndef load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])\n\n\ndef save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])\n\n\ndef remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous\n",
+        "src/deployments/views/audit.py": "\"\"\"Read-only production deployment approval audit; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"audit: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/calendar.py": "\"\"\"Read-only production deployment approval calendar; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"calendar: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/dashboard.py": "\"\"\"Read-only production deployment approval dashboard; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"dashboard: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/export.py": "\"\"\"Read-only production deployment approval export; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"export: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/history.py": "\"\"\"Read-only production deployment approval history; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"history: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/metrics.py": "\"\"\"Read-only production deployment approval metrics; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"metrics: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/notifications.py": "\"\"\"Read-only production deployment approval notifications; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"notifications: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/presentation.py": "\"\"\"Read-only production deployment approval presentation; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"presentation: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/receipts.py": "\"\"\"Read-only production deployment approval receipts; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"receipts: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/routing.py": "\"\"\"Read-only production deployment approval routing; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"routing: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/summary.py": "\"\"\"Read-only production deployment approval summary; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"summary: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/deployments/views/translations.py": "\"\"\"Read-only production deployment approval translations; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"translations: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/__init__.py": "\"\"\"Domain package; fixture text only.\"\"\"\n",
+        "src/media/policy.py": "\"\"\"Decision rules for the broadcast licence, not transport or reporting.\"\"\"\n\ndef can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the territory requirement and lifecycle state.\"\"\"\n    gate = record.get(\"territory\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")\n\n\ndef extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a broadcast licence extension to 48 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 48\n    return min(current + hours, maximum)\n\n\ndef may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active broadcast licence withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)\n",
+        "src/media/service.py": "\"\"\"Current broadcast licence lifecycle implementation.\"\"\"\n\nfrom .policy import can_release, extension_deadline, may_revoke\nfrom .store import load_record, save_record, remove_record\n\n\ndef release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this broadcast licence after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A broadcast licence cannot be released outside its permitted territory.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)\n\n\ndef extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the broadcast licence while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)\n\n\ndef revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active broadcast licence; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)\n",
+        "src/media/store.py": "\"\"\"In-memory broadcast licence records used by the current domain service.\"\"\"\n\ndef load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])\n\n\ndef save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])\n\n\ndef remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous\n",
+        "src/media/views/audit.py": "\"\"\"Read-only broadcast licence audit; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"audit: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/calendar.py": "\"\"\"Read-only broadcast licence calendar; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"calendar: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/dashboard.py": "\"\"\"Read-only broadcast licence dashboard; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"dashboard: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/export.py": "\"\"\"Read-only broadcast licence export; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"export: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/history.py": "\"\"\"Read-only broadcast licence history; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"history: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/metrics.py": "\"\"\"Read-only broadcast licence metrics; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"metrics: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/notifications.py": "\"\"\"Read-only broadcast licence notifications; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"notifications: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/presentation.py": "\"\"\"Read-only broadcast licence presentation; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"presentation: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/receipts.py": "\"\"\"Read-only broadcast licence receipts; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"receipts: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/routing.py": "\"\"\"Read-only broadcast licence routing; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"routing: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/summary.py": "\"\"\"Read-only broadcast licence summary; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"summary: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/media/views/translations.py": "\"\"\"Read-only broadcast licence translations; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"translations: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/__init__.py": "\"\"\"Domain package; fixture text only.\"\"\"\n",
+        "src/specimens/policy.py": "\"\"\"Decision rules for the laboratory specimen, not transport or reporting.\"\"\"\n\ndef can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the consent requirement and lifecycle state.\"\"\"\n    gate = record.get(\"consent\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")\n\n\ndef extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a laboratory specimen extension to 72 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 72\n    return min(current + hours, maximum)\n\n\ndef may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active laboratory specimen withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)\n",
+        "src/specimens/service.py": "\"\"\"Current laboratory specimen lifecycle implementation.\"\"\"\n\nfrom .policy import can_release, extension_deadline, may_revoke\nfrom .store import load_record, save_record, remove_record\n\n\ndef release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this laboratory specimen after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A laboratory specimen needs recorded consent before release.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)\n\n\ndef extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the laboratory specimen while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)\n\n\ndef revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active laboratory specimen; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)\n",
+        "src/specimens/store.py": "\"\"\"In-memory laboratory specimen records used by the current domain service.\"\"\"\n\ndef load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])\n\n\ndef save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])\n\n\ndef remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous\n",
+        "src/specimens/views/audit.py": "\"\"\"Read-only laboratory specimen audit; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"audit: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/calendar.py": "\"\"\"Read-only laboratory specimen calendar; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"calendar: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/dashboard.py": "\"\"\"Read-only laboratory specimen dashboard; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"dashboard: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/export.py": "\"\"\"Read-only laboratory specimen export; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"export: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/history.py": "\"\"\"Read-only laboratory specimen history; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"history: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/metrics.py": "\"\"\"Read-only laboratory specimen metrics; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"metrics: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/notifications.py": "\"\"\"Read-only laboratory specimen notifications; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"notifications: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/presentation.py": "\"\"\"Read-only laboratory specimen presentation; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"presentation: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/receipts.py": "\"\"\"Read-only laboratory specimen receipts; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"receipts: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/routing.py": "\"\"\"Read-only laboratory specimen routing; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"routing: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/summary.py": "\"\"\"Read-only laboratory specimen summary; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"summary: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "src/specimens/views/translations.py": "\"\"\"Read-only laboratory specimen translations; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\"\"\"\n\ndef release(record: dict) -> str:\n    \"\"\"Presentation label only; no lifecycle behavior.\"\"\"\n    return \"translations: released \" + str(record.get(\"status\", \"unknown\"))\n\n\ndef extend(record: dict) -> str:\n    \"\"\"Render the current deadline without extending it.\"\"\"\n    return str(record.get(\"deadline\", \"unknown\"))\n\n\ndef revoke(record: dict) -> str:\n    \"\"\"Render the owner without removing any stored record.\"\"\"\n    return str(record.get(\"owner\", \"unknown\"))\n",
+        "tests/appointments_spec.py": "# Regression descriptions: clinic appointment hold; release eligibility clinician, extend maximum lifetime, revoke ownership.\ndef test_release_extend_revoke():\n    \"\"\"Only fixture test descriptions; never run indexed source.\"\"\"\n    assert True\n",
+        "tests/deployments_spec.py": "# Regression descriptions: production deployment approval; release eligibility reviewer, extend maximum lifetime, revoke ownership.\ndef test_release_extend_revoke():\n    \"\"\"Only fixture test descriptions; never run indexed source.\"\"\"\n    assert True\n",
+        "tests/media_spec.py": "# Regression descriptions: broadcast licence; release eligibility territory, extend maximum lifetime, revoke ownership.\ndef test_release_extend_revoke():\n    \"\"\"Only fixture test descriptions; never run indexed source.\"\"\"\n    assert True\n",
+        "tests/specimens_spec.py": "# Regression descriptions: laboratory specimen; release eligibility consent, extend maximum lifetime, revoke ownership.\ndef test_release_extend_revoke():\n    \"\"\"Only fixture test descriptions; never run indexed source.\"\"\"\n    assert True\n"
+      },
+      "file_count": 86,
+      "source_utf8_bytes": 48713
+    },
+    "meridian-typescript-refinement-v1": {
+      "language": "typescript",
+      "files": {
+        "README.md": "# Meridian operations\n\nFour independent domains share deliberately ambiguous release, extend and revoke operation names. Current source is under src/. Historical exports, read models and user guides do not drive lifecycle decisions.\n",
+        "docs/appointments/extend.md": "# clinic appointment hold: extend\n\nIn src/appointments/service.ts, inspect extend and its policy calculation: a clinic appointment hold extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the clinic appointment hold: release, extend and revoke. The clinician decision belongs to current source. This page has no executable implementation.\n",
+        "docs/appointments/release.md": "# clinic appointment hold: release\n\nFind the current code that releases a clinic appointment hold. I need the entire operation, the clinician eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the clinic appointment hold: release, extend and revoke. The clinician decision belongs to current source. This page has no executable implementation.\n",
+        "docs/appointments/revoke.md": "# clinic appointment hold: revoke\n\nWhere is ownership checked when withdrawing an active clinic appointment hold? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the clinic appointment hold: release, extend and revoke. The clinician decision belongs to current source. This page has no executable implementation.\n",
+        "docs/deployments/extend.md": "# production deployment approval: extend\n\nIn src/deployments/service.ts, inspect extend and its policy calculation: a production deployment approval extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the production deployment approval: release, extend and revoke. The reviewer decision belongs to current source. This page has no executable implementation.\n",
+        "docs/deployments/release.md": "# production deployment approval: release\n\nFind the current code that releases a production deployment approval. I need the entire operation, the reviewer eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the production deployment approval: release, extend and revoke. The reviewer decision belongs to current source. This page has no executable implementation.\n",
+        "docs/deployments/revoke.md": "# production deployment approval: revoke\n\nWhere is ownership checked when withdrawing an active production deployment approval? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the production deployment approval: release, extend and revoke. The reviewer decision belongs to current source. This page has no executable implementation.\n",
+        "docs/media/extend.md": "# broadcast licence: extend\n\nIn src/media/service.ts, inspect extend and its policy calculation: a broadcast licence extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the broadcast licence: release, extend and revoke. The territory decision belongs to current source. This page has no executable implementation.\n",
+        "docs/media/release.md": "# broadcast licence: release\n\nFind the current code that releases a broadcast licence. I need the entire operation, the territory eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the broadcast licence: release, extend and revoke. The territory decision belongs to current source. This page has no executable implementation.\n",
+        "docs/media/revoke.md": "# broadcast licence: revoke\n\nWhere is ownership checked when withdrawing an active broadcast licence? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the broadcast licence: release, extend and revoke. The territory decision belongs to current source. This page has no executable implementation.\n",
+        "docs/specimens/extend.md": "# laboratory specimen: extend\n\nIn src/specimens/service.ts, inspect extend and its policy calculation: a laboratory specimen extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.\n\nUser guide for the laboratory specimen: release, extend and revoke. The consent decision belongs to current source. This page has no executable implementation.\n",
+        "docs/specimens/release.md": "# laboratory specimen: release\n\nFind the current code that releases a laboratory specimen. I need the entire operation, the consent eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.\n\nUser guide for the laboratory specimen: release, extend and revoke. The consent decision belongs to current source. This page has no executable implementation.\n",
+        "docs/specimens/revoke.md": "# laboratory specimen: revoke\n\nWhere is ownership checked when withdrawing an active laboratory specimen? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.\n\nUser guide for the laboratory specimen: release, extend and revoke. The consent decision belongs to current source. This page has no executable implementation.\n",
+        "legacy/appointments.ts": "// Retired clinic appointment hold release extend revoke implementation. Not imported by current source.\nexport function release(value: unknown) { return value; }\nexport function extend(value: unknown) { return value; }\nexport function revoke(value: unknown) { return value; }\n",
+        "legacy/deployments.ts": "// Retired production deployment approval release extend revoke implementation. Not imported by current source.\nexport function release(value: unknown) { return value; }\nexport function extend(value: unknown) { return value; }\nexport function revoke(value: unknown) { return value; }\n",
+        "legacy/media.ts": "// Retired broadcast licence release extend revoke implementation. Not imported by current source.\nexport function release(value: unknown) { return value; }\nexport function extend(value: unknown) { return value; }\nexport function revoke(value: unknown) { return value; }\n",
+        "legacy/specimens.ts": "// Retired laboratory specimen release extend revoke implementation. Not imported by current source.\nexport function release(value: unknown) { return value; }\nexport function extend(value: unknown) { return value; }\nexport function revoke(value: unknown) { return value; }\n",
+        "src/appointments/policy.ts": "// Decision rules for the clinic appointment hold, not transport or reporting.\nimport type { RecordValue } from \"./types\";\n\nexport function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the clinician requirement and lifecycle state.\n  const gate = record.clinician;\n  return Boolean(actor && gate && record.status === \"pending\");\n}\n\nexport function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a clinic appointment hold extension to 24 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 24;\n  return Math.min(current + hours, maximum);\n}\n\nexport function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active clinic appointment hold withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}\n",
+        "src/appointments/service.ts": "// Current clinic appointment hold lifecycle implementation.\nimport { canRelease, extensionDeadline, mayRevoke } from \"./policy\";\nimport { loadRecord, saveRecord, removeRecord } from \"./store\";\nimport type { RecordValue } from \"./types\";\n\nexport function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this clinic appointment hold after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A clinic hold needs its assigned clinician before it can be released.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}\n\nexport function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the clinic appointment hold while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}\n\nexport function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active clinic appointment hold; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}\n",
+        "src/appointments/store.ts": "// In-memory clinic appointment hold records used by the current domain service.\nimport type { RecordValue } from \"./types\";\n\nexport function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}\n\nexport function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}\n\nexport function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}\n",
+        "src/appointments/types.ts": "// Shared clinic appointment hold shape; its declaration is optional supporting evidence.\nexport interface RecordValue {\n  status: string; created: number; deadline: number; owner: string; actor?: string;\n  clinician?: string;\n}\n",
+        "src/appointments/views/audit.ts": "// Read-only clinic appointment hold audit; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"audit: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/calendar.ts": "// Read-only clinic appointment hold calendar; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"calendar: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/dashboard.ts": "// Read-only clinic appointment hold dashboard; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"dashboard: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/export.ts": "// Read-only clinic appointment hold export; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"export: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/history.ts": "// Read-only clinic appointment hold history; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"history: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/metrics.ts": "// Read-only clinic appointment hold metrics; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"metrics: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/notifications.ts": "// Read-only clinic appointment hold notifications; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"notifications: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/presentation.ts": "// Read-only clinic appointment hold presentation; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"presentation: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/receipts.ts": "// Read-only clinic appointment hold receipts; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"receipts: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/routing.ts": "// Read-only clinic appointment hold routing; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"routing: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/summary.ts": "// Read-only clinic appointment hold summary; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"summary: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/appointments/views/translations.ts": "// Read-only clinic appointment hold translations; displays release extend revoke status, ownership, maximum lifetime and clinician, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"translations: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/policy.ts": "// Decision rules for the production deployment approval, not transport or reporting.\nimport type { RecordValue } from \"./types\";\n\nexport function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the reviewer requirement and lifecycle state.\n  const gate = record.reviewer;\n  return Boolean(actor && gate && record.status === \"pending\");\n}\n\nexport function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a production deployment approval extension to 12 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 12;\n  return Math.min(current + hours, maximum);\n}\n\nexport function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active production deployment approval withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}\n",
+        "src/deployments/service.ts": "// Current production deployment approval lifecycle implementation.\nimport { canRelease, extensionDeadline, mayRevoke } from \"./policy\";\nimport { loadRecord, saveRecord, removeRecord } from \"./store\";\nimport type { RecordValue } from \"./types\";\n\nexport function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this production deployment approval after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A production deployment needs an assigned reviewer before release.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}\n\nexport function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the production deployment approval while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}\n\nexport function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active production deployment approval; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}\n",
+        "src/deployments/store.ts": "// In-memory production deployment approval records used by the current domain service.\nimport type { RecordValue } from \"./types\";\n\nexport function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}\n\nexport function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}\n\nexport function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}\n",
+        "src/deployments/types.ts": "// Shared production deployment approval shape; its declaration is optional supporting evidence.\nexport interface RecordValue {\n  status: string; created: number; deadline: number; owner: string; actor?: string;\n  reviewer?: string;\n}\n",
+        "src/deployments/views/audit.ts": "// Read-only production deployment approval audit; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"audit: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/calendar.ts": "// Read-only production deployment approval calendar; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"calendar: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/dashboard.ts": "// Read-only production deployment approval dashboard; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"dashboard: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/export.ts": "// Read-only production deployment approval export; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"export: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/history.ts": "// Read-only production deployment approval history; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"history: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/metrics.ts": "// Read-only production deployment approval metrics; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"metrics: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/notifications.ts": "// Read-only production deployment approval notifications; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"notifications: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/presentation.ts": "// Read-only production deployment approval presentation; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"presentation: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/receipts.ts": "// Read-only production deployment approval receipts; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"receipts: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/routing.ts": "// Read-only production deployment approval routing; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"routing: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/summary.ts": "// Read-only production deployment approval summary; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"summary: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/deployments/views/translations.ts": "// Read-only production deployment approval translations; displays release extend revoke status, ownership, maximum lifetime and reviewer, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"translations: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/policy.ts": "// Decision rules for the broadcast licence, not transport or reporting.\nimport type { RecordValue } from \"./types\";\n\nexport function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the territory requirement and lifecycle state.\n  const gate = record.territory;\n  return Boolean(actor && gate && record.status === \"pending\");\n}\n\nexport function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a broadcast licence extension to 48 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 48;\n  return Math.min(current + hours, maximum);\n}\n\nexport function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active broadcast licence withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}\n",
+        "src/media/service.ts": "// Current broadcast licence lifecycle implementation.\nimport { canRelease, extensionDeadline, mayRevoke } from \"./policy\";\nimport { loadRecord, saveRecord, removeRecord } from \"./store\";\nimport type { RecordValue } from \"./types\";\n\nexport function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this broadcast licence after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A broadcast licence cannot be released outside its permitted territory.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}\n\nexport function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the broadcast licence while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}\n\nexport function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active broadcast licence; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}\n",
+        "src/media/store.ts": "// In-memory broadcast licence records used by the current domain service.\nimport type { RecordValue } from \"./types\";\n\nexport function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}\n\nexport function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}\n\nexport function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}\n",
+        "src/media/types.ts": "// Shared broadcast licence shape; its declaration is optional supporting evidence.\nexport interface RecordValue {\n  status: string; created: number; deadline: number; owner: string; actor?: string;\n  territory?: string;\n}\n",
+        "src/media/views/audit.ts": "// Read-only broadcast licence audit; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"audit: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/calendar.ts": "// Read-only broadcast licence calendar; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"calendar: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/dashboard.ts": "// Read-only broadcast licence dashboard; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"dashboard: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/export.ts": "// Read-only broadcast licence export; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"export: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/history.ts": "// Read-only broadcast licence history; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"history: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/metrics.ts": "// Read-only broadcast licence metrics; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"metrics: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/notifications.ts": "// Read-only broadcast licence notifications; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"notifications: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/presentation.ts": "// Read-only broadcast licence presentation; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"presentation: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/receipts.ts": "// Read-only broadcast licence receipts; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"receipts: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/routing.ts": "// Read-only broadcast licence routing; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"routing: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/summary.ts": "// Read-only broadcast licence summary; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"summary: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/media/views/translations.ts": "// Read-only broadcast licence translations; displays release extend revoke status, ownership, maximum lifetime and territory, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"translations: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/policy.ts": "// Decision rules for the laboratory specimen, not transport or reporting.\nimport type { RecordValue } from \"./types\";\n\nexport function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the consent requirement and lifecycle state.\n  const gate = record.consent;\n  return Boolean(actor && gate && record.status === \"pending\");\n}\n\nexport function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a laboratory specimen extension to 72 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 72;\n  return Math.min(current + hours, maximum);\n}\n\nexport function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active laboratory specimen withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}\n",
+        "src/specimens/service.ts": "// Current laboratory specimen lifecycle implementation.\nimport { canRelease, extensionDeadline, mayRevoke } from \"./policy\";\nimport { loadRecord, saveRecord, removeRecord } from \"./store\";\nimport type { RecordValue } from \"./types\";\n\nexport function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this laboratory specimen after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A laboratory specimen needs recorded consent before release.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}\n\nexport function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the laboratory specimen while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}\n\nexport function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active laboratory specimen; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}\n",
+        "src/specimens/store.ts": "// In-memory laboratory specimen records used by the current domain service.\nimport type { RecordValue } from \"./types\";\n\nexport function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}\n\nexport function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}\n\nexport function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}\n",
+        "src/specimens/types.ts": "// Shared laboratory specimen shape; its declaration is optional supporting evidence.\nexport interface RecordValue {\n  status: string; created: number; deadline: number; owner: string; actor?: string;\n  consent?: string;\n}\n",
+        "src/specimens/views/audit.ts": "// Read-only laboratory specimen audit; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"audit: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/calendar.ts": "// Read-only laboratory specimen calendar; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"calendar: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/dashboard.ts": "// Read-only laboratory specimen dashboard; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"dashboard: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/export.ts": "// Read-only laboratory specimen export; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"export: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/history.ts": "// Read-only laboratory specimen history; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"history: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/metrics.ts": "// Read-only laboratory specimen metrics; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"metrics: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/notifications.ts": "// Read-only laboratory specimen notifications; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"notifications: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/presentation.ts": "// Read-only laboratory specimen presentation; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"presentation: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/receipts.ts": "// Read-only laboratory specimen receipts; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"receipts: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/routing.ts": "// Read-only laboratory specimen routing; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"routing: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/summary.ts": "// Read-only laboratory specimen summary; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"summary: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "src/specimens/views/translations.ts": "// Read-only laboratory specimen translations; displays release extend revoke status, ownership, maximum lifetime and consent, but cannot change records.\nexport function release(record: { status: string }): string {\n  return \"translations: released \" + record.status;\n}\nexport function extend(record: { deadline: number }): string {\n  return String(record.deadline);\n}\nexport function revoke(record: { owner: string }): string {\n  return record.owner;\n}\n",
+        "tests/appointments_spec.ts": "// Regression descriptions: clinic appointment hold; release eligibility clinician, extend maximum lifetime, revoke ownership.\nexport const testNames = [\"release eligibility\", \"extend maximum lifetime\", \"revoke ownership\"];\n",
+        "tests/deployments_spec.ts": "// Regression descriptions: production deployment approval; release eligibility reviewer, extend maximum lifetime, revoke ownership.\nexport const testNames = [\"release eligibility\", \"extend maximum lifetime\", \"revoke ownership\"];\n",
+        "tests/media_spec.ts": "// Regression descriptions: broadcast licence; release eligibility territory, extend maximum lifetime, revoke ownership.\nexport const testNames = [\"release eligibility\", \"extend maximum lifetime\", \"revoke ownership\"];\n",
+        "tests/specimens_spec.ts": "// Regression descriptions: laboratory specimen; release eligibility consent, extend maximum lifetime, revoke ownership.\nexport const testNames = [\"release eligibility\", \"extend maximum lifetime\", \"revoke ownership\"];\n"
+      },
+      "file_count": 85,
+      "source_utf8_bytes": 42704
+    }
+  },
+  "queries": [
+    {
+      "id": "meridian-python-media-release",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "media",
+      "prompt": "Find the current code that releases a broadcast licence. I need the entire operation, the territory eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/media/service.py",
+      "required_files": [
+        "src/media/service.py",
+        "src/media/policy.py",
+        "src/media/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/media/service.py",
+        "symbol": "release",
+        "start_line": 7,
+        "end_line": 13,
+        "text": "def release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this broadcast licence after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A broadcast licence cannot be released outside its permitted territory.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/media/policy.py",
+          "symbol": "can_release",
+          "start_line": 3,
+          "end_line": 6,
+          "text": "def can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the territory requirement and lifecycle state.\"\"\"\n    gate = record.get(\"territory\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")"
+        },
+        {
+          "path": "src/media/store.py",
+          "symbol": "load_record",
+          "start_line": 3,
+          "end_line": 7,
+          "text": "def load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-media-extend",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "media",
+      "prompt": "In src/media/service.py, inspect extend and its policy calculation: a broadcast licence extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/media/service.py",
+      "required_files": [
+        "src/media/service.py",
+        "src/media/policy.py",
+        "src/media/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/media/service.py",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 21,
+        "text": "def extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the broadcast licence while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/media/policy.py",
+          "symbol": "extension_deadline",
+          "start_line": 9,
+          "end_line": 15,
+          "text": "def extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a broadcast licence extension to 48 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 48\n    return min(current + hours, maximum)"
+        },
+        {
+          "path": "src/media/store.py",
+          "symbol": "save_record",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "def save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-media-revoke",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "media",
+      "prompt": "Where is ownership checked when withdrawing an active broadcast licence? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/media/service.py",
+      "required_files": [
+        "src/media/service.py",
+        "src/media/policy.py",
+        "src/media/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/media/service.py",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 29,
+        "text": "def revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active broadcast licence; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/media/policy.py",
+          "symbol": "may_revoke",
+          "start_line": 18,
+          "end_line": 21,
+          "text": "def may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active broadcast licence withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)"
+        },
+        {
+          "path": "src/media/store.py",
+          "symbol": "remove_record",
+          "start_line": 16,
+          "end_line": 20,
+          "text": "def remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-appointments-release",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "appointments",
+      "prompt": "Find the current code that releases a clinic appointment hold. I need the entire operation, the clinician eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/appointments/service.py",
+      "required_files": [
+        "src/appointments/service.py",
+        "src/appointments/policy.py",
+        "src/appointments/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/appointments/service.py",
+        "symbol": "release",
+        "start_line": 7,
+        "end_line": 13,
+        "text": "def release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this clinic appointment hold after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A clinic hold needs its assigned clinician before it can be released.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/appointments/policy.py",
+          "symbol": "can_release",
+          "start_line": 3,
+          "end_line": 6,
+          "text": "def can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the clinician requirement and lifecycle state.\"\"\"\n    gate = record.get(\"clinician\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")"
+        },
+        {
+          "path": "src/appointments/store.py",
+          "symbol": "load_record",
+          "start_line": 3,
+          "end_line": 7,
+          "text": "def load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-appointments-extend",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "appointments",
+      "prompt": "In src/appointments/service.py, inspect extend and its policy calculation: a clinic appointment hold extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/appointments/service.py",
+      "required_files": [
+        "src/appointments/service.py",
+        "src/appointments/policy.py",
+        "src/appointments/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/appointments/service.py",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 21,
+        "text": "def extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the clinic appointment hold while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/appointments/policy.py",
+          "symbol": "extension_deadline",
+          "start_line": 9,
+          "end_line": 15,
+          "text": "def extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a clinic appointment hold extension to 24 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 24\n    return min(current + hours, maximum)"
+        },
+        {
+          "path": "src/appointments/store.py",
+          "symbol": "save_record",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "def save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-appointments-revoke",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "appointments",
+      "prompt": "Where is ownership checked when withdrawing an active clinic appointment hold? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/appointments/service.py",
+      "required_files": [
+        "src/appointments/service.py",
+        "src/appointments/policy.py",
+        "src/appointments/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/appointments/service.py",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 29,
+        "text": "def revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active clinic appointment hold; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/appointments/policy.py",
+          "symbol": "may_revoke",
+          "start_line": 18,
+          "end_line": 21,
+          "text": "def may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active clinic appointment hold withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)"
+        },
+        {
+          "path": "src/appointments/store.py",
+          "symbol": "remove_record",
+          "start_line": 16,
+          "end_line": 20,
+          "text": "def remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-specimens-release",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "specimens",
+      "prompt": "Find the current code that releases a laboratory specimen. I need the entire operation, the consent eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/specimens/service.py",
+      "required_files": [
+        "src/specimens/service.py",
+        "src/specimens/policy.py",
+        "src/specimens/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/specimens/service.py",
+        "symbol": "release",
+        "start_line": 7,
+        "end_line": 13,
+        "text": "def release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this laboratory specimen after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A laboratory specimen needs recorded consent before release.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/specimens/policy.py",
+          "symbol": "can_release",
+          "start_line": 3,
+          "end_line": 6,
+          "text": "def can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the consent requirement and lifecycle state.\"\"\"\n    gate = record.get(\"consent\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")"
+        },
+        {
+          "path": "src/specimens/store.py",
+          "symbol": "load_record",
+          "start_line": 3,
+          "end_line": 7,
+          "text": "def load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-specimens-extend",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "specimens",
+      "prompt": "In src/specimens/service.py, inspect extend and its policy calculation: a laboratory specimen extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/specimens/service.py",
+      "required_files": [
+        "src/specimens/service.py",
+        "src/specimens/policy.py",
+        "src/specimens/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/specimens/service.py",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 21,
+        "text": "def extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the laboratory specimen while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/specimens/policy.py",
+          "symbol": "extension_deadline",
+          "start_line": 9,
+          "end_line": 15,
+          "text": "def extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a laboratory specimen extension to 72 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 72\n    return min(current + hours, maximum)"
+        },
+        {
+          "path": "src/specimens/store.py",
+          "symbol": "save_record",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "def save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-specimens-revoke",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "specimens",
+      "prompt": "Where is ownership checked when withdrawing an active laboratory specimen? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/specimens/service.py",
+      "required_files": [
+        "src/specimens/service.py",
+        "src/specimens/policy.py",
+        "src/specimens/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/specimens/service.py",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 29,
+        "text": "def revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active laboratory specimen; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/specimens/policy.py",
+          "symbol": "may_revoke",
+          "start_line": 18,
+          "end_line": 21,
+          "text": "def may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active laboratory specimen withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)"
+        },
+        {
+          "path": "src/specimens/store.py",
+          "symbol": "remove_record",
+          "start_line": 16,
+          "end_line": 20,
+          "text": "def remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-deployments-release",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "deployments",
+      "prompt": "Find the current code that releases a production deployment approval. I need the entire operation, the reviewer eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/deployments/service.py",
+      "required_files": [
+        "src/deployments/service.py",
+        "src/deployments/policy.py",
+        "src/deployments/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/deployments/service.py",
+        "symbol": "release",
+        "start_line": 7,
+        "end_line": 13,
+        "text": "def release(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Release this production deployment approval after its domain gate.\"\"\"\n    record = load_record(records, key)\n    if not can_release(record, actor):\n        raise ValueError(\"A production deployment needs an assigned reviewer before release.\")\n    result = {**record, \"status\": \"released\", \"actor\": actor}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/deployments/policy.py",
+          "symbol": "can_release",
+          "start_line": 3,
+          "end_line": 6,
+          "text": "def can_release(record: dict, actor: str) -> bool:\n    \"\"\"Validate the reviewer requirement and lifecycle state.\"\"\"\n    gate = record.get(\"reviewer\")\n    return bool(actor and gate and record.get(\"status\") == \"pending\")"
+        },
+        {
+          "path": "src/deployments/store.py",
+          "symbol": "load_record",
+          "start_line": 3,
+          "end_line": 7,
+          "text": "def load_record(records: dict, key: str) -> dict:\n    \"\"\"Read one record and fail clearly when it does not exist.\"\"\"\n    if key not in records:\n        raise KeyError(\"Record does not exist: \" + key)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-deployments-extend",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "deployments",
+      "prompt": "In src/deployments/service.py, inspect extend and its policy calculation: a production deployment approval extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/deployments/service.py",
+      "required_files": [
+        "src/deployments/service.py",
+        "src/deployments/policy.py",
+        "src/deployments/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/deployments/service.py",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 21,
+        "text": "def extend(records: dict, key: str, hours: int) -> dict:\n    \"\"\"Extend the production deployment approval while preserving its maximum lifetime.\"\"\"\n    record = load_record(records, key)\n    deadline = extension_deadline(record, hours)\n    result = {**record, \"deadline\": deadline}\n    return save_record(records, key, result)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/deployments/policy.py",
+          "symbol": "extension_deadline",
+          "start_line": 9,
+          "end_line": 15,
+          "text": "def extension_deadline(record: dict, hours: int) -> int:\n    \"\"\"Clamp a production deployment approval extension to 12 hours after creation.\"\"\"\n    if hours < 0:\n        raise ValueError(\"Extension must not be negative\")\n    current = int(record[\"deadline\"])\n    maximum = int(record[\"created\"]) + 12\n    return min(current + hours, maximum)"
+        },
+        {
+          "path": "src/deployments/store.py",
+          "symbol": "save_record",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "def save_record(records: dict, key: str, value: dict) -> dict:\n    \"\"\"Write a detached record copy and return another detached copy.\"\"\"\n    records[key] = dict(value)\n    return dict(records[key])"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-python-deployments-revoke",
+      "repository": "meridian-python-refinement-v1",
+      "language": "python",
+      "domain": "deployments",
+      "prompt": "Where is ownership checked when withdrawing an active production deployment approval? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/deployments/service.py",
+      "required_files": [
+        "src/deployments/service.py",
+        "src/deployments/policy.py",
+        "src/deployments/store.py"
+      ],
+      "optional_relevant_files": [],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/deployments/service.py",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 29,
+        "text": "def revoke(records: dict, key: str, actor: str) -> dict:\n    \"\"\"Withdraw the active production deployment approval; never remove a completed record.\"\"\"\n    record = load_record(records, key)\n    if not may_revoke(record, actor):\n        raise ValueError(\"Completed or differently owned record cannot be revoked\")\n    return remove_record(records, key)"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/deployments/policy.py",
+          "symbol": "may_revoke",
+          "start_line": 18,
+          "end_line": 21,
+          "text": "def may_revoke(record: dict, actor: str) -> bool:\n    \"\"\"Require the same owner for active production deployment approval withdrawal.\"\"\"\n    active = record.get(\"status\") in {\"pending\", \"released\"}\n    return bool(active and actor and record.get(\"owner\") == actor)"
+        },
+        {
+          "path": "src/deployments/store.py",
+          "symbol": "remove_record",
+          "start_line": 16,
+          "end_line": 20,
+          "text": "def remove_record(records: dict, key: str) -> dict:\n    \"\"\"Remove an existing record and expose the previous detached value.\"\"\"\n    previous = dict(records[key])\n    del records[key]\n    return previous"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-media-release",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "media",
+      "prompt": "Find the current code that releases a broadcast licence. I need the entire operation, the territory eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/media/service.ts",
+      "required_files": [
+        "src/media/service.ts",
+        "src/media/policy.ts",
+        "src/media/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/media/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/media/service.ts",
+        "symbol": "release",
+        "start_line": 6,
+        "end_line": 14,
+        "text": "export function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this broadcast licence after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A broadcast licence cannot be released outside its permitted territory.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/media/policy.ts",
+          "symbol": "canRelease",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the territory requirement and lifecycle state.\n  const gate = record.territory;\n  return Boolean(actor && gate && record.status === \"pending\");\n}"
+        },
+        {
+          "path": "src/media/store.ts",
+          "symbol": "loadRecord",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-media-extend",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "media",
+      "prompt": "In src/media/service.ts, inspect extend and its policy calculation: a broadcast licence extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/media/service.ts",
+      "required_files": [
+        "src/media/service.ts",
+        "src/media/policy.ts",
+        "src/media/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/media/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/media/service.ts",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 22,
+        "text": "export function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the broadcast licence while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/media/policy.ts",
+          "symbol": "extensionDeadline",
+          "start_line": 10,
+          "end_line": 16,
+          "text": "export function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a broadcast licence extension to 48 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 48;\n  return Math.min(current + hours, maximum);\n}"
+        },
+        {
+          "path": "src/media/store.ts",
+          "symbol": "saveRecord",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "export function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-media-revoke",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "media",
+      "prompt": "Where is ownership checked when withdrawing an active broadcast licence? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/media/service.ts",
+      "required_files": [
+        "src/media/service.ts",
+        "src/media/policy.ts",
+        "src/media/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/media/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/media/service.ts",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 31,
+        "text": "export function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active broadcast licence; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/media/policy.ts",
+          "symbol": "mayRevoke",
+          "start_line": 18,
+          "end_line": 22,
+          "text": "export function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active broadcast licence withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}"
+        },
+        {
+          "path": "src/media/store.ts",
+          "symbol": "removeRecord",
+          "start_line": 15,
+          "end_line": 19,
+          "text": "export function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-appointments-release",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "appointments",
+      "prompt": "Find the current code that releases a clinic appointment hold. I need the entire operation, the clinician eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/appointments/service.ts",
+      "required_files": [
+        "src/appointments/service.ts",
+        "src/appointments/policy.ts",
+        "src/appointments/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/appointments/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/appointments/service.ts",
+        "symbol": "release",
+        "start_line": 6,
+        "end_line": 14,
+        "text": "export function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this clinic appointment hold after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A clinic hold needs its assigned clinician before it can be released.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/appointments/policy.ts",
+          "symbol": "canRelease",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the clinician requirement and lifecycle state.\n  const gate = record.clinician;\n  return Boolean(actor && gate && record.status === \"pending\");\n}"
+        },
+        {
+          "path": "src/appointments/store.ts",
+          "symbol": "loadRecord",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-appointments-extend",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "appointments",
+      "prompt": "In src/appointments/service.ts, inspect extend and its policy calculation: a clinic appointment hold extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/appointments/service.ts",
+      "required_files": [
+        "src/appointments/service.ts",
+        "src/appointments/policy.ts",
+        "src/appointments/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/appointments/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/appointments/service.ts",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 22,
+        "text": "export function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the clinic appointment hold while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/appointments/policy.ts",
+          "symbol": "extensionDeadline",
+          "start_line": 10,
+          "end_line": 16,
+          "text": "export function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a clinic appointment hold extension to 24 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 24;\n  return Math.min(current + hours, maximum);\n}"
+        },
+        {
+          "path": "src/appointments/store.ts",
+          "symbol": "saveRecord",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "export function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-appointments-revoke",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "appointments",
+      "prompt": "Where is ownership checked when withdrawing an active clinic appointment hold? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/appointments/service.ts",
+      "required_files": [
+        "src/appointments/service.ts",
+        "src/appointments/policy.ts",
+        "src/appointments/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/appointments/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/appointments/service.ts",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 31,
+        "text": "export function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active clinic appointment hold; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/appointments/policy.ts",
+          "symbol": "mayRevoke",
+          "start_line": 18,
+          "end_line": 22,
+          "text": "export function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active clinic appointment hold withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}"
+        },
+        {
+          "path": "src/appointments/store.ts",
+          "symbol": "removeRecord",
+          "start_line": 15,
+          "end_line": 19,
+          "text": "export function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-specimens-release",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "specimens",
+      "prompt": "Find the current code that releases a laboratory specimen. I need the entire operation, the consent eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/specimens/service.ts",
+      "required_files": [
+        "src/specimens/service.ts",
+        "src/specimens/policy.ts",
+        "src/specimens/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/specimens/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/specimens/service.ts",
+        "symbol": "release",
+        "start_line": 6,
+        "end_line": 14,
+        "text": "export function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this laboratory specimen after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A laboratory specimen needs recorded consent before release.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/specimens/policy.ts",
+          "symbol": "canRelease",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the consent requirement and lifecycle state.\n  const gate = record.consent;\n  return Boolean(actor && gate && record.status === \"pending\");\n}"
+        },
+        {
+          "path": "src/specimens/store.ts",
+          "symbol": "loadRecord",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-specimens-extend",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "specimens",
+      "prompt": "In src/specimens/service.ts, inspect extend and its policy calculation: a laboratory specimen extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/specimens/service.ts",
+      "required_files": [
+        "src/specimens/service.ts",
+        "src/specimens/policy.ts",
+        "src/specimens/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/specimens/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/specimens/service.ts",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 22,
+        "text": "export function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the laboratory specimen while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/specimens/policy.ts",
+          "symbol": "extensionDeadline",
+          "start_line": 10,
+          "end_line": 16,
+          "text": "export function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a laboratory specimen extension to 72 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 72;\n  return Math.min(current + hours, maximum);\n}"
+        },
+        {
+          "path": "src/specimens/store.ts",
+          "symbol": "saveRecord",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "export function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-specimens-revoke",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "specimens",
+      "prompt": "Where is ownership checked when withdrawing an active laboratory specimen? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/specimens/service.ts",
+      "required_files": [
+        "src/specimens/service.ts",
+        "src/specimens/policy.ts",
+        "src/specimens/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/specimens/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/specimens/service.ts",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 31,
+        "text": "export function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active laboratory specimen; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/specimens/policy.ts",
+          "symbol": "mayRevoke",
+          "start_line": 18,
+          "end_line": 22,
+          "text": "export function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active laboratory specimen withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}"
+        },
+        {
+          "path": "src/specimens/store.ts",
+          "symbol": "removeRecord",
+          "start_line": 15,
+          "end_line": 19,
+          "text": "export function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-deployments-release",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "deployments",
+      "prompt": "Find the current code that releases a production deployment approval. I need the entire operation, the reviewer eligibility rule it calls, and its record-loading implementation. The similarly named operations in other domains are unrelated.",
+      "primary_target": "src/deployments/service.ts",
+      "required_files": [
+        "src/deployments/service.ts",
+        "src/deployments/policy.ts",
+        "src/deployments/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/deployments/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/deployments/service.ts",
+        "symbol": "release",
+        "start_line": 6,
+        "end_line": 14,
+        "text": "export function release(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Release this production deployment approval after its domain gate.\n  const record = loadRecord(records, key);\n  if (!canRelease(record, actor)) {\n    throw new Error(\"A production deployment needs an assigned reviewer before release.\");\n  }\n  const result = { ...record, status: \"released\", actor };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/deployments/policy.ts",
+          "symbol": "canRelease",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function canRelease(record: RecordValue, actor: string): boolean {\n  // Validate the reviewer requirement and lifecycle state.\n  const gate = record.reviewer;\n  return Boolean(actor && gate && record.status === \"pending\");\n}"
+        },
+        {
+          "path": "src/deployments/store.ts",
+          "symbol": "loadRecord",
+          "start_line": 4,
+          "end_line": 8,
+          "text": "export function loadRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const value = records.get(key);\n  if (!value) throw new Error(\"Record does not exist: \" + key);\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-deployments-extend",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "deployments",
+      "prompt": "In src/deployments/service.ts, inspect extend and its policy calculation: a production deployment approval extension must stay within the maximum lifetime. Include the complete method, deadline helper, and persistence helper bodies so the update can be reviewed.",
+      "primary_target": "src/deployments/service.ts",
+      "required_files": [
+        "src/deployments/service.ts",
+        "src/deployments/policy.ts",
+        "src/deployments/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/deployments/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/deployments/service.ts",
+        "symbol": "extend",
+        "start_line": 16,
+        "end_line": 22,
+        "text": "export function extend(records: Map<string, RecordValue>, key: string, hours: number): RecordValue {\n  // Extend the production deployment approval while preserving its maximum lifetime.\n  const record = loadRecord(records, key);\n  const deadline = extensionDeadline(record, hours);\n  const result = { ...record, deadline };\n  return saveRecord(records, key, result);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/deployments/policy.ts",
+          "symbol": "extensionDeadline",
+          "start_line": 10,
+          "end_line": 16,
+          "text": "export function extensionDeadline(record: RecordValue, hours: number): number {\n  // Clamp a production deployment approval extension to 12 hours after creation.\n  if (hours < 0) throw new Error(\"Extension must not be negative\");\n  const current = record.deadline;\n  const maximum = record.created + 12;\n  return Math.min(current + hours, maximum);\n}"
+        },
+        {
+          "path": "src/deployments/store.ts",
+          "symbol": "saveRecord",
+          "start_line": 10,
+          "end_line": 13,
+          "text": "export function saveRecord(records: Map<string, RecordValue>, key: string, value: RecordValue): RecordValue {\n  records.set(key, { ...value });\n  return { ...value };\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    },
+    {
+      "id": "meridian-typescript-deployments-revoke",
+      "repository": "meridian-typescript-refinement-v1",
+      "language": "typescript",
+      "domain": "deployments",
+      "prompt": "Where is ownership checked when withdrawing an active production deployment approval? Retrieve the current revoke implementation, its ownership decision, and the actual removal helper. Completed records must be protected. Documentation and test names alone will not show the behavior.",
+      "primary_target": "src/deployments/service.ts",
+      "required_files": [
+        "src/deployments/service.ts",
+        "src/deployments/policy.ts",
+        "src/deployments/store.ts"
+      ],
+      "optional_relevant_files": [
+        "src/deployments/types.ts"
+      ],
+      "judgment_scope": "exhaustive_for_declared_fixture_implementation_task",
+      "primary_body": {
+        "path": "src/deployments/service.ts",
+        "symbol": "revoke",
+        "start_line": 24,
+        "end_line": 31,
+        "text": "export function revoke(records: Map<string, RecordValue>, key: string, actor: string): RecordValue {\n  // Withdraw the active production deployment approval; never remove a completed record.\n  const record = loadRecord(records, key);\n  if (!mayRevoke(record, actor)) {\n    throw new Error(\"Completed or differently owned record cannot be revoked\");\n  }\n  return removeRecord(records, key);\n}"
+      },
+      "required_dependency_bodies": [
+        {
+          "path": "src/deployments/policy.ts",
+          "symbol": "mayRevoke",
+          "start_line": 18,
+          "end_line": 22,
+          "text": "export function mayRevoke(record: RecordValue, actor: string): boolean {\n  // Require the same owner for active production deployment approval withdrawal.\n  const active = record.status === \"pending\" || record.status === \"released\";\n  return Boolean(active && actor && record.owner === actor);\n}"
+        },
+        {
+          "path": "src/deployments/store.ts",
+          "symbol": "removeRecord",
+          "start_line": 15,
+          "end_line": 19,
+          "text": "export function removeRecord(records: Map<string, RecordValue>, key: string): RecordValue {\n  const previous = { ...records.get(key)! };\n  records.delete(key);\n  return previous;\n}"
+        }
+      ],
+      "dependency_scope": "two_declared_direct_helpers_not_all_runtime_dependencies"
+    }
+  ]
+}

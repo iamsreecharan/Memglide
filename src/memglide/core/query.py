@@ -123,3 +123,87 @@ def explicit_path(query: str, path: str) -> bool:
         if re.search(r"(?<![\w./-])" + re.escape(candidate) + r"(?![\w./-])", folded):
             return True
     return False
+
+
+_WORKFLOW_SENTENCE = re.compile(
+    r"^(?:"
+    r"(?:run|execute)\b.*\b(?:tests?|checks?|lint|build)\b|"
+    r"(?:use|add|write)\b.*\b(?:tests?|regressions?|checks?)\b|"
+    r"(?:do not|don't)\s+(?:inspect|modify|change)\b.*\b"
+    r"(?:benchmark|grading|machinery|configuration|outside|tests?)\b|"
+    r"(?:finish|respond|report)\b.*\b(?:summary|description|tests?|changes?)\b|"
+    r"(?:implement|make|apply)\s+(?:the\s+)?(?:change|fix)\s+in\s+"
+    r"(?:the\s+)?(?:production|source|code)\b"
+    r")",
+    re.IGNORECASE,
+)
+
+
+def search_focus(query: str) -> str:
+    """Separate task behavior from generic workflow prose for lexical ranking.
+
+    Exact identifier/path detection always uses the original query. Keep explicit
+    source references and fenced code, and fall back to the original when the
+    query itself is entirely about a test/build/documentation workflow.
+    """
+    if "```" in query:
+        return query
+    focused = re.sub(
+        r"^\s*(?:in|within|for)\b[^.\n]{0,200}\b(?:repository|repo|project|codebase)"
+        r"\s*[:,]\s*(?=(?:fix|repair|correct|implement|refactor|debug|change|update)\b)",
+        "",
+        query,
+        flags=re.IGNORECASE,
+    )
+    kept = []
+    criteria = []
+    for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z])|\n+", focused):
+        # A named source/test file or code reference can be part of the task
+        # even when its sentence also mentions running tests.
+        explicit = "`" in sentence or bool(
+            re.search(r"\b[\w./-]+\.(?:py|tsx?|jsx?|mjs|md|json|toml|ya?ml)\b", sentence)
+        )
+        if explicit or not _WORKFLOW_SENTENCE.search(sentence.strip()):
+            kept.append(sentence)
+        else:
+            acceptance = re.search(
+                r"\btests?\b.*?\b(?:that|which|for|covering|asserting|proving|demonstrating|"
+                r"to\s+(?:verify|ensure|cover))\s+(.+)",
+                sentence,
+                re.IGNORECASE,
+            )
+            if acceptance:
+                criteria.append(acceptance[1])
+    return "\n".join([*kept, *criteria]).strip() if kept else query
+
+
+def preferred_source_role(query: str) -> str | None:
+    """Classify an explicit task verb without interpreting repository text."""
+    focus = search_focus(query).strip()
+    requested = re.match(
+        r"(?:fix|repair|correct|update|write|add|improve|inspect|find)\s+"
+        r"(?:(?:the|a|an|unit|integration|regression|automated)\s+)*"
+        r"(tests?|documentation|docs?|readme|guide)\b",
+        focus,
+        re.IGNORECASE,
+    )
+    if requested:
+        return "tests" if requested[1].casefold().startswith("test") else "documentation"
+    if re.search(r"\b(?:fix|repair|correct|implement|refactor|debug)\b", focus, re.IGNORECASE):
+        return "implementation"
+    return None
+
+
+def source_role(path: str) -> str:
+    source = PurePosixPath(path.casefold())
+    if (
+        set(source.parts) & {"test", "tests", "__tests__", "spec", "specs"}
+        or source.name.startswith("test_")
+        or source.name.endswith("_test.py")
+        or ".test." in source.name
+        or ".spec." in source.name
+    ):
+        return "tests"
+    if source.suffix in {".md", ".rst", ".txt"} or set(source.parts) & {"docs", "documentation"}:
+        return "documentation"
+    return "implementation"

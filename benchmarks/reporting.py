@@ -237,7 +237,7 @@ def _aggregate(runs: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def _pairs(runs: list[dict[str, Any]]) -> dict[str, Any]:
+def _pairs(runs: list[dict[str, Any]], metadata: dict[str, Any]) -> dict[str, Any]:
     indexed: dict[tuple[Any, Any], dict[str, list[dict[str, Any]]]] = {}
     for run in runs:
         key = (run.get("task_id"), run.get("repeat", 1))
@@ -263,6 +263,34 @@ def _pairs(runs: list[dict[str, Any]]) -> dict[str, Any]:
                 }
             )
             continue
+        identity_reasons = []
+        identity = {}
+        for field in ("starting_commit", "prompt_sha256"):
+            a, b = first.get(field), second.get(field)
+            if not isinstance(a, str) or not a or not isinstance(b, str) or not b:
+                identity_reasons.append(f"Missing {field}; input equality is unverified")
+            elif not all(
+                len(value) in ({40, 64} if field == "starting_commit" else {64})
+                and all(character in "0123456789abcdef" for character in value)
+                for value in (a, b)
+            ):
+                identity_reasons.append(f"Invalid {field}; input equality is unverified")
+            elif a != b:
+                identity_reasons.append(f"Different {field}; input equality is invalid")
+            else:
+                identity[field] = a
+        if metadata.get("source_unchanged_during_experiment") is False:
+            identity_reasons.append("Memglide runtime source changed during the experiment")
+        if identity_reasons:
+            excluded.append(
+                {
+                    "task_id": task_id,
+                    "repeat": repeat,
+                    "reason": "; ".join(identity_reasons),
+                    "identity_errors": identity_reasons,
+                }
+            )
+            continue
         differences: dict[str, Any] = {}
         for name in METRIC_NAMES:
             a, b = first["metrics"].get(name), second["metrics"].get(name)
@@ -275,6 +303,7 @@ def _pairs(runs: list[dict[str, Any]]) -> dict[str, Any]:
                 "B_success": second["successful"],
                 "A_order": first.get("order"),
                 "B_order": second.get("order"),
+                "verified_input_identity": identity,
                 "B_minus_A": differences,
             }
         )
@@ -283,6 +312,8 @@ def _pairs(runs: list[dict[str, Any]]) -> dict[str, Any]:
         "pairs": pairs,
         "excluded_pairs": excluded,
         "difference_definition": "B minus A; negative is less resource use, not proof of task benefit",
+        "identity_scope": "Equal recorded starting commits and prompt hashes, plus verified MCP treatment. Missing identity evidence excludes a pair. Explicitly changed runtime source excludes every pair; absent runtime source attestation remains unknown.",
+        "source_unchanged_during_experiment": metadata.get("source_unchanged_during_experiment"),
         "B_minus_A": {
             name: _summary([pair["B_minus_A"].get(name) for pair in pairs]) for name in METRIC_NAMES
         },
@@ -343,7 +374,7 @@ def build_report(
         )
         for config in CONFIGURATIONS
     }
-    paired = _pairs(rows)
+    paired = _pairs(rows, metadata)
     limitations = [
         "No savings claim follows from a shorter response or fewer returned context characters.",
         "Completed Codex turns are not the number of underlying model/API calls.",
@@ -355,6 +386,9 @@ def build_report(
         "MCP invocation is checked from tool events, independent of model self-report.",
         "B treatment fidelity requires a completed, error-free Memglide get_context result; "
         "failed calls and calls to other tools do not verify retrieval treatment.",
+        "Paired comparisons require identical recorded starting commits and prompt SHA-256 values. "
+        "Missing or unequal identities and explicitly changed runtime source exclude paired deltas; "
+        "all raw attempts, failures and unconditional aggregates remain visible.",
         "MCP total counts are withheld for incomplete event streams; observed counts are lower bounds.",
         "Retrieval completeness and freshness require separate ground-truth observations; null is unknown.",
         "Independent target-path/symbol coverage probes are labelled proxies; they do not measure "

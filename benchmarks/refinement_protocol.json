@@ -1,0 +1,32 @@
+{
+  "version": "1.1",
+  "candidate_policies": [
+    "refined",
+    "previous",
+    "legacy"
+  ],
+  "legacy_revision": "39e8df30565783a686270f8a6f422e56e41e3776",
+  "ranking_freeze_required_before_first_evaluation": true,
+  "default_repeats": 2,
+  "context_level": 2,
+  "context_budget": 8000,
+  "candidate_limit": 100,
+  "candidate_order": "Rotate by query and reverse on repeat two; retain every run.",
+  "common_packer": "Same installed context engine, project settings and fixture for both rankers.",
+  "session_state": "Fresh empty session for every query/candidate/repeat; no stored memories.",
+  "caches": "Shared warm operating-system/SQLite caches, no flush or cold-cache claim.",
+  "timing": "Current-process CPU and wall time, search and context separately; no model calls.",
+  "percentile": "Nearest-rank p95 over retained successful observations; median p50.",
+  "context_size": "Measured compact UTF-8 JSON bytes and engine planning estimate; not model usage.",
+  "complete_body": "Union of returned source intervals must contain every expected line, and each line must match the immutable fixture. A symbol name or graph reference is insufficient.",
+  "required_dependencies": "Two direct helper implementations required by each primary body; imports, runtime/library semantics and transitive type declarations are outside this declared completeness judgment.",
+  "precision": "Unique returned source files in required or optional-positive paths divided by all returned source files. Exhaustive judgments apply only to this designed fixture task scope; an unjudged file is not automatically irrelevant in a real coding task.",
+  "selection": "All three policies are eligible. Production ranking selection uses development evidence before this evaluation; the procedural holdout validates the frozen choice and is not used for tuning. Report every body/dependency failure and precision/size/timing tradeoff.",
+  "source_safety": "Write/read/parse fixture text only; never execute, import or test indexed source.",
+  "frozen_revisions": {
+    "previous": "b51a26234656c647f12da3ad63d8bc1fe9380c58",
+    "legacy": "39e8df30565783a686270f8a6f422e56e41e3776"
+  },
+  "manifest_sha256": "04e0825f818ebafcb037cddad2396e7df12203d5891e588c34afadf3bc10d37c",
+  "amendment": "Before any candidate evaluation, root requested a third eligible candidate: previously shipped b51a262 ranking. Immutable fixtures, prompts, body labels and original protocol remain unchanged. The additional comparator is frozen together with legacy; refined is the caller-frozen working source."
+}

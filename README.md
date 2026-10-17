@@ -70,8 +70,11 @@ record the original authentication-blocked live experiment. The
 [JSON evidence index](benchmarks/improvements.json) cover the subsequent fixes,
 strategy comparisons, performance measurements and retained regressions.
 Declared-target coverage in independent MCP probes improved from 16/24 to 24/24.
-The [latest Codex attempt](benchmarks/codex-ab-improved.md) remains blocked by
-invalid authentication. No Codex coding, token or cost benefit has been established.
+The [current refinement assessment](benchmarks/refinements.md) records subsequent
+performance, lifecycle and dashboard fixes, including failed retrieval cases and
+reused validation after correcting selection defects. The
+[latest Codex attempt](benchmarks/codex-ab-refined.md) remains blocked by invalid
+authentication. No Codex coding, token or cost benefit has been established.
 
 ## Documentation
 

@@ -1,0 +1,36 @@
+{
+  "scope": "Independent synthetic regression tests; no fresh benchmark cases inspected or modified. First fresh evaluation evidence remains unchanged; final evaluation replay is previously observed validation.",
+  "source_sha256": {
+    "before": "9151092fa3833fdb40effb04807010f2494a94a2ad39b2f6378e17227c15fd82",
+    "after": "fab6d35379a7e865e433289a1bf64fb23832d306369df9e9a348c2da460d20b3"
+  },
+  "before_command": "UV_CACHE_DIR=/workspace/Memglide/.cache/uv uv run pytest tests/test_context_focus.py -k \"unclassified_query or synthetic_file_basenames\" -q --basetemp=.local/refinement-perf/guard-before-tests --junitxml=.local/refinement-perf/guard-before-tests.xml",
+  "before": {
+    "tests": 4,
+    "failures": 4,
+    "log": ".local/refinement-perf/guard-before-tests.log",
+    "junit": ".local/refinement-perf/guard-before-tests.xml"
+  },
+  "after_command": "UV_CACHE_DIR=/workspace/Memglide/.cache/uv uv run pytest tests/test_context_focus.py tests/test_context_request_scope.py tests/test_context_budgeting.py tests/test_memory_versions.py tests/test_context_diagnostics.py -q --basetemp=.local/refinement-perf/guard-after-tests --junitxml=.local/refinement-perf/guard-after-tests.xml",
+  "after": {
+    "tests": 65,
+    "failures": 0,
+    "elapsed_seconds": 43.05,
+    "log": ".local/refinement-perf/guard-after-tests.log",
+    "junit": ".local/refinement-perf/guard-after-tests.xml"
+  },
+  "regressions_reproduced": [
+    "Unclassified/inspection queries dropped implementations behind high-ranked documentation under the primary-file cap.",
+    "A full qualified path incorrectly anchored synthetic file candidates in other modules sharing its basename."
+  ],
+  "fixes": [
+    "Apply the cap only when preferred_source_role recognizes implementation, tests or documentation intent.",
+    "Exclude synthetic file candidate names from declaration-identifier anchors; explicit_path still governs source filename/path references."
+  ],
+  "checks": {
+    "ruff": true,
+    "ruff_format": true,
+    "mypy": true,
+    "git_diff_check": true
+  }
+}

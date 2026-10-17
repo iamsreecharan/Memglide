@@ -63,7 +63,9 @@ class Settings(BaseModel):
 
 
 class SettingsUpdate(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    # Keep transport validation aligned with the shared service. Coercion would
+    # turn true into a one-minute TTL or a boolean into a numeric search weight.
+    model_config = ConfigDict(extra="forbid", strict=True)
     session_ttl_minutes: int | None = Field(None, ge=1, le=480)
     max_session_hours: int | None = Field(None, ge=1, le=168)
     context_token_budget: int | None = Field(None, ge=256, le=100000)

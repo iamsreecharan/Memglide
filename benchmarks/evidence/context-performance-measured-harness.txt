@@ -1,0 +1,60 @@
+from __future__ import annotations
+import cProfile, hashlib, importlib.util, io, json, pstats, sqlite3, sys, time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parent
+
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def load(name,path):
+    spec=importlib.util.spec_from_file_location(name,path);module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module);return module
+
+def normalize(response):
+    value=json.dumps(response,sort_keys=True)
+    for key in ['retrieval_id','session_id']:
+        value=value.replace(response[key],'<'+key+'>')
+    return json.loads(value)
+
+task="Fix document search so every normalized query token must appear in a record's title or body. Preserve case-insensitive alphanumeric tokenization, empty-query results, ascending ID order for tied results, and input immutability. Partial-token substrings do not count. Verify the DocumentService search path."
+cases=[{'case':'natural','query':task,'level':2,'budget':8000},{'case':'small_budget','query':task,'level':2,'budget':1800},{'case':'full_source','query':'src/search.ts','level':3,'budget':8000}]
+protocol={'scope':'Direct synchronous get_context including index refresh/search, packing and persistence; excludes MCP/server startup/model calls.','task':task,'cases':cases,'repeats':3,'order':'before/after on odd repeats, after/before on even repeats; case order reversed repeat2','sessions':'Fresh session per arm; same session reused for9 requests in each arm.','caching':'Fresh SQLite clones from same pre-session seed, same in-process frozen indexer/memory, OS page caches not flushed; no explicit context-query warmup. First request per arm is natural repeat1; subsequent queries use the warm process.','cpu':'Python process_time; process-local, not sampled system totals.'}
+project=json.loads((ROOT/'project.json').read_text());project['files']={k:v for k,v in project['files'].items() if not k.startswith('.git/')}
+for relative,digest in project['files'].items():assert sha(ROOT/'fixture'/relative)==digest
+indexmod=load('paired_index',ROOT/'before/indexer.py');memorymod=load('paired_memory',ROOT/'before/engine.py')
+engines={};outputs={}
+for phase in ['before','after']:
+    sourcepaths={'context':ROOT/'before/context.py','database':ROOT/'before/database.py'} if phase=='before' else {'context':Path('src/memglide/core/context.py'),'database':Path('src/memglide/storage/database.py')}
+    context=load('paired_context_'+phase,sourcepaths['context']);database=load('paired_database_'+phase,sourcepaths['database'])
+    dbpath=ROOT/(phase+'-paired.sqlite')
+    if dbpath.exists():dbpath.unlink()
+    with sqlite3.connect(ROOT/'seed.sqlite') as source:
+        with sqlite3.connect(dbpath) as dest:source.backup(dest)
+    db=database.Database(dbpath);index=indexmod.Indexer(db);memory=memorymod.MemoryEngine(db);session=memory.start_session(project['id'],task)['id']
+    engines[phase]=(context.ContextEngine(db,index,memory),session)
+    outputs[phase]={'phase':phase,'protocol':protocol,'protocol_sha256':hashlib.sha256(json.dumps(protocol,sort_keys=True).encode()).hexdigest(),'fixture':project,'owned_source_sha256':{k:sha(v) for k,v in sourcepaths.items()},'frozen_source_sha256':{'indexer':sha(ROOT/'before/indexer.py'),'memory':sha(ROOT/'before/engine.py')},'runs':[]}
+for repeat in range(1,4):
+    for case in (cases if repeat%2==1 else list(reversed(cases))):
+        for phase in (['before','after'] if repeat%2==1 else ['after','before']):
+            engine,session=engines[phase];wall=time.perf_counter();cpu=time.process_time()
+            try:
+                result=engine.get_context(session,case['query'],case['level'],case['budget'])
+                row={'case':case['case'],'repeat':repeat,'pair_id':case['case']+':'+str(repeat),'request':case,'status':'ok','wall_seconds':time.perf_counter()-wall,'cpu_seconds':time.process_time()-cpu,'result':result}
+            except Exception as exc:
+                row={'case':case['case'],'repeat':repeat,'pair_id':case['case']+':'+str(repeat),'request':case,'status':'failed','wall_seconds':time.perf_counter()-wall,'cpu_seconds':time.process_time()-cpu,'error':type(exc).__name__+': '+str(exc)}
+            outputs[phase]['runs'].append(row)
+for phase in ['before','after']:
+    engine,session=engines[phase];profiler=cProfile.Profile();profiler.runcall(engine.get_context,session,task,2,8000)
+    stream=io.StringIO();stats=pstats.Stats(profiler,stream=stream).strip_dirs().sort_stats('cumulative');stats.print_stats(40)
+    (ROOT/(phase+'-paired-profile.txt')).write_text(stream.getvalue())
+    counts={}
+    for (filename,line,function),(primitive,total,tt,ct,callers) in stats.stats.items():
+        if function in ['rows','read_source','settings','estimate_tokens','_refresh_estimate','_build_passport']:
+            counts[filename+':'+function]={'primitive_calls':primitive,'total_calls':total,'self_seconds':tt,'cumulative_seconds':ct}
+    outputs[phase]['profile_diagnostic']={'scope':'Separate untimed natural query afterall9requests; function calls are not filesystem I/O counts.','counts':counts}
+    (ROOT/(phase+'-paired.json')).write_text(json.dumps(outputs[phase],indent=2))
+comparison=[]
+for old,new in zip(outputs['before']['runs'],outputs['after']['runs']):
+    assert old['pair_id']==new['pair_id']
+    equal=old['status']==new['status']=='ok' and normalize(old['result'])==normalize(new['result'])
+    comparison.append({'pair_id':old['pair_id'],'equivalent':equal,'before_wall_seconds':old['wall_seconds'],'after_wall_seconds':new['wall_seconds'],'before_cpu_seconds':old['cpu_seconds'],'after_cpu_seconds':new['cpu_seconds'],'before_estimated_tokens':old.get('result',{}).get('estimated_tokens'),'after_estimated_tokens':new.get('result',{}).get('estimated_tokens')})
+report={'protocol_sha256':outputs['before']['protocol_sha256'],'normalization':'Replace only session_id and retrieval_id values everywhere; compare the full remaining JSON including evidence/hash/ranking/graph/warnings/budgets.','pairs':comparison,'all_equivalent':all(x['equivalent'] for x in comparison)}
+(ROOT/'paired-equivalence.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))
+assert report['all_equivalent'],'Output equivalence failed; preserve observations and investigate'

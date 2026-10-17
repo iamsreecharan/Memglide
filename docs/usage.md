@@ -17,6 +17,10 @@ Search returns short excerpts capped at 1,600 characters per hit. `start_line`/`
 
 Use the dashboard Context Explorer or MCP `expand_context` to deepen an existing retrieval. Level 3 supplies broader source where it fits. If the result is truncated, increase the budget or query a specific symbol/path. Metadata consumes the budget as well as snippets; very small budgets can be rejected because even the evidence envelope cannot fit. All token counts are estimates, not tokenizer or billing measurements.
 
+Level 2 requests with a recognized implementation, test, or documentation intent focus on up to four primary candidate files. Unclassified inspection queries bypass this cap rather than guessing their source role. Explicit symbol/path references can exceed that cap; candidates within retained files and resolved dependency expansion remain eligible within the response budget. Omitted primary files are counted in a warning and make the passport Partial. Use an exact reference or level 3 to inspect broader evidence. Level 1, level 3, session-change queries, and explicit requests such as “all matching files,” “across the repository,” or callers/dependencies bypass this cap; other search and budget limits still apply.
+
+Describe the behavior and acceptance criteria in your query, naming source symbols/paths when known. Generic instructions to run tests or report a summary are separated from lexical ranking while explicit references and behavioral acceptance clauses are retained. Start with an explicit request to update tests or documentation when those are the intended evidence; implementation tasks prefer implementation sources. This lexical preference does not establish that other source roles are irrelevant.
+
 The application JSON budget includes snippets, memories, warnings, and passport metadata. It excludes HTTP/MCP transport framing and any additional context the client supplies to its model. Direct source evidence is fitted before optional dependency metadata. Relationships have a separate allowance that includes every serialized copy; omitted relationships and shortened reference previews are disclosed in the passport. Use `get_dependencies` for full static relationship references.
 
 To omit memory content your client retains, acknowledge its exact returned `version`: repeat `--known-memory-version MEMORY_ID=VERSION` on the CLI, or pass `known_memory_versions: {"MEMORY_ID": "VERSION"}` to HTTP/MCP context and expansion requests. A matching selected memory returns its version, freshness and source references with `content_omitted: true`. A stale or missing acknowledgement returns the full current content. The legacy `known_memory_ids` argument is still accepted, but IDs alone never suppress content: the same ID survives edits and does not identify the revision another client has seen. Update timestamps are not revision identifiers.
@@ -54,6 +58,10 @@ uv run memglide cleanup
 ```
 
 Memory clear removes that session's memories. Session clear immediately removes all its task records. Cleanup removes expired sessions. Ending a session stops further work while its history remains until expiration or manual clearing. None of these commands removes source code or a persistent repository index.
+
+Inspect an ended session's retained events with `GET /api/events?project_id=PROJECT_ID&session_id=SESSION_ID`. This read-only history query checks session/project ownership and does not refresh its deadline. Active-session status, memory work, and context retrieval still reject ended sessions. Expired or cleared history is unavailable. Memory changes and their events/activity refreshes commit together after an active-session check, so a session ending or expiring during source capture cannot accept a late claim.
+
+When updating settings through `PUT /api/settings`, send JSON integers for fields such as `session_ttl_minutes`, JSON booleans for `watch_enabled`/`event_logging`, and finite JSON numbers for `retrieval_weights`. For example, `{"session_ttl_minutes":30,"watch_enabled":false,"retrieval_weights":{"identifier":20.5}}` is valid. Numeric strings, fractional integer settings, and booleans used as numbers are rejected without changing stored settings. Context requests use one settings snapshot; a later request observes newly persisted settings.
 
 ## Freshness after an edit
 

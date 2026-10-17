@@ -65,6 +65,7 @@ test('production dashboard completes the repository, session, memory, retrieval,
   await expect(page.locator('.memory-sources')).toContainText('api/auth.py')
   await expect(page.locator('.memory-sources [title]')).toHaveAttribute('title', /Source hash: [a-f0-9]{64}/)
   await page.getByRole('button', { name: /^Edit memory/ }).click()
+  await expect(page.getByLabel('Finding', { exact: true })).toBeFocused()
   await page.getByLabel('Finding', { exact: true }).fill('Bearer authentication validates the scheme before delegating to verify_token.')
   await page.getByRole('button', { name: 'Save changes', exact: true }).click()
   await expect(page.locator('.memory-content')).toContainText('delegating to verify_token')
@@ -144,6 +145,36 @@ test('production dashboard completes the repository, session, memory, retrieval,
   await page.getByRole('dialog').getByRole('button', { name: 'Remove project', exact: true }).click()
   await expect(page.getByRole('heading', { name: 'Your first project starts here' })).toBeVisible()
   expect(errors).toEqual([])
+})
+
+test('background cleanup cannot redirect a session deletion confirmation to another task', async ({ page, request }) => {
+  await clearProjects(request)
+  const projectResponse = await request.post('/api/projects', { headers: mutationHeaders, data: { path: projectPath() } })
+  expect(projectResponse.ok()).toBeTruthy()
+  const project = await projectResponse.json() as { id: string }
+  const sessionResponse = await request.post('/api/sessions', { headers: mutationHeaders, data: { project_id: project.id, task: 'Original deletion target' } })
+  expect(sessionResponse.ok()).toBeTruthy()
+  const original = await sessionResponse.json() as { id: string }
+  const remainingResponse = await request.post('/api/sessions', { headers: mutationHeaders, data: { project_id: project.id, task: 'Keep this task' } })
+  expect(remainingResponse.ok()).toBeTruthy()
+  const remaining = await remainingResponse.json() as { id: string }
+  await page.clock.install()
+  await page.goto('/memory')
+  await page.getByLabel('SESSION', { exact: true }).selectOption(original.id)
+  await expect(page.getByLabel('SESSION', { exact: true })).toHaveValue(original.id)
+  await page.getByRole('button', { name: 'Delete selected session and memory' }).click()
+  await expect(page.getByRole('dialog')).toContainText('Original deletion target')
+  expect((await request.post(`/api/sessions/${original.id}/clear`, { headers: mutationHeaders })).ok()).toBeTruthy()
+  // Advance the normal polling interval, preserving the real request/response
+  // path and avoiding a wall-clock sleep in the production browser test.
+  await page.clock.fastForward(15_001)
+  await expect(page.getByLabel('SESSION', { exact: true })).toHaveValue(remaining.id)
+  await page.getByRole('dialog').getByRole('button', { name: 'Delete session', exact: true }).click()
+  await expect(page.getByRole('dialog').getByRole('alert')).toContainText('Request could not be completed')
+  const sessionsResponse = await request.get(`/api/sessions?project_id=${project.id}`)
+  expect(sessionsResponse.ok()).toBeTruthy()
+  expect((await sessionsResponse.json() as { id: string }[]).map(item => item.id)).toEqual([remaining.id])
+  await expect(page.getByLabel('SESSION', { exact: true })).toHaveValue(remaining.id)
 })
 
 test('production routes retain useful empty and error states and fit desktop and tablet', async ({ page, request }) => {

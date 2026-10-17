@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "../src/App";
 import type {
   Memory,
@@ -122,6 +122,21 @@ interface State {
 }
 let state: State;
 
+beforeAll(async () => {
+  // Prepare lazy route modules before behavior assertions. Their cold Vite
+  // transformation is independent of request/session synchronization; production
+  // browser tests exercise the bundled lazy routes without this preparation.
+  await Promise.all([
+    import("../src/screens/Context"),
+    import("../src/screens/Memory"),
+    import("../src/screens/Overview"),
+    import("../src/screens/Passport"),
+    import("../src/screens/Projects"),
+    import("../src/screens/Settings"),
+    import("../src/screens/Timeline"),
+  ]);
+});
+
 function response(value: unknown, status = 200) {
   return new Response(JSON.stringify(value), {
     status,
@@ -182,9 +197,11 @@ beforeEach(() => {
         state.settings = { ...state.settings, ...body };
         return response(state.settings);
       }
-      if (path === "/sessions/s1" && method === "DELETE") {
-        const ended = { ...session, ended_at: now };
-        state.sessions = [ended];
+      if (/^\/sessions\/[^/]+$/.test(path) && method === "DELETE") {
+        const target = state.sessions.find((item) => item.id === path.split("/")[2]);
+        if (!target) return response({ error: { message: "Session no longer exists" } }, 404);
+        const ended = { ...target, ended_at: now };
+        state.sessions = state.sessions.map((item) => item.id === target.id ? ended : item);
         return response(ended);
       }
       if (path === "/settings") return response(state.settings);
@@ -220,6 +237,7 @@ beforeEach(() => {
         return response(
           state.memories.filter(
             (item) =>
+              item.session_id === path.split("/")[2] &&
               (!url.searchParams.get("query") ||
                 item.content
                   .toLowerCase()
@@ -229,13 +247,14 @@ beforeEach(() => {
           ),
         );
       if (/\/sessions\/[^/]+\/memories$/.test(path) && method === "POST") {
-        const added = { ...memory, ...body, id: "m2", sources: [] } as Memory;
+        const added = { ...memory, ...body, id: "m2", session_id: path.split("/")[2], sources: [] } as Memory;
         state.memories.push(added);
         return response(added, 201);
       }
       if (/\/sessions\/[^/]+\/clear$/.test(path)) {
-        state.sessions = [];
-        state.memories = [];
+        const deleted = path.split("/")[2];
+        state.sessions = state.sessions.filter((item) => item.id !== deleted);
+        state.memories = state.memories.filter((item) => item.session_id !== deleted);
         return response({ cleared: true });
       }
       if (path === "/context")
@@ -447,7 +466,7 @@ describe("dashboard workflows", () => {
   });
 
   it("starts and selects sessions and clears their cached task data on deletion", async () => {
-    mount("/memory");
+    const { client } = mount("/memory");
     expect(await screen.findByText(memory.content)).toBeInTheDocument();
     await userEvent.click(screen.getByRole("button", { name: "New session" }));
     await userEvent.type(
@@ -473,14 +492,136 @@ describe("dashboard workflows", () => {
       }),
     );
     await waitFor(() =>
-      expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue(""),
+      expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s1"),
     );
-    expect(screen.queryByText(memory.content)).not.toBeInTheDocument();
-    expect(
-      await screen.findByRole("heading", {
-        name: "A session gives memory a home",
-      }),
-    ).toBeInTheDocument();
+    expect(await screen.findByText(memory.content)).toBeInTheDocument();
+    expect(state.sessions.map((item) => item.id)).toEqual(["s1"]);
+    expect(client.getQueriesData({ queryKey: ["memories", "s2"] })).toHaveLength(0);
+  });
+
+  it("dismisses a memory draft when background cleanup selects another session", async () => {
+    state.sessions.push({ ...session, id: "s2", task: "Another task" });
+    const { client } = mount("/memory");
+    await screen.findByText(memory.content);
+    await userEvent.click(screen.getByRole("button", { name: "Save a memory" }));
+    await userEvent.type(screen.getByLabelText("Finding"), "Finding for the old task");
+    act(() => {
+      state.sessions = state.sessions.filter((item) => item.id !== "s1");
+      client.setQueryData(["sessions", "p1"], state.sessions);
+    });
+    await waitFor(() => expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s2"));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(state.requests.some((request) => request.method === "POST" && request.path.endsWith("/memories"))).toBe(false);
+    await userEvent.click(screen.getAllByRole("button", { name: "Save a memory" })[0]);
+    expect(screen.getByLabelText("Finding")).toHaveValue("");
+  });
+
+  it.each(["/memory", "/settings"])("keeps a deletion confirmation bound to its original session on %s", async (path) => {
+    state.sessions.push({ ...session, id: "s2", task: "Keep this task" });
+    const { client } = mount(path);
+    await screen.findByRole("combobox", { name: "SESSION" });
+    await waitFor(() => expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s1"));
+    await userEvent.click(await screen.findByRole("button", {
+      name: path === "/settings" ? "Delete session data" : "Delete selected session and memory",
+    }));
+    act(() => {
+      // A poll can update session selection while the confirmation is open.
+      state.sessions = state.sessions.filter((item) => item.id !== "s1");
+      client.setQueryData(["sessions", "p1"], state.sessions);
+    });
+    await waitFor(() => expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s2"));
+    await userEvent.click(within(screen.getByRole("dialog")).getByRole("button", {
+      name: path === "/settings" ? "Delete session data" : "Delete session",
+    }));
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+    expect(state.requests.filter((request) => request.path.endsWith("/clear"))).toMatchObject([
+      { path: "/api/sessions/s1/clear", method: "POST" },
+    ]);
+    expect(state.sessions.map((item) => item.id)).toEqual(["s2"]);
+    expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s2");
+  });
+
+  it("does not end a replacement session when the original confirmation target disappears", async () => {
+    state.sessions.push({ ...session, id: "s2", task: "Keep this task active" });
+    const { client } = mount("/memory");
+    await screen.findByText(memory.content);
+    await userEvent.click(screen.getByRole("button", { name: "End selected session" }));
+    act(() => {
+      state.sessions = state.sessions.filter((item) => item.id !== "s1");
+      client.setQueryData(["sessions", "p1"], state.sessions);
+    });
+    await waitFor(() => expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("s2"));
+    await userEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "End session" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("Session no longer exists");
+    expect(state.requests.filter((request) => request.method === "DELETE")).toMatchObject([
+      { path: "/api/sessions/s1", method: "DELETE" },
+    ]);
+    expect(state.sessions[0]).toMatchObject({ id: "s2", ended_at: null });
+  });
+
+  it("keeps a new-session draft assigned to the project that opened it", async () => {
+    const { client } = mount("/memory");
+    await screen.findByText(memory.content);
+    await userEvent.click(screen.getByRole("button", { name: "New session" }));
+    await userEvent.type(screen.getByLabelText("Task"), "Task for the original project");
+    act(() => {
+      state.projects = [{ ...project, id: "p2", name: "Another repository" }];
+      client.setQueryData(["projects"], state.projects);
+    });
+    await waitFor(() => expect(screen.getByRole("combobox", { name: "PROJECT" })).toHaveValue("p2"));
+    await userEvent.click(screen.getByRole("button", { name: "Start session" }));
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+    expect(state.requests.find((request) => request.method === "POST" && request.path === "/api/sessions")?.body)
+      .toEqual({ project_id: "p1", task: "Task for the original project" });
+    expect(screen.getByRole("combobox", { name: "PROJECT" })).toHaveValue("p2");
+    expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("");
+  });
+
+  it("does not select an old project's new session after a delayed refresh completes", async () => {
+    const otherProject = { ...project, id: "p2", name: "Another repository" };
+    state.projects.push(otherProject);
+    state.sessions.push({ ...session, id: "other-session", project_id: "p2", task: "Keep this task selected" });
+    const originalFetch = globalThis.fetch;
+    let created = false;
+    let release!: () => void;
+    const pending = new Promise<void>((resolve) => { release = resolve; });
+    let refetchStarted!: () => void;
+    const refetching = new Promise<void>((resolve) => { refetchStarted = resolve; });
+    vi.stubGlobal("fetch", vi.fn(async (input: string, options?: RequestInit) => {
+      if (created && input === "/api/sessions?project_id=p1") {
+        refetchStarted();
+        await pending;
+      }
+      const result = await originalFetch(input, options);
+      if (input === "/api/sessions" && options?.method === "POST") created = true;
+      return result;
+    }));
+    const { client } = mount("/memory");
+    await screen.findByText(memory.content);
+    await userEvent.click(screen.getByRole("button", { name: "New session" }));
+    await userEvent.type(screen.getByLabelText("Task"), "New task for the old project");
+    await userEvent.click(screen.getByRole("button", { name: "Start session" }));
+    try {
+      await refetching;
+      await waitFor(() => expect(client.getQueryState(["projects"])?.fetchStatus).toBe("idle"));
+      act(() => {
+        state.projects = [otherProject];
+        client.setQueryData(["projects"], state.projects);
+      });
+      await waitFor(() => expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("other-session"));
+      // The provider repairs invalid selections later, so assert that the old
+      // session is never persisted even briefly while the current project differs.
+      const writes = vi.spyOn(Storage.prototype, "setItem");
+      writes.mockClear();
+      release();
+      await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+      expect(writes.mock.calls.filter(([key]) => key === "memglide.session").map(([, value]) => value))
+        .not.toContain("s2");
+      expect(screen.getByRole("combobox", { name: "PROJECT" })).toHaveValue("p2");
+      expect(screen.getByRole("combobox", { name: "SESSION" })).toHaveValue("other-session");
+    } finally {
+      release();
+    }
   });
 
   it("searches and filters memories and saves explicit provenance", async () => {
@@ -600,6 +741,29 @@ describe("dashboard workflows", () => {
     expect(
       screen.getByRole("button", { name: "Save settings" }),
     ).toBeDisabled();
+  });
+
+  it("retains a settings draft after a rejected save and permits a successful retry", async () => {
+    const originalFetch = globalThis.fetch;
+    let rejectSave = true;
+    vi.stubGlobal("fetch", vi.fn(async (input: string, options?: RequestInit) => {
+      if (input === "/api/settings" && options?.method === "PUT" && rejectSave)
+        return response({ error: { message: "Settings are temporarily locked" } }, 409);
+      return originalFetch(input, options);
+    }));
+    mount("/settings");
+    const budget = await screen.findByRole("spinbutton", { name: "Default context token budget" });
+    await userEvent.clear(budget);
+    await userEvent.type(budget, "6500");
+    await userEvent.click(screen.getByRole("button", { name: "Save settings" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("Settings are temporarily locked");
+    expect(budget).toHaveValue(6500);
+    expect(state.settings.context_token_budget).toBe(4000);
+    rejectSave = false;
+    await userEvent.click(screen.getByRole("button", { name: "Save settings" }));
+    expect(await screen.findByRole("status")).toHaveTextContent("Settings saved");
+    expect(state.settings.context_token_budget).toBe(6500);
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   });
 
   it("filters actual timeline events and exposes event detail", async () => {

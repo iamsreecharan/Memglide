@@ -1,6 +1,8 @@
 # Memglide V1 verification record
 
-The original V1 results below are historical. Subsequent retrieval, memory-version
+The original V1 results below are historical. Current refinement results are in
+[benchmarks/refinements.md](benchmarks/refinements.md) and its
+[JSON evidence index](benchmarks/refinements.json). Earlier retrieval, memory-version
 and MCP import-isolation fixes, the current verification totals, all strategy
 tradeoffs and the latest authentication-blocked Codex attempt are recorded in
 [benchmarks/improvements.md](benchmarks/improvements.md) and its
@@ -136,3 +138,38 @@ with unknown success rate, usage, cost and savings. See the detailed
 [final verification](benchmarks/validation-improved.md), and
 [latest A/B report](benchmarks/codex-ab-improved.md). Original V1 reports remain
 unchanged. Valid environment Codex sign-in is required to complete that experiment.
+
+## Lifecycle, retrieval and performance refinement (2026-10-17)
+
+The final source passed **376 Python tests, 24 frontend tests and three production
+Chromium workflows: 403 distinct checks**, including 69 security/storage cases
+and all 14 MCP tools through real STDIO integration. Frozen dependencies, Ruff,
+mypy, TypeScript/Vite, the production bundle, package exclusion/source audits and
+an isolated installed-wheel retrieval/freshness/API smoke check passed.
+
+Atomic active-session mutations, expiration cleanup, strict settings and delayed
+dashboard target selection have regression coverage. Context requests use one
+defensive settings snapshot and less repeated serialization. Query focusing keeps
+acceptance criteria and explicit references. The first fresh evaluation caught
+unsafe documentation-only narrowing and basename anchors; independent failing
+regressions drove narrow fixes. Initial results remain unchanged.
+
+On the explicitly **reused** 24-task evaluation, complete primary bodies improved
+from 16/24 to 24/24 and declared helper bodies from 20/48 to 39/48. All required
+bodies are present in 15/24 tasks; nine remain incomplete. More evidence increased
+context bytes and median packing time. Legacy regressed under the new common
+packer, and refined ranking itself did not outperform shipped ranking on those
+inspection prompts. All observations remain visible.
+
+The final SDK probe passed 24 workflows and 168 actual tool calls, with current
+hashes and stale/refreshed controlled-edit checks in every case. Observed whole
+workflow mean was 3.2965 seconds versus the historical 8.2465; different host/cache
+conditions prevent a causal or model-performance claim. The earlier equal-output
+performance experiment is preserved as a separate source stage.
+
+The live Codex readiness request still returned HTTP 401. All 96 coding slots are
+unrun; model usage, task completion, billed cost and cost per successful task are
+unknown. See [assessment](benchmarks/refinements.md),
+[JSON index](benchmarks/refinements.json),
+[verification](benchmarks/validation-refined.md) and
+[detailed final results](benchmarks/refinement-final-results.md).

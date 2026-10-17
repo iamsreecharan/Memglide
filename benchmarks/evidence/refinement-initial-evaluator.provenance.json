@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "kind": "exact_sha_verified_reconstruction",
+  "created_at_utc": "2026-10-17T19:50:30.364969+00:00",
+  "source_path": "benchmarks/refinement_eval.py",
+  "archived_path": "benchmarks/evidence/refinement-initial-evaluator.txt",
+  "sha256": "8e9c6308d7534cdfcc3f787a0d3ca83648f99874a914b08b9b8ddd89311411b9",
+  "expected_sha256_from_initial_report": "8e9c6308d7534cdfcc3f787a0d3ca83648f99874a914b08b9b8ddd89311411b9",
+  "initial_report": "benchmarks/refinement-retrieval.json",
+  "initial_report_sha256": "4a7286e6276fe2509fc6a79e8b35399beb2d02717079a95881341101bbd2c432",
+  "method": "Reconstructed by reversing only the later explicit replay-label metadata/report-heading patch from the current public evaluator source. Exact resulting bytes match the independently recorded initial runtime measurement SHA-256. This is reconstruction verified by the earlier digest, not a claim that this text file was captured at initial runtime.",
+  "current_evaluator_unchanged": true
+}

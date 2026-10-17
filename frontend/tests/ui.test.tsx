@@ -63,3 +63,30 @@ it("identifies shortened relationship evidence without marking ordinary referenc
   expect(screen.queryByText("Relationship preview")).not.toBeInTheDocument();
   expect(screen.getByText("Resolved")).toBeInTheDocument();
 });
+
+it("focuses an enabled editor control and traps keyboard navigation inside the dialog", async () => {
+  render(
+    <>
+      <Button>Background action</Button>
+      <Modal title="Edit memory" onClose={() => undefined}>
+        <label htmlFor="category">Category</label>
+        <select id="category" disabled><option>Decision</option></select>
+        <label htmlFor="finding">Finding</label>
+        <textarea id="finding" />
+        <Button>Save changes</Button>
+      </Modal>
+    </>,
+  );
+  const finding = screen.getByRole("textbox", { name: "Finding" });
+  expect(finding).toHaveFocus();
+  await userEvent.tab();
+  expect(screen.getByRole("button", { name: "Save changes" })).toHaveFocus();
+  await userEvent.tab();
+  expect(screen.getByRole("button", { name: "Close dialog" })).toHaveFocus();
+  await userEvent.tab({ shift: true });
+  expect(screen.getByRole("button", { name: "Save changes" })).toHaveFocus();
+  // Scripted focus changes must not let the next Tab navigate the background.
+  screen.getByRole("button", { name: "Background action" }).focus();
+  await userEvent.tab();
+  expect(screen.getByRole("button", { name: "Close dialog" })).toHaveFocus();
+});

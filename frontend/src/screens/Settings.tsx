@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { api, post } from "../api";
 import { useWorkspace } from "../state";
-import type { Settings } from "../types";
+import type { Session, Settings } from "../types";
 import {
   Button,
   Confirm,
@@ -51,12 +51,12 @@ export default function SettingsScreen() {
 
 function SettingsForm({ initial }: { initial: Settings }) {
   const client = useQueryClient();
-  const { session, sessionId, refresh, selectSession } = useWorkspace();
+  const { session, refresh } = useWorkspace();
   const [draft, setDraft] = useState(initial);
   const [ignored, setIgnored] = useState(
     initial.ignored_directories.join("\n"),
   );
-  const [deleting, setDeleting] = useState(false);
+  const [deleting, setDeleting] = useState<Session | null>(null);
   const [saved, setSaved] = useState(false);
   const update = useMutation({
     mutationFn: () =>
@@ -83,10 +83,13 @@ function SettingsForm({ initial }: { initial: Settings }) {
     onSuccess: refresh,
   });
   const clear = useMutation({
-    mutationFn: () => post(`/sessions/${sessionId}/clear`),
-    onSuccess: async () => {
-      setDeleting(false);
-      selectSession("");
+    mutationFn: (target: Session) => post(`/sessions/${target.id}/clear`),
+    onSuccess: async (_result, target) => {
+      setDeleting(null);
+      client.removeQueries({ predicate: (query) =>
+        (query.queryKey[0] === "memories" && query.queryKey[1] === target.id) ||
+        (query.queryKey[0] === "passport" && query.queryKey[2] === target.id),
+      });
       await refresh();
     },
   });
@@ -319,10 +322,10 @@ function SettingsForm({ initial }: { initial: Settings }) {
           </div>
           <Button
             variant="danger"
-            disabled={!sessionId}
+            disabled={!session}
             onClick={() => {
               clear.reset();
-              setDeleting(true);
+              if (session) setDeleting(session);
             }}
           >
             Delete session data
@@ -360,12 +363,12 @@ function SettingsForm({ initial }: { initial: Settings }) {
       {deleting && (
         <Confirm
           title="Delete all data for this session?"
-          description="This permanently removes the selected session, memories, retrievals, Context Passports, and session events."
+          description={`This permanently removes “${deleting.task}”, its memories, retrievals, Context Passports, and session events.`}
           confirmLabel="Delete session data"
           busy={clear.isPending}
           error={clear.error}
-          onConfirm={() => clear.mutate()}
-          onClose={() => setDeleting(false)}
+          onConfirm={() => clear.mutate(deleting)}
+          onClose={() => setDeleting(null)}
         />
       )}
     </>

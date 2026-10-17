@@ -8,6 +8,8 @@ import sqlite3
 import time
 import uuid
 from contextlib import contextmanager
+from contextvars import ContextVar
+from copy import deepcopy
 from pathlib import Path
 from typing import Any, Iterator
 
@@ -66,6 +68,9 @@ def new_id() -> str:
 
 class Database:
     def __init__(self, path: str | Path | None = None):
+        self._request_settings: ContextVar[dict[str, Any] | None] = ContextVar(
+            "memglide_request_settings", default=None
+        )
         home = Path(os.environ.get("MEMGLIDE_HOME", Path.home() / ".memglide"))
         self.path = Path(path) if path is not None else home / "memglide.db"
         self.path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -104,7 +109,29 @@ class Database:
             conn.execute(sql, params)
 
     def settings(self) -> dict[str, Any]:
+        snapshot = self._request_settings.get()
+        if snapshot is not None:
+            return deepcopy(snapshot)
         return {row["key"]: json.loads(row["value"]) for row in self.rows("SELECT * FROM settings")}
+
+    @contextmanager
+    def settings_snapshot(self) -> Iterator[dict[str, Any]]:
+        """Use one read-only settings view for a synchronous application request.
+
+        Context-local state keeps concurrent requests independent. Nested work
+        shares the outer view; exiting the request always discards it, including
+        on errors. Defensive copies prevent caller changes from altering the view.
+        """
+        existing = self._request_settings.get()
+        if existing is not None:
+            yield deepcopy(existing)
+            return
+        snapshot = self.settings()
+        token = self._request_settings.set(snapshot)
+        try:
+            yield deepcopy(snapshot)
+        finally:
+            self._request_settings.reset(token)
 
     def event(
         self,

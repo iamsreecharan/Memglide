@@ -57,6 +57,12 @@ Restart Codex after configuration changes. In Codex, request `list_projects`; co
 
 Use IDs returned by tools. Expired or ended sessions reject further work; start a new session. A memory/retrieval from another session cannot be addressed through your session ID. Project approval happens in the local CLI/dashboard, not through an arbitrary MCP path argument.
 
+Memory mutations and their events/activity refreshes commit together after rechecking the active session under a write lock. Source capture occurs before that lock; a session ending or expiring during capture cannot accept a late claim. Ending a session does not refresh its deadline. Its retained events can be inspected through the dashboard's read-only HTTP events API with the session/project filters, until expiry or clearing. MCP memory/status/context operations remain restricted to active sessions.
+
+Level 2 context with a recognized implementation, test, or documentation intent focuses on up to four primary candidate files. Unclassified inspection queries bypass this cap rather than guessing their source role. Explicit symbol/path anchors can exceed the cap; all candidates within retained files and resolved dependency expansion remain eligible under existing limits and the response budget. Level 1, level 3, session-change queries, and explicit broad requests such as callers/dependencies or “all matching files” bypass this cap. Omitted primary files set `truncated` and produce a Partial passport with a count and recovery guidance. Query an exact symbol/path or use `expand_context` to level 3 when more source is needed.
+
+Lexical search separates generic test-running/reporting instructions from task behavior while retaining acceptance clauses and explicit references. Requests to change tests or documentation favor those source roles; implementation tasks prefer implementation evidence. Read the returned reasons and warnings, and inspect other sources when the evidence is insufficient.
+
 Memory responses include an exact `version`. For `get_context` and
 `expand_context`, optionally pass `known_memory_versions` as a mapping of memory
 IDs to the versions your client actually retains. Only matching revisions may

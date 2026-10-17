@@ -233,8 +233,9 @@ export function Modal({
     const oldOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const firstInput =
-      ref.current?.querySelector<HTMLElement>("input, textarea, select") ??
-      ref.current?.querySelector<HTMLElement>("button");
+      ref.current?.querySelector<HTMLElement>(
+        "input:not([disabled]):not([type=hidden]), textarea:not([disabled]), select:not([disabled])",
+      ) ?? ref.current?.querySelector<HTMLElement>("button:not([disabled])");
     firstInput?.focus();
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -249,10 +250,11 @@ export function Modal({
         );
         const first = items[0],
           last = items.at(-1);
-        if (event.shiftKey && document.activeElement === first) {
+        const outside = !ref.current?.contains(document.activeElement);
+        if (event.shiftKey && (document.activeElement === first || outside)) {
           event.preventDefault();
           last?.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
+        } else if (!event.shiftKey && (document.activeElement === last || outside)) {
           event.preventDefault();
           first?.focus();
         }

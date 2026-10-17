@@ -1,0 +1,711 @@
+"""Conservative refinement summaries, separate from retained V1 evidence.
+
+This helper only reads supplied measurement artifacts. It does not run models,
+retime historical observations, or reinterpret a visible declaration as a full
+method body. Percentiles describe the finite observations, not confidence bounds.
+"""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import hashlib
+import json
+import math
+import statistics
+from collections import Counter
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+from benchmarks.compare_components import ROOT, compare_reports
+
+COMPONENT_METRICS = (
+    "index_wall_seconds",
+    "startup_initialize_list_tools_wall_seconds",
+    "first_natural_retrieval_wall_seconds",
+    "seven_call_workflow_wall_seconds",
+    "returned_file_count",
+    "returned_item_count",
+    "declared_target_file_precision",
+    "target_file_recall",
+    "exact_symbol_identity_recall",
+    "declaration_visible_fraction",
+    "natural_evidence_hashes_current",
+    "old_passport_detected_edit",
+    "updated_target_hash_matches",
+    "updated_edit_marker_visible",
+    "sampled_server_cpu_seconds",
+    "sampled_server_peak_rss_bytes",
+)
+RETRIEVAL_METRICS = (
+    "primary_file_rank",
+    "primary_file_hit_at_1",
+    "primary_file_reciprocal_rank",
+    "search_wall_seconds",
+    "search_process_cpu_seconds",
+    "context_wall_seconds",
+    "context_process_cpu_seconds",
+    "search_plus_context_wall_seconds",
+    "context_output_json_bytes",
+    "context_estimated_planning_tokens",
+    "context_returned_file_count",
+    "context_returned_item_count",
+    "context_declared_file_precision",
+    "required_file_recall",
+    "primary_complete_body_coverage",
+    "required_dependency_complete_body_recall",
+    "all_required_bodies_present",
+)
+
+
+def number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+
+def distribution(values: list[Any]) -> dict[str, Any]:
+    """Nearest-rank p95; missing and invalid observations never become zero."""
+    observed = sorted(value for value in values if number(value))
+    return {
+        "n": len(observed),
+        "missing": len(values) - len(observed),
+        "mean": statistics.mean(observed) if observed else None,
+        "median": statistics.median(observed) if observed else None,
+        "p95": observed[math.ceil(0.95 * len(observed)) - 1] if observed else None,
+        "min": min(observed) if observed else None,
+        "max": max(observed) if observed else None,
+        "p95_method": "nearest_rank_ceil_0.95_n; descriptive, no confidence interval",
+    }
+
+
+def _component_metrics(result: dict[str, Any]) -> dict[str, Any]:
+    retrieval = result.get("natural_prompt_retrieval") or {}
+    calls = result.get("mcp_calls") or []
+    first_natural = next((call for call in calls if call.get("name") == "get_context"), {})
+    returned = retrieval.get("returned_files")
+    expected = retrieval.get("expected_target_files")
+    valid_paths = isinstance(returned, list) and all(isinstance(path, str) for path in returned)
+    valid_expected = isinstance(expected, list) and all(isinstance(path, str) for path in expected)
+    selected = set(returned) if valid_paths else None
+    precision = (
+        len(selected.intersection(expected)) / len(selected)
+        if selected and valid_expected
+        else None
+    )
+    freshness = result.get("controlled_freshness") or {}
+
+    def boolean_metric(value: Any) -> int | None:
+        return int(value) if isinstance(value, bool) else None
+
+    return {
+        "index_wall_seconds": (result.get("index") or {}).get("wall_seconds"),
+        "startup_initialize_list_tools_wall_seconds": (result.get("transport") or {}).get(
+            "initialize_and_list_tools_wall_seconds"
+        ),
+        "first_natural_retrieval_wall_seconds": first_natural.get("wall_seconds"),
+        "seven_call_workflow_wall_seconds": result.get("mcp_transport_wall_seconds"),
+        "returned_file_count": len(selected) if selected is not None else None,
+        "returned_item_count": retrieval.get("returned_item_count"),
+        "declared_target_file_precision": precision,
+        "target_file_recall": retrieval.get("target_file_coverage_fraction"),
+        "exact_symbol_identity_recall": retrieval.get("expected_symbol_coverage_fraction"),
+        "declaration_visible_fraction": retrieval.get("expected_declaration_visible_fraction"),
+        "natural_evidence_hashes_current": boolean_metric(
+            (result.get("natural_prompt_hash_freshness") or {}).get("all_hashes_current")
+        ),
+        "old_passport_detected_edit": boolean_metric(freshness.get("old_passport_detected_edit")),
+        "updated_target_hash_matches": boolean_metric(freshness.get("updated_target_sha_matches")),
+        "updated_edit_marker_visible": boolean_metric(
+            freshness.get("updated_target_contains_edit_marker")
+        ),
+        "sampled_server_cpu_seconds": (result.get("local_server_overhead") or {}).get(
+            "sampled_cpu_seconds"
+        ),
+        "sampled_server_peak_rss_bytes": (result.get("local_server_overhead") or {}).get(
+            "sampled_peak_rss_bytes"
+        ),
+    }
+
+
+def component_comparison(
+    baseline: dict[str, Any],
+    candidate: dict[str, Any],
+    artifact_base: Path = ROOT,
+    baseline_provenance: dict[str, Any] | None = None,
+    candidate_provenance: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Extend the existing attested pairing without changing its original data."""
+    comparison = compare_reports(
+        baseline,
+        candidate,
+        artifact_base=artifact_base,
+        baseline_provenance=baseline_provenance,
+        candidate_provenance=candidate_provenance,
+    )
+    unstable_sources = [
+        f"{arm} runtime source changed during probe"
+        for arm, source in comparison["provenance"].items()
+        if source and source.get("source_unchanged_during_probe") is False
+    ]
+    if unstable_sources:
+        comparison["comparison_valid"] = False
+        comparison["errors"].extend(unstable_sources)
+    rows = {}
+    for arm, report in (("baseline", baseline), ("candidate", candidate)):
+        rows[arm] = [
+            {
+                "task_id": result.get("task_id"),
+                "status": result.get("status"),
+                "transport_status": result.get("transport_status"),
+                "error": copy.deepcopy(result.get("error")),
+                "metrics": _component_metrics(result),
+            }
+            for result in report.get("results", [])
+        ]
+    indexes = {arm: {row["task_id"]: row for row in values} for arm, values in rows.items()}
+    pairs = []
+    for pair in comparison["paired_results"]:
+        old = indexes["baseline"].get(pair["task_id"], {}).get("metrics", {})
+        new = indexes["candidate"].get(pair["task_id"], {}).get("metrics", {})
+        pairs.append(
+            {
+                "task_id": pair["task_id"],
+                "baseline_identity": copy.deepcopy(pair["baseline_identity"]),
+                "candidate_identity": copy.deepcopy(pair["candidate_identity"]),
+                "comparable": pair["comparable"] and not unstable_sources,
+                "invalid_reasons": pair["invalid_reasons"] + unstable_sources,
+                "candidate_minus_baseline": {
+                    name: new[name] - old[name]
+                    if pair["comparable"]
+                    and not unstable_sources
+                    and number(old.get(name))
+                    and number(new.get(name))
+                    else None
+                    for name in COMPONENT_METRICS
+                },
+            }
+        )
+    summaries = {
+        name: {
+            arm: distribution([row["metrics"].get(name) for row in rows[arm]])
+            for arm in ("baseline", "candidate")
+        }
+        for name in COMPONENT_METRICS
+    }
+    for name in COMPONENT_METRICS:
+        summaries[name]["paired_candidate_minus_baseline"] = distribution(
+            [pair["candidate_minus_baseline"].get(name) for pair in pairs]
+        )
+    return {
+        "comparison_valid": comparison["comparison_valid"],
+        "errors": comparison["errors"],
+        "warnings": comparison["warnings"],
+        "provenance": comparison["provenance"],
+        "attestations": comparison["attestations"],
+        "status_counts": {
+            arm: dict(Counter(str(row["status"]) for row in values)) for arm, values in rows.items()
+        },
+        "summaries": summaries,
+        "observations": rows,
+        "paired_observations": pairs,
+        "all_original_measurement_regressions": []
+        if unstable_sources
+        else comparison["all_regressions"],
+        "limitations": [
+            "Startup includes Python/SDK initialization and list_tools; host caches were not flushed.",
+            "The first natural retrieval is not a repeated warm-query measurement.",
+            "Workflow includes startup, seven calls, controlled edit and shutdown; it is not retrieval latency.",
+            "Declared-target precision excludes other potentially useful context; it is a narrow selectivity proxy.",
+            "Complete method and dependency recall were not measured by these historical SDK probes.",
+            "Sampled local CPU is an observed lower bound; shared RSS pages may be counted repeatedly.",
+            "Single sequential task observations do not establish a causal timing improvement or statistical significance.",
+        ],
+    }
+
+
+def retrieval_summary(report: dict[str, Any]) -> dict[str, Any]:
+    rows = report.get("observations", [])
+    groups = sorted({str(row.get("strategy", "unknown")) for row in rows})
+    summaries = {}
+    for group in groups:
+        selected = [row for row in rows if str(row.get("strategy", "unknown")) == group]
+        summaries[group] = {
+            "observations": len(selected),
+            "status_counts": dict(Counter(str(row.get("status")) for row in selected)),
+            "metrics": {
+                name: distribution(
+                    [
+                        int(row[name]) if isinstance(row.get(name), bool) else row.get(name)
+                        for row in selected
+                    ]
+                )
+                for name in RETRIEVAL_METRICS
+            },
+        }
+    return {
+        "status": report.get("status", "unavailable"),
+        "summaries": summaries,
+        "original_report": copy.deepcopy(report),
+        "limitations": [
+            "Complete-body and dependency recall cover the explicitly declared fixture expectations only.",
+            "Returned JSON bytes and estimated planning tokens are not measured or billed model tokens.",
+            "Missing metrics remain missing, including failed observations; failure counts must accompany conditional means.",
+            "Multiple repeats of the same query are correlated; pooled p95 is descriptive only.",
+            "Primary-file rank is undefined on misses; inspect top-1 and reciprocal rank, which retain miss penalties.",
+        ],
+    }
+
+
+def timing_summary(report: dict[str, Any]) -> dict[str, Any]:
+    rows = report.get("runs", [])
+    cases = sorted({str(row.get("case", "unknown")) for row in rows})
+    return {
+        "summaries": {
+            case: {
+                "observations": sum(str(row.get("case", "unknown")) == case for row in rows),
+                "status_counts": dict(
+                    Counter(
+                        str(row.get("status"))
+                        for row in rows
+                        if str(row.get("case", "unknown")) == case
+                    )
+                ),
+                **{
+                    name: distribution(
+                        [row.get(name) for row in rows if str(row.get("case", "unknown")) == case]
+                    )
+                    for name in ("wall_seconds", "cpu_seconds")
+                },
+            }
+            for case in cases
+        },
+        "original_report": copy.deepcopy(report),
+        "limitations": [
+            "Direct application timings exclude cold MCP startup and remote model calls.",
+            "Run conditions and equivalence attestations are retained in the supplied report.",
+            "Before/after means alone do not establish comparability; inspect request and source provenance.",
+        ],
+    }
+
+
+def _normalize_request_ids(value: Any, identities: dict[str, str] | None = None) -> Any:
+    if identities is None:
+        identities = {
+            item: f"<{key}>"
+            for key in ("session_id", "retrieval_id")
+            if isinstance(value, dict) and isinstance(item := value.get(key), str) and item
+        }
+    if isinstance(value, dict):
+        return {key: _normalize_request_ids(item, identities) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_normalize_request_ids(item, identities) for item in value]
+    if isinstance(value, str):
+        for identifier, replacement in identities.items():
+            value = value.replace(identifier, replacement)
+    return value
+
+
+def timing_comparison(baseline: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any]:
+    """Compute deltas only for same-request, same-fixture, equal-output runs."""
+    shared_errors = []
+    for name in ("protocol_sha256", "frozen_source_sha256"):
+        old, new = baseline.get(name), candidate.get(name)
+        if not old or not new or old != new:
+            shared_errors.append(f"Missing or unequal {name}")
+    old_files = (baseline.get("fixture") or {}).get("files")
+    new_files = (candidate.get("fixture") or {}).get("files")
+    if not old_files or not new_files or old_files != new_files:
+        shared_errors.append("Missing or unequal fixture source hashes")
+    indexes: dict[str, dict[str, dict[str, Any]]] = {}
+    for arm, report in (("baseline", baseline), ("candidate", candidate)):
+        indexes[arm] = {}
+        for row in report.get("runs", []):
+            key = row.get("pair_id")
+            if not isinstance(key, str) or not key:
+                shared_errors.append(f"{arm} missing pair_id")
+            elif key in indexes[arm]:
+                shared_errors.append(f"{arm} duplicate pair_id: {key}")
+            else:
+                indexes[arm][key] = row
+    pairs = []
+    for key in sorted(indexes["baseline"].keys() | indexes["candidate"].keys()):
+        old, new = indexes["baseline"].get(key), indexes["candidate"].get(key)
+        errors = list(shared_errors)
+        if old is None or new is None:
+            errors.append("Missing run in one phase")
+        elif not old.get("request") or old.get("request") != new.get("request"):
+            errors.append("Missing or unequal request parameters")
+        if old is not None and new is not None:
+            if any(row.get("status") not in {"ok", "passed"} for row in (old, new)):
+                errors.append("One or both direct calls failed")
+            if not isinstance(old.get("result"), dict) or not isinstance(new.get("result"), dict):
+                errors.append("Missing complete result for output equivalence")
+            elif _normalize_request_ids(old["result"]) != _normalize_request_ids(new["result"]):
+                errors.append("Full outputs differ after normalizing only request/session IDs")
+        pairs.append(
+            {
+                "pair_id": key,
+                "case": (old or new or {}).get("case"),
+                "comparable": not errors,
+                "invalid_reasons": errors,
+                "candidate_minus_baseline": {
+                    name: new[name] - old[name]
+                    if not errors
+                    and old is not None
+                    and new is not None
+                    and number(old.get(name))
+                    and number(new.get(name))
+                    else None
+                    for name in ("wall_seconds", "cpu_seconds")
+                },
+            }
+        )
+    observed_regressions = [
+        {"pair_id": pair["pair_id"], "metric": name, "candidate_minus_baseline": value}
+        for pair in pairs
+        for name, value in pair["candidate_minus_baseline"].items()
+        if number(value) and value > 0
+    ]
+    summary_regressions = []
+    before_summary, after_summary = timing_summary(baseline), timing_summary(candidate)
+    for case in sorted(before_summary["summaries"].keys() & after_summary["summaries"].keys()):
+        for metric in ("wall_seconds", "cpu_seconds"):
+            old = before_summary["summaries"][case][metric]
+            new = after_summary["summaries"][case][metric]
+            for statistic in ("mean", "median", "p95"):
+                if (
+                    number(old[statistic])
+                    and number(new[statistic])
+                    and new[statistic] > old[statistic]
+                ):
+                    summary_regressions.append(
+                        {
+                            "case": case,
+                            "metric": metric,
+                            "statistic": statistic,
+                            "baseline": old[statistic],
+                            "candidate": new[statistic],
+                            "candidate_minus_baseline": new[statistic] - old[statistic],
+                            "scope": "All observed values; no significance or causal claim",
+                        }
+                    )
+    return {
+        "comparison_valid": bool(pairs) and all(pair["comparable"] for pair in pairs),
+        "shared_errors": shared_errors,
+        "pairs": pairs,
+        "valid_pair_count": sum(pair["comparable"] for pair in pairs),
+        "paired_candidate_minus_baseline": {
+            name: distribution([pair["candidate_minus_baseline"][name] for pair in pairs])
+            for name in ("wall_seconds", "cpu_seconds")
+        },
+        "all_observed_pair_regressions": observed_regressions,
+        "all_observed_summary_regressions": summary_regressions,
+        "normalization": "Replace only the actual top-level session_id/retrieval_id strings wherever referenced (including passport recommendations); compare all other result JSON",
+        "scope": "Direct calls; excludes cold MCP startup and model use. Same-process cache conditions are declared in the supplied protocol.",
+    }
+
+
+def build_report(
+    baseline: dict[str, Any],
+    candidate: dict[str, Any],
+    *,
+    retrieval: dict[str, Any] | None = None,
+    timing_baseline: dict[str, Any] | None = None,
+    timing_candidate: dict[str, Any] | None = None,
+    baseline_provenance: dict[str, Any] | None = None,
+    candidate_provenance: dict[str, Any] | None = None,
+    development_reports: list[dict[str, Any]] | None = None,
+    artifact_base: Path = ROOT,
+) -> dict[str, Any]:
+    return {
+        "schema_version": 1,
+        "generated_at": datetime.now(UTC).isoformat(),
+        "reporting_source": {
+            "path": "benchmarks/refinement_reporting.py",
+            "sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        },
+        "scope": "Refinement component and retrieval evaluation; not a live Codex A/B experiment",
+        "component_comparison": component_comparison(
+            baseline, candidate, artifact_base, baseline_provenance, candidate_provenance
+        ),
+        "retrieval_evaluation": retrieval_summary(retrieval) if retrieval is not None else None,
+        "seen_development_trials": {
+            "scope": "Previously evaluated development tasks used for tuning; not held-out evidence. Every supplied earlier and rejected trial is retained.",
+            "original_reports": copy.deepcopy(development_reports or []),
+        },
+        "direct_timings": {
+            "baseline": timing_summary(timing_baseline) if timing_baseline is not None else None,
+            "candidate": timing_summary(timing_candidate) if timing_candidate is not None else None,
+            "paired_comparison": timing_comparison(timing_baseline, timing_candidate)
+            if timing_baseline is not None and timing_candidate is not None
+            else None,
+        },
+        "unavailable_from_component_measurements": {
+            "actual_model_input_tokens": None,
+            "actual_model_cached_input_tokens": None,
+            "actual_model_output_tokens": None,
+            "actual_model_calls": None,
+            "actual_model_cost_usd": None,
+            "cost_per_successful_coding_task_usd": None,
+            "coding_task_success_rate": None,
+            "semantic_context_completeness": None,
+        },
+        "savings_claim_supported_by_component_measurements": False,
+    }
+
+
+def _format(value: Any) -> str:
+    if value is None:
+        return "unavailable"
+    if isinstance(value, float):
+        return f"{value:.6g}"
+    return str(value).replace("|", "\\|").replace("\n", " ")
+
+
+def _table(lines: list[str], summaries: dict[str, Any]) -> None:
+    lines += [
+        "| Metric | n / missing | Mean | Median | p95 | Min | Max |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for name, row in summaries.items():
+        lines.append(
+            f"| {name} | {row['n']} / {row['missing']} | {_format(row['mean'])} | "
+            f"{_format(row['median'])} | {_format(row['p95'])} | {_format(row['min'])} | "
+            f"{_format(row['max'])} |"
+        )
+
+
+def render_markdown(report: dict[str, Any]) -> str:
+    component = report["component_comparison"]
+    lines = [
+        "# Memglide refinement measurements",
+        "",
+        "These component measurements establish no live Codex coding, token or cost benefit. "
+        "Every original observation and failure is retained in the JSON report or its checksummed inputs. "
+        "p95 uses the nearest rank of the observed finite sample; it is not a confidence bound.",
+        "",
+        f"SDK request pairing valid: **{component['comparison_valid']}**.",
+        "",
+    ]
+    for message in component["warnings"] + component["errors"] + component["limitations"]:
+        lines.append(f"- {_format(message)}")
+    for arm in ("baseline", "candidate", "paired_candidate_minus_baseline"):
+        lines += ["", f"## SDK component {arm}", ""]
+        _table(lines, {name: values[arm] for name, values in component["summaries"].items()})
+    lines += ["", "## SDK observations and failures", ""]
+    lines += ["| Arm | Task | Status | Error |", "|---|---|---|---|"]
+    for arm, rows in component["observations"].items():
+        for row in rows:
+            lines.append(
+                f"| {arm} | {_format(row['task_id'])} | {_format(row['status'])} | "
+                f"{_format(row['error'])} |"
+            )
+    retrieval = report["retrieval_evaluation"]
+    development = report["seen_development_trials"]
+    if development["original_reports"]:
+        lines += ["", "## Seen development trials", "", development["scope"], ""]
+        for index, trial in enumerate(development["original_reports"], 1):
+            lines += [
+                f"### Retained development trial {index}",
+                "",
+                str(trial.get("scope", "Scope unavailable")),
+                "",
+                "| Strategy | First-file hit@1 | Reciprocal rank | Declared files | Declaration visible | Context files | JSON bytes |",
+                "|---|---:|---:|---:|---:|---:|---:|",
+            ]
+            for strategy, values in trial.get("summary", {}).items():
+                lines.append(
+                    "| "
+                    + " | ".join(
+                        [_format(strategy)]
+                        + [
+                            _format(values.get(name))
+                            for name in (
+                                "primary_file_hit_at_1",
+                                "primary_file_reciprocal_rank",
+                                "file_coverage",
+                                "declaration_visible",
+                                "context_file_count",
+                                "output_json_bytes",
+                            )
+                        ]
+                    )
+                    + " |"
+                )
+    if retrieval is not None:
+        lines += [
+            "",
+            "## Fresh retrieval evaluation",
+            "",
+            f"Evaluation status: **{_format(retrieval['status'])}**. Source and harness attestations are retained in the JSON; invalid evaluations establish no comparative benefit.",
+            "",
+        ]
+        lines.extend(f"- {message}" for message in retrieval["limitations"])
+        for strategy, values in retrieval["summaries"].items():
+            lines += [
+                "",
+                f"### Strategy: {_format(strategy)}",
+                "",
+                f"Status counts: `{json.dumps(values['status_counts'], sort_keys=True)}`.",
+                "",
+            ]
+            _table(lines, values["metrics"])
+        lines += [
+            "",
+            "| Strategy | Query | Repeat | Status | Required files | Complete primary body | Complete declared dependencies | Returned files | Errors |",
+            "|---|---|---:|---|---:|---:|---:|---:|---|",
+        ]
+        for row in retrieval["original_report"].get("observations", []):
+            values = [
+                row.get(name)
+                for name in (
+                    "strategy",
+                    "query_id",
+                    "repeat",
+                    "status",
+                    "required_file_recall",
+                    "primary_complete_body_coverage",
+                    "required_dependency_complete_body_recall",
+                    "context_returned_file_count",
+                    "errors",
+                )
+            ]
+            lines.append("| " + " | ".join(_format(value) for value in values) + " |")
+    for arm in ("baseline", "candidate"):
+        timing = report["direct_timings"][arm]
+        if timing is None:
+            continue
+        lines += ["", f"## Direct application timings: {arm}", ""]
+        lines.extend(f"- {message}" for message in timing["limitations"])
+        for case, values in timing["summaries"].items():
+            lines += [
+                "",
+                f"### Case: {_format(case)}",
+                "",
+                f"Status counts: `{json.dumps(values['status_counts'], sort_keys=True)}`.",
+                "",
+            ]
+            _table(lines, {name: values[name] for name in ("wall_seconds", "cpu_seconds")})
+        lines += [
+            "",
+            "| Pair | Status | Wall seconds | CPU seconds | Error |",
+            "|---|---|---:|---:|---|",
+        ]
+        for row in timing["original_report"].get("runs", []):
+            lines.append(
+                "| "
+                + " | ".join(
+                    _format(row.get(name))
+                    for name in ("pair_id", "status", "wall_seconds", "cpu_seconds", "error")
+                )
+                + " |"
+            )
+    paired_timings = report["direct_timings"]["paired_comparison"]
+    if paired_timings is not None:
+        lines += [
+            "",
+            "## Direct timing pairs with equal outputs",
+            "",
+            f"Valid pairs: {paired_timings['valid_pair_count']}; comparison valid: {paired_timings['comparison_valid']}.",
+            "",
+            paired_timings["scope"],
+            "",
+        ]
+        _table(lines, paired_timings["paired_candidate_minus_baseline"])
+        lines += [
+            "",
+            "Observed direct timing increases are retained without claiming statistical significance:",
+            "",
+        ]
+        for regression in paired_timings["all_observed_pair_regressions"]:
+            lines.append(
+                f"- {_format(regression['pair_id'])}: {regression['metric']} increased "
+                f"{_format(regression['candidate_minus_baseline'])}."
+            )
+        for regression in paired_timings["all_observed_summary_regressions"]:
+            lines.append(
+                f"- {_format(regression['case'])}: {regression['metric']} {regression['statistic']} "
+                f"increased from {_format(regression['baseline'])} to {_format(regression['candidate'])}."
+            )
+        for pair in paired_timings["pairs"]:
+            if pair["invalid_reasons"]:
+                lines.append(f"- {_format(pair['pair_id'])}: {_format(pair['invalid_reasons'])}")
+    lines += [
+        "",
+        "All SDK regression observations, invalid pairing reasons, complete fresh retrieval observations, "
+        "direct timing runs and source provenance are retained in the JSON. Declared body recall does "
+        "not establish semantic completeness. Costs per successful coding task remain unavailable "
+        "until model usage/cost and external coding grades are actually measured.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--component-baseline", required=True, type=Path)
+    parser.add_argument("--component-candidate", required=True, type=Path)
+    parser.add_argument("--retrieval", type=Path)
+    parser.add_argument("--timing-baseline", type=Path)
+    parser.add_argument("--timing-candidate", type=Path)
+    parser.add_argument("--baseline-provenance", type=Path)
+    parser.add_argument("--candidate-provenance", type=Path)
+    parser.add_argument("--development-report", type=Path, action="append", default=[])
+    parser.add_argument("--artifact-base", type=Path, default=ROOT)
+    parser.add_argument("--output-prefix", type=Path, required=True)
+    arguments = parser.parse_args(argv)
+    supplied = {
+        key: getattr(arguments, key)
+        for key in (
+            "component_baseline",
+            "component_candidate",
+            "retrieval",
+            "timing_baseline",
+            "timing_candidate",
+            "baseline_provenance",
+            "candidate_provenance",
+        )
+    }
+    paths = [arguments.output_prefix.with_suffix(suffix) for suffix in (".json", ".md")]
+    if any(path.exists() for path in paths):
+        parser.error("Output already exists; choose a new prefix to preserve earlier evidence")
+    loaded = {
+        key: json.loads(path.read_text(encoding="utf-8")) if path is not None else None
+        for key, path in supplied.items()
+    }
+    report = build_report(
+        loaded["component_baseline"],
+        loaded["component_candidate"],
+        retrieval=loaded["retrieval"],
+        timing_baseline=loaded["timing_baseline"],
+        timing_candidate=loaded["timing_candidate"],
+        baseline_provenance=loaded["baseline_provenance"],
+        candidate_provenance=loaded["candidate_provenance"],
+        development_reports=[
+            json.loads(path.read_text(encoding="utf-8")) for path in arguments.development_report
+        ],
+        artifact_base=arguments.artifact_base,
+    )
+    report["input_artifacts"] = {
+        key: {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+        for key, path in supplied.items()
+        if path is not None
+    }
+    report["input_artifacts"].update(
+        {
+            f"seen_development_trial_{index}": {
+                "path": str(path),
+                "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            }
+            for index, path in enumerate(arguments.development_report, 1)
+        }
+    )
+    paths[0].parent.mkdir(parents=True, exist_ok=True)
+    paths[0].write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    paths[1].write_text(render_markdown(report), encoding="utf-8")
+    print(f"Reports: {paths[0]} and {paths[1]}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

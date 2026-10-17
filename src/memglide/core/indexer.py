@@ -22,6 +22,9 @@ from memglide.core.query import (
     INDEX_VERSION,
     explicit_identifier,
     explicit_path,
+    preferred_source_role,
+    search_focus,
+    source_role,
     term_variants,
     tokens,
 )
@@ -849,7 +852,9 @@ class Indexer:
                 "full_text": 10.0,
             },
         )
-        words = set(_tokens(query))
+        focus = search_focus(query)
+        words = set(_tokens(focus))
+        preferred_role = preferred_source_role(query)
         exact = query.strip().lower()
         # Use document frequency from this project, rather than allowing a common
         # class noun to outweigh several rarer task terms. FTS is parameterized and
@@ -880,6 +885,25 @@ class Indexer:
 
         candidates: list[tuple[float, str, dict[str, Any]]] = []
         requested_scores: dict[str, float] = {}
+
+        def role_score(
+            path: str, score: float, reasons: list[str], requested: bool = False
+        ) -> float:
+            role = source_role(path)
+            if preferred_role in {"tests", "documentation"} and role == preferred_role and score:
+                reasons.append("matches the requested source role")
+                return score + weights["path_terms"]
+            if (
+                not preferred_role
+                or role == preferred_role
+                or requested
+                or explicit_path(query, path)
+            ):
+                return score
+            factor = 0.65 if role == "tests" else 0.45
+            reasons.append("secondary source role for the requested task")
+            return score * factor
+
         rows = self.db.rows(
             "SELECT s.*,f.hash,f.language,f.structural FROM symbols s JOIN files f ON f.id=s.file_id WHERE s.project_id=? ORDER BY s.path,s.start_line,s.id",
             (project_id,),
@@ -907,6 +931,7 @@ class Indexer:
             if signature_overlap:
                 score += weights["signature"] * signature_overlap
                 reasons.append("matching signature")
+            score = role_score(row["path"], score, reasons, requested)
             if score:
                 candidates.append((score, "; ".join(reasons), row))
             if requested:
@@ -963,6 +988,7 @@ class Indexer:
                 relevance = fts_rows[row["path"]]
                 score += weights["full_text"] * (1 + 4 * relevance / (1 + relevance))
                 reasons.append("full-text BM25 match")
+            score = role_score(row["path"], score, reasons)
             if score:
                 candidates.append((score, "; ".join(reasons), row))
         candidates.sort(

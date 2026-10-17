@@ -1,0 +1,33 @@
+
+> memglide-dashboard@0.1.0 build
+> npm run typecheck && vite build
+
+
+> memglide-dashboard@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 1986 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             0.65 kB │ gzip:   0.38 kB
+dist/assets/index-D9jkCmj-.css             51.84 kB │ gzip:  10.32 kB
+dist/assets/chevron-down-BonYGe0o.js        0.15 kB │ gzip:   0.15 kB
+dist/assets/search-DYIp2QDE.js              0.20 kB │ gzip:   0.18 kB
+dist/assets/git-branch-hdz_rTrC.js          0.25 kB │ gzip:   0.21 kB
+dist/assets/database-DcGu3rga.js            0.27 kB │ gzip:   0.22 kB
+dist/assets/refresh-cw-BC9m3cSz.js          0.35 kB │ gzip:   0.24 kB
+dist/assets/shield-alert-C9pbL8YH.js        0.38 kB │ gzip:   0.27 kB
+dist/assets/file-code-corner-C9UA9t_s.js    0.41 kB │ gzip:   0.28 kB
+dist/assets/Evidence-BC7z3qYl.js            2.84 kB │ gzip:   1.12 kB
+dist/assets/Timeline-CVxCJ4l9.js            3.44 kB │ gzip:   1.51 kB
+dist/assets/Projects-CHoHwzzU.js            7.18 kB │ gzip:   2.67 kB
+dist/assets/Overview-BDF2Ra8u.js            8.11 kB │ gzip:   2.66 kB
+dist/assets/Memory-DEwoxLSl.js              8.23 kB │ gzip:   3.20 kB
+dist/assets/Passport-Vyb96h0_.js            8.59 kB │ gzip:   3.23 kB
+dist/assets/Context-BObgkM7w.js             8.86 kB │ gzip:   3.38 kB
+dist/assets/Settings-sOhP4hJV.js            9.29 kB │ gzip:   3.37 kB
+dist/assets/index-CkQhvrkj.js             323.23 kB │ gzip: 102.24 kB
+
+✓ built in 744ms

@@ -1,0 +1,48 @@
+         172723 function calls (171240 primitive calls) in 0.507 seconds
+
+   Ordered by: cumulative time
+   List reduced from 360 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.507    0.507 context.py:523(get_context)
+        1    0.000    0.000    0.170    0.170 indexer.py:827(search)
+       86    0.004    0.000    0.153    0.002 paths.py:97(read_source)
+      191    0.006    0.000    0.150    0.001 database.py:94(rows)
+      172    0.006    0.000    0.121    0.001 paths.py:65(safe_path)
+       38    0.004    0.000    0.112    0.003 indexer.py:781(_candidate)
+      709    0.096    0.000    0.096    0.000 {method 'execute' of 'sqlite3.Connection' objects}
+      422    0.002    0.000    0.089    0.000 {built-in method builtins.next}
+      394    0.002    0.000    0.087    0.000 database.py:82(connect)
+       22    0.000    0.000    0.087    0.004 indexer.py:989(get_symbol)
+        1    0.000    0.000    0.082    0.082 indexer.py:333(reindex)
+       15    0.001    0.000    0.081    0.005 context.py:355(_build_passport)
+       31    0.001    0.000    0.080    0.003 context.py:149(_source_item)
+      148    0.003    0.000    0.076    0.001 context.py:440(apply_graph)
+      737    0.002    0.000    0.069    0.000 context.py:19(estimate_tokens)
+      809    0.002    0.000    0.067    0.000 __init__.py:183(dumps)
+      809    0.002    0.000    0.065    0.000 encoder.py:183(encode)
+        1    0.000    0.000    0.064    0.064 context.py:218(_expand_candidates)
+      200    0.001    0.000    0.063    0.000 contextlib.py:141(__exit__)
+        1    0.000    0.000    0.063    0.063 context.py:183(_candidate_dependencies)
+       78    0.000    0.000    0.062    0.001 database.py:98(one)
+      809    0.062    0.000    0.062    0.000 encoder.py:205(iterencode)
+       19    0.000    0.000    0.061    0.003 indexer.py:1017(dependencies)
+       75    0.001    0.000    0.060    0.001 database.py:106(settings)
+      148    0.000    0.000    0.053    0.000 context.py:293(_refresh_estimate)
+     2932    0.008    0.000    0.044    0.000 pathlib.py:551(drive)
+      345    0.001    0.000    0.043    0.000 pathlib.py:1228(resolve)
+     2333    0.006    0.000    0.041    0.000 pathlib.py:437(__str__)
+      197    0.039    0.000    0.039    0.000 {method 'close' of 'sqlite3.Connection' objects}
+      345    0.001    0.000    0.039    0.000 <frozen posixpath>:420(realpath)
+       46    0.000    0.000    0.039    0.001 database.py:122(project)
+     2515    0.007    0.000    0.036    0.000 pathlib.py:407(_load_parts)
+        1    0.001    0.001    0.036    0.036 indexer.py:208(_scan)
+        3    0.000    0.000    0.031    0.010 indexer.py:41(_git)
+        3    0.000    0.000    0.031    0.010 subprocess.py:506(run)
+        3    0.000    0.000    0.028    0.009 subprocess.py:1165(communicate)
+        3    0.001    0.000    0.028    0.009 subprocess.py:2062(_communicate)
+      200    0.000    0.000    0.027    0.000 contextlib.py:132(__enter__)
+      345    0.007    0.000    0.027    0.000 <frozen posixpath>:429(_joinrealpath)
+        6    0.000    0.000    0.026    0.004 selectors.py:402(select)
+
+
