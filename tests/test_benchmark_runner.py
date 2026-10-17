@@ -3,9 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import json
+import os
+import shutil
+import subprocess
 import sys
 import tarfile
+import tomllib
 from pathlib import Path
 
 import pytest
@@ -48,6 +53,87 @@ def test_command_uses_supported_json_schema_and_same_model_settings(tmp_path):
     assert "--ignore-user-config" in a and "--ephemeral" in a
     assert a[a.index("--disable") + 1] == "apps"
     assert run.task_prompt(task_definitions()[0]) == run.task_prompt(task_definitions()[0])
+
+
+def test_treatment_preapproves_only_the_actual_memglide_tools(tmp_path):
+    command = run.codex_command(
+        "codex",
+        tmp_path,
+        tmp_path / "schema.json",
+        tmp_path / "final.json",
+        "same",
+        "low",
+        database=tmp_path / "isolated.db",
+    )
+    config = tomllib.loads(command[-2])
+    server = config["mcp_servers"]["memglide"]
+    # Compare the host allowlist with the actual public transport declarations,
+    # so adding/renaming a tool requires a deliberate authorization decision.
+    source = run.ROOT / "src/memglide/integrations/mcp_server.py"
+    declared_tools = {
+        node.name
+        for node in ast.walk(ast.parse(source.read_text()))
+        if isinstance(node, ast.FunctionDef)
+        and any(
+            isinstance(decorator, ast.Call)
+            and isinstance(decorator.func, ast.Attribute)
+            and isinstance(decorator.func.value, ast.Name)
+            and decorator.func.value.id == "server"
+            and decorator.func.attr == "tool"
+            for decorator in node.decorator_list
+        )
+    }
+    assert len(declared_tools) == 14
+    assert set(server["enabled_tools"]) == declared_tools
+    assert len(server["enabled_tools"]) == len(declared_tools)
+    assert server["tools"] == {name: {"approval_mode": "approve"} for name in declared_tools}
+    assert server["required"] is True
+    assert server["startup_readiness"] == "connection"
+    assert "default_tools_approval_mode" not in server
+    assert set(config) == {"mcp_servers"}
+    assert set(config["mcp_servers"]) == {"memglide"}
+    assert command[command.index("--sandbox") + 1] == "workspace-write"
+    assert not any("approval_policy" in argument for argument in command)
+    baseline = run.codex_command(
+        "codex", tmp_path, tmp_path / "schema.json", tmp_path / "final.json", "same", "low"
+    )
+    assert tomllib.loads(baseline[-2]) == {"mcp_servers": {}}
+    assert baseline[:-2] == command[:-2]
+
+
+def test_installed_codex_accepts_scoped_treatment_config_without_auth_or_requests(tmp_path):
+    executable = shutil.which("codex")
+    if executable is None:
+        pytest.skip("Codex CLI is not installed")
+    isolated_state = tmp_path / "empty-codex-state"
+    isolated_state.mkdir(mode=0o700)
+    environment = os.environ.copy()
+    environment["CODEX_HOME"] = str(isolated_state)
+    command = run.codex_command(
+        executable,
+        tmp_path,
+        tmp_path / "schema.json",
+        tmp_path / "final.json",
+        "same",
+        "low",
+        database=tmp_path / "isolated.db",
+    )
+    result = subprocess.run(
+        [executable, "-c", command[-2], "mcp", "get", "memglide", "--json"],
+        cwd=tmp_path,
+        env=environment,
+        capture_output=True,
+        text=True,
+        timeout=20,
+    )
+    assert result.returncode == 0, result.stderr
+    server = json.loads(result.stdout)
+    configured = tomllib.loads(command[-2])["mcp_servers"]["memglide"]
+    assert server["name"] == "memglide" and server["enabled"] is True
+    assert set(server["enabled_tools"]) == set(configured["tools"])
+    assert server["transport"]["command"] == configured["command"]
+    assert server["transport"]["args"] == configured["args"]
+    assert not (isolated_state / "auth.json").exists()
 
 
 def test_auth_binding_is_referenced_without_copy_and_state_is_isolated(tmp_path):

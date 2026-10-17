@@ -171,12 +171,38 @@ def codex_command(
         command += ["-c", "mcp_servers={}"]
     else:
         launcher = str(ROOT / ".venv" / "bin" / "memglide")
+        # The user authorized these tools on each run's synthetic repository and
+        # isolated database. Approve only this explicit tool list; retain Codex's
+        # global approval policy and workspace-write sandbox. Without this host
+        # policy, unannotated MCP tools require an unavailable interactive prompt.
+        approved_tools = (
+            "list_projects",
+            "start_session",
+            "get_session_status",
+            "search_code",
+            "get_symbol",
+            "get_dependencies",
+            "get_context",
+            "expand_context",
+            "get_context_passport",
+            "save_memory",
+            "recall_memory",
+            "update_memory",
+            "invalidate_memory",
+            "end_session",
+        )
+        tool_policies = ",".join(tool + '={approval_mode="approve"}' for tool in approved_tools)
         config = (
             "mcp_servers={memglide={command="
             + json.dumps(launcher)
             + ",args="
             + json.dumps(["--db", str(database), "mcp"])
-            + ",startup_timeout_sec=30.0,tool_timeout_sec=45.0}}"
+            + ',required=true,startup_readiness="connection"'
+            + ",startup_timeout_sec=30.0,tool_timeout_sec=45.0,enabled_tools="
+            + json.dumps(approved_tools)
+            + ",tools={"
+            + tool_policies
+            + "}}}"
         )
         command += ["-c", config]
     return command + ["-"]
