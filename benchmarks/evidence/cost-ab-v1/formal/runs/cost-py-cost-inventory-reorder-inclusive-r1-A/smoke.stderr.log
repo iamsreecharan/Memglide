@@ -1,0 +1,14 @@
+test_empty_and_iterator_inputs (test_reorder_inclusive.ReorderTests.test_empty_and_iterator_inputs) ... ok
+test_inclusive_integer_comparison (test_reorder_inclusive.ReorderTests.test_inclusive_integer_comparison) ... ok
+test_preserves_order_case_duplicates_and_input (test_reorder_inclusive.ReorderTests.test_preserves_order_case_duplicates_and_input) ... ok
+test_aggregate_stock (test_smoke.SmokeTests.test_aggregate_stock) ... ok
+test_aggregate_stock_ordinary_0 (test_smoke.SmokeTests.test_aggregate_stock_ordinary_0) ... ok
+test_pack_ceiling (test_smoke.SmokeTests.test_pack_ceiling) ... ok
+test_pack_ceiling_ordinary_0 (test_smoke.SmokeTests.test_pack_ceiling_ordinary_0) ... ok
+test_reorder_inclusive (test_smoke.SmokeTests.test_reorder_inclusive) ... ok
+test_reorder_inclusive_ordinary_0 (test_smoke.SmokeTests.test_reorder_inclusive_ordinary_0) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

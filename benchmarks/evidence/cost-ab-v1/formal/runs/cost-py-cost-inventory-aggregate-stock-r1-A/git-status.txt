@@ -1,0 +1,2 @@
+M inventory/aggregate_stock.py
+?? tests/test_aggregate_stock.py

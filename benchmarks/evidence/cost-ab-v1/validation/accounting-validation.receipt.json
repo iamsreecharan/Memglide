@@ -1,0 +1,67 @@
+{
+  "kind": "analysis-only cost estimator validation",
+  "model_requests": 0,
+  "checks": [
+    {
+      "check": "pytest",
+      "command": [
+        "uv",
+        "run",
+        "pytest",
+        "tests/test_benchmark_cost_estimate.py",
+        "-q",
+        "--junitxml=.local/cost-v1/accounting-validation.xml"
+      ],
+      "exit_code": 0,
+      "seconds": 1.4229605197906494,
+      "log": ".local/cost-v1/accounting-validation.pytest.log",
+      "log_sha256": "d9e186a1c8c44c11dd9b6bf4f3e411ebed2443f34577687dc51941e77e06a163"
+    },
+    {
+      "check": "ruff",
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "check",
+        "benchmarks/estimate_cost.py",
+        "tests/test_benchmark_cost_estimate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.14446020126342773,
+      "log": ".local/cost-v1/accounting-validation.ruff.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "check": "format",
+      "command": [
+        "uv",
+        "run",
+        "ruff",
+        "format",
+        "--check",
+        "benchmarks/estimate_cost.py",
+        "tests/test_benchmark_cost_estimate.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.11016631126403809,
+      "log": ".local/cost-v1/accounting-validation.format.log",
+      "log_sha256": "3bc53bf3e981a98a34a852e175bf9b77af841edea74fca595d9aedcbaf9a4938"
+    }
+  ],
+  "files": {
+    "benchmarks/estimate_cost.py": {
+      "bytes": 31078,
+      "sha256": "d94225afe8a5931c9ee59ea342004fb6eb561cb0276991971681c5e446157352"
+    },
+    "tests/test_benchmark_cost_estimate.py": {
+      "bytes": 14455,
+      "sha256": "908ef8a4f8344304b3c22993a1fa62846578bf8c1c6d0667628233cfdaac5c63"
+    },
+    ".local/cost-v1/accounting-validation.xml": {
+      "bytes": 7749,
+      "sha256": "77af9a23916178811368f7217d43d0c8ed8b08227d1cb66673345388cff72d9f"
+    }
+  },
+  "all_passed": true
+}

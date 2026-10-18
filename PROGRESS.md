@@ -1,6 +1,44 @@
 # Memglide V1 verification record
 
-The latest [cache-format assessment](benchmarks/cache-refinement-assessment.md)
+The latest [cost assessment](benchmarks/cost-assessment.md) and
+[20 original runs](benchmarks/codex-cost-ab.json) compare **bare Codex against
+current compact-prefix Memglide** on ten fresh tasks: five Python, five
+TypeScript, four small purpose-built repositories, one repeat, five A-first
+and five B-first pairs. Both configurations passed 10/10. Runtime, corpus,
+official pricing and model/settings were frozen at `c7be678` before execution;
+the application source hash stayed unchanged. There were no formal failures,
+retries, interruptions, supplemental attempts or resumes.
+
+At the [verified official standard API rates](benchmarks/cost-pricing-research.md)
+for `gpt-6.1-sol`, estimated model totals are **$0.392268 for Codex and $0.3833368
+for Memglide**, or **$0.0392268 and $0.03833368 per successful task**. This is
+2.28% lower overall, but it does **not** establish retrieval cost savings:
+the eight source-prepared pairs cost **4.43% more** with Memglide. The two
+byte-identical supplied-context controls cost 33.27% less and drive the aggregate
+decrease. Five pairs favor each arm. Single-repeat execution and uncontrolled
+provider caches limit causal interpretation.
+
+All 20 native streams report zero cache-write tokens. The pinned CLI defaults
+an omitted upstream field to zero, so reported zero is not independent proof
+of provider cache-write billing. A conservative write-attribution scenario
+allows estimated savings between **−15.47% and +16.99%** under the same standard
+tariff; this is not a confidence interval. Actual billing, account discounts,
+realized routing, local hosting dollars and actual cost per success remain
+unavailable. Cached reads/writes are exclusive parts of total input, and
+reasoning is already included in output. No category is charged twice.
+
+The independent run audit passed **4,307 assertions**, including native framing,
+exact frozen behavioral oracles, complete source delivery, protected tests,
+paired settings, log seals and all aggregate metrics. Independent Decimal
+arithmetic checks verify the separately derived price-equivalent assessment.
+[113 new benchmark/accounting tests passed](benchmarks/cost-validation.md),
+with initial helper-test and broad imported-module typing failures preserved.
+The earlier 988 application/tooling cases passed at the same unchanged runtime
+source; a combined enlarged full-suite rerun is not claimed. The
+[downloadable report](benchmarks/memglide-cost-ab-report.zip) preserves pricing,
+every formal run, validation history and independent audits.
+
+The earlier [cache-format assessment](benchmarks/cache-refinement-assessment.md)
 and [40 individual runs](benchmarks/codex-cache-formats.json) compare **legacy
 Memglide against compact-prefix Memglide**, using 20 fresh Python/TypeScript
 tasks and one counterbalanced repeat. Neither arm is bare Codex. Implementation

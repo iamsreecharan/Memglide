@@ -1,0 +1,10 @@
+diff --git a/inventory/pack_ceiling.py b/inventory/pack_ceiling.py
+index cd5f548..ec54f30 100644
+--- a/inventory/pack_ceiling.py
++++ b/inventory/pack_ceiling.py
+@@ -4,4 +4,4 @@ def packs_required(units, pack_size):
+         raise ValueError("integer arguments required")
+     if units < 0 or pack_size <= 0:
+         raise ValueError("invalid packing quantities")
+-    return units // pack_size
++    return (units + pack_size - 1) // pack_size

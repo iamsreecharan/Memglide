@@ -1,0 +1,15 @@
+test_invalid_inputs_and_preservation (__main__.BehaviorTests.test_invalid_inputs_and_preservation) ... ok
+test_weight_denominator_and_no_public_rounding (__main__.BehaviorTests.test_weight_denominator_and_no_public_rounding) ... FAIL
+
+======================================================================
+FAIL: test_weight_denominator_and_no_public_rounding (__main__.BehaviorTests.test_weight_denominator_and_no_public_rounding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f1/grade/held_out.py", line 9, in test_weight_denominator_and_no_public_rounding
+    self.assertAlmostEqual(api.report_mean([1,2],[0.25,0.75]),1.75)
+AssertionError: 2 != 1.75 within 7 places (0.25 difference)
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.009s
+
+FAILED (failures=1)

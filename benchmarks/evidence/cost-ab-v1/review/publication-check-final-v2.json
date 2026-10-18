@@ -1,0 +1,95 @@
+{
+  "mode": "check_only",
+  "output": "benchmarks/evidence/cost-ab-v1",
+  "files": 790,
+  "bytes": 2362130,
+  "independent_audit_pass": true,
+  "experiments": {
+    "formal": {
+      "source": ".local/cost-v1/formal-10-v1",
+      "planned_originals": 20,
+      "original_status_counts": {
+        "completed": 20
+      },
+      "supplemental_attempts": 0,
+      "unregistered_partial_invocations": [],
+      "treatment": "A direct standard Codex / B production compact-prefix Memglide with native Codex",
+      "planned_selection_strata_by_arm": {
+        "A": {
+          "caller_context_supplied": 2,
+          "explicit_focus": 8
+        },
+        "B": {
+          "caller_context_supplied": 2,
+          "explicit_focus": 8
+        }
+      },
+      "observed_preparation_modes_by_arm": {
+        "A": {
+          "standard": 10
+        },
+        "B": {
+          "passthrough": 2,
+          "preloaded": 8
+        }
+      },
+      "finished_at": "2026-10-18T16:41:32.586397+00:00",
+      "attempt_log_records": 42,
+      "last_attempt_log_sha256": "c2d4fd64965ebe1c1c4c17e36da30efd9ba201a483caaf88e7248a7c6924ec85",
+      "source_unchanged_during_experiment": true
+    }
+  },
+  "missing_optional_files": 137,
+  "missing_optional_by_filename": {
+    "command.json": 1,
+    "events.jsonl": 1,
+    "final.json": 1,
+    "held_out.py": 29,
+    "held_out.test.mjs": 30,
+    "launch-grant.json": 1,
+    "preparation.json": 10,
+    "process-identity.json": 1,
+    "prompt.txt": 1,
+    "result.json": 1,
+    "stderr.log": 1,
+    "typecheck.stderr.log": 30,
+    "typecheck.stdout.log": 30
+  },
+  "credential_pattern_scan": "passed",
+  "source_freeze": {
+    "git_head": "c7be678ab52aa5dab1f2a03317e53f2f6b0e5168",
+    "application_source_tree_sha256": "e777cbd53a1ca6228e5c3403ebb5cc3547834a00edac1d1f20210342740aeee4",
+    "formal_driver_returncode": 0,
+    "current_source_and_frozen_inputs_verified": true
+  },
+  "historical_preservation": {
+    "base_commit": "c7be678ab52aa5dab1f2a03317e53f2f6b0e5168",
+    "scope": "Every tracked benchmarks file at frozen HEAD; whole original bytes compared to Git blobs, without exceptions",
+    "unchanged_files": 10730,
+    "unchanged_bytes": 113045517,
+    "authorized_new_iteration_document_transitions": [],
+    "sha256_of_sorted_file_records": "efb6ab0b887b8d921ef971d009161a2764c0ec33428f4ac8f60238aaa7deb189",
+    "whole_original_zip_files": [
+      {
+        "path": "benchmarks/memglide-ab-final-report.zip",
+        "bytes": 2147774,
+        "sha256": "ad28247777436fd58cfec080dea1c00b982303f2495615ec46beffeebc82ea06"
+      },
+      {
+        "path": "benchmarks/memglide-ab-optimized-report.zip",
+        "bytes": 6211466,
+        "sha256": "98f2862b7a712323f16598980c44222c8b78abf8ddabcb31d821501053896265"
+      },
+      {
+        "path": "benchmarks/memglide-cache-refinement-report.zip",
+        "bytes": 2136453,
+        "sha256": "b60b29a4d7db761efb473f032d5440cdbe3f9acbf78567f754c7f12d72f69e15"
+      },
+      {
+        "path": "benchmarks/memglide-daily-ab-report.zip",
+        "bytes": 2933384,
+        "sha256": "d8ed3d014e7d6230da1be4af17a09b59427321f38be5ba4226c9a40f8afc355d"
+      }
+    ]
+  }
+}

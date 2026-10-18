@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: edges corners and degenerate area
+ok 1 - edges corners and degenerate area
+  ---
+  duration_ms: 3.802961
+  type: 'test'
+  ...
+# Subtest: fractional negative coordinates and preservation
+ok 2 - fractional negative coordinates and preservation
+  ---
+  duration_ms: 1.222076
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 391.679451

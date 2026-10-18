@@ -1,0 +1,14 @@
+test_empty_input_returns_fresh_empty_dict (test_aggregate_stock.AggregateStockTests.test_empty_input_returns_fresh_empty_dict) ... ok
+test_repeated_skus_preserve_order_and_include_adjustments (test_aggregate_stock.AggregateStockTests.test_repeated_skus_preserve_order_and_include_adjustments) ... ok
+test_returns_fresh_dict (test_aggregate_stock.AggregateStockTests.test_returns_fresh_dict) ... ok
+test_aggregate_stock (test_smoke.SmokeTests.test_aggregate_stock) ... ok
+test_aggregate_stock_ordinary_0 (test_smoke.SmokeTests.test_aggregate_stock_ordinary_0) ... ok
+test_pack_ceiling (test_smoke.SmokeTests.test_pack_ceiling) ... ok
+test_pack_ceiling_ordinary_0 (test_smoke.SmokeTests.test_pack_ceiling_ordinary_0) ... ok
+test_reorder_inclusive (test_smoke.SmokeTests.test_reorder_inclusive) ... ok
+test_reorder_inclusive_ordinary_0 (test_smoke.SmokeTests.test_reorder_inclusive_ordinary_0) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK

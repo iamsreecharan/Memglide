@@ -1,0 +1,341 @@
+{
+  "run_id": "cost-ts-cost-ledger-signed-cents-r1-B",
+  "task_id": "ts-cost-ledger-signed-cents",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 18,
+  "repository": "ledger-typescript-cost",
+  "task_kind": "single-source",
+  "selection_stratum": "explicit_focus",
+  "context_format": "compact-prefix",
+  "setup": {
+    "project_id": "11faebdc516a47c0ad3d357041ba5d3a",
+    "wall_seconds": 0.45601496400013275,
+    "cpu_seconds": 0.03746897700000318,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches actual launcher stdin hash/size and native settings",
+    "context_format": "compact-prefix",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "97782d22646b39bfba97bf7241a41f1cd82ec8dfc999f3129c2f4be91ac08237",
+      "prepared_prompt_sha256": "ff196971c54e5830f5026dcb364e30a14480c568396fb1b4c0b72fbb55508b32",
+      "files": [
+        {
+          "path": "src/signed_cents.ts",
+          "sha256": "bf8156a895afdb79f83b0d778716f4c959a47180afa77d191fc7858a6f457537",
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "context_bytes": 613,
+      "context_format": "compact-prefix",
+      "prompt_layout": "source_prefix",
+      "preparation_wall_seconds": 0.11850703799973417,
+      "preparation_cpu_seconds": 0.11849014400000002
+    },
+    "source_file_count": 1,
+    "source_hashes": {
+      "src/signed_cents.ts": "bf8156a895afdb79f83b0d778716f4c959a47180afa77d191fc7858a6f457537"
+    },
+    "context_bytes": 613,
+    "actual_model_prompt_sha256": "ff196971c54e5830f5026dcb364e30a14480c568396fb1b4c0b72fbb55508b32",
+    "common_task_prompt_sha256": "97782d22646b39bfba97bf7241a41f1cd82ec8dfc999f3129c2f4be91ac08237",
+    "native_exec_boundary_monotonic_seconds": 11367.526733282
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "bec664cac47b18f7b8729730795758a6e04e31c1b5979bc0bf161f20e02f5009",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "cost-ts-cost-ledger-signed-cents-r1-B",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T16:40:24.935546+00:00",
+  "artifacts": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B",
+  "worktree": "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-ledger-signed-cents-r1-B",
+  "errors": [],
+  "grader": {
+    "task_id": "ts-cost-ledger-signed-cents",
+    "repository": "ledger-typescript-cost",
+    "corpus_version": "cost-1.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/smoke.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 8,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "c264363d060a42598c9d1fc26003beaa5dba394821bf1107406da8ffbf01cde7",
+        "actual_sha256": "c264363d060a42598c9d1fc26003beaa5dba394821bf1107406da8ffbf01cde7"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282",
+        "actual_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "cb6cd11f2fe3db7f0738667695a80d34ef6344bd0baaec8d356479f8672ddf97",
+        "actual_sha256": "cb6cd11f2fe3db7f0738667695a80d34ef6344bd0baaec8d356479f8672ddf97"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/smoke.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "f62002d451f5eaf20d618d2f5a0ec7b066508639bac6b9905ea1e17fc179d1a8",
+        "actual_sha256": "f62002d451f5eaf20d618d2f5a0ec7b066508639bac6b9905ea1e17fc179d1a8"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 5
+        },
+        "reported_counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "f11dc9027b874d8512f52a38ef0db4b6ceb55464",
+  "common_task_prompt_sha256": "97782d22646b39bfba97bf7241a41f1cd82ec8dfc999f3129c2f4be91ac08237",
+  "actual_model_prompt_sha256": "ff196971c54e5830f5026dcb364e30a14480c568396fb1b4c0b72fbb55508b32",
+  "configuration_label": "Memglide compact-prefix",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-ledger-signed-cents-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-signed-cents-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 21.490412409000783,
+  "process_started_monotonic_seconds": 11367.077046407,
+  "process_finished_monotonic_seconds": 11388.567458816,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 298954752,
+    "cpu_seconds": 5.07,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 27,
+    "observed_memglide_processes": 0,
+    "samples": 386,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 13,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 47884,
+      "cached_input_tokens": 41088,
+      "output_tokens": 637
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 47884,
+      "cached_input_tokens": 41088,
+      "output_tokens": 637
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 3,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"rg --files -g 'AGENTS.md' -g 'tests/*.test.mjs' -g 'package.json' -g 'tsconfig.json'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'cat tests/smoke.test.mjs AGENTS.md'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc 'node --test tests/*.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "tests/smoke.test.mjs",
+      "AGENTS.md"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 21.952630715999476,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 21.040725533999648,
+  "native_exec_timing_scope": "B launcher boundary before report-write/exec handoff through native exit; A has no launcher boundary",
+  "protected_file_violations": [],
+  "common_blocker": null,
+  "finished_at": "2026-10-18T16:40:48.123588+00:00"
+}

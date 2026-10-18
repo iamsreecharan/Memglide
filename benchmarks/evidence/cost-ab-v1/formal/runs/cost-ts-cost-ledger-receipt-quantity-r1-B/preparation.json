@@ -1,0 +1,69 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "011b314007b777eb594fae1737c150fc17da2e17e8ce57bf7a715a56b8e02054",
+    "prepared_prompt_sha256": "e2590ed4fff9700c8cedf72eefb3a94d183b7306f7576a8ee249b04d7a0daed4",
+    "files": [
+      {
+        "path": "src/receipt_quantity.ts",
+        "sha256": "52b7f6b7a9c74b6be30b564bfca1410a1bf3c47ff56edefadcc925d9c7537837",
+        "start_line": 1,
+        "end_line": 10
+      },
+      {
+        "path": "src/receipt_quantity_api.ts",
+        "sha256": "88f65bc184fb62a6f1f7c33d25ea8922e155bb9cd37945c1975f7076decac341",
+        "start_line": 1,
+        "end_line": 11
+      }
+    ],
+    "context_bytes": 1078,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.091576659000566,
+    "preparation_cpu_seconds": 0.087948832
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-ledger-receipt-quantity-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-receipt-quantity-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "e2590ed4fff9700c8cedf72eefb3a94d183b7306f7576a8ee249b04d7a0daed4",
+    "bytes": 2701,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 11262.733633283
+}

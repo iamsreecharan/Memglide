@@ -1,0 +1,69 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "0888ae9e392e0546fe976b6350a8de8cac2d49a9c81440e0e3ad22742bd6d208",
+    "prepared_prompt_sha256": "5d6fdf1f2281ea05f3c41f386629c39ad460fba7f1d238e6bbe4a1a2efbecdd7",
+    "files": [
+      {
+        "path": "src/normalized_bounds.ts",
+        "sha256": "23ff98f8a9465b4ea5ce8a00a6c7236926bf6589654387b1ddbc644a93b682e2",
+        "start_line": 1,
+        "end_line": 6
+      },
+      {
+        "path": "src/normalized_bounds_api.ts",
+        "sha256": "c937569590c5b075406b98dd8a9261e796739bb0860c04dcdcdad9e0d1aca76b",
+        "start_line": 1,
+        "end_line": 6
+      }
+    ],
+    "context_bytes": 926,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.1146354690008593,
+    "preparation_cpu_seconds": 0.11457413699999996
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-geometry-normalized-bounds-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "5d6fdf1f2281ea05f3c41f386629c39ad460fba7f1d238e6bbe4a1a2efbecdd7",
+    "bytes": 2600,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 11170.836229774
+}

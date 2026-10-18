@@ -1,0 +1,136 @@
+{
+  "task_id": "ts-cost-geometry-normalized-bounds",
+  "repository": "geometry-typescript-cost",
+  "corpus_version": "cost-1.0.0",
+  "passed": true,
+  "success": true,
+  "exit_code": 0,
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-A/held_out.test.mjs"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-A/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-A/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/smoke.test.mjs"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-A/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-A/smoke.stderr.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "exit_code": 0,
+      "counts": {},
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-A/typecheck.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-A/typecheck.stderr.log"
+    }
+  ],
+  "test_count": 8,
+  "protected_files_unchanged": true,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "008f7dd207caf55ecb41e8865984e5e3de46bd70e593efbce30bef80c90122c8",
+      "actual_sha256": "008f7dd207caf55ecb41e8865984e5e3de46bd70e593efbce30bef80c90122c8"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282",
+      "actual_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "package.json",
+      "unchanged": true,
+      "expected_sha256": "634839e3f1b852cc860aae0d36bc012e315234c3e699d00e424fac917f808f42",
+      "actual_sha256": "634839e3f1b852cc860aae0d36bc012e315234c3e699d00e424fac917f808f42"
+    },
+    {
+      "file": "tsconfig.json",
+      "unchanged": true,
+      "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+      "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+    },
+    {
+      "file": "tests/smoke.test.mjs",
+      "unchanged": true,
+      "expected_sha256": "e16e02352f1a001c1b3c738e12d9181529baeb715ef2757b3f8ef1921d1e77ee",
+      "actual_sha256": "e16e02352f1a001c1b3c738e12d9181529baeb715ef2757b3f8ef1921d1e77ee"
+    }
+  ],
+  "test_execution_complete": true,
+  "test_execution_integrity": [
+    {
+      "stage": "behavior",
+      "valid": true,
+      "required_test_count": {
+        "exact": 2
+      },
+      "reported_counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    },
+    {
+      "stage": "smoke",
+      "valid": true,
+      "required_test_count": {
+        "minimum": 5
+      },
+      "reported_counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

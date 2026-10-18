@@ -1,0 +1,12 @@
+test_not_successful (test_extra.ExtraTests.test_not_successful) ... expected failure
+test_aggregate_stock (test_smoke.SmokeTests.test_aggregate_stock) ... ok
+test_aggregate_stock_ordinary_0 (test_smoke.SmokeTests.test_aggregate_stock_ordinary_0) ... ok
+test_pack_ceiling (test_smoke.SmokeTests.test_pack_ceiling) ... ok
+test_pack_ceiling_ordinary_0 (test_smoke.SmokeTests.test_pack_ceiling_ordinary_0) ... ok
+test_reorder_inclusive (test_smoke.SmokeTests.test_reorder_inclusive) ... ok
+test_reorder_inclusive_ordinary_0 (test_smoke.SmokeTests.test_reorder_inclusive_ordinary_0) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.006s
+
+OK (expected failures=1)

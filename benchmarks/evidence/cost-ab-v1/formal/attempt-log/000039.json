@@ -1,0 +1,9 @@
+{
+  "sequence": 39,
+  "previous_sha256": "cee1541b7b9fd0425a7cce292d98dec17361b3abcf0692baf2f934538ae858c9",
+  "recorded_at": "2026-10-18T16:41:09.281789+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "cost-py-cost-reports-csv-quoted-cell-r1-B",
+  "result_sha256": "703a0c79a7a9480db28d47321261dbcc943b00e038bc8fdd116a5f5fbb7b395f",
+  "sha256": "d9001d1b4267a586b27a758f9d65148a0db41d835ae4587c5b6b13d9aa3cf573"
+}

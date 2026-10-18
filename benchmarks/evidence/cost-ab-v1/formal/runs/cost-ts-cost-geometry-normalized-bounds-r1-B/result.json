@@ -1,0 +1,354 @@
+{
+  "run_id": "cost-ts-cost-geometry-normalized-bounds-r1-B",
+  "task_id": "ts-cost-geometry-normalized-bounds",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 11,
+  "repository": "geometry-typescript-cost",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "context_format": "compact-prefix",
+  "setup": {
+    "project_id": "35542573ebf24d2499bcc8a1214206d9",
+    "wall_seconds": 0.37730319499860343,
+    "cpu_seconds": 0.05080078800000365,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches actual launcher stdin hash/size and native settings",
+    "context_format": "compact-prefix",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "0888ae9e392e0546fe976b6350a8de8cac2d49a9c81440e0e3ad22742bd6d208",
+      "prepared_prompt_sha256": "5d6fdf1f2281ea05f3c41f386629c39ad460fba7f1d238e6bbe4a1a2efbecdd7",
+      "files": [
+        {
+          "path": "src/normalized_bounds.ts",
+          "sha256": "23ff98f8a9465b4ea5ce8a00a6c7236926bf6589654387b1ddbc644a93b682e2",
+          "start_line": 1,
+          "end_line": 6
+        },
+        {
+          "path": "src/normalized_bounds_api.ts",
+          "sha256": "c937569590c5b075406b98dd8a9261e796739bb0860c04dcdcdad9e0d1aca76b",
+          "start_line": 1,
+          "end_line": 6
+        }
+      ],
+      "context_bytes": 926,
+      "context_format": "compact-prefix",
+      "prompt_layout": "source_prefix",
+      "preparation_wall_seconds": 0.1146354690008593,
+      "preparation_cpu_seconds": 0.11457413699999996
+    },
+    "source_file_count": 2,
+    "source_hashes": {
+      "src/normalized_bounds.ts": "23ff98f8a9465b4ea5ce8a00a6c7236926bf6589654387b1ddbc644a93b682e2",
+      "src/normalized_bounds_api.ts": "c937569590c5b075406b98dd8a9261e796739bb0860c04dcdcdad9e0d1aca76b"
+    },
+    "context_bytes": 926,
+    "actual_model_prompt_sha256": "5d6fdf1f2281ea05f3c41f386629c39ad460fba7f1d238e6bbe4a1a2efbecdd7",
+    "common_task_prompt_sha256": "0888ae9e392e0546fe976b6350a8de8cac2d49a9c81440e0e3ad22742bd6d208",
+    "native_exec_boundary_monotonic_seconds": 11170.836229774
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "cb6160c71fb64d51ac35f75f0dc254be7e6a9ef06102f757089c20c4232859b0",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "cost-ts-cost-geometry-normalized-bounds-r1-B",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T16:37:08.286741+00:00",
+  "artifacts": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B",
+  "worktree": "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-geometry-normalized-bounds-r1-B",
+  "errors": [],
+  "grader": {
+    "task_id": "ts-cost-geometry-normalized-bounds",
+    "repository": "geometry-typescript-cost",
+    "corpus_version": "cost-1.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/smoke.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 8,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "008f7dd207caf55ecb41e8865984e5e3de46bd70e593efbce30bef80c90122c8",
+        "actual_sha256": "008f7dd207caf55ecb41e8865984e5e3de46bd70e593efbce30bef80c90122c8"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282",
+        "actual_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "634839e3f1b852cc860aae0d36bc012e315234c3e699d00e424fac917f808f42",
+        "actual_sha256": "634839e3f1b852cc860aae0d36bc012e315234c3e699d00e424fac917f808f42"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/smoke.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "e16e02352f1a001c1b3c738e12d9181529baeb715ef2757b3f8ef1921d1e77ee",
+        "actual_sha256": "e16e02352f1a001c1b3c738e12d9181529baeb715ef2757b3f8ef1921d1e77ee"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 5
+        },
+        "reported_counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "a662e7fa9d37f7a93100a9b38d78e104f09e0151",
+  "common_task_prompt_sha256": "0888ae9e392e0546fe976b6350a8de8cac2d49a9c81440e0e3ad22742bd6d208",
+  "actual_model_prompt_sha256": "5d6fdf1f2281ea05f3c41f386629c39ad460fba7f1d238e6bbe4a1a2efbecdd7",
+  "configuration_label": "Memglide compact-prefix",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-geometry-normalized-bounds-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-normalized-bounds-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 31.62542799000039,
+  "process_started_monotonic_seconds": 11170.345018875,
+  "process_finished_monotonic_seconds": 11201.970446865,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 328933376,
+    "cpu_seconds": 8.23,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 39,
+    "observed_memglide_processes": 0,
+    "samples": 570,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 17,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 49214,
+      "cached_input_tokens": 23040,
+      "output_tokens": 982
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 49214,
+      "cached_input_tokens": 23040,
+      "output_tokens": 982
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 4,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"rg --files -g 'AGENTS.md' -g 'tests/*.test.mjs' -g 'package.json' && git status --short\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'cat AGENTS.md tests/smoke.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_5",
+        "command": "/bin/bash -lc 'node --test tests/*.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_6",
+        "command": "/bin/bash -lc 'git diff --stat && git diff --check'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "AGENTS.md",
+      "tests/smoke.test.mjs"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 32.011685183000736,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 31.1342170909993,
+  "native_exec_timing_scope": "B launcher boundary before report-write/exec handoff through native exit; A has no launcher boundary",
+  "protected_file_violations": [],
+  "common_blocker": null,
+  "finished_at": "2026-10-18T16:37:41.617173+00:00"
+}

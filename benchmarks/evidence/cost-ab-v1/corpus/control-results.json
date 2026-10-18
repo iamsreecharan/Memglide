@@ -1,0 +1,1833 @@
+{
+  "counts": {
+    "added-passing-regression": 1,
+    "baseline": 10,
+    "integrity-negative-control": 10,
+    "partial-fix": 8,
+    "reference": 10
+  },
+  "all_expected_outcomes": true,
+  "pytest_summary": "35 passed in 55.22s",
+  "initial_run": "34 passed, one inherited test-helper import failed; original failure and initial corpus retained",
+  "results": [
+    {
+      "kind": "baseline",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r0/baseline/grade.json",
+      "grade_sha256": "f68a71ff052ef25e98ea7d8e51969fb32e80e36e9fd80c2f561129013c7c43cf",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r0/baseline/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 2,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r0/reference/grade.json",
+      "grade_sha256": "6737f9ce291a662498e33cc9944bc87babb55421cb1180687dacde7bd5c779a6",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r0/reference/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "py-cost-inventory-reorder-inclusive",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r1/baseline/grade.json",
+      "grade_sha256": "3a2192823d37aba875fa15a87f747a45777ea719f8765014681f6ec312c28ebf",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r1/baseline/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 2,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "py-cost-inventory-reorder-inclusive",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r1/reference/grade.json",
+      "grade_sha256": "2c249e63f6ca70c8f32ff4994f4bf64293432cce8ad65c8a019edacf050048be",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r1/reference/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "py-cost-inventory-pack-ceiling",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r2/baseline/grade.json",
+      "grade_sha256": "96c5385f9c3298e2fafdaa9ebf3100a506f3a70438606cfec74c1d61a59601cc",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r2/baseline/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "py-cost-inventory-pack-ceiling",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r2/reference/grade.json",
+      "grade_sha256": "0def433724462432806962f783a622dc28921faca00af867d60fec66b8484ef4",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r2/reference/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "py-cost-reports-csv-quoted-cell",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r3/baseline/grade.json",
+      "grade_sha256": "8d90e6291a7bb8fd736a30ae7660c888a5fe6a3c3324c5a1670b7242af1cfef9",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r3/baseline/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 2,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "py-cost-reports-csv-quoted-cell",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r3/reference/grade.json",
+      "grade_sha256": "ea30d8dc14c7851ad04449b0bdf0ff434db00b484e55d9daa2ee2dab3fbec40d",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r3/reference/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "py-cost-reports-weighted-mean",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r4/baseline/grade.json",
+      "grade_sha256": "def155be10b6984c80a5c1672df00f64b24aa21bf5bebc03a6042664d0b97520",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r4/baseline/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "py-cost-reports-weighted-mean",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r4/reference/grade.json",
+      "grade_sha256": "1fc9560668601898f37384c6bbca892a7ade161fc7f56dbc3e3a4424d83e76fe",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r4/reference/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r5/baseline/grade.json",
+      "grade_sha256": "2104d4b1b4a8cb1352af1d3235bc17a5e8a94adf16b9e70765d6a3d20ea299ea",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r5/baseline/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 1,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r5/reference/grade.json",
+      "grade_sha256": "0422148f181ad19f1c59f6c9b9675a18f28c743d3f9340f473c2807c29ef5d7f",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r5/reference/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "ts-cost-ledger-receipt-quantity",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/baseline/grade.json",
+      "grade_sha256": "a3c7d9abfe4fec42cd69c79d29c47b1e7ddcc86f65231618a7a8829347790b8c",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/baseline/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 0,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "ts-cost-ledger-receipt-quantity",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/grade.json",
+      "grade_sha256": "b58d4e2db985c8b5518a0e1776f606db3692783694350475ad230f89e2561cc0",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "ts-cost-ledger-memo-empty-only",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r7/baseline/grade.json",
+      "grade_sha256": "98a7258a1d89e745701a3ef8281dc953141da0813185f7042b9a2cd504080d9e",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r7/baseline/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 1,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "ts-cost-ledger-memo-empty-only",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r7/reference/grade.json",
+      "grade_sha256": "9dcfb4ee3818fdd7a06d1603aaafe6a6003955bb768dcb7863d16bbda6016186",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r7/reference/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "ts-cost-geometry-edge-touch",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r8/baseline/grade.json",
+      "grade_sha256": "44ffa4fe6a76113cb8e63e3636b31ff93adf2b7cca991e61bf42d0f598034f91",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r8/baseline/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 1,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "ts-cost-geometry-edge-touch",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r8/reference/grade.json",
+      "grade_sha256": "759eba686aa422c14ba8e38455ceb7b970ab368506d85611772b077b8ea3cc75",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r8/reference/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "baseline",
+      "task_id": "ts-cost-geometry-normalized-bounds",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r9/baseline/grade.json",
+      "grade_sha256": "74a46c96d4b8ff92a1955706f1adbf0735dda1e05c28c583d6558ae953e5cb57",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r9/baseline/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 0,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "reference",
+      "task_id": "ts-cost-geometry-normalized-bounds",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r9/reference/grade.json",
+      "grade_sha256": "f2d7f9fa640986f6d8728ad6c74cd2cee22df52e72966177d1db99b6bd3dc6ef",
+      "success": true,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r9/reference/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "py-cost-inventory-reorder-inclusive",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f0/grade/grade.json",
+      "grade_sha256": "4d84dd537911a80f674240fd8f56cccdd7b9c5196919c3ecfa5598e702d3766d",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f0/grade/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 2,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "py-cost-reports-weighted-mean",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f1/grade/grade.json",
+      "grade_sha256": "8353d583c7b5db418293fab61b14951cfa2203323b7156d5d8ea40fcab04fc9c",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f1/grade/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "ts-cost-ledger-receipt-quantity",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f2/grade/grade.json",
+      "grade_sha256": "db3c93278543754e766668c58320b28edc0fcae62da9dccd00c84721b3f1b8c3",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f2/grade/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 1,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "ts-cost-geometry-normalized-bounds",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f3/grade/grade.json",
+      "grade_sha256": "b81cdc14228944b35fe76a06bcdeb14a7d22359d4e3fb3e3cb7270436e1d86b9",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f3/grade/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 0,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "py-cost-inventory-reorder-inclusive",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f4/grade/grade.json",
+      "grade_sha256": "4290daeb8519ef86efa0e01f0a7f37da725c1991e5e29024e5c2fe011d3f6ede",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f4/grade/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 2,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "py-cost-reports-weighted-mean",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f5/grade/grade.json",
+      "grade_sha256": "ad11568fcf5482f9a263283882bdee6aee780a198595b1d3d29bc68d7afaed18",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f5/grade/held_out.py"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          }
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "ts-cost-ledger-receipt-quantity",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f6/grade/grade.json",
+      "grade_sha256": "0f485c4863c9e376d99eb55810aab5d6c548916e8263fbdb8eed89680f7a06a8",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f6/grade/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 0,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "partial-fix",
+      "task_id": "ts-cost-geometry-normalized-bounds",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f7/grade/grade.json",
+      "grade_sha256": "3437e60d3417b8a2134587d6d37a0739d55aec88491f3482082d175f0afb85df",
+      "success": false,
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f7/grade/held_out.test.mjs"
+          ],
+          "exit_code": 1,
+          "counts": {
+            "tests": 2,
+            "pass": 0,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f0/grade/grade.json",
+      "grade_sha256": "1cb53c578ff387270e4f0168d935d3e8ea946e2771ef92a85d48c7744d610337",
+      "success": false,
+      "test_count": 2,
+      "protected_files_unchanged": false,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f0/grade/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 5,
+          "counts": {
+            "tests": 0
+          }
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "py-cost-reports-csv-quoted-cell",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f1/grade/grade.json",
+      "grade_sha256": "645ce8c0270aa4eb8f630dc849a41913dd10bfbd8ec6f9bbf04ca3dea1efe273",
+      "success": false,
+      "test_count": 2,
+      "protected_files_unchanged": false,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f1/grade/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 5,
+          "counts": {
+            "tests": 0
+          }
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f2/grade/grade.json",
+      "grade_sha256": "420d30ee7606350865bafa91eac6024c9743be9955302a69bbdea7f92c7f95a1",
+      "success": false,
+      "test_count": 3,
+      "protected_files_unchanged": false,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f2/grade/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 1,
+            "pass": 1,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "ts-cost-geometry-edge-touch",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f3/grade/grade.json",
+      "grade_sha256": "e222849e7264c4779390c65333ed58f471b05e2108fd3c7c8ec400a93456509f",
+      "success": false,
+      "test_count": 3,
+      "protected_files_unchanged": false,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f3/grade/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 1,
+            "pass": 1,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_production_early_exit_zer0/grade/grade.json",
+      "grade_sha256": "6e6cb2ad01cded2edfac49bcc052f14c678cdec040d729d5267a296f975ca428",
+      "success": false,
+      "test_count": 0,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_production_early_exit_zer0/grade/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_production_early_exit_zer1/grade/grade.json",
+      "grade_sha256": "edbd059ab88aff395aa5c210b6bf3b0b086a63d182e640fd69c2b7fad123d339",
+      "success": false,
+      "test_count": 2,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_production_early_exit_zer1/grade/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 1,
+            "pass": 1,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 1,
+            "pass": 1,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "added-passing-regression",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_python_added_passing_regr0/grade/grade.json",
+      "grade_sha256": "cba92514a7c7bdc49b35503929bd5359035445d8fd012640ac8cddd8ddda0667",
+      "success": true,
+      "test_count": 9,
+      "protected_files_unchanged": true,
+      "test_execution_complete": true,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_python_added_passing_regr0/grade/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 7
+          }
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_python_added_skipped_or_e0/grade/grade.json",
+      "grade_sha256": "66b5fcacfc0d19f7a2a214b00ac6f229e1a9dc50e88123014c62d0302806be2e",
+      "success": false,
+      "test_count": 9,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_python_added_skipped_or_e0/grade/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 7
+          }
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_python_added_skipped_or_e1/grade/grade.json",
+      "grade_sha256": "64d5b0f16164fd88981aa6b4af4ad575d81e13af7ffe96f4bd110718f392b818",
+      "success": false,
+      "test_count": 9,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_python_added_skipped_or_e1/grade/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 7
+          }
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_typescript_extra_skipped_0/grade/grade.json",
+      "grade_sha256": "19b5c34bf36d76fdbeff24f4009b059719013d19607034396f75e9d008201c24",
+      "success": false,
+      "test_count": 10,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_typescript_extra_skipped_0/grade/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 3,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 1
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 7,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 1
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    },
+    {
+      "kind": "integrity-negative-control",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "grade_path": ".local/cost-v1/corpus-validation-workspaces/test_typescript_extra_skipped_1/grade/grade.json",
+      "grade_sha256": "25b2a3c477d9aa9dbb33f52e163dadf1ea4bdbfa2f0206dc94c0aab1071d61df",
+      "success": false,
+      "test_count": 10,
+      "protected_files_unchanged": true,
+      "test_execution_complete": false,
+      "commands": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_typescript_extra_skipped_1/grade/held_out.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 3,
+            "pass": 2,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "--test",
+            "--test-reporter=tap",
+            "tests/smoke.test.mjs"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 7,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+            "--project",
+            "tsconfig.json"
+          ],
+          "exit_code": 0,
+          "counts": {}
+        }
+      ]
+    }
+  ]
+}

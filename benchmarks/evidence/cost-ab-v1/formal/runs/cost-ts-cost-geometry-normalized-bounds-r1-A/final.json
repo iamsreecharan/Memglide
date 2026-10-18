@@ -1,0 +1,1 @@
+{"summary":"Fixed independent bounds ordering and removed coordinate truncation. Added regression coverage for fractional coordinates, input immutability, and nonfinite rejection. Preserved existing tests; no commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

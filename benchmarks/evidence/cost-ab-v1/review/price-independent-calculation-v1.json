@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "pass": false,
+  "audit_exception_type": "ValueError",
+  "audit_exception_message": "Input is not a bounded regular file"
+}

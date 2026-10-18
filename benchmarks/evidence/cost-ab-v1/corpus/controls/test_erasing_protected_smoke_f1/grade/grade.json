@@ -1,0 +1,103 @@
+{
+  "task_id": "py-cost-reports-csv-quoted-cell",
+  "repository": "reports-python-cost",
+  "corpus_version": "cost-1.0.0",
+  "passed": false,
+  "success": false,
+  "exit_code": 1,
+  "commands": [
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f1/grade/held_out.py"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f1/grade/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f1/grade/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 5,
+      "counts": {
+        "tests": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f1/grade/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_erasing_protected_smoke_f1/grade/smoke.stderr.log"
+    }
+  ],
+  "test_count": 2,
+  "protected_files_unchanged": false,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "6aae7c7cc47cb52cb3dfbdd9fdc1174d12f89706990e07cc2ee58a348595f06f",
+      "actual_sha256": "6aae7c7cc47cb52cb3dfbdd9fdc1174d12f89706990e07cc2ee58a348595f06f"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3",
+      "actual_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "tests/test_smoke.py",
+      "unchanged": false,
+      "expected_sha256": "ab2eb77a8ff47f87e2d7e9fad3e805fc309465138cff464544b0cc6d68e7d83f",
+      "actual_sha256": "c8e06916dd6f8a1833969cd81ca53823345513618505d0b809a29723461c5bb2"
+    }
+  ],
+  "test_execution_complete": false,
+  "test_execution_integrity": [
+    {
+      "stage": "behavior",
+      "valid": true,
+      "required_test_count": {
+        "exact": 2
+      },
+      "reported_counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    },
+    {
+      "stage": "smoke",
+      "valid": false,
+      "required_test_count": {
+        "minimum": 5
+      },
+      "reported_counts": {
+        "tests": 0
+      },
+      "count_requirement_met": false,
+      "clean_summary_verified": false,
+      "zero_failures_errors_skips_cancellations": false
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

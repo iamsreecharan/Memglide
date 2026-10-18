@@ -1,0 +1,11 @@
+{
+  "sequence": 10,
+  "previous_sha256": "cde7737b9c3d7fb4f43efade5d45cac2430087f8774e1583b8e6da31fd779a40",
+  "recorded_at": "2026-10-18T16:34:14.076087+00:00",
+  "event": "attempt.started",
+  "attempt_id": "cost-ts-cost-geometry-edge-touch-r1-A",
+  "original_run_id": "cost-ts-cost-geometry-edge-touch-r1-A",
+  "supplemental": false,
+  "start_sha256": "b1861bd0dd71910603571e16608d285d758bb9e067d9fe7d4dfb8c47cc6e6e35",
+  "sha256": "78caa47c53f1df03f0c2c165c91e87917cd0fe1626e182cecf7e3375cb9598e7"
+}

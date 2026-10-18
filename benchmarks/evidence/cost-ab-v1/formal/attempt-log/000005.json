@@ -1,0 +1,9 @@
+{
+  "sequence": 5,
+  "previous_sha256": "5e97200a804a2fbac496b6c678bb8924efb4f8c8947ff4ce32760dce34dc82fa",
+  "recorded_at": "2026-10-18T16:33:28.857659+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "cost-ts-cost-ledger-memo-empty-only-r1-B",
+  "result_sha256": "556c7dd0c3189797ee1f112f723e91ea6ed89e98d3cf0a22862ab3557dc2bbc6",
+  "sha256": "e90ba5c4e421da146a12281dc185312bd5208a7df9397e59617650d79ff78176"
+}

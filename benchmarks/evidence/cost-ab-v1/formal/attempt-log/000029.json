@@ -1,0 +1,9 @@
+{
+  "sequence": 29,
+  "previous_sha256": "d72830fa545b5ba5de0c72374d8df1dbcc380aa90bc49bc8e651bf94eb44326f",
+  "recorded_at": "2026-10-18T16:39:08.454112+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "cost-ts-cost-ledger-receipt-quantity-r1-B",
+  "result_sha256": "0d3bc9f431947aef1ee7d496af6af257065d2f2ebdaa18588f8f982c9c67a035",
+  "sha256": "cdf27931b1e25553b8f15fc612c75f9fed38653c228a51db56ed7cc9e248512f"
+}

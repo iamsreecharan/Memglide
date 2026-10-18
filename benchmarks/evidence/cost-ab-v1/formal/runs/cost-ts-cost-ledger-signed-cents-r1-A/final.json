@@ -1,0 +1,1 @@
+{"summary":"Fixed formatCents to pad integer-cent fractions to exactly two digits. Added regression coverage for signs, zero, safe-integer limits, and invalid inputs. Existing tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed"]}

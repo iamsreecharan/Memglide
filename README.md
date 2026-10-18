@@ -83,7 +83,20 @@ npm --prefix frontend run build
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for browser tests and packaging. [PROGRESS.md](PROGRESS.md) records observed validation and outstanding limitations; source-file presence alone is not a completion claim.
 
-The latest [source-format assessment](benchmarks/cache-refinement-assessment.md)
+The latest [cost study](benchmarks/cost-assessment.md) compares **bare Codex with
+compact-prefix Memglide on ten fresh paired tasks: 20 runs, all successful**.
+At [verified standard API rates](benchmarks/cost-pricing-research.md), estimated
+cost per successful task was **$0.03923 for Codex and $0.03833 for Memglide**,
+2.3% lower overall. However, the eight tasks that received source bundles cost
+**4.4% more** with Memglide; two identical-prompt bypass controls drove the
+overall decrease. Five pairs favored each arm. These results establish no
+retrieval cost saving. Actual charges are unavailable; cache-write uncertainty
+allows outcomes in either direction under the same tariff. The
+[complete JSON](benchmarks/cost-assessment.json) and
+[downloadable evidence bundle](benchmarks/memglide-cost-ab-report.zip) retain
+all runs, pricing assumptions, independent checks and failures from validation.
+
+The earlier [source-format assessment](benchmarks/cache-refinement-assessment.md)
 and [individual results](benchmarks/codex-cache-formats.json) cover **20 fresh
 Python/TypeScript tasks, 40 native runs** comparing legacy Memglide with
 compact-prefix Memglide. Both passed 20/20. Compact formatting delivered the same

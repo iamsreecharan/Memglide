@@ -1,0 +1,683 @@
+#!/usr/bin/env python3
+"""After measurements finish, check or publish explicit cost A/B text evidence.
+
+Default is check-only. --publish copies into a fresh directory after every
+selected file has passed validation. This helper never runs models, tests,
+repository code, or database queries. No directory is copied recursively.
+"""
+
+from __future__ import annotations
+
+import argparse
+import ast
+import hashlib
+import json
+import re
+import subprocess
+import xml.etree.ElementTree as ET
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+FROZEN_COMMIT = "UNCONFIGURED"
+FROZEN_APP = "UNCONFIGURED"
+DEFAULT_OUTPUT = ROOT / "benchmarks/evidence/cost-ab-v1"
+EXPERIMENTS = (("formal", ".local/cost-v1/formal-10-v1", 20),)
+TOP_FILES = (
+    "plan.json", "metadata.json", "state.json", "runs.json", "supplemental-runs.json",
+    "final-response-schema.json", "report.json", "report.md",
+)
+INVOCATION_FILES = (
+    "prompt.txt", "command.json", "events.jsonl", "stderr.log", "final.json",
+    "process-identity.json", "launch-grant.json", "result.json",
+)
+RUN_FILES = (
+    *INVOCATION_FILES, "attempt-start.json", "preparation.json",
+    "grade.json", "held_out.py", "held_out.test.mjs",
+    "behavior.stdout.log", "behavior.stderr.log", "smoke.stdout.log", "smoke.stderr.log",
+    "typecheck.stdout.log", "typecheck.stderr.log", "changes.patch", "git-status.txt",
+    "untracked-files.json",
+)
+EXTRA_FILES = (
+    (".local/cost-v1/publish_evidence.py", "reproduction/publish_evidence.py.txt"),
+    (".local/cost-v1/build_bundle.py", "reproduction/build_bundle.py.txt"),
+    (".local/cost-v1/corpus-initial-draft/corpus_cost.py", "corpus/initial-draft/corpus_cost.py.txt"),
+    (".local/cost-v1/corpus-initial-draft/tasks_cost.json", "corpus/initial-draft/tasks_cost.json"),
+    (".local/cost-v1/corpus-validation-initial.xml", "corpus/initial-validation.xml"),
+    (".local/cost-v1/corpus-validation-initial.log", "corpus/initial-validation.log"),
+    (".local/cost-v1/corpus-validation-final.xml", "corpus/final-validation.xml"),
+    (".local/cost-v1/corpus-validation-final.log", "corpus/final-validation.log"),
+    (".local/cost-v1/corpus-control-results.json", "corpus/control-results.json"),
+    (".local/cost-v1/corpus-scope.md", "corpus/scope.md"),
+    (".local/cost-v1/corpus-scope.json", "corpus/scope.json"),
+    (".local/cost-v1/corpus-semantic-equality.json", "corpus/semantic-equality.json"),
+    (".local/cost-v1/freeze.json", "freeze.json"),
+    (".local/cost-v1/formal-exit.json", "formal-exit.json"),
+    (".local/cost-v1/formal.log", "progress/formal.log"),
+)
+CORPUS_GRADE_DIRS = ("baseline", "reference", "grade")
+CORPUS_GRADE_FILES = (
+    "grade.json", "held_out.py", "held_out.test.mjs", "behavior.stdout.log", "behavior.stderr.log",
+    "smoke.stdout.log", "smoke.stderr.log", "typecheck.stdout.log", "typecheck.stderr.log",
+)
+FORBIDDEN_PARTS = {"auth.json", "codex-state", "worktrees", "repositories", "state", "initialization-partials"}
+FORBIDDEN_SUFFIXES = {".db", ".sqlite", ".sqlite3", ".tar", ".tgz", ".gz", ".zip", ".source", ".whl"}
+SAFE_ID = re.compile(r"[A-Za-z0-9_-]+")
+SECRET_PATTERNS = (
+    re.compile(rb"-----BEGIN (?:[A-Z0-9 ]+ )?PRIVATE KEY-----"),
+    re.compile(rb"\bsk-(?:(?:proj|svcacct)-)?[A-Za-z0-9_-]{20,}\b"),
+    re.compile(rb"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
+    re.compile(rb"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b"),
+    re.compile(rb"\beyJ[A-Za-z0-9_-]{6,}\.[A-Za-z0-9_-]{12,}\.[A-Za-z0-9_-]{12,}\b"),
+    re.compile(
+        rb"(?i)(?:OPENAI_API_KEY|ANTHROPIC_API_KEY|api[_-]?key|access[_-]?token|refresh[_-]?token)"
+        rb"[\"'\s]*(?:=|:)[\"'\s]*[A-Za-z0-9_+/=-]{24,}"
+    ),
+)
+XML_FROZEN_COMMIT = FROZEN_COMMIT
+XML_APPROVALS: dict[str, str] = {}
+XML_SCAN_EXCEPTIONS: dict[str, Any] = {}
+XML_FIXTURES: tuple[list[bytes], str] | None = None
+
+
+def frozen_fixture_literals() -> tuple[list[bytes], str]:
+    global XML_FIXTURES
+    if XML_FIXTURES is not None:
+        return XML_FIXTURES
+    source = subprocess.check_output(
+        ["git", "show", f"{XML_FROZEN_COMMIT}:tests/test_security_storage.py"],
+        cwd=ROOT, stderr=subprocess.PIPE,
+    )
+
+    def literal(node: ast.AST) -> str | int:
+        if isinstance(node, ast.Constant) and type(node.value) in {str, int}:
+            return node.value
+        if isinstance(node, ast.BinOp):
+            a, b = literal(node.left), literal(node.right)
+            if isinstance(node.op, ast.Add) and isinstance(a, str) and isinstance(b, str):
+                return a + b
+            if isinstance(node.op, ast.Mult) and isinstance(a, str) and type(b) is int and 0 <= b <= 1000:
+                return a * b
+        raise ValueError
+
+    values = []
+    for node in ast.walk(ast.parse(source)):
+        try:
+            value = literal(node)
+        except ValueError:
+            continue
+        if isinstance(value, str):
+            values.append(value.encode())
+    XML_FIXTURES = values, sha(source)
+    return XML_FIXTURES
+
+
+def scan_frozen_synthetic_xml(path: Path, data: bytes) -> None:
+    relative = str(path.relative_to(ROOT))
+    if sha(data) != XML_APPROVALS[relative]:
+        fail("Exact frozen validation XML changed", path)
+    fixtures, source_sha = frozen_fixture_literals()
+    tree = ET.fromstring(data)
+    actual_names = Counter((e.get("classname"), e.get("name")) for e in tree.iter("testcase"))
+    spans = []
+    tag_pattern = re.compile(rb'''<testcase\b(?:[^"'<>]|"[^"]*"|'[^']*')*>''', re.DOTALL)
+    name_pattern = re.compile(rb'''\bname\s*=\s*(?:"(?P<double>[^"]*)"|'(?P<single>[^']*)')''', re.DOTALL)
+    for tag in tag_pattern.finditer(data):
+        opening = tag.group()
+        element = ET.fromstring(opening if opening.rstrip().endswith(b"/>") else opening[:-1] + b"/>")
+        name, classname = element.get("name", ""), element.get("classname", "")
+        identity = (classname, name)
+        if not actual_names[identity]:
+            continue
+        actual_names[identity] -= 1
+        if classname != "tests.test_security_storage" or name.split("[")[0] not in {
+            "test_detected_credentials_are_excluded", "test_additional_credential_exclusions"
+        }:
+            continue
+        attribute = name_pattern.search(opening)
+        if attribute is None:
+            fail("Missing validated synthetic testcase name", path)
+        group = "double" if attribute.group("double") is not None else "single"
+        spans.append((tag.start() + attribute.start(group), tag.start() + attribute.end(group)))
+    matches = [m for pattern in SECRET_PATTERNS for m in pattern.finditer(data)]
+    if len(matches) != 7:
+        fail("Unexpected frozen synthetic fixture match count", path)
+    masked = bytearray(data)
+    for match in matches:
+        if not any(start <= match.start() and match.end() <= end for start, end in spans) or not any(match.group() in fixture for fixture in fixtures):
+            fail("Credential pattern outside an exact public synthetic testcase name", path)
+        masked[match.start():match.end()] = b"_" * (match.end() - match.start())
+    # Scan the original byte stream with only proven match spans masked. XML
+    # comments, processing instructions, attributes and diagnostics stay intact.
+    if any(pattern.search(masked) for pattern in SECRET_PATTERNS):
+        fail("Credential pattern outside the frozen testcase-name exception", path)
+    XML_SCAN_EXCEPTIONS[relative] = {
+        "path": relative, "sha256": sha(data), "pattern_matches": len(matches),
+        "matched_sha256": [sha(match.group()) for match in matches],
+        "fixture_source": f"{XML_FROZEN_COMMIT}:tests/test_security_storage.py",
+        "fixture_source_sha256": source_sha, "original_xml_bytes_preserved": True,
+        "all_other_original_bytes_scanned": True,
+    }
+
+
+def fail(message: str, path: Path | None = None) -> None:
+    # Never print file content, matched credentials, or parser exception excerpts.
+    suffix = f": {path.relative_to(ROOT)}" if path is not None else ""
+    raise SystemExit(message + suffix)
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def canonical(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+
+
+def safe_source(path: Path) -> None:
+    if not path.is_relative_to(ROOT) or ".." in path.parts or path.absolute() != path.resolve():
+        fail("Source is outside the canonical repository path")
+    if path == ROOT / ".local/cost-v1/browser.json":
+        fail("Raw browser configuration may contain credentials; use only a sanitized receipt")
+    if FORBIDDEN_PARTS.intersection(path.relative_to(ROOT).parts) or path.suffix in FORBIDDEN_SUFFIXES:
+        fail("Refusing excluded source", path)
+    current = path
+    while current != ROOT:
+        if current.is_symlink():
+            fail("Refusing a symlink in the source path", path)
+        current = current.parent
+    if not path.is_file():
+        fail("Required evidence is missing", path)
+
+
+def scan_text_bytes(source_path: Path, data: bytes) -> None:
+    """Scan exact UTF-8 bytes; source_path is the manifest's original ROOT path.
+
+    Bundle builders may use this API on bytes read from public copies, passing
+    ROOT / manifest_entry["source"]. The two XML exceptions remain bound to
+    exact source path, original SHA256 and frozen public AST fixture literals.
+    """
+    if not source_path.is_relative_to(ROOT):
+        fail("Scanner source path is outside the repository")
+    try:
+        data.decode("utf-8")
+    except UnicodeError:
+        fail("Refusing nontext evidence", source_path)
+    if b"\0" in data:
+        fail("Refusing binary evidence", source_path)
+    if str(source_path.relative_to(ROOT)) in XML_APPROVALS:
+        scan_frozen_synthetic_xml(source_path, data)
+    elif any(pattern.search(data) for pattern in SECRET_PATTERNS):
+        fail("Potential credential pattern; publication stopped", source_path)
+
+
+def read_text_bytes(path: Path) -> bytes:
+    safe_source(path)
+    data = path.read_bytes()
+    scan_text_bytes(path, data)
+    return data
+
+
+def no_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("Duplicate key")
+        result[key] = value
+    return result
+
+
+def read_json(path: Path) -> Any:
+    try:
+        return json.loads(read_text_bytes(path), object_pairs_hook=no_duplicate_keys)
+    except (ValueError, UnicodeError):
+        fail("Invalid evidence JSON", path)
+
+
+def identifier(value: Any) -> str:
+    if not isinstance(value, str) or not SAFE_ID.fullmatch(value):
+        fail("Unsafe or missing attempt identifier")
+    return value
+
+
+@dataclass(frozen=True)
+class Artifact:
+    source: Path
+    destination: Path
+    size: int
+    sha256: str
+
+
+class Collection:
+    def __init__(self) -> None:
+        self.files: dict[str, Artifact] = {}
+        self.missing: list[dict[str, str]] = []
+        self.experiments: dict[str, Any] = {}
+
+    def add(self, source: Path, destination: Path, *, required: bool = False) -> None:
+        if destination.is_absolute() or ".." in destination.parts:
+            fail("Unsafe destination")
+        if FORBIDDEN_PARTS.intersection(destination.parts) or destination.suffix in FORBIDDEN_SUFFIXES:
+            fail("Excluded destination")
+        if not source.exists() and not source.is_symlink():
+            if required:
+                fail("Required evidence is missing", source)
+            self.missing.append({"source": str(source.relative_to(ROOT)), "reason": "Not emitted; inspect run status/language before interpreting absence"})
+            return
+        key = str(destination)
+        if key in self.files:
+            fail("Duplicate destination")
+        data = read_text_bytes(source)
+        self.files[key] = Artifact(source, destination, len(data), sha(data))
+
+    def attempt(self, source: Path, destination: Path) -> None:
+        for name in RUN_FILES:
+            self.add(source / name, destination / name, required=name not in {"preparation.json", "held_out.py", "held_out.test.mjs", "typecheck.stdout.log", "typecheck.stderr.log"})
+        for name in ("process-identity.json", "launch-grant.json"):
+            path = source / name
+            if path.exists():
+                identity = read_json(path)
+                if set(identity) != {"pid", "process_group", "start_ticks"} or not all(
+                    isinstance(v, int) and not isinstance(v, bool) and v > 0
+                    for v in identity.values()
+                ):
+                    fail("Unexpected process identity schema; review before publishing", path)
+
+    def experiment(self, label: str, source_relative: str, expected: int) -> None:
+        source, destination = ROOT / source_relative, Path(label)
+        metadata = read_json(source / "metadata.json")
+        if not metadata.get("finished_at"):
+            fail("Experiment is not finished; wait for root authorization", source / "metadata.json")
+        plan, state = read_json(source / "plan.json"), read_json(source / "state.json")
+        runs, supplemental = read_json(source / "runs.json"), read_json(source / "supplemental-runs.json")
+        report = read_json(source / "report.json")
+        planned = [identifier(row.get("run_id")) for row in plan["runs"]]
+        if len(planned) != expected or len(set(planned)) != expected:
+            fail("Unexpected plan size or duplicated original assignment", source / "plan.json")
+        if set(state["originals"]) != set(planned):
+            fail("State does not retain the complete original plan", source / "state.json")
+        if len(runs) != expected or {identifier(r.get("run_id")) for r in runs} != set(planned):
+            fail("Run projection does not retain every original", source / "runs.json")
+        if len(report["runs"]) != expected or {identifier(r.get("run_id")) for r in report["runs"]} != set(planned):
+            fail("Report does not retain every original", source / "report.json")
+        if runs != list(state["originals"].values()) or supplemental != state["supplemental"] or supplemental != report.get("supplemental_runs", []):
+            fail("State/projections/supplemental report disagree", source / "state.json")
+        if metadata.get("experiment_version") != "cost-1":
+            fail("Unexpected experiment version", source / "metadata.json")
+        tasks = plan["tasks"]
+        if len(tasks) != 10 or len({task["id"] for task in tasks}) != 10:
+            fail("Expected the complete ten-task fresh cost corpus", source / "plan.json")
+        selection_counts = {}
+        if metadata.get("configuration_labels") != {"A": "Standard Codex", "B": "Memglide compact-prefix"}:
+            fail("Unexpected bare-Codex / compact-Memglide arm labels")
+        if metadata.get("corpus") != "cost" or metadata.get("repeats") != 1:
+            fail("Wrong fresh corpus or repeat count")
+        task_ids = {identifier(task["id"]) for task in tasks}
+        if any("-cost-" not in task_id for task_id in task_ids):
+            fail("Plan includes a task outside the fresh cost corpus")
+        paired = Counter((row["task_id"], row["repeat"], row["configuration"]) for row in plan["runs"])
+        if paired != {(task_id, 1, arm): 1 for task_id in task_ids for arm in ("A", "B")}:
+            fail("Expected exactly ten complete original task pairs")
+        for arm, context_format in (("A", None), ("B", "compact-prefix")):
+            selection_counts[arm] = dict(Counter(row.get("selection_stratum") for row in plan["runs"] if row["configuration"] == arm))
+            if selection_counts[arm] != {"explicit_focus": 8, "caller_context_supplied": 2}:
+                fail("Unexpected original arm selection strata")
+            if any(row.get("context_format") != context_format for row in plan["runs"] if row["configuration"] == arm):
+                fail("Unexpected assigned context format")
+            modes = Counter(row.get("preload_treatment_fidelity", {}).get("mode") for row in runs if row["configuration"] == arm)
+            if modes != ({"standard": 10} if arm == "A" else {"preloaded": 8, "passthrough": 2}):
+                fail("Unexpected observed preload/passthrough arm counts")
+        if not all(row.get("attempted") for row in runs):
+            fail("Every original slot must retain its actual attempt")
+        for name in TOP_FILES:
+            self.add(source / name, destination / name, required=True)
+        for name in INVOCATION_FILES:
+            self.add(source / "preflight" / name, destination / "preflight" / name)
+
+        # Only the narrowly named attempt-log directory and six-digit JSON files
+        # are enumerated. No arbitrary directory contents are copied.
+        logdir = source / "attempt-log"
+        if logdir.is_symlink() or not logdir.is_dir():
+            fail("Missing or unsafe immutable attempt log")
+        names = sorted(p.name for p in logdir.iterdir())
+        if any(not re.fullmatch(r"[0-9]{6}\.json", name) for name in names):
+            fail("Unexpected file in immutable attempt log")
+        records, previous = [], None
+        for index, name in enumerate(names, 1):
+            path = logdir / name
+            record = read_json(path)
+            body = {key: value for key, value in record.items() if key != "sha256"}
+            if name != f"{index:06d}.json" or body.get("sequence") != index or body.get("previous_sha256") != previous or sha(canonical(body)) != record.get("sha256"):
+                fail("Immutable attempt hash chain failed", path)
+            previous = record["sha256"]
+            records.append(record)
+            self.add(path, destination / "attempt-log" / name, required=True)
+        if not records or records[-1].get("event") != "experiment.finished" or records[-1].get("report_sha256") != sha(read_text_bytes(source / "report.json")):
+            fail("Experiment-finished seal is missing or invalid", source / "report.json")
+        for record in records:
+            event = record.get("event")
+            if event == "attempt.started":
+                path = source / "runs" / identifier(record.get("attempt_id")) / "attempt-start.json"
+                if sha(canonical(read_json(path))) != record.get("start_sha256"):
+                    fail("Immutable attempt-start seal failed", path)
+            if event in {"attempt.finished", "attempt.interrupted"}:
+                path = source / "runs" / identifier(record.get("attempt_id")) / "result.json"
+                if sha(read_text_bytes(path)) != record.get("result_sha256"):
+                    fail("Immutable result seal failed", path)
+
+        attempts = [r for r in runs if r.get("attempted")] + supplemental
+        attempt_ids = [identifier(r.get("run_id")) for r in attempts]
+        if len(attempt_ids) != len(set(attempt_ids)):
+            fail("Duplicate original/supplemental attempt identifier")
+        if len(records) != 2 + 2 * len(attempt_ids):
+            fail("Unexpected durable log event count")
+        if Counter(record.get("attempt_id") for record in records if record.get("event") == "attempt.started") != Counter(attempt_ids):
+            fail("Every invocation must have exactly one durable start seal")
+        if Counter(record.get("attempt_id") for record in records if record.get("event") in {"attempt.finished", "attempt.interrupted"}) != Counter(attempt_ids):
+            fail("Every invocation must have exactly one durable terminal seal")
+        for row in attempts:
+            run_id = identifier(row["run_id"])
+            directory = source / "runs" / run_id
+            if Path(row["artifacts"]).absolute() != directory:
+                fail("Attempt artifact pointer escaped its designated run directory")
+            sealed = directory / "result.json"
+            if read_json(sealed) != row:
+                fail("State row differs from immutable result", sealed)
+            self.attempt(directory, destination / "runs" / run_id)
+        # Preserve whitelisted text from any unregistered partial attempt too;
+        # it stays explicitly separate from original/supplemental result rows.
+        unregistered = []
+        rundir = source / "runs"
+        if rundir.exists():
+            if rundir.is_symlink():
+                fail("Unsafe runs directory")
+            for directory in sorted(rundir.iterdir()):
+                run_id = identifier(directory.name)
+                if directory.is_symlink() or not directory.is_dir():
+                    fail("Unexpected object in runs directory")
+                if run_id not in attempt_ids:
+                    unregistered.append(run_id)
+                    self.attempt(directory, destination / "unregistered-partial-invocations" / run_id)
+        self.experiments[label] = {
+            "source": source_relative, "planned_originals": expected,
+            "original_status_counts": {status: sum(r.get("status") == status for r in runs) for status in sorted({r.get("status") for r in runs})},
+            "supplemental_attempts": len(supplemental), "unregistered_partial_invocations": unregistered,
+            "treatment": "A direct standard Codex / B production compact-prefix Memglide with native Codex",
+            "planned_selection_strata_by_arm": selection_counts,
+            "observed_preparation_modes_by_arm": {arm: dict(Counter(row.get("preload_treatment_fidelity", {}).get("mode", "unknown") for row in runs if row["configuration"] == arm)) for arm in ("A", "B")},
+            "finished_at": metadata["finished_at"], "attempt_log_records": len(records),
+            "last_attempt_log_sha256": previous,
+            "source_unchanged_during_experiment": metadata.get("source_unchanged_during_experiment"),
+        }
+
+    def corpus_validation(self) -> None:
+        source = ROOT / ".local/cost-v1/corpus-validation-workspaces"
+        if source.is_symlink() or not source.is_dir():
+            fail("Unsafe or missing corpus validation directory")
+        for case in sorted(source.iterdir()):
+            if case.is_symlink():
+                # Pytest *current aliases are deliberately excluded, never followed.
+                if case.name.endswith("current"):
+                    continue
+                fail("Unexpected corpus control symlink", case)
+            identifier(case.name)
+            if not case.is_dir():
+                fail("Unexpected corpus control directory object", case)
+            for grade_name in CORPUS_GRADE_DIRS:
+                directory = case / grade_name
+                if directory.is_symlink():
+                    fail("Unsafe corpus grading artifact directory", directory)
+                if not directory.exists():
+                    continue
+                if not directory.is_dir():
+                    fail("Unexpected corpus grading object", directory)
+                for name in CORPUS_GRADE_FILES:
+                    self.add(directory / name, Path("corpus/controls") / case.name / grade_name / name)
+
+
+def verify_frozen_source() -> dict[str, Any]:
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT).decode().strip()
+    if head != FROZEN_COMMIT:
+        fail("Frozen Git HEAD changed")
+    source = ROOT / ".local/cost-v1/formal-10-v1"
+    metadata = read_json(source / "metadata.json")
+    freeze = read_json(ROOT / ".local/cost-v1/freeze.json")
+    if read_json(ROOT / ".local/cost-v1/formal-exit.json").get("returncode") != 0:
+        fail("Formal driver did not finish with exit 0")
+    if freeze.get("git_head", freeze.get("frozen_commit")) != head or freeze["application"]["source_tree_sha256"] != FROZEN_APP:
+        fail("Freeze receipt differs from the authorized source")
+    for phase in ("before", "after"):
+        record = metadata["memglide_source_" + phase]
+        if record.get("git_head") != head or record.get("source_tree_sha256") != FROZEN_APP or record.get("source_dirty_entries"):
+            fail("Application source freeze attestation differs")
+        for name, digest in record["source_files"].items():
+            if sha(read_text_bytes(ROOT / name)) != digest:
+                fail("Current application source differs from frozen bytes", ROOT / name)
+    for name, digest in metadata["frozen_manifest"]["files"].items():
+        if sha(read_text_bytes(ROOT / name)) != digest:
+            fail("Frozen measurement/source input changed", ROOT / name)
+    if metadata.get("source_unchanged_during_experiment") is not True:
+        fail("Experiment did not attest unchanged source")
+    return {"git_head": head, "application_source_tree_sha256": FROZEN_APP,
+            "formal_driver_returncode": 0, "current_source_and_frozen_inputs_verified": True}
+
+
+def verify_historical_evidence() -> dict[str, Any]:
+    # Compare whole original bytes against frozen Git blobs, including complete
+    # ZIP byte streams. Old files are never opened as archives or selected.
+    raw = subprocess.check_output(["git", "ls-tree", "-rz", FROZEN_COMMIT, "--", "benchmarks"], cwd=ROOT)
+    entries = []
+    for line in raw.split(b"\0"):
+        if not line:
+            continue
+        info, path_raw = line.split(b"\t", 1)
+        mode, kind, oid = info.split()
+        if kind != b"blob" or mode not in {b"100644", b"100755"}:
+            fail("Unexpected frozen historical object")
+        entries.append((path_raw.decode(), oid))
+    process = subprocess.Popen(["git", "cat-file", "--batch"], cwd=ROOT,
+                               stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    verified, total, archives, transitions = [], 0, [], []
+    assert process.stdin is not None and process.stdout is not None
+    try:
+        for relative, oid in entries:
+            path = ROOT / relative
+            current = path
+            while current != ROOT:
+                if current.is_symlink():
+                    fail("Historical source contains a symlink", path)
+                current = current.parent
+            if not path.is_file():
+                fail("Historical evidence is missing", path)
+            process.stdin.write(oid + b"\n"); process.stdin.flush()
+            header = process.stdout.readline().split()
+            if len(header) != 3 or header[0] != oid or header[1] != b"blob":
+                fail("Frozen historical Git blob unavailable")
+            original = process.stdout.read(int(header[2]))
+            if process.stdout.read(1) != b"\n":
+                fail("Invalid frozen Git blob boundary")
+            data = path.read_bytes()
+            if data != original:
+                fail("Preexisting benchmark source/report/evidence/archive changed", path)
+            row = {"path": relative, "bytes": len(data), "sha256": sha(data)}
+            verified.append(row); total += len(data)
+            if path.suffix == ".zip":
+                archives.append(row)
+    finally:
+        process.stdin.close(); process.stdout.close()
+        process.wait()
+    if len(archives) < 4:
+        fail("Expected at least four historical report ZIPs")
+    return {"base_commit": FROZEN_COMMIT, "scope": "Every tracked benchmarks file at frozen HEAD; whole original bytes compared to Git blobs, without exceptions",
+            "unchanged_files": len(verified), "unchanged_bytes": total, "authorized_new_iteration_document_transitions": transitions,
+            "sha256_of_sorted_file_records": sha(canonical(verified)), "whole_original_zip_files": archives}
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--expected-head", required=True)
+    parser.add_argument("--expected-app", required=True)
+    parser.add_argument("--auditor", type=Path, default=Path(".local/cost-v1/audit_cost_v1.py"))
+    parser.add_argument("--extras-json", type=Path, required=True,
+                        help="Explicit reviewed source/destination list and exact XML approvals; no recursive copies")
+    parser.add_argument("--audit-prefix", type=Path, default=Path(".local/cost-v1/review/formal-independent-audit-v1"))
+    parser.add_argument("--price-audit", type=Path, required=True,
+                        help="Final independent numeric comparison JSON bound to final assessment bytes")
+    parser.add_argument("--publish", action="store_true")
+    args = parser.parse_args()
+    global FROZEN_COMMIT, FROZEN_APP, XML_FROZEN_COMMIT, XML_APPROVALS
+    if not re.fullmatch(r"[0-9a-f]{40}", args.expected_head) or not re.fullmatch(r"[0-9a-f]{64}", args.expected_app):
+        fail("Expected a complete Git SHA and application SHA-256")
+    FROZEN_COMMIT, FROZEN_APP = args.expected_head, args.expected_app
+    XML_FROZEN_COMMIT = FROZEN_COMMIT
+    extras_path = args.extras_json.absolute()
+    if not extras_path.is_relative_to(ROOT / ".local/cost-v1"):
+        fail("Explicit extras configuration must be inside ignored cost evidence root")
+    extras = read_json(extras_path)
+    XML_APPROVALS = extras.get("xml_approvals", {})
+    if any(not re.fullmatch(r"[0-9a-f]{64}", value) or not path.startswith(".local/cost-v1/") or not path.endswith(".xml")
+           for path, value in XML_APPROVALS.items()):
+        fail("Unsafe exact XML scan approval")
+    output = args.output.absolute()
+    evidence_root = ROOT / "benchmarks/evidence"
+    if output != DEFAULT_OUTPUT or output.resolve() != output:
+        fail("Output must be the designated fresh nonsymlink cost evidence target")
+    if output.exists() or output.is_symlink():
+        fail("Output already exists; no overwrite is supported")
+    source_frozen = verify_frozen_source()
+    audit_prefix = args.audit_prefix if args.audit_prefix.is_absolute() else ROOT / args.audit_prefix
+    if not audit_prefix.is_relative_to(ROOT / ".local/cost-v1/review"):
+        fail("Audit prefix must be below ignored cost review directory")
+    audit = read_json(audit_prefix.with_suffix(".json"))
+    experiment = ROOT / EXPERIMENTS[0][1]
+    if (audit.get("expected_frozen_head") != FROZEN_COMMIT or audit.get("expected_app_sha256") != FROZEN_APP
+            or audit.get("source_report_sha256") != sha(read_text_bytes(experiment / "report.json"))
+            or audit.get("auditor_sha256") != sha(read_text_bytes(args.auditor.absolute()))
+            or audit.get("planned_originals") != 20 or audit.get("verified_pairs") != 10):
+        fail("Independent audit is not bound to the current frozen report/auditor")
+    if args.publish and (audit.get("pass") is not True or audit.get("errors")):
+        fail("Independent audit has not passed; publication prohibited")
+    price_path = args.price_audit.absolute()
+    if not price_path.is_relative_to(ROOT / ".local/cost-v1/review"):
+        fail("Price audit must be inside ignored cost review directory")
+    price_audit = read_json(price_path)
+    assessment_path = ROOT / "benchmarks/cost-assessment.json"
+    assessment_bytes = read_text_bytes(assessment_path)
+    verified = price_audit.get("assessment_verification", {})
+    if (price_audit.get("pass") is not True or price_audit.get("errors")
+            or verified.get("pass") is not True or verified.get("errors")
+            or verified.get("checked_assertions", 0) <= 0
+            or verified.get("assessment_sha256") != sha(assessment_bytes)
+            or price_audit.get("source_report_sha256") != sha(read_text_bytes(experiment / "report.json"))
+            or price_audit.get("pricing_sha256") != sha(read_text_bytes(ROOT / "benchmarks/cost-pricing.json"))
+            or price_audit.get("run_audit_sha256") != sha(read_text_bytes(audit_prefix.with_suffix(".json")))
+            or price_audit.get("auditor_sha256") != sha(read_text_bytes(ROOT / ".local/cost-v1/audit_price_estimate_v2.py"))):
+        fail("Independent cost comparison is not bound to the final report, pricing, assessment and auditor")
+    if read_json(assessment_path).get("actual_billed_cost_usd") is not None:
+        fail("Unavailable actual charges were replaced")
+    price_proof = {"source": str(price_path.relative_to(ROOT)), "sha256": sha(read_text_bytes(price_path)),
+                   "pass": True, "checked_assertions": verified["checked_assertions"],
+                   "assessment_sha256": sha(assessment_bytes),
+                   "source_report_sha256": price_audit["source_report_sha256"],
+                   "pricing_sha256": price_audit["pricing_sha256"],
+                   "price_auditor_sha256": price_audit["auditor_sha256"]}
+    collection = Collection()
+    for specification in EXPERIMENTS:
+        collection.experiment(*specification)
+    for source, destination in EXTRA_FILES:
+        collection.add(ROOT / source, Path(destination), required=True)
+    for entry in extras["files"]:
+        source, destination = entry["source"], entry["destination"]
+        if not isinstance(source, str) or not isinstance(destination, str):
+            fail("Invalid explicit extra artifact path")
+        collection.add(ROOT / source, Path(destination), required=entry.get("required", True))
+    collection.add(extras_path, Path("reproduction/explicit-artifacts.json"), required=True)
+    independent_files = []
+    for suffix in (".json", ".md", ".log"):
+        source = audit_prefix.with_suffix(suffix)
+        destination = Path("audit/" + audit_prefix.name + suffix)
+        collection.add(source, destination, required=True)
+        independent_files.append((str(source.relative_to(ROOT)), str(destination)))
+    collection.add(args.auditor.absolute(), Path("reproduction") / (args.auditor.name + ".txt"), required=True)
+    if not any(str(artifact.source) == str(price_path) for artifact in collection.files.values()):
+        fail("Final independent price comparison is absent from explicit publication artifacts")
+    collection.corpus_validation()
+    historical = verify_historical_evidence()
+    files = [collection.files[key] for key in sorted(collection.files)]
+    manifest = {
+        "schema_version": "cost-ab-1", "scope": "Fresh ten-task standard Codex / compact-prefix Memglide cost study; all twenty original outcomes retained",
+        "experiments": collection.experiments, "source_freeze": source_frozen,
+        "historical_preservation": historical, "price_audit": price_proof,
+        "independent_audit": {"source": str(audit_prefix.relative_to(ROOT)), "pass": audit.get("pass"), "checked_assertions": audit.get("checked_assertions")},
+        "whitelist": {"top": TOP_FILES, "preflight": INVOCATION_FILES, "runs": RUN_FILES,
+                      "extras": EXTRA_FILES, "independent_audits": independent_files,
+                      "corpus_validation_root": ".local/cost-v1/corpus-validation-workspaces",
+                      "corpus_grading_directories": CORPUS_GRADE_DIRS,
+                      "corpus_grading_files": CORPUS_GRADE_FILES,
+                      "explicit_extra_artifacts": extras,
+                      "attempt_log": "Only contiguous six-digit .json records with verified hashes"},
+        "never_selected": sorted(FORBIDDEN_PARTS) + sorted(FORBIDDEN_SUFFIXES) + ["raw browser configuration", "untracked file contents"],
+        "missing_optional_files": collection.missing,
+        "synthetic_fixture_scan_exceptions": list(XML_SCAN_EXCEPTIONS.values()),
+        "limitations": [
+            "Manifest excludes itself and the post-copy publication audit to avoid circular checksums.",
+            "Original local artifact pointers remain unchanged; source/destination entries locate public copies.",
+            "A is standard Codex and B production compact-prefix Memglide. Earlier cohorts are separate historical evidence.",
+            "All originals remain, including failures if present; supplemental attempts never replace original assignments.",
+            "Common caller inputs, preparation reports and private stdin hash/byte attestations are preserved; private descriptor bodies and native state are excluded.",
+            "Grade artifacts are retained outside fixtures; fixture repositories/worktrees and untracked file contents are excluded.",
+            "Research JSON fetch logs retain success/failure/source hashes; arbitrary raw external source bodies are excluded.",
+            "Only explicitly approved exact frozen Python XML byte streams may permit seven Git-literal-verified synthetic patterns each inside designated testcase-name attributes. Every other original byte is scanned; original XML bytes are copied unchanged.",
+            "Credential-pattern scans and explicit path selection cannot establish absence of every possible secret.",
+        ],
+        "files": [{"path": str(a.destination), "source": str(a.source.relative_to(ROOT)),
+                   "bytes": a.size, "sha256": a.sha256} for a in files],
+    }
+    if args.publish:
+        # Complete seals, source freeze, scans and original preservation before copying.
+        output.mkdir(parents=True, exist_ok=False)
+        for artifact in files:
+            data = read_text_bytes(artifact.source)
+            if len(data) != artifact.size or sha(data) != artifact.sha256:
+                fail("Evidence changed after validation", artifact.source)
+            destination = output / artifact.destination
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            with destination.open("xb") as stream:
+                stream.write(data)
+        manifest_bytes = json.dumps(manifest, indent=2).encode() + b"\n"
+        scan_text_bytes(output / "manifest.json", manifest_bytes)
+        with (output / "manifest.json").open("xb") as stream:
+            stream.write(manifest_bytes)
+        for artifact in files:
+            data = (output / artifact.destination).read_bytes()
+            if len(data) != artifact.size or sha(data) != artifact.sha256 or data != read_text_bytes(artifact.source):
+                fail("Published source/target bytes differ", artifact.source)
+        if verify_historical_evidence() != historical:
+            fail("Historical evidence changed during publication")
+        if verify_frozen_source() != source_frozen:
+            fail("Source freeze changed during publication")
+        publication_audit = {"pass": True, "selected_files": len(files), "bytes": sum(a.size for a in files),
+                             "manifest_sha256": sha(manifest_bytes), "every_source_and_target_sha256_verified": True,
+                             "all_20_originals_retained": True, "durable_log_and_result_seals_verified": True,
+                             "credential_pattern_scan": "passed", "independent_audit_passed": True, "price_audit": price_proof,
+                             "historical_preservation_rechecked_after_copy": historical,
+                             "source_freeze_rechecked_after_copy": source_frozen,
+                             "synthetic_fixture_scan_exceptions": list(XML_SCAN_EXCEPTIONS.values())}
+        audit_bytes = json.dumps(publication_audit, indent=2).encode() + b"\n"
+        scan_text_bytes(output / "publication-audit.json", audit_bytes)
+        with (output / "publication-audit.json").open("xb") as stream:
+            stream.write(audit_bytes)
+    print(json.dumps({"mode": "published" if args.publish else "check_only",
+                      "output": str(output.relative_to(ROOT)), "files": len(files), "bytes": sum(a.size for a in files),
+                      "independent_audit_pass": audit.get("pass"), "experiments": collection.experiments,
+                      "missing_optional_files": len(collection.missing),
+                      "missing_optional_by_filename": dict(sorted(Counter(Path(item["source"]).name for item in collection.missing).items())),
+                      "credential_pattern_scan": "passed", "source_freeze": source_frozen,
+                      "historical_preservation": historical}, indent=2))
+
+
+if __name__ == "__main__":
+    main()

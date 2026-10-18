@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: small fractions and signs
+ok 1 - small fractions and signs
+  ---
+  duration_ms: 1.137271
+  type: 'test'
+  ...
+# Subtest: safe-integer validation and boundary
+ok 2 - safe-integer validation and boundary
+  ---
+  duration_ms: 2.067243
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 218.308669

@@ -1,0 +1,1 @@
+{"summary":"Fixed lineTotal to multiply and receiptTotal to count every line, including repeats. Preserved validation and added regression coverage for invalid inputs, overflow, boundaries, and immutable inputs.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

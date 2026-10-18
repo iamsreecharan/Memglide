@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-18T16:43:19.414979+00:00",
+  "pass": true,
+  "errors": [],
+  "notes": [],
+  "estimate_kind": "Independent API list-price-equivalent estimate; not actual subscription/account billing",
+  "pricing_sha256": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+  "source_report_sha256": "de4067e198d3ad573ef633b8d2a47c45134092b5284b6ec67dacc7202d2cb8af",
+  "run_audit_sha256": "121f624df0722f738dcf22f6eba7ea5703f90a47667affafe70714718367cf03",
+  "auditor_sha256": "e89a434a3bd61e263c6c7176148e1af95c91fd2c5b7d086f3b3d5b4769a5002d",
+  "pricing": {
+    "schema_version": 1,
+    "model": "gpt-6.1-sol",
+    "service_tier": "standard",
+    "currency": "USD",
+    "per_million_usd": {
+      "uncached_input": 2.0,
+      "cached_input": 0.1,
+      "cache_write_input": 2.5,
+      "output": 10.0
+    },
+    "context_threshold_tokens": 272000,
+    "context_threshold_comparison": ">",
+    "long_context_per_million_usd": {
+      "uncached_input": 4.0,
+      "cached_input": 0.2,
+      "cache_write_input": 5.0,
+      "output": 15.0
+    },
+    "context_threshold_scope": "Per model request, using full input. More than 272000 input tokens reprices the full request. Aggregate turn input is not one model request.",
+    "input_partition": "ordinary_input_tokens = total_input_tokens - cached_input_tokens - cache_write_input_tokens; ordinary, cache-read and cache-write prices are alternatives, not additive.",
+    "output_partition": "Reasoning output is already included in output_tokens and must not be added again.",
+    "estimate_kind": "API list-price-equivalent; not actual ChatGPT/Codex billing",
+    "retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+    "provenance": [
+      {
+        "url": "https://developers.openai.com/api/docs/pricing",
+        "final_url": "https://developers.openai.com/api/docs/pricing",
+        "retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+        "http_status": 200,
+        "body_bytes": 600758,
+        "body_sha256": "59379c0a6cb2bfaa7c696098e4073d7d95fa5da1f08b7b69bf4b2d61cfc6d059",
+        "reading_scope": "Official API pricing, flagship Standard/Batch/Flex/Fast/Ultrafast rows, regional footnote and tool billing notes; selected sections, not every model."
+      },
+      {
+        "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "final_url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "retrieved_at_utc": "2026-10-18T16:24:43.518218+00:00",
+        "http_status": 200,
+        "body_bytes": 454270,
+        "body_sha256": "9c43eeb7cc81f9b2bc1e992f1cdf5ba2a724a02171bf52ef1a6d052fcd30ae31",
+        "reading_scope": "Exact GPT-6.1 Sol model identity, pricing, >272K condition and tier multipliers; model main content reviewed."
+      },
+      {
+        "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+        "final_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+        "retrieved_at_utc": "2026-10-18T16:24:43.514846+00:00",
+        "http_status": 200,
+        "body_bytes": 776032,
+        "body_sha256": "777b3210fbc81cc3bbc604a483f930a55f13fbedba5ae5c8c960ca45e45d5dca",
+        "reading_scope": "Main caching guide, input partition, cache-write rates and usage fields, model comparison and cost calculation; selected sections, not every example."
+      }
+    ],
+    "tier_scenarios_relative_to_standard": {
+      "batch": 0.5,
+      "flex": 0.5,
+      "fast": 2.0,
+      "ultrafast": 6.0
+    },
+    "conditional_uplifts": {
+      "regional_processing_data_residency": 1.1,
+      "fedramp_endpoint": 1.1
+    },
+    "actual_billing_usd": null,
+    "native_usage_caveat": "Codex 0.159.2 JSONL reports cache_write_input_tokens, but its wire parser defaults a missing upstream cache_write_tokens field to zero. A reported zero does not prove upstream explicit zero.",
+    "cache_write_sensitivity": "Report native-reported W point estimate and an all-noncached-input-written sensitivity: set W = total_input_tokens - cached_input_tokens. This is a hypothetical upper scenario under the same tariff, not observed billing.",
+    "unknowns": [
+      "Actual account tariff, discounts and charges",
+      "Server-confirmed service tier and endpoint billing classification",
+      "Whether native-reported cache-write zero was explicit upstream zero or parser default",
+      "Local compute, hosting and any separately charged external-service costs"
+    ]
+  },
+  "arms": {
+    "A": {
+      "attempted": 10,
+      "successful": 10,
+      "estimates": {
+        "native_reported_write_API_price_equivalent_usd": {
+          "n": 10,
+          "missing": 0,
+          "mean": "0.0392268",
+          "median": "0.0397846",
+          "p95": "0.058378",
+          "min": "0.0209152",
+          "max": "0.058378",
+          "known_total": "0.3922680",
+          "total": "0.3922680",
+          "per_successful_task_usd": "0.0392268"
+        },
+        "hypothetical_unknown_write_lower_usd": {
+          "n": 10,
+          "missing": 0,
+          "mean": "0.0392268",
+          "median": "0.0397846",
+          "p95": "0.058378",
+          "min": "0.0209152",
+          "max": "0.058378",
+          "known_total": "0.3922680",
+          "total": "0.3922680",
+          "per_successful_task_usd": "0.0392268"
+        },
+        "hypothetical_all_noncached_written_upper_usd": {
+          "n": 10,
+          "missing": 0,
+          "mean": "0.04618055",
+          "median": "0.0465034",
+          "p95": "0.070578",
+          "min": "0.0231542",
+          "max": "0.070578",
+          "known_total": "0.4618055",
+          "total": "0.4618055",
+          "per_successful_task_usd": "0.04618055"
+        }
+      },
+      "actual_billing_usd": null,
+      "actual_cost_per_successful_task_usd": null
+    },
+    "B": {
+      "attempted": 10,
+      "successful": 10,
+      "estimates": {
+        "native_reported_write_API_price_equivalent_usd": {
+          "n": 10,
+          "missing": 0,
+          "mean": "0.03833368",
+          "median": "0.0336306",
+          "p95": "0.064472",
+          "min": "0.0169632",
+          "max": "0.064472",
+          "known_total": "0.3833368",
+          "total": "0.3833368",
+          "per_successful_task_usd": "0.03833368"
+        },
+        "hypothetical_unknown_write_lower_usd": {
+          "n": 10,
+          "missing": 0,
+          "mean": "0.03833368",
+          "median": "0.0336306",
+          "p95": "0.064472",
+          "min": "0.0169632",
+          "max": "0.064472",
+          "known_total": "0.3833368",
+          "total": "0.3833368",
+          "per_successful_task_usd": "0.03833368"
+        },
+        "hypothetical_all_noncached_written_upper_usd": {
+          "n": 10,
+          "missing": 0,
+          "mean": "0.04529413",
+          "median": "0.04007485",
+          "p95": "0.077559",
+          "min": "0.0189672",
+          "max": "0.077559",
+          "known_total": "0.4529413",
+          "total": "0.4529413",
+          "per_successful_task_usd": "0.04529413"
+        }
+      },
+      "actual_billing_usd": null,
+      "actual_cost_per_successful_task_usd": null
+    }
+  },
+  "runs": [
+    {
+      "run_id": "cost-ts-cost-ledger-memo-empty-only-r1-A",
+      "task_id": "ts-cost-ledger-memo-empty-only",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "a5c5e2c15cd513e89c69ef685bc6948ef05215382e65ceda1b130d780085d215",
+      "native_reported_usage": {
+        "input_tokens": 48050,
+        "cached_input_tokens": 34816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 570
+      },
+      "native_reported_reasoning_output_tokens": 9,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0356496",
+      "hypothetical_unknown_write_lower_usd": "0.0356496",
+      "hypothetical_all_noncached_written_upper_usd": "0.0422666",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-ledger-memo-empty-only-r1-B",
+      "task_id": "ts-cost-ledger-memo-empty-only",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "3367f86440fbcb569b20665dbab0bc955ef61da30ebe2647c09b0da2c7e2012e",
+      "native_reported_usage": {
+        "input_tokens": 35011,
+        "cached_input_tokens": 22784,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 290
+      },
+      "native_reported_reasoning_output_tokens": 25,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0296324",
+      "hypothetical_unknown_write_lower_usd": "0.0296324",
+      "hypothetical_all_noncached_written_upper_usd": "0.0357459",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-inventory-pack-ceiling-r1-B",
+      "task_id": "py-cost-inventory-pack-ceiling",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "1727de1cbf524502579fd44e6274fc2b30dbb86f2cc870a38e230ee71189718f",
+      "native_reported_usage": {
+        "input_tokens": 35880,
+        "cached_input_tokens": 31872,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 576
+      },
+      "native_reported_reasoning_output_tokens": 13,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0169632",
+      "hypothetical_unknown_write_lower_usd": "0.0169632",
+      "hypothetical_all_noncached_written_upper_usd": "0.0189672",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-inventory-pack-ceiling-r1-A",
+      "task_id": "py-cost-inventory-pack-ceiling",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "231a0dfb4a8ac314467e119d184a95be8d6bff9b0bc4154c775188a6b5c1f285",
+      "native_reported_usage": {
+        "input_tokens": 35947,
+        "cached_input_tokens": 23552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 703
+      },
+      "native_reported_reasoning_output_tokens": 14,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0341752",
+      "hypothetical_unknown_write_lower_usd": "0.0341752",
+      "hypothetical_all_noncached_written_upper_usd": "0.0403727",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-geometry-edge-touch-r1-A",
+      "task_id": "ts-cost-geometry-edge-touch",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "a9c446727053b2c878b9bfe65145d187ee62eef1bba149a8e335d8498737139c",
+      "native_reported_usage": {
+        "input_tokens": 36368,
+        "cached_input_tokens": 22784,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 906
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0385064",
+      "hypothetical_unknown_write_lower_usd": "0.0385064",
+      "hypothetical_all_noncached_written_upper_usd": "0.0452984",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-geometry-edge-touch-r1-B",
+      "task_id": "ts-cost-geometry-edge-touch",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "6051a694407cc0dfe03073255135d878fc32a5791e048a352b60aa38207ed5e5",
+      "native_reported_usage": {
+        "input_tokens": 61248,
+        "cached_input_tokens": 56320,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 964
+      },
+      "native_reported_reasoning_output_tokens": 13,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.025128",
+      "hypothetical_unknown_write_lower_usd": "0.025128",
+      "hypothetical_all_noncached_written_upper_usd": "0.027592",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-inventory-aggregate-stock-r1-B",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "4e98b138db941362f980afb1549673cb38501fe21fdd9576351b3ecc02d5dc25",
+      "native_reported_usage": {
+        "input_tokens": 47822,
+        "cached_input_tokens": 43520,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 564
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.018596",
+      "hypothetical_unknown_write_lower_usd": "0.018596",
+      "hypothetical_all_noncached_written_upper_usd": "0.020747",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-inventory-aggregate-stock-r1-A",
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "8beb8f9654dde14a8668a26bd7940d376317efe96129d88eaf0800be4f2b132d",
+      "native_reported_usage": {
+        "input_tokens": 47870,
+        "cached_input_tokens": 43392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 762
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0209152",
+      "hypothetical_unknown_write_lower_usd": "0.0209152",
+      "hypothetical_all_noncached_written_upper_usd": "0.0231542",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-reports-weighted-mean-r1-A",
+      "task_id": "py-cost-reports-weighted-mean",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "c0f333f1db94b4ee8093653adac41cf29cf93fdb861f512528906cb78b98666a",
+      "native_reported_usage": {
+        "input_tokens": 61930,
+        "cached_input_tokens": 47616,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 947
+      },
+      "native_reported_reasoning_output_tokens": 9,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0428596",
+      "hypothetical_unknown_write_lower_usd": "0.0428596",
+      "hypothetical_all_noncached_written_upper_usd": "0.0500166",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-reports-weighted-mean-r1-B",
+      "task_id": "py-cost-reports-weighted-mean",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "052dfd82fb554d585a5f83e5c149434e98fcd9eb29bc0cc87b9e355893574832",
+      "native_reported_usage": {
+        "input_tokens": 48682,
+        "cached_input_tokens": 32384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 809
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0439244",
+      "hypothetical_unknown_write_lower_usd": "0.0439244",
+      "hypothetical_all_noncached_written_upper_usd": "0.0520734",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-geometry-normalized-bounds-r1-B",
+      "task_id": "ts-cost-geometry-normalized-bounds",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "392aa76972f33ffe90fc01402400f2d0f81908df6c1598ecddc2fc3fe63989ad",
+      "native_reported_usage": {
+        "input_tokens": 49214,
+        "cached_input_tokens": 23040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 982
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.064472",
+      "hypothetical_unknown_write_lower_usd": "0.064472",
+      "hypothetical_all_noncached_written_upper_usd": "0.077559",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-geometry-normalized-bounds-r1-A",
+      "task_id": "ts-cost-geometry-normalized-bounds",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "0fc0ed21763bbc5113936466697df55fe518df9845187da887ef4b4b0117bdbe",
+      "native_reported_usage": {
+        "input_tokens": 48570,
+        "cached_input_tokens": 34688,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 983
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0410628",
+      "hypothetical_unknown_write_lower_usd": "0.0410628",
+      "hypothetical_all_noncached_written_upper_usd": "0.0480038",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-ledger-receipt-quantity-r1-A",
+      "task_id": "ts-cost-ledger-receipt-quantity",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "579b8c1597c2d1b8e3976a395414d92ba7a29b694a5a3724553fbb26b2c144a9",
+      "native_reported_usage": {
+        "input_tokens": 61476,
+        "cached_input_tokens": 48384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1014
+      },
+      "native_reported_reasoning_output_tokens": 8,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0411624",
+      "hypothetical_unknown_write_lower_usd": "0.0411624",
+      "hypothetical_all_noncached_written_upper_usd": "0.0477084",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-ledger-receipt-quantity-r1-B",
+      "task_id": "ts-cost-ledger-receipt-quantity",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "7123703c238f5aa286c629d80bed6682bf66c7dd7cf816dfd308f4c2beb83f00",
+      "native_reported_usage": {
+        "input_tokens": 49033,
+        "cached_input_tokens": 23168,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 897
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0630168",
+      "hypothetical_unknown_write_lower_usd": "0.0630168",
+      "hypothetical_all_noncached_written_upper_usd": "0.0759493",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-inventory-reorder-inclusive-r1-B",
+      "task_id": "py-cost-inventory-reorder-inclusive",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "1d16489a6f2b39dc823cd0df5e693ab15d6b022800214220d33f4ab205ccbd90",
+      "native_reported_usage": {
+        "input_tokens": 48485,
+        "cached_input_tokens": 23424,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 744
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0599044",
+      "hypothetical_unknown_write_lower_usd": "0.0599044",
+      "hypothetical_all_noncached_written_upper_usd": "0.0724349",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-inventory-reorder-inclusive-r1-A",
+      "task_id": "py-cost-inventory-reorder-inclusive",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "4e3ab1838a0a1cb9420e5c2b470e406dcfc36b29da93788c0d785d95b8d5b796",
+      "native_reported_usage": {
+        "input_tokens": 48080,
+        "cached_input_tokens": 23680,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 721
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.058378",
+      "hypothetical_unknown_write_lower_usd": "0.058378",
+      "hypothetical_all_noncached_written_upper_usd": "0.070578",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-ledger-signed-cents-r1-A",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "71c8d23d2e5f984f0d2ba75eb6d7bdf2005d5ae73c64c74c3482a4d683206b10",
+      "native_reported_usage": {
+        "input_tokens": 36125,
+        "cached_input_tokens": 20096,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 835
+      },
+      "native_reported_reasoning_output_tokens": 71,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0424176",
+      "hypothetical_unknown_write_lower_usd": "0.0424176",
+      "hypothetical_all_noncached_written_upper_usd": "0.0504321",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-ts-cost-ledger-signed-cents-r1-B",
+      "task_id": "ts-cost-ledger-signed-cents",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "176bc697aaf66dd6b2c922b85f9b4dfca73ff528e24f94a0a24c0d08a0075ccf",
+      "native_reported_usage": {
+        "input_tokens": 47884,
+        "cached_input_tokens": 41088,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 637
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0240708",
+      "hypothetical_unknown_write_lower_usd": "0.0240708",
+      "hypothetical_all_noncached_written_upper_usd": "0.0274688",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-reports-csv-quoted-cell-r1-B",
+      "task_id": "py-cost-reports-csv-quoted-cell",
+      "configuration": "B",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "645d8a4eead531f34b7fc65df45a450a79efca26b5e7744ef0ac25b7c8178a7c",
+      "native_reported_usage": {
+        "input_tokens": 48238,
+        "cached_input_tokens": 34688,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 706
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0376288",
+      "hypothetical_unknown_write_lower_usd": "0.0376288",
+      "hypothetical_all_noncached_written_upper_usd": "0.0444038",
+      "actual_billing_usd": null
+    },
+    {
+      "run_id": "cost-py-cost-reports-csv-quoted-cell-r1-A",
+      "task_id": "py-cost-reports-csv-quoted-cell",
+      "configuration": "A",
+      "status": "completed",
+      "successful_completion": true,
+      "native_events_sha256": "2cd63ce7ad26e3d0c21cdef199aaa5d5fb30bb5b729a98d42c391ac3af7c67e6",
+      "native_reported_usage": {
+        "input_tokens": 48739,
+        "cached_input_tokens": 35072,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 630
+      },
+      "native_reported_reasoning_output_tokens": 0,
+      "short_context_proven_from_aggregate_upper_bound": true,
+      "native_reported_write_API_price_equivalent_usd": "0.0371412",
+      "hypothetical_unknown_write_lower_usd": "0.0371412",
+      "hypothetical_all_noncached_written_upper_usd": "0.0439747",
+      "actual_billing_usd": null
+    }
+  ],
+  "pairs": [
+    {
+      "task_id": "py-cost-inventory-aggregate-stock",
+      "A_usd": "0.0209152",
+      "B_usd": "0.018596",
+      "B_minus_A_usd": "-0.0023192",
+      "both_successful": true
+    },
+    {
+      "task_id": "py-cost-inventory-reorder-inclusive",
+      "A_usd": "0.058378",
+      "B_usd": "0.0599044",
+      "B_minus_A_usd": "0.0015264",
+      "both_successful": true
+    },
+    {
+      "task_id": "py-cost-inventory-pack-ceiling",
+      "A_usd": "0.0341752",
+      "B_usd": "0.0169632",
+      "B_minus_A_usd": "-0.0172120",
+      "both_successful": true
+    },
+    {
+      "task_id": "py-cost-reports-csv-quoted-cell",
+      "A_usd": "0.0371412",
+      "B_usd": "0.0376288",
+      "B_minus_A_usd": "0.0004876",
+      "both_successful": true
+    },
+    {
+      "task_id": "py-cost-reports-weighted-mean",
+      "A_usd": "0.0428596",
+      "B_usd": "0.0439244",
+      "B_minus_A_usd": "0.0010648",
+      "both_successful": true
+    },
+    {
+      "task_id": "ts-cost-ledger-signed-cents",
+      "A_usd": "0.0424176",
+      "B_usd": "0.0240708",
+      "B_minus_A_usd": "-0.0183468",
+      "both_successful": true
+    },
+    {
+      "task_id": "ts-cost-ledger-receipt-quantity",
+      "A_usd": "0.0411624",
+      "B_usd": "0.0630168",
+      "B_minus_A_usd": "0.0218544",
+      "both_successful": true
+    },
+    {
+      "task_id": "ts-cost-ledger-memo-empty-only",
+      "A_usd": "0.0356496",
+      "B_usd": "0.0296324",
+      "B_minus_A_usd": "-0.0060172",
+      "both_successful": true
+    },
+    {
+      "task_id": "ts-cost-geometry-edge-touch",
+      "A_usd": "0.0385064",
+      "B_usd": "0.025128",
+      "B_minus_A_usd": "-0.0133784",
+      "both_successful": true
+    },
+    {
+      "task_id": "ts-cost-geometry-normalized-bounds",
+      "A_usd": "0.0410628",
+      "B_usd": "0.064472",
+      "B_minus_A_usd": "0.0234092",
+      "both_successful": true
+    }
+  ],
+  "native_reported_write_cost_per_success_savings_percent": "2.276810751832930547482843360",
+  "independently_unknown_write_savings_interval_percent": {
+    "lower": "-15.46730806489440892451079360",
+    "upper": "16.99172054035735823847918658"
+  },
+  "limitations": [
+    "All attempted model usage is charged in the numerator, including failed tasks; only validated successful completions enter the denominator.",
+    "Reported zero cache-write tokens may be parser defaults. Sensitivities are hypothetical independent billing scenarios, not measured charges.",
+    "No reasoning-output surcharge is added because output tokens already include it.",
+    "No billing, local-compute/hosting or external-tool invoices are available. Actual total cost and actual savings remain unknown.",
+    "Task aggregate above the long-context boundary cannot classify per-request billing and is left unknown."
+  ]
+}

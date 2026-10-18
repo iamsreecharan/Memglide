@@ -1,0 +1,1 @@
+{"summary":"Fixed overlaps to require strictly positive intersection width and height. Added regression coverage for touching boundaries, degenerate rectangles, negative/fractional coordinates, and input preservation.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

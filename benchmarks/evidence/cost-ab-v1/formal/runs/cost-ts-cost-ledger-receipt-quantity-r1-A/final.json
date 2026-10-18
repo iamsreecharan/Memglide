@@ -1,0 +1,1 @@
+{"summary":"Fixed lineTotal to multiply unit price by quantity and receiptTotal to count repeated lines. Preserved validation and overflow checks. Added regression coverage for invalid values, overflow, repeated lines, and immutable inputs. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

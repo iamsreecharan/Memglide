@@ -1,0 +1,13 @@
+test_rejects_invalid_arguments (test_pack_ceiling.PackCeilingTests.test_rejects_invalid_arguments) ... ok
+test_rounds_up_using_integer_arithmetic (test_pack_ceiling.PackCeilingTests.test_rounds_up_using_integer_arithmetic) ... ok
+test_aggregate_stock (test_smoke.SmokeTests.test_aggregate_stock) ... ok
+test_aggregate_stock_ordinary_0 (test_smoke.SmokeTests.test_aggregate_stock_ordinary_0) ... ok
+test_pack_ceiling (test_smoke.SmokeTests.test_pack_ceiling) ... ok
+test_pack_ceiling_ordinary_0 (test_smoke.SmokeTests.test_pack_ceiling_ordinary_0) ... ok
+test_reorder_inclusive (test_smoke.SmokeTests.test_reorder_inclusive) ... ok
+test_reorder_inclusive_ordinary_0 (test_smoke.SmokeTests.test_reorder_inclusive_ordinary_0) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK

@@ -1,0 +1,28 @@
+................................F..                                      [100%]
+=================================== FAILURES ===================================
+________ test_python_added_passing_regression_can_increase_smoke_count _________
+
+tmp_path = PosixPath('/workspace/Memglide/.pytest_tmp/test_python_added_passing_regr0')
+
+        assert result["test_execution_integrity"][1]["count_requirement_met"]
+        assert not result["test_execution_integrity"][1]["clean_summary_verified"]
+        assert not result["success"]
+    
+    
+    def test_python_added_passing_regression_can_increase_smoke_count(tmp_path):
+        task = next(task for task in corpus.task_definitions() if task["language"] == "python")
+        root = tmp_path / "repo"
+        corpus.build_repository(task["repository"], root)
+        corpus._apply_reference_fix(task["id"], root)
+        (root / "tests/test_extra.py").write_text(
+>           "import unittest\nfrom inventory.aggregate_stock import aggregate_stock\n\n"
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+            "class ExtraTests(unittest.TestCase):\n"
+            "    def test_extra(self):\n        self.assertEqual(aggregate_stock([('A',2),('A',3)]), {'A':5})\n"
+        )
+E       assert False
+
+tests/test_benchmark_corpus_cost.py:188: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_benchmark_corpus_cost.py::test_python_added_passing_regression_can_increase_smoke_count
+1 failed, 34 passed in 63.10s (0:01:03)

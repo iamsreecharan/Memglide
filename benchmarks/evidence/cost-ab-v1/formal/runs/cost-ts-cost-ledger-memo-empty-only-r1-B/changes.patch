@@ -1,0 +1,11 @@
+diff --git a/src/memo_empty_only.ts b/src/memo_empty_only.ts
+index 39cbd9d..341b7b1 100644
+--- a/src/memo_empty_only.ts
++++ b/src/memo_empty_only.ts
+@@ -1,5 +1,5 @@
+ export function memoLabel(memo: string, fallback: string): string {
+   // Whitespace may be meaningful in an already formatted ledger memo.
+   // The caller owns fallback wording and any optional presentation trim.
+-  return memo.trim() === "" ? fallback : memo.trim();
++  return memo === "" ? fallback : memo;
+ }

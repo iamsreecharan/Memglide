@@ -1,0 +1,31 @@
+test_plain_empty_and_unicode (__main__.BehaviorTests.test_plain_empty_and_unicode) ... FAIL
+test_quotes_commas_and_linebreaks (__main__.BehaviorTests.test_quotes_commas_and_linebreaks) ... FAIL
+
+======================================================================
+FAIL: test_plain_empty_and_unicode (__main__.BehaviorTests.test_plain_empty_and_unicode)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r3/baseline/held_out.py", line 12, in test_plain_empty_and_unicode
+    self.assertEqual(core.csv_cell('É,"x"'),'"É,""x"""')
+AssertionError: '"É,"x""' != '"É,""x"""'
+- "É,"x""
++ "É,""x"""
+?     +   +
+
+
+======================================================================
+FAIL: test_quotes_commas_and_linebreaks (__main__.BehaviorTests.test_quotes_commas_and_linebreaks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r3/baseline/held_out.py", line 8, in test_quotes_commas_and_linebreaks
+    self.assertEqual(core.csv_cell(value),expected)
+AssertionError: '"a"b"' != '"a""b"'
+- "a"b"
++ "a""b"
+?   +
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

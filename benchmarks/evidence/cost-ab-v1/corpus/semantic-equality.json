@@ -1,0 +1,6 @@
+{
+  "corpus_semantics_unchanged_after_initial_validation": true,
+  "initial_sha256": "756f0a2e5bda1d3f72e7a1d465271402b6499b7ecd4ff46375a30f14ea92a2fe",
+  "final_sha256": "b46ab94475521830af9ceb28d8f84842d206f534cfdee476aa274b3bf4ffa9f9",
+  "exception": "Module docstring Four-to-Two fix and formatting only; module docstring excluded from AST comparison."
+}

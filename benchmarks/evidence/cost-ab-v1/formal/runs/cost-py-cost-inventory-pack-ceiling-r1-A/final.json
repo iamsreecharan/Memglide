@@ -1,0 +1,1 @@
+{"summary":"Fixed packs_required to round upward using integer arithmetic, preserving validation and zero-unit behavior. Added regression tests for boundaries, large integers, and invalid arguments. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

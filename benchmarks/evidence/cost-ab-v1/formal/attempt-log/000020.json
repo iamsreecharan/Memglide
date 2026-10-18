@@ -1,0 +1,11 @@
+{
+  "sequence": 20,
+  "previous_sha256": "d30d6b467d802e6fea14f976fe8c4a0b8f534760d2c6b2e74de81a969ebfe807",
+  "recorded_at": "2026-10-18T16:36:42.939207+00:00",
+  "event": "attempt.started",
+  "attempt_id": "cost-py-cost-reports-weighted-mean-r1-B",
+  "original_run_id": "cost-py-cost-reports-weighted-mean-r1-B",
+  "supplemental": false,
+  "start_sha256": "efaef41c17fd9a1c74d4a12e6119849917d70bf13456c8227a8acec20c8af99a",
+  "sha256": "89ffa039b77c56cbbac35184d6a83a5ebea791f87b132debbc4fd74089cb39f4"
+}

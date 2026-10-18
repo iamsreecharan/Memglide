@@ -1,0 +1,9 @@
+{
+  "sequence": 37,
+  "previous_sha256": "622591a1fe2ed51869957c9d08ec7ab6c3c2ce6c49885edf9a70eb9c2979929f",
+  "recorded_at": "2026-10-18T16:40:48.146640+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "cost-ts-cost-ledger-signed-cents-r1-B",
+  "result_sha256": "041e2363a18f947230faa72438a1569ddc135c9b29213c73251d1f8ba1c3d51f",
+  "sha256": "d579ebc9127500d77828a3cb37ac23195179e83cce28d191c88033a29edfd6cf"
+}

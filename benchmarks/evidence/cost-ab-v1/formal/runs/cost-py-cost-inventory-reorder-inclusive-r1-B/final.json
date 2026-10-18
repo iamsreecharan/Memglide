@@ -1,0 +1,1 @@
+{"summary":"Fixed inclusive reorder comparison and preserved SKU input order, case, and duplicates without modifying inputs. Added regression tests; existing tests preserved. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

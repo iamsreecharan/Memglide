@@ -1,0 +1,66 @@
+{
+  "scope": "New benchmark and cost-accounting tooling; application runtime source unchanged. Native model experiment is separate.",
+  "runtime_frozen_head": "c7be678ab52aa5dab1f2a03317e53f2f6b0e5168",
+  "application_source_sha256": "e777cbd53a1ca6228e5c3403ebb5cc3547834a00edac1d1f20210342740aeee4",
+  "new_distinct_tests": 113,
+  "xml_receipts": [
+    {
+      "path": ".local/cost-v1/corpus-validation-final.xml",
+      "tests": 35,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "sha256": "f7603127d56d4e20dcf87d1b61d27b62476414071c444f425feef91ec374c486"
+    },
+    {
+      "path": ".local/cost-v1/runner-pytest-final.xml",
+      "tests": 27,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "sha256": "ed6554eb00001fe062aca50fe7f543ea93a99c1de205a63e5ace36ef49b7df82"
+    },
+    {
+      "path": ".local/cost-v1/accounting-validation.xml",
+      "tests": 51,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "sha256": "77af9a23916178811368f7217d43d0c8ed8b08227d1cb66673345388cff72d9f"
+    }
+  ],
+  "model_requests_in_these_tests": 0,
+  "source_hashes": {
+    "benchmarks/run_cost.py": "b42d3532ae504d930b221d9b1767c9cf9e0560c83eb62325a458624b48afdd9b",
+    "benchmarks/corpus_cost.py": "b46ab94475521830af9ceb28d8f84842d206f534cfdee476aa274b3bf4ffa9f9",
+    "benchmarks/tasks_cost.json": "98eb067f45dd0a7e97fc1b22b3be7c96899753c93e0b7dd953c72dc492fbf570",
+    "benchmarks/cost-pricing.json": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+    "benchmarks/estimate_cost.py": "d94225afe8a5931c9ee59ea342004fb6eb561cb0276991971681c5e446157352",
+    "tests/test_benchmark_cost_runner.py": "db8e51e5b11674d15ac76898ef9f5a5f233cb9d9c17f29fd3c6433dc2d28ef06",
+    "tests/test_benchmark_corpus_cost.py": "d14a88ee1cff6ce80d3152dda834584348e3b1637e8632972a1201b9d609782f",
+    "tests/test_benchmark_cost_estimate.py": "908ef8a4f8344304b3c22993a1fa62846578bf8c1c6d0667628233cfdaac5c63"
+  },
+  "initial_failures_preserved": [
+    {
+      "artifact": ".local/cost-v1/corpus-validation-initial.xml",
+      "passed": 34,
+      "failed": 1,
+      "cause": "Copied test-helper import; corrected without changing behavioral oracles or reference fixes.",
+      "evidence": ".local/cost-v1/corpus-semantic-equality.json"
+    },
+    {
+      "artifact": ".local/cost-v1/runner-mypy.log",
+      "errors": 33,
+      "cause": "One new plan list annotation fixed before freeze; 32 errors reported in unchanged imported historical benchmark modules. Broad imported-module type checking does not pass.",
+      "focused_final_artifact": ".local/cost-v1/runner-mypy-focused.log"
+    }
+  ],
+  "accounting_validation_receipt": ".local/cost-v1/accounting-validation.receipt.json",
+  "scope_limits": [
+    "The 35-case and 27-case initial/final reruns overlap and are not added.",
+    "Earlier 988 distinct application/tooling tests passed at the same application hash; the combined enlarged suite was not rerun for this tooling-only change.",
+    "Runtime runner/corpus/pricing were frozen before primary requests. The independent accounting module was completed afterward and is never imported by native task execution.",
+    "No actual billing, token savings or cache benefit is inferred from unit tests."
+  ],
+  "post_formal_scoped_static_receipt": ".local/cost-v1/final-static/results.json"
+}

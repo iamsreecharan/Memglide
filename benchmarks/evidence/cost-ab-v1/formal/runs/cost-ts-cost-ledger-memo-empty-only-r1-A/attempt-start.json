@@ -1,0 +1,42 @@
+{
+  "run_id": "cost-ts-cost-ledger-memo-empty-only-r1-A",
+  "task_id": "ts-cost-ledger-memo-empty-only",
+  "language": "typescript",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 1,
+  "repository": "ledger-typescript-cost",
+  "task_kind": "supplied-context",
+  "selection_stratum": "caller_context_supplied",
+  "context_format": null,
+  "setup": {
+    "wall_seconds": 0,
+    "cpu_seconds": 0
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this assignment yet",
+    "context_format": null
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "cost-ts-cost-ledger-memo-empty-only-r1-A",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T16:32:36.533876+00:00",
+  "artifacts": "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-ledger-memo-empty-only-r1-A",
+  "worktree": "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-ledger-memo-empty-only-r1-A",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

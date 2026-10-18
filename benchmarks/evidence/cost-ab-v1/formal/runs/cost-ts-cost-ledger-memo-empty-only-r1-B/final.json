@@ -1,0 +1,1 @@
+{"summary":"Updated memoLabel to use fallback only for exactly \"\" and preserve all nonempty memo strings, including whitespace and '0', without normalizing either argument.","tests_run":["node --test tests/*.test.mjs — passed (1 test)","git diff --check — passed"]}

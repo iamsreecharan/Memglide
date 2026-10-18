@@ -1,0 +1,136 @@
+{
+  "task_id": "ts-cost-ledger-receipt-quantity",
+  "repository": "ledger-typescript-cost",
+  "corpus_version": "cost-1.0.0",
+  "passed": true,
+  "success": true,
+  "exit_code": 0,
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/held_out.test.mjs"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/smoke.test.mjs"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/smoke.stderr.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "exit_code": 0,
+      "counts": {},
+      "stdout_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/typecheck.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_baseline_fails_behavior_r6/reference/typecheck.stderr.log"
+    }
+  ],
+  "test_count": 8,
+  "protected_files_unchanged": true,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "c264363d060a42598c9d1fc26003beaa5dba394821bf1107406da8ffbf01cde7",
+      "actual_sha256": "c264363d060a42598c9d1fc26003beaa5dba394821bf1107406da8ffbf01cde7"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282",
+      "actual_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "package.json",
+      "unchanged": true,
+      "expected_sha256": "cb6cd11f2fe3db7f0738667695a80d34ef6344bd0baaec8d356479f8672ddf97",
+      "actual_sha256": "cb6cd11f2fe3db7f0738667695a80d34ef6344bd0baaec8d356479f8672ddf97"
+    },
+    {
+      "file": "tsconfig.json",
+      "unchanged": true,
+      "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+      "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+    },
+    {
+      "file": "tests/smoke.test.mjs",
+      "unchanged": true,
+      "expected_sha256": "f62002d451f5eaf20d618d2f5a0ec7b066508639bac6b9905ea1e17fc179d1a8",
+      "actual_sha256": "f62002d451f5eaf20d618d2f5a0ec7b066508639bac6b9905ea1e17fc179d1a8"
+    }
+  ],
+  "test_execution_complete": true,
+  "test_execution_integrity": [
+    {
+      "stage": "behavior",
+      "valid": true,
+      "required_test_count": {
+        "exact": 2
+      },
+      "reported_counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    },
+    {
+      "stage": "smoke",
+      "valid": true,
+      "required_test_count": {
+        "minimum": 5
+      },
+      "reported_counts": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

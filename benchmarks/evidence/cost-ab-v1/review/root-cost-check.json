@@ -1,0 +1,51 @@
+{
+  "scope": "Independent root Decimal arithmetic on completed native turn usage; standard short-context API-price equivalents, not billing. Every original succeeded; no other attempts.",
+  "groups": {
+    "A:all": {
+      "tasks": 10,
+      "total_price_equivalent_usd": "0.3922680",
+      "price_equivalent_per_success_usd": "0.0392268",
+      "possible_write_upper_per_success_usd": "0.04618055",
+      "native_reported_cache_write_tokens": 0
+    },
+    "A:caller_context_supplied": {
+      "tasks": 2,
+      "total_price_equivalent_usd": "0.0698248",
+      "price_equivalent_per_success_usd": "0.0349124",
+      "possible_write_upper_per_success_usd": "0.04131965",
+      "native_reported_cache_write_tokens": 0
+    },
+    "B:all": {
+      "tasks": 10,
+      "total_price_equivalent_usd": "0.3833368",
+      "price_equivalent_per_success_usd": "0.03833368",
+      "possible_write_upper_per_success_usd": "0.04529413",
+      "native_reported_cache_write_tokens": 0
+    },
+    "B:caller_context_supplied": {
+      "tasks": 2,
+      "total_price_equivalent_usd": "0.0465956",
+      "price_equivalent_per_success_usd": "0.0232978",
+      "possible_write_upper_per_success_usd": "0.02735655",
+      "native_reported_cache_write_tokens": 0
+    },
+    "A:explicit_focus": {
+      "tasks": 8,
+      "total_price_equivalent_usd": "0.3224432",
+      "price_equivalent_per_success_usd": "0.0403054",
+      "possible_write_upper_per_success_usd": "0.047395775",
+      "native_reported_cache_write_tokens": 0
+    },
+    "B:explicit_focus": {
+      "tasks": 8,
+      "total_price_equivalent_usd": "0.3367412",
+      "price_equivalent_per_success_usd": "0.04209265",
+      "possible_write_upper_per_success_usd": "0.049778525",
+      "native_reported_cache_write_tokens": 0
+    }
+  },
+  "overall_saving_percent": "2.276810751832930547482843362",
+  "focused_increase_percent": "4.434269353486133371707016926",
+  "actual_billing_usd": null,
+  "primary_report_sha256": "de4067e198d3ad573ef633b8d2a47c45134092b5284b6ec67dacc7202d2cb8af"
+}

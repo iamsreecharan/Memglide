@@ -1,0 +1,43 @@
+test_inclusive_boundary_and_public_order (__main__.BehaviorTests.test_inclusive_boundary_and_public_order) ... FAIL
+test_negatives_empty_and_unchanged (__main__.BehaviorTests.test_negatives_empty_and_unchanged) ... FAIL
+
+======================================================================
+FAIL: test_inclusive_boundary_and_public_order (__main__.BehaviorTests.test_inclusive_boundary_and_public_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f0/grade/held_out.py", line 9, in test_inclusive_boundary_and_public_order
+    self.assertEqual(api.reorder_skus([("z",1,2),("A",2,2),("z",0,4)]),["z","A","z"])
+AssertionError: Lists differ: ['A', 'z'] != ['z', 'A', 'z']
+
+First differing element 0:
+'A'
+'z'
+
+Second list contains 1 additional elements.
+First extra element 2:
+'z'
+
+- ['A', 'z']
++ ['z', 'A', 'z']
+?  +++++
+
+
+======================================================================
+FAIL: test_negatives_empty_and_unchanged (__main__.BehaviorTests.test_negatives_empty_and_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cost-v1/corpus-validation-workspaces/test_each_half_of_two_source_f0/grade/held_out.py", line 12, in test_negatives_empty_and_unchanged
+    self.assertEqual(api.reorder_skus(rows),["b","b"])
+AssertionError: Lists differ: ['b'] != ['b', 'b']
+
+Second list contains 1 additional elements.
+First extra element 1:
+'b'
+
+- ['b']
++ ['b', 'b']
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.008s
+
+FAILED (failures=2)

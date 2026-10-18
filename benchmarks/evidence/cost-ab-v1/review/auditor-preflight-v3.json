@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-18T16:40:33.797819+00:00",
+  "pass": true,
+  "auditor_sha256": "7295e2bb0edecf5105365a0dc61bac51436e8af6664916bc5e0fa94be8480e88",
+  "runner_sha256": "b42d3532ae504d930b221d9b1767c9cf9e0560c83eb62325a458624b48afdd9b",
+  "tasks_sha256": "98eb067f45dd0a7e97fc1b22b3be7c96899753c93e0b7dd953c72dc492fbf570",
+  "frozen_head": "c7be678ab52aa5dab1f2a03317e53f2f6b0e5168",
+  "scope": "Static AST-only oracle reconstruction of all ten frozen task specifications with synthetic paths; five Python expected-oracle syntax checks and two-test-count checks; no repository code execution or experiment artifacts opened.",
+  "changes_since_v2": "Add exact external held-out oracle-byte equality against independently reconstructed immutable literal cases. Prior preflight receipts preserved.",
+  "actual_experiment_audited": false
+}

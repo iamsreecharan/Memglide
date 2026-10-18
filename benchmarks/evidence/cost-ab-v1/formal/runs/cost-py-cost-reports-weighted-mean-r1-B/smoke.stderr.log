@@ -1,0 +1,15 @@
+test_csv_quoted_cell (test_smoke.SmokeTests.test_csv_quoted_cell) ... ok
+test_csv_quoted_cell_ordinary_0 (test_smoke.SmokeTests.test_csv_quoted_cell_ordinary_0) ... ok
+test_csv_quoted_cell_ordinary_1 (test_smoke.SmokeTests.test_csv_quoted_cell_ordinary_1) ... ok
+test_weighted_mean (test_smoke.SmokeTests.test_weighted_mean) ... ok
+test_weighted_mean_ordinary_0 (test_smoke.SmokeTests.test_weighted_mean_ordinary_0) ... ok
+test_weighted_mean_ordinary_1 (test_smoke.SmokeTests.test_weighted_mean_ordinary_1) ... ok
+test_invalid_inputs (test_weighted_mean.WeightedMeanTests.test_invalid_inputs) ... ok
+test_report_preserves_fractional_float (test_weighted_mean.WeightedMeanTests.test_report_preserves_fractional_float) ... ok
+test_unequal_and_fractional_weights (test_weighted_mean.WeightedMeanTests.test_unequal_and_fractional_weights) ... ok
+test_zero_weight_and_sequences_are_unchanged (test_weighted_mean.WeightedMeanTests.test_zero_weight_and_sequences_are_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.004s
+
+OK

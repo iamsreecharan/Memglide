@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: edge-touch
+ok 1 - edge-touch
+  ---
+  duration_ms: 3.642299
+  type: 'test'
+  ...
+# Subtest: edge-touch-ordinary-0
+ok 2 - edge-touch-ordinary-0
+  ---
+  duration_ms: 0.18745
+  type: 'test'
+  ...
+# Subtest: edge-touch-ordinary-1
+ok 3 - edge-touch-ordinary-1
+  ---
+  duration_ms: 1.090211
+  type: 'test'
+  ...
+# Subtest: normalized-bounds
+ok 4 - normalized-bounds
+  ---
+  duration_ms: 3.609599
+  type: 'test'
+  ...
+# Subtest: normalized-bounds-ordinary-0
+ok 5 - normalized-bounds-ordinary-0
+  ---
+  duration_ms: 0.209827
+  type: 'test'
+  ...
+# Subtest: normalized-bounds-ordinary-1
+ok 6 - normalized-bounds-ordinary-1
+  ---
+  duration_ms: 0.122084
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 327.910571

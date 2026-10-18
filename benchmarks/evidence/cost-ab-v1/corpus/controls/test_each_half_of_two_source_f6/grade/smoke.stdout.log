@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: signed-cents
+ok 1 - signed-cents
+  ---
+  duration_ms: 6.353519
+  type: 'test'
+  ...
+# Subtest: signed-cents-ordinary-0
+ok 2 - signed-cents-ordinary-0
+  ---
+  duration_ms: 2.074445
+  type: 'test'
+  ...
+# Subtest: receipt-quantity
+ok 3 - receipt-quantity
+  ---
+  duration_ms: 0.206506
+  type: 'test'
+  ...
+# Subtest: receipt-quantity-ordinary-0
+ok 4 - receipt-quantity-ordinary-0
+  ---
+  duration_ms: 1.064224
+  type: 'test'
+  ...
+# Subtest: memo-empty-only
+ok 5 - memo-empty-only
+  ---
+  duration_ms: 2.032469
+  type: 'test'
+  ...
+# Subtest: memo-empty-only-ordinary-0
+ok 6 - memo-empty-only-ordinary-0
+  ---
+  duration_ms: 2.686238
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1132.584503

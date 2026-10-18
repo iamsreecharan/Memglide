@@ -1,0 +1,11 @@
+{
+  "sequence": 24,
+  "previous_sha256": "682938be7f93727ec4ea621024bc2f376dcae5dcab7c95008dd256488a9a2498",
+  "recorded_at": "2026-10-18T16:37:41.843633+00:00",
+  "event": "attempt.started",
+  "attempt_id": "cost-ts-cost-geometry-normalized-bounds-r1-A",
+  "original_run_id": "cost-ts-cost-geometry-normalized-bounds-r1-A",
+  "supplemental": false,
+  "start_sha256": "9159d901d77005ba7dfe3d008c814076c56aca387b6a05ed8327957f4e8ee7b9",
+  "sha256": "f0e5c9f029b3349acd06cae25d0c808a0a529ac3c9bc67c10571a8657ff903d7"
+}

@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "2b854c0d575b5142f95ed61dc47a0ee750184cae1262600d6a49eebbc36a02d5",
+    "prepared_prompt_sha256": "5723929db5c8c3b0ed4ff5113856d573b0b5508659a97c21c074596655daa535",
+    "files": [
+      {
+        "path": "src/edge_touch.ts",
+        "sha256": "b953de5a064f3e2e30f40305c571313f014a993cfd0054f3b2abf900c069edf2",
+        "start_line": 1,
+        "end_line": 8
+      }
+    ],
+    "context_bytes": 592,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.06173655800012057,
+    "preparation_cpu_seconds": 0.061445926999999984
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/worktrees/cost-ts-cost-geometry-edge-touch-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cost-v1/formal-10-v1/runs/cost-ts-cost-geometry-edge-touch-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "5723929db5c8c3b0ed4ff5113856d573b0b5508659a97c21c074596655daa535",
+    "bytes": 2083,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 11032.608819638
+}
