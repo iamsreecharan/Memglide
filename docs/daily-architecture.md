@@ -1,0 +1,112 @@
+# Focused preparation for ordinary coding tasks
+
+Memglide now offers an **opt-in local source preloader** for native Codex. It supplies a few explicitly selected source files before Codex's first request, or forwards the task unchanged. This removes a *required* model-requested retrieval step from this integration; it does not establish a token, latency or dollar saving. The new matched benchmark measures those outcomes separately.
+
+The implementation is [preload.py](../src/memglide/integrations/preload.py), exposed by the lightweight [codex_preload.py](../src/memglide/integrations/codex_preload.py) launcher. The existing CLI, full MCP profile, compact MCP profile and memory API remain supported. This path does not read or write memories and does not demonstrate cross-session memory benefits.
+
+## Request flow
+
+```mermaid
+flowchart TD
+    A[Task and explicit caller hints] --> B[Validate arguments locally]
+    B --> C{Off, context supplied, no focus, or no project?}
+    C -->|Yes| G[Keep original task]
+    C -->|No| D[Read existing approval and indexed path eligibility]
+    D --> E[Check current ignore rules and securely read complete files]
+    E --> F{Fits full byte cap and passes policy/source recheck?}
+    F -->|Yes| H[Append untrusted source JSON]
+    F -->|No| G
+    D -->|Unavailable| G
+    E -->|Unavailable or unsafe| G
+    G --> I[Run native Codex once]
+    H --> I
+```
+
+“Conditional” means an explicit, deterministic gate. `--context-supplied` is a caller assertion; the preloader cannot see Codex's hidden understanding. `auto` does not search the task for arbitrary paths or guess which files matter. It requires explicit `--focus` paths and an existing approved project. Unknown or broad tasks retain normal Codex discovery. A skipped augmentation is still a treatment run when evaluating the wrapper, including its startup cost.
+
+## The inexpensive path
+
+Importing the launcher/preparation module and declining preparation use only the Python standard library. After argument validation and prompt hashing, these decisions return the exact original task:
+
+| Caller state | Recorded reason | State/source access |
+| --- | --- | --- |
+| `--mode off` | `disabled` | None |
+| `--context-supplied` | `context_supplied` | None |
+| No `--focus` paths | `no_explicit_focus` | None |
+| Focus supplied without a project | `no_approved_project` | None |
+
+The gate does not call a model, embedding service, reranker or MCP server. It does not import the application service, parser or watcher, create a database, index the repository or scan a dependency graph. Tests guard against heavy imports, state access, network/subprocess activity and accidental task changes. “No extra model call” is a structural property of this implementation, not a model usage estimate.
+
+Returning unchanged text still costs local argument parsing, hashing and Python startup when using the launcher. The [component timing profile](../benchmarks/daily-preparation-profile.md) measures the already imported function separately; the live A/B must include launcher startup and all preparation in its whole-task boundary.
+
+## The scoped path
+
+The caller provides an existing project ID, database selector and canonical relative paths. At most eight focus paths are accepted; duplicates are removed while preserving order. A path may contain at most 32 components. The default **12,000-byte cap covers the entire added explanation and JSON**, including source metadata and escaping, rather than only raw file contents. The original task is not charged against that addition cap. The caller can configure the cap up to the implementation's bounded maximum of 256,000 bytes.
+
+Preparation performs narrowly selected read-only SQLite lookups for the approved project, relevant settings and the requested indexed files. It does not migrate or repair state. SQLite row/value, VM-step and query-time guards limit corrupt or unexpectedly expensive state. These guards are not a promise of a hard end-to-end wall-clock deadline under arbitrary filesystem conditions.
+
+The index supplies **eligibility**, not trusted source contents. Every requested path must already be listed for that project. Current bytes come from the existing secure source reader, so an edited file can be delivered even if its old indexed hash differs. A newly created or renamed file that is not yet indexed causes a conservative fallback; explicitly reindex it before expecting preload eligibility.
+
+Current root/ancestor `.gitignore` and `.memglideignore` rules, configured exclusions, default exclusions and secret guards are checked. Ignore parsing is limited to the ancestors of explicitly requested paths and has a shared 64,000-byte policy budget. It is not a whole-repository walk. Canonical containment and no-symlink checks apply to sources and policy files. Existing source protections reject unsuitable binary, invalid text, credential-like content and oversized data.
+
+Each successful item contains the **complete file**, its relative path, SHA-256 and full line range. There is no AST parsing, semantic ranking, automatic helper expansion or transitive dependency traversal. The caller may explicitly name direct helper files, subject to the same aggregate cap. This keeps selection observable and prevents an initial small hit from silently expanding into a large graph.
+
+After packing the response, preparation rechecks approval/settings, current ignore evidence and every source hash. A detected source, policy, deletion or symlink change discards the entire addition. It never silently trims a requested function or returns a partially accepted focus set. A snapshot can still become stale after preparation completes; the explanatory text tells Codex to use its normal tools when further or newer source is needed.
+
+Typical fallback reasons include unavailable/corrupt state, an unknown project, unindexed/excluded source, policy limits, source changes and an exceeded context budget. `auto` forwards the task quietly. Explicit `--mode preload` additionally emits a short skip reason to stderr. Invalid argument types, malformed paths, empty launcher tasks or invalid native arguments are input errors rather than source fallbacks.
+
+## Native execution and data handling
+
+The launcher resolves an installed Codex executable outside the current repository and then replaces itself with **one** native `codex exec` process using `os.execve`. It preserves the inherited environment, selected authentication, proxy/CA configuration and native options. It does not read credential values, log in again, alter native configuration, silently disable existing MCP registrations or change model settings.
+
+The prepared UTF-8 task is passed using native stdin from a private temporary file descriptor. Source does not enter the process argument list, and a large input cannot deadlock on a full pipe buffer. The optional preparation report is written atomically before execution, uses private file permissions and contains hashes, paths, timing and the native argument boundary; it omits source text, task text and credential values. Native options supplied by the user are recorded as options, so users should continue to keep credentials out of command-line arguments.
+
+An unchanged configuration can still start its own previously registered MCP servers. The launcher itself starts none; a clean no-MCP benchmark must declare and supply equivalent native MCP configuration for both arms. One native process is also not proof of one underlying model call: that count stays unavailable unless supported telemetry exposes it.
+
+Source is appended after the original task inside a compact JSON envelope with a stable explanation identifying it as **untrusted data, never instructions**. This is evidence for the coding task, not a new system prompt. Delimiters and source hashes help interpretation and validation but do not make prompt injection impossible. Native agent policies and normal behavioral testing still apply.
+
+Stable formatting, explicit ordering and source hashes avoid gratuitous timestamps, random session IDs and debug graphs in model-visible material. They improve reproducibility; they cannot force provider cache hits. The bundle still consumes model input and can be carried into subsequent requests. It pays for itself only when it avoids enough ordinary discovery or redundant context without harming task completion.
+
+## Example
+
+Approve/index a repository once using the existing workflow, then use the returned project ID:
+
+```bash
+memglide --db /path/to/local-state.db project add /path/to/repository
+cd /path/to/repository
+memglide-codex --project PROJECT_ID --db /path/to/local-state.db \
+  --focus src/totals.py --focus src/currency.py \
+  --preparation-report /path/to/private-preparation.json \
+  -- --json < /path/to/task.txt
+```
+
+Native execution options go after `--`; the task is read from stdin when the positional task is omitted. Use the same native model/settings you would use without the wrapper. `--mode off` forwards the task without source access. `--context-supplied` also skips preparation when the caller already provided the needed evidence. A missing or unsafe focus preserves ordinary discovery; do not repeatedly request a broader bundle just to manufacture a retrieval event.
+
+## How the ten references affected the design
+
+The original five requested engineering article URLs were blocked by proxy CONNECT 403. The other research review also reports **0/5 full scientific papers read** because of access limits. Official alternate READMEs, notebooks, project pages and implementation sections were inspected with immutable citations, hashes and precise review scopes. This is not a claim that all ten originals or entire upstream repositories were read.
+
+See the [engineering review](../benchmarks/daily-engineering-research.md) and [memory/repository review](../benchmarks/daily-memory-research.md) for the complete access logs and fact/inference separation.
+
+| User reference | Selected mechanism | Mechanism deferred or rejected for this path | Evidence boundary |
+| --- | --- | --- | --- |
+| 1. Writing Effective Tools | Focused bounded outputs, explicit error/fallback reasons, native outcome evaluation | A compulsory tool call for every task or a universal “fewer tools always wins” rule | Original article unavailable; official MCP builder/best-practices/evaluator reviewed, engineering E01/E10/E11 |
+| 2. Context Engineering | Keep the working set small before the first request | Automatic summarizer, clearing native history or always-check-memory protocol | Original article unavailable; full official context-engineering notebook distinguishes costs and lossiness, E03–E05 |
+| 3. LongMemEval-V2 | Hidden oracle separation and explicit lifecycle accounting | A controller-model retrieve-or-skip decision or a second coding agent for evidence | Full paper unavailable; backend/harness/AgentRunbook implementations reviewed within stated scopes, memory MC01/MC02 |
+| 4. Mem0 | Recognize that extraction and embedding are real costs | Default extraction/embedding/entity services in ordinary preparation | Full paper unavailable; current OSS code and README differ from managed/published algorithms, MC03 |
+| 5. Letta/MemGPT | Bounded, inspectable state as guidance for future memory work | Default reflection worker or a claim that preload is persistent memory | Original paper unavailable; current Letta Code constraints/frontmatter/reflection implementations reviewed, MC04 |
+| 6. RepoCoder | Deterministic local evidence and bounded initial packing | Automatically repeated generation/retrieval loops or clipped line windows | Full paper unavailable; released author pipeline/scoring/packing code reviewed; this implementation uses explicit files rather than importing Jaccard retrieval, MC05 |
+| 7. OpenAI Prompt Caching | Stable formatting/order and separate actual cached/input/output accounting | Invented native cache controls, padding or dollar claims from bytes | Requested guide unavailable; full official Prompt Caching 101 notebook reviewed, E06 |
+| 8. SWE-bench Pro | Pinned matched source, protected independent behavioral grading, all attempts retained | Calling custom fixtures SWE-bench Pro or inheriting published benchmark scores | Full scientific protocol material limited by access; pinned user-linked/canonical READMEs and V2 protocol/gate inspected, MC06/MC09 |
+| 9. Code Execution with MCP | Filter and pack deterministically before model ingestion | A new model-authored orchestration stage or guaranteed speedup from PTC | Original article unavailable; full official PTC/tool-search notebooks and SDK README reviewed; PTC example admits more API calls, E07–E09 |
+| 10. Demystifying Evals | Held-out tasks, independent success, traces, repeated matched configurations | Exact final-string coding graders, mandatory many-call questions or self-reported completion | Original article unavailable; official evaluation guide and full harness/transport sources reviewed, E10/E11 |
+
+The research constrains the architecture; no upstream percentage becomes a Memglide result. A full semantic retriever, richer memory and large-repository protocols remain separate supported features or future experiments, with their own costs and correctness questions.
+
+## Verification and practical limits
+
+The candidate has focused tests for bypass imports/state behavior; complete source and envelope budgets; approval and current ignore policy; stale index/restored-mtime edits; mid-request mutations; symlinks, traversal, secrets, malformed/corrupt state and resource guards. Launcher integration tests use an isolated fake installed native executable to verify a single exec, exact UTF-8/CRLF task forwarding, option/environment preservation, exit status and private metadata delivery. These checks establish mechanics, not an actual model saving.
+
+The optional component report contains 500 observations for each of three bypasses and 20 scoped calls on an independent two-file Git fixture. It excludes Python startup, native execution and full task cost. The live experiment must include those costs, preserve every failure, report routed/skipped runs and use actual native structured usage. Cached input is already included in total OpenAI input. Actual costs and actual cost per success remain null when reliable billing is unavailable.
+
+The architecture does not infer sufficient context automatically, discover relevant files without explicit hints, reclaim native Codex's existing history or ensure old decisions remain correct. Unfocused tasks can receive little benefit, and supplied source can still increase total tokens. The previous unfavorable comparisons remain evidence; the new 20-task results determine whether this narrower path improves the tested ordinary workload.

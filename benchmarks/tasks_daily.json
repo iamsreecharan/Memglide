@@ -1,0 +1,581 @@
+{
+  "corpus_version": "daily-1.0.0",
+  "tasks": [
+    {
+      "id": "py-daily-desk-elapsed-clock",
+      "language": "python",
+      "repository": "desk-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "desk-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix format_elapsed(seconds) so elapsed hours do not wrap at 24. Return H:MM:SS, with unpadded hours and exactly two minute/second digits. Continue rejecting negative values, bools and non-integers with ValueError.\n\nThe source scope explicitly supplied for this task is:\n- `desk/elapsed_clock.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "desk/elapsed_clock.py"
+      ],
+      "target_files": [
+        "desk/elapsed_clock.py"
+      ],
+      "expected_symbols": [
+        "format_elapsed"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "elapsed-clock",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-desk-rectangular-transpose",
+      "language": "python",
+      "repository": "desk-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "desk-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix transpose(rows) to reject ragged rows with ValueError instead of silently discarding cells. Keep [] -> [] and equally empty rows -> []; return fresh row lists without mutating the input or requiring numeric cells.\n\nThe source scope explicitly supplied for this task is:\n- `desk/rectangular_transpose.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "desk/rectangular_transpose.py"
+      ],
+      "target_files": [
+        "desk/rectangular_transpose.py"
+      ],
+      "expected_symbols": [
+        "transpose"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "rectangular-transpose",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-desk-calendar-month-shift",
+      "language": "python",
+      "repository": "desk-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "desk-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair shift_month(date, months) and the move_due_date adapter. Add signed whole calendar months, clamping the day to the destination month's last day; preserve datetime.date output. Require a date (not datetime) and an integer month delta (not bool), raising ValueError otherwise. The adapter must forward the requested delta unchanged, including zero and negatives. Preserve the public DueItem and reschedule_due_items batch workflow: batch results must apply that same behavior, retain item IDs and order, deeply detach metadata, and leave input records unchanged.\n\nThe source scope explicitly supplied for this task is:\n- `desk/calendar_month_shift.py`\n- `desk/calendar_month_shift_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "desk/calendar_month_shift.py",
+        "desk/calendar_month_shift_api.py"
+      ],
+      "target_files": [
+        "desk/calendar_month_shift.py",
+        "desk/calendar_month_shift_api.py"
+      ],
+      "expected_symbols": [
+        "shift_month"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "calendar-month-shift",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-desk-export-line-endings",
+      "language": "python",
+      "repository": "desk-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "desk-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair join_lines(lines, *, newline='\\n', final_newline=True) and export_notes. Accept newline '\\n' or '\\r\\n' only; join the supplied string lines using that separator and append one separator iff final_newline is true and lines is nonempty. Empty input returns ''. Reject embedded CR or LF in any line and invalid separators with ValueError. export_notes must forward the requested newline and final_newline options, including false, without rewriting lines.\n\nThe source scope explicitly supplied for this task is:\n- `desk/export_line_endings.py`\n- `desk/export_line_endings_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "desk/export_line_endings.py",
+        "desk/export_line_endings_api.py"
+      ],
+      "target_files": [
+        "desk/export_line_endings.py",
+        "desk/export_line_endings_api.py"
+      ],
+      "expected_symbols": [
+        "join_lines"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "export-line-endings",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-desk-label-ellipsis",
+      "language": "python",
+      "repository": "desk-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "desk-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix the tiny truncation bug in truncate_label: the returned label must fit within limit Unicode code points, counting the single ellipsis character. Leave strings of length <= limit unchanged; limit=0 returns ''. Keep the existing invalid-limit validation.\n\nThe source scope explicitly supplied for this task is:\n- `desk/label_ellipsis.py`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `desk/label_ellipsis.py`\n```python\ndef truncate_label(value, limit):\n    \"\"\"Fit a label to a code-point width, using one ellipsis if shortened.\"\"\"\n    if type(limit) is not int or limit < 0:\n        raise ValueError(\"nonnegative integer limit required\")\n    if limit == 0:\n        return \"\"\n    if len(value) <= limit:\n        return value\n    return value[:limit] + \"\u2026\"\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "desk/label_ellipsis.py"
+      ],
+      "target_files": [
+        "desk/label_ellipsis.py"
+      ],
+      "expected_symbols": [
+        "truncate_label"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "label-ellipsis",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-catalog-relative-indentation",
+      "language": "python",
+      "repository": "catalog-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "catalog-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix dedent_lines(lines) to remove only the common ASCII-space indentation of nonblank lines, preserving relative indentation. Whitespace-only lines become empty strings; an all-blank or empty input returns the corresponding empty-string list. Do not mutate the supplied list. Inputs consist of strings using ASCII spaces for indentation.\n\nThe source scope explicitly supplied for this task is:\n- `catalog/relative_indentation.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "catalog/relative_indentation.py"
+      ],
+      "target_files": [
+        "catalog/relative_indentation.py"
+      ],
+      "expected_symbols": [
+        "dedent_lines"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "relative-indentation",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-catalog-single-pass-partition",
+      "language": "python",
+      "repository": "catalog-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "catalog-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix partition(items, predicate) so it evaluates predicate exactly once per item in input order, splitting into (accepted, rejected) lists. Preserve relative order in each list and leave the input list unchanged. Support one-shot iterable inputs and propagate predicate exceptions unchanged.\n\nThe source scope explicitly supplied for this task is:\n- `catalog/single_pass_partition.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "catalog/single_pass_partition.py"
+      ],
+      "target_files": [
+        "catalog/single_pass_partition.py"
+      ],
+      "expected_symbols": [
+        "partition"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "single-pass-partition",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-catalog-tag-normalization",
+      "language": "python",
+      "repository": "catalog-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "catalog-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair normalize_tags and tags_for_card. Trim each supplied string, discard empty strings, Unicode-casefold each tag, and remove duplicates while preserving the first surviving appearance. tags_for_card receives an iterable of complete tag strings, not comma-separated text: preserve commas inside a tag. Do not change the supplied list. Preserve CatalogCard, normalize_card_tags and cards_for_export: normalize each card through tags_for_card once, retain its ID/title/metadata and card order, and deeply detach exported metadata and normalized tag lists from inputs.\n\nThe source scope explicitly supplied for this task is:\n- `catalog/tag_normalization.py`\n- `catalog/tag_normalization_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "catalog/tag_normalization.py",
+        "catalog/tag_normalization_api.py"
+      ],
+      "target_files": [
+        "catalog/tag_normalization.py",
+        "catalog/tag_normalization_api.py"
+      ],
+      "expected_symbols": [
+        "normalize_tags"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "tag-normalization",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-catalog-strict-column-projection",
+      "language": "python",
+      "repository": "catalog-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "catalog-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair select_columns(row, columns) and export_row. Return a new dict containing exactly the requested columns in request order, including keys whose value is None, False, 0 or ''. A genuinely missing column raises KeyError; do not replace it with None or drop explicit null values. Inputs must remain unchanged, and values need not be deep-copied.\n\nThe source scope explicitly supplied for this task is:\n- `catalog/strict_column_projection.py`\n- `catalog/strict_column_projection_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "catalog/strict_column_projection.py",
+        "catalog/strict_column_projection_api.py"
+      ],
+      "target_files": [
+        "catalog/strict_column_projection.py",
+        "catalog/strict_column_projection_api.py"
+      ],
+      "expected_symbols": [
+        "select_columns"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "strict-column-projection",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-daily-catalog-saturday-weekend",
+      "language": "python",
+      "repository": "catalog-python-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "catalog-python-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix is_weekend(weekday): weekdays follow Python's Monday=0 through Sunday=6 convention, so both Saturday (5) and Sunday (6) are weekends. Keep the existing integer-range validation.\n\nThe source scope explicitly supplied for this task is:\n- `catalog/saturday_weekend.py`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `catalog/saturday_weekend.py`\n```python\ndef is_weekend(weekday):\n    \"\"\"Return whether a Monday-zero weekday falls on the weekend.\"\"\"\n    if type(weekday) is not int or not 0 <= weekday <= 6:\n        raise ValueError(\"weekday must be an integer from 0 to 6\")\n    return weekday == 6\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "catalog/saturday_weekend.py"
+      ],
+      "target_files": [
+        "catalog/saturday_weekend.py"
+      ],
+      "expected_symbols": [
+        "is_weekend"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "saturday-weekend",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "ts-daily-editor-crlf-line-position",
+      "language": "typescript",
+      "repository": "editor-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "editor-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix lineColumn(text, offset) for CRLF and bare CR newlines as well as LF. Return zero-based {line,column} at a UTF-16 offset, requiring an integer offset 0..text.length. A CRLF is one newline: positions immediately after its CR and after its LF both have column 0 on the new line. Other characters, including surrogate pairs, advance by UTF-16 code units. Invalid offsets throw.\n\nThe source scope explicitly supplied for this task is:\n- `src/crlf_line_position.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/crlf_line_position.ts"
+      ],
+      "target_files": [
+        "src/crlf_line_position.ts"
+      ],
+      "expected_symbols": [
+        "lineColumn"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "crlf-line-position",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-editor-html-text-escaping",
+      "language": "typescript",
+      "repository": "editor-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "editor-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix escapeHtml(text) for insertion as HTML text or a quoted attribute: escape &, <, >, double quote and apostrophe as &amp;, &lt;, &gt;, &quot; and &#39;. Escape each original character once: already entity-looking input is still plain text, so '&lt;' becomes '&amp;lt;'. Preserve other characters.\n\nThe source scope explicitly supplied for this task is:\n- `src/html_text_escaping.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/html_text_escaping.ts"
+      ],
+      "target_files": [
+        "src/html_text_escaping.ts"
+      ],
+      "expected_symbols": [
+        "escapeHtml"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "html-text-escaping",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-editor-literal-replace-all",
+      "language": "typescript",
+      "repository": "editor-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "editor-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair replaceLiteral(text, needle, replacement) and applyReplacement. Replace every non-overlapping literal occurrence of the nonempty needle; metacharacters and '$' are ordinary data in both needle and replacement. Reject an empty needle. The adapter must preserve whitespace in the needle instead of trimming it. Leave unmatched text unchanged. Preserve Replacement, previewReplacement and replaceBatch: previews must delegate to applyReplacement, report before/after/changed accurately and retain batch order without changing request objects.\n\nThe source scope explicitly supplied for this task is:\n- `src/literal_replace_all.ts`\n- `src/literal_replace_all_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/literal_replace_all.ts",
+        "src/literal_replace_all_api.ts"
+      ],
+      "target_files": [
+        "src/literal_replace_all.ts",
+        "src/literal_replace_all_api.ts"
+      ],
+      "expected_symbols": [
+        "replaceLiteral"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "literal-replace-all",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-editor-whitespace-word-spans",
+      "language": "typescript",
+      "repository": "editor-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "editor-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair wordSpans(text) and wordsForSelection. A word is a maximal run of non-whitespace characters according to JavaScript /\\s/; punctuation, Unicode letters, emoji and single-character words are included. Return {text,start,end} with UTF-16 offsets and exclusive end, in source order. The adapter must return every span without dropping one-character words. Empty or whitespace-only input returns [].\n\nThe source scope explicitly supplied for this task is:\n- `src/whitespace_word_spans.ts`\n- `src/whitespace_word_spans_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/whitespace_word_spans.ts",
+        "src/whitespace_word_spans_api.ts"
+      ],
+      "target_files": [
+        "src/whitespace_word_spans.ts",
+        "src/whitespace_word_spans_api.ts"
+      ],
+      "expected_symbols": [
+        "wordSpans"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "whitespace-word-spans",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-editor-inclusive-clamp",
+      "language": "typescript",
+      "repository": "editor-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "editor-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix clamp(value,min,max) to clamp to the inclusive bounds: a value equal to or above max returns max. Retain finite-number and ordered-bound validation, and preserve fractional values inside the range.\n\nThe source scope explicitly supplied for this task is:\n- `src/inclusive_clamp.ts`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `src/inclusive_clamp.ts`\n```typescript\nexport function clamp(value: number, min: number, max: number): number {\n  if (![value,min,max].every(Number.isFinite) || min > max) throw new Error(\"invalid bounds\");\n  if (value < min) return min;\n  if (value >= max) return max - 1;\n  return value;\n}\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/inclusive_clamp.ts"
+      ],
+      "target_files": [
+        "src/inclusive_clamp.ts"
+      ],
+      "expected_symbols": [
+        "clamp"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "inclusive-clamp",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-inventory-numeric-median",
+      "language": "typescript",
+      "repository": "inventory-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "inventory-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix median(values) to compute the numeric median: sort numerically, average the two middle values for even lengths, and leave the input array unchanged. Reject an empty array or any nonfinite number. Inputs and outputs may be fractional or negative.\n\nThe source scope explicitly supplied for this task is:\n- `src/numeric_median.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/numeric_median.ts"
+      ],
+      "target_files": [
+        "src/numeric_median.ts"
+      ],
+      "expected_symbols": [
+        "median"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "numeric-median",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-inventory-chunk-without-empty-tail",
+      "language": "typescript",
+      "repository": "inventory-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "inventory-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix chunk(items,size) so empty input returns [] and an exact multiple of size does not create an empty trailing chunk. Return consecutive fresh subarrays, preserving values and order without changing the input. Continue rejecting nonpositive or noninteger sizes.\n\nThe source scope explicitly supplied for this task is:\n- `src/chunk_without_empty_tail.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/chunk_without_empty_tail.ts"
+      ],
+      "target_files": [
+        "src/chunk_without_empty_tail.ts"
+      ],
+      "expected_symbols": [
+        "chunk"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "chunk-without-empty-tail",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-inventory-signed-code-padding",
+      "language": "typescript",
+      "repository": "inventory-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "inventory-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair padCode(value,width) and labelCode. Format an integer in base ten, padding with zeros after any minus sign until the total string width reaches width; never truncate a longer value. Require a safe integer value and nonnegative integer width. labelCode must preserve zero, not substitute 1. Examples: padCode(-7,4)='-007', labelCode(0,3)='000'.\n\nThe source scope explicitly supplied for this task is:\n- `src/signed_code_padding.ts`\n- `src/signed_code_padding_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/signed_code_padding.ts",
+        "src/signed_code_padding_api.ts"
+      ],
+      "target_files": [
+        "src/signed_code_padding.ts",
+        "src/signed_code_padding_api.ts"
+      ],
+      "expected_symbols": [
+        "padCode"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "signed-code-padding",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-inventory-equal-length-zip",
+      "language": "typescript",
+      "repository": "inventory-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "inventory-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Repair zipEqual(left,right) and pairColumns. Pair corresponding elements into fresh two-element tuples only when array lengths match; mismatched lengths in either direction must throw. The public adapter must pass both complete arrays through so a mismatch cannot be hidden by truncation. Preserve both inputs, including falsy elements; empty pairs return []. Preserve NamedColumn, PairedTable and pairTable: table headers must retain the two nonempty distinct column names, rows must use pairColumns, and output containers must be independent of input column objects and arrays.\n\nThe source scope explicitly supplied for this task is:\n- `src/equal_length_zip.ts`\n- `src/equal_length_zip_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/equal_length_zip.ts",
+        "src/equal_length_zip_api.ts"
+      ],
+      "target_files": [
+        "src/equal_length_zip.ts",
+        "src/equal_length_zip_api.ts"
+      ],
+      "expected_symbols": [
+        "zipEqual"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "equal-length-zip",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-daily-inventory-zero-count-plural",
+      "language": "typescript",
+      "repository": "inventory-typescript-daily",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_daily.build_repository",
+        "repository": "inventory-typescript-daily",
+        "version": "daily-1.0.0"
+      },
+      "prompt": "Fix pluralize(count,singular,plural) to choose singular only when count is exactly 1; zero uses plural. Keep the existing validation that count is a nonnegative integer. Return the supplied word unchanged, including empty/custom words.\n\nThe source scope explicitly supplied for this task is:\n- `src/zero_count_plural.ts`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `src/zero_count_plural.ts`\n```typescript\nexport function pluralize(count: number, singular: string, plural: string): string {\n  if (!Number.isInteger(count) || count < 0) throw new Error(\"nonnegative count required\");\n  return count <= 1 ? singular : plural;\n}\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/zero_count_plural.ts"
+      ],
+      "target_files": [
+        "src/zero_count_plural.ts"
+      ],
+      "expected_symbols": [
+        "pluralize"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "zero-count-plural",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    }
+  ]
+}

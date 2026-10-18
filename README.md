@@ -56,6 +56,21 @@ Register it with `uv run memglide setup codex --project PROJECT_ID` after approv
 that repository. Existing Codex registrations are preserved; inspect them before
 deliberately switching profiles. The full fourteen-tool interface remains the default.
 
+For tasks with known source paths, the optional [focused Codex launcher](docs/preload.md)
+can prepare complete files locally before the first native request:
+
+```sh
+uv run memglide-codex --project PROJECT_ID --focus src/calculation.py \
+  "Fix the rounding behavior." -- --json
+```
+
+It uses an existing approved index, makes no auxiliary model request, and forwards
+the original task when preparation is skipped or unsafe. `--context-supplied`
+skips state access when the caller already supplied the source. Existing native
+settings and MCP registrations are preserved. See the [architecture and research
+limits](docs/daily-architecture.md) and [matched experiment protocol](benchmarks/daily-protocol.md);
+preparation alone does not establish a token, speed or cost benefit.
+
 ## Verify and develop
 
 ```sh
