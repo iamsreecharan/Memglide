@@ -1,0 +1,1 @@
+{"summary":"Fixed quote_display_name to escape backslashes before double quotes, preserving CR/LF rejection and empty-name quoting. Added regression tests; existing tests remain unchanged. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 7 tests passed."]}

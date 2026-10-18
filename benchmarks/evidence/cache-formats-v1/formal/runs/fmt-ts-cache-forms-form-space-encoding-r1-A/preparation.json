@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "e103a6d0ad06f99c0e53a4c18d4cc5086514670a813d869066870d675414973a",
+    "prepared_prompt_sha256": "72b4803d9551c10dffe257cdfe48852b28b5102e7b1dc409972c5d16b15f0f80",
+    "files": [
+      {
+        "path": "src/form_space_encoding.ts",
+        "sha256": "9c27b86999a3211d21b2b0b53bca62d8a1f538079146c7918690f0759fbf3c86",
+        "start_line": 1,
+        "end_line": 3
+      },
+      {
+        "path": "src/form_space_encoding_api.ts",
+        "sha256": "e4f4285748723026e453265574f5bdb6c7217b30d5afa6515d7774b47ae23894",
+        "start_line": 1,
+        "end_line": 5
+      }
+    ],
+    "context_bytes": 915,
+    "preparation_wall_seconds": 0.12905539100029273,
+    "preparation_cpu_seconds": 0.12906175799999997
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-ts-cache-forms-form-space-encoding-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-form-space-encoding-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "72b4803d9551c10dffe257cdfe48852b28b5102e7b1dc409972c5d16b15f0f80",
+    "bytes": 2538,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 7340.729043291
+}

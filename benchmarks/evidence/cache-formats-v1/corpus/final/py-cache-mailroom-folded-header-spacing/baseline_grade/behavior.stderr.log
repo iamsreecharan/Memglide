@@ -1,0 +1,31 @@
+test_continuations_and_exact_content (__main__.BehaviorTests.test_continuations_and_exact_content) ... FAIL
+test_invalid_lines_and_input_preservation (__main__.BehaviorTests.test_invalid_lines_and_input_preservation) ... FAIL
+
+======================================================================
+FAIL: test_continuations_and_exact_content (__main__.BehaviorTests.test_continuations_and_exact_content)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation-final/py-cache-mailroom-folded-header-spacing/baseline_grade/held_out.py", line 7, in test_continuations_and_exact_content
+    self.assertEqual(core.unfold_header(["Subject: hello","  world","\tagain "]),"Subject: hello world again ")
+AssertionError: 'Subject: helloworldagain ' != 'Subject: hello world again '
+- Subject: helloworldagain 
++ Subject: hello world again 
+?               +     +
+
+
+======================================================================
+FAIL: test_invalid_lines_and_input_preservation (__main__.BehaviorTests.test_invalid_lines_and_input_preservation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation-final/py-cache-mailroom-folded-header-spacing/baseline_grade/held_out.py", line 14, in test_invalid_lines_and_input_preservation
+    self.assertEqual(result," X: a  b ")
+AssertionError: 'X: a b ' != ' X: a  b '
+- X: a b 
++  X: a  b 
+? +     +
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.011s
+
+FAILED (failures=2)

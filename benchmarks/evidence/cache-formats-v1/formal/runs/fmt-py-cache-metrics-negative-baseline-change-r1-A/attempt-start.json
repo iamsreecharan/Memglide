@@ -1,0 +1,42 @@
+{
+  "run_id": "fmt-py-cache-metrics-negative-baseline-change-r1-A",
+  "task_id": "py-cache-metrics-negative-baseline-change",
+  "language": "python",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 40,
+  "repository": "metrics-python-cache",
+  "task_kind": "single-source",
+  "selection_stratum": "explicit_focus",
+  "context_format": "legacy",
+  "setup": {
+    "wall_seconds": null,
+    "cpu_seconds": null
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this format assignment yet",
+    "context_format": "legacy"
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "fmt-py-cache-metrics-negative-baseline-change-r1-A",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T15:38:10.347042+00:00",
+  "artifacts": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-metrics-negative-baseline-change-r1-A",
+  "worktree": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-metrics-negative-baseline-change-r1-A",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

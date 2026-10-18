@@ -1,0 +1,42 @@
+{
+  "run_id": "fmt-ts-cache-collections-consecutive-run-groups-r1-B",
+  "task_id": "ts-cache-collections-consecutive-run-groups",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 18,
+  "repository": "collections-typescript-cache",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "context_format": "compact-prefix",
+  "setup": {
+    "wall_seconds": null,
+    "cpu_seconds": null
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this format assignment yet",
+    "context_format": "compact-prefix"
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "fmt-ts-cache-collections-consecutive-run-groups-r1-B",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T15:28:04.052916+00:00",
+  "artifacts": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-collections-consecutive-run-groups-r1-B",
+  "worktree": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-ts-cache-collections-consecutive-run-groups-r1-B",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

@@ -1,0 +1,18 @@
+{
+  "returncode": 0,
+  "tag_refs": [
+    [
+      "8b9fa496bbf2c47aebd62e85a080b9a522a455b5",
+      "refs/tags/rust-v0.159.2"
+    ],
+    [
+      "ff6aec96948b70d94983af2641a6b67c94faeff5",
+      "refs/tags/rust-v0.159.2^{}"
+    ]
+  ],
+  "at_utc": "2026-10-18T07:33:24.380386+00:00",
+  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client.rs",
+  "status": 200,
+  "bytes": 118699,
+  "sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c"
+}

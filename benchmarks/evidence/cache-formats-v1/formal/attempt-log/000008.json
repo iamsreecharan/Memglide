@@ -1,0 +1,11 @@
+{
+  "sequence": 8,
+  "previous_sha256": "a45787d9ebe41c4c4a54c25b4c451f19fd16a5a05a9dd0641b38e3950e002b0d",
+  "recorded_at": "2026-10-18T15:20:28.779744+00:00",
+  "event": "attempt.started",
+  "attempt_id": "fmt-ts-cache-collections-unique-intersection-r1-A",
+  "original_run_id": "fmt-ts-cache-collections-unique-intersection-r1-A",
+  "supplemental": false,
+  "start_sha256": "2441dc1f4631e5720d4d9d84ed6dfda052992923e6359ea93ce07c97efb4fd3e",
+  "sha256": "d260870997b59191cb5531d7fa6f4db61216e085dab0fae6ad995fa56d7e2a99"
+}

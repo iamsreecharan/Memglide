@@ -1,0 +1,1 @@
+{"summary":"Fixed signed rotation: negative steps rotate right and positive steps rotate left modulo length. Preserved integer validation, input immutability, and fresh-array returns. Added regression tests.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

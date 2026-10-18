@@ -1,0 +1,9 @@
+{
+  "sequence": 9,
+  "previous_sha256": "d260870997b59191cb5531d7fa6f4db61216e085dab0fae6ad995fa56d7e2a99",
+  "recorded_at": "2026-10-18T15:20:53.691285+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "fmt-ts-cache-collections-unique-intersection-r1-A",
+  "result_sha256": "0c01b4a174fba70ebc2f060a09f460512fbda15ff2e257fcc9cee695746f4213",
+  "sha256": "b49094a94e5b52007b3150a7375cbc866f3c4150c1aa9e5f7d9a241d7deee6c8"
+}

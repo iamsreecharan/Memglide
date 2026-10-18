@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "a785fba75f282e98848aafc102d70b3bc710aad5c1a3169782753357aec03b3f",
+    "prepared_prompt_sha256": "0c6fe6d4a679c9746fe8257bd7437e28bed892154c8fbdca19c10e6c4b2dae17",
+    "files": [
+      {
+        "path": "src/stable_feed_merge.ts",
+        "sha256": "855b8a39b16a110f6a9a7f1036feab69bdc27f46fc6383108e334f4850f01279",
+        "start_line": 1,
+        "end_line": 9
+      },
+      {
+        "path": "src/stable_feed_merge_api.ts",
+        "sha256": "85c569a3a8ac231eac4517dd9a518abfa4bf1e0d3ffcf1124fc56c244c2c7c86",
+        "start_line": 1,
+        "end_line": 6
+      }
+    ],
+    "context_bytes": 878,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.06398424899998645,
+    "preparation_cpu_seconds": 0.055218959999999984
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-ts-cache-collections-stable-feed-merge-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-collections-stable-feed-merge-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "0c6fe6d4a679c9746fe8257bd7437e28bed892154c8fbdca19c10e6c4b2dae17",
+    "bytes": 2548,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 7058.831202955
+}

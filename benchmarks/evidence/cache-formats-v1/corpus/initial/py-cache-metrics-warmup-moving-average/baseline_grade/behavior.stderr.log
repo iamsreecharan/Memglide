@@ -1,0 +1,38 @@
+test_validation_and_no_mutation (__main__.BehaviorTests.test_validation_and_no_mutation) ... FAIL
+test_warmup_windows_and_signed_values (__main__.BehaviorTests.test_warmup_windows_and_signed_values) ... FAIL
+
+======================================================================
+FAIL: test_validation_and_no_mutation (__main__.BehaviorTests.test_validation_and_no_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation/py-cache-metrics-warmup-moving-average/baseline_grade/held_out.py", line 11, in test_validation_and_no_mutation
+    values=[1.5,2.5];self.assertEqual(core.moving_average(values,2),[1.5,2]);self.assertEqual(values,[1.5,2.5])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [0.75, 2.0] != [1.5, 2]
+
+First differing element 0:
+0.75
+1.5
+
+- [0.75, 2.0]
++ [1.5, 2]
+
+======================================================================
+FAIL: test_warmup_windows_and_signed_values (__main__.BehaviorTests.test_warmup_windows_and_signed_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation/py-cache-metrics-warmup-moving-average/baseline_grade/held_out.py", line 7, in test_warmup_windows_and_signed_values
+    self.assertEqual(core.moving_average([2,4,6,8],3),[2,3,4,6])
+AssertionError: Lists differ: [0.6666666666666666, 2.0, 4.0, 6.0] != [2, 3, 4, 6]
+
+First differing element 0:
+0.6666666666666666
+2
+
+- [0.6666666666666666, 2.0, 4.0, 6.0]
++ [2, 3, 4, 6]
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

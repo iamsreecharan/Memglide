@@ -1,0 +1,7 @@
+test_negative_baselines_and_zero (__main__.BehaviorTests.test_negative_baselines_and_zero) ... ok
+test_normal_values_and_validation (__main__.BehaviorTests.test_normal_values_and_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

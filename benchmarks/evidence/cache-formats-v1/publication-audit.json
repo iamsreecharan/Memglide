@@ -1,0 +1,89 @@
+{
+  "pass": true,
+  "selected_files": 1754,
+  "bytes": 5677163,
+  "manifest_sha256": "adcd8c3d0dca260e03f99d537d7c370f042b121b38f167fb527faef909fbab1a",
+  "every_source_and_target_sha256_verified": true,
+  "all_40_originals_retained": true,
+  "durable_log_and_result_seals_verified": true,
+  "credential_pattern_scan": "passed",
+  "independent_audit_passed": true,
+  "historical_preservation_rechecked_after_copy": {
+    "base_commit": "94998bba69a52cb95b25c52fa3747a422cd715e5",
+    "scope": "Every tracked benchmarks file at frozen HEAD; whole original bytes compared to Git blobs, with one explicitly authorized new-iteration documentation transition",
+    "unchanged_files": 8960,
+    "unchanged_bytes": 103529409,
+    "authorized_new_iteration_document_transitions": [
+      {
+        "path": "benchmarks/cache-refinement-validation.md",
+        "frozen_sha256": "2a85d1c1b5cac274c337ad737cb8bac61757e55242f59c5eec5bb3f580d19f1c",
+        "authorized_current_sha256": "ed94c120770ff5d64a44c24cf6f3e8806ecb702dcf6f1264c9454c2fab989a65",
+        "frozen_bytes": 1536,
+        "authorized_current_bytes": 1489,
+        "reason": "Root-authorized readability and spacing edits to this new-iteration validation document; factual report JSON remains unchanged."
+      }
+    ],
+    "sha256_of_sorted_file_records": "c1ab04bb7756d42084c0409bdd1077694c01cbeae66ba1be1240b8ba06cec5ae",
+    "whole_original_zip_files": [
+      {
+        "path": "benchmarks/memglide-ab-final-report.zip",
+        "bytes": 2147774,
+        "sha256": "ad28247777436fd58cfec080dea1c00b982303f2495615ec46beffeebc82ea06"
+      },
+      {
+        "path": "benchmarks/memglide-ab-optimized-report.zip",
+        "bytes": 6211466,
+        "sha256": "98f2862b7a712323f16598980c44222c8b78abf8ddabcb31d821501053896265"
+      },
+      {
+        "path": "benchmarks/memglide-daily-ab-report.zip",
+        "bytes": 2933384,
+        "sha256": "d8ed3d014e7d6230da1be4af17a09b59427321f38be5ba4226c9a40f8afc355d"
+      }
+    ]
+  },
+  "source_freeze_rechecked_after_copy": {
+    "git_head": "94998bba69a52cb95b25c52fa3747a422cd715e5",
+    "application_source_tree_sha256": "e777cbd53a1ca6228e5c3403ebb5cc3547834a00edac1d1f20210342740aeee4",
+    "formal_driver_returncode": 0,
+    "current_source_and_frozen_inputs_verified": true
+  },
+  "synthetic_fixture_scan_exceptions": [
+    {
+      "path": ".local/cache-v2/python.xml",
+      "sha256": "b0849d7a06290d77856b6869cdfecf47ad366a02fe6159be3d6ee6b14f34087c",
+      "pattern_matches": 7,
+      "matched_sha256": [
+        "3021d90eb9437b2d8f30e8363695c4418b5e5f1870801b5c317e9398ee0f572d",
+        "8bcac7908eb950419537b91e19adc83ce2c9cbfdacf4f81157fdadfec11f7017",
+        "7e5400d08af1a79400d0df020d076551686fda1910a49f6716e8d5aff119e35b",
+        "aadcebbf9c9ca71dcb9d334b44d555d980f68e3e0fd5d3d63f1cc8c94f219a9d",
+        "4b82f7466cc183e24dffcc235b8622f6795176c22f72aedf45584003e440f78f",
+        "aa4d6ed2a9eb80ae9af88445533e0abc21e67965923c7bd99192270c98f3381c",
+        "87117695a3cb65fc702e9328d6481780a57fefda3ddbc47d601302c406815022"
+      ],
+      "fixture_source": "94998bba69a52cb95b25c52fa3747a422cd715e5:tests/test_security_storage.py",
+      "fixture_source_sha256": "bb8aee17612136ce8bf257cd701c6e26e2def32e13fd3b65e7cdcf6f1769fd8d",
+      "original_xml_bytes_preserved": true,
+      "all_other_original_bytes_scanned": true
+    },
+    {
+      "path": ".local/cache-v2/final-python.xml",
+      "sha256": "3c9821b8d8735318a563e7e3f97cc55df4bea88ba84c6149ed822fb7242cd5ed",
+      "pattern_matches": 7,
+      "matched_sha256": [
+        "3021d90eb9437b2d8f30e8363695c4418b5e5f1870801b5c317e9398ee0f572d",
+        "8bcac7908eb950419537b91e19adc83ce2c9cbfdacf4f81157fdadfec11f7017",
+        "7e5400d08af1a79400d0df020d076551686fda1910a49f6716e8d5aff119e35b",
+        "aadcebbf9c9ca71dcb9d334b44d555d980f68e3e0fd5d3d63f1cc8c94f219a9d",
+        "4b82f7466cc183e24dffcc235b8622f6795176c22f72aedf45584003e440f78f",
+        "aa4d6ed2a9eb80ae9af88445533e0abc21e67965923c7bd99192270c98f3381c",
+        "87117695a3cb65fc702e9328d6481780a57fefda3ddbc47d601302c406815022"
+      ],
+      "fixture_source": "94998bba69a52cb95b25c52fa3747a422cd715e5:tests/test_security_storage.py",
+      "fixture_source_sha256": "bb8aee17612136ce8bf257cd701c6e26e2def32e13fd3b65e7cdcf6f1769fd8d",
+      "original_xml_bytes_preserved": true,
+      "all_other_original_bytes_scanned": true
+    }
+  ]
+}

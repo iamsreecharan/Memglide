@@ -1,0 +1,24 @@
+test_sample_denominator_and_fractional_api (__main__.BehaviorTests.test_sample_denominator_and_fractional_api) ... FAIL
+test_validation_and_no_mutation (__main__.BehaviorTests.test_validation_and_no_mutation) ... FAIL
+
+======================================================================
+FAIL: test_sample_denominator_and_fractional_api (__main__.BehaviorTests.test_sample_denominator_and_fractional_api)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation/py-cache-metrics-fractional-sample-variance/domain_grade/held_out.py", line 9, in test_sample_denominator_and_fractional_api
+    self.assertEqual(api.variance_for_report([1,2]),0.5)
+AssertionError: 0 != 0.5
+
+======================================================================
+FAIL: test_validation_and_no_mutation (__main__.BehaviorTests.test_validation_and_no_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation/py-cache-metrics-fractional-sample-variance/domain_grade/held_out.py", line 12, in test_validation_and_no_mutation
+    values=[1,2,4];self.assertAlmostEqual(api.variance_for_report(values),7/3);self.assertEqual(values,[1,2,4])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 2.3333333333333335 within 7 places (0.3333333333333335 difference)
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

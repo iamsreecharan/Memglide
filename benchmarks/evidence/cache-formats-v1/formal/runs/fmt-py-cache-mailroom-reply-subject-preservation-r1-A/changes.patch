@@ -1,0 +1,20 @@
+diff --git a/mailroom/reply_subject_preservation.py b/mailroom/reply_subject_preservation.py
+index 4acc746..9c6b134 100644
+--- a/mailroom/reply_subject_preservation.py
++++ b/mailroom/reply_subject_preservation.py
+@@ -1,3 +1,5 @@
+ def reply_subject(subject):
+     """Prefix a new reply without stacking an existing reply marker."""
++    if subject[:3].lower() == "re:":
++        return subject
+     return "Re: " + subject
+diff --git a/mailroom/reply_subject_preservation_api.py b/mailroom/reply_subject_preservation_api.py
+index 3025c93..a292806 100644
+--- a/mailroom/reply_subject_preservation_api.py
++++ b/mailroom/reply_subject_preservation_api.py
+@@ -2,4 +2,4 @@ from .reply_subject_preservation import reply_subject
+ 
+ def subject_for_reply(subject):
+     """Build the subject shown in the reply composer."""
+-    return reply_subject(subject.strip())
++    return reply_subject(subject)

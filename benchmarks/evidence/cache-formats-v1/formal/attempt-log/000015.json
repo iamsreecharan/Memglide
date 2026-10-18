@@ -1,0 +1,9 @@
+{
+  "sequence": 15,
+  "previous_sha256": "a315b172f6e0a569000ae1bcf2da0a05618111760c9c186efa74c56e04fbd62c",
+  "recorded_at": "2026-10-18T15:22:25.390048+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "fmt-ts-cache-forms-hex-color-lengths-r1-B",
+  "result_sha256": "d04813deaea227c49f5067619c294638703bc88c0b14b6fc6edaad2b60ffa16f",
+  "sha256": "e633a1da1bb5b9132bd1337a61a946fd3f65a6a573bab1c952f90dcaf8643a1b"
+}

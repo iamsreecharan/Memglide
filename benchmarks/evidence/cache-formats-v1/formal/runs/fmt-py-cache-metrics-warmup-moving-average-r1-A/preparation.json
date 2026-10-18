@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "cab0a84200475df5cef4bee271fdee6d53f06535707a1d8f8babdc6b4d9b006a",
+    "prepared_prompt_sha256": "e7d586155a3d30b285d75597e1fca846e3506ce0ab5d3819104945c4eebf2d57",
+    "files": [
+      {
+        "path": "metrics/warmup_moving_average.py",
+        "sha256": "db94b2515b26c29f22c2327389847c570357e70e6ae25ad20d5b19502f9289ad",
+        "start_line": 1,
+        "end_line": 10
+      }
+    ],
+    "context_bytes": 883,
+    "preparation_wall_seconds": 0.2708177530003013,
+    "preparation_cpu_seconds": 0.26951986799999994
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-metrics-warmup-moving-average-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-metrics-warmup-moving-average-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "e7d586155a3d30b285d75597e1fca846e3506ce0ab5d3819104945c4eebf2d57",
+    "bytes": 2472,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 6489.384103046
+}

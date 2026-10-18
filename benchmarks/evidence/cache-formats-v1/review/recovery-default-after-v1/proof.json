@@ -1,0 +1,36 @@
+{
+  "status": "interrupted",
+  "execution_outcome_unknown": true,
+  "setup": {
+    "wall_seconds": null,
+    "cpu_seconds": null
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this format assignment yet",
+    "context_format": "legacy"
+  },
+  "metrics": {
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "uncached_input_tokens": null,
+    "output_tokens": null,
+    "wall_time_seconds": null,
+    "end_to_end_wall_seconds": null,
+    "native_exec_wall_seconds": null,
+    "approval_index_wall_seconds": null,
+    "approval_index_cpu_seconds": null,
+    "context_preparation_wall_seconds": null,
+    "context_preparation_cpu_seconds": null,
+    "process_tree_peak_rss_bytes": null,
+    "cpu_seconds": null,
+    "total_observed_local_cpu_seconds": null,
+    "mcp_calls": null,
+    "model_calls": null,
+    "repeated_file_reads": null,
+    "observed_file_read_commands": null,
+    "observed_repeated_read_commands": null,
+    "actual_cost_usd": null,
+    "computed_cost_usd": null
+  }
+}

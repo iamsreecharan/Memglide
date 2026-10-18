@@ -1,0 +1,1 @@
+{"summary":"Updated quote_display_name to escape backslashes before double quotes, preserving CR/LF rejection and empty-name quoting. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 5 tests passed","Targeted checks for combined escaping, trailing backslashes, empty names, and CR/LF rejection passed","git diff --check passed"]}

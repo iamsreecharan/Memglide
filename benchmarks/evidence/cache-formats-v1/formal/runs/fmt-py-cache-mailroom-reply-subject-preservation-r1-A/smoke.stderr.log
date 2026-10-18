@@ -1,0 +1,12 @@
+test_existing_reply_marker_is_preserved (test_reply_subject_preservation.ReplySubjectPreservationTests.test_existing_reply_marker_is_preserved) ... ok
+test_new_reply_preserves_original_subject (test_reply_subject_preservation.ReplySubjectPreservationTests.test_new_reply_preserves_original_subject) ... ok
+test_colon_password (test_smoke.SmokeTests.test_colon_password) ... ok
+test_folded_header_spacing (test_smoke.SmokeTests.test_folded_header_spacing) ... ok
+test_quoted_display_backslash (test_smoke.SmokeTests.test_quoted_display_backslash) ... ok
+test_reply_subject_preservation (test_smoke.SmokeTests.test_reply_subject_preservation) ... ok
+test_utf8_header_word (test_smoke.SmokeTests.test_utf8_header_word) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.004s
+
+OK

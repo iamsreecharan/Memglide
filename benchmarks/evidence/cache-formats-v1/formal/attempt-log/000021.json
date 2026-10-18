@@ -1,0 +1,9 @@
+{
+  "sequence": 21,
+  "previous_sha256": "d14d7a31985c9b68bfd42489d5cf530932806b91392a74d87d2c121d74d44330",
+  "recorded_at": "2026-10-18T15:23:56.113970+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "fmt-py-cache-metrics-histogram-boundary-slots-r1-B",
+  "result_sha256": "79531dcdc2174b0db3f71c97f04328852660995c28e27aec21e6a4b89c32f0a8",
+  "sha256": "9296ec8fea93cc3873811b5132f43b80c8c4d08f56ac8274119f7aaa9a376291"
+}

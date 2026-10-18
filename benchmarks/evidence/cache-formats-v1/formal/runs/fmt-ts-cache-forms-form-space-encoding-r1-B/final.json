@@ -1,0 +1,1 @@
+{"summary":"Fixed space encoding to use '+' while preserving literal plus signs as '%2B'. Both form components use the helper, and name capitalization is preserved. Added regression coverage.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

@@ -1,0 +1,15 @@
+test_continuations_preserve_content_and_input (test_folded_header_spacing.FoldedHeaderSpacingTests.test_continuations_preserve_content_and_input) ... ok
+test_embedded_line_breaks (test_folded_header_spacing.FoldedHeaderSpacingTests.test_embedded_line_breaks) ... ok
+test_empty_input (test_folded_header_spacing.FoldedHeaderSpacingTests.test_empty_input) ... ok
+test_invalid_continuations (test_folded_header_spacing.FoldedHeaderSpacingTests.test_invalid_continuations) ... ok
+test_whitespace_only_continuations (test_folded_header_spacing.FoldedHeaderSpacingTests.test_whitespace_only_continuations) ... ok
+test_colon_password (test_smoke.SmokeTests.test_colon_password) ... ok
+test_folded_header_spacing (test_smoke.SmokeTests.test_folded_header_spacing) ... ok
+test_quoted_display_backslash (test_smoke.SmokeTests.test_quoted_display_backslash) ... ok
+test_reply_subject_preservation (test_smoke.SmokeTests.test_reply_subject_preservation) ... ok
+test_utf8_header_word (test_smoke.SmokeTests.test_utf8_header_word) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+OK

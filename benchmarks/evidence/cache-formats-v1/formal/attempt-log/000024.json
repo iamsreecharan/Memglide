@@ -1,0 +1,11 @@
+{
+  "sequence": 24,
+  "previous_sha256": "eead214c41faa3c41a6f58ff89e374e84718625d098732de663b9db5d3b4ca5f",
+  "recorded_at": "2026-10-18T15:24:12.679578+00:00",
+  "event": "attempt.started",
+  "attempt_id": "fmt-ts-cache-collections-last-value-fallback-r1-A",
+  "original_run_id": "fmt-ts-cache-collections-last-value-fallback-r1-A",
+  "supplemental": false,
+  "start_sha256": "541b3552d92a00365225d6b035e3b8d0f1462c90c0ce35790d23f2d4cdbab22a",
+  "sha256": "e57c8127b9be73de66cc6dbf026d901d83911dd9d787f036f1665f85803cf73a"
+}

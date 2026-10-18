@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: month lengths leap centuries and small years
+not ok 1 - month lengths leap centuries and small years
+  ---
+  duration_ms: 4.07438
+  type: 'test'
+  location: '/workspace/Memglide/.local/cache-v2/corpus-validation/ts-cache-forms-strict-calendar-date/baseline_grade/held_out.test.mjs:4:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/cache-v2/corpus-validation/ts-cache-forms-strict-calendar-date/baseline_grade/held_out.test.mjs:5:79)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: integer bounds and nonfinite inputs
+ok 2 - integer bounds and nonfinite inputs
+  ---
+  duration_ms: 0.923933
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 379.161683

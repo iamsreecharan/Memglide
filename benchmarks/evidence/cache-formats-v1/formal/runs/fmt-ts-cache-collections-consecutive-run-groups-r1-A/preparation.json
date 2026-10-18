@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "bfef15f5f5c02fa855a8df1cf0c010391f10b85b4925f747b0a5d3fe97ad5cc5",
+    "prepared_prompt_sha256": "3bb06c619737eb640a4c3c911540a2e9c79ec98f925e204914c71698d8454f4e",
+    "files": [
+      {
+        "path": "src/consecutive_run_groups.ts",
+        "sha256": "5e4d3bba0a5095b47c77659769cafc7c1c1139a4da797afae5e6129c1a18fd9a",
+        "start_line": 1,
+        "end_line": 10
+      },
+      {
+        "path": "src/consecutive_run_groups_api.ts",
+        "sha256": "34d639a471231a197e67cb8ff3c27cb35c20240daccfdce742def52748562326",
+        "start_line": 1,
+        "end_line": 6
+      }
+    ],
+    "context_bytes": 1238,
+    "preparation_wall_seconds": 0.038328016999912506,
+    "preparation_cpu_seconds": 0.038329949
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-ts-cache-collections-consecutive-run-groups-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-collections-consecutive-run-groups-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "3bb06c619737eb640a4c3c911540a2e9c79ec98f925e204914c71698d8454f4e",
+    "bytes": 2870,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 6954.919619653
+}

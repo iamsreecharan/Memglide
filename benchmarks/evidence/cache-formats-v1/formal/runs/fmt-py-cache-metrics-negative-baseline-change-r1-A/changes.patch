@@ -1,0 +1,10 @@
+diff --git a/metrics/negative_baseline_change.py b/metrics/negative_baseline_change.py
+index 22a3fc8..ee6f3f2 100644
+--- a/metrics/negative_baseline_change.py
++++ b/metrics/negative_baseline_change.py
+@@ -5,4 +5,4 @@ def percent_change(previous, current):
+         raise ValueError("finite numbers required")
+     if previous == 0:
+         return 0 if current == 0 else None
+-    return (current - previous) / previous * 100
++    return (current - previous) / abs(previous) * 100

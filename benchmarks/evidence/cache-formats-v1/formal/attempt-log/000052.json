@@ -1,0 +1,11 @@
+{
+  "sequence": 52,
+  "previous_sha256": "f1fd7a37b16f87c92b29396e30bd590235192dd43970c205f797a27233b7a584",
+  "recorded_at": "2026-10-18T15:31:39.507227+00:00",
+  "event": "attempt.started",
+  "attempt_id": "fmt-py-cache-mailroom-colon-password-r1-B",
+  "original_run_id": "fmt-py-cache-mailroom-colon-password-r1-B",
+  "supplemental": false,
+  "start_sha256": "f69b76499b32483f772166ad0063dc495fd3bbb260b69ff7273c6fa281523ea3",
+  "sha256": "ea8607522b70db845faf0c1ece66d8c2ce2a1612448efb4da2cf79ee66bf0980"
+}

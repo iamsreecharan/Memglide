@@ -1,0 +1,26 @@
+diff --git a/src/strict_integer_range.ts b/src/strict_integer_range.ts
+index c4a6f32..761b73a 100644
+--- a/src/strict_integer_range.ts
++++ b/src/strict_integer_range.ts
+@@ -1,6 +1,7 @@
+ export function parseIntegerRange(value: string): {start: number; end: number} {
+-  const parts = value.split("..");
+-  const start = Number(parts[0]), end = Number(parts[1]);
+-  if (parts.length!==2 || !Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start>end) throw new Error("invalid range");
++  const match = /^([+-]?[0-9]+)\.\.([+-]?[0-9]+)$/.exec(value);
++  if (!match || match[0] !== value) throw new Error("invalid range");
++  const start = Number(match[1]), end = Number(match[2]);
++  if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start>end) throw new Error("invalid range");
+   return {start,end};
+ }
+diff --git a/src/strict_integer_range_api.ts b/src/strict_integer_range_api.ts
+index 914060f..1ba26e2 100644
+--- a/src/strict_integer_range_api.ts
++++ b/src/strict_integer_range_api.ts
+@@ -1,5 +1,5 @@
+ import {parseIntegerRange} from "./strict_integer_range.ts";
+ 
+ export function rangeField(value: string): {start: number; end: number} {
+-  return parseIntegerRange(value.trim());
++  return parseIntegerRange(value);
+ }

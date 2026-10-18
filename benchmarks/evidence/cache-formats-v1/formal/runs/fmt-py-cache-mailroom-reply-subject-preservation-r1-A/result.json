@@ -1,0 +1,311 @@
+{
+  "run_id": "fmt-py-cache-mailroom-reply-subject-preservation-r1-A",
+  "task_id": "py-cache-mailroom-reply-subject-preservation",
+  "language": "python",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 36,
+  "repository": "mailroom-python-cache",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "context_format": "legacy",
+  "setup": {
+    "project_id": "455503d1ebf64638966bfb8a8b446694",
+    "wall_seconds": 0.2978399030007495,
+    "cpu_seconds": 0.13411254899999392,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches actual launcher stdin hash/size and native settings",
+    "context_format": "legacy",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "9cf3f54bfd644b1086fe5699bc657bbe42e2aa9ed4adfff3fc1c5971a897d1e0",
+      "prepared_prompt_sha256": "a3133426d29f109b876126039c8b1abf0b2ba336afedb1772ee326b24a71b45b",
+      "files": [
+        {
+          "path": "mailroom/reply_subject_preservation.py",
+          "sha256": "c1327975a233eccca5e3ccad103f7b3c52f8f3993a2b8ed11cd22fd60f4f53a9",
+          "start_line": 1,
+          "end_line": 3
+        },
+        {
+          "path": "mailroom/reply_subject_preservation_api.py",
+          "sha256": "6901266b0561ac14c916b9ca1f73222d4444a4ca1111f9dc183df9f58f9046c6",
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "context_bytes": 948,
+      "preparation_wall_seconds": 0.092832461999933,
+      "preparation_cpu_seconds": 0.09216440100000003
+    },
+    "source_file_count": 2,
+    "source_hashes": {
+      "mailroom/reply_subject_preservation.py": "c1327975a233eccca5e3ccad103f7b3c52f8f3993a2b8ed11cd22fd60f4f53a9",
+      "mailroom/reply_subject_preservation_api.py": "6901266b0561ac14c916b9ca1f73222d4444a4ca1111f9dc183df9f58f9046c6"
+    },
+    "context_bytes": 948,
+    "actual_model_prompt_sha256": "a3133426d29f109b876126039c8b1abf0b2ba336afedb1772ee326b24a71b45b",
+    "common_task_prompt_sha256": "9cf3f54bfd644b1086fe5699bc657bbe42e2aa9ed4adfff3fc1c5971a897d1e0",
+    "native_exec_boundary_monotonic_seconds": 7525.289419773
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "eef01e7d372ed9c1c854f83a69f1721bb47d567bbec22e762a9c0eab8b69a319",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "fmt-py-cache-mailroom-reply-subject-preservation-r1-A",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T15:36:22.831363+00:00",
+  "artifacts": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-reply-subject-preservation-r1-A",
+  "worktree": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-mailroom-reply-subject-preservation-r1-A",
+  "errors": [],
+  "grader": {
+    "task_id": "py-cache-mailroom-reply-subject-preservation",
+    "repository": "mailroom-python-cache",
+    "corpus_version": "cache-2.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-reply-subject-preservation-r1-A/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-reply-subject-preservation-r1-A/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-reply-subject-preservation-r1-A/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 7
+        },
+        "stdout_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-reply-subject-preservation-r1-A/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-reply-subject-preservation-r1-A/smoke.stderr.log"
+      }
+    ],
+    "test_count": 9,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "6f39922ae9e519298205ea4420efa9f2f724dac6f22f9fdbbbda3c898c8fbde2",
+        "actual_sha256": "6f39922ae9e519298205ea4420efa9f2f724dac6f22f9fdbbbda3c898c8fbde2"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3",
+        "actual_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_smoke.py",
+        "unchanged": true,
+        "expected_sha256": "b461184fa58b5873577aed0abc28cea1bfa95da10f05cf363db80500bd5f8410",
+        "actual_sha256": "b461184fa58b5873577aed0abc28cea1bfa95da10f05cf363db80500bd5f8410"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 5
+        },
+        "reported_counts": {
+          "tests": 7
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "9e4a0d1e0d23ea71e0d429332801f0e801cd0b1f",
+  "common_task_prompt_sha256": "9cf3f54bfd644b1086fe5699bc657bbe42e2aa9ed4adfff3fc1c5971a897d1e0",
+  "actual_model_prompt_sha256": "a3133426d29f109b876126039c8b1abf0b2ba336afedb1772ee326b24a71b45b",
+  "configuration_label": "Memglide legacy",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-mailroom-reply-subject-preservation-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-reply-subject-preservation-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 25.386317508000502,
+  "process_started_monotonic_seconds": 7524.939529826,
+  "process_finished_monotonic_seconds": 7550.325847334,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 193867776,
+    "cpu_seconds": 7.42,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 33,
+    "observed_memglide_processes": 0,
+    "samples": 441,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 13,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 48715,
+      "cached_input_tokens": 35200,
+      "output_tokens": 617
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 48715,
+      "cached_input_tokens": 35200,
+      "output_tokens": 617
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 3,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"pwd && rg --files -g 'AGENTS.md' -g 'test*' -g '*reply_subject*'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'cat AGENTS.md tests/test_smoke.py; git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "AGENTS.md",
+      "tests/test_smoke.py"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 25.71475479699984,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 25.036427560999982,
+  "native_exec_timing_scope": "Launcher boundary before report-write/exec handoff through observed native exit; both formats instrumented",
+  "protected_file_violations": [],
+  "common_blocker": null,
+  "finished_at": "2026-10-18T15:36:49.101897+00:00"
+}

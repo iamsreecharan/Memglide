@@ -1,0 +1,12 @@
+test_invalid_headers (test_colon_password.BasicCredentialsTests.test_invalid_headers) ... ok
+test_valid_credentials (test_colon_password.BasicCredentialsTests.test_valid_credentials) ... ok
+test_colon_password (test_smoke.SmokeTests.test_colon_password) ... ok
+test_folded_header_spacing (test_smoke.SmokeTests.test_folded_header_spacing) ... ok
+test_quoted_display_backslash (test_smoke.SmokeTests.test_quoted_display_backslash) ... ok
+test_reply_subject_preservation (test_smoke.SmokeTests.test_reply_subject_preservation) ... ok
+test_utf8_header_word (test_smoke.SmokeTests.test_utf8_header_word) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+OK

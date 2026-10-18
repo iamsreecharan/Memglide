@@ -108,8 +108,11 @@ printing credential contents.
 Both formats securely read current source and recheck policy/source hashes;
 neither reuses stale file contents, pads requests to trigger caching, invents a
 cache parameter, changes session IDs or makes a model call to decide retrieval.
-The compact format is a versioned layout refinement. Its actual model usage and
-whole-task performance require a separate measured comparison.
+The compact format is a versioned layout refinement. The
+[20-pair measured comparison](../benchmarks/cache-refinement-assessment.md)
+found lower full execution time but higher uncached input. The overall input
+decrease came from identical-prompt controls, so it does not establish a token
+or cache benefit from the layout. Cost savings remain unproven.
 
 For related work in an existing native thread, preserve Codex's own history
 instead of starting a fresh thread just to resend unchanged evidence. The

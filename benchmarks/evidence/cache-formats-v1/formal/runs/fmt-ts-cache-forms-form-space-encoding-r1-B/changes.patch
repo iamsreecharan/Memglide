@@ -1,0 +1,20 @@
+diff --git a/src/form_space_encoding.ts b/src/form_space_encoding.ts
+index 3a6b8ae..90b4451 100644
+--- a/src/form_space_encoding.ts
++++ b/src/form_space_encoding.ts
+@@ -1,3 +1,3 @@
+ export function encodeFormComponent(value: string): string {
+-  return encodeURIComponent(value);
++  return encodeURIComponent(value).replace(/%20/g, "+");
+ }
+diff --git a/src/form_space_encoding_api.ts b/src/form_space_encoding_api.ts
+index c327280..f512699 100644
+--- a/src/form_space_encoding_api.ts
++++ b/src/form_space_encoding_api.ts
+@@ -1,5 +1,5 @@
+ import {encodeFormComponent} from "./form_space_encoding.ts";
+ 
+ export function toFormPair(name: string, value: string): string {
+-  return encodeFormComponent(name.toLowerCase()) + "=" + encodeFormComponent(value);
++  return encodeFormComponent(name) + "=" + encodeFormComponent(value);
+ }

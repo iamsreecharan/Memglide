@@ -1,0 +1,19 @@
+test_empty_similar_prefixes_and_unicode (__main__.BehaviorTests.test_empty_similar_prefixes_and_unicode) ... ok
+test_existing_prefix_and_adapter_whitespace (__main__.BehaviorTests.test_existing_prefix_and_adapter_whitespace) ... FAIL
+
+======================================================================
+FAIL: test_existing_prefix_and_adapter_whitespace (__main__.BehaviorTests.test_existing_prefix_and_adapter_whitespace)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation-final/py-cache-mailroom-reply-subject-preservation/adapter_grade/held_out.py", line 8, in test_existing_prefix_and_adapter_whitespace
+    self.assertEqual(core.reply_subject("rE: Topic"),"rE: Topic")
+AssertionError: 'Re: rE: Topic' != 'rE: Topic'
+- Re: rE: Topic
+? ----
++ rE: Topic
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1)

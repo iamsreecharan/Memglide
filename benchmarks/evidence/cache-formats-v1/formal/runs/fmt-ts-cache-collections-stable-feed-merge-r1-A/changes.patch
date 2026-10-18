@@ -1,0 +1,24 @@
+diff --git a/src/stable_feed_merge.ts b/src/stable_feed_merge.ts
+index db3e4eb..2e26b63 100644
+--- a/src/stable_feed_merge.ts
++++ b/src/stable_feed_merge.ts
+@@ -2,7 +2,7 @@ export type Entry = {key: number; id: string};
+ export function mergeSorted(left: Entry[], right: Entry[]): Entry[] {
+   const result: Entry[] = [];let a=0,b=0;
+   while (a<left.length && b<right.length) {
+-    if (left[a].key < right[b].key) result.push(left[a++]);
++    if (left[a].key <= right[b].key) result.push(left[a++]);
+     else result.push(right[b++]);
+   }
+   return [...result,...left.slice(a),...right.slice(b)];
+diff --git a/src/stable_feed_merge_api.ts b/src/stable_feed_merge_api.ts
+index fab5a31..a8c49da 100644
+--- a/src/stable_feed_merge_api.ts
++++ b/src/stable_feed_merge_api.ts
+@@ -2,5 +2,5 @@ import {mergeSorted} from "./stable_feed_merge.ts";
+ import type {Entry} from "./stable_feed_merge.ts";
+ 
+ export function mergeFeeds(left: Entry[], right: Entry[]): Entry[] {
+-  return mergeSorted(left.sort((a,b)=>a.key-b.key), right.sort((a,b)=>a.key-b.key));
++  return mergeSorted(left, right);
+ }

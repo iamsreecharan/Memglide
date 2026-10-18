@@ -1,0 +1,1 @@
+{"summary":"Fixed UTF-8 base64 encoding and preserved exact adapter output, including capitalization. Added regression tests for ASCII, Unicode, and CR/LF rejection. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

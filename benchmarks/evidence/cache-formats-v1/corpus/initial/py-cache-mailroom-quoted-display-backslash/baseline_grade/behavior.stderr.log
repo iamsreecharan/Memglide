@@ -1,0 +1,19 @@
+test_backslashes_and_quotes (__main__.BehaviorTests.test_backslashes_and_quotes) ... FAIL
+test_empty_unicode_and_line_breaks (__main__.BehaviorTests.test_empty_unicode_and_line_breaks) ... ok
+
+======================================================================
+FAIL: test_backslashes_and_quotes (__main__.BehaviorTests.test_backslashes_and_quotes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/cache-v2/corpus-validation/py-cache-mailroom-quoted-display-backslash/baseline_grade/held_out.py", line 8, in test_backslashes_and_quotes
+    self.assertEqual(core.quote_display_name('a'+slash+'b'), '"a'+slash*2+'b"')
+AssertionError: '"a\\b"' != '"a\\\\b"'
+- "a\b"
++ "a\\b"
+?   +
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1)

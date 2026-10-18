@@ -1,0 +1,11 @@
+{
+  "sequence": 80,
+  "previous_sha256": "a725559367bafb4ef7945f0ec54eae415160cf71d04ed27562f7cf6f0c182290",
+  "recorded_at": "2026-10-18T15:38:10.357213+00:00",
+  "event": "attempt.started",
+  "attempt_id": "fmt-py-cache-metrics-negative-baseline-change-r1-A",
+  "original_run_id": "fmt-py-cache-metrics-negative-baseline-change-r1-A",
+  "supplemental": false,
+  "start_sha256": "2eb06429b48203c257af0a30d635fa2a453ff343eb08a1cc44035565909119c9",
+  "sha256": "2d19de0587282658fa24e4c009a07a2655b2081eacebc14d67c4baffdb355d23"
+}

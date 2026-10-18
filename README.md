@@ -83,7 +83,21 @@ npm --prefix frontend run build
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for browser tests and packaging. [PROGRESS.md](PROGRESS.md) records observed validation and outstanding limitations; source-file presence alone is not a completion claim.
 
-The latest [focused-launcher assessment](benchmarks/daily-ab-assessment.md) and
+The latest [source-format assessment](benchmarks/cache-refinement-assessment.md)
+and [individual results](benchmarks/codex-cache-formats.json) cover **20 fresh
+Python/TypeScript tasks, 40 native runs** comparing legacy Memglide with
+compact-prefix Memglide. Both passed 20/20. Compact formatting delivered the same
+complete source with a 31.0% smaller added envelope. Mean full execution time
+fell 11.2%, but **uncached input rose 3.9%**. The aggregate 2.0% input decrease
+came from identical-prompt controls; input rose 0.63% in the 16 pairs that
+received source. One pair accounts for 59.5% of the net time reduction.
+These small, single-repeat results establish neither a cache benefit nor a
+money saving. This comparison has no bare-Codex arm and must stay separate from
+the earlier comparisons below. [988 distinct tests passed](benchmarks/cache-refinement-validation.md).
+The [downloadable report bundle](benchmarks/memglide-cache-refinement-report.zip)
+includes every run, independent audits, research limits and validation evidence.
+
+The earlier [focused-launcher assessment](benchmarks/daily-ab-assessment.md) and
 [individual results](benchmarks/codex-ab-daily.json) cover **20 fresh tasks,
 two configurations and two repeats: 80 native Codex runs**. Both configurations
 passed 40/40. Memglide used 2.9% less total input and 6.2% less output, and took

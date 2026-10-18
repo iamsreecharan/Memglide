@@ -1,0 +1,11 @@
+{
+  "sequence": 2,
+  "previous_sha256": "e4268085e274eddceababbf6df704c3281ada05b4973d7e06651badc8486c3ab",
+  "recorded_at": "2026-10-18T15:19:06.482987+00:00",
+  "event": "attempt.started",
+  "attempt_id": "fmt-py-cache-metrics-warmup-moving-average-r1-A",
+  "original_run_id": "fmt-py-cache-metrics-warmup-moving-average-r1-A",
+  "supplemental": false,
+  "start_sha256": "3ad6a83e8c065945254737bde191f4d67b5a2a72193fa6132dcc80a5ddba7442",
+  "sha256": "89adbdc0220666c9300db65f424ec9e7335e5718aac3e63e36bb8719d89791a0"
+}

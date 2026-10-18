@@ -1,0 +1,9 @@
+diff --git a/src/hex_color_lengths.ts b/src/hex_color_lengths.ts
+index b9f9834..49184d4 100644
+--- a/src/hex_color_lengths.ts
++++ b/src/hex_color_lengths.ts
+@@ -1,3 +1,3 @@
+ export function isHexColor(value: string): boolean {
+-  return /^#[0-9a-f]{3,8}$/i.test(value) && !/\s/.test(value);
++  return /^#(?:[0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(value) && !/\s/.test(value);
+ }

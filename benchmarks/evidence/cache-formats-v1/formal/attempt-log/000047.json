@@ -1,0 +1,9 @@
+{
+  "sequence": 47,
+  "previous_sha256": "7a743e5514a1c2a5c86417dd6874dc47d564a8c056f105f8f739175bbc9f3575",
+  "recorded_at": "2026-10-18T15:30:49.461797+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "fmt-py-cache-metrics-missing-not-falsy-r1-B",
+  "result_sha256": "4eef3c37b769ab5df4e0f3279d6a1a9de530aa97e44585d89240440f8f5ab520",
+  "sha256": "2393fa12cbc88acad2b24d63452da7658b3d109a2170a4bf0cdda842cb1b781f"
+}

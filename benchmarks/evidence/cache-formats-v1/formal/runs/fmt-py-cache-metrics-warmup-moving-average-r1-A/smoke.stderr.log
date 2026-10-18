@@ -1,0 +1,15 @@
+test_fractional_sample_variance (test_smoke.SmokeTests.test_fractional_sample_variance) ... ok
+test_histogram_boundary_slots (test_smoke.SmokeTests.test_histogram_boundary_slots) ... ok
+test_missing_not_falsy (test_smoke.SmokeTests.test_missing_not_falsy) ... ok
+test_negative_baseline_change (test_smoke.SmokeTests.test_negative_baseline_change) ... ok
+test_warmup_moving_average (test_smoke.SmokeTests.test_warmup_moving_average) ... ok
+test_empty_input (test_warmup_moving_average.MovingAverageTests.test_empty_input) ... ok
+test_invalid_values (test_warmup_moving_average.MovingAverageTests.test_invalid_values) ... ok
+test_invalid_windows (test_warmup_moving_average.MovingAverageTests.test_invalid_windows) ... ok
+test_warmup_and_latest_window (test_warmup_moving_average.MovingAverageTests.test_warmup_and_latest_window) ... ok
+test_window_larger_than_input (test_warmup_moving_average.MovingAverageTests.test_window_larger_than_input) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.003s
+
+OK

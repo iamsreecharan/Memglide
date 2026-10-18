@@ -1,0 +1,1 @@
+{"summary":"Fixed strict integer range validation and removed adapter trimming. Added regression coverage for signed integers, leading zeroes, safe bounds, whitespace, and malformed input. Existing tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

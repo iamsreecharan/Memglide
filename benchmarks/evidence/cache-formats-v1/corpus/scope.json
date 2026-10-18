@@ -1,0 +1,506 @@
+{
+  "title": "Fresh known-file utility-edit format microbenchmark",
+  "corpus_version": "cache-2.0.0",
+  "generated_at": "2026-10-18T07:51:28.928704+00:00",
+  "task_count": 20,
+  "languages": {
+    "python": 10,
+    "typescript": 10
+  },
+  "task_kinds": {
+    "single-source": 8,
+    "integration": 8,
+    "supplied-context": 4
+  },
+  "source_scope_bytes": {
+    "min": 89,
+    "max": 632,
+    "mean": 359.55,
+    "median": 318.5
+  },
+  "repositories": [
+    {
+      "id": "mailroom-python-cache",
+      "language": "python",
+      "task_count": 5,
+      "production_files": 8,
+      "production_bytes": 2116,
+      "production_lines": 49
+    },
+    {
+      "id": "metrics-python-cache",
+      "language": "python",
+      "task_count": 5,
+      "production_files": 8,
+      "production_bytes": 2032,
+      "production_lines": 51
+    },
+    {
+      "id": "forms-typescript-cache",
+      "language": "typescript",
+      "task_count": 5,
+      "production_files": 7,
+      "production_bytes": 1299,
+      "production_lines": 29
+    },
+    {
+      "id": "collections-typescript-cache",
+      "language": "typescript",
+      "task_count": 5,
+      "production_files": 7,
+      "production_bytes": 1811,
+      "production_lines": 45
+    }
+  ],
+  "individual_tasks": [
+    {
+      "task_id": "py-cache-mailroom-colon-password",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 632,
+      "prompt_bytes": 859,
+      "source_files": [
+        {
+          "path": "mailroom/colon_password.py",
+          "bytes": 632,
+          "lines": 14,
+          "sha256": "9d068edadc809f8a276bd66cfdbdc3dbd89738a632d2a6adb10cb869cd52d1d6"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-mailroom-folded-header-spacing",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 373,
+      "prompt_bytes": 845,
+      "source_files": [
+        {
+          "path": "mailroom/folded_header_spacing.py",
+          "bytes": 373,
+          "lines": 7,
+          "sha256": "fc526c0033168471c71e1e2773f261c8ef0fbc600792a707969978b5de22189b"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-mailroom-reply-subject-preservation",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 314,
+      "prompt_bytes": 851,
+      "source_files": [
+        {
+          "path": "mailroom/reply_subject_preservation.py",
+          "bytes": 128,
+          "lines": 3,
+          "sha256": "c1327975a233eccca5e3ccad103f7b3c52f8f3993a2b8ed11cd22fd60f4f53a9"
+        },
+        {
+          "path": "mailroom/reply_subject_preservation_api.py",
+          "bytes": 186,
+          "lines": 5,
+          "sha256": "6901266b0561ac14c916b9ca1f73222d4444a4ca1111f9dc183df9f58f9046c6"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-mailroom-utf8-header-word",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 535,
+      "prompt_bytes": 842,
+      "source_files": [
+        {
+          "path": "mailroom/utf8_header_word.py",
+          "bytes": 342,
+          "lines": 9,
+          "sha256": "b46e88ba00e6f85224e2bdde82e5744ef013e16ce7fd95ae406995f23873be9b"
+        },
+        {
+          "path": "mailroom/utf8_header_word_api.py",
+          "bytes": 193,
+          "lines": 5,
+          "sha256": "f3933b055f12ecef552bf04deaaae5324ac0962597be39391a5e60000d947049"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-mailroom-quoted-display-backslash",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "source_scope_bytes": 228,
+      "prompt_bytes": 1147,
+      "source_files": [
+        {
+          "path": "mailroom/quoted_display_backslash.py",
+          "bytes": 228,
+          "lines": 5,
+          "sha256": "4bf7e2d201e84ad31e77a1bfb7a7d1d3beacd396e50431fda2773e0b218f32b8"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-metrics-warmup-moving-average",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 435,
+      "prompt_bytes": 838,
+      "source_files": [
+        {
+          "path": "metrics/warmup_moving_average.py",
+          "bytes": 435,
+          "lines": 10,
+          "sha256": "db94b2515b26c29f22c2327389847c570357e70e6ae25ad20d5b19502f9289ad"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-metrics-negative-baseline-change",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 322,
+      "prompt_bytes": 773,
+      "source_files": [
+        {
+          "path": "metrics/negative_baseline_change.py",
+          "bytes": 322,
+          "lines": 8,
+          "sha256": "d2b945387ee739d744e64d43935b5b5f0a6d92b76176ee274b874ae2e1df8331"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-metrics-histogram-boundary-slots",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 605,
+      "prompt_bytes": 910,
+      "source_files": [
+        {
+          "path": "metrics/histogram_boundary_slots.py",
+          "bytes": 391,
+          "lines": 10,
+          "sha256": "b0fef039a92768b2eddcb75da6d834bd915112d3fb9fa7dccde8171e89348b60"
+        },
+        {
+          "path": "metrics/histogram_boundary_slots_api.py",
+          "bytes": 214,
+          "lines": 5,
+          "sha256": "261683a8378b75e786bdb36b20e7611fbe0159ab89681380a2088888794cb051"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-metrics-fractional-sample-variance",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 501,
+      "prompt_bytes": 817,
+      "source_files": [
+        {
+          "path": "metrics/fractional_sample_variance.py",
+          "bytes": 306,
+          "lines": 7,
+          "sha256": "06d390792da9696435a5b690561996984f327fb480281831af4d27b568f3cca4"
+        },
+        {
+          "path": "metrics/fractional_sample_variance_api.py",
+          "bytes": 195,
+          "lines": 5,
+          "sha256": "df59a32470dad492d7d09b199b0bf43d927d527d3e0b78f9a59d0a9fcdfed2f2"
+        }
+      ]
+    },
+    {
+      "task_id": "py-cache-metrics-missing-not-falsy",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "source_scope_bytes": 136,
+      "prompt_bytes": 976,
+      "source_files": [
+        {
+          "path": "metrics/missing_not_falsy.py",
+          "bytes": 136,
+          "lines": 5,
+          "sha256": "13537e84c31d0004f224364f2b7617235675b659a557d2a91b9939408bc66638"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-forms-strict-calendar-date",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 266,
+      "prompt_bytes": 758,
+      "source_files": [
+        {
+          "path": "src/strict_calendar_date.ts",
+          "bytes": 266,
+          "lines": 4,
+          "sha256": "ad4df44dccf6a03dc1a24ba80fe92c686ee20f8b254ff68dece70330adbf4d30"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-forms-hex-color-lengths",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 118,
+      "prompt_bytes": 709,
+      "source_files": [
+        {
+          "path": "src/hex_color_lengths.ts",
+          "bytes": 118,
+          "lines": 3,
+          "sha256": "723580095e172644c5d773e6cdfd34bb3fb16878335be8b225403f7d688e172e"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-forms-strict-integer-range",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 511,
+      "prompt_bytes": 866,
+      "source_files": [
+        {
+          "path": "src/strict_integer_range.ts",
+          "bytes": 331,
+          "lines": 6,
+          "sha256": "186be6c61ba5b996becedf395bb6b450644dfd7a71b84bbd801bd1a058e59242"
+        },
+        {
+          "path": "src/strict_integer_range_api.ts",
+          "bytes": 180,
+          "lines": 5,
+          "sha256": "930e447bf3647039316dc32b593f0ffbe6dc89f500170365439e67f763b8d78c"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-forms-form-space-encoding",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 315,
+      "prompt_bytes": 845,
+      "source_files": [
+        {
+          "path": "src/form_space_encoding.ts",
+          "bytes": 99,
+          "lines": 3,
+          "sha256": "9c27b86999a3211d21b2b0b53bca62d8a1f538079146c7918690f0759fbf3c86"
+        },
+        {
+          "path": "src/form_space_encoding_api.ts",
+          "bytes": 216,
+          "lines": 5,
+          "sha256": "e4f4285748723026e453265574f5bdb6c7217b30d5afa6515d7774b47ae23894"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-forms-required-whitespace",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "source_scope_bytes": 89,
+      "prompt_bytes": 938,
+      "source_files": [
+        {
+          "path": "src/required_whitespace.ts",
+          "bytes": 89,
+          "lines": 3,
+          "sha256": "77cf0f60dd4f67f349fd874c2f8c930600c0d06a5eb86ca589e369ed9570ce3f"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-collections-signed-left-rotation",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 283,
+      "prompt_bytes": 697,
+      "source_files": [
+        {
+          "path": "src/signed_left_rotation.ts",
+          "bytes": 283,
+          "lines": 6,
+          "sha256": "fa43d512f0e149ad5eeb11da32ffbe4b1c3a37cc7cb92f0d7385596aab5c4d97"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-collections-unique-intersection",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "source_scope_bytes": 149,
+      "prompt_bytes": 719,
+      "source_files": [
+        {
+          "path": "src/unique_intersection.ts",
+          "bytes": 149,
+          "lines": 4,
+          "sha256": "74cef550bed3fea12628d759aded9b8592ed08810a58788efd973fd226505bc3"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-collections-consecutive-run-groups",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 623,
+      "prompt_bytes": 848,
+      "source_files": [
+        {
+          "path": "src/consecutive_run_groups.ts",
+          "bytes": 387,
+          "lines": 10,
+          "sha256": "5e4d3bba0a5095b47c77659769cafc7c1c1139a4da797afae5e6129c1a18fd9a"
+        },
+        {
+          "path": "src/consecutive_run_groups_api.ts",
+          "bytes": 236,
+          "lines": 6,
+          "sha256": "34d639a471231a197e67cb8ff3c27cb35c20240daccfdce742def52748562326"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-collections-stable-feed-merge",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "source_scope_bytes": 620,
+      "prompt_bytes": 896,
+      "source_files": [
+        {
+          "path": "src/stable_feed_merge.ts",
+          "bytes": 360,
+          "lines": 9,
+          "sha256": "855b8a39b16a110f6a9a7f1036feab69bdc27f46fc6383108e334f4850f01279"
+        },
+        {
+          "path": "src/stable_feed_merge_api.ts",
+          "bytes": 260,
+          "lines": 6,
+          "sha256": "85c569a3a8ac231eac4517dd9a518abfa4bf1e0d3ffcf1124fc56c244c2c7c86"
+        }
+      ]
+    },
+    {
+      "task_id": "ts-cache-collections-last-value-fallback",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "source_scope_bytes": 136,
+      "prompt_bytes": 1017,
+      "source_files": [
+        {
+          "path": "src/last_value_fallback.ts",
+          "bytes": 136,
+          "lines": 4,
+          "sha256": "9dd65d8a4c54b86a9f0063a43d3826f3b2940220d20e4738e37ec0962de70cd6"
+        }
+      ]
+    }
+  ],
+  "file_hashes": [
+    {
+      "path": "benchmarks/corpus_cache.py",
+      "bytes": 54926,
+      "sha256": "b7b6c556a163d801159e83168a84ba696f89fd4292f9948b8cdcd9ecfc4e5e59"
+    },
+    {
+      "path": "benchmarks/tasks_cache.json",
+      "bytes": 34159,
+      "sha256": "69585ab32c68255c7757dd627db014b73a311a7af1fe00309d31920b57e755b0"
+    },
+    {
+      "path": "tests/test_benchmark_corpus_cache.py",
+      "bytes": 9983,
+      "sha256": "8ea3c1393612215d46847b15d329ca9ddc2d96fa077bb4dd13c46ae0f896b767"
+    }
+  ],
+  "validation": {
+    "pytest": {
+      "passed": 53,
+      "failed": 0,
+      "seconds": 36.82,
+      "log": ".local/cache-v2/corpus-pytest-1.log",
+      "junit_xml": ".local/cache-v2/corpus-pytest-1.xml"
+    },
+    "initial_structured_validation": ".local/cache-v2/corpus-validation/validation.json",
+    "final_structured_validation": ".local/cache-v2/corpus-validation-final/validation.json",
+    "baseline_reference_pairs": 20,
+    "half_fix_controls": 16,
+    "protected_smoke_methods_per_repository": 5,
+    "held_out_methods_per_task": 2,
+    "security_subprocess_regressions": 7,
+    "ruff": "passed",
+    "extra_manifest_check": "passed after prompt spacing cleanup"
+  },
+  "development_controls": {
+    "actual_model_requests": 0,
+    "production_format_implementation_inspected": false,
+    "old_corpora_edited": false,
+    "task_selection_from_model_outcomes": false,
+    "initial_draft_preserved": ".local/cache-v2/corpus-initial-draft",
+    "pre_model_revision": "Expanded existing shared hex-color whitespace rejection from CR/LF to all JS whitespace and added Unicode line-separator/NBSP assertions; initial draft and full validation preserved."
+  },
+  "limitations": [
+    "Four small purpose-built repositories and known-file utility changes; not a representative large-production-repository benchmark.",
+    "Both configurations receive exactly the same disclosed production paths; four tasks additionally supply all relevant source.",
+    "No cross-session memory or unfamiliar-repository discovery is evaluated.",
+    "Code scopes are naturally small and were not selected or padded against preloader limits or measured model outcomes.",
+    "Independent grading is external to agent worktrees and guards early exits, missing tests, skips, expected failures and todo tests; it is procedural separation, not a hostile-code security boundary.",
+    "This corpus validates correctness and integrity of the experiment; its unit-test pass count is not a live Codex performance result."
+  ],
+  "independent_review": {
+    "reviewer": "independent_optimization_review",
+    "status": "No substantive blocker after CSS whitespace correction",
+    "scope": "Fairness, task/oracle contracts, each-half controls and actual test execution defenses; no production formatting implementation tuning",
+    "conditions": [
+      "Retain89\u2013632byte known-file scope and20distinct focus sets in report.",
+      "One balanced repeat cannot characterize repeat variance or provider cache control.",
+      "Does not establish production-scale or cross-task same-file prefix reuse."
+    ]
+  }
+}

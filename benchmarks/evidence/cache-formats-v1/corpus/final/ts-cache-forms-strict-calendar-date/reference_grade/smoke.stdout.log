@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: strict-calendar-date
+ok 1 - strict-calendar-date
+  ---
+  duration_ms: 1.593552
+  type: 'test'
+  ...
+# Subtest: hex-color-lengths
+ok 2 - hex-color-lengths
+  ---
+  duration_ms: 0.460858
+  type: 'test'
+  ...
+# Subtest: strict-integer-range
+ok 3 - strict-integer-range
+  ---
+  duration_ms: 4.029837
+  type: 'test'
+  ...
+# Subtest: form-space-encoding
+ok 4 - form-space-encoding
+  ---
+  duration_ms: 0.464706
+  type: 'test'
+  ...
+# Subtest: required-whitespace
+ok 5 - required-whitespace
+  ---
+  duration_ms: 0.397391
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 329.002958

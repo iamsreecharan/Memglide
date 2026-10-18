@@ -1,0 +1,1 @@
+{"summary":"Fixed validDateParts with Gregorian month lengths and leap-year rules, including centuries and years below 100. Added regression coverage for invalid inputs and date boundaries. Preserved existing tests; no commits made.","tests_run":["node --test tests/*.test.mjs — passed both test files."]}

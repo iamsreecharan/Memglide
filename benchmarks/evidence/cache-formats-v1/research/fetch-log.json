@@ -1,0 +1,16 @@
+[
+  {
+    "id": "codex-tag",
+    "url": "https://api.github.com/repos/openai/codex/git/ref/tags/rust-v0.159.2",
+    "at_utc": "2026-10-18T07:30:52.769534+00:00",
+    "status": null,
+    "error_type": "URLError"
+  },
+  {
+    "id": "codex-main",
+    "url": "https://api.github.com/repos/openai/codex/commits/main",
+    "at_utc": "2026-10-18T07:30:52.818438+00:00",
+    "status": null,
+    "error_type": "URLError"
+  }
+]

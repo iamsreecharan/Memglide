@@ -1,0 +1,10 @@
+diff --git a/src/last_value_fallback.ts b/src/last_value_fallback.ts
+index cf42c02..a640eea 100644
+--- a/src/last_value_fallback.ts
++++ b/src/last_value_fallback.ts
+@@ -1,4 +1,4 @@
+ export function lastOrDefault<T>(items: T[], fallback: T): T {
+   if (items.length===0) return fallback;
+-  return items[items.length];
++  return items[items.length - 1];
+ }

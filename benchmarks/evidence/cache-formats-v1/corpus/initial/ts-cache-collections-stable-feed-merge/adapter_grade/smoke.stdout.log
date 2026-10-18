@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: signed-left-rotation
+ok 1 - signed-left-rotation
+  ---
+  duration_ms: 2.478852
+  type: 'test'
+  ...
+# Subtest: unique-intersection
+ok 2 - unique-intersection
+  ---
+  duration_ms: 0.682367
+  type: 'test'
+  ...
+# Subtest: consecutive-run-groups
+ok 3 - consecutive-run-groups
+  ---
+  duration_ms: 1.157884
+  type: 'test'
+  ...
+# Subtest: stable-feed-merge
+ok 4 - stable-feed-merge
+  ---
+  duration_ms: 0.446512
+  type: 'test'
+  ...
+# Subtest: last-value-fallback
+ok 5 - last-value-fallback
+  ---
+  duration_ms: 0.177517
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 226.651265

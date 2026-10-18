@@ -1,0 +1,9 @@
+{
+  "sequence": 5,
+  "previous_sha256": "e85f69111c7c0f44c2bb03a0809a991a473a125a6a96833cfd5ded287a0dbb2a",
+  "recorded_at": "2026-10-18T15:20:05.324247+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "fmt-py-cache-metrics-warmup-moving-average-r1-B",
+  "result_sha256": "be716ccf0b6547189b2dfbd59c71e9ca80b981240bfc5767350cf805a106e2fc",
+  "sha256": "06cf237c9a99d8ffaa90b13aa3878558db019c5c1c1c1267f538a491bd6fca95"
+}

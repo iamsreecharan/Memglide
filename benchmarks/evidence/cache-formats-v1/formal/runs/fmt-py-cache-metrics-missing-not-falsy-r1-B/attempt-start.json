@@ -1,0 +1,42 @@
+{
+  "run_id": "fmt-py-cache-metrics-missing-not-falsy-r1-B",
+  "task_id": "py-cache-metrics-missing-not-falsy",
+  "language": "python",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 23,
+  "repository": "metrics-python-cache",
+  "task_kind": "supplied-context",
+  "selection_stratum": "caller_context_supplied",
+  "context_format": "compact-prefix",
+  "setup": {
+    "wall_seconds": 0,
+    "cpu_seconds": 0
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this format assignment yet",
+    "context_format": "compact-prefix"
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "fmt-py-cache-metrics-missing-not-falsy-r1-B",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T15:30:26.787102+00:00",
+  "artifacts": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-metrics-missing-not-falsy-r1-B",
+  "worktree": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-metrics-missing-not-falsy-r1-B",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

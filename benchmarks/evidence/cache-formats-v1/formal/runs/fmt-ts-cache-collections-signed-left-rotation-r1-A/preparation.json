@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "f7bd3aaa74ddf2bd77d58b764f19572a13b8c9ae7cbe322e3c6a3e5140e997ec",
+    "prepared_prompt_sha256": "26ca8d20d799048dda05a8cdfaa629468336dbb6b062d0be10231098d5daabc8",
+    "files": [
+      {
+        "path": "src/signed_left_rotation.ts",
+        "sha256": "fa43d512f0e149ad5eeb11da32ffbe4b1c3a37cc7cb92f0d7385596aab5c4d97",
+        "start_line": 1,
+        "end_line": 6
+      }
+    ],
+    "context_bytes": 721,
+    "preparation_wall_seconds": 0.11989469699983601,
+    "preparation_cpu_seconds": 0.11866592199999998
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-ts-cache-collections-signed-left-rotation-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-collections-signed-left-rotation-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "26ca8d20d799048dda05a8cdfaa629468336dbb6b062d0be10231098d5daabc8",
+    "bytes": 2164,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 7303.003070302
+}

@@ -1,0 +1,1 @@
+{"summary":"Fixed is_missing to return True only for None and float NaN. Added regression coverage for falsy values, infinities, and objects that reject coercion. Existing tests preserved; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed."]}

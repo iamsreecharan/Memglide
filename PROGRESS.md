@@ -1,6 +1,43 @@
 # Memglide V1 verification record
 
-The latest [focused-launcher assessment](benchmarks/daily-ab-assessment.md) and
+The latest [cache-format assessment](benchmarks/cache-refinement-assessment.md)
+and [40 individual runs](benchmarks/codex-cache-formats.json) compare **legacy
+Memglide against compact-prefix Memglide**, using 20 fresh Python/TypeScript
+tasks and one counterbalanced repeat. Neither arm is bare Codex. Implementation
+was frozen at `94998bb`; source stayed unchanged throughout execution. Both
+arms passed 20/20, with no formal failures, retries, interruptions or resumes.
+
+The new format canonically orders full source before the exact original task,
+removes model-visible hash/range metadata, and retains private source validation.
+Across the 16 preloads per arm, it delivered the same 24 complete files with a
+31.0% smaller added envelope. The conditional gate makes no auxiliary model call.
+Existing approval, ignore-policy, complete-source budgets and freshness checks
+remain enforced. The launcher defaults to compact-prefix when explicitly used;
+the Python API and historical runner retain legacy compatibility.
+
+Full execution time fell 11.2% and output fell 6.1%, but **uncached input rose
+3.9%**. Overall input fell 2.0%; that decrease comes from four identical-prompt
+controls, while the 16 source-prepared pairs used 0.63% more input and 1.53% more
+uncached input. One pair contributes 59.5% of the net time reduction. Provider
+cache conditions remain uncontrolled. Cost and cost per successful task remain
+null; cache benefits and money savings are unproven. Different tasks and arm
+definitions prevent interpreting the earlier +27.1% and current +3.9% uncached
+figures as a controlled iteration gain.
+
+[988 distinct tests passed](benchmarks/cache-refinement-validation.md): 961
+Python, 24 frontend and three production Chromium cases, plus static, packaging
+and installed-package checks. Before formal execution, recovery handling was
+fixed to preserve unknown index overhead as null, and read-command attribution
+was corrected without changing historical usage, time or grading outcomes.
+The post-run independent audit passed 5,138 assertions. Its initial 40 failures
+were an auditor argument-order mismatch; the initial audit, corrected auditor
+and explanation are retained alongside all original evidence. The
+[research review](benchmarks/cache-refinement-research.md) distinguishes pinned
+source inspections from inaccessible articles and papers. The
+[downloadable report bundle](benchmarks/memglide-cache-refinement-report.zip)
+preserves the new experiment and its limitations.
+
+The earlier [focused-launcher assessment](benchmarks/daily-ab-assessment.md) and
 [80 individual runs](benchmarks/codex-ab-daily.json) cover 20 fresh known-file
 utility tasks, ten Python and ten TypeScript, with two repeats per configuration.
 Implementation and protocol were frozen at `6f4b6f6` before formal execution;

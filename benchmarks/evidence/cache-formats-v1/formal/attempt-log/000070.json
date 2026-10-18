@@ -1,0 +1,11 @@
+{
+  "sequence": 70,
+  "previous_sha256": "58f0f267563cc62af5b556dece825f9422b2af7c6a92fc4827c5c0179af3df2b",
+  "recorded_at": "2026-10-18T15:35:56.926335+00:00",
+  "event": "attempt.started",
+  "attempt_id": "fmt-py-cache-mailroom-reply-subject-preservation-r1-B",
+  "original_run_id": "fmt-py-cache-mailroom-reply-subject-preservation-r1-B",
+  "supplemental": false,
+  "start_sha256": "c3a9c7ea85e87b3b17fc21eec890d194561caa12d8fb8f91aee358d3a89d83e6",
+  "sha256": "061d807824eadadbb97345f12c1219b377a43cc068b292a7eebcd2b03508d89f"
+}

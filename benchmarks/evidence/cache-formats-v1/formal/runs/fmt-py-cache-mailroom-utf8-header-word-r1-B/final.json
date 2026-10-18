@@ -1,0 +1,1 @@
+{"summary":"Fixed UTF-8 base64 encoding and made subject_header preserve encoder output exactly. Added regression coverage for ASCII capitalization, Unicode, base64 case, and CR/LF rejection. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

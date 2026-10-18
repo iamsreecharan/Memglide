@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: empty Unicode and ASCII whitespace
+ok 1 - empty Unicode and ASCII whitespace
+  ---
+  duration_ms: 9.911253
+  type: 'test'
+  ...
+# Subtest: visible text zero and nontrimmed format character
+ok 2 - visible text zero and nontrimmed format character
+  ---
+  duration_ms: 2.105132
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 558.711689

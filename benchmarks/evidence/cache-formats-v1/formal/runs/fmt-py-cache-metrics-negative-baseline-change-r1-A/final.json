@@ -1,0 +1,1 @@
+{"summary":"Fixed percent_change to divide by abs(previous). Added regression coverage for negative baselines, zero baselines, and invalid inputs. Preserved existing tests; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

@@ -1,0 +1,581 @@
+{
+  "corpus_version": "cache-2.0.0",
+  "tasks": [
+    {
+      "id": "py-cache-mailroom-colon-password",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "mailroom-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair parse_basic_credentials(header): decode a Basic authentication header as strict base64 and UTF-8, then split decoded credentials on the first colon only. A password may contain further colons or be empty. Scheme matching is ASCII case-insensitive. Missing separator, invalid base64/UTF-8, an absent colon or embedded whitespace in the encoded payload must raise ValueError.\n\nThe source scope explicitly supplied for this task is:\n- `mailroom/colon_password.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "mailroom/colon_password.py"
+      ],
+      "target_files": [
+        "mailroom/colon_password.py"
+      ],
+      "expected_symbols": [
+        "parse_basic_credentials"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "colon-password",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-mailroom-folded-header-spacing",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "mailroom-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix unfold_header(lines) to insert one ASCII space between the first physical header line and each continuation after removing that continuation's leading spaces/tabs. Preserve interior and trailing characters. Empty input returns ''. A continuation without leading space/tab or any embedded CR/LF in a supplied line raises ValueError. Leave inputs unchanged.\n\nThe source scope explicitly supplied for this task is:\n- `mailroom/folded_header_spacing.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "mailroom/folded_header_spacing.py"
+      ],
+      "target_files": [
+        "mailroom/folded_header_spacing.py"
+      ],
+      "expected_symbols": [
+        "unfold_header"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "folded-header-spacing",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-mailroom-reply-subject-preservation",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "mailroom-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair reply_subject and subject_for_reply. If a subject already starts with 'Re:' under ASCII case-insensitive comparison, return it exactly unchanged; otherwise prepend 'Re: '. The public adapter must preserve all original whitespace and capitalization, rather than trim the subject. Empty input becomes 'Re: '.\n\nThe source scope explicitly supplied for this task is:\n- `mailroom/reply_subject_preservation.py`\n- `mailroom/reply_subject_preservation_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "mailroom/reply_subject_preservation.py",
+        "mailroom/reply_subject_preservation_api.py"
+      ],
+      "target_files": [
+        "mailroom/reply_subject_preservation.py",
+        "mailroom/reply_subject_preservation_api.py"
+      ],
+      "expected_symbols": [
+        "reply_subject"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "reply-subject-preservation",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-mailroom-utf8-header-word",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "mailroom-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair encode_header_word(value) and subject_header. ASCII-only strings are returned unchanged. Other strings become a single RFC2047-style UTF-8 base64 word '=?utf-8?b?PAYLOAD?=' using UTF-8 bytes. Reject CR or LF. The adapter must preserve the encoder output exactly, including ASCII capitalization and base64 letter case.\n\nThe source scope explicitly supplied for this task is:\n- `mailroom/utf8_header_word.py`\n- `mailroom/utf8_header_word_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "mailroom/utf8_header_word.py",
+        "mailroom/utf8_header_word_api.py"
+      ],
+      "target_files": [
+        "mailroom/utf8_header_word.py",
+        "mailroom/utf8_header_word_api.py"
+      ],
+      "expected_symbols": [
+        "encode_header_word"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "utf8-header-word",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-mailroom-quoted-display-backslash",
+      "language": "python",
+      "repository": "mailroom-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "mailroom-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix quote_display_name(name) to quote a mail display name while escaping both existing backslashes and double quotes with a backslash. Existing backslashes must be escaped before quotes. Keep the existing CR/LF rejection and return a pair of quotes for an empty name.\n\nThe source scope explicitly supplied for this task is:\n- `mailroom/quoted_display_backslash.py`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `mailroom/quoted_display_backslash.py`\n```python\ndef quote_display_name(name):\n    \"\"\"Quote a display name as literal data in a message header.\"\"\"\n    if \"\\r\" in name or \"\\n\" in name:\n        raise ValueError(\"header injection\")\n    return '\"' + name.replace('\"', '\\\\\"') + '\"'\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "mailroom/quoted_display_backslash.py"
+      ],
+      "target_files": [
+        "mailroom/quoted_display_backslash.py"
+      ],
+      "expected_symbols": [
+        "quote_display_name"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "quoted-display-backslash",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-metrics-warmup-moving-average",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "metrics-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix moving_average(values,window) to average the latest up-to-window values at each position, using the actual warmup count instead of dividing by the full window before it fills. Require a positive integer window (not bool) and finite numeric inputs (not bool); reject invalid values with ValueError. Return [] for empty input and do not mutate inputs.\n\nThe source scope explicitly supplied for this task is:\n- `metrics/warmup_moving_average.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "metrics/warmup_moving_average.py"
+      ],
+      "target_files": [
+        "metrics/warmup_moving_average.py"
+      ],
+      "expected_symbols": [
+        "moving_average"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "warmup-moving-average",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-metrics-negative-baseline-change",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "metrics-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix percent_change(previous,current) to divide the change by abs(previous), returning a percentage. A rise from -10 to -5 is +50, not -50. When previous is zero, return 0 for zero current and None otherwise. Require finite int/float inputs excluding bool, raising ValueError otherwise.\n\nThe source scope explicitly supplied for this task is:\n- `metrics/negative_baseline_change.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "metrics/negative_baseline_change.py"
+      ],
+      "target_files": [
+        "metrics/negative_baseline_change.py"
+      ],
+      "expected_symbols": [
+        "percent_change"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "negative-baseline-change",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-metrics-histogram-boundary-slots",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "metrics-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair histogram(values,bounds) and chart_buckets. Sorted, strictly increasing finite bounds define half-open bins: a value equal to a bound belongs in the bin to its right. Return len(bounds)+1 counts including all zero-count bins. Reject duplicate/unsorted/nonfinite bounds and nonfinite values. The chart adapter must retain empty bins and input arrays must remain unchanged.\n\nThe source scope explicitly supplied for this task is:\n- `metrics/histogram_boundary_slots.py`\n- `metrics/histogram_boundary_slots_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "metrics/histogram_boundary_slots.py",
+        "metrics/histogram_boundary_slots_api.py"
+      ],
+      "target_files": [
+        "metrics/histogram_boundary_slots.py",
+        "metrics/histogram_boundary_slots_api.py"
+      ],
+      "expected_symbols": [
+        "histogram"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "histogram-boundary-slots",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-metrics-fractional-sample-variance",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "metrics-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair sample_variance(values) and variance_for_report to compute sample variance with denominator n-1 and preserve the fractional result through the public API. Require at least two finite numeric values excluding bool. Inputs must not change; a constant sample has variance zero.\n\nThe source scope explicitly supplied for this task is:\n- `metrics/fractional_sample_variance.py`\n- `metrics/fractional_sample_variance_api.py`\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "metrics/fractional_sample_variance.py",
+        "metrics/fractional_sample_variance_api.py"
+      ],
+      "target_files": [
+        "metrics/fractional_sample_variance.py",
+        "metrics/fractional_sample_variance_api.py"
+      ],
+      "expected_symbols": [
+        "sample_variance"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "fractional-sample-variance",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-cache-metrics-missing-not-falsy",
+      "language": "python",
+      "repository": "metrics-python-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "metrics-python-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix is_missing(value): only None and float NaN count as missing. Zero, False, empty strings/containers and infinity are present values. Return a bool without raising for arbitrary ordinary Python objects.\n\nThe source scope explicitly supplied for this task is:\n- `metrics/missing_not_falsy.py`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `metrics/missing_not_falsy.py`\n```python\nimport math\n\ndef is_missing(value):\n    \"\"\"Recognize missing scalar observations without discarding falsy data.\"\"\"\n    return not value\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `python -m unittest discover -s tests -v` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "metrics/missing_not_falsy.py"
+      ],
+      "target_files": [
+        "metrics/missing_not_falsy.py"
+      ],
+      "expected_symbols": [
+        "is_missing"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "missing-not-falsy",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "ts-cache-forms-strict-calendar-date",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "forms-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix validDateParts(year,month,day): accept only actual Gregorian dates with integer year1..9999, month1..12 and day1..31. JavaScript date rollover must not make February30 valid. Handle leap centuries and years below100 correctly. Return false for invalid inputs rather than throwing.\n\nThe source scope explicitly supplied for this task is:\n- `src/strict_calendar_date.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/strict_calendar_date.ts"
+      ],
+      "target_files": [
+        "src/strict_calendar_date.ts"
+      ],
+      "expected_symbols": [
+        "validDateParts"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "strict-calendar-date",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-forms-hex-color-lengths",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "forms-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix isHexColor(value) to accept exactly CSS-style '#' followed by3,4,6or8 ASCII hex digits, case-insensitively. Reject lengths5/7, whitespace, line breaks, missing '#', and nonhex characters. Return boolean without normalizing the input.\n\nThe source scope explicitly supplied for this task is:\n- `src/hex_color_lengths.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/hex_color_lengths.ts"
+      ],
+      "target_files": [
+        "src/hex_color_lengths.ts"
+      ],
+      "expected_symbols": [
+        "isHexColor"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "hex-color-lengths",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-forms-strict-integer-range",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "forms-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair parseIntegerRange(value) and rangeField. The complete input must be two signed ASCII decimal integers separated literally by '..', with no whitespace. Both endpoints must be safe integers and start<=end. Return {start,end}; leading zeroes and '+' are allowed. Reject malformed input. The adapter must not trim or otherwise change input before validation.\n\nThe source scope explicitly supplied for this task is:\n- `src/strict_integer_range.ts`\n- `src/strict_integer_range_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/strict_integer_range.ts",
+        "src/strict_integer_range_api.ts"
+      ],
+      "target_files": [
+        "src/strict_integer_range.ts",
+        "src/strict_integer_range_api.ts"
+      ],
+      "expected_symbols": [
+        "parseIntegerRange"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "strict-integer-range",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-forms-form-space-encoding",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "forms-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair encodeFormComponent(value) and toFormPair(name,value). Apply encodeURIComponent to UTF-8 text and replace every encoded space '%20' with '+', while literal plus signs remain '%2B'. Build encodedName=encodedValue with the helper for both components. The adapter must preserve name capitalization; do not lowercase keys or coerce values.\n\nThe source scope explicitly supplied for this task is:\n- `src/form_space_encoding.ts`\n- `src/form_space_encoding_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/form_space_encoding.ts",
+        "src/form_space_encoding_api.ts"
+      ],
+      "target_files": [
+        "src/form_space_encoding.ts",
+        "src/form_space_encoding_api.ts"
+      ],
+      "expected_symbols": [
+        "encodeFormComponent"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "form-space-encoding",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-forms-required-whitespace",
+      "language": "typescript",
+      "repository": "forms-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "forms-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix isRequiredBlank(value) for string form values: an empty string or any string whose JavaScript trim() result is empty is blank. Ordinary visible text, including '0', is present. Do not modify or return a normalized value.\n\nThe source scope explicitly supplied for this task is:\n- `src/required_whitespace.ts`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `src/required_whitespace.ts`\n```typescript\nexport function isRequiredBlank(value: string): boolean {\n  return value.length === 0;\n}\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/required_whitespace.ts"
+      ],
+      "target_files": [
+        "src/required_whitespace.ts"
+      ],
+      "expected_symbols": [
+        "isRequiredBlank"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "required-whitespace",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-collections-signed-left-rotation",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "collections-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix rotateLeft(items,steps) so a negative step rotates right, and positive steps rotate left modulo length. Require an integer finite step; empty input returns []. Preserve inputs and return a fresh array even for zero rotation.\n\nThe source scope explicitly supplied for this task is:\n- `src/signed_left_rotation.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/signed_left_rotation.ts"
+      ],
+      "target_files": [
+        "src/signed_left_rotation.ts"
+      ],
+      "expected_symbols": [
+        "rotateLeft"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "signed-left-rotation",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-collections-unique-intersection",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "collections-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix intersection(left,right) to return each shared value only once, preserving its first appearance order in left. Use JavaScript Set equality (including NaN equality and object identity). Keep both inputs unchanged and return [] when no values match.\n\nThe source scope explicitly supplied for this task is:\n- `src/unique_intersection.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/unique_intersection.ts"
+      ],
+      "target_files": [
+        "src/unique_intersection.ts"
+      ],
+      "expected_symbols": [
+        "intersection"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "unique-intersection",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-collections-consecutive-run-groups",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "collections-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair groupRuns and visibleRuns. Group only consecutive records having the same kind; later runs of a previously seen kind remain separate. Return {kind,items} groups in order, cloning each {kind,value} record so outputs do not mutate input records. visibleRuns must retain single-item groups, not filter them out. Empty input returns [].\n\nThe source scope explicitly supplied for this task is:\n- `src/consecutive_run_groups.ts`\n- `src/consecutive_run_groups_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/consecutive_run_groups.ts",
+        "src/consecutive_run_groups_api.ts"
+      ],
+      "target_files": [
+        "src/consecutive_run_groups.ts",
+        "src/consecutive_run_groups_api.ts"
+      ],
+      "expected_symbols": [
+        "groupRuns"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "consecutive-run-groups",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-collections-stable-feed-merge",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "collections-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Repair mergeSorted(left,right) and mergeFeeds for feeds already sorted by ascending numeric key. Merge in order, preserving within-feed order and choosing left-feed records first for equal keys. Preserve record identity and do not mutate either input array; frozen input arrays must work. The adapter must not sort inputs in place before delegation. Return a fresh array even when a feed is empty.\n\nThe source scope explicitly supplied for this task is:\n- `src/stable_feed_merge.ts`\n- `src/stable_feed_merge_api.ts`\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/stable_feed_merge.ts",
+        "src/stable_feed_merge_api.ts"
+      ],
+      "target_files": [
+        "src/stable_feed_merge.ts",
+        "src/stable_feed_merge_api.ts"
+      ],
+      "expected_symbols": [
+        "mergeSorted"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "stable-feed-merge",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-cache-collections-last-value-fallback",
+      "language": "typescript",
+      "repository": "collections-typescript-cache",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_cache.build_repository",
+        "repository": "collections-typescript-cache",
+        "version": "cache-2.0.0"
+      },
+      "prompt": "Fix lastOrDefault(items,fallback): return the final element when the array is nonempty and use fallback only for an empty array. Preserve a final undefined, null, false, zero or empty string rather than substituting the fallback; leave the input unchanged.\n\nThe source scope explicitly supplied for this task is:\n- `src/last_value_fallback.ts`\n\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n\nFile: `src/last_value_fallback.ts`\n```typescript\nexport function lastOrDefault<T>(items: T[], fallback: T): T {\n  if (items.length===0) return fallback;\n  return items[items.length];\n}\n```\n\nImplement the fix in production source. Run the existing offline smoke tests with `node --test tests/*.test.mjs` and add regression tests if useful. Preserve public interfaces and existing tests. Do not change dependencies, build configuration, benchmark machinery or grading files, and do not inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/last_value_fallback.ts"
+      ],
+      "target_files": [
+        "src/last_value_fallback.ts"
+      ],
+      "expected_symbols": [
+        "lastOrDefault"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "last-value-fallback",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    }
+  ]
+}

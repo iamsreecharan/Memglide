@@ -1,0 +1,20 @@
+diff --git a/mailroom/utf8_header_word.py b/mailroom/utf8_header_word.py
+index 9897344..706037a 100644
+--- a/mailroom/utf8_header_word.py
++++ b/mailroom/utf8_header_word.py
+@@ -6,4 +6,4 @@ def encode_header_word(value):
+         raise ValueError("header injection")
+     if value.isascii():
+         return value
+-    return "=?utf-8?b?" + base64.b64encode(value.encode("latin-1")).decode("ascii") + "?="
++    return "=?utf-8?b?" + base64.b64encode(value.encode("utf-8")).decode("ascii") + "?="
+diff --git a/mailroom/utf8_header_word_api.py b/mailroom/utf8_header_word_api.py
+index 00b6f80..3b0ef33 100644
+--- a/mailroom/utf8_header_word_api.py
++++ b/mailroom/utf8_header_word_api.py
+@@ -2,4 +2,4 @@ from .utf8_header_word import encode_header_word
+ 
+ def subject_header(value):
+     """Return the encoded subject field for a local message export."""
+-    return encode_header_word(value).lower()
++    return encode_header_word(value)

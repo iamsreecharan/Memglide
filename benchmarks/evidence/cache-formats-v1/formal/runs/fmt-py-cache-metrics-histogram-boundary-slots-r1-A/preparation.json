@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "be55469e4b364b42a8789cfa663b880fcf8b16fd3b7f819807a5d6fb7006c4ac",
+    "prepared_prompt_sha256": "b7d23e712ffcc491a56411b35fedbac0dd0d8a150026faf418808311046d5e69",
+    "files": [
+      {
+        "path": "metrics/histogram_boundary_slots.py",
+        "sha256": "b0fef039a92768b2eddcb75da6d834bd915112d3fb9fa7dccde8171e89348b60",
+        "start_line": 1,
+        "end_line": 10
+      },
+      {
+        "path": "metrics/histogram_boundary_slots_api.py",
+        "sha256": "261683a8378b75e786bdb36b20e7611fbe0159ab89681380a2088888794cb051",
+        "start_line": 1,
+        "end_line": 5
+      }
+    ],
+    "context_bytes": 1235,
+    "preparation_wall_seconds": 0.07851522699911584,
+    "preparation_cpu_seconds": 0.06501969900000001
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-metrics-histogram-boundary-slots-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-metrics-histogram-boundary-slots-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "b7d23e712ffcc491a56411b35fedbac0dd0d8a150026faf418808311046d5e69",
+    "bytes": 2941,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 6719.698288416
+}

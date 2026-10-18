@@ -1,0 +1,12 @@
+diff --git a/src/signed_left_rotation.ts b/src/signed_left_rotation.ts
+index 504c436..314bb35 100644
+--- a/src/signed_left_rotation.ts
++++ b/src/signed_left_rotation.ts
+@@ -1,6 +1,6 @@
+ export function rotateLeft<T>(items: T[], steps: number): T[] {
+   if (!Number.isInteger(steps)) throw new Error("integer steps required");
+   if (items.length===0) return [];
+-  const shift = Math.abs(steps) % items.length;
++  const shift = ((steps % items.length) + items.length) % items.length;
+   return [...items.slice(shift), ...items.slice(0,shift)];
+ }

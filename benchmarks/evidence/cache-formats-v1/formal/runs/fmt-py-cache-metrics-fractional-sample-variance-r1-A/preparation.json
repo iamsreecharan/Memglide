@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "9369396abf28b4a40a9122342ac5a246942600c4034c29d37d1d660c701a692a",
+    "prepared_prompt_sha256": "5362f77a6d96caf77b169e68929598915f781f522ca6a15b9aee9f092ddc0121",
+    "files": [
+      {
+        "path": "metrics/fractional_sample_variance.py",
+        "sha256": "06d390792da9696435a5b690561996984f327fb480281831af4d27b568f3cca4",
+        "start_line": 1,
+        "end_line": 7
+      },
+      {
+        "path": "metrics/fractional_sample_variance_api.py",
+        "sha256": "df59a32470dad492d7d09b199b0bf43d927d527d3e0b78f9a59d0a9fcdfed2f2",
+        "start_line": 1,
+        "end_line": 5
+      }
+    ],
+    "context_bytes": 1131,
+    "preparation_wall_seconds": 0.12231334499938384,
+    "preparation_cpu_seconds": 0.121964201
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-metrics-fractional-sample-variance-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-metrics-fractional-sample-variance-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "5362f77a6d96caf77b169e68929598915f781f522ca6a15b9aee9f092ddc0121",
+    "bytes": 2748,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 6596.314003481
+}

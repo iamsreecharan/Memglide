@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "package_location": "/workspace/Memglide/.local/cache-v2/installed-env/lib/python3.12/site-packages/memglide/__init__.py",
+  "isolated_imports": true,
+  "cwd": "/tmp",
+  "doctor": "passed",
+  "indexed_files": 2,
+  "search_hits": 2,
+  "context_items": 1,
+  "estimated_planning_tokens": 993,
+  "budget": 4000,
+  "source_hashes_match": true,
+  "old_passport_detected_edit": true,
+  "refreshed_context_hash_matches": true,
+  "indexed_source_not_executed": true,
+  "loopback_api_health": true,
+  "bundled_spa_route": true,
+  "production_assets": [
+    {
+      "path": "/assets/index-CkQhvrkj.js",
+      "bytes": 323235
+    },
+    {
+      "path": "/assets/index-D9jkCmj-.css",
+      "bytes": 51841
+    }
+  ],
+  "scope": "Clean installed wheel with pinned locked dependencies; isolated CLI imports, real index/context/passport and loopback HTTP/compiled assets. No model requests or token/cost measurements."
+}

@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: space plus Unicode and original key case
+ok 1 - space plus Unicode and original key case
+  ---
+  duration_ms: 1.103856
+  type: 'test'
+  ...
+# Subtest: empty values separators and repeated spaces
+ok 2 - empty values separators and repeated spaces
+  ---
+  duration_ms: 0.330507
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 258.095965

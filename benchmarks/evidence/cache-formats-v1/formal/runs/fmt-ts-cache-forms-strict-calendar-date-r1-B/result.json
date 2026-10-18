@@ -1,0 +1,344 @@
+{
+  "run_id": "fmt-ts-cache-forms-strict-calendar-date-r1-B",
+  "task_id": "ts-cache-forms-strict-calendar-date",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 38,
+  "repository": "forms-typescript-cache",
+  "task_kind": "single-source",
+  "selection_stratum": "explicit_focus",
+  "context_format": "compact-prefix",
+  "setup": {
+    "project_id": "a061fab10f4b4da5b8a79d461b094950",
+    "wall_seconds": 0.25670402299965644,
+    "cpu_seconds": 0.04899540600000307,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches actual launcher stdin hash/size and native settings",
+    "context_format": "compact-prefix",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "3940d42ed5d25dcda10b42dde1bb53a15cd84aabb5c997500bce76b10dfaa892",
+      "prepared_prompt_sha256": "0711c1638d31b9b6936fda408b5c805dc17980b8f77fef6e271e00208365e990",
+      "files": [
+        {
+          "path": "src/strict_calendar_date.ts",
+          "sha256": "ad4df44dccf6a03dc1a24ba80fe92c686ee20f8b254ff68dece70330adbf4d30",
+          "start_line": 1,
+          "end_line": 4
+        }
+      ],
+      "context_bytes": 459,
+      "context_format": "compact-prefix",
+      "prompt_layout": "source_prefix",
+      "preparation_wall_seconds": 0.05712256999959209,
+      "preparation_cpu_seconds": 0.05611775799999999
+    },
+    "source_file_count": 1,
+    "source_hashes": {
+      "src/strict_calendar_date.ts": "ad4df44dccf6a03dc1a24ba80fe92c686ee20f8b254ff68dece70330adbf4d30"
+    },
+    "context_bytes": 459,
+    "actual_model_prompt_sha256": "0711c1638d31b9b6936fda408b5c805dc17980b8f77fef6e271e00208365e990",
+    "common_task_prompt_sha256": "3940d42ed5d25dcda10b42dde1bb53a15cd84aabb5c997500bce76b10dfaa892",
+    "native_exec_boundary_monotonic_seconds": 7578.630923646
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "ee4495ec1c086683d75056d84ae2055e6c7109494b765715f0392954bc4600c5",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "fmt-ts-cache-forms-strict-calendar-date-r1-B",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T15:37:16.465939+00:00",
+  "artifacts": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B",
+  "worktree": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-ts-cache-forms-strict-calendar-date-r1-B",
+  "errors": [],
+  "grader": {
+    "task_id": "ts-cache-forms-strict-calendar-date",
+    "repository": "forms-typescript-cache",
+    "corpus_version": "cache-2.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/smoke.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 7,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "c35a0ca93661ba666621115699fad8ce24ee1533ad2c6f7f0eac49d7ff042b24",
+        "actual_sha256": "c35a0ca93661ba666621115699fad8ce24ee1533ad2c6f7f0eac49d7ff042b24"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282",
+        "actual_sha256": "b6d9f6a7a46537a6efc14937fbab95b75503cdecb9f31b93e2cffce1cefcd282"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "e5c10b3903e6703323a52dfa6d9b2520485fd3f54e924937c4a191b06b9ac458",
+        "actual_sha256": "e5c10b3903e6703323a52dfa6d9b2520485fd3f54e924937c4a191b06b9ac458"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/smoke.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "9e227632add4e287d45999703c3adcd4c0d9a902a6bffb039aaa08df14b19c77",
+        "actual_sha256": "9e227632add4e287d45999703c3adcd4c0d9a902a6bffb039aaa08df14b19c77"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 5
+        },
+        "reported_counts": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "11fbed93b03d2b716c3a3e91555f26ee2c6d5eb0",
+  "common_task_prompt_sha256": "3940d42ed5d25dcda10b42dde1bb53a15cd84aabb5c997500bce76b10dfaa892",
+  "actual_model_prompt_sha256": "0711c1638d31b9b6936fda408b5c805dc17980b8f77fef6e271e00208365e990",
+  "configuration_label": "Memglide compact-prefix",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-ts-cache-forms-strict-calendar-date-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-ts-cache-forms-strict-calendar-date-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 27.45392474699929,
+  "process_started_monotonic_seconds": 7578.402751499,
+  "process_finished_monotonic_seconds": 7605.856676246,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 305152000,
+    "cpu_seconds": 5.25,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 34,
+    "observed_memglide_processes": 0,
+    "samples": 514,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 15,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 48303,
+      "cached_input_tokens": 22784,
+      "output_tokens": 997
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 48303,
+      "cached_input_tokens": 22784,
+      "output_tokens": 997
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 4,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"rg --files -g '\"'!package-lock.json'\"' -g '\"'!yarn.lock'\"' -g '\"'!pnpm-lock.yaml'\"' -g '\"'!node_modules'\"' -g '\"'!.*'\"'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'cat tests/smoke.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_5",
+        "command": "/bin/bash -lc 'node --test tests/*.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "tests/smoke.test.mjs"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 27.758317435999743,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 27.225752599999396,
+  "native_exec_timing_scope": "Launcher boundary before report-write/exec handoff through observed native exit; both formats instrumented",
+  "protected_file_violations": [],
+  "common_blocker": null,
+  "finished_at": "2026-10-18T15:37:45.378654+00:00"
+}

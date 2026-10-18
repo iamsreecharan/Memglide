@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "passthrough",
+    "reason": "context_supplied",
+    "task_prompt_sha256": "5886ace07731a197778ddb65de3554988ba77fa68035c5ea508c28c532bc758b",
+    "prepared_prompt_sha256": "5886ace07731a197778ddb65de3554988ba77fa68035c5ea508c28c532bc758b",
+    "files": [],
+    "context_bytes": 0,
+    "preparation_wall_seconds": 5.625199992209673e-05,
+    "preparation_cpu_seconds": 5.4895999999998724e-05
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-metrics-missing-not-falsy-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-metrics-missing-not-falsy-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "5886ace07731a197778ddb65de3554988ba77fa68035c5ea508c28c532bc758b",
+    "bytes": 1723,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 7191.344657386
+}

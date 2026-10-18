@@ -1,0 +1,1 @@
+{"summary":"Fixed left-first ordering for equal keys and removed adapter sorting. Added regression coverage for frozen inputs, record identity, stable ordering, and fresh arrays for empty feeds. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

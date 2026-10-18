@@ -1,0 +1,1 @@
+{"summary":"Fixed consecutive grouping while preserving order and cloning records. visibleRuns now retains single-item groups. Added regression coverage for separated runs, cloning, and empty input. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

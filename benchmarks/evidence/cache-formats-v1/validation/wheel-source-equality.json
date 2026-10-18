@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "runtime_python_files": 24,
+  "frontend_files": 19,
+  "wheel_sha256": "afa2bb3114704e460f1d35e0a7b7bc240595e137565408a0df37f4f72d9111c6",
+  "scope": "All current runtime Python/compiled asset bytes equal the installed smoke wheel. No report/source-archive inclusion claim."
+}

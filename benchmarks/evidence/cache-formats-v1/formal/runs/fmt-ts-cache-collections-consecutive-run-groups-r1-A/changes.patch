@@ -1,0 +1,34 @@
+diff --git a/src/consecutive_run_groups.ts b/src/consecutive_run_groups.ts
+index 5507c85..a1c9d94 100644
+--- a/src/consecutive_run_groups.ts
++++ b/src/consecutive_run_groups.ts
+@@ -1,10 +1,14 @@
+ export type Item = {kind: string; value: number};
+ export type Run = {kind: string; items: Item[]};
+ export function groupRuns(items: Item[]): Run[] {
+-  const groups = new Map<string,Run>();
++  const groups: Run[] = [];
+   for (const item of items) {
+-    if (!groups.has(item.kind)) groups.set(item.kind,{kind:item.kind,items:[]});
+-    groups.get(item.kind)!.items.push({...item});
++    let group = groups[groups.length - 1];
++    if (!group || group.kind !== item.kind) {
++      group = {kind:item.kind,items:[]};
++      groups.push(group);
++    }
++    group.items.push({...item});
+   }
+-  return [...groups.values()];
++  return groups;
+ }
+diff --git a/src/consecutive_run_groups_api.ts b/src/consecutive_run_groups_api.ts
+index bd5c305..6f8802d 100644
+--- a/src/consecutive_run_groups_api.ts
++++ b/src/consecutive_run_groups_api.ts
+@@ -2,5 +2,5 @@ import {groupRuns} from "./consecutive_run_groups.ts";
+ import type {Item,Run} from "./consecutive_run_groups.ts";
+ 
+ export function visibleRuns(items: Item[]): Run[] {
+-  return groupRuns(items).filter(group => group.items.length > 1);
++  return groupRuns(items);
+ }

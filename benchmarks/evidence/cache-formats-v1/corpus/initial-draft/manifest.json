@@ -1,0 +1,19 @@
+{
+  "files": [
+    {
+      "path": "benchmarks/corpus_cache.py",
+      "sha256": "b2f9023ff144d4961fe0572019e0f59ab0d3e345877912d1e19a943e56b0ad64",
+      "bytes": 54880
+    },
+    {
+      "path": "benchmarks/tasks_cache.json",
+      "sha256": "34dff744b04c98c36974c55817bf100c66d12cb6bbc3042e5a68fe1436706fda",
+      "bytes": 34148
+    },
+    {
+      "path": "tests/test_benchmark_corpus_cache.py",
+      "sha256": "8ea3c1393612215d46847b15d329ca9ddc2d96fa077bb4dd13c46ae0f896b767",
+      "bytes": 9983
+    }
+  ]
+}

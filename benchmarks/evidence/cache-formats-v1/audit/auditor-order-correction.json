@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "cause": "Independent auditor v1 constructed identical semantic options in the wrong exact order. Frozen runner and all 40 recorded commands use --context-format FORMAT before --mode auto. V2 corrects that exact sequence; no benchmark, primary report or check was removed or changed.",
+  "initial_audit": "formal-independent-audit-v1.json",
+  "initial_failures": 40,
+  "initial_assertions": 5138,
+  "all_failures_code": "actual_format_launcher_and_identical_native_options",
+  "changed_auditor_lines_only": {
+    "old": "expected_command = [actual_command[0], '-I', '-m', 'memglide.integrations.codex_preload', '--mode', 'auto',\n                                    '--context-format', FORMATS[row['configuration']], '--max-context-bytes', '12000',",
+    "new": "expected_command = [actual_command[0], '-I', '-m', 'memglide.integrations.codex_preload',\n                                    '--context-format', FORMATS[row['configuration']], '--mode', 'auto', '--max-context-bytes', '12000',"
+  },
+  "v1_sha256": "5458bdc1adbff8dc64c2c146966f4b1296bba7f91a9574840881e36a86acb240",
+  "v2_sha256": "890ba4ff2de14a6eaa1b29485f66ae3ae6a9535133b56a0964a9c7ef50885014",
+  "frozen_runner_sha256": "f4fddce2b5ea22541d7d9b34fe0c25383dc872983a5c2d839c3bbd272a38e913",
+  "observed_commands": [
+    {
+      "run_id": "fmt-py-cache-mailroom-colon-password-r1-A",
+      "command_sha256": "c2d8d2027d4bc06c87646175f7bb2f30270e078863fd9d384c35a56c5678a5e6",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-colon-password-r1-B",
+      "command_sha256": "f53a12599bb54d22f48100af205690aaf481afa55ba8408ec336fe534a4d582e",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-folded-header-spacing-r1-A",
+      "command_sha256": "49f4de1ff15e3182f0ceaab88117c4de63280f4bc44655deb68594291e203cbe",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-folded-header-spacing-r1-B",
+      "command_sha256": "a3007d3954963dbc9ed31f4d654c54c6b061e98e5522eb09ac56a344ae9c787e",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-quoted-display-backslash-r1-A",
+      "command_sha256": "ac0169f77d2841275ab25c4df43c1ca6accb07871298c0376762cb69e149eacb",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-quoted-display-backslash-r1-B",
+      "command_sha256": "a91818d105782f8a158facbf6adbe233f7eca4e086a57445daf92a09dcc99e25",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-reply-subject-preservation-r1-A",
+      "command_sha256": "ddceeda8fdf22488daf9cb281884ec592cd9cd1697ec11af9b9b515c99934a78",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-reply-subject-preservation-r1-B",
+      "command_sha256": "30e0cbdaf2aae480d3c0718eee6137f4d21ff8a482e545252354594c3f081b8a",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-utf8-header-word-r1-A",
+      "command_sha256": "9014e74e099d467350316c7dfaa496fae8468ce533c2d5bdb1ac8838827054fd",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-mailroom-utf8-header-word-r1-B",
+      "command_sha256": "fbb2426aad0a2fcc7f1c733413d171400f79ea636921d1eadf787f29c73dc4a1",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-fractional-sample-variance-r1-A",
+      "command_sha256": "d604f1facac123f240b93f23eb3e852f0c6ee333104bac1237995e1a20558699",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-fractional-sample-variance-r1-B",
+      "command_sha256": "72f6f6610ad240d551e7f1d33986fe24ff2e5e2df91f18aa3fdbef5a22c16d72",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-histogram-boundary-slots-r1-A",
+      "command_sha256": "cc6ea06ffd1187d85520d5199a96c3d9cd1b366648df0d4f22ee15e4c3b1c0be",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-histogram-boundary-slots-r1-B",
+      "command_sha256": "fd9aeaa5cda841ff1e0ef68b71ff13c052106a782ed5b511e2eee3b30559a03a",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-missing-not-falsy-r1-A",
+      "command_sha256": "d897cd9adee97555eec2f14a1cf351a7c9f7eafd4c0a037f0a807234f66273f0",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-missing-not-falsy-r1-B",
+      "command_sha256": "ea784fbcb2e71c5093575534b011a37285bcc8f51e78378451205238b34b563a",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-negative-baseline-change-r1-A",
+      "command_sha256": "2626025dc402b48cf3722b0d7328f489e41d26f442e877f3ec097ace044fcfac",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-negative-baseline-change-r1-B",
+      "command_sha256": "f8ac251c47021fdab2c6af444a29ced892efb9220767951d69b8923e3e80d37c",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-warmup-moving-average-r1-A",
+      "command_sha256": "6dadb28151ce20a83c0057409f233290936c8c015b59a2294ba66926abb7debe",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-py-cache-metrics-warmup-moving-average-r1-B",
+      "command_sha256": "6221f540734df9568c34bb8cb13f7e8daa99a6acefdabeaa1032b54499dc7ad3",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-consecutive-run-groups-r1-A",
+      "command_sha256": "16e63d90fa7280e5ebe01dd23f3f52dfa1652ab30c96d136898d31a6c32816a2",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-consecutive-run-groups-r1-B",
+      "command_sha256": "ddef4fe8b957f5c61b18d5a50d77f800575ef06d084af1d1658ce4449091f754",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-last-value-fallback-r1-A",
+      "command_sha256": "18378045fce93ba76c4d26ac6b438c74e6d10b9e5f609483d2eb72840272f47b",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-last-value-fallback-r1-B",
+      "command_sha256": "4ac833404bb2830fc19d6c857cee25d142e4c6e2ce59012fa7290a9a0cdb61de",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-signed-left-rotation-r1-A",
+      "command_sha256": "cb0fddb2aff2e34470b1eda734db4c52756023c81670cdf32a966e533ec04a9c",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-signed-left-rotation-r1-B",
+      "command_sha256": "4b79e0af171c0ec4d7088f8517c7f56b1a448d3095e0d9138e9fb9cc712cac41",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-stable-feed-merge-r1-A",
+      "command_sha256": "e50971f90d9f5a0dc18917cd79614b83528a97b5f2e62d3fa7034e4085c518ec",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-stable-feed-merge-r1-B",
+      "command_sha256": "01918c0392cb077e18b4a9988a72aca80fced353061a1d8d212f6389be73439b",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-unique-intersection-r1-A",
+      "command_sha256": "80c0b08fe026896fb17d53b1518d1ceb2985bd30042f7d051fd1e36e0596c20d",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-collections-unique-intersection-r1-B",
+      "command_sha256": "0cadc0b67211e40f93930a60e32ed40eb80038df7b2fd3ebbc59bc660c55bc6a",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-form-space-encoding-r1-A",
+      "command_sha256": "708a86e1a1f7f10d431a1ad8bbee176b3d3c0eb39e6ee253167761d8d48a382e",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-form-space-encoding-r1-B",
+      "command_sha256": "d079f96cf259ad54706fe698f354b99401cc1c52193f00f9716fd9aa5c44d904",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-hex-color-lengths-r1-A",
+      "command_sha256": "83e1ea0101968ca6ccc086f60309f643a541f11020768d99835518989ba8ada6",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-hex-color-lengths-r1-B",
+      "command_sha256": "1f0ec844ba3645b42351675354cc730562c315a0bba334cd07d8c1f4004e498a",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-required-whitespace-r1-A",
+      "command_sha256": "8e475c3623640eb64cde26891b3d128920f143dc1aabaf371e561b87c050d455",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-required-whitespace-r1-B",
+      "command_sha256": "a9b21d4c23780d286b1cb74beba674e940a021aec53ccf236d618997a9893f0f",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-strict-calendar-date-r1-A",
+      "command_sha256": "b51038df99efc58044bc2d41b7e03b7900eb2ff004ca069b30fe1bde91ec9dcd",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-strict-calendar-date-r1-B",
+      "command_sha256": "e98aa090d3c3d5984620a01af78e6375cb65c6ac18f0c1d71f225a1e47c19ac7",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-strict-integer-range-r1-A",
+      "command_sha256": "c4e104e7386ab14399aacdec399cb070d7d9801ad91725a80535cb947377fffc",
+      "observed_prefix_options": [
+        "--context-format",
+        "legacy",
+        "--mode",
+        "auto"
+      ]
+    },
+    {
+      "run_id": "fmt-ts-cache-forms-strict-integer-range-r1-B",
+      "command_sha256": "1a7f556aba36b3e195142cdc59ece2110d31e56583d2fc88c5b4bfcb8301e644",
+      "observed_prefix_options": [
+        "--context-format",
+        "compact-prefix",
+        "--mode",
+        "auto"
+      ]
+    }
+  ]
+}

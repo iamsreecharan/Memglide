@@ -1,0 +1,1 @@
+{"summary":"Fixed lastOrDefault to return the final element for nonempty arrays, preserving undefined, null, false, zero, and empty strings. Empty arrays return the fallback; input remains unchanged.","tests_run":["node --test tests/*.test.mjs — passed (1 test)."]}

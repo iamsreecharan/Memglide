@@ -1,0 +1,1 @@
+{"summary":"Fixed strict signed ASCII integer range validation and removed adapter trimming. Added regression coverage for malformed input, whitespace, and safe integer boundaries.","tests_run":["node --test tests/*.test.mjs — passed"]}

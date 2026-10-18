@@ -1,0 +1,1 @@
+{"summary":"Fixed sample variance to divide by n-1 and preserve fractional results through the report API. Added regression coverage for validation, constant samples, and unchanged inputs. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

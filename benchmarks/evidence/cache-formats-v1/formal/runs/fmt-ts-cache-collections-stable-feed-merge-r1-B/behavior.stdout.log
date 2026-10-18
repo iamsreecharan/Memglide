@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: stable left ties and frozen public inputs
+ok 1 - stable left ties and frozen public inputs
+  ---
+  duration_ms: 4.072198
+  type: 'test'
+  ...
+# Subtest: identity empty feeds and unchanged arrays
+ok 2 - identity empty feeds and unchanged arrays
+  ---
+  duration_ms: 3.128438
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 422.208442

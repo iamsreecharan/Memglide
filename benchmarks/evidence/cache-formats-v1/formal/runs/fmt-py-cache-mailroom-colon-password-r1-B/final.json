@@ -1,0 +1,1 @@
+{"summary":"Fixed credential parsing to split on the first colon, preserving empty passwords and additional colons. Added regression coverage for valid credentials and malformed headers. All 7 tests passed.","tests_run":["python -m unittest discover -s tests -v","git diff --check"]}

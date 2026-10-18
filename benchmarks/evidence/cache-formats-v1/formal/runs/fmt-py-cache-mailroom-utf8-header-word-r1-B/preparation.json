@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "92c55784f98d008fe903c9c7b6694947fd3a32281ac9615034b187aa66daa3e9",
+    "prepared_prompt_sha256": "39b88152e3c707f2d04920bf8e7653057ceaf052e208131586adbda9a08a51de",
+    "files": [
+      {
+        "path": "mailroom/utf8_header_word.py",
+        "sha256": "b46e88ba00e6f85224e2bdde82e5744ef013e16ce7fd95ae406995f23873be9b",
+        "start_line": 1,
+        "end_line": 9
+      },
+      {
+        "path": "mailroom/utf8_header_word_api.py",
+        "sha256": "f3933b055f12ecef552bf04deaaae5324ac0962597be39391a5e60000d947049",
+        "start_line": 1,
+        "end_line": 5
+      }
+    ],
+    "context_bytes": 824,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.22062135400028637,
+    "preparation_cpu_seconds": 0.213028244
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/worktrees/fmt-py-cache-mailroom-utf8-header-word-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/cache-v2/formal-formats-20-v1/runs/fmt-py-cache-mailroom-utf8-header-word-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "39b88152e3c707f2d04920bf8e7653057ceaf052e208131586adbda9a08a51de",
+    "bytes": 2448,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 7394.524598732
+}

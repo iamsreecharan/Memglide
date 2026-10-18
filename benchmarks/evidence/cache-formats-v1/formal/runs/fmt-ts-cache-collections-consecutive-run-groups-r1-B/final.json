@@ -1,0 +1,1 @@
+{"summary":"Fixed consecutive grouping, preserved singleton groups in visibleRuns, and cloned each output record. Added regression coverage for ordering, cloning, and empty input. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

@@ -1,0 +1,9 @@
+{
+  "sequence": 39,
+  "previous_sha256": "943fa29b1d1add628d0ae14eaa721364734d4d4457f8c8208a997228e583d765",
+  "recorded_at": "2026-10-18T15:29:09.411058+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "fmt-ts-cache-collections-stable-feed-merge-r1-B",
+  "result_sha256": "0fd1d9afc3e16126192cc802c0738c09ed5474f4e77a3d3f23e31c5931464051",
+  "sha256": "1fcc7f5c86c9c190a444cff83f3f77f14eea7e851155ad1640928799af54abc5"
+}

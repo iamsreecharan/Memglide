@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "name": "ruff",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.09607327300000179
+    },
+    {
+      "name": "format",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.05495158699886815
+    },
+    {
+      "name": "mypy",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "mypy",
+        "src"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.45068411200009
+    }
+  ]
+}

@@ -1,0 +1,2882 @@
+{
+  "schema_version": 1,
+  "title": "Fresh legacy/compact-prefix format assessment",
+  "generated_at": "2026-10-18T15:43:31.727809+00:00",
+  "verdict": {
+    "uncached_regression_fixed": false,
+    "money_savings_demonstrated": false,
+    "recommendation": "Experimental opt-in; preserve explicit off and caller-context-supplied bypasses; no cache-benefit classifier or stale-source cache.",
+    "scope": "Descriptive small known-file utility-edit format comparison; neither arm is bare Codex."
+  },
+  "primary_report": "benchmarks/codex-cache-formats.json",
+  "individual_runs_report": "benchmarks/codex-cache-formats.md#individual-original-runs",
+  "source_hashes": {
+    "benchmarks/codex-cache-formats.json": "1f0a01ced40bd93cd637b8a1676749684d5121aa815c6ce24f47356ac66c0096",
+    "benchmarks/codex-cache-formats.md": "ae1f15bd1eb09131b3d18372ab9fda78d9721d7bc2221fdb8f260103c2be2601",
+    "benchmarks/cache-refinement-research.json": "dad9228b91778781e06d2a182c87b6c827449f06f479198f4286c276d1d6ee32",
+    "benchmarks/cache-refinement-validation.json": "4b47a80eb7aa36743e6205de6e733643bb551cab29ee801f8650a332b43de42a",
+    "benchmarks/codex-ab-daily.json": "6d408cc324189c092de3709513bb9e33999fc58d73de3edb6d972e990b51d9c7",
+    "benchmarks/daily-ab-assessment.json": "4916c75a1ff0faa81c358beeaa80fa6201e321f6cc742b9b22bc524447485747",
+    "src/memglide/integrations/preload.py": "5e0fdc0a5d914228d9ea7e69668a704045599f2fc3785b22788c288f965ba9de",
+    "src/memglide/integrations/codex_preload.py": "2ff5094919be1a9384d4d96abc8c6a627ec3712deb36ef5c718411d53fecf012"
+  },
+  "design": {
+    "A": "Memglide legacy task-suffix",
+    "B": "Memglide compact-prefix",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "low",
+    "codex_version": "codex-cli 0.159.2",
+    "tasks": 20,
+    "repeats": 1,
+    "original_assignments": 40,
+    "valid_pairs": 20,
+    "excluded_pairs": 0,
+    "seed": 20261018,
+    "common_task_and_starting_commit_match": true,
+    "actual_preloaded_prompt_layouts_intentionally_differ": true,
+    "caller_context_pairs_identical_prepared_hashes": 4,
+    "fresh_distinct_focus_sets": 20,
+    "direct_same_files_cross_task_reuse_test": false,
+    "source_bytes_per_task_all": {
+      "min": 89,
+      "max": 632
+    },
+    "source_bytes_per_preloaded_task": {
+      "min": 118,
+      "max": 632
+    },
+    "cold_state": "Fresh worktree, local native state and Memglide database per assignment; cold approval/index when preloading.",
+    "cache_control": "Provider/OS caches uncontrolled; 10 AB and 10 BA task pairs, each order 8 focused + 2 supplied-context.",
+    "frozen_git_head": "94998bba69a52cb95b25c52fa3747a422cd715e5",
+    "application_python_files": 24,
+    "application_source_tree_sha256": "e777cbd53a1ca6228e5c3403ebb5cc3547834a00edac1d1f20210342740aeee4",
+    "source_unchanged_during_experiment": true,
+    "started_at": "2026-10-18T15:19:04.884465+00:00",
+    "finished_at": "2026-10-18T15:38:40.385996+00:00"
+  },
+  "completion": {
+    "A": {
+      "planned_runs": 20,
+      "attempted_runs": 20,
+      "successful_runs": 20,
+      "behavior_grade_pass_count": 20,
+      "successful_task_completion_rate": 1.0,
+      "execution_status_counts": {
+        "completed": 20
+      },
+      "actual_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 20,
+        "successful_runs_in_denominator": 20
+      },
+      "computed_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 20,
+        "successful_runs_in_denominator": 20
+      }
+    },
+    "B": {
+      "planned_runs": 20,
+      "attempted_runs": 20,
+      "successful_runs": 20,
+      "behavior_grade_pass_count": 20,
+      "successful_task_completion_rate": 1.0,
+      "execution_status_counts": {
+        "completed": 20
+      },
+      "actual_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 20,
+        "successful_runs_in_denominator": 20
+      },
+      "computed_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 20,
+        "successful_runs_in_denominator": 20
+      }
+    }
+  },
+  "all_metric_summaries": {
+    "input_tokens": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 50076.75,
+        "median": 48625.0,
+        "p95": 63106,
+        "min": 34896,
+        "max": 63597,
+        "known_total": 1001535,
+        "total": 1001535
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 49071.3,
+        "median": 48321.0,
+        "p95": 62375,
+        "min": 23057,
+        "max": 62431,
+        "known_total": 981426,
+        "total": 981426
+      },
+      "comparison": {
+        "A_mean": 50076.75,
+        "B_mean": 49071.3,
+        "B_over_A_mean": 0.9799218200062904,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -1005.45,
+          "median": -442.0,
+          "p95": 12948,
+          "min": -25056,
+          "max": 13092,
+          "known_total": -20109,
+          "total": -20109
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.9901862036305729,
+          "median": 0.9909174909258593,
+          "p95": 1.266974576795398,
+          "min": 0.479225988817991,
+          "max": 1.337545850527281,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "cached_input_tokens": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 36307.2,
+        "median": 35136.0,
+        "p95": 48640,
+        "min": 22784,
+        "max": 57984,
+        "known_total": 726144,
+        "total": 726144
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 34764.8,
+        "median": 34880.0,
+        "p95": 48896,
+        "min": 11392,
+        "max": 49280,
+        "known_total": 695296,
+        "total": 695296
+      },
+      "comparison": {
+        "A_mean": 36307.2,
+        "B_mean": 34764.8,
+        "B_over_A_mean": 0.9575180680416007,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -1542.4,
+          "median": -256.0,
+          "p95": 12800,
+          "min": -32512,
+          "max": 23424,
+          "known_total": -30848,
+          "total": -30848
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 1.0326001055855691,
+          "median": 0.99271400132714,
+          "p95": 1.5112359550561798,
+          "min": 0.2594752186588921,
+          "max": 1.9682539682539681,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "uncached_input_tokens": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 13769.55,
+        "median": 13544.0,
+        "p95": 25258,
+        "min": 3152,
+        "max": 38146,
+        "known_total": 275391,
+        "total": 275391
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 14306.5,
+        "median": 13454.0,
+        "p95": 25519,
+        "min": 3539,
+        "max": 25924,
+        "known_total": 286130,
+        "total": 286130
+      },
+      "comparison": {
+        "A_mean": 13769.55,
+        "B_mean": 14306.5,
+        "B_over_A_mean": 1.0389954646302892,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": 536.95,
+          "median": 35.5,
+          "p95": 11970,
+          "min": -24397,
+          "max": 20801,
+          "known_total": 10739,
+          "total": 10739
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 1.5583524216622493,
+          "median": 1.0026150323325544,
+          "p95": 3.651360544217687,
+          "min": 0.36043097572484667,
+          "max": 5.408859686307758,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "output_tokens": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 790.75,
+        "median": 799.0,
+        "p95": 1013,
+        "min": 251,
+        "max": 1443,
+        "known_total": 15815,
+        "total": 15815
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 742.6,
+        "median": 725.5,
+        "p95": 1064,
+        "min": 242,
+        "max": 1187,
+        "known_total": 14852,
+        "total": 14852
+      },
+      "comparison": {
+        "A_mean": 790.75,
+        "B_mean": 742.6,
+        "B_over_A_mean": 0.9391084413531458,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -48.15,
+          "median": -6.0,
+          "p95": 96,
+          "min": -326,
+          "max": 113,
+          "known_total": -963,
+          "total": -963
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.9535441635580486,
+          "median": 0.9933579888977186,
+          "p95": 1.1188222923238695,
+          "min": 0.426056338028169,
+          "max": 1.3625498007968126,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "wall_time_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 29.40355860099994,
+        "median": 27.542599540000083,
+        "p95": 39.16886032599996,
+        "min": 14.056265309000082,
+        "max": 68.93902644399986,
+        "known_total": 588.0711720199988,
+        "total": 588.0711720199988
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 26.14279319949992,
+        "median": 26.348320853499445,
+        "p95": 33.09402976399997,
+        "min": 15.1627927669997,
+        "max": 36.889928214000065,
+        "known_total": 522.8558639899984,
+        "total": 522.8558639899984
+      },
+      "comparison": {
+        "A_mean": 29.40355860099994,
+        "B_mean": 26.14279319949992,
+        "B_over_A_mean": 0.8891030352567894,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -3.260765401500021,
+          "median": -1.1730260979993545,
+          "p95": 7.057245398999839,
+          "min": -39.115018899999995,
+          "max": 7.745939698000257,
+          "known_total": -65.21530803000041,
+          "total": -65.21530803000041
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.9416896921128664,
+          "median": 0.9519057922606318,
+          "p95": 1.3401909583713005,
+          "min": 0.43261428369932564,
+          "max": 1.3440412619349287,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "end_to_end_wall_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 29.685619983799917,
+        "median": 27.66851860550014,
+        "p95": 39.491709403999266,
+        "min": 14.063605706999624,
+        "max": 69.77367544399931,
+        "known_total": 593.7123996759983,
+        "total": 593.7123996759983
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 26.373267189100034,
+        "median": 26.699035727499904,
+        "p95": 33.4490707190007,
+        "min": 15.169867491000332,
+        "max": 37.05864170800032,
+        "known_total": 527.4653437820007,
+        "total": 527.4653437820007
+      },
+      "comparison": {
+        "A_mean": 29.685619983799917,
+        "B_mean": 26.373267189100034,
+        "B_over_A_mean": 0.8884189450478883,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -3.312352794699882,
+          "median": -1.2483911600002102,
+          "p95": 7.1071925289998035,
+          "min": -39.44901362699875,
+          "max": 7.738547275000201,
+          "known_total": -66.24705589399764,
+          "total": -66.24705589399764
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.9409562997338893,
+          "median": 0.9498600192109093,
+          "p95": 1.3378120711597756,
+          "min": 0.4346146540802381,
+          "max": 1.3441823871378276,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "native_exec_wall_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 29.088733588399965,
+        "median": 27.29360837250033,
+        "p95": 38.91384214200025,
+        "min": 13.902124028000799,
+        "max": 68.78596589900008,
+        "known_total": 581.7746717679993,
+        "total": 581.7746717679993
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 25.848583454899835,
+        "median": 26.113479381499474,
+        "p95": 32.59551040199949,
+        "min": 14.980861965999793,
+        "max": 36.513585072999376,
+        "known_total": 516.9716690979967,
+        "total": 516.9716690979967
+      },
+      "comparison": {
+        "A_mean": 29.088733588399965,
+        "B_mean": 25.848583454899835,
+        "B_over_A_mean": 0.888611509206704,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -3.2401501335001286,
+          "median": -1.0361922864999542,
+          "p95": 6.821295727999313,
+          "min": -39.40492342299967,
+          "max": 7.844119653000234,
+          "known_total": -64.80300267000257,
+          "total": -64.80300267000257
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.9422649300413423,
+          "median": 0.957496611973127,
+          "p95": 1.346199432425253,
+          "min": 0.4271371651470479,
+          "max": 1.3488201031706868,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "approval_index_wall_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.24787260354987667,
+        "median": 0.2032653759997629,
+        "p95": 0.5870362689993271,
+        "min": 0,
+        "max": 0.8287233510000078,
+        "known_total": 4.957452070997533,
+        "total": 4.957452070997533
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.21770349470002656,
+        "median": 0.19187069700001302,
+        "p95": 0.47704740700010007,
+        "min": 0,
+        "max": 0.4902071420001448,
+        "known_total": 4.354069894000531,
+        "total": 4.354069894000531
+      },
+      "comparison": {
+        "A_mean": 0.24787260354987667,
+        "B_mean": 0.21770349470002656,
+        "B_over_A_mean": 0.8782878445710136,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -0.03016910884985009,
+          "median": -0.0036256454995964305,
+          "p95": 0.12839798200002406,
+          "min": -0.338516208999863,
+          "max": 0.2948086140004307,
+          "known_total": -0.6033821769970018,
+          "total": -0.6033821769970018
+        },
+        "paired_ratio": {
+          "n": 16,
+          "missing": 4,
+          "mean": 1.0517144993295169,
+          "median": 0.8818630236354729,
+          "p95": 3.094354997291578,
+          "min": 0.5636253765143052,
+          "max": 3.094354997291578,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "approval_index_cpu_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.05971331620000205,
+        "median": 0.061639257999999586,
+        "p95": 0.11688067300001137,
+        "min": 0,
+        "max": 0.13411254899999392,
+        "known_total": 1.194266324000041,
+        "total": 1.194266324000041
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.06043249525000025,
+        "median": 0.05084307399999943,
+        "p95": 0.12068700900000096,
+        "min": 0,
+        "max": 0.2861181469999998,
+        "known_total": 1.208649905000005,
+        "total": 1.208649905000005
+      },
+      "comparison": {
+        "A_mean": 0.05971331620000205,
+        "B_mean": 0.06043249525000025,
+        "B_over_A_mean": 1.0120438638441953,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.0007191790499981976,
+          "median": -0.0006615460000016782,
+          "p95": 0.05990966000000242,
+          "min": -0.0678485470000112,
+          "max": 0.2236169799999992,
+          "known_total": 0.014383580999963952,
+          "total": 0.014383580999963952
+        },
+        "paired_ratio": {
+          "n": 16,
+          "missing": 4,
+          "mean": 1.1393322252536828,
+          "median": 0.9293065043267845,
+          "p95": 4.57780487522732,
+          "min": 0.4195058493545413,
+          "max": 4.57780487522732,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "context_preparation_wall_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.0740417878500466,
+        "median": 0.06821097749980254,
+        "p95": 0.13544129399997473,
+        "min": 5.625199992209673e-05,
+        "max": 0.2708177530003013,
+        "known_total": 1.480835757000932,
+        "total": 1.480835757000932
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.07478079855000033,
+        "median": 0.0668862305001312,
+        "p95": 0.22040303500034497,
+        "min": 5.840800076839514e-05,
+        "max": 0.22062135400028637,
+        "known_total": 1.4956159710000065,
+        "total": 1.4956159710000065
+      },
+      "comparison": {
+        "A_mean": 0.0740417878500466,
+        "B_mean": 0.07478079855000033,
+        "B_over_A_mean": 1.0099809948059386,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.0007390106999537238,
+          "median": 1.5252999673975864e-05,
+          "p95": 0.06597864000013942,
+          "min": -0.07145704499998828,
+          "max": 0.1871750880000036,
+          "known_total": 0.014780213999074476,
+          "total": 0.014780213999074476
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 1.2641358510529777,
+          "median": 0.9995564063945606,
+          "p95": 2.721420651642114,
+          "min": 0.13956877209029458,
+          "max": 6.596292512844965,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "context_preparation_cpu_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.0705351093,
+        "median": 0.062578985,
+        "p95": 0.12906175799999997,
+        "min": 5.4895999999998724e-05,
+        "max": 0.26951986799999994,
+        "known_total": 1.410702186,
+        "total": 1.410702186
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.07156451144999999,
+        "median": 0.0656767375,
+        "p95": 0.213028244,
+        "min": 5.700799999999728e-05,
+        "max": 0.21840945499999997,
+        "known_total": 1.431290229,
+        "total": 1.431290229
+      },
+      "comparison": {
+        "A_mean": 0.0705351093,
+        "B_mean": 0.07156451144999999,
+        "B_over_A_mean": 1.0145941809719432,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.00102940215,
+          "median": 0.0007419154999999816,
+          "p95": 0.054963071,
+          "min": -0.05927500799999996,
+          "max": 0.179580961,
+          "known_total": 0.020588043,
+          "total": 0.020588043
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 1.2463102208704313,
+          "median": 1.051549566221469,
+          "p95": 2.433945842192485,
+          "min": 0.13591951265744934,
+          "max": 6.3690747018225675,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "process_tree_peak_rss_bytes": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 268895027.2,
+        "median": 267644928.0,
+        "p95": 335212544,
+        "min": 182132736,
+        "max": 338780160,
+        "known_total": null,
+        "total": null
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 265621094.4,
+        "median": 260048896.0,
+        "p95": 315559936,
+        "min": 180084736,
+        "max": 337698816,
+        "known_total": null,
+        "total": null
+      },
+      "comparison": {
+        "A_mean": 268895027.2,
+        "B_mean": 265621094.4,
+        "B_over_A_mean": 0.9878244948071692,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -3273932.8,
+          "median": -6195200.0,
+          "p95": 56025088,
+          "min": -66998272,
+          "max": 70107136,
+          "known_total": -65478656,
+          "total": -65478656
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 1.0016863795336566,
+          "median": 0.9725299743114673,
+          "p95": 1.2889860767784327,
+          "min": 0.7534769864038917,
+          "max": 1.3676590625939768,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "cpu_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 7.75,
+        "median": 7.359999999999999,
+        "p95": 15.850000000000001,
+        "min": 2.9899999999999998,
+        "max": 21.25,
+        "known_total": 155.0,
+        "total": 155.0
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 6.3065,
+        "median": 6.03,
+        "p95": 8.87,
+        "min": 3.7800000000000002,
+        "max": 10.47,
+        "known_total": 126.13,
+        "total": 126.13
+      },
+      "comparison": {
+        "A_mean": 7.75,
+        "B_mean": 6.3065,
+        "B_over_A_mean": 0.813741935483871,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -1.4435,
+          "median": -0.935,
+          "p95": 4.579999999999999,
+          "min": -15.28,
+          "max": 4.800000000000001,
+          "known_total": -28.869999999999997,
+          "total": -28.869999999999997
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.9901150871915629,
+          "median": 0.8631190800740973,
+          "p95": 2.067599067599067,
+          "min": 0.28094117647058825,
+          "max": 2.2800000000000002,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "total_observed_local_cpu_seconds": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 7.8097133162000025,
+        "median": 7.427458010500006,
+        "p95": 15.964633035000002,
+        "min": 2.9899999999999998,
+        "max": 21.322943968000004,
+        "known_total": 156.19426632400004,
+        "total": 156.19426632400004
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 6.36693249525,
+        "median": 6.089629319500001,
+        "p95": 8.934567717000002,
+        "min": 3.7800000000000002,
+        "max": 10.547509840999995,
+        "known_total": 127.33864990500001,
+        "total": 127.33864990500001
+      },
+      "comparison": {
+        "A_mean": 7.8097133162000025,
+        "B_mean": 6.36693249525,
+        "B_over_A_mean": 0.8152581583299372,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -1.4427808209500017,
+          "median": -0.8231915100000005,
+          "p95": 4.598670065999998,
+          "min": -15.285984474000001,
+          "max": 4.790480933000001,
+          "known_total": -28.855616419000036,
+          "total": -28.855616419000036
+        },
+        "paired_ratio": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0.9898420772248769,
+          "median": 0.8764181141143886,
+          "p95": 2.0606039247580923,
+          "min": 0.2831203563194582,
+          "max": 2.257705190141379,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "mcp_calls": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "known_total": 0,
+        "total": 0
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "known_total": 0,
+        "total": 0
+      },
+      "comparison": {
+        "A_mean": 0,
+        "B_mean": 0,
+        "B_over_A_mean": null,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "paired_ratio": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "model_calls": {
+      "A": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "B": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "comparison": {
+        "A_mean": null,
+        "B_mean": null,
+        "B_over_A_mean": null,
+        "paired_difference": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "paired_ratio": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "repeated_file_reads": {
+      "A": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "B": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "comparison": {
+        "A_mean": null,
+        "B_mean": null,
+        "B_over_A_mean": null,
+        "paired_difference": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "paired_ratio": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "observed_file_read_commands": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.95,
+        "median": 1.0,
+        "p95": 1,
+        "min": 0,
+        "max": 1,
+        "known_total": 19,
+        "total": 19
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0.85,
+        "median": 1.0,
+        "p95": 1,
+        "min": 0,
+        "max": 1,
+        "known_total": 17,
+        "total": 17
+      },
+      "comparison": {
+        "A_mean": 0.95,
+        "B_mean": 0.85,
+        "B_over_A_mean": 0.8947368421052632,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": -0.1,
+          "median": 0.0,
+          "p95": 0,
+          "min": -1,
+          "max": 0,
+          "known_total": -2,
+          "total": -2
+        },
+        "paired_ratio": {
+          "n": 19,
+          "missing": 1,
+          "mean": 0.8947368421052632,
+          "median": 1.0,
+          "p95": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "observed_repeated_read_commands": {
+      "A": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "known_total": 0,
+        "total": 0
+      },
+      "B": {
+        "n": 20,
+        "missing": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "known_total": 0,
+        "total": 0
+      },
+      "comparison": {
+        "A_mean": 0,
+        "B_mean": 0,
+        "B_over_A_mean": null,
+        "paired_difference": {
+          "n": 20,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "paired_ratio": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "actual_cost_usd": {
+      "A": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "B": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "comparison": {
+        "A_mean": null,
+        "B_mean": null,
+        "B_over_A_mean": null,
+        "paired_difference": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "paired_ratio": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      }
+    },
+    "computed_cost_usd": {
+      "A": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "B": {
+        "n": 0,
+        "missing": 20,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "comparison": {
+        "A_mean": null,
+        "B_mean": null,
+        "B_over_A_mean": null,
+        "paired_difference": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "paired_ratio": {
+          "n": 0,
+          "missing": 20,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      }
+    }
+  },
+  "paired_directions": {
+    "input_tokens": {
+      "observed_pairs": 20,
+      "B_lower": 14,
+      "equal": 0,
+      "B_higher": 6
+    },
+    "cached_input_tokens": {
+      "observed_pairs": 20,
+      "B_lower": 11,
+      "equal": 1,
+      "B_higher": 8
+    },
+    "uncached_input_tokens": {
+      "observed_pairs": 20,
+      "B_lower": 10,
+      "equal": 0,
+      "B_higher": 10
+    },
+    "output_tokens": {
+      "observed_pairs": 20,
+      "B_lower": 11,
+      "equal": 1,
+      "B_higher": 8
+    },
+    "wall_time_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 15,
+      "equal": 0,
+      "B_higher": 5
+    },
+    "end_to_end_wall_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 15,
+      "equal": 0,
+      "B_higher": 5
+    },
+    "native_exec_wall_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 14,
+      "equal": 0,
+      "B_higher": 6
+    },
+    "approval_index_wall_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 10,
+      "equal": 4,
+      "B_higher": 6
+    },
+    "approval_index_cpu_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 10,
+      "equal": 4,
+      "B_higher": 6
+    },
+    "context_preparation_wall_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 10,
+      "equal": 0,
+      "B_higher": 10
+    },
+    "context_preparation_cpu_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 9,
+      "equal": 0,
+      "B_higher": 11
+    },
+    "process_tree_peak_rss_bytes": {
+      "observed_pairs": 20,
+      "B_lower": 14,
+      "equal": 0,
+      "B_higher": 6
+    },
+    "cpu_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 13,
+      "equal": 0,
+      "B_higher": 7
+    },
+    "total_observed_local_cpu_seconds": {
+      "observed_pairs": 20,
+      "B_lower": 13,
+      "equal": 0,
+      "B_higher": 7
+    },
+    "mcp_calls": {
+      "observed_pairs": 20,
+      "B_lower": 0,
+      "equal": 20,
+      "B_higher": 0
+    },
+    "model_calls": {
+      "observed_pairs": 0,
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0
+    },
+    "repeated_file_reads": {
+      "observed_pairs": 0,
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0
+    },
+    "observed_file_read_commands": {
+      "observed_pairs": 20,
+      "B_lower": 2,
+      "equal": 18,
+      "B_higher": 0
+    },
+    "observed_repeated_read_commands": {
+      "observed_pairs": 20,
+      "B_lower": 0,
+      "equal": 20,
+      "B_higher": 0
+    },
+    "actual_cost_usd": {
+      "observed_pairs": 0,
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0
+    },
+    "computed_cost_usd": {
+      "observed_pairs": 0,
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0
+    }
+  },
+  "selection_strata": {
+    "caller_context_supplied": {
+      "pairs": 4,
+      "arms": {
+        "A": {
+          "planned_runs": 4,
+          "attempted_runs": 4,
+          "not_run": 0,
+          "graded_runs": 4,
+          "successful_runs": 4,
+          "behavior_grade_pass_count": 4,
+          "failed_grades": 0,
+          "ungraded_runs": 0,
+          "successful_task_completion_rate": 1.0,
+          "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+          "execution_status_counts": {
+            "completed": 4
+          },
+          "treatment_valid_runs": 4,
+          "metrics": {
+            "input_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 44507,
+              "median": 47509.5,
+              "p95": 48113,
+              "min": 34896,
+              "max": 48113,
+              "known_total": 178028,
+              "total": 178028
+            },
+            "cached_input_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 35456,
+              "median": 37568.0,
+              "p95": 43904,
+              "min": 22784,
+              "max": 43904,
+              "known_total": 141824,
+              "total": 141824
+            },
+            "uncached_input_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 9051,
+              "median": 4162.5,
+              "p95": 24727,
+              "min": 3152,
+              "max": 24727,
+              "known_total": 36204,
+              "total": 36204
+            },
+            "output_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 489.25,
+              "median": 565.5,
+              "p95": 575,
+              "min": 251,
+              "max": 575,
+              "known_total": 1957,
+              "total": 1957
+            },
+            "wall_time_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 20.804708276999918,
+              "median": 21.934443732499858,
+              "p95": 25.293680333999873,
+              "min": 14.056265309000082,
+              "max": 25.293680333999873,
+              "known_total": 83.21883310799967,
+              "total": 83.21883310799967
+            },
+            "end_to_end_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 20.847640163249707,
+              "median": 22.014574610499494,
+              "p95": 25.297805725000217,
+              "min": 14.063605706999624,
+              "max": 25.297805725000217,
+              "known_total": 83.39056065299883,
+              "total": 83.39056065299883
+            },
+            "native_exec_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 20.54282993825018,
+              "median": 21.582921419500053,
+              "p95": 25.10335288599981,
+              "min": 13.902124028000799,
+              "max": 25.10335288599981,
+              "known_total": 82.17131975300072,
+              "total": 82.17131975300072
+            },
+            "approval_index_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "approval_index_cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "context_preparation_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0.00018366150038673368,
+              "median": 0.00012508750069173402,
+              "p95": 0.00042821900024136994,
+              "min": 5.625199992209673e-05,
+              "max": 0.00042821900024136994,
+              "known_total": 0.0007346460015469347,
+              "total": 0.0007346460015469347
+            },
+            "context_preparation_cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0.0001814885000000141,
+              "median": 0.00012188050000003225,
+              "p95": 0.00042729699999999315,
+              "min": 5.4895999999998724e-05,
+              "max": 0.00042729699999999315,
+              "known_total": 0.0007259540000000564,
+              "total": 0.0007259540000000564
+            },
+            "process_tree_peak_rss_bytes": {
+              "n": 4,
+              "missing": 0,
+              "mean": 229134336,
+              "median": 211574784.0,
+              "p95": 311255040,
+              "min": 182132736,
+              "max": 311255040,
+              "known_total": null,
+              "total": null
+            },
+            "cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 4.925,
+              "median": 5.0649999999999995,
+              "p95": 6.58,
+              "min": 2.9899999999999998,
+              "max": 6.58,
+              "known_total": 19.7,
+              "total": 19.7
+            },
+            "total_observed_local_cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 4.925,
+              "median": 5.0649999999999995,
+              "p95": 6.58,
+              "min": 2.9899999999999998,
+              "max": 6.58,
+              "known_total": 19.7,
+              "total": 19.7
+            },
+            "mcp_calls": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "model_calls": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "repeated_file_reads": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "observed_file_read_commands": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0.75,
+              "median": 1.0,
+              "p95": 1,
+              "min": 0,
+              "max": 1,
+              "known_total": 3,
+              "total": 3
+            },
+            "observed_repeated_read_commands": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "actual_cost_usd": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "computed_cost_usd": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            }
+          },
+          "actual_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 4,
+            "successful_runs_in_denominator": 4
+          },
+          "computed_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 4,
+            "successful_runs_in_denominator": 4
+          }
+        },
+        "B": {
+          "planned_runs": 4,
+          "attempted_runs": 4,
+          "not_run": 0,
+          "graded_runs": 4,
+          "successful_runs": 4,
+          "behavior_grade_pass_count": 4,
+          "failed_grades": 0,
+          "ungraded_runs": 0,
+          "successful_task_completion_rate": 1.0,
+          "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+          "execution_status_counts": {
+            "completed": 4
+          },
+          "treatment_valid_runs": 4,
+          "metrics": {
+            "input_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 38181.25,
+              "median": 41092.0,
+              "p95": 47484,
+              "min": 23057,
+              "max": 47484,
+              "known_total": 152725,
+              "total": 152725
+            },
+            "cached_input_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 27360,
+              "median": 27456.0,
+              "p95": 43136,
+              "min": 11392,
+              "max": 43136,
+              "known_total": 109440,
+              "total": 109440
+            },
+            "uncached_input_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 10821.25,
+              "median": 12358.5,
+              "p95": 15029,
+              "min": 3539,
+              "max": 15029,
+              "known_total": 43285,
+              "total": 43285
+            },
+            "output_tokens": {
+              "n": 4,
+              "missing": 0,
+              "mean": 416,
+              "median": 429.5,
+              "p95": 563,
+              "min": 242,
+              "max": 563,
+              "known_total": 1664,
+              "total": 1664
+            },
+            "wall_time_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 19.12814726825013,
+              "median": 19.59728869350056,
+              "p95": 22.155218918999708,
+              "min": 15.1627927669997,
+              "max": 22.155218918999708,
+              "known_total": 76.51258907300053,
+              "total": 76.51258907300053
+            },
+            "end_to_end_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 19.13718641724995,
+              "median": 19.608449128999837,
+              "p95": 22.161979919999794,
+              "min": 15.169867491000332,
+              "max": 22.161979919999794,
+              "known_total": 76.5487456689998,
+              "total": 76.5487456689998
+            },
+            "native_exec_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 18.903147956249995,
+              "median": 19.350054723500307,
+              "p95": 21.931620411999575,
+              "min": 14.980861965999793,
+              "max": 21.931620411999575,
+              "known_total": 75.61259182499998,
+              "total": 75.61259182499998
+            },
+            "approval_index_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "approval_index_cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "context_preparation_wall_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 6.781474985473324e-05,
+              "median": 6.0374499753379496e-05,
+              "p95": 9.210199914377881e-05,
+              "min": 5.840800076839514e-05,
+              "max": 9.210199914377881e-05,
+              "known_total": 0.00027125899941893294,
+              "total": 0.00027125899941893294
+            },
+            "context_preparation_cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 6.617675000000073e-05,
+              "median": 5.8751499999995516e-05,
+              "p95": 9.01960000000146e-05,
+              "min": 5.700799999999728e-05,
+              "max": 9.01960000000146e-05,
+              "known_total": 0.0002647070000000029,
+              "total": 0.0002647070000000029
+            },
+            "process_tree_peak_rss_bytes": {
+              "n": 4,
+              "missing": 0,
+              "mean": 213958656,
+              "median": 212664320.0,
+              "p95": 250421248,
+              "min": 180084736,
+              "max": 250421248,
+              "known_total": null,
+              "total": null
+            },
+            "cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 4.8675,
+              "median": 4.945,
+              "p95": 5.8,
+              "min": 3.7800000000000002,
+              "max": 5.8,
+              "known_total": 19.47,
+              "total": 19.47
+            },
+            "total_observed_local_cpu_seconds": {
+              "n": 4,
+              "missing": 0,
+              "mean": 4.8675,
+              "median": 4.945,
+              "p95": 5.8,
+              "min": 3.7800000000000002,
+              "max": 5.8,
+              "known_total": 19.47,
+              "total": 19.47
+            },
+            "mcp_calls": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "model_calls": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "repeated_file_reads": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "observed_file_read_commands": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0.25,
+              "median": 0.0,
+              "p95": 1,
+              "min": 0,
+              "max": 1,
+              "known_total": 1,
+              "total": 1
+            },
+            "observed_repeated_read_commands": {
+              "n": 4,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "actual_cost_usd": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "computed_cost_usd": {
+              "n": 0,
+              "missing": 4,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            }
+          },
+          "actual_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 4,
+            "successful_runs_in_denominator": 4
+          },
+          "computed_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 4,
+            "successful_runs_in_denominator": 4
+          }
+        }
+      },
+      "B_over_A_means": {
+        "input_tokens": 0.857870672029119,
+        "cached_input_tokens": 0.7716606498194946,
+        "uncached_input_tokens": 1.1955861230803226,
+        "output_tokens": 0.8502810424118549,
+        "wall_time_seconds": 0.919414346674437,
+        "end_to_end_wall_seconds": 0.917954563077362,
+        "native_exec_wall_seconds": 0.9201822734779525,
+        "approval_index_wall_seconds": null,
+        "approval_index_cpu_seconds": null,
+        "context_preparation_wall_seconds": 0.36923769931061534,
+        "context_preparation_cpu_seconds": 0.36463329632453617,
+        "process_tree_peak_rss_bytes": 0.9337695071593286,
+        "cpu_seconds": 0.9883248730964467,
+        "total_observed_local_cpu_seconds": 0.9883248730964467,
+        "mcp_calls": null,
+        "model_calls": null,
+        "repeated_file_reads": null,
+        "observed_file_read_commands": 0.3333333333333333,
+        "observed_repeated_read_commands": null,
+        "actual_cost_usd": null,
+        "computed_cost_usd": null
+      }
+    },
+    "explicit_focus": {
+      "pairs": 16,
+      "arms": {
+        "A": {
+          "planned_runs": 16,
+          "attempted_runs": 16,
+          "not_run": 0,
+          "graded_runs": 16,
+          "successful_runs": 16,
+          "behavior_grade_pass_count": 16,
+          "failed_grades": 0,
+          "ungraded_runs": 0,
+          "successful_task_completion_rate": 1.0,
+          "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+          "execution_status_counts": {
+            "completed": 16
+          },
+          "treatment_valid_runs": 16,
+          "metrics": {
+            "input_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 51469.1875,
+              "median": 48691.0,
+              "p95": 63597,
+              "min": 47815,
+              "max": 63597,
+              "known_total": 823507,
+              "total": 823507
+            },
+            "cached_input_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 36520,
+              "median": 35136.0,
+              "p95": 57984,
+              "min": 23296,
+              "max": 57984,
+              "known_total": 584320,
+              "total": 584320
+            },
+            "uncached_input_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 14949.1875,
+              "median": 13575.5,
+              "p95": 38146,
+              "min": 4655,
+              "max": 38146,
+              "known_total": 239187,
+              "total": 239187
+            },
+            "output_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 866.125,
+              "median": 822.0,
+              "p95": 1443,
+              "min": 599,
+              "max": 1443,
+              "known_total": 13858,
+              "total": 13858
+            },
+            "wall_time_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 31.553271181999946,
+              "median": 29.450419839999995,
+              "p95": 68.93902644399986,
+              "min": 22.769387331999496,
+              "max": 68.93902644399986,
+              "known_total": 504.85233891199914,
+              "total": 504.85233891199914
+            },
+            "end_to_end_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 31.895114938937468,
+              "median": 29.686988095000288,
+              "p95": 69.77367544399931,
+              "min": 22.90784710099979,
+              "max": 69.77367544399931,
+              "known_total": 510.3218390229995,
+              "total": 510.3218390229995
+            },
+            "native_exec_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 31.22520950093741,
+              "median": 29.26645246399994,
+              "p95": 68.78596589900008,
+              "min": 22.487579074999303,
+              "max": 68.78596589900008,
+              "known_total": 499.60335201499856,
+              "total": 499.60335201499856
+            },
+            "approval_index_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.3098407544373458,
+              "median": 0.2737666345001344,
+              "p95": 0.8287233510000078,
+              "min": 0.09449325800051156,
+              "max": 0.8287233510000078,
+              "known_total": 4.957452070997533,
+              "total": 4.957452070997533
+            },
+            "approval_index_cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.07464164525000257,
+              "median": 0.07101689800000344,
+              "p95": 0.13411254899999392,
+              "min": 0.03984082800000266,
+              "max": 0.13411254899999392,
+              "known_total": 1.194266324000041,
+              "total": 1.194266324000041
+            },
+            "context_preparation_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.09250631943746157,
+              "median": 0.08077453599935325,
+              "p95": 0.2708177530003013,
+              "min": 0.033446266000282776,
+              "max": 0.2708177530003013,
+              "known_total": 1.4801011109993851,
+              "total": 1.4801011109993851
+            },
+            "context_preparation_cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.08812351449999999,
+              "median": 0.0756534305,
+              "p95": 0.26951986799999994,
+              "min": 0.033447282999999994,
+              "max": 0.26951986799999994,
+              "known_total": 1.4099762319999998,
+              "total": 1.4099762319999998
+            },
+            "process_tree_peak_rss_bytes": {
+              "n": 16,
+              "missing": 0,
+              "mean": 278835200,
+              "median": 275036160.0,
+              "p95": 338780160,
+              "min": 190685184,
+              "max": 338780160,
+              "known_total": null,
+              "total": null
+            },
+            "cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 8.45625,
+              "median": 7.395,
+              "p95": 21.25,
+              "min": 3.75,
+              "max": 21.25,
+              "known_total": 135.3,
+              "total": 135.3
+            },
+            "total_observed_local_cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 8.530891645250003,
+              "median": 7.4838290110000045,
+              "p95": 21.322943968000004,
+              "min": 3.808906069999999,
+              "max": 21.322943968000004,
+              "known_total": 136.49426632400005,
+              "total": 136.49426632400005
+            },
+            "mcp_calls": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "model_calls": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "repeated_file_reads": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "observed_file_read_commands": {
+              "n": 16,
+              "missing": 0,
+              "mean": 1,
+              "median": 1.0,
+              "p95": 1,
+              "min": 1,
+              "max": 1,
+              "known_total": 16,
+              "total": 16
+            },
+            "observed_repeated_read_commands": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "actual_cost_usd": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "computed_cost_usd": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            }
+          },
+          "actual_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 16,
+            "successful_runs_in_denominator": 16
+          },
+          "computed_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 16,
+            "successful_runs_in_denominator": 16
+          }
+        },
+        "B": {
+          "planned_runs": 16,
+          "attempted_runs": 16,
+          "not_run": 0,
+          "graded_runs": 16,
+          "successful_runs": 16,
+          "behavior_grade_pass_count": 16,
+          "failed_grades": 0,
+          "ungraded_runs": 0,
+          "successful_task_completion_rate": 1.0,
+          "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+          "execution_status_counts": {
+            "completed": 16
+          },
+          "treatment_valid_runs": 16,
+          "metrics": {
+            "input_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 51793.8125,
+              "median": 48634.0,
+              "p95": 62431,
+              "min": 47550,
+              "max": 62431,
+              "known_total": 828701,
+              "total": 828701
+            },
+            "cached_input_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 36616,
+              "median": 34944.0,
+              "p95": 49280,
+              "min": 22784,
+              "max": 49280,
+              "known_total": 585856,
+              "total": 585856
+            },
+            "uncached_input_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 15177.8125,
+              "median": 13562.0,
+              "p95": 25924,
+              "min": 13109,
+              "max": 25924,
+              "known_total": 242845,
+              "total": 242845
+            },
+            "output_tokens": {
+              "n": 16,
+              "missing": 0,
+              "mean": 824.25,
+              "median": 840.0,
+              "p95": 1187,
+              "min": 622,
+              "max": 1187,
+              "known_total": 13188,
+              "total": 13188
+            },
+            "wall_time_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 27.896454682312367,
+              "median": 27.984594085000026,
+              "p95": 36.889928214000065,
+              "min": 21.04889736899986,
+              "max": 36.889928214000065,
+              "known_total": 446.34327491699787,
+              "total": 446.34327491699787
+            },
+            "end_to_end_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 28.182287382062555,
+              "median": 28.130909840499953,
+              "p95": 37.05864170800032,
+              "min": 21.384565439000653,
+              "max": 37.05864170800032,
+              "known_total": 450.9165981130009,
+              "total": 450.9165981130009
+            },
+            "native_exec_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 27.584942329562296,
+              "median": 27.715041947999907,
+              "p95": 36.513585072999376,
+              "min": 20.75191512999936,
+              "max": 36.513585072999376,
+              "known_total": 441.35907727299673,
+              "total": 441.35907727299673
+            },
+            "approval_index_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.2721293683750332,
+              "median": 0.2709678639998856,
+              "p95": 0.4902071420001448,
+              "min": 0.10955870199995843,
+              "max": 0.4902071420001448,
+              "known_total": 4.354069894000531,
+              "total": 4.354069894000531
+            },
+            "approval_index_cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.07554061906250031,
+              "median": 0.05720683899999912,
+              "p95": 0.2861181469999998,
+              "min": 0.03848171599999972,
+              "max": 0.2861181469999998,
+              "known_total": 1.208649905000005,
+              "total": 1.208649905000005
+            },
+            "context_preparation_wall_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.09345904450003673,
+              "median": 0.07361228500030847,
+              "p95": 0.22062135400028637,
+              "min": 0.04668381999999838,
+              "max": 0.22062135400028637,
+              "known_total": 1.4953447120005876,
+              "total": 1.4953447120005876
+            },
+            "context_preparation_cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0.08943909512499999,
+              "median": 0.07323323649999998,
+              "p95": 0.21840945499999997,
+              "min": 0.04627967499999999,
+              "max": 0.21840945499999997,
+              "known_total": 1.4310255219999999,
+              "total": 1.4310255219999999
+            },
+            "process_tree_peak_rss_bytes": {
+              "n": 16,
+              "missing": 0,
+              "mean": 278536704,
+              "median": 277948416.0,
+              "p95": 337698816,
+              "min": 197939200,
+              "max": 337698816,
+              "known_total": null,
+              "total": null
+            },
+            "cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 6.66625,
+              "median": 6.15,
+              "p95": 10.47,
+              "min": 3.9600000000000004,
+              "max": 10.47,
+              "known_total": 106.66,
+              "total": 106.66
+            },
+            "total_observed_local_cpu_seconds": {
+              "n": 16,
+              "missing": 0,
+              "mean": 6.741790619062501,
+              "median": 6.205557043000001,
+              "p95": 10.547509840999995,
+              "min": 4.005426649999997,
+              "max": 10.547509840999995,
+              "known_total": 107.86864990500001,
+              "total": 107.86864990500001
+            },
+            "mcp_calls": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "model_calls": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "repeated_file_reads": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "observed_file_read_commands": {
+              "n": 16,
+              "missing": 0,
+              "mean": 1,
+              "median": 1.0,
+              "p95": 1,
+              "min": 1,
+              "max": 1,
+              "known_total": 16,
+              "total": 16
+            },
+            "observed_repeated_read_commands": {
+              "n": 16,
+              "missing": 0,
+              "mean": 0,
+              "median": 0.0,
+              "p95": 0,
+              "min": 0,
+              "max": 0,
+              "known_total": 0,
+              "total": 0
+            },
+            "actual_cost_usd": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            },
+            "computed_cost_usd": {
+              "n": 0,
+              "missing": 16,
+              "mean": null,
+              "median": null,
+              "p95": null,
+              "min": null,
+              "max": null,
+              "known_total": null,
+              "total": null
+            }
+          },
+          "actual_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 16,
+            "successful_runs_in_denominator": 16
+          },
+          "computed_cost_per_successful_task_usd": {
+            "value": null,
+            "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+            "attempted_runs_in_numerator": 16,
+            "successful_runs_in_denominator": 16
+          }
+        }
+      },
+      "B_over_A_means": {
+        "input_tokens": 1.0063071716451713,
+        "cached_input_tokens": 1.0026286966046003,
+        "uncached_input_tokens": 1.0152934733074959,
+        "output_tokens": 0.9516524751046327,
+        "wall_time_seconds": 0.8841065803100102,
+        "end_to_end_wall_seconds": 0.8835925951675344,
+        "native_exec_wall_seconds": 0.883418967252539,
+        "approval_index_wall_seconds": 0.8782878445710137,
+        "approval_index_cpu_seconds": 1.012043863844195,
+        "context_preparation_wall_seconds": 1.0102990267948044,
+        "context_preparation_cpu_seconds": 1.0149288261193896,
+        "process_tree_peak_rss_bytes": 0.9989294895336026,
+        "cpu_seconds": 0.7883222468588321,
+        "total_observed_local_cpu_seconds": 0.7902797151123502,
+        "mcp_calls": null,
+        "model_calls": null,
+        "repeated_file_reads": null,
+        "observed_file_read_commands": 1.0,
+        "observed_repeated_read_commands": null,
+        "actual_cost_usd": null,
+        "computed_cost_usd": null
+      }
+    }
+  },
+  "order_strata_descriptive": {
+    "A_first": {
+      "pairs": 10,
+      "selection_strata": {
+        "explicit_focus": 8,
+        "caller_context_supplied": 2
+      },
+      "metrics": {
+        "input_tokens": {
+          "totals": {
+            "A": 501138,
+            "B": 497681
+          },
+          "means": {
+            "A": 50113.8,
+            "B": 49768.1
+          },
+          "B_over_A_mean": 0.9931017005295946
+        },
+        "cached_input_tokens": {
+          "totals": {
+            "A": 356608,
+            "B": 358400
+          },
+          "means": {
+            "A": 35660.8,
+            "B": 35840.0
+          },
+          "B_over_A_mean": 1.0050251256281406
+        },
+        "uncached_input_tokens": {
+          "totals": {
+            "A": 144530,
+            "B": 139281
+          },
+          "means": {
+            "A": 14453.0,
+            "B": 13928.1
+          },
+          "B_over_A_mean": 0.963682280495399
+        },
+        "output_tokens": {
+          "totals": {
+            "A": 7711,
+            "B": 7443
+          },
+          "means": {
+            "A": 771.1,
+            "B": 744.3
+          },
+          "B_over_A_mean": 0.9652444559719879
+        },
+        "wall_time_seconds": {
+          "totals": {
+            "A": 299.82759053599875,
+            "B": 263.3860381609993
+          },
+          "means": {
+            "A": 29.982759053599874,
+            "B": 26.33860381609993
+          },
+          "B_over_A_mean": 0.8784583089573136
+        },
+        "end_to_end_wall_seconds": {
+          "totals": {
+            "A": 302.62111438399825,
+            "B": 265.6328054989999
+          },
+          "means": {
+            "A": 30.262111438399824,
+            "B": 26.563280549899993
+          },
+          "B_over_A_mean": 0.8777735355304271
+        },
+        "native_exec_wall_seconds": {
+          "totals": {
+            "A": 296.019481798,
+            "B": 260.48894662699877
+          },
+          "means": {
+            "A": 29.6019481798,
+            "B": 26.048894662699876
+          },
+          "B_over_A_mean": 0.8799723080548907
+        },
+        "approval_index_wall_seconds": {
+          "totals": {
+            "A": 2.41032634199928,
+            "B": 2.1015352880003775
+          },
+          "means": {
+            "A": 0.241032634199928,
+            "B": 0.21015352880003774
+          },
+          "B_over_A_mean": 0.8718882797659792
+        },
+        "approval_index_cpu_seconds": {
+          "totals": {
+            "A": 0.5665860770000244,
+            "B": 0.6739514470000039
+          },
+          "means": {
+            "A": 0.05665860770000244,
+            "B": 0.06739514470000038
+          },
+          "B_over_A_mean": 1.1894952494569944
+        },
+        "context_preparation_wall_seconds": {
+          "totals": {
+            "A": 0.8646239090003291,
+            "B": 0.7403711810002278
+          },
+          "means": {
+            "A": 0.08646239090003291,
+            "B": 0.07403711810002278
+          },
+          "B_over_A_mean": 0.8562927456589059
+        },
+        "context_preparation_cpu_seconds": {
+          "totals": {
+            "A": 0.8263910509999999,
+            "B": 0.7137720479999999
+          },
+          "means": {
+            "A": 0.08263910509999998,
+            "B": 0.0713772048
+          },
+          "B_over_A_mean": 0.863721899137555
+        },
+        "cpu_seconds": {
+          "totals": {
+            "A": 71.34,
+            "B": 63.14
+          },
+          "means": {
+            "A": 7.134,
+            "B": 6.314
+          },
+          "B_over_A_mean": 0.8850574712643677
+        },
+        "total_observed_local_cpu_seconds": {
+          "totals": {
+            "A": 71.90658607700003,
+            "B": 63.81395144700001
+          },
+          "means": {
+            "A": 7.190658607700003,
+            "B": 6.381395144700001
+          },
+          "B_over_A_mean": 0.8874562808289334
+        },
+        "mcp_calls": {
+          "totals": {
+            "A": 0,
+            "B": 0
+          },
+          "means": {
+            "A": 0.0,
+            "B": 0.0
+          },
+          "B_over_A_mean": null
+        },
+        "observed_file_read_commands": {
+          "totals": {
+            "A": 9,
+            "B": 8
+          },
+          "means": {
+            "A": 0.9,
+            "B": 0.8
+          },
+          "B_over_A_mean": 0.888888888888889
+        },
+        "observed_repeated_read_commands": {
+          "totals": {
+            "A": 0,
+            "B": 0
+          },
+          "means": {
+            "A": 0.0,
+            "B": 0.0
+          },
+          "B_over_A_mean": null
+        }
+      }
+    },
+    "B_first": {
+      "pairs": 10,
+      "selection_strata": {
+        "explicit_focus": 8,
+        "caller_context_supplied": 2
+      },
+      "metrics": {
+        "input_tokens": {
+          "totals": {
+            "A": 500397,
+            "B": 483745
+          },
+          "means": {
+            "A": 50039.7,
+            "B": 48374.5
+          },
+          "B_over_A_mean": 0.9667224223966171
+        },
+        "cached_input_tokens": {
+          "totals": {
+            "A": 369536,
+            "B": 336896
+          },
+          "means": {
+            "A": 36953.6,
+            "B": 33689.6
+          },
+          "B_over_A_mean": 0.9116730169726359
+        },
+        "uncached_input_tokens": {
+          "totals": {
+            "A": 130861,
+            "B": 146849
+          },
+          "means": {
+            "A": 13086.1,
+            "B": 14684.9
+          },
+          "B_over_A_mean": 1.1221754380602318
+        },
+        "output_tokens": {
+          "totals": {
+            "A": 8104,
+            "B": 7409
+          },
+          "means": {
+            "A": 810.4,
+            "B": 740.9
+          },
+          "B_over_A_mean": 0.9142398815399803
+        },
+        "wall_time_seconds": {
+          "totals": {
+            "A": 288.24358148400006,
+            "B": 259.4698258289991
+          },
+          "means": {
+            "A": 28.824358148400005,
+            "B": 25.94698258289991
+          },
+          "B_over_A_mean": 0.9001755546234145
+        },
+        "end_to_end_wall_seconds": {
+          "totals": {
+            "A": 291.09128529200007,
+            "B": 261.83253828300076
+          },
+          "means": {
+            "A": 29.109128529200007,
+            "B": 26.183253828300074
+          },
+          "B_over_A_mean": 0.8994860083851386
+        },
+        "native_exec_wall_seconds": {
+          "totals": {
+            "A": 285.75518996999926,
+            "B": 256.48272247099794
+          },
+          "means": {
+            "A": 28.575518996999925,
+            "B": 25.648272247099793
+          },
+          "B_over_A_mean": 0.8975610294179625
+        },
+        "approval_index_wall_seconds": {
+          "totals": {
+            "A": 2.547125728998253,
+            "B": 2.252534606000154
+          },
+          "means": {
+            "A": 0.2547125728998253,
+            "B": 0.2252534606000154
+          },
+          "B_over_A_mean": 0.8843437056740983
+        },
+        "approval_index_cpu_seconds": {
+          "totals": {
+            "A": 0.6276802470000167,
+            "B": 0.5346984580000012
+          },
+          "means": {
+            "A": 0.06276802470000167,
+            "B": 0.05346984580000012
+          },
+          "B_over_A_mean": 0.8518644015891532
+        },
+        "context_preparation_wall_seconds": {
+          "totals": {
+            "A": 0.6162118480006029,
+            "B": 0.7552447899997787
+          },
+          "means": {
+            "A": 0.06162118480006029,
+            "B": 0.07552447899997787
+          },
+          "B_over_A_mean": 1.2256252333516309
+        },
+        "context_preparation_cpu_seconds": {
+          "totals": {
+            "A": 0.584311135,
+            "B": 0.717518181
+          },
+          "means": {
+            "A": 0.0584311135,
+            "B": 0.0717518181
+          },
+          "B_over_A_mean": 1.2279728008263955
+        },
+        "cpu_seconds": {
+          "totals": {
+            "A": 83.66,
+            "B": 62.99
+          },
+          "means": {
+            "A": 8.366,
+            "B": 6.299
+          },
+          "B_over_A_mean": 0.7529285202008129
+        },
+        "total_observed_local_cpu_seconds": {
+          "totals": {
+            "A": 84.28768024700001,
+            "B": 63.524698458
+          },
+          "means": {
+            "A": 8.428768024700002,
+            "B": 6.3524698458
+          },
+          "B_over_A_mean": 0.7536652838450965
+        },
+        "mcp_calls": {
+          "totals": {
+            "A": 0,
+            "B": 0
+          },
+          "means": {
+            "A": 0.0,
+            "B": 0.0
+          },
+          "B_over_A_mean": null
+        },
+        "observed_file_read_commands": {
+          "totals": {
+            "A": 10,
+            "B": 9
+          },
+          "means": {
+            "A": 1.0,
+            "B": 0.9
+          },
+          "B_over_A_mean": 0.9
+        },
+        "observed_repeated_read_commands": {
+          "totals": {
+            "A": 0,
+            "B": 0
+          },
+          "means": {
+            "A": 0.0,
+            "B": 0.0
+          },
+          "B_over_A_mean": null
+        }
+      }
+    }
+  },
+  "uncached_arithmetic": {
+    "total_input_delta_B_minus_A": -20109,
+    "cached_input_delta_B_minus_A": -30848,
+    "uncached_input_delta_B_minus_A": 10739,
+    "cached_subset_of_total": true,
+    "cached_share": {
+      "A": 0.7250310772963501,
+      "B": 0.7084548402019103
+    }
+  },
+  "payload_mechanics": {
+    "preloads_per_arm": 16,
+    "complete_source_files_per_arm": 24,
+    "raw_source_utf8_bytes_per_arm": 6602,
+    "added_utf8_bytes": {
+      "A": 15118,
+      "B": 10426
+    },
+    "added_bytes_reduction": 4692,
+    "added_bytes_reduction_fraction": 0.3103585130308242,
+    "source_retention": "Every selected file in full; exact original task retained; canonical sorted path/content prefix; source hashes/ranges remain private and launcher validates complete envelope.",
+    "token_conversion_inferred": false,
+    "auxiliary_model_calls": 0,
+    "stale_source_cache_added": false
+  },
+  "validation": {
+    "record": "benchmarks/cache-refinement-validation.json",
+    "distinct_tests": 988,
+    "python": 961,
+    "frontend": 24,
+    "production_browser": 3,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "static_package_installed_checks_passed": true,
+    "installed_smoke_model_requests": 0,
+    "installed_smoke_fake_execs": 2,
+    "extra_installed_functional_assertions_not_counted_as_tests": 12
+  },
+  "independent_audit": {
+    "passed": true,
+    "checked_assertions": 5138,
+    "errors": 0,
+    "notes": 0,
+    "tasks": 20,
+    "original_attempts": 40,
+    "verified_pairs": 20,
+    "result": "benchmarks/evidence/cache-formats-v1/audit/formal-independent-audit-v2.json",
+    "result_sha256": "ac515f65d42ac39e991b647c1a8acce1d56ba392088256dfb1aaa0254660a102",
+    "auditor_sha256": "890ba4ff2de14a6eaa1b29485f66ae3ae6a9535133b56a0964a9c7ef50885014",
+    "source_report_sha256": "1f0a01ced40bd93cd637b8a1676749684d5121aa815c6ce24f47356ac66c0096",
+    "scope": "Independent stdlib-only reconstruction and raw-event/grade/source/command verification; no model requests or tests rerun.",
+    "prior_invocation": {
+      "result": "benchmarks/evidence/cache-formats-v1/audit/formal-independent-audit-v1.json",
+      "passed": false,
+      "errors": 40,
+      "cause": "Auditor expected --mode auto before --context-format, whereas frozen runner and all actual commands put --context-format before --mode auto.",
+      "correction": "Correct exact expected option order in v2; no check suppression, source change, experiment retry or metric revision. Prior failure and correction retained."
+    }
+  },
+  "historical_separate_experiment": {
+    "primary_report": "benchmarks/codex-ab-daily.json",
+    "assessment": "benchmarks/daily-ab-assessment.md",
+    "frozen_legacy_commit": "6f4b6f6",
+    "original_assignments": 80,
+    "successful_assignments": 80,
+    "A": "Native Codex without Memglide",
+    "B": "Memglide legacy",
+    "total_input_change_percent": -2.94,
+    "uncached_input_change_percent": 27.14,
+    "full_time_change_percent": -4.76,
+    "controlled_iteration_gain_from_historical_to_new": false,
+    "reason": "Different corpus, time and treatment arms; neither fresh format arm is bare Codex."
+  },
+  "unknowns": {
+    "actual_billing_usd": null,
+    "price_equivalent_cost_usd": null,
+    "actual_cost_per_successful_task_usd": {
+      "A": null,
+      "B": null
+    },
+    "underlying_model_calls": null,
+    "actual_filesystem_reads": null,
+    "backend_keys_routing_retention_and_per_inference_cause": null
+  },
+  "limits": [
+    "A is Memglide legacy task-suffix context; B is Memglide compact-prefix context. Neither arm is standard Codex. These twenty tasks were authored after both formats were fixed and were not used for format tuning. One balanced repeat gives forty original assignments; small purpose-built tasks do not establish production-scale or money savings.",
+    "Primary intent-to-treat aggregates retain every original assignment, including skips in either format and failures; descriptive selection strata do not establish causality.",
+    "Common task instructions, explicit scope and starting commits match within each pair. Actual model prompts intentionally differ between legacy and compact-prefix source layouts; caller-context bypasses forward the identical common prompt.",
+    "Purpose-built small ordinary-task repositories are not production-repository or cross-session-memory evidence. Explicit focus paths are supplied equally to A and B; no hidden oracle chooses either format's paths.",
+    "Fresh local Codex state, worktree and Memglide database per run; required cold project approval/index cost included. OS and provider caches cannot be controlled, provider hits observed and order counterbalanced.",
+    "Native MCP calls should be zero in both arms. Pre-execution source delivery is measured by launcher forwarding/source hash records, not MCP invocation or an assertion that the model attended to it.",
+    "Execution time includes approval/index, launcher and native process, excludes worktree creation and independent grading. Native interval exists only when a monotonic launcher boundary is observed, and includes report-write/exec handoff.",
+    "Linux child-process RSS sampling excludes indexer in the parent, may miss short-lived children and double-count shared pages. CPU counters are observed local lower bounds; no inference-server resource telemetry exists.",
+    "Actual model-call counts, actual filesystem read counts and actual billing unavailable. Read-command proxies are labelled separately. Cached input is a subset of total input, not additional input.",
+    "Source snapshot hashes attest frozen pre-execution source delivery, not semantic completeness or later freshness. No auxiliary model is used for deterministic selection; native event totals cannot reveal hidden provider-internal calls.",
+    "Successful completion requires completed status, independent passing behavior grade, validated treatment and native execution/schema validity. Separate behavior-grade passes do not inflate the completion or cost denominator.",
+    "Interrupted original observations remain unknown and are not silently retried. All failed attempts and raw supported JSON events are preserved.",
+    "The twenty fresh tasks have distinct source-focus sets and one repeat. This tests source-format tradeoffs on fresh small fixes; it does not directly test cross-task prefix reuse over unchanged identical source files.",
+    "Aggregate input reduction comes from identical-byte caller-context controls; focused input rises 0.63%. Descriptive strata do not identify an adjusted causal effect.",
+    "One A consecutive-run-groups outlier contributes 59.55% of net full-time reduction; all observations remain included.",
+    "Pinned official native-client functions establish possible session-affinity limits, not the actual backend cause.",
+    "Recommended opt-in is a deployment judgment, not a measured universal benefit."
+  ]
+}
