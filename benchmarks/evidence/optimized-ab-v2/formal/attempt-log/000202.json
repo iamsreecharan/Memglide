@@ -1,0 +1,11 @@
+{
+  "sequence": 202,
+  "previous_sha256": "a480e9f52a6c6e600a6480b6ececb63f64c8459c90ef8cfa9a847daf7e6f4537",
+  "recorded_at": "2026-10-17T23:56:27.806094+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-workflow-incremental-utf8-lines-r2-B",
+  "original_run_id": "py2-workflow-incremental-utf8-lines-r2-B",
+  "supplemental": false,
+  "start_sha256": "48d5c6b2d926e862b047b9f20dad201fb3daf0618f3425bc5deed1b2439f7718",
+  "sha256": "04c854ae5c9fd44915a604707a9edf13dcd366d4c96fb0368f946d780944c97c"
+}

@@ -1,0 +1,9 @@
+{
+  "sequence": 83,
+  "previous_sha256": "e06ddf124f88b3f5ae762d9845a6594be5d31600e5ae4c70392b1edb9fefa285",
+  "recorded_at": "2026-10-17T23:26:47.622875+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts2-config-unicode-ascii-slugs-r1-B",
+  "result_sha256": "366dddcd0ff791c8bb96add188b79a8226b259d33a1f09a4fabb87c1b7c62260",
+  "sha256": "3f4b189d5eb00d69f962bef96186286ab9d6ad530e390c89ae568374597e6b1d"
+}

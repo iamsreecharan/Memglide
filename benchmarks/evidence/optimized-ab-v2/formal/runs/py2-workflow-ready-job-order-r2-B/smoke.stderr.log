@@ -1,0 +1,19 @@
+test_empty_input (test_ready_job_order.ReadyJobTests.test_empty_input) ... ok
+test_filter_priority_stability_and_limit (test_ready_job_order.ReadyJobTests.test_filter_priority_stability_and_limit) ... ok
+test_invalid_limits (test_ready_job_order.ReadyJobTests.test_invalid_limits) ... ok
+test_results_are_deeply_detached (test_ready_job_order.ReadyJobTests.test_results_are_deeply_detached) ... ok
+test_atomic_pointer_updates (test_smoke.SmokeTests.test_atomic_pointer_updates) ... ok
+test_bounded_async_execution (test_smoke.SmokeTests.test_bounded_async_execution) ... ok
+test_capped_backoff (test_smoke.SmokeTests.test_capped_backoff) ... ok
+test_deep_settings_overlay (test_smoke.SmokeTests.test_deep_settings_overlay) ... ok
+test_deterministic_build_order (test_smoke.SmokeTests.test_deterministic_build_order) ... ok
+test_incremental_utf8_lines (test_smoke.SmokeTests.test_incremental_utf8_lines) ... ok
+test_interval_coalescing (test_smoke.SmokeTests.test_interval_coalescing) ... ok
+test_ready_job_order (test_smoke.SmokeTests.test_ready_job_order) ... ok
+test_strict_template_expansion (test_smoke.SmokeTests.test_strict_template_expansion) ... ok
+test_utf8_batch_budget (test_smoke.SmokeTests.test_utf8_batch_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK

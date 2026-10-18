@@ -1,0 +1,168 @@
+{
+  "applicable": true,
+  "call_error_count": 0,
+  "calls": [
+    {
+      "errors": [],
+      "event_lines": [
+        6,
+        7
+      ],
+      "files": [
+        {
+          "comparison": "mismatch",
+          "observed_at_utc": "2026-10-17T23:31:13.364579+00:00",
+          "path": "ledger/atomic_transfer.py",
+          "post_execution_source_sha256": "f39947a22cbc28e215f7f0ca14f79ed706a58f71c1945f20304325478e609895",
+          "returned_source_sha256": "a93a1b7da6be22e397b3c5e0682d06c3f45792f40b5c398768ec53167a33abb6",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "mismatch",
+          "observed_at_utc": "2026-10-17T23:31:13.373431+00:00",
+          "path": "ledger/api.py",
+          "post_execution_source_sha256": "147ce41a489dbd53ec15197e3cc7ae19c3e21cec0813025a157d5d375fc5b493",
+          "returned_source_sha256": "2283d3b55a3d8f2319c896bd50d019a7bd59d43336d0c3a66a0cff2ca65c36a5",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.382254+00:00",
+          "path": "tests/test_smoke.py",
+          "post_execution_source_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a",
+          "returned_source_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "unknown",
+          "observed_at_utc": null,
+          "path": "README.md",
+          "post_execution_source_sha256": null,
+          "returned_source_sha256": "0d70241e571f633e3af2dcf3cbb92fd9359c043170b692bf40fec16d6a11cd53",
+          "unavailable_reason": "Credential, database, state, and non-source paths are excluded"
+        },
+        {
+          "comparison": "unknown",
+          "observed_at_utc": null,
+          "path": "AGENTS.md",
+          "post_execution_source_sha256": null,
+          "returned_source_sha256": "8ed5055a65b8e15e27a8096ec35ceb999b7a0ee5bc4e2ba7ddea412a5d6eee32",
+          "unavailable_reason": "Credential, database, state, and non-source paths are excluded"
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.383034+00:00",
+          "path": "ledger/currency_netting.py",
+          "post_execution_source_sha256": "f815a8f597e00f27f341e46e02d1ecdafa224d5a41e2456595b24a9b6bfc4eca",
+          "returned_source_sha256": "f815a8f597e00f27f341e46e02d1ecdafa224d5a41e2456595b24a9b6bfc4eca",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.383558+00:00",
+          "path": "ledger/signed_tax_rounding.py",
+          "post_execution_source_sha256": "807a7986e5c50bd49e93a216c0c0c387f9a957fb821eca211fdde00b83bdd1f0",
+          "returned_source_sha256": "807a7986e5c50bd49e93a216c0c0c387f9a957fb821eca211fdde00b83bdd1f0",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.384493+00:00",
+          "path": "ledger/csv_bank_import.py",
+          "post_execution_source_sha256": "1f3f99bc44f368bdfec459d460a40e490cfac79c494bd527a09169058cd61ea0",
+          "returned_source_sha256": "1f3f99bc44f368bdfec459d460a40e490cfac79c494bd527a09169058cd61ea0",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.385876+00:00",
+          "path": "ledger/audit_hash_chain.py",
+          "post_execution_source_sha256": "8106fdd590124e56f06b5ba18055b280dfd8cc669ce5be615106b707821117c6",
+          "returned_source_sha256": "8106fdd590124e56f06b5ba18055b280dfd8cc669ce5be615106b707821117c6",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.387064+00:00",
+          "path": "ledger/invoice_line_discounts.py",
+          "post_execution_source_sha256": "9ffbf18e5d8bf3d06734ed6cbb484016f124c423d6ebf43bb762443996de583e",
+          "returned_source_sha256": "9ffbf18e5d8bf3d06734ed6cbb484016f124c423d6ebf43bb762443996de583e",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.387589+00:00",
+          "path": "ledger/nested_redaction.py",
+          "post_execution_source_sha256": "34480fbfedd0ed5742a99bfee3777f9a6140c096d26d66f0f44323d464424a8c",
+          "returned_source_sha256": "34480fbfedd0ed5742a99bfee3777f9a6140c096d26d66f0f44323d464424a8c",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.388563+00:00",
+          "path": "ledger/reconciliation_version_merge.py",
+          "post_execution_source_sha256": "dbf70fdd3611d22fff49182b11e68fd892efc2c61eeaa98ddb0edc3d6d0b4506",
+          "returned_source_sha256": "dbf70fdd3611d22fff49182b11e68fd892efc2c61eeaa98ddb0edc3d6d0b4506",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.390127+00:00",
+          "path": "ledger/statement_timezones.py",
+          "post_execution_source_sha256": "b2d2e957894d2de5c3898513a768a3124e2d3de4a0dc355b8300ff9dde684064",
+          "returned_source_sha256": "b2d2e957894d2de5c3898513a768a3124e2d3de4a0dc355b8300ff9dde684064",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.390734+00:00",
+          "path": "ledger/weighted_allocation.py",
+          "post_execution_source_sha256": "3a1be454ab3805553f45d4221e6fcc3eb36c93662ab5f6f657d0963f796e2560",
+          "returned_source_sha256": "3a1be454ab3805553f45d4221e6fcc3eb36c93662ab5f6f657d0963f796e2560",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:31:13.391557+00:00",
+          "path": "ledger/__init__.py",
+          "post_execution_source_sha256": "8e0138ceee74e0ead98629b71c169ab5a4632ddd76a27d61ca5ee402e1b673f7",
+          "returned_source_sha256": "8e0138ceee74e0ead98629b71c169ab5a4632ddd76a27d61ca5ee402e1b673f7",
+          "unavailable_reason": null
+        }
+      ],
+      "independently_verified_call_time_freshness": null,
+      "native_call_id": "item_2",
+      "native_status": "completed",
+      "response_available": true,
+      "retrieval_id": "c2092582987843e6afd6a4e1a68607c6",
+      "returned_item_count": 15,
+      "server": "memglide",
+      "tool": "fetch_context",
+      "unread_hash_only_paths": []
+    }
+  ],
+  "capture_wall_seconds": 0.043126952000420715,
+  "captured_at_utc": "2026-10-17T23:31:13.391601+00:00",
+  "comparison_counts": {
+    "match": 11,
+    "mismatch": 2,
+    "unknown": 2
+  },
+  "event_errors": [],
+  "events_sha256": "e9bce12dc4ae2396c117b02b0be9aecfce5a18cac99edf8be32a1289e56a2c18",
+  "file_observation_count": 15,
+  "independently_verified_call_time_freshness": null,
+  "limitations": [
+    "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+    "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+    "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+    "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+    "Returned snippets are not independently checked for complete bodies or semantic completeness."
+  ],
+  "observed_fetch_context_call_count": 1,
+  "observed_memglide_call_count": 1,
+  "phase": "post_codex_pre_grader",
+  "response_available_count": 1,
+  "schema_version": 1,
+  "started_at_utc": "2026-10-17T23:31:13.347790+00:00"
+}

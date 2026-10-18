@@ -1,0 +1,1 @@
+{"summary":"Implemented first-record tie retention and deep-copying of selected records. Confirmed highest-version selection, lexical ordering, and invalid-version rejection through both domain and public API regression tests. Preserved existing tests; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed","git diff --check — passed"]}

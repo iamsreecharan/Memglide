@@ -1,0 +1,20 @@
+test_atomic_pointer_updates (test_smoke.SmokeTests.test_atomic_pointer_updates) ... ok
+test_bounded_async_execution (test_smoke.SmokeTests.test_bounded_async_execution) ... ok
+test_capped_backoff (test_smoke.SmokeTests.test_capped_backoff) ... ok
+test_deep_settings_overlay (test_smoke.SmokeTests.test_deep_settings_overlay) ... ok
+test_deterministic_build_order (test_smoke.SmokeTests.test_deterministic_build_order) ... ok
+test_incremental_utf8_lines (test_smoke.SmokeTests.test_incremental_utf8_lines) ... ok
+test_interval_coalescing (test_smoke.SmokeTests.test_interval_coalescing) ... ok
+test_ready_job_order (test_smoke.SmokeTests.test_ready_job_order) ... ok
+test_strict_template_expansion (test_smoke.SmokeTests.test_strict_template_expansion) ... ok
+test_utf8_batch_budget (test_smoke.SmokeTests.test_utf8_batch_budget) ... ok
+test_dollar_escaping (test_strict_template_expansion.StrictTemplateExpansionTests.test_dollar_escaping) ... ok
+test_identifiers_and_string_conversion (test_strict_template_expansion.StrictTemplateExpansionTests.test_identifiers_and_string_conversion) ... ok
+test_malformed_placeholders (test_strict_template_expansion.StrictTemplateExpansionTests.test_malformed_placeholders) ... ok
+test_missing_name_raises_key_error (test_strict_template_expansion.StrictTemplateExpansionTests.test_missing_name_raises_key_error) ... ok
+test_replacement_text_is_not_interpolated (test_strict_template_expansion.StrictTemplateExpansionTests.test_replacement_text_is_not_interpolated) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.002s
+
+OK

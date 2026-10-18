@@ -1,0 +1,120 @@
+{
+  "applicable": true,
+  "call_error_count": 0,
+  "calls": [
+    {
+      "errors": [],
+      "event_lines": [
+        6,
+        7
+      ],
+      "files": [
+        {
+          "comparison": "mismatch",
+          "observed_at_utc": "2026-10-17T23:00:35.904512+00:00",
+          "path": "atlas/cache.py",
+          "post_execution_source_sha256": "1be286162595f07a4794dd1932edf108f81fed256c87a9d60cdb99dd95bd6213",
+          "returned_source_sha256": "a20f8fab315fd3d1d8a168635d1d2d86f302414c52e2e505b71e9dabf4bbcc82",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.907194+00:00",
+          "path": "atlas/service.py",
+          "post_execution_source_sha256": "fbd46c4b8c6c82cfde17ed7d4c48ba5af643b023f094028df79539fc6a74d467",
+          "returned_source_sha256": "fbd46c4b8c6c82cfde17ed7d4c48ba5af643b023f094028df79539fc6a74d467",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.911116+00:00",
+          "path": "atlas/__init__.py",
+          "post_execution_source_sha256": "f578ba5f325a76cfba782889b8c009bac393e665e034e1f9486ea746e7e0e701",
+          "returned_source_sha256": "f578ba5f325a76cfba782889b8c009bac393e665e034e1f9486ea746e7e0e701",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.911528+00:00",
+          "path": "atlas/pagination.py",
+          "post_execution_source_sha256": "462bfe9a7861614a1e4777498a2f53d7e2caebb48341b75f3502d7774c023e9d",
+          "returned_source_sha256": "462bfe9a7861614a1e4777498a2f53d7e2caebb48341b75f3502d7774c023e9d",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.912273+00:00",
+          "path": "atlas/repository.py",
+          "post_execution_source_sha256": "576e55389665c4a3f26f1dce85d2d49c4c2242f329ffd2c3153dd3c5cf5346b7",
+          "returned_source_sha256": "576e55389665c4a3f26f1dce85d2d49c4c2242f329ffd2c3153dd3c5cf5346b7",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.913252+00:00",
+          "path": "atlas/search.py",
+          "post_execution_source_sha256": "9c70205301815a81bb0ef8bc7fbf74a1d913fb1570f2f17233d02cc89dc1ec9d",
+          "returned_source_sha256": "9c70205301815a81bb0ef8bc7fbf74a1d913fb1570f2f17233d02cc89dc1ec9d",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.914366+00:00",
+          "path": "atlas/security.py",
+          "post_execution_source_sha256": "e829918599e17463ce3d6c76b7b2babca254d2f619eb775f63a0da2e15ba3cca",
+          "returned_source_sha256": "e829918599e17463ce3d6c76b7b2babca254d2f619eb775f63a0da2e15ba3cca",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.914805+00:00",
+          "path": "atlas/config.py",
+          "post_execution_source_sha256": "73520066b7fe7a084a21262f724ac9a000620d25a8a7f1b0dc6e5595da018130",
+          "returned_source_sha256": "73520066b7fe7a084a21262f724ac9a000620d25a8a7f1b0dc6e5595da018130",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:00:35.915195+00:00",
+          "path": "atlas/graph.py",
+          "post_execution_source_sha256": "bedf376d16927292a6ca3cb5df24b625320b90e6383c8bc710ee3368ce0c3e5b",
+          "returned_source_sha256": "bedf376d16927292a6ca3cb5df24b625320b90e6383c8bc710ee3368ce0c3e5b",
+          "unavailable_reason": null
+        }
+      ],
+      "independently_verified_call_time_freshness": null,
+      "native_call_id": "item_2",
+      "native_status": "completed",
+      "response_available": true,
+      "retrieval_id": "b71b851b88d24d2e911791ce57f6ec37",
+      "returned_item_count": 10,
+      "server": "memglide",
+      "tool": "fetch_context",
+      "unread_hash_only_paths": []
+    }
+  ],
+  "capture_wall_seconds": 0.012700829000095837,
+  "captured_at_utc": "2026-10-17T23:00:35.915256+00:00",
+  "comparison_counts": {
+    "match": 8,
+    "mismatch": 1,
+    "unknown": 0
+  },
+  "event_errors": [],
+  "events_sha256": "34c0fb121330a970258083614927806cf05e3b3dde3b318c30f870c3155dfeea",
+  "file_observation_count": 9,
+  "independently_verified_call_time_freshness": null,
+  "limitations": [
+    "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+    "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+    "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+    "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+    "Returned snippets are not independently checked for complete bodies or semantic completeness."
+  ],
+  "observed_fetch_context_call_count": 1,
+  "observed_memglide_call_count": 1,
+  "phase": "post_codex_pre_grader",
+  "response_available_count": 1,
+  "schema_version": 1,
+  "started_at_utc": "2026-10-17T23:00:35.902540+00:00"
+}

@@ -1,0 +1,7 @@
+test_no_mutation_or_alias (__main__.BehaviorTests.test_no_mutation_or_alias) ... ok
+test_recursive_lists_casefold_and_exact_names (__main__.BehaviorTests.test_recursive_lists_casefold_and_exact_names) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

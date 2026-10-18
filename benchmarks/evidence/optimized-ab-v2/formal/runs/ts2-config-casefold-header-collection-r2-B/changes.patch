@@ -1,0 +1,38 @@
+diff --git a/src/api.ts b/src/api.ts
+index 6e536d0..cd74693 100644
+--- a/src/api.ts
++++ b/src/api.ts
+@@ -46,5 +46,5 @@ export function matchRoute(...args: Parameters<typeof _specific_route_matching.m
+ }
+ 
+ export function collectHeaders(...args: Parameters<typeof _casefold_header_collection.collectHeaders>): ReturnType<typeof _casefold_header_collection.collectHeaders> {
+-  const result=_casefold_header_collection.collectHeaders(...args);for(const key of Object.keys(result))result[key]=[result[key].join(', ')];return result;
++  return _casefold_header_collection.collectHeaders(...args);
+ }
+diff --git a/src/casefold_header_collection.ts b/src/casefold_header_collection.ts
+index 955b87a..8caf0fd 100644
+--- a/src/casefold_header_collection.ts
++++ b/src/casefold_header_collection.ts
+@@ -1,8 +1,20 @@
+ export function collectHeaders(headers:[string,string][]):Record<string,string[]>{
+   const result:Record<string,string[]>=Object.create(null);
++  const order:string[]=[];
+   for(const [name,value] of headers){
+     if(!/^[!#$%&'*+.^_`|~0-9A-Za-z-]+$(?![\s\S])/.test(name)||/[\r\n]/.test(value))throw new Error("invalid header");
+-    result[name.toLowerCase()]=[value.trim()];
++    const key=name.toLowerCase();
++    if(!Object.hasOwn(result,key)){
++      result[key]=[];
++      order.push(key);
++    }
++    result[key].push(value.trim());
+   }
+-  return result;
++  // Ordinary objects enumerate integer-like keys first, regardless of arrival.
++  return new Proxy(result,{
++    ownKeys(target){
++      const keys=Reflect.ownKeys(target);
++      return [...order.filter(key=>Object.hasOwn(target,key)),...keys.filter(key=>typeof key!=="string"||!order.includes(key))];
++    }
++  });
+ }

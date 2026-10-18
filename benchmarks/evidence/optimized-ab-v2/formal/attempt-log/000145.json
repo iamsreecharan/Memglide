@@ -1,0 +1,9 @@
+{
+  "sequence": 145,
+  "previous_sha256": "4f9411171f3be21bbf1ee9929132c2c53cbfc5a1696f0cec7da40c3af21fb277",
+  "recorded_at": "2026-10-17T23:41:54.196688+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "py2-ledger-audit-hash-chain-r1-B",
+  "result_sha256": "710b748272a44ad27c485dc0df4d0c6fae887a01f5fa4be382af02bb42af7783",
+  "sha256": "0e0271163720f43acad4144abdfee1553388f57d62b0640eed67c8425bfad394"
+}

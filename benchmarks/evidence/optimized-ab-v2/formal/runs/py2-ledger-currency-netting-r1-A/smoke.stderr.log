@@ -1,0 +1,19 @@
+test_empty_and_iterable_inputs (test_currency_netting.CurrencyNettingTests.test_empty_and_iterable_inputs) ... ok
+test_invalid_amounts_preserve_input (test_currency_netting.CurrencyNettingTests.test_invalid_amounts_preserve_input) ... ok
+test_invalid_currencies (test_currency_netting.CurrencyNettingTests.test_invalid_currencies) ... ok
+test_signed_totals_case_sorting_and_preserved_input (test_currency_netting.CurrencyNettingTests.test_signed_totals_case_sorting_and_preserved_input) ... ok
+test_atomic_transfer (test_smoke.SmokeTests.test_atomic_transfer) ... ok
+test_audit_hash_chain (test_smoke.SmokeTests.test_audit_hash_chain) ... ok
+test_csv_bank_import (test_smoke.SmokeTests.test_csv_bank_import) ... ok
+test_currency_netting (test_smoke.SmokeTests.test_currency_netting) ... ok
+test_invoice_line_discounts (test_smoke.SmokeTests.test_invoice_line_discounts) ... ok
+test_nested_redaction (test_smoke.SmokeTests.test_nested_redaction) ... ok
+test_reconciliation_version_merge (test_smoke.SmokeTests.test_reconciliation_version_merge) ... ok
+test_signed_tax_rounding (test_smoke.SmokeTests.test_signed_tax_rounding) ... ok
+test_statement_timezones (test_smoke.SmokeTests.test_statement_timezones) ... ok
+test_weighted_allocation (test_smoke.SmokeTests.test_weighted_allocation) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.003s
+
+OK

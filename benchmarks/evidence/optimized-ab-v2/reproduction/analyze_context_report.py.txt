@@ -1,0 +1,1003 @@
+"""Post-experiment native context analysis; never invokes a coding model.
+
+Prepared during the experiment but run only after the formal runner finishes.
+Only explicit JSON evidence, native events and immutable starting Git blobs are
+read. Mutable coding worktrees, application DBs and Codex state are never opened.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import posixpath
+import re
+import shlex
+import statistics
+import subprocess
+import sys
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+ROOT = next(
+    parent
+    for parent in Path(__file__).resolve().parents
+    if (parent / "benchmarks/context_audit_v2.py").is_file()
+)
+sys.path.insert(0, str(ROOT))
+
+from benchmarks.compact_quality_evaluation import source_label  # noqa: E402
+from benchmarks.context_audit_v2 import _payload, _source_path_error  # noqa: E402
+from benchmarks.refinement_eval import body_evidence  # noqa: E402
+from benchmarks.telemetry import READ_METHOD, observed_read_paths  # noqa: E402
+
+LIMITATIONS = [
+    "This is a post-experiment content audit of actual native MCP event results, not a model cost meter.",
+    "Target-file coverage is a declared-file proxy; expected declaration/body coverage is narrowly "
+    "scoped to the two symbols declared by each synthetic task. Full semantic completeness is unknown.",
+    "Exact body checks use independent Python AST or the narrow TypeScript fixture scanner against "
+    "immutable starting Git blobs. A check is eligible only when that returned file hash matches "
+    "the starting blob; post-edit or unknown versions are not treated as missing baseline bodies.",
+    "Source versions recorded after Codex exit and before grading are later observations. "
+    "A model's intended edits can cause mismatches; neither matches nor mismatches establish "
+    "source freshness at the instant of retrieval.",
+    "Server status, source_freshness, truncation and warnings are application assertions. "
+    "Independently verified live call-time freshness remains unavailable.",
+    "Native event ordering establishes only whether a completed retrieval preceded observable "
+    "command starts. Commands may read or mutate source; the full filesystem history is not measured.",
+    "Snippet and canonical JSON bytes are measured response content, not transport bytes, "
+    "tokenizer counts, model input tokens, or money saved.",
+    "Missing, interrupted, failed, ambiguous and ineligible observations remain visible and unknown; "
+    "no unobserved responses are invented as zero-byte or successful retrievals.",
+    "A does not expose Memglide MCP and receives no invented retrieval-quality scores. "
+    "Repeated runs and related tasks are correlated; this is a small synthetic corpus.",
+]
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def loads(text: str) -> Any:
+    def pairs(values):
+        result = {}
+        for key, value in values:
+            if key in result:
+                raise ValueError("Duplicate JSON key")
+            result[key] = value
+        return result
+
+    return json.loads(text, object_pairs_hook=pairs)
+
+
+def read_bytes(path: Path, maximum=64 * 1024 * 1024) -> bytes:
+    if path.is_symlink() or not path.is_file() or path.stat().st_size > maximum:
+        raise ValueError("Input is symlinked, unavailable or oversized")
+    data = path.read_bytes()
+    if len(data) > maximum:
+        raise ValueError("Input exceeds bound")
+    return data
+
+
+def json_file(path: Path) -> Any:
+    return loads(read_bytes(path).decode("utf-8"))
+
+
+def artifact_path(experiment: Path, run: dict, name: str) -> Path:
+    directory = Path(run.get("artifacts", ""))
+    if not directory.is_absolute():
+        directory = experiment / directory
+    if not directory.is_relative_to(experiment) or directory.resolve() != directory:
+        raise ValueError("Artifact path escapes experiment or traverses a symlink")
+    path = directory / name
+    if path.resolve() != path:
+        raise ValueError("Artifact input is symlinked")
+    return path
+
+
+def events(data: bytes) -> tuple[list[dict], list[dict], list[dict]]:
+    calls: dict[str, dict] = {}
+    commands: dict[str, dict] = {}
+    errors = []
+    for number, line in enumerate(data.decode("utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        try:
+            value = loads(line)
+            if not isinstance(value, dict) or not isinstance(value.get("type"), str):
+                raise ValueError("Malformed native event")
+        except (ValueError, TypeError):
+            errors.append({"line": number, "reason": "Malformed or ambiguous JSON native event"})
+            continue
+        item = value.get("item")
+        if not isinstance(item, dict) or value["type"] not in {
+            "item.started",
+            "item.updated",
+            "item.completed",
+        }:
+            continue
+        identifier = item.get("id")
+        native_id = identifier if isinstance(identifier, str) and identifier else None
+        key = native_id or f"missing-native-id-at-line-{number}"
+        if item.get("type") == "command_execution" or key in commands:
+            previous_command = commands.get(key, {})
+            commands[key] = {
+                **previous_command,
+                **item,
+                "native_call_id": native_id,
+                "started_line": number
+                if value["type"] == "item.started"
+                else previous_command.get("started_line"),
+                "completed_line": number
+                if value["type"] == "item.completed"
+                else previous_command.get("completed_line"),
+            }
+        previous = calls.get(key)
+        if previous is None and (
+            item.get("type") != "mcp_tool_call" or item.get("server") != "memglide"
+        ):
+            continue
+        issues = list(previous["errors"]) if previous else []
+        if native_id is None:
+            issues.append("Native call ID missing")
+        if previous and previous["last_event"] == "item.completed":
+            issues.append("Duplicate or later lifecycle event after completed native call")
+        if previous and any(
+            field in item and field in previous and item[field] != previous[field]
+            for field in ("server", "tool", "type")
+        ):
+            issues.append("Native tool identity changed within call ID")
+        calls[key] = {
+            **(previous or {}),
+            **item,
+            "native_call_id": native_id,
+            "first_event_line": previous["first_event_line"] if previous else number,
+            "last_event_line": number,
+            "last_event": value["type"],
+            "errors": issues,
+        }
+    return list(calls.values()), errors, list(commands.values())
+
+
+def read_overlap(commands: list[dict], calls: list[dict], run: dict) -> dict:
+    applicable = run.get("configuration") == "B"
+    worktree = Path(run.get("worktree", "/invalid-worktree"))
+    recognized = []
+    for command in commands:
+        if command.get("exit_code") != 0 or not isinstance(command.get("command"), str):
+            continue
+        paths = observed_read_paths(command["command"])
+        if not paths:
+            continue
+        relative_paths = []
+        for path in paths:
+            value = Path(posixpath.normpath(path))
+            if value.is_absolute():
+                try:
+                    value = value.relative_to(worktree)
+                except ValueError:
+                    continue
+            if ".." not in value.parts:
+                relative_paths.append(value.as_posix())
+        started = command.get("started_line")
+        prior_returned = {
+            path
+            for call in calls
+            if started is not None
+            and call["last_event_line"] < started
+            and call["tool"] == "fetch_context"
+            and call["response_available"]
+            for path in call["returned_files"]
+        }
+        overlaps = [path for path in relative_paths if path in prior_returned]
+        recognized.append(
+            {
+                "native_call_id": command["native_call_id"],
+                "started_line": started,
+                "completed_line": command.get("completed_line"),
+                "recognized_relative_path_mentions": relative_paths,
+                "prior_retrieved_file_path_overlap": overlaps
+                if applicable and started is not None
+                else None,
+            }
+        )
+    return {
+        "applicable_for_mcp_overlap": applicable,
+        "method": READ_METHOD,
+        "scope": "Literal read-command intent overlapping source paths returned by an earlier completed fetch. "
+        "A returned path can contain only a partial snippet; overlap does not prove a redundant read. "
+        "Unknown command starts remain unknown. This is not exact filesystem I/O.",
+        "recognized_read_command_count": len(recognized),
+        "commands_with_prior_retrieved_file_path_overlap": sum(
+            bool(row["prior_retrieved_file_path_overlap"]) for row in recognized
+        )
+        if applicable
+        else None,
+        "commands_with_unknown_start_order": sum(row["started_line"] is None for row in recognized),
+        "recognized_path_mentions_overlapping_prior_retrieved_files": sum(
+            len(row["prior_retrieved_file_path_overlap"] or []) for row in recognized
+        )
+        if applicable
+        else None,
+        "commands": recognized,
+        "exact_filesystem_reads": None,
+        "redundant_filesystem_reads": None,
+    }
+
+
+def git_blob(
+    experiment: Path, metadata: dict, run: dict, path: str
+) -> tuple[bytes | None, str | None]:
+    if _source_path_error(path):
+        return None, "Declared source path is outside safe source policy"
+    repository = metadata.get("repositories", {}).get(run.get("repository"), {})
+    root, commit = Path(repository.get("path", "")), run.get("starting_commit")
+    if (
+        not root.is_absolute()
+        or not root.is_relative_to(experiment / "repositories")
+        or root.resolve() != root
+        or not isinstance(commit, str)
+        or not re.fullmatch(r"[a-f0-9]{40}", commit)
+        or commit != repository.get("commit")
+    ):
+        return None, "Immutable starting repository/commit metadata unavailable or unsafe"
+    command = [
+        "git",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.hooksPath=/dev/null",
+        "-C",
+        str(root),
+        "cat-file",
+    ]
+    object_name = f"{commit}:{path}"
+    try:
+        length = int(subprocess.check_output([*command, "-s", object_name], timeout=10))
+        if length > 512_000:
+            return None, "Starting source blob exceeds bounded source policy"
+        data = subprocess.check_output([*command, "blob", object_name], timeout=10)
+        if len(data) != length or b"\x00" in data:
+            return None, "Starting source blob is binary or changed unexpectedly"
+        data.decode("utf-8")
+        return data, None
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return None, "Immutable starting source blob unavailable"
+
+
+def labels(experiment: Path, metadata: dict, run: dict, task: dict, cache: dict) -> list[dict]:
+    result = []
+    for expected in task.get("expected_symbols", []):
+        candidates = [
+            path
+            for path in task.get("target_files", [])
+            if expected.startswith(str(Path(path).with_suffix("")).replace("/", ".") + ".")
+        ]
+        row = {"expected_symbol": expected, "label": None, "file_sha256": None, "error": None}
+        if len(candidates) != 1:
+            row["error"] = "Declared symbol does not map unambiguously to one target source"
+            result.append(row)
+            continue
+        path = candidates[0]
+        module = str(Path(path).with_suffix("")).replace("/", ".")
+        symbol = expected.removeprefix(module + ".")
+        key = (run.get("repository"), run.get("starting_commit"), path)
+        if key not in cache:
+            cache[key] = git_blob(experiment, metadata, run, path)
+        content, error = cache[key]
+        if content is None:
+            row["error"] = error
+        else:
+            row["file_sha256"] = sha(content)
+            try:
+                row["label"] = source_label(path, content.decode(), symbol, task["language"])
+            except (SyntaxError, StopIteration, AttributeError, TypeError, ValueError):
+                row["error"] = (
+                    "Independent AST/narrow fixture scanner cannot label this declaration"
+                )
+        result.append(row)
+    return result
+
+
+def body_checks(payload: dict, baseline: list[dict]) -> list[dict]:
+    result = []
+    hashes, items = payload.get("source_hashes", {}), payload.get("items", [])
+    for entry in baseline:
+        label = entry["label"]
+        row = {
+            "expected_symbol": entry["expected_symbol"],
+            "path": label["path"] if label else None,
+            "baseline_file_sha256": entry["file_sha256"],
+            "eligible": False,
+            "complete": None,
+            "matching_body_line_count": None,
+            "required_body_line_count": None,
+            "unavailable_reason": entry["error"],
+        }
+        if label is not None:
+            if hashes.get(label["path"]) != entry["file_sha256"]:
+                row["unavailable_reason"] = (
+                    "Returned file hash is absent or differs from immutable starting source; "
+                    "baseline body comparison is ineligible"
+                )
+            else:
+                evidence = body_evidence(label, items)
+                row.update(
+                    eligible=True,
+                    complete=evidence["complete"],
+                    matching_body_line_count=(label["end_line"] - label["start_line"] + 1)
+                    - len(evidence["missing_lines"]),
+                    required_body_line_count=label["end_line"] - label["start_line"] + 1,
+                    unavailable_reason=None,
+                )
+        result.append(row)
+    return result
+
+
+def call_analysis(item: dict, task: dict, baseline: list[dict], command_lines: list[int]) -> dict:
+    row = {
+        "native_call_id": item["native_call_id"],
+        "tool": item.get("tool"),
+        "native_status": item.get("status"),
+        "first_event_line": item["first_event_line"],
+        "last_event_line": item["last_event_line"],
+        "response_available": False,
+        "errors": list(item["errors"]),
+        "operation": None,
+        "retrieval_id": None,
+        "canonical_response_json_bytes": None,
+        "returned_item_count": None,
+        "returned_unique_file_count": None,
+        "returned_snippet_utf8_bytes": None,
+        "returned_files": None,
+        "declared_target_file_coverage_fraction": None,
+        "baseline_body_checks": None,
+        "server_asserted_status": None,
+        "server_asserted_source_freshness": None,
+        "server_asserted_truncated": None,
+        "server_warning_count": None,
+        "server_asserted_stale_files": None,
+        "completed_before_first_observable_command_start": None,
+        "independently_verified_call_time_freshness": None,
+        "semantic_completeness": None,
+    }
+    if item.get("last_event") != "item.completed" or item.get("status") != "completed":
+        row["errors"].append("Native tool did not complete successfully")
+    if item.get("error"):
+        row["errors"].append("Native CLI recorded a tool error")
+    if row["errors"]:
+        return row
+    payload, error = _payload(item.get("result"))
+    row["errors"].extend(error)
+    if payload is None:
+        return row
+    retrieval_id = payload.get("retrieval_id")
+    if not isinstance(retrieval_id, str) or not retrieval_id:
+        row["errors"].append("Response omitted a valid retrieval ID")
+        return row
+    row.update(
+        retrieval_id=retrieval_id,
+        operation=payload.get("operation"),
+        canonical_response_json_bytes=len(
+            json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+        ),
+        server_asserted_status=payload.get("status"),
+        server_asserted_source_freshness=payload.get("source_freshness"),
+        server_asserted_truncated=payload.get("truncated"),
+        server_warning_count=len(payload["warnings"])
+        if isinstance(payload.get("warnings"), list)
+        else None,
+    )
+    if item.get("tool") == "verify_context":
+        if payload.get("operation") != "get_context_passport":
+            row["errors"].append("verify_context returned a different operation")
+        else:
+            row.update(
+                response_available=True, server_asserted_stale_files=payload.get("stale_files")
+            )
+        return row
+    if item.get("tool") != "fetch_context" or payload.get("operation") != "get_context":
+        row["errors"].append("Tool/operation does not identify compact source retrieval")
+        return row
+    items, hashes = payload.get("items"), payload.get("source_hashes")
+    if (
+        not isinstance(items, list)
+        or not items
+        or not isinstance(hashes, dict)
+        or any(
+            not isinstance(value, dict)
+            or not isinstance(value.get("path"), str)
+            or not isinstance(value.get("snippet"), str)
+            or re.fullmatch(r"[a-f0-9]{64}", str(hashes.get(value.get("path"), ""))) is None
+            for value in items
+        )
+        or not any(value["snippet"].strip() for value in items)
+    ):
+        row["errors"].append("Retrieval has malformed items, source hashes, or no source snippet")
+        return row
+    returned = sorted({value["path"] for value in items})
+    targets = set(task.get("target_files", []))
+    row.update(
+        response_available=True,
+        returned_files=returned,
+        returned_item_count=len(items),
+        returned_unique_file_count=len(returned),
+        returned_snippet_utf8_bytes=sum(len(value["snippet"].encode()) for value in items),
+        declared_target_file_coverage_fraction=len(targets.intersection(returned)) / len(targets)
+        if targets
+        else None,
+        baseline_body_checks=body_checks(payload, baseline),
+        completed_before_first_observable_command_start=item["last_event_line"] < min(command_lines)
+        if command_lines
+        else None,
+    )
+    return row
+
+
+def snapshot_analysis(run: dict, event_bytes: bytes | None) -> dict:
+    audit = run.get("post_execution_context_audit")
+    row = {
+        "applicable": run.get("configuration") == "B",
+        "available": False,
+        "events_hash_matches_recorded_snapshot": None,
+        "phase": None,
+        "comparison_counts": None,
+        "file_observation_count": None,
+        "recorded_capture_wall_seconds": None,
+        "calls": None,
+        "unavailable_reason": None,
+        "independently_verified_call_time_freshness": None,
+    }
+    if not isinstance(audit, dict) or audit.get("phase") != "post_codex_pre_grader":
+        row["unavailable_reason"] = "Post-execution/pre-grader source snapshot unavailable"
+        return row
+    matches = sha(event_bytes) == audit.get("events_sha256") if event_bytes is not None else None
+    row.update(events_hash_matches_recorded_snapshot=matches, phase=audit.get("phase"))
+    if matches is not True:
+        row["unavailable_reason"] = (
+            "Native events unavailable or do not match recorded snapshot digest"
+        )
+        return row
+    row["available"] = True
+    row["recorded_capture_wall_seconds"] = audit.get("capture_wall_seconds")
+    if run.get("configuration") == "A":
+        row["unavailable_reason"] = (
+            "No Memglide treatment in A; retrieval source comparisons not applicable"
+        )
+        return row
+    if not isinstance(audit.get("calls"), list):
+        row.update(available=False, unavailable_reason="Recorded audit omitted calls")
+        return row
+    row["calls"] = audit["calls"]
+    observed = [file for call in audit["calls"] for file in call.get("files") or []]
+    if not observed:
+        row["unavailable_reason"] = (
+            "No returned source paths were available for independent observation"
+        )
+        return row
+    row["file_observation_count"] = len(observed)
+    counts = Counter(file.get("comparison", "unknown") for file in observed)
+    row["comparison_counts"] = {key: counts[key] for key in ("match", "mismatch", "unknown")}
+    return row
+
+
+def mismatch_change_correspondence(experiment: Path, run: dict, snapshot: dict) -> dict:
+    result = {
+        "available": False,
+        "files": None,
+        "scope": "Whether later source-hash mismatches name files in the exported tracked-change "
+        "patch and Git status. This checks correspondence with the run's edits; it does not "
+        "reconstruct exact retrieval-time source history or establish correctness.",
+    }
+    if not snapshot["applicable"] or not snapshot["available"]:
+        return result
+    try:
+        patch = read_bytes(artifact_path(experiment, run, "changes.patch")).decode("utf-8")
+        status = read_bytes(artifact_path(experiment, run, "git-status.txt")).decode("utf-8")
+        patched = set()
+        for line in patch.splitlines():
+            if line.startswith("diff --git "):
+                fields = shlex.split(line)
+                if len(fields) == 4 and fields[3].startswith("b/"):
+                    patched.add(fields[3][2:])
+        status_paths = set()
+        for line in status.splitlines():
+            match = re.fullmatch(r"\s*[MADRCU?! ]{1,2} (.+)", line)
+            if match:
+                status_paths.add(match[1])
+        files = []
+        for call in snapshot["calls"] or []:
+            for file in call.get("files") or []:
+                if file.get("comparison") == "mismatch":
+                    files.append(
+                        {
+                            "path": file["path"],
+                            "named_in_exported_patch": file["path"] in patched,
+                            "named_in_exported_git_status": file["path"] in status_paths,
+                        }
+                    )
+        result.update(available=True, files=files)
+    except (OSError, ValueError, UnicodeDecodeError):
+        pass
+    return result
+
+
+def run_analysis(experiment: Path, metadata: dict, task: dict, run: dict, cache: dict) -> dict:
+    row = {
+        key: run.get(key)
+        for key in (
+            "run_id",
+            "original_run_id",
+            "supplemental",
+            "task_id",
+            "repository",
+            "language",
+            "configuration",
+            "repeat",
+            "attempted",
+            "pending",
+            "status",
+            "treatment_valid",
+            "starting_commit",
+            "prompt_sha256",
+        )
+    }
+    row.update(
+        automated_grade_success=run.get("grader", {}).get("success"),
+        context_analysis_available=False,
+        errors=[],
+        event_parse_errors=[],
+        calls=[],
+        union_returned_files=None,
+        union_declared_target_file_coverage_fraction=None,
+        union_eligible_baseline_body_count=None,
+        union_complete_baseline_body_count=None,
+        union_all_declared_baseline_bodies_complete=None,
+        evidence_files={},
+        evidence_sha256={},
+        recorded_snapshot_file_matches_embedded=None,
+        read_command_intent_overlap=None,
+    )
+    data = None
+    try:
+        event_path = artifact_path(experiment, run, "events.jsonl")
+        data = read_bytes(event_path)
+        row["evidence_files"]["events"] = str(event_path.relative_to(experiment))
+        row["evidence_sha256"]["events"] = sha(data)
+        native_calls, parse_errors, commands = events(data)
+        command_lines = [
+            item["started_line"] for item in commands if item["started_line"] is not None
+        ]
+        row["event_parse_errors"] = parse_errors
+        baseline = labels(experiment, metadata, run, task, cache) if native_calls else []
+        row["calls"] = [call_analysis(item, task, baseline, command_lines) for item in native_calls]
+        row["read_command_intent_overlap"] = read_overlap(commands, row["calls"], run)
+        row["context_analysis_available"] = not parse_errors
+        fetches = [
+            call
+            for call in row["calls"]
+            if call["tool"] == "fetch_context" and call["response_available"]
+        ]
+        if fetches:
+            returned = sorted({path for call in fetches for path in call["returned_files"]})
+            targets = set(task.get("target_files", []))
+            row["union_returned_files"] = returned
+            row["union_declared_target_file_coverage_fraction"] = (
+                len(targets.intersection(returned)) / len(targets) if targets else None
+            )
+            body_sets = {}
+            for call in fetches:
+                for check in call["baseline_body_checks"]:
+                    values = body_sets.setdefault(check["expected_symbol"], [])
+                    if check["eligible"]:
+                        values.append(check["complete"])
+            eligible = sum(bool(values) for values in body_sets.values())
+            complete = sum(any(values) for values in body_sets.values())
+            row["union_eligible_baseline_body_count"] = eligible
+            row["union_complete_baseline_body_count"] = complete
+            if eligible == len(task.get("expected_symbols", [])):
+                row["union_all_declared_baseline_bodies_complete"] = complete == eligible
+    except (OSError, ValueError, TypeError, KeyError) as error:
+        row["errors"].append(
+            type(error).__name__ + ": native context evidence unavailable or unsafe"
+        )
+    row["post_execution_source_snapshot"] = snapshot_analysis(run, data)
+    try:
+        recorded_path = artifact_path(experiment, run, "post-execution-source-audit.json")
+        recorded_bytes = read_bytes(recorded_path)
+        recorded = loads(recorded_bytes.decode("utf-8"))
+        row["recorded_snapshot_file_matches_embedded"] = recorded == run.get(
+            "post_execution_context_audit"
+        )
+        row["evidence_files"]["post_execution_source_audit"] = str(
+            recorded_path.relative_to(experiment)
+        )
+        row["evidence_sha256"]["post_execution_source_audit"] = sha(recorded_bytes)
+        if not row["recorded_snapshot_file_matches_embedded"]:
+            row["post_execution_source_snapshot"].update(
+                available=False,
+                comparison_counts=None,
+                file_observation_count=None,
+                calls=None,
+                unavailable_reason="Saved audit and embedded result disagree",
+            )
+    except (OSError, ValueError, TypeError):
+        row["post_execution_source_snapshot"].update(
+            available=False,
+            comparison_counts=None,
+            file_observation_count=None,
+            calls=None,
+            unavailable_reason="Saved independent audit is unavailable or unsafe",
+        )
+    row["post_execution_mismatch_change_correspondence"] = mismatch_change_correspondence(
+        experiment, run, row["post_execution_source_snapshot"]
+    )
+    return row
+
+
+def distribution(values: list[Any]) -> dict:
+    observed = [value for value in values if type(value) in {int, float}]
+    return {
+        "observed_count": len(observed),
+        "unavailable_count": len(values) - len(observed),
+        "mean": statistics.mean(observed) if observed else None,
+        "median": statistics.median(observed) if observed else None,
+        "min": min(observed) if observed else None,
+        "max": max(observed) if observed else None,
+    }
+
+
+def aggregate(rows: list[dict]) -> dict:
+    calls = [call for row in rows for call in row["calls"]]
+    fetches = [call for call in calls if call["tool"] == "fetch_context"]
+    valid_fetches = [call for call in fetches if call["response_available"]]
+    bodies = [check for call in valid_fetches for check in call["baseline_body_checks"]]
+    eligible = [check for check in bodies if check["eligible"]]
+    snapshot_rows = [row["post_execution_source_snapshot"] for row in rows]
+    read_proxies = [
+        row["read_command_intent_overlap"]
+        for row in rows
+        if row["read_command_intent_overlap"] is not None
+    ]
+    snapshots = [row for row in snapshot_rows if row["comparison_counts"] is not None]
+    observed_file_count = sum(row["file_observation_count"] for row in snapshots)
+    snapshot_counts = (
+        {
+            key: sum(row["comparison_counts"][key] for row in snapshots)
+            for key in ("match", "mismatch", "unknown")
+        }
+        if snapshots
+        else None
+    )
+    unknown_snapshot_paths = Counter(
+        file.get("path")
+        for snapshot in snapshot_rows
+        for call in snapshot.get("calls") or []
+        for file in call.get("files") or []
+        if file.get("comparison") == "unknown"
+    )
+    change_rows = [row["post_execution_mismatch_change_correspondence"] for row in rows]
+    mismatch_correspondence = [file for row in change_rows for file in row["files"] or []]
+    return {
+        "assigned_run_count": len(rows),
+        "run_status_counts": dict(Counter(str(row["status"]) for row in rows)),
+        "attempted_run_count": sum(row["attempted"] is True for row in rows),
+        "runs_with_available_native_event_analysis": sum(
+            row["context_analysis_available"] for row in rows
+        ),
+        "native_memglide_call_count": len(calls),
+        "native_fetch_context_call_count": len(fetches),
+        "available_fetch_context_response_count": len(valid_fetches),
+        "unavailable_fetch_context_response_count": len(fetches) - len(valid_fetches),
+        "native_verify_context_call_count": sum(call["tool"] == "verify_context" for call in calls),
+        "call_error_count": sum(bool(call["errors"]) for call in calls),
+        "recognized_read_command_intent_count": sum(
+            row["recognized_read_command_count"] for row in read_proxies
+        ),
+        "read_commands_with_prior_retrieved_file_path_overlap": sum(
+            row["commands_with_prior_retrieved_file_path_overlap"] for row in read_proxies
+        )
+        if read_proxies
+        and all(
+            row["commands_with_prior_retrieved_file_path_overlap"] is not None
+            for row in read_proxies
+        )
+        else None,
+        "recognized_path_mentions_overlapping_prior_retrieved_files": sum(
+            row["recognized_path_mentions_overlapping_prior_retrieved_files"]
+            for row in read_proxies
+        )
+        if read_proxies
+        and all(
+            row["recognized_path_mentions_overlapping_prior_retrieved_files"] is not None
+            for row in read_proxies
+        )
+        else None,
+        "read_command_overlap_unknown_start_count": sum(
+            row["commands_with_unknown_start_order"] for row in read_proxies
+        ),
+        "run_parse_error_count": sum(bool(row["event_parse_errors"]) for row in rows),
+        "canonical_response_json_bytes": distribution(
+            [call["canonical_response_json_bytes"] for call in fetches]
+        ),
+        "returned_snippet_utf8_bytes": distribution(
+            [call["returned_snippet_utf8_bytes"] for call in fetches]
+        ),
+        "returned_item_count": distribution([call["returned_item_count"] for call in fetches]),
+        "returned_unique_file_count": distribution(
+            [call["returned_unique_file_count"] for call in fetches]
+        ),
+        "per_response_declared_target_file_coverage": distribution(
+            [call["declared_target_file_coverage_fraction"] for call in fetches]
+        ),
+        "per_run_union_declared_target_file_coverage": distribution(
+            [row["union_declared_target_file_coverage_fraction"] for row in rows]
+        ),
+        "declared_baseline_body_observation_count": len(bodies),
+        "eligible_matching_source_baseline_body_count": len(eligible),
+        "ineligible_or_unknown_baseline_body_count": len(bodies) - len(eligible),
+        "complete_eligible_baseline_body_count": sum(
+            check["complete"] is True for check in eligible
+        ),
+        "incomplete_eligible_baseline_body_count": sum(
+            check["complete"] is False for check in eligible
+        ),
+        "runs_with_all_declared_baseline_bodies_known": sum(
+            row["union_all_declared_baseline_bodies_complete"] is not None for row in rows
+        ),
+        "runs_with_all_declared_baseline_bodies_complete": sum(
+            row["union_all_declared_baseline_bodies_complete"] is True for row in rows
+        ),
+        "post_execution_snapshot_available_run_count": sum(
+            row["available"] for row in snapshot_rows
+        ),
+        "post_execution_source_comparison_run_count": len(snapshots),
+        "post_execution_file_observation_count": observed_file_count if snapshots else None,
+        "post_execution_source_comparison_counts": snapshot_counts,
+        "post_execution_unknown_path_counts": dict(unknown_snapshot_paths),
+        "mismatches_checked_against_exported_changes": len(mismatch_correspondence),
+        "mismatches_named_in_both_patch_and_git_status": sum(
+            file["named_in_exported_patch"] and file["named_in_exported_git_status"]
+            for file in mismatch_correspondence
+        ),
+        "mismatch_change_metadata_unavailable_run_count": sum(
+            not row["available"] for row in change_rows
+        ),
+        "fetches_completed_before_first_observable_command_start": sum(
+            call["completed_before_first_observable_command_start"] is True
+            for call in valid_fetches
+        ),
+        "fetches_after_or_interleaved_with_observable_commands": sum(
+            call["completed_before_first_observable_command_start"] is False
+            for call in valid_fetches
+        ),
+        "fetches_with_unknown_command_ordering": sum(
+            call["completed_before_first_observable_command_start"] is None
+            for call in valid_fetches
+        ),
+        "server_asserted_status_counts": dict(
+            Counter(str(call["server_asserted_status"]) for call in valid_fetches)
+        ),
+        "server_asserted_source_freshness_counts": dict(
+            Counter(str(call["server_asserted_source_freshness"]) for call in valid_fetches)
+        ),
+        "server_asserted_truncated_counts": dict(
+            Counter(str(call["server_asserted_truncated"]) for call in valid_fetches)
+        ),
+        "server_warning_count": distribution(
+            [call["server_warning_count"] for call in valid_fetches]
+        ),
+        "independently_verified_call_time_freshness": None,
+        "semantic_completeness": None,
+    }
+
+
+def markdown(document: dict) -> str:
+    a, b = document["original_aggregates"]["A"], document["original_aggregates"]["B"]
+    lines = [
+        "# Optimized native Codex context audit",
+        "",
+        f"This companion audit retains {document['original_run_count']} original assignments across "
+        f"{document['task_count']} tasks. It examines actual MCP response evidence and the independent "
+        "source-version snapshots captured after coding and before grading. Coding correctness, "
+        "model usage, latency and cost are reported in the main A/B report.",
+        "",
+        "## Original assignments",
+        "",
+        "| Observation | A: standard Codex | B: compact Memglide |",
+        "|---|---:|---:|",
+        f"| Assigned runs | {a['assigned_run_count']} | {b['assigned_run_count']} |",
+        f"| Attempted runs | {a['attempted_run_count']} | {b['attempted_run_count']} |",
+        f"| Observed Memglide calls | {a['native_memglide_call_count']} | {b['native_memglide_call_count']} |",
+        f"| Available / observed fetch responses | {a['available_fetch_context_response_count']} / {a['native_fetch_context_call_count']} | {b['available_fetch_context_response_count']} / {b['native_fetch_context_call_count']} |",
+        f"| Verify calls | {a['native_verify_context_call_count']} | {b['native_verify_context_call_count']} |",
+        f"| Calls with errors | {a['call_error_count']} | {b['call_error_count']} |",
+        "",
+        "## Returned context",
+        "",
+    ]
+    for key, label in [
+        ("canonical_response_json_bytes", "Canonical response bytes"),
+        ("returned_snippet_utf8_bytes", "Returned snippet UTF-8 bytes"),
+        ("returned_unique_file_count", "Unique source files per fetch"),
+        ("per_response_declared_target_file_coverage", "Declared target-file coverage per fetch"),
+        (
+            "per_run_union_declared_target_file_coverage",
+            "Declared target-file union coverage per B run",
+        ),
+    ]:
+        value = b[key]
+        lines.append(
+            f"- {label}: mean {value['mean']}, median {value['median']}; "
+            f"{value['observed_count']} observed, {value['unavailable_count']} unavailable."
+        )
+    lines += [
+        "",
+        f"Independent baseline body checks found {b['complete_eligible_baseline_body_count']} complete "
+        f"and {b['incomplete_eligible_baseline_body_count']} incomplete bodies among "
+        f"{b['eligible_matching_source_baseline_body_count']} eligible body observations. "
+        f"{b['ineligible_or_unknown_baseline_body_count']} other body observations were ineligible "
+        "or unknown because a returned source version could not be matched to the starting source. "
+        "These observations cover declared task symbols only; they do not establish semantic completeness.",
+        "",
+        f"Server assertions were status {b['server_asserted_status_counts']}, source freshness "
+        f"{b['server_asserted_source_freshness_counts']}, and truncation "
+        f"{b['server_asserted_truncated_counts']}. A complete pair of declared bodies can coexist "
+        "with truncation or missing broader evidence. The average fetch contained "
+        f"{b['returned_unique_file_count']['mean']} distinct paths for two declared target files; "
+        "other returned paths may contain relevant tests, helpers or supporting configuration.",
+        "",
+        "## Independent source observations",
+        "",
+        f"Post-execution comparisons: {b['post_execution_source_comparison_counts']}; "
+        f"{b['post_execution_file_observation_count']} file observations in "
+        f"{b['post_execution_source_comparison_run_count']} original B runs. "
+        "Mismatches can be caused by the model's intended edits. Matching later hashes do not "
+        "prove historical call-time freshness.",
+        "",
+        f"Of {b['mismatches_checked_against_exported_changes']} mismatches checked against exported "
+        f"change metadata, {b['mismatches_named_in_both_patch_and_git_status']} named files in both "
+        "the run's tracked-change patch and Git status. This verifies correspondence with the "
+        "run's edits without reconstructing exact historical mutation times.",
+        "",
+        f"Unknown source comparisons by path: {b['post_execution_unknown_path_counts']}. "
+        "These files were excluded by the snapshot helper's explicit source-file suffix policy, "
+        "which avoids opening config, state, database or credential files. Their versions remain "
+        "unmeasured by this independent snapshot.",
+        "",
+        f"{b['fetches_completed_before_first_observable_command_start']} fetches completed before "
+        "the first observable command start; "
+        f"{b['fetches_after_or_interleaved_with_observable_commands']} occurred after or interleaved "
+        f"with commands; {b['fetches_with_unknown_command_ordering']} had unknown ordering. "
+        "Command ordering is a proxy, not a complete filesystem mutation trace.",
+        "",
+        "## Read-command intent overlap",
+        "",
+        f"The conservative literal-command parser recognized {a['recognized_read_command_intent_count']} "
+        f"read-command intents in A and {b['recognized_read_command_intent_count']} in B. "
+        f"{b['read_commands_with_prior_retrieved_file_path_overlap']} B commands included "
+        f"{b['recognized_path_mentions_overlapping_prior_retrieved_files']} path mentions also "
+        "returned by an earlier completed fetch. A returned path may contain only a snippet, "
+        "and a subsequent read may obtain additional or changed code. These overlaps do not "
+        "establish redundant reads or actual filesystem I/O.",
+        "",
+        "| B run | Paths named after an earlier fetch returned the same path |",
+        "|---|---|",
+    ]
+    for row in document["original_runs"]:
+        overlap = row["read_command_intent_overlap"]
+        if row["configuration"] != "B" or overlap is None:
+            continue
+        for command in overlap["commands"]:
+            if command["prior_retrieved_file_path_overlap"]:
+                lines.append(
+                    f"| {row['run_id']} | {', '.join(command['prior_retrieved_file_path_overlap'])} |"
+                )
+    lines += [
+        "",
+        "## Every original run",
+        "",
+        "| Run | Arm | Status | Fetch available / observed | Target-file union coverage | Post-exit match / mismatch / unknown |",
+        "|---|---|---|---:|---:|---|",
+    ]
+    for row in document["original_runs"]:
+        fetches = [call for call in row["calls"] if call["tool"] == "fetch_context"]
+        valid = sum(call["response_available"] for call in fetches)
+        counts = row["post_execution_source_snapshot"]["comparison_counts"]
+        comparison = (
+            "Unavailable / not applicable"
+            if counts is None
+            else " / ".join(str(counts[key]) for key in ("match", "mismatch", "unknown"))
+        )
+        coverage = row["union_declared_target_file_coverage_fraction"]
+        lines.append(
+            f"| {row['run_id']} | {row['configuration']} | {row['status']} | {valid} / {len(fetches)} "
+            f"| {coverage if coverage is not None else 'Unavailable'} | {comparison} |"
+        )
+    lines += ["", "## Limitations", ""]
+    lines += [f"- {value}" for value in LIMITATIONS]
+    lines += [
+        "",
+        f"Supplemental attempts retained separately in JSON: {document['supplemental_run_count']}. "
+        "They never replace original observations.",
+        "",
+        f"Generated at {document['generated_at_utc']}. See the companion JSON for every call, "
+        "eligibility decision, comparison, missing observation and provenance digest.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("experiment", type=Path)
+    parser.add_argument("--output-prefix", type=Path, required=True)
+    args = parser.parse_args()
+    experiment = args.experiment.resolve(strict=True)
+    if not (experiment / "report.json").is_file():
+        raise SystemExit("Formal report absent; do not analyze an active experiment")
+    plan, metadata = json_file(experiment / "plan.json"), json_file(experiment / "metadata.json")
+    raw_runs = json_file(experiment / "runs.json")
+    if any(row.get("pending") for row in raw_runs):
+        raise SystemExit("Original assignments still pending; wait for runner completion")
+    tasks = {task["id"]: task for task in plan["tasks"]}
+    by_id = {row["run_id"]: row for row in raw_runs}
+    if len(by_id) != len(raw_runs):
+        raise SystemExit("Duplicate original run IDs; preserve and audit before analysis")
+    cache, rows = {}, []
+    for assigned in plan["runs"]:
+        run = by_id.get(assigned["run_id"], {**assigned, "status": "missing", "attempted": None})
+        rows.append(run_analysis(experiment, metadata, tasks[assigned["task_id"]], run, cache))
+    extra = set(by_id) - {row["run_id"] for row in plan["runs"]}
+    if extra:
+        raise SystemExit("Unplanned originals found; do not silently drop them")
+    supplemental = (
+        json_file(experiment / "supplemental-runs.json")
+        if (experiment / "supplemental-runs.json").is_file()
+        else []
+    )
+    supplemental_rows = [
+        run_analysis(experiment, metadata, tasks[row["task_id"]], row, cache)
+        for row in supplemental
+    ]
+    provenance = {
+        name: sha(read_bytes(experiment / name))
+        for name in ("plan.json", "metadata.json", "runs.json", "report.json")
+    }
+    document = {
+        "schema_version": 1,
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "experiment_name": experiment.name,
+        "analysis_script_sha256": sha(Path(__file__).read_bytes()),
+        "source_evidence_sha256": provenance,
+        "task_count": len(tasks),
+        "original_run_count": len(rows),
+        "supplemental_run_count": len(supplemental_rows),
+        "model": metadata.get("model"),
+        "reasoning_effort": metadata.get("reasoning_effort"),
+        "original_aggregates": {
+            arm: aggregate([row for row in rows if row["configuration"] == arm])
+            for arm in ("A", "B")
+        },
+        "supplemental_aggregates": {
+            arm: aggregate([row for row in supplemental_rows if row["configuration"] == arm])
+            for arm in ("A", "B")
+        },
+        "original_runs": rows,
+        "supplemental_runs": supplemental_rows,
+        "limitations": LIMITATIONS,
+    }
+    targets = [args.output_prefix.with_suffix(suffix) for suffix in (".json", ".md")]
+    if any(path.exists() or path.is_symlink() for path in targets):
+        raise SystemExit("Refusing to overwrite an existing context report")
+    encoded = [json.dumps(document, indent=2, ensure_ascii=False) + "\n", markdown(document)]
+    for path, content in zip(targets, encoded, strict=True):
+        with path.open("x", encoding="utf-8") as target:
+            target.write(content)
+    print(json.dumps({"outputs": [str(path) for path in targets], "original_run_count": len(rows)}))
+
+
+if __name__ == "__main__":
+    main()

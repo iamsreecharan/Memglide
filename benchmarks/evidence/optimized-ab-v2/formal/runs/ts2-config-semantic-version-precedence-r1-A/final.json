@@ -1,0 +1,1 @@
+{"summary":"Implemented strict SemVer comparison with exact arbitrary-size numeric ordering, prerelease precedence, syntax rejection, and ignored build metadata. Added regression coverage for both domain and public API. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regressions","git diff --check — passed"]}

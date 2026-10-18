@@ -1,0 +1,144 @@
+{
+  "applicable": true,
+  "call_error_count": 0,
+  "calls": [
+    {
+      "errors": [],
+      "event_lines": [
+        6,
+        7
+      ],
+      "files": [
+        {
+          "comparison": "mismatch",
+          "observed_at_utc": "2026-10-18T00:06:00.522883+00:00",
+          "path": "workflow/ready_job_order.py",
+          "post_execution_source_sha256": "a32b3341c0c8601fd282304f0237cb862cf89ebe8ff8c02d5ec69bb9e74480e1",
+          "returned_source_sha256": "89ca940e9e85831fb31abdc51d1f8d683d3d9673ceb748eb529d3a0fb79bea41",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "mismatch",
+          "observed_at_utc": "2026-10-18T00:06:00.523348+00:00",
+          "path": "workflow/api.py",
+          "post_execution_source_sha256": "565793d84e77e30d64f18957088564d65240b28e1322fa3b16c5f14e2b148f64",
+          "returned_source_sha256": "a754cb72c1c78fc2b4635da20e49aa63a1a427e957da6a7a9d65f5be3265d306",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.523988+00:00",
+          "path": "workflow/deterministic_build_order.py",
+          "post_execution_source_sha256": "54f5864e7a90b1176d599f3fb9337bbd868cd29a280e3480d206549ccd9e21be",
+          "returned_source_sha256": "54f5864e7a90b1176d599f3fb9337bbd868cd29a280e3480d206549ccd9e21be",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.524589+00:00",
+          "path": "tests/test_smoke.py",
+          "post_execution_source_sha256": "905a3106a061f4d55dae7f89fab5fcbf1c50f17a398bca9ef24e273c86aa47d6",
+          "returned_source_sha256": "905a3106a061f4d55dae7f89fab5fcbf1c50f17a398bca9ef24e273c86aa47d6",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.525026+00:00",
+          "path": "workflow/interval_coalescing.py",
+          "post_execution_source_sha256": "385a2d6ad95611168a7710c8f882680f447774c9ce131bb01ec8d52cc20199d8",
+          "returned_source_sha256": "385a2d6ad95611168a7710c8f882680f447774c9ce131bb01ec8d52cc20199d8",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.525492+00:00",
+          "path": "workflow/utf8_batch_budget.py",
+          "post_execution_source_sha256": "a306ac31872032df5017f56245d645c7c574ae305efaddce5eb688da36b4feed",
+          "returned_source_sha256": "a306ac31872032df5017f56245d645c7c574ae305efaddce5eb688da36b4feed",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.525885+00:00",
+          "path": "workflow/atomic_pointer_updates.py",
+          "post_execution_source_sha256": "8d2bce443a0170981977c634af01a8660a402a4d43fea3ba9fe5288550a7177e",
+          "returned_source_sha256": "8d2bce443a0170981977c634af01a8660a402a4d43fea3ba9fe5288550a7177e",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.526286+00:00",
+          "path": "workflow/bounded_async_execution.py",
+          "post_execution_source_sha256": "4959d179ab75469507d339cee5ca1c3dc7f2f70e96268ad36a9bbdf47d8f4282",
+          "returned_source_sha256": "4959d179ab75469507d339cee5ca1c3dc7f2f70e96268ad36a9bbdf47d8f4282",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.526808+00:00",
+          "path": "workflow/capped_backoff.py",
+          "post_execution_source_sha256": "f23ec646dc5b2ff731609915c0b035670ce70059793873b4d2b5164683d4621a",
+          "returned_source_sha256": "f23ec646dc5b2ff731609915c0b035670ce70059793873b4d2b5164683d4621a",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.527194+00:00",
+          "path": "workflow/deep_settings_overlay.py",
+          "post_execution_source_sha256": "111edb83fa3447476020d8332cae9680b259c5ae18dbe61e523295bc208c5b69",
+          "returned_source_sha256": "111edb83fa3447476020d8332cae9680b259c5ae18dbe61e523295bc208c5b69",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.527486+00:00",
+          "path": "workflow/incremental_utf8_lines.py",
+          "post_execution_source_sha256": "b21083015da5e360dab8414ad66bf85e702ef999339ba3dd568fcf0dc9748294",
+          "returned_source_sha256": "b21083015da5e360dab8414ad66bf85e702ef999339ba3dd568fcf0dc9748294",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-18T00:06:00.527919+00:00",
+          "path": "workflow/strict_template_expansion.py",
+          "post_execution_source_sha256": "9b37222624243761c4e1ddbb7e0347d1dcaaab88cd56c0ac1f1e129323b1902e",
+          "returned_source_sha256": "9b37222624243761c4e1ddbb7e0347d1dcaaab88cd56c0ac1f1e129323b1902e",
+          "unavailable_reason": null
+        }
+      ],
+      "independently_verified_call_time_freshness": null,
+      "native_call_id": "item_2",
+      "native_status": "completed",
+      "response_available": true,
+      "retrieval_id": "ec9401afc26c463d9ea1e0a6c0d28f49",
+      "returned_item_count": 12,
+      "server": "memglide",
+      "tool": "fetch_context",
+      "unread_hash_only_paths": []
+    }
+  ],
+  "capture_wall_seconds": 0.007146139999349543,
+  "captured_at_utc": "2026-10-18T00:06:00.527943+00:00",
+  "comparison_counts": {
+    "match": 10,
+    "mismatch": 2,
+    "unknown": 0
+  },
+  "event_errors": [],
+  "events_sha256": "e66b88d119dd94f2fd028ebd377a246e9300f2801c7a2dab8ec07d54ce620349",
+  "file_observation_count": 12,
+  "independently_verified_call_time_freshness": null,
+  "limitations": [
+    "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+    "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+    "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+    "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+    "Returned snippets are not independently checked for complete bodies or semantic completeness."
+  ],
+  "observed_fetch_context_call_count": 1,
+  "observed_memglide_call_count": 1,
+  "phase": "post_codex_pre_grader",
+  "response_available_count": 1,
+  "schema_version": 1,
+  "started_at_utc": "2026-10-18T00:06:00.520732+00:00"
+}

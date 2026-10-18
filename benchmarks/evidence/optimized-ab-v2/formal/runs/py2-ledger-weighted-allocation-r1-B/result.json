@@ -1,0 +1,363 @@
+{
+  "run_id": "py2-ledger-weighted-allocation-r1-B",
+  "task_id": "py2-ledger-weighted-allocation",
+  "language": "python",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 32,
+  "repository": "ledger-python-v2",
+  "original_run_id": "py2-ledger-weighted-allocation-r1-B",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-17T23:21:08.186561+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-weighted-allocation-r1-B",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/py2-ledger-weighted-allocation-r1-B",
+  "errors": [],
+  "grader": {
+    "task_id": "py2-ledger-weighted-allocation",
+    "repository": "ledger-python-v2",
+    "corpus_version": "2.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-weighted-allocation-r1-B/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-weighted-allocation-r1-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-weighted-allocation-r1-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 13
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-weighted-allocation-r1-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-weighted-allocation-r1-B/smoke.stderr.log"
+      }
+    ],
+    "test_count": 15,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "0d70241e571f633e3af2dcf3cbb92fd9359c043170b692bf40fec16d6a11cd53",
+        "actual_sha256": "0d70241e571f633e3af2dcf3cbb92fd9359c043170b692bf40fec16d6a11cd53"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "8ed5055a65b8e15e27a8096ec35ceb999b7a0ee5bc4e2ba7ddea412a5d6eee32",
+        "actual_sha256": "8ed5055a65b8e15e27a8096ec35ceb999b7a0ee5bc4e2ba7ddea412a5d6eee32"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_smoke.py",
+        "unchanged": true,
+        "expected_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a",
+        "actual_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a"
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "compact_protocol_fidelity": {
+    "valid": true,
+    "required_operations": [
+      "fetch_context"
+    ],
+    "verification_policy": "on_demand",
+    "successful_fetch_context_calls": 1,
+    "successful_verify_context_calls": 0,
+    "evidence": "Parsed actual MCP invocation results; not the final model summary"
+  },
+  "starting_commit": "2b78ee8ee850842d3a9c9f16277d94b17980bd7b",
+  "prompt_sha256": "79c56678fb8842a3ab75662ff399bff9797770f85cf976b409256c57d39f5857",
+  "setup": {
+    "project_id": "86fea50d81b7484fafe60957ed29842b",
+    "index_wall_seconds": 0.11838184400039609,
+    "wall_seconds": 0.11838184400039609,
+    "index_local_cpu_seconds": 0.05881832000000031,
+    "cpu_seconds": 0.05881832000000031,
+    "scope": "Required fresh project index only; no sessions or context retrieval before the model"
+  },
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 36.36502679500063,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 337440768,
+    "cpu_seconds": 14.450000000000001,
+    "memglide_peak_rss_bytes": 71782400,
+    "memglide_cpu_seconds": 2.06,
+    "observed_processes": 31,
+    "observed_memglide_processes": 1,
+    "samples": 453,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 18,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 92251,
+      "cached_input_tokens": 83328,
+      "output_tokens": 1344
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 92251,
+      "cached_input_tokens": 83328,
+      "output_tokens": 1344
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 1,
+    "mcp_calls": [
+      {
+        "id": "item_2",
+        "server": "memglide",
+        "tool": "fetch_context",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error",
+        "verified_compact_operation": "get_context"
+      }
+    ],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 1,
+    "memglide_successful_get_context_count": 1,
+    "memglide_successful_fetch_context_count": 1,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 4,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"pwd && rg --files -g '\"'!*.lock'\"' -g '\"'!'\"\\\\.git/**'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc \"cat AGENTS.md README.md ledger/__init__.py && git status --short && rg 'allocate' .\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_6",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_7",
+        "command": "/bin/bash -lc 'git diff --check && git diff --stat && git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "AGENTS.md",
+      "README.md",
+      "ledger/__init__.py"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "post_execution_context_audit": {
+    "schema_version": 1,
+    "phase": "post_codex_pre_grader",
+    "started_at_utc": "2026-10-17T23:21:44.769961+00:00",
+    "captured_at_utc": "2026-10-17T23:21:44.809662+00:00",
+    "capture_wall_seconds": 0.03968849200009572,
+    "events_sha256": "5b07c420fc43139ec1a267dcd4e76db471a049c7ef6935011827dddb6d14aa8e",
+    "applicable": true,
+    "observed_memglide_call_count": 1,
+    "observed_fetch_context_call_count": 1,
+    "response_available_count": 1,
+    "call_error_count": 0,
+    "file_observation_count": 12,
+    "comparison_counts": {
+      "match": 11,
+      "mismatch": 1,
+      "unknown": 0
+    },
+    "event_errors": [],
+    "calls": [
+      {
+        "native_call_id": "item_2",
+        "server": "memglide",
+        "tool": "fetch_context",
+        "native_status": "completed",
+        "event_lines": [
+          6,
+          7
+        ],
+        "retrieval_id": "d854cc9e06e34fc6a2c53b1ef32f9224",
+        "response_available": true,
+        "errors": [],
+        "files": [
+          {
+            "path": "ledger/weighted_allocation.py",
+            "returned_source_sha256": "3a1be454ab3805553f45d4221e6fcc3eb36c93662ab5f6f657d0963f796e2560",
+            "post_execution_source_sha256": "26e86252d752f5b41360fa5b61a75fcd6679744db4e7b5edaa0f7d1fe61214b8",
+            "observed_at_utc": "2026-10-17T23:21:44.782384+00:00",
+            "comparison": "mismatch",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/api.py",
+            "returned_source_sha256": "2283d3b55a3d8f2319c896bd50d019a7bd59d43336d0c3a66a0cff2ca65c36a5",
+            "post_execution_source_sha256": "2283d3b55a3d8f2319c896bd50d019a7bd59d43336d0c3a66a0cff2ca65c36a5",
+            "observed_at_utc": "2026-10-17T23:21:44.788029+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/signed_tax_rounding.py",
+            "returned_source_sha256": "807a7986e5c50bd49e93a216c0c0c387f9a957fb821eca211fdde00b83bdd1f0",
+            "post_execution_source_sha256": "807a7986e5c50bd49e93a216c0c0c387f9a957fb821eca211fdde00b83bdd1f0",
+            "observed_at_utc": "2026-10-17T23:21:44.789971+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "tests/test_smoke.py",
+            "returned_source_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a",
+            "post_execution_source_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a",
+            "observed_at_utc": "2026-10-17T23:21:44.797461+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/atomic_transfer.py",
+            "returned_source_sha256": "a93a1b7da6be22e397b3c5e0682d06c3f45792f40b5c398768ec53167a33abb6",
+            "post_execution_source_sha256": "a93a1b7da6be22e397b3c5e0682d06c3f45792f40b5c398768ec53167a33abb6",
+            "observed_at_utc": "2026-10-17T23:21:44.798888+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/invoice_line_discounts.py",
+            "returned_source_sha256": "9ffbf18e5d8bf3d06734ed6cbb484016f124c423d6ebf43bb762443996de583e",
+            "post_execution_source_sha256": "9ffbf18e5d8bf3d06734ed6cbb484016f124c423d6ebf43bb762443996de583e",
+            "observed_at_utc": "2026-10-17T23:21:44.801630+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/audit_hash_chain.py",
+            "returned_source_sha256": "8106fdd590124e56f06b5ba18055b280dfd8cc669ce5be615106b707821117c6",
+            "post_execution_source_sha256": "8106fdd590124e56f06b5ba18055b280dfd8cc669ce5be615106b707821117c6",
+            "observed_at_utc": "2026-10-17T23:21:44.803084+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/csv_bank_import.py",
+            "returned_source_sha256": "1f3f99bc44f368bdfec459d460a40e490cfac79c494bd527a09169058cd61ea0",
+            "post_execution_source_sha256": "1f3f99bc44f368bdfec459d460a40e490cfac79c494bd527a09169058cd61ea0",
+            "observed_at_utc": "2026-10-17T23:21:44.803794+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/currency_netting.py",
+            "returned_source_sha256": "f815a8f597e00f27f341e46e02d1ecdafa224d5a41e2456595b24a9b6bfc4eca",
+            "post_execution_source_sha256": "f815a8f597e00f27f341e46e02d1ecdafa224d5a41e2456595b24a9b6bfc4eca",
+            "observed_at_utc": "2026-10-17T23:21:44.806725+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/nested_redaction.py",
+            "returned_source_sha256": "34480fbfedd0ed5742a99bfee3777f9a6140c096d26d66f0f44323d464424a8c",
+            "post_execution_source_sha256": "34480fbfedd0ed5742a99bfee3777f9a6140c096d26d66f0f44323d464424a8c",
+            "observed_at_utc": "2026-10-17T23:21:44.807258+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/reconciliation_version_merge.py",
+            "returned_source_sha256": "dbf70fdd3611d22fff49182b11e68fd892efc2c61eeaa98ddb0edc3d6d0b4506",
+            "post_execution_source_sha256": "dbf70fdd3611d22fff49182b11e68fd892efc2c61eeaa98ddb0edc3d6d0b4506",
+            "observed_at_utc": "2026-10-17T23:21:44.808593+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "ledger/statement_timezones.py",
+            "returned_source_sha256": "b2d2e957894d2de5c3898513a768a3124e2d3de4a0dc355b8300ff9dde684064",
+            "post_execution_source_sha256": "b2d2e957894d2de5c3898513a768a3124e2d3de4a0dc355b8300ff9dde684064",
+            "observed_at_utc": "2026-10-17T23:21:44.809548+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          }
+        ],
+        "returned_item_count": 12,
+        "unread_hash_only_paths": [],
+        "independently_verified_call_time_freshness": null
+      }
+    ],
+    "independently_verified_call_time_freshness": null,
+    "limitations": [
+      "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+      "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+      "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+      "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+      "Returned snippets are not independently checked for complete bodies or semantic completeness."
+    ]
+  },
+  "post_execution_audit_wall_seconds": 0.04295494600046368,
+  "post_execution_audit_cpu_seconds": 0.042009678999988864,
+  "protected_file_violations": [],
+  "treatment_valid": true,
+  "common_blocker": null,
+  "finished_at": "2026-10-17T23:21:45.275924+00:00",
+  "end_to_end_wall_seconds": 36.48340863900103
+}

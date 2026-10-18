@@ -1,0 +1,2593 @@
+{
+  "aggregates": {
+    "A": {
+      "actual_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "attempted_runs": 1,
+      "completion_rate_denominator": "All attempted runs, including ungraded execution failures",
+      "computed_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "execution_status_counts": {
+        "completed": 1
+      },
+      "failed_grades": 0,
+      "graded_only_success_rate": 1.0,
+      "graded_runs": 1,
+      "invalid_treatment_runs": 0,
+      "metrics": {
+        "actual_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "cached_input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 43648,
+          "max": 43648,
+          "mean": 43648,
+          "median": 43648,
+          "min": 43648,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 43648
+        },
+        "computed_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "context_freshness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 2.92,
+          "max": 2.92,
+          "mean": 2.92,
+          "median": 2.92,
+          "min": 2.92,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 2.92
+        },
+        "end_to_end_wall_seconds": {
+          "attempted_missing": 0,
+          "known_total": 17.272317423000004,
+          "max": 17.272317423000004,
+          "mean": 17.272317423000004,
+          "median": 17.272317423000004,
+          "min": 17.272317423000004,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 17.272317423000004
+        },
+        "input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 48601,
+          "max": 48601,
+          "mean": 48601,
+          "median": 48601,
+          "min": 48601,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 48601
+        },
+        "mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "memglide_cpu_seconds": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "memglide_peak_rss_bytes": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "model_calls": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "observed_memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "observed_repeated_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "output_tokens": {
+          "attempted_missing": 0,
+          "known_total": 934,
+          "max": 934,
+          "mean": 934,
+          "median": 934,
+          "min": 934,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 934
+        },
+        "probe_expected_symbol_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "probe_target_path_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "process_tree_peak_rss_bytes": {
+          "attempted_missing": 0,
+          "known_total": null,
+          "max": 190730240,
+          "mean": 190730240,
+          "median": 190730240,
+          "min": 190730240,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "repeated_file_reads": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "retrieval_completeness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "setup_cpu_seconds": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "setup_wall_seconds": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "wall_time_seconds": {
+          "attempted_missing": 0,
+          "known_total": 17.272317423000004,
+          "max": 17.272317423000004,
+          "mean": 17.272317423000004,
+          "median": 17.272317423000004,
+          "min": 17.272317423000004,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 17.272317423000004
+        }
+      },
+      "not_run": 0,
+      "planned_runs": 1,
+      "successful_runs": 1,
+      "successful_task_completion_rate": 1.0,
+      "ungraded_runs": 0,
+      "unknown_treatment_runs": 0,
+      "valid_treatment_runs": 1
+    },
+    "B": {
+      "actual_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "attempted_runs": 1,
+      "completion_rate_denominator": "All attempted runs, including ungraded execution failures",
+      "computed_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "execution_status_counts": {
+        "completed": 1
+      },
+      "failed_grades": 0,
+      "graded_only_success_rate": 1.0,
+      "graded_runs": 1,
+      "invalid_treatment_runs": 0,
+      "metrics": {
+        "actual_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "cached_input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 42112,
+          "max": 42112,
+          "mean": 42112,
+          "median": 42112,
+          "min": 42112,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 42112
+        },
+        "computed_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "context_freshness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 4.6899999999999995,
+          "max": 4.6899999999999995,
+          "mean": 4.6899999999999995,
+          "median": 4.6899999999999995,
+          "min": 4.6899999999999995,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 4.6899999999999995
+        },
+        "end_to_end_wall_seconds": {
+          "attempted_missing": 0,
+          "known_total": 22.106710228999873,
+          "max": 22.106710228999873,
+          "mean": 22.106710228999873,
+          "median": 22.106710228999873,
+          "min": 22.106710228999873,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 22.106710228999873
+        },
+        "input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 71063,
+          "max": 71063,
+          "mean": 71063,
+          "median": 71063,
+          "min": 71063,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 71063
+        },
+        "mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "memglide_cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 1.76,
+          "max": 1.76,
+          "mean": 1.76,
+          "median": 1.76,
+          "min": 1.76,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1.76
+        },
+        "memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "memglide_peak_rss_bytes": {
+          "attempted_missing": 0,
+          "known_total": null,
+          "max": 72273920,
+          "mean": 72273920,
+          "median": 72273920,
+          "min": 72273920,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "model_calls": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_repeated_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "output_tokens": {
+          "attempted_missing": 0,
+          "known_total": 995,
+          "max": 995,
+          "mean": 995,
+          "median": 995,
+          "min": 995,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 995
+        },
+        "probe_expected_symbol_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "probe_target_path_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "process_tree_peak_rss_bytes": {
+          "attempted_missing": 0,
+          "known_total": null,
+          "max": 271118336,
+          "mean": 271118336,
+          "median": 271118336,
+          "min": 271118336,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "repeated_file_reads": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "retrieval_completeness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "setup_cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 0.054254919999999984,
+          "max": 0.054254919999999984,
+          "mean": 0.054254919999999984,
+          "median": 0.054254919999999984,
+          "min": 0.054254919999999984,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0.054254919999999984
+        },
+        "setup_wall_seconds": {
+          "attempted_missing": 0,
+          "known_total": 0.10286274200007028,
+          "max": 0.10286274200007028,
+          "mean": 0.10286274200007028,
+          "median": 0.10286274200007028,
+          "min": 0.10286274200007028,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0.10286274200007028
+        },
+        "wall_time_seconds": {
+          "attempted_missing": 0,
+          "known_total": 22.003847486999803,
+          "max": 22.003847486999803,
+          "mean": 22.003847486999803,
+          "median": 22.003847486999803,
+          "min": 22.003847486999803,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 22.003847486999803
+        }
+      },
+      "not_run": 0,
+      "planned_runs": 1,
+      "successful_runs": 1,
+      "successful_task_completion_rate": 1.0,
+      "ungraded_runs": 0,
+      "unknown_treatment_runs": 0,
+      "valid_treatment_runs": 1
+    }
+  },
+  "conclusions": {
+    "interpretation": "Observed results are descriptive. Assess task success, full cost coverage, treatment fidelity, sample size, cache order, and task representativeness before claiming savings.",
+    "savings_claim_supported": false,
+    "verified_pair_count": 1
+  },
+  "generated_at": "2026-10-17T23:00:53.883355+00:00",
+  "limitations": [
+    "No savings claim follows from a shorter response or fewer returned context characters.",
+    "Completed Codex turns are not the number of underlying model/API calls.",
+    "Absent provider invoiced cost is null. Computed list-price cost, if supplied, is separate.",
+    "Metric averages and medians use observed values; n and missing counts accompany them.",
+    "Failed and ungraded attempts remain in completion-rate and cost-per-success accounting.",
+    "Actual repeated filesystem reads are unavailable. Observed read-command fields are heuristics for command intent, not actual I/O measurements or guaranteed I/O lower bounds.",
+    "MCP invocation is checked from tool events, independent of model self-report.",
+    "B treatment fidelity requires a completed, error-free Memglide get_context result; failed calls and calls to other tools do not verify retrieval treatment.",
+    "Paired comparisons require identical recorded starting commits and prompt SHA-256 values. Missing or unequal identities and explicitly changed runtime source exclude paired deltas; all raw attempts, failures and unconditional aggregates remain visible.",
+    "MCP total counts are withheld for incomplete event streams; observed counts are lower bounds.",
+    "Retrieval completeness and freshness require separate ground-truth observations; null is unknown.",
+    "Independent target-path/symbol coverage probes are labelled proxies; they do not measure semantic completeness or establish what source context the coding model used.",
+    "Sampled process CPU is an observed lower bound; sampled RSS peaks may miss short-lived processes and count shared pages repeatedly. Remote inference resources are unavailable.",
+    "A/B prompt caching cannot generally be reset at the provider; run order and observed cached tokens matter.",
+    "Synthetic fixture tasks do not establish performance on arbitrary production repositories.",
+    "Supplemental retries never replace interrupted original assignments or enter the primary A/B aggregates. The compact fetch_context alias counts as retrieval only with observed get_context operation, nonempty source snippets and source hashes. Verification policy is frozen and explicit per run: on demand by default; --require-verification requires both calls for an ablation. Server freshness assertions are not independent semantic completeness measurements."
+  ],
+  "metadata": {
+    "cgroup_v2_limits": {
+      "cpu.max": "400000 100000",
+      "memory.max": "34359738368",
+      "memory.swap.max": "max",
+      "pids.max": "max"
+    },
+    "codex_version": "codex-cli 0.159.2",
+    "cpu_affinity_count": 5,
+    "experiment_version": 2,
+    "finished_at": "2026-10-17T23:00:53.851835+00:00",
+    "frozen_manifest": {
+      "common_instructions_sha256": "9bf1ac8fd96ab9457aeeb20fa4e2b18d9b066660358d97d58a29d64450c6a55e",
+      "files": {
+        "benchmarks/compare_components.py": "c9c0b463068a7fc679e4387566daeefc82b556b789c0de98b568880b13aea89e",
+        "benchmarks/context_audit_v2.py": "d473d241237364b08f228e3f6ea7092d414bcb2ce9b347c9918a967ee95a3a4a",
+        "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c",
+        "benchmarks/reporting.py": "3e1d1c86cf0d091db7d7e04576110687e267de025397e6ef87c9a0d319577c8e",
+        "benchmarks/run.py": "ccf8d44ca7ea8286a8a9241b030eaa76ca339ec15032aeb95cb4e256ef500a26",
+        "benchmarks/run_v2.py": "eaa1d36af3796bf54de4137fd406af2fa3233421855e49628644e9572a358c69",
+        "benchmarks/tasks.json": "5a921674ff669ebe09af08c06b9bb95ea597ff051ddcddb3312ce9508affe185",
+        "benchmarks/telemetry.py": "21a6fa239c25ab1fb417aa7042f3f4e8412ef941172d1dfc42ec0d5895c6cc52",
+        "pyproject.toml": "fef0be39ee002efcd53f7388f821ab9a8199f74fc23f4854c70743c8641d1ab4",
+        "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+        "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+        "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+        "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+        "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+        "src/memglide/core/context.py": "7b0c94938cfaeaff843d9c013c91d885747cecf73626317b3ca5acc607c4ac53",
+        "src/memglide/core/indexer.py": "8b84cd28858dd16c36b4ddf25edb62391721e6874fa0deb68dd48dd01bb50621",
+        "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+        "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+        "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+        "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+        "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+        "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/memory/engine.py": "82ff4f79c32dd2281026057098c9cffb872038640fa5ac387b1bd1ab6a5ab1d1",
+        "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+        "src/memglide/service.py": "6dd6f33a5adc3863ff68d6125296c84c32170085c9c20eb53c8809f02a4c2a7b",
+        "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/storage/database.py": "38a483c6e05758a8f7df743ce7965a0fe20b6ea5f13c4921788b61efa971f58e",
+        "uv.lock": "89bcc0d7a1c76ece1b91aaaa39ab108f819d1268d8d27bc60890abad124306f0"
+      },
+      "git_head": "e6e10a8f588c9236c7303a83780219d027a1c702",
+      "prompt_sha256": {
+        "py-ttl-boundary": "66a47d4518c1a8b312d24900d8a81bab95f895916ec2adf41246a99dff37100a"
+      },
+      "settings": {
+        "codex_executable": "/opt/codex/bin/codex",
+        "codex_home_binding_directory": "/workspace/Memglide/.local/codex-device-login-NlwVLVWg",
+        "codex_version": "codex-cli 0.159.2",
+        "corpus": "legacy",
+        "effort": "low",
+        "limit": 1,
+        "model": "gpt-6.1-sol",
+        "repeats": 1,
+        "require_verification": false,
+        "seed": 20261017,
+        "skip_preflight": false,
+        "timeout": 180.0
+      }
+    },
+    "last_checkpoint_at": "2026-10-17T23:00:53.839321+00:00",
+    "logical_cpu_count": 5,
+    "memglide_source_after": {
+      "attestation": "captured_source_state_before_probe",
+      "captured_at": "2026-10-17T23:00:53.867792+00:00",
+      "git_head": "e6e10a8f588c9236c7303a83780219d027a1c702",
+      "measurement_files": {
+        "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c",
+        "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0"
+      },
+      "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state",
+      "source_dirty_entries": [
+        " M src/memglide/cli.py",
+        " M src/memglide/core/context.py",
+        " M src/memglide/core/indexer.py",
+        " M src/memglide/integrations/codex.py",
+        " M src/memglide/integrations/mcp_server.py",
+        "?? src/memglide/core/agent_context.py"
+      ],
+      "source_files": {
+        "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+        "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+        "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+        "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+        "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+        "src/memglide/core/context.py": "7b0c94938cfaeaff843d9c013c91d885747cecf73626317b3ca5acc607c4ac53",
+        "src/memglide/core/indexer.py": "8b84cd28858dd16c36b4ddf25edb62391721e6874fa0deb68dd48dd01bb50621",
+        "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+        "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+        "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+        "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+        "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+        "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/memory/engine.py": "82ff4f79c32dd2281026057098c9cffb872038640fa5ac387b1bd1ab6a5ab1d1",
+        "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+        "src/memglide/service.py": "6dd6f33a5adc3863ff68d6125296c84c32170085c9c20eb53c8809f02a4c2a7b",
+        "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/storage/database.py": "38a483c6e05758a8f7df743ce7965a0fe20b6ea5f13c4921788b61efa971f58e"
+      },
+      "source_tree_sha256": "5e867d309e0a24a3e52f15a1e40b837dc7a228074380a4aaa3b1419b989856f3"
+    },
+    "memglide_source_before": {
+      "attestation": "captured_source_state_before_probe",
+      "captured_at": "2026-10-17T23:00:08.409063+00:00",
+      "git_head": "e6e10a8f588c9236c7303a83780219d027a1c702",
+      "measurement_files": {
+        "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c",
+        "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0"
+      },
+      "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state",
+      "source_dirty_entries": [
+        " M src/memglide/cli.py",
+        " M src/memglide/core/context.py",
+        " M src/memglide/core/indexer.py",
+        " M src/memglide/integrations/codex.py",
+        " M src/memglide/integrations/mcp_server.py",
+        "?? src/memglide/core/agent_context.py"
+      ],
+      "source_files": {
+        "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+        "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+        "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+        "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+        "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+        "src/memglide/core/context.py": "7b0c94938cfaeaff843d9c013c91d885747cecf73626317b3ca5acc607c4ac53",
+        "src/memglide/core/indexer.py": "8b84cd28858dd16c36b4ddf25edb62391721e6874fa0deb68dd48dd01bb50621",
+        "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+        "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+        "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+        "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+        "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+        "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/memory/engine.py": "82ff4f79c32dd2281026057098c9cffb872038640fa5ac387b1bd1ab6a5ab1d1",
+        "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+        "src/memglide/service.py": "6dd6f33a5adc3863ff68d6125296c84c32170085c9c20eb53c8809f02a4c2a7b",
+        "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/storage/database.py": "38a483c6e05758a8f7df743ce7965a0fe20b6ea5f13c4921788b61efa971f58e"
+      },
+      "source_tree_sha256": "5e867d309e0a24a3e52f15a1e40b837dc7a228074380a4aaa3b1419b989856f3"
+    },
+    "methodology": {
+      "caching": "Counterbalanced paired order reverses on repeat 2; fresh local state. Provider/OS caches cannot be reset; cached tokens are observed separately",
+      "context_audit": "Independent source-file hash snapshot after Codex exit and before grader/build mutations; a point observation, not call-time freshness or semantic completeness. Own-edit mismatches do not fail coding grades. Audit time is recorded separately outside Codex timing",
+      "cost": "No invoice/cost or underlying model-call telemetry is estimated",
+      "durability": "Atomic fsynced checkpoints and immutable hash-chained attempt log; interrupted originals retained; distinct supplemental retries excluded from original comparison",
+      "isolation": "Fresh worktree from each task's frozen repository commit, process/session/database per arm",
+      "prompt": "Implement the requested change in this repository. Inspect the current source and run relevant tests. Preserve existing tests and Git metadata; do not commit. Do not access files outside this repository except installed development tools. The final structured response is only a summary, not a grading result.\nIf Memglide MCP tools are available, use fetch_context once with your task query before editing. Reuse complete returned source instead of reading it again unless additional evidence is needed. Use verify_context only if you are uncertain whether another process changed the source or need to validate older context before using it again. Your own edits make earlier context stale; a final verification is not required. Otherwise use ordinary source tools. Do not claim token or cost savings.\n",
+      "repositories": "Development pilot on the earlier two-fixture corpus; excluded from the fresh 40-task experiment",
+      "settings": "Same model, effort, schema, workspace-write sandbox, global approval never and common prompt; only scoped MCP availability differs",
+      "timing": "CLI wall time plus B's required fresh index equals end-to-end time; external graders/readiness excluded",
+      "treatment": "B requires actual compact source retrieval. Verification is optional and on demand; invocation evidence does not establish chronology relative to final edits. A has no configured MCP servers"
+    },
+    "model": "gpt-6.1-sol",
+    "output_directory": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2",
+    "preflight_complete": true,
+    "preflight_runs": [
+      {
+        "artifacts": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/preflight",
+        "exit_code": 0,
+        "overhead": {
+          "cpu_seconds": 2.4099999999999997,
+          "memglide_cpu_seconds": null,
+          "memglide_peak_rss_bytes": null,
+          "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed",
+          "observed_memglide_processes": 0,
+          "observed_processes": 7,
+          "process_tree_peak_rss_bytes": 104206336,
+          "samples": 80,
+          "sampling_interval_seconds": 0.05,
+          "scope": "Local Codex process tree only; remote model CPU and memory unavailable"
+        },
+        "scope": "Readiness only; excluded from task comparison",
+        "telemetry": {
+          "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+          "actual_cost_usd": null,
+          "command_count": 0,
+          "commands": [],
+          "completed_turns": 1,
+          "errors": [],
+          "event_count": 4,
+          "failed_turns": 0,
+          "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+          "file_reads_complete": false,
+          "mcp_call_count": 0,
+          "mcp_calls": [],
+          "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+          "mcp_counts_complete": true,
+          "memglide_get_context_success_unknown_count": 0,
+          "memglide_mcp_call_count": 0,
+          "memglide_successful_fetch_context_count": 0,
+          "memglide_successful_get_context_count": 0,
+          "memglide_successful_verify_context_count": 0,
+          "model_calls": null,
+          "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+          "observed_completed_turn_usage": {
+            "cached_input_tokens": 8960,
+            "input_tokens": 10955,
+            "output_tokens": 36
+          },
+          "observed_file_read_commands": 0,
+          "observed_read_command_paths": [],
+          "observed_repeated_read_commands": 0,
+          "parse_errors": [],
+          "repeated_file_reads": null,
+          "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+          "repeated_read_command_paths": {},
+          "source": "codex exec --json; turn.completed usage and item lifecycle events",
+          "stream_terminal": true,
+          "usage": {
+            "cached_input_tokens": 8960,
+            "input_tokens": 10955,
+            "output_tokens": 36
+          },
+          "usage_coverage_complete": true,
+          "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+          "usage_unavailable_reasons": {}
+        },
+        "timed_out": false,
+        "wall_time_seconds": 4.909132968999984
+      }
+    ],
+    "preflight_started_at": "2026-10-17T23:00:08.731138+00:00",
+    "random_seed": 20261017,
+    "reasoning_effort": "low",
+    "repeats": 1,
+    "repetitions": 1,
+    "repositories": {
+      "atlas-python-v1": {
+        "commit": "28df2f323ab1b5807e880b0cbb2e2f5e10669edd",
+        "path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/repositories/atlas-python-v1",
+        "tree": "b186ecdf768189c8aa2d7f2d0ef94cdc21647e3f"
+      }
+    },
+    "resource_scope": "Local execution host; model inference resources are not exposed",
+    "resume_count": 0,
+    "source_unchanged_during_experiment": true,
+    "started_at": "2026-10-17T23:00:08.394923+00:00",
+    "supplemental_attempt_count": 0,
+    "tool_versions": {
+      "git": "git version 2.52.0",
+      "node": "v24.19.0",
+      "npm": "11.9.0",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    }
+  },
+  "paired_comparisons": {
+    "B_minus_A": {
+      "actual_cost_usd": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "cached_input_tokens": {
+        "known_total": -1536,
+        "max": -1536,
+        "mean": -1536,
+        "median": -1536,
+        "min": -1536,
+        "missing": 0,
+        "n": 1,
+        "total": -1536
+      },
+      "computed_cost_usd": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "context_freshness": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "cpu_seconds": {
+        "known_total": 1.7699999999999996,
+        "max": 1.7699999999999996,
+        "mean": 1.7699999999999996,
+        "median": 1.7699999999999996,
+        "min": 1.7699999999999996,
+        "missing": 0,
+        "n": 1,
+        "total": 1.7699999999999996
+      },
+      "end_to_end_wall_seconds": {
+        "known_total": 4.834392805999869,
+        "max": 4.834392805999869,
+        "mean": 4.834392805999869,
+        "median": 4.834392805999869,
+        "min": 4.834392805999869,
+        "missing": 0,
+        "n": 1,
+        "total": 4.834392805999869
+      },
+      "input_tokens": {
+        "known_total": 22462,
+        "max": 22462,
+        "mean": 22462,
+        "median": 22462,
+        "min": 22462,
+        "missing": 0,
+        "n": 1,
+        "total": 22462
+      },
+      "mcp_calls": {
+        "known_total": 1,
+        "max": 1,
+        "mean": 1,
+        "median": 1,
+        "min": 1,
+        "missing": 0,
+        "n": 1,
+        "total": 1
+      },
+      "memglide_cpu_seconds": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "memglide_mcp_calls": {
+        "known_total": 1,
+        "max": 1,
+        "mean": 1,
+        "median": 1,
+        "min": 1,
+        "missing": 0,
+        "n": 1,
+        "total": 1
+      },
+      "memglide_peak_rss_bytes": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "model_calls": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "observed_file_read_commands": {
+        "known_total": 0,
+        "max": 0,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "missing": 0,
+        "n": 1,
+        "total": 0
+      },
+      "observed_mcp_calls": {
+        "known_total": 1,
+        "max": 1,
+        "mean": 1,
+        "median": 1,
+        "min": 1,
+        "missing": 0,
+        "n": 1,
+        "total": 1
+      },
+      "observed_memglide_mcp_calls": {
+        "known_total": 1,
+        "max": 1,
+        "mean": 1,
+        "median": 1,
+        "min": 1,
+        "missing": 0,
+        "n": 1,
+        "total": 1
+      },
+      "observed_repeated_read_commands": {
+        "known_total": 0,
+        "max": 0,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "missing": 0,
+        "n": 1,
+        "total": 0
+      },
+      "output_tokens": {
+        "known_total": 61,
+        "max": 61,
+        "mean": 61,
+        "median": 61,
+        "min": 61,
+        "missing": 0,
+        "n": 1,
+        "total": 61
+      },
+      "probe_expected_symbol_coverage_fraction": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "probe_target_path_coverage_fraction": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "process_tree_peak_rss_bytes": {
+        "known_total": 80388096,
+        "max": 80388096,
+        "mean": 80388096,
+        "median": 80388096,
+        "min": 80388096,
+        "missing": 0,
+        "n": 1,
+        "total": 80388096
+      },
+      "repeated_file_reads": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "retrieval_completeness": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "setup_cpu_seconds": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "setup_wall_seconds": {
+        "known_total": null,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "missing": 1,
+        "n": 0,
+        "total": null
+      },
+      "wall_time_seconds": {
+        "known_total": 4.731530063999799,
+        "max": 4.731530063999799,
+        "mean": 4.731530063999799,
+        "median": 4.731530063999799,
+        "min": 4.731530063999799,
+        "missing": 0,
+        "n": 1,
+        "total": 4.731530063999799
+      }
+    },
+    "difference_definition": "B minus A; negative is less resource use, not proof of task benefit",
+    "excluded_pairs": [],
+    "identity_scope": "Equal recorded starting commits and prompt hashes, plus verified MCP treatment. Missing identity evidence excludes a pair. Explicitly changed runtime source excludes every pair; absent runtime source attestation remains unknown.",
+    "pairs": [
+      {
+        "A_order": 2,
+        "A_success": true,
+        "B_minus_A": {
+          "actual_cost_usd": null,
+          "cached_input_tokens": -1536,
+          "computed_cost_usd": null,
+          "context_freshness": null,
+          "cpu_seconds": 1.7699999999999996,
+          "end_to_end_wall_seconds": 4.834392805999869,
+          "input_tokens": 22462,
+          "mcp_calls": 1,
+          "memglide_cpu_seconds": null,
+          "memglide_mcp_calls": 1,
+          "memglide_peak_rss_bytes": null,
+          "model_calls": null,
+          "observed_file_read_commands": 0,
+          "observed_mcp_calls": 1,
+          "observed_memglide_mcp_calls": 1,
+          "observed_repeated_read_commands": 0,
+          "output_tokens": 61,
+          "probe_expected_symbol_coverage_fraction": null,
+          "probe_target_path_coverage_fraction": null,
+          "process_tree_peak_rss_bytes": 80388096,
+          "repeated_file_reads": null,
+          "retrieval_completeness": null,
+          "setup_cpu_seconds": null,
+          "setup_wall_seconds": null,
+          "wall_time_seconds": 4.731530063999799
+        },
+        "B_order": 1,
+        "B_success": true,
+        "repeat": 1,
+        "task_id": "py-ttl-boundary",
+        "verified_input_identity": {
+          "prompt_sha256": "66a47d4518c1a8b312d24900d8a81bab95f895916ec2adf41246a99dff37100a",
+          "starting_commit": "28df2f323ab1b5807e880b0cbb2e2f5e10669edd"
+        }
+      }
+    ],
+    "source_unchanged_during_experiment": true,
+    "valid_pair_count": 1
+  },
+  "runs": [
+    {
+      "actual_cost_usd": null,
+      "artifacts": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B",
+      "attempted": true,
+      "common_blocker": null,
+      "compact_protocol_fidelity": {
+        "evidence": "Parsed actual MCP invocation results; not the final model summary",
+        "required_operations": [
+          "fetch_context"
+        ],
+        "successful_fetch_context_calls": 1,
+        "successful_verify_context_calls": 0,
+        "valid": true,
+        "verification_policy": "on_demand"
+      },
+      "computed_cost_usd": null,
+      "configuration": "B",
+      "end_to_end_wall_seconds": 22.106710228999873,
+      "errors": [],
+      "exit_code": 0,
+      "finished_at": "2026-10-17T23:00:36.154449+00:00",
+      "grader": {
+        "commands": [
+          {
+            "command": [
+              "/workspace/Memglide/.venv/bin/python",
+              "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/held_out.py"
+            ],
+            "counts": {
+              "errors": 0,
+              "failures": 0,
+              "skipped": 0,
+              "tests": 2
+            },
+            "exit_code": 0,
+            "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/behavior.stderr.log",
+            "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/behavior.stdout.log"
+          },
+          {
+            "command": [
+              "/workspace/Memglide/.venv/bin/python",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests",
+              "-v"
+            ],
+            "counts": {
+              "tests": 6
+            },
+            "exit_code": 0,
+            "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/smoke.stderr.log",
+            "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/smoke.stdout.log"
+          }
+        ],
+        "corpus_version": "1.0.0",
+        "exit_code": 0,
+        "grading_separation": "held-out files outside worktree; not cryptographically hidden",
+        "passed": true,
+        "protected_files": [
+          {
+            "actual_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2",
+            "expected_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2",
+            "file": "README.md",
+            "unchanged": true
+          },
+          {
+            "actual_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17",
+            "expected_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17",
+            "file": "AGENTS.md",
+            "unchanged": true
+          },
+          {
+            "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+            "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+            "file": ".gitignore",
+            "unchanged": true
+          },
+          {
+            "actual_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879",
+            "expected_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879",
+            "file": "tests/test_smoke.py",
+            "unchanged": true
+          }
+        ],
+        "protected_files_unchanged": true,
+        "success": true,
+        "task_id": "py-ttl-boundary",
+        "test_count": 8
+      },
+      "language": "python",
+      "metrics": {
+        "actual_cost_usd": null,
+        "cached_input_tokens": 42112,
+        "computed_cost_usd": null,
+        "context_freshness": null,
+        "cpu_seconds": 4.6899999999999995,
+        "end_to_end_wall_seconds": 22.106710228999873,
+        "input_tokens": 71063,
+        "mcp_calls": 1,
+        "memglide_cpu_seconds": 1.76,
+        "memglide_mcp_calls": 1,
+        "memglide_peak_rss_bytes": 72273920,
+        "model_calls": null,
+        "observed_file_read_commands": 1,
+        "observed_mcp_calls": 1,
+        "observed_memglide_mcp_calls": 1,
+        "observed_repeated_read_commands": 0,
+        "output_tokens": 995,
+        "probe_expected_symbol_coverage_fraction": null,
+        "probe_target_path_coverage_fraction": null,
+        "process_tree_peak_rss_bytes": 271118336,
+        "repeated_file_reads": null,
+        "retrieval_completeness": null,
+        "setup_cpu_seconds": 0.054254919999999984,
+        "setup_wall_seconds": 0.10286274200007028,
+        "wall_time_seconds": 22.003847486999803
+      },
+      "order": 1,
+      "original_run_id": "py-ttl-boundary-r1-B",
+      "overhead": {
+        "cpu_seconds": 4.6899999999999995,
+        "memglide_cpu_seconds": 1.76,
+        "memglide_peak_rss_bytes": 72273920,
+        "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed",
+        "observed_memglide_processes": 1,
+        "observed_processes": 20,
+        "process_tree_peak_rss_bytes": 271118336,
+        "samples": 374,
+        "sampling_interval_seconds": 0.05,
+        "scope": "Local Codex process tree only; remote model CPU and memory unavailable"
+      },
+      "pending": false,
+      "post_execution_audit_cpu_seconds": 0.014752679999999962,
+      "post_execution_audit_wall_seconds": 0.01593499899991002,
+      "post_execution_context_audit": {
+        "applicable": true,
+        "call_error_count": 0,
+        "calls": [
+          {
+            "errors": [],
+            "event_lines": [
+              6,
+              7
+            ],
+            "files": [
+              {
+                "comparison": "mismatch",
+                "observed_at_utc": "2026-10-17T23:00:35.904512+00:00",
+                "path": "atlas/cache.py",
+                "post_execution_source_sha256": "1be286162595f07a4794dd1932edf108f81fed256c87a9d60cdb99dd95bd6213",
+                "returned_source_sha256": "a20f8fab315fd3d1d8a168635d1d2d86f302414c52e2e505b71e9dabf4bbcc82",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.907194+00:00",
+                "path": "atlas/service.py",
+                "post_execution_source_sha256": "fbd46c4b8c6c82cfde17ed7d4c48ba5af643b023f094028df79539fc6a74d467",
+                "returned_source_sha256": "fbd46c4b8c6c82cfde17ed7d4c48ba5af643b023f094028df79539fc6a74d467",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.911116+00:00",
+                "path": "atlas/__init__.py",
+                "post_execution_source_sha256": "f578ba5f325a76cfba782889b8c009bac393e665e034e1f9486ea746e7e0e701",
+                "returned_source_sha256": "f578ba5f325a76cfba782889b8c009bac393e665e034e1f9486ea746e7e0e701",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.911528+00:00",
+                "path": "atlas/pagination.py",
+                "post_execution_source_sha256": "462bfe9a7861614a1e4777498a2f53d7e2caebb48341b75f3502d7774c023e9d",
+                "returned_source_sha256": "462bfe9a7861614a1e4777498a2f53d7e2caebb48341b75f3502d7774c023e9d",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.912273+00:00",
+                "path": "atlas/repository.py",
+                "post_execution_source_sha256": "576e55389665c4a3f26f1dce85d2d49c4c2242f329ffd2c3153dd3c5cf5346b7",
+                "returned_source_sha256": "576e55389665c4a3f26f1dce85d2d49c4c2242f329ffd2c3153dd3c5cf5346b7",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.913252+00:00",
+                "path": "atlas/search.py",
+                "post_execution_source_sha256": "9c70205301815a81bb0ef8bc7fbf74a1d913fb1570f2f17233d02cc89dc1ec9d",
+                "returned_source_sha256": "9c70205301815a81bb0ef8bc7fbf74a1d913fb1570f2f17233d02cc89dc1ec9d",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.914366+00:00",
+                "path": "atlas/security.py",
+                "post_execution_source_sha256": "e829918599e17463ce3d6c76b7b2babca254d2f619eb775f63a0da2e15ba3cca",
+                "returned_source_sha256": "e829918599e17463ce3d6c76b7b2babca254d2f619eb775f63a0da2e15ba3cca",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.914805+00:00",
+                "path": "atlas/config.py",
+                "post_execution_source_sha256": "73520066b7fe7a084a21262f724ac9a000620d25a8a7f1b0dc6e5595da018130",
+                "returned_source_sha256": "73520066b7fe7a084a21262f724ac9a000620d25a8a7f1b0dc6e5595da018130",
+                "unavailable_reason": null
+              },
+              {
+                "comparison": "match",
+                "observed_at_utc": "2026-10-17T23:00:35.915195+00:00",
+                "path": "atlas/graph.py",
+                "post_execution_source_sha256": "bedf376d16927292a6ca3cb5df24b625320b90e6383c8bc710ee3368ce0c3e5b",
+                "returned_source_sha256": "bedf376d16927292a6ca3cb5df24b625320b90e6383c8bc710ee3368ce0c3e5b",
+                "unavailable_reason": null
+              }
+            ],
+            "independently_verified_call_time_freshness": null,
+            "native_call_id": "item_2",
+            "native_status": "completed",
+            "response_available": true,
+            "retrieval_id": "b71b851b88d24d2e911791ce57f6ec37",
+            "returned_item_count": 10,
+            "server": "memglide",
+            "tool": "fetch_context",
+            "unread_hash_only_paths": []
+          }
+        ],
+        "capture_wall_seconds": 0.012700829000095837,
+        "captured_at_utc": "2026-10-17T23:00:35.915256+00:00",
+        "comparison_counts": {
+          "match": 8,
+          "mismatch": 1,
+          "unknown": 0
+        },
+        "event_errors": [],
+        "events_sha256": "34c0fb121330a970258083614927806cf05e3b3dde3b318c30f870c3155dfeea",
+        "file_observation_count": 9,
+        "independently_verified_call_time_freshness": null,
+        "limitations": [
+          "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+          "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+          "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+          "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+          "Returned snippets are not independently checked for complete bodies or semantic completeness."
+        ],
+        "observed_fetch_context_call_count": 1,
+        "observed_memglide_call_count": 1,
+        "phase": "post_codex_pre_grader",
+        "response_available_count": 1,
+        "schema_version": 1,
+        "started_at_utc": "2026-10-17T23:00:35.902540+00:00"
+      },
+      "prompt_sha256": "66a47d4518c1a8b312d24900d8a81bab95f895916ec2adf41246a99dff37100a",
+      "protected_file_violations": [],
+      "repeat": 1,
+      "repository": "atlas-python-v1",
+      "run_id": "py-ttl-boundary-r1-B",
+      "setup": {
+        "cpu_seconds": 0.054254919999999984,
+        "index_local_cpu_seconds": 0.054254919999999984,
+        "index_wall_seconds": 0.10286274200007028,
+        "project_id": "1b5d2410d650431b921640742d21003e",
+        "scope": "Required fresh project index only; no sessions or context retrieval before the model",
+        "wall_seconds": 0.10286274200007028
+      },
+      "started_at": "2026-10-17T23:00:13.707086+00:00",
+      "starting_commit": "28df2f323ab1b5807e880b0cbb2e2f5e10669edd",
+      "status": "completed",
+      "successful": true,
+      "supplemental": false,
+      "task_id": "py-ttl-boundary",
+      "telemetry": {
+        "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+        "actual_cost_usd": null,
+        "command_count": 4,
+        "commands": [
+          {
+            "command": "/bin/bash -lc \"pwd && rg --files -g '\"'!.*'\"' -g 'AGENTS.md' -g '*.py'\"",
+            "exit_code": 0,
+            "id": "item_1",
+            "status": "completed"
+          },
+          {
+            "command": "/bin/bash -lc 'cat AGENTS.md tests/test_smoke.py && git status --short'",
+            "exit_code": 0,
+            "id": "item_3",
+            "status": "completed"
+          },
+          {
+            "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+            "exit_code": 0,
+            "id": "item_5",
+            "status": "completed"
+          },
+          {
+            "command": "/bin/bash -lc 'git diff --check && git diff --stat'",
+            "exit_code": 0,
+            "id": "item_6",
+            "status": "completed"
+          }
+        ],
+        "completed_turns": 1,
+        "errors": [],
+        "event_count": 17,
+        "failed_turns": 0,
+        "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+        "file_reads_complete": false,
+        "mcp_call_count": 1,
+        "mcp_calls": [
+          {
+            "completed": true,
+            "error": null,
+            "id": "item_2",
+            "server": "memglide",
+            "status": "completed",
+            "success_evidence": "Completed CLI tool item returned a result without an explicit error",
+            "successful": true,
+            "tool": "fetch_context",
+            "verified_compact_operation": "get_context"
+          }
+        ],
+        "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+        "mcp_counts_complete": true,
+        "memglide_get_context_success_unknown_count": 0,
+        "memglide_mcp_call_count": 1,
+        "memglide_successful_fetch_context_count": 1,
+        "memglide_successful_get_context_count": 1,
+        "memglide_successful_verify_context_count": 0,
+        "model_calls": null,
+        "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+        "observed_completed_turn_usage": {
+          "cached_input_tokens": 42112,
+          "input_tokens": 71063,
+          "output_tokens": 995
+        },
+        "observed_file_read_commands": 1,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "observed_repeated_read_commands": 0,
+        "parse_errors": [],
+        "repeated_file_reads": null,
+        "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+        "repeated_read_command_paths": {},
+        "source": "codex exec --json; turn.completed usage and item lifecycle events",
+        "stream_terminal": true,
+        "usage": {
+          "cached_input_tokens": 42112,
+          "input_tokens": 71063,
+          "output_tokens": 995
+        },
+        "usage_coverage_complete": true,
+        "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+        "usage_unavailable_reasons": {}
+      },
+      "timed_out": false,
+      "treatment_fidelity": {
+        "memglide_invoked": true,
+        "reason": "Observed compact source retrieval and every operation required by its frozen policy",
+        "successful_get_context_calls": 1,
+        "valid": true
+      },
+      "treatment_valid": true,
+      "wall_time_seconds": 22.003847486999803,
+      "worktree": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/worktrees/py-ttl-boundary-r1-B"
+    },
+    {
+      "actual_cost_usd": null,
+      "artifacts": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A",
+      "attempted": true,
+      "common_blocker": null,
+      "computed_cost_usd": null,
+      "configuration": "A",
+      "end_to_end_wall_seconds": 17.272317423000004,
+      "errors": [],
+      "exit_code": 0,
+      "finished_at": "2026-10-17T23:00:53.822017+00:00",
+      "grader": {
+        "commands": [
+          {
+            "command": [
+              "/workspace/Memglide/.venv/bin/python",
+              "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/held_out.py"
+            ],
+            "counts": {
+              "errors": 0,
+              "failures": 0,
+              "skipped": 0,
+              "tests": 2
+            },
+            "exit_code": 0,
+            "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/behavior.stderr.log",
+            "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/behavior.stdout.log"
+          },
+          {
+            "command": [
+              "/workspace/Memglide/.venv/bin/python",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests",
+              "-v"
+            ],
+            "counts": {
+              "tests": 6
+            },
+            "exit_code": 0,
+            "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/smoke.stderr.log",
+            "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/smoke.stdout.log"
+          }
+        ],
+        "corpus_version": "1.0.0",
+        "exit_code": 0,
+        "grading_separation": "held-out files outside worktree; not cryptographically hidden",
+        "passed": true,
+        "protected_files": [
+          {
+            "actual_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2",
+            "expected_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2",
+            "file": "README.md",
+            "unchanged": true
+          },
+          {
+            "actual_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17",
+            "expected_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17",
+            "file": "AGENTS.md",
+            "unchanged": true
+          },
+          {
+            "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+            "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+            "file": ".gitignore",
+            "unchanged": true
+          },
+          {
+            "actual_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879",
+            "expected_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879",
+            "file": "tests/test_smoke.py",
+            "unchanged": true
+          }
+        ],
+        "protected_files_unchanged": true,
+        "success": true,
+        "task_id": "py-ttl-boundary",
+        "test_count": 8
+      },
+      "language": "python",
+      "metrics": {
+        "actual_cost_usd": null,
+        "cached_input_tokens": 43648,
+        "computed_cost_usd": null,
+        "context_freshness": null,
+        "cpu_seconds": 2.92,
+        "end_to_end_wall_seconds": 17.272317423000004,
+        "input_tokens": 48601,
+        "mcp_calls": 0,
+        "memglide_cpu_seconds": null,
+        "memglide_mcp_calls": 0,
+        "memglide_peak_rss_bytes": null,
+        "model_calls": null,
+        "observed_file_read_commands": 1,
+        "observed_mcp_calls": 0,
+        "observed_memglide_mcp_calls": 0,
+        "observed_repeated_read_commands": 0,
+        "output_tokens": 934,
+        "probe_expected_symbol_coverage_fraction": null,
+        "probe_target_path_coverage_fraction": null,
+        "process_tree_peak_rss_bytes": 190730240,
+        "repeated_file_reads": null,
+        "retrieval_completeness": null,
+        "setup_cpu_seconds": null,
+        "setup_wall_seconds": null,
+        "wall_time_seconds": 17.272317423000004
+      },
+      "order": 2,
+      "original_run_id": "py-ttl-boundary-r1-A",
+      "overhead": {
+        "cpu_seconds": 2.92,
+        "memglide_cpu_seconds": null,
+        "memglide_peak_rss_bytes": null,
+        "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed",
+        "observed_memglide_processes": 0,
+        "observed_processes": 21,
+        "process_tree_peak_rss_bytes": 190730240,
+        "samples": 302,
+        "sampling_interval_seconds": 0.05,
+        "scope": "Local Codex process tree only; remote model CPU and memory unavailable"
+      },
+      "pending": false,
+      "post_execution_audit_cpu_seconds": 0.0033179340000000224,
+      "post_execution_audit_wall_seconds": 0.005745479999859526,
+      "post_execution_context_audit": {
+        "applicable": false,
+        "call_error_count": 0,
+        "calls": [],
+        "capture_wall_seconds": 0.0023134349999054393,
+        "captured_at_utc": "2026-10-17T23:00:53.526317+00:00",
+        "comparison_counts": {
+          "match": 0,
+          "mismatch": 0,
+          "unknown": 0
+        },
+        "event_errors": [],
+        "events_sha256": "c416af6d2ddaf8dca2443075426fc0df49f47451714ba257ee347a3042b9cf53",
+        "file_observation_count": 0,
+        "independently_verified_call_time_freshness": null,
+        "limitations": [
+          "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+          "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+          "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+          "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+          "Returned snippets are not independently checked for complete bodies or semantic completeness."
+        ],
+        "observed_fetch_context_call_count": 0,
+        "observed_memglide_call_count": 0,
+        "phase": "post_codex_pre_grader",
+        "response_available_count": 0,
+        "schema_version": 1,
+        "started_at_utc": "2026-10-17T23:00:53.523998+00:00"
+      },
+      "prompt_sha256": "66a47d4518c1a8b312d24900d8a81bab95f895916ec2adf41246a99dff37100a",
+      "protected_file_violations": [],
+      "repeat": 1,
+      "repository": "atlas-python-v1",
+      "run_id": "py-ttl-boundary-r1-A",
+      "started_at": "2026-10-17T23:00:36.207041+00:00",
+      "starting_commit": "28df2f323ab1b5807e880b0cbb2e2f5e10669edd",
+      "status": "completed",
+      "successful": true,
+      "supplemental": false,
+      "task_id": "py-ttl-boundary",
+      "telemetry": {
+        "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+        "actual_cost_usd": null,
+        "command_count": 4,
+        "commands": [
+          {
+            "command": "/bin/bash -lc \"pwd && rg --files -g 'AGENTS.md' -g '*.py' -g 'README*'\"",
+            "exit_code": 0,
+            "id": "item_1",
+            "status": "completed"
+          },
+          {
+            "command": "/bin/bash -lc 'cat AGENTS.md atlas/cache.py atlas/service.py tests/test_smoke.py'",
+            "exit_code": 0,
+            "id": "item_2",
+            "status": "completed"
+          },
+          {
+            "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+            "exit_code": 0,
+            "id": "item_4",
+            "status": "completed"
+          },
+          {
+            "command": "/bin/bash -lc 'git diff --check && git diff --stat'",
+            "exit_code": 0,
+            "id": "item_5",
+            "status": "completed"
+          }
+        ],
+        "completed_turns": 1,
+        "errors": [],
+        "event_count": 15,
+        "failed_turns": 0,
+        "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+        "file_reads_complete": false,
+        "mcp_call_count": 0,
+        "mcp_calls": [],
+        "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+        "mcp_counts_complete": true,
+        "memglide_get_context_success_unknown_count": 0,
+        "memglide_mcp_call_count": 0,
+        "memglide_successful_fetch_context_count": 0,
+        "memglide_successful_get_context_count": 0,
+        "memglide_successful_verify_context_count": 0,
+        "model_calls": null,
+        "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+        "observed_completed_turn_usage": {
+          "cached_input_tokens": 43648,
+          "input_tokens": 48601,
+          "output_tokens": 934
+        },
+        "observed_file_read_commands": 1,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "atlas/cache.py",
+          "atlas/service.py",
+          "tests/test_smoke.py"
+        ],
+        "observed_repeated_read_commands": 0,
+        "parse_errors": [],
+        "repeated_file_reads": null,
+        "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+        "repeated_read_command_paths": {},
+        "source": "codex exec --json; turn.completed usage and item lifecycle events",
+        "stream_terminal": true,
+        "usage": {
+          "cached_input_tokens": 43648,
+          "input_tokens": 48601,
+          "output_tokens": 934
+        },
+        "usage_coverage_complete": true,
+        "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+        "usage_unavailable_reasons": {}
+      },
+      "timed_out": false,
+      "treatment_fidelity": {
+        "memglide_invoked": false,
+        "reason": "Complete event stream contains no MCP invocation",
+        "successful_get_context_calls": 0,
+        "valid": true
+      },
+      "treatment_valid": true,
+      "wall_time_seconds": 17.272317423000004,
+      "worktree": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/worktrees/py-ttl-boundary-r1-A"
+    }
+  ],
+  "schema_version": 1,
+  "supplemental_runs": [],
+  "tasks": [
+    {
+      "checks": {
+        "held_out_behavior": true,
+        "smoke": true,
+        "typescript_typecheck": false
+      },
+      "expected_symbols": [
+        "atlas.cache.TTLCache.get"
+      ],
+      "id": "py-ttl-boundary",
+      "language": "python",
+      "oracle_id": "ttl-boundary",
+      "prompt": "In this Python Atlas document-service repository, Fix cache expiration at the TTL boundary. A document cached at time 100 with TTL 10 must be unavailable at time 110 and afterwards, and expired entries must be removed. Before the deadline, return its value without changing its expiration; overwriting a key starts the new TTL. Verify the DocumentService cache path as well.\n\nImplement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.",
+      "repository": "atlas-python-v1",
+      "starting_repository": {
+        "generator": "benchmarks.corpus.build_repository",
+        "language": "python",
+        "version": "1.0.0"
+      },
+      "target_files": [
+        "atlas/cache.py"
+      ]
+    }
+  ],
+  "verified_treatment_aggregates": {
+    "A": {
+      "actual_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "attempted_runs": 1,
+      "completion_rate_denominator": "All attempted runs, including ungraded execution failures",
+      "computed_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "execution_status_counts": {
+        "completed": 1
+      },
+      "failed_grades": 0,
+      "graded_only_success_rate": 1.0,
+      "graded_runs": 1,
+      "invalid_treatment_runs": 0,
+      "metrics": {
+        "actual_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "cached_input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 43648,
+          "max": 43648,
+          "mean": 43648,
+          "median": 43648,
+          "min": 43648,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 43648
+        },
+        "computed_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "context_freshness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 2.92,
+          "max": 2.92,
+          "mean": 2.92,
+          "median": 2.92,
+          "min": 2.92,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 2.92
+        },
+        "end_to_end_wall_seconds": {
+          "attempted_missing": 0,
+          "known_total": 17.272317423000004,
+          "max": 17.272317423000004,
+          "mean": 17.272317423000004,
+          "median": 17.272317423000004,
+          "min": 17.272317423000004,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 17.272317423000004
+        },
+        "input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 48601,
+          "max": 48601,
+          "mean": 48601,
+          "median": 48601,
+          "min": 48601,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 48601
+        },
+        "mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "memglide_cpu_seconds": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "memglide_peak_rss_bytes": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "model_calls": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "observed_memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "observed_repeated_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "output_tokens": {
+          "attempted_missing": 0,
+          "known_total": 934,
+          "max": 934,
+          "mean": 934,
+          "median": 934,
+          "min": 934,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 934
+        },
+        "probe_expected_symbol_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "probe_target_path_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "process_tree_peak_rss_bytes": {
+          "attempted_missing": 0,
+          "known_total": null,
+          "max": 190730240,
+          "mean": 190730240,
+          "median": 190730240,
+          "min": 190730240,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "repeated_file_reads": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "retrieval_completeness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "setup_cpu_seconds": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "setup_wall_seconds": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "wall_time_seconds": {
+          "attempted_missing": 0,
+          "known_total": 17.272317423000004,
+          "max": 17.272317423000004,
+          "mean": 17.272317423000004,
+          "median": 17.272317423000004,
+          "min": 17.272317423000004,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 17.272317423000004
+        }
+      },
+      "not_run": 0,
+      "planned_runs": 1,
+      "successful_runs": 1,
+      "successful_task_completion_rate": 1.0,
+      "ungraded_runs": 0,
+      "unknown_treatment_runs": 0,
+      "valid_treatment_runs": 1
+    },
+    "B": {
+      "actual_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "attempted_runs": 1,
+      "completion_rate_denominator": "All attempted runs, including ungraded execution failures",
+      "computed_cost_per_successful_task_usd": {
+        "attempted_runs_in_numerator": 1,
+        "reason": "Cost is unavailable for one or more attempted runs, including failed runs",
+        "successful_runs_in_denominator": 1,
+        "value": null
+      },
+      "execution_status_counts": {
+        "completed": 1
+      },
+      "failed_grades": 0,
+      "graded_only_success_rate": 1.0,
+      "graded_runs": 1,
+      "invalid_treatment_runs": 0,
+      "metrics": {
+        "actual_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "cached_input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 42112,
+          "max": 42112,
+          "mean": 42112,
+          "median": 42112,
+          "min": 42112,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 42112
+        },
+        "computed_cost_usd": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "context_freshness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 4.6899999999999995,
+          "max": 4.6899999999999995,
+          "mean": 4.6899999999999995,
+          "median": 4.6899999999999995,
+          "min": 4.6899999999999995,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 4.6899999999999995
+        },
+        "end_to_end_wall_seconds": {
+          "attempted_missing": 0,
+          "known_total": 22.106710228999873,
+          "max": 22.106710228999873,
+          "mean": 22.106710228999873,
+          "median": 22.106710228999873,
+          "min": 22.106710228999873,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 22.106710228999873
+        },
+        "input_tokens": {
+          "attempted_missing": 0,
+          "known_total": 71063,
+          "max": 71063,
+          "mean": 71063,
+          "median": 71063,
+          "min": 71063,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 71063
+        },
+        "mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "memglide_cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 1.76,
+          "max": 1.76,
+          "mean": 1.76,
+          "median": 1.76,
+          "min": 1.76,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1.76
+        },
+        "memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "memglide_peak_rss_bytes": {
+          "attempted_missing": 0,
+          "known_total": null,
+          "max": 72273920,
+          "mean": 72273920,
+          "median": 72273920,
+          "min": 72273920,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "model_calls": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_memglide_mcp_calls": {
+          "attempted_missing": 0,
+          "known_total": 1,
+          "max": 1,
+          "mean": 1,
+          "median": 1,
+          "min": 1,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 1
+        },
+        "observed_repeated_read_commands": {
+          "attempted_missing": 0,
+          "known_total": 0,
+          "max": 0,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0
+        },
+        "output_tokens": {
+          "attempted_missing": 0,
+          "known_total": 995,
+          "max": 995,
+          "mean": 995,
+          "median": 995,
+          "min": 995,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 995
+        },
+        "probe_expected_symbol_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "probe_target_path_coverage_fraction": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "process_tree_peak_rss_bytes": {
+          "attempted_missing": 0,
+          "known_total": null,
+          "max": 271118336,
+          "mean": 271118336,
+          "median": 271118336,
+          "min": 271118336,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "repeated_file_reads": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null
+        },
+        "retrieval_completeness": {
+          "attempted_missing": 1,
+          "known_total": null,
+          "max": null,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "missing": 1,
+          "n": 0,
+          "planned_missing": 1,
+          "total": null,
+          "total_unavailable_reason": "This metric is not additive across runs"
+        },
+        "setup_cpu_seconds": {
+          "attempted_missing": 0,
+          "known_total": 0.054254919999999984,
+          "max": 0.054254919999999984,
+          "mean": 0.054254919999999984,
+          "median": 0.054254919999999984,
+          "min": 0.054254919999999984,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0.054254919999999984
+        },
+        "setup_wall_seconds": {
+          "attempted_missing": 0,
+          "known_total": 0.10286274200007028,
+          "max": 0.10286274200007028,
+          "mean": 0.10286274200007028,
+          "median": 0.10286274200007028,
+          "min": 0.10286274200007028,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 0.10286274200007028
+        },
+        "wall_time_seconds": {
+          "attempted_missing": 0,
+          "known_total": 22.003847486999803,
+          "max": 22.003847486999803,
+          "mean": 22.003847486999803,
+          "median": 22.003847486999803,
+          "min": 22.003847486999803,
+          "missing": 0,
+          "n": 1,
+          "planned_missing": 0,
+          "total": 22.003847486999803
+        }
+      },
+      "not_run": 0,
+      "planned_runs": 1,
+      "successful_runs": 1,
+      "successful_task_completion_rate": 1.0,
+      "ungraded_runs": 0,
+      "unknown_treatment_runs": 0,
+      "valid_treatment_runs": 1
+    }
+  }
+}

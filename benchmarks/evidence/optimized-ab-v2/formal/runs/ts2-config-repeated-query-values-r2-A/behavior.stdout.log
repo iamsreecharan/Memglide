@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: duplicates decoding flags and equals signs
+ok 1 - duplicates decoding flags and equals signs
+  ---
+  duration_ms: 4.140864
+  type: 'test'
+  ...
+# Subtest: own special keys and malformed escapes
+ok 2 - own special keys and malformed escapes
+  ---
+  duration_ms: 0.853166
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 227.347546

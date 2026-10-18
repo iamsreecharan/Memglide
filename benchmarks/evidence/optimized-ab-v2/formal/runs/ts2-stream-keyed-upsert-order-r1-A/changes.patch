@@ -1,0 +1,26 @@
+diff --git a/src/api.ts b/src/api.ts
+index 223fef4..72aa4f2 100644
+--- a/src/api.ts
++++ b/src/api.ts
+@@ -26,7 +26,7 @@ export function rollingCounts(...args: Parameters<typeof _event_time_rolling_cou
+ }
+ 
+ export function upsertRows(...args: Parameters<typeof _keyed_upsert_order.upsertRows>): ReturnType<typeof _keyed_upsert_order.upsertRows> {
+-  return _keyed_upsert_order.upsertRows([...args[0]].sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0));
++  return _keyed_upsert_order.upsertRows(...args);
+ }
+ 
+ export function decodeRuns(...args: Parameters<typeof _bounded_run_length_decode.decodeRuns>): ReturnType<typeof _bounded_run_length_decode.decodeRuns> {
+diff --git a/src/keyed_upsert_order.ts b/src/keyed_upsert_order.ts
+index 39c6a1b..5d28be2 100644
+--- a/src/keyed_upsert_order.ts
++++ b/src/keyed_upsert_order.ts
+@@ -1,6 +1,6 @@
+ export type Row={key:string;payload:unknown};
+ export function upsertRows(rows:Row[]):Row[]{
+   const selected=new Map<string,Row>();
+-  for(const row of rows){selected.delete(row.key);selected.set(row.key,row);}
+-  return [...selected.values()];
++  for(const row of rows){selected.set(row.key,row);}
++  return structuredClone([...selected.values()]);
+ }

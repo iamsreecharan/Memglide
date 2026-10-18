@@ -1,0 +1,136 @@
+{
+  "applicable": true,
+  "call_error_count": 0,
+  "calls": [
+    {
+      "errors": [],
+      "event_lines": [
+        6,
+        7
+      ],
+      "files": [
+        {
+          "comparison": "mismatch",
+          "observed_at_utc": "2026-10-17T23:50:05.858964+00:00",
+          "path": "ledger/currency_netting.py",
+          "post_execution_source_sha256": "93d5baeb8c33132c6941e947df2373079f497702b6e4470bf79825d57107317c",
+          "returned_source_sha256": "f815a8f597e00f27f341e46e02d1ecdafa224d5a41e2456595b24a9b6bfc4eca",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "mismatch",
+          "observed_at_utc": "2026-10-17T23:50:05.860348+00:00",
+          "path": "ledger/api.py",
+          "post_execution_source_sha256": "ae6d83bb7793ee3714ee3fb6f079ebf6e6b1c4a085899bcc931a109f076e521a",
+          "returned_source_sha256": "2283d3b55a3d8f2319c896bd50d019a7bd59d43336d0c3a66a0cff2ca65c36a5",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.860668+00:00",
+          "path": "ledger/signed_tax_rounding.py",
+          "post_execution_source_sha256": "807a7986e5c50bd49e93a216c0c0c387f9a957fb821eca211fdde00b83bdd1f0",
+          "returned_source_sha256": "807a7986e5c50bd49e93a216c0c0c387f9a957fb821eca211fdde00b83bdd1f0",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.861288+00:00",
+          "path": "ledger/nested_redaction.py",
+          "post_execution_source_sha256": "34480fbfedd0ed5742a99bfee3777f9a6140c096d26d66f0f44323d464424a8c",
+          "returned_source_sha256": "34480fbfedd0ed5742a99bfee3777f9a6140c096d26d66f0f44323d464424a8c",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.861808+00:00",
+          "path": "ledger/atomic_transfer.py",
+          "post_execution_source_sha256": "a93a1b7da6be22e397b3c5e0682d06c3f45792f40b5c398768ec53167a33abb6",
+          "returned_source_sha256": "a93a1b7da6be22e397b3c5e0682d06c3f45792f40b5c398768ec53167a33abb6",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.862466+00:00",
+          "path": "ledger/weighted_allocation.py",
+          "post_execution_source_sha256": "3a1be454ab3805553f45d4221e6fcc3eb36c93662ab5f6f657d0963f796e2560",
+          "returned_source_sha256": "3a1be454ab3805553f45d4221e6fcc3eb36c93662ab5f6f657d0963f796e2560",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.862975+00:00",
+          "path": "ledger/invoice_line_discounts.py",
+          "post_execution_source_sha256": "9ffbf18e5d8bf3d06734ed6cbb484016f124c423d6ebf43bb762443996de583e",
+          "returned_source_sha256": "9ffbf18e5d8bf3d06734ed6cbb484016f124c423d6ebf43bb762443996de583e",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.863539+00:00",
+          "path": "ledger/audit_hash_chain.py",
+          "post_execution_source_sha256": "8106fdd590124e56f06b5ba18055b280dfd8cc669ce5be615106b707821117c6",
+          "returned_source_sha256": "8106fdd590124e56f06b5ba18055b280dfd8cc669ce5be615106b707821117c6",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.864187+00:00",
+          "path": "ledger/csv_bank_import.py",
+          "post_execution_source_sha256": "1f3f99bc44f368bdfec459d460a40e490cfac79c494bd527a09169058cd61ea0",
+          "returned_source_sha256": "1f3f99bc44f368bdfec459d460a40e490cfac79c494bd527a09169058cd61ea0",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.864492+00:00",
+          "path": "ledger/reconciliation_version_merge.py",
+          "post_execution_source_sha256": "dbf70fdd3611d22fff49182b11e68fd892efc2c61eeaa98ddb0edc3d6d0b4506",
+          "returned_source_sha256": "dbf70fdd3611d22fff49182b11e68fd892efc2c61eeaa98ddb0edc3d6d0b4506",
+          "unavailable_reason": null
+        },
+        {
+          "comparison": "match",
+          "observed_at_utc": "2026-10-17T23:50:05.864885+00:00",
+          "path": "ledger/statement_timezones.py",
+          "post_execution_source_sha256": "b2d2e957894d2de5c3898513a768a3124e2d3de4a0dc355b8300ff9dde684064",
+          "returned_source_sha256": "b2d2e957894d2de5c3898513a768a3124e2d3de4a0dc355b8300ff9dde684064",
+          "unavailable_reason": null
+        }
+      ],
+      "independently_verified_call_time_freshness": null,
+      "native_call_id": "item_2",
+      "native_status": "completed",
+      "response_available": true,
+      "retrieval_id": "64c9960d4f8a4c2493fb78904ae0cf73",
+      "returned_item_count": 11,
+      "server": "memglide",
+      "tool": "fetch_context",
+      "unread_hash_only_paths": []
+    }
+  ],
+  "capture_wall_seconds": 0.00862855600007606,
+  "captured_at_utc": "2026-10-17T23:50:05.864908+00:00",
+  "comparison_counts": {
+    "match": 9,
+    "mismatch": 2,
+    "unknown": 0
+  },
+  "event_errors": [],
+  "events_sha256": "324f33c51b94af4b2557b557adb72a6d7ef7320b14f629169832adb3e973efed",
+  "file_observation_count": 11,
+  "independently_verified_call_time_freshness": null,
+  "limitations": [
+    "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+    "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+    "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+    "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+    "Returned snippets are not independently checked for complete bodies or semantic completeness."
+  ],
+  "observed_fetch_context_call_count": 1,
+  "observed_memglide_call_count": 1,
+  "phase": "post_codex_pre_grader",
+  "response_available_count": 1,
+  "schema_version": 1,
+  "started_at_utc": "2026-10-17T23:50:05.856265+00:00"
+}

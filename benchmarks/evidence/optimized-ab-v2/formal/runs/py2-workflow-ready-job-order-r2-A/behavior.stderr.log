@@ -1,0 +1,7 @@
+test_detachment_and_limits (__main__.BehaviorTests.test_detachment_and_limits) ... ok
+test_due_priority_and_stable_ties (__main__.BehaviorTests.test_due_priority_and_stable_ties) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

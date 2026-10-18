@@ -1,0 +1,31 @@
+{
+  "run_id": "ts2-config-quoted-env-values-r1-B",
+  "task_id": "ts2-config-quoted-env-values",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 68,
+  "repository": "config-typescript-v2",
+  "original_run_id": "ts2-config-quoted-env-values-r1-B",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-17T23:39:35.174436+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r1-B",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/ts2-config-quoted-env-values-r1-B",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Attempt is not yet graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "compact_protocol_fidelity": {
+    "valid": null,
+    "required_operations": [
+      "fetch_context"
+    ],
+    "verification_policy": "on_demand"
+  }
+}

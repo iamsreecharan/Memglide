@@ -1,0 +1,26 @@
+diff --git a/workflow/api.py b/workflow/api.py
+index 31656fd..e842095 100644
+--- a/workflow/api.py
++++ b/workflow/api.py
+@@ -10,7 +10,7 @@ from . import bounded_async_execution as _bounded_async_execution
+ from . import incremental_utf8_lines as _incremental_utf8_lines
+ 
+ def ready_jobs(jobs, now, limit):
+-    return _ready_job_order.ready_jobs(jobs, now, max(1, limit))
++    return _ready_job_order.ready_jobs(jobs, now, limit)
+ 
+ def coalesce(intervals):
+     return _interval_coalescing.coalesce(intervals)
+diff --git a/workflow/ready_job_order.py b/workflow/ready_job_order.py
+index f623f4c..a4ef955 100644
+--- a/workflow/ready_job_order.py
++++ b/workflow/ready_job_order.py
+@@ -1,5 +1,7 @@
+ from copy import deepcopy
++
++
+ def ready_jobs(jobs, now, limit):
+     if type(limit) is not int or limit<0: raise ValueError("bad limit")
+     ready=[job for job in jobs if job["status"]=="queued" and job["due"]<=now]
+-    return sorted(ready,key=lambda job:job["priority"])[:limit]
++    return deepcopy(sorted(ready, key=lambda job: job["priority"], reverse=True)[:limit])

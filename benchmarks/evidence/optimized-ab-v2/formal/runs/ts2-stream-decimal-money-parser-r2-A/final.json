@@ -1,0 +1,1 @@
+{"summary":"Implemented exact decimal-to-cents parsing with safe-integer checks and normalized negative zero. The API now propagates rejection errors. Added regression tests for both entry points; preserved existing smoke tests. No commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

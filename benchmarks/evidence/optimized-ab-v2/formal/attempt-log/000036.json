@@ -1,0 +1,11 @@
+{
+  "sequence": 36,
+  "previous_sha256": "948f27ea3299fbbf1059858b17cda785e7174e4cb7b24b3aa992a1302435c8f2",
+  "recorded_at": "2026-10-17T23:13:49.144169+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-stream-simultaneous-text-edits-r1-A",
+  "original_run_id": "ts2-stream-simultaneous-text-edits-r1-A",
+  "supplemental": false,
+  "start_sha256": "531b6c254dd0344d388764c8cfbf105e27e15b3ef90f793d2f03c8ffbdebc810",
+  "sha256": "fd06901521bd5479c843f53e1e7025886d097316b717c777ffa7ac19c95c91f3"
+}

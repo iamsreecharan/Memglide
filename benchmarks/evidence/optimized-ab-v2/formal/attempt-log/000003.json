@@ -1,0 +1,9 @@
+{
+  "sequence": 3,
+  "previous_sha256": "c753ad635f8958be8291c3acbca0d069f1a4359245f91b6d2391a88e220ebb70",
+  "recorded_at": "2026-10-17T23:05:19.733378+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts2-config-strict-pointer-lookup-r1-A",
+  "result_sha256": "534fe890dace28b4e18292f683ea32006ad63e46130e5c759859e4cbaaafe3db",
+  "sha256": "79939f88676941fcba7e82fe53b7eb2675f9fb841de0fc559a8a087ddce84edc"
+}

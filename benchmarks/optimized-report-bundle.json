@@ -1,0 +1,34 @@
+{
+  "archive": "benchmarks/memglide-ab-optimized-report.zip",
+  "bytes": 6211466,
+  "sha256": "98f2862b7a712323f16598980c44222c8b78abf8ddabcb31d821501053896265",
+  "members": 4404,
+  "uncompressed_bytes": 30200767,
+  "manifest_sha256": "ad2024e3edb222f3f23a58f6d41c2400ed6fd4a3c35e4a20e7a5b7da773f0dcc",
+  "validation": "CRC, exact per-member hashes, explicit paths, credential-pattern scan passed",
+  "synthetic_fixture_exceptions": [
+    {
+      "path": "benchmarks/evidence/optimization-validation-v2/full-python.xml",
+      "sha256": "44386fb9c7836fe6881571334d6694b3211ec896413024d81e6baf3167300b3f",
+      "pattern_matches": 7,
+      "matched_sha256": [
+        "3021d90eb9437b2d8f30e8363695c4418b5e5f1870801b5c317e9398ee0f572d",
+        "8bcac7908eb950419537b91e19adc83ce2c9cbfdacf4f81157fdadfec11f7017",
+        "aadcebbf9c9ca71dcb9d334b44d555d980f68e3e0fd5d3d63f1cc8c94f219a9d",
+        "4b82f7466cc183e24dffcc235b8622f6795176c22f72aedf45584003e440f78f",
+        "7e5400d08af1a79400d0df020d076551686fda1910a49f6716e8d5aff119e35b",
+        "aa4d6ed2a9eb80ae9af88445533e0abc21e67965923c7bd99192270c98f3381c",
+        "87117695a3cb65fc702e9328d6481780a57fefda3ddbc47d601302c406815022"
+      ],
+      "reason": "Exact frozen public pytest names; all strings independently derived from literal security-test fixtures",
+      "fixture_source": "62e07cc98855b4cdde255395372e5d78b3a7e2a1:tests/test_security_storage.py",
+      "fixture_source_sha256": "bb8aee17612136ce8bf257cd701c6e26e2def32e13fd3b65e7cdcf6f1769fd8d",
+      "original_xml_bytes_preserved": true,
+      "all_other_xml_content_scan": "passed"
+    }
+  ],
+  "frozen_application_commit": "62e07cc98855b4cdde255395372e5d78b3a7e2a1",
+  "limitations": [
+    "Report bundle only; runtime credentials/databases/worktrees are excluded"
+  ]
+}

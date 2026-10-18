@@ -1,0 +1,9 @@
+{
+  "sequence": 215,
+  "previous_sha256": "bda4f8eb79a24732b3289cdf7193dea89b120958df4d3a53d185d2f2e231ed36",
+  "recorded_at": "2026-10-18T00:00:06.804538+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts2-stream-keyed-upsert-order-r2-A",
+  "result_sha256": "a6994c51ddce67ba4c90e8d97740ed33e3a01cea03406120fe03f6aaf673b19c",
+  "sha256": "c970972108e2acb46b6ea6a7548dc4bf24f05130455b913a1944a7e8ff133ce1"
+}

@@ -1,0 +1,11 @@
+{
+  "sequence": 2,
+  "previous_sha256": "b30da1693f2a48a0716d646635302468d46e22b6e8f855496a7f68c09f2d7f60",
+  "recorded_at": "2026-10-17T22:48:56.522147+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py-ttl-boundary-r1-B",
+  "original_run_id": "py-ttl-boundary-r1-B",
+  "supplemental": false,
+  "start_sha256": "0173613f19a46ab53d741660ee97b142a95a038b65699daf16c9f1506600ff61",
+  "sha256": "89afc3293f11b629ed9ab3bf6ae670f898c4a65dd30b0a57f39e0711eff030f0"
+}

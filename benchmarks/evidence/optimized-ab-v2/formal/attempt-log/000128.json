@@ -1,0 +1,11 @@
+{
+  "sequence": 128,
+  "previous_sha256": "0fda8a3c7274f6a44f38f2e2d98100c86de50098ac4c25e6111c83b41a00ccf5",
+  "recorded_at": "2026-10-17T23:37:37.213550+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-config-utf8-feature-cohorts-r1-B",
+  "original_run_id": "ts2-config-utf8-feature-cohorts-r1-B",
+  "supplemental": false,
+  "start_sha256": "553b1a7c7df9b967ba2b580f7d22b38bd9b0aec337e0a0b4e437c9639b25c9e1",
+  "sha256": "37c1e2ab3672ac2fc639bdc49b48271139d8260886ee79141e3423a8ca8d679b"
+}

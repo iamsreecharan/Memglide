@@ -1,0 +1,557 @@
+[
+  {
+    "run_id": "py-ttl-boundary-r1-B",
+    "task_id": "py-ttl-boundary",
+    "language": "python",
+    "configuration": "B",
+    "repeat": 1,
+    "order": 1,
+    "repository": "atlas-python-v1",
+    "original_run_id": "py-ttl-boundary-r1-B",
+    "supplemental": false,
+    "status": "completed",
+    "attempted": true,
+    "pending": false,
+    "started_at": "2026-10-17T23:00:13.707086+00:00",
+    "artifacts": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B",
+    "worktree": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/worktrees/py-ttl-boundary-r1-B",
+    "errors": [],
+    "grader": {
+      "task_id": "py-ttl-boundary",
+      "corpus_version": "1.0.0",
+      "passed": true,
+      "success": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/behavior.stdout.log",
+          "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/behavior.stderr.log"
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          },
+          "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/smoke.stdout.log",
+          "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-B/smoke.stderr.log"
+        }
+      ],
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "protected_files": [
+        {
+          "file": "README.md",
+          "unchanged": true,
+          "expected_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2",
+          "actual_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2"
+        },
+        {
+          "file": "AGENTS.md",
+          "unchanged": true,
+          "expected_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17",
+          "actual_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17"
+        },
+        {
+          "file": ".gitignore",
+          "unchanged": true,
+          "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+          "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+        },
+        {
+          "file": "tests/test_smoke.py",
+          "unchanged": true,
+          "expected_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879",
+          "actual_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879"
+        }
+      ],
+      "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+    },
+    "actual_cost_usd": null,
+    "computed_cost_usd": null,
+    "compact_protocol_fidelity": {
+      "valid": true,
+      "required_operations": [
+        "fetch_context"
+      ],
+      "verification_policy": "on_demand",
+      "successful_fetch_context_calls": 1,
+      "successful_verify_context_calls": 0,
+      "evidence": "Parsed actual MCP invocation results; not the final model summary"
+    },
+    "starting_commit": "28df2f323ab1b5807e880b0cbb2e2f5e10669edd",
+    "prompt_sha256": "66a47d4518c1a8b312d24900d8a81bab95f895916ec2adf41246a99dff37100a",
+    "setup": {
+      "project_id": "1b5d2410d650431b921640742d21003e",
+      "index_wall_seconds": 0.10286274200007028,
+      "wall_seconds": 0.10286274200007028,
+      "index_local_cpu_seconds": 0.054254919999999984,
+      "cpu_seconds": 0.054254919999999984,
+      "scope": "Required fresh project index only; no sessions or context retrieval before the model"
+    },
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_time_seconds": 22.003847486999803,
+    "overhead": {
+      "process_tree_peak_rss_bytes": 271118336,
+      "cpu_seconds": 4.6899999999999995,
+      "memglide_peak_rss_bytes": 72273920,
+      "memglide_cpu_seconds": 1.76,
+      "observed_processes": 20,
+      "observed_memglide_processes": 1,
+      "samples": 374,
+      "sampling_interval_seconds": 0.05,
+      "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+      "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+    },
+    "telemetry": {
+      "source": "codex exec --json; turn.completed usage and item lifecycle events",
+      "event_count": 17,
+      "parse_errors": [],
+      "completed_turns": 1,
+      "failed_turns": 0,
+      "stream_terminal": true,
+      "usage": {
+        "input_tokens": 71063,
+        "cached_input_tokens": 42112,
+        "output_tokens": 995
+      },
+      "usage_unavailable_reasons": {},
+      "observed_completed_turn_usage": {
+        "input_tokens": 71063,
+        "cached_input_tokens": 42112,
+        "output_tokens": 995
+      },
+      "usage_coverage_complete": true,
+      "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+      "model_calls": null,
+      "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+      "actual_cost_usd": null,
+      "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+      "mcp_call_count": 1,
+      "mcp_calls": [
+        {
+          "id": "item_2",
+          "server": "memglide",
+          "tool": "fetch_context",
+          "status": "completed",
+          "completed": true,
+          "error": null,
+          "successful": true,
+          "success_evidence": "Completed CLI tool item returned a result without an explicit error",
+          "verified_compact_operation": "get_context"
+        }
+      ],
+      "mcp_counts_complete": true,
+      "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+      "memglide_mcp_call_count": 1,
+      "memglide_successful_get_context_count": 1,
+      "memglide_successful_fetch_context_count": 1,
+      "memglide_successful_verify_context_count": 0,
+      "memglide_get_context_success_unknown_count": 0,
+      "command_count": 4,
+      "commands": [
+        {
+          "id": "item_1",
+          "command": "/bin/bash -lc \"pwd && rg --files -g '\"'!.*'\"' -g 'AGENTS.md' -g '*.py'\"",
+          "exit_code": 0,
+          "status": "completed"
+        },
+        {
+          "id": "item_3",
+          "command": "/bin/bash -lc 'cat AGENTS.md tests/test_smoke.py && git status --short'",
+          "exit_code": 0,
+          "status": "completed"
+        },
+        {
+          "id": "item_5",
+          "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+          "exit_code": 0,
+          "status": "completed"
+        },
+        {
+          "id": "item_6",
+          "command": "/bin/bash -lc 'git diff --check && git diff --stat'",
+          "exit_code": 0,
+          "status": "completed"
+        }
+      ],
+      "repeated_file_reads": null,
+      "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+      "observed_file_read_commands": 1,
+      "observed_repeated_read_commands": 0,
+      "observed_read_command_paths": [
+        "AGENTS.md",
+        "tests/test_smoke.py"
+      ],
+      "repeated_read_command_paths": {},
+      "file_reads_complete": false,
+      "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+      "errors": []
+    },
+    "post_execution_context_audit": {
+      "schema_version": 1,
+      "phase": "post_codex_pre_grader",
+      "started_at_utc": "2026-10-17T23:00:35.902540+00:00",
+      "captured_at_utc": "2026-10-17T23:00:35.915256+00:00",
+      "capture_wall_seconds": 0.012700829000095837,
+      "events_sha256": "34c0fb121330a970258083614927806cf05e3b3dde3b318c30f870c3155dfeea",
+      "applicable": true,
+      "observed_memglide_call_count": 1,
+      "observed_fetch_context_call_count": 1,
+      "response_available_count": 1,
+      "call_error_count": 0,
+      "file_observation_count": 9,
+      "comparison_counts": {
+        "match": 8,
+        "mismatch": 1,
+        "unknown": 0
+      },
+      "event_errors": [],
+      "calls": [
+        {
+          "native_call_id": "item_2",
+          "server": "memglide",
+          "tool": "fetch_context",
+          "native_status": "completed",
+          "event_lines": [
+            6,
+            7
+          ],
+          "retrieval_id": "b71b851b88d24d2e911791ce57f6ec37",
+          "response_available": true,
+          "errors": [],
+          "files": [
+            {
+              "path": "atlas/cache.py",
+              "returned_source_sha256": "a20f8fab315fd3d1d8a168635d1d2d86f302414c52e2e505b71e9dabf4bbcc82",
+              "post_execution_source_sha256": "1be286162595f07a4794dd1932edf108f81fed256c87a9d60cdb99dd95bd6213",
+              "observed_at_utc": "2026-10-17T23:00:35.904512+00:00",
+              "comparison": "mismatch",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/service.py",
+              "returned_source_sha256": "fbd46c4b8c6c82cfde17ed7d4c48ba5af643b023f094028df79539fc6a74d467",
+              "post_execution_source_sha256": "fbd46c4b8c6c82cfde17ed7d4c48ba5af643b023f094028df79539fc6a74d467",
+              "observed_at_utc": "2026-10-17T23:00:35.907194+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/__init__.py",
+              "returned_source_sha256": "f578ba5f325a76cfba782889b8c009bac393e665e034e1f9486ea746e7e0e701",
+              "post_execution_source_sha256": "f578ba5f325a76cfba782889b8c009bac393e665e034e1f9486ea746e7e0e701",
+              "observed_at_utc": "2026-10-17T23:00:35.911116+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/pagination.py",
+              "returned_source_sha256": "462bfe9a7861614a1e4777498a2f53d7e2caebb48341b75f3502d7774c023e9d",
+              "post_execution_source_sha256": "462bfe9a7861614a1e4777498a2f53d7e2caebb48341b75f3502d7774c023e9d",
+              "observed_at_utc": "2026-10-17T23:00:35.911528+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/repository.py",
+              "returned_source_sha256": "576e55389665c4a3f26f1dce85d2d49c4c2242f329ffd2c3153dd3c5cf5346b7",
+              "post_execution_source_sha256": "576e55389665c4a3f26f1dce85d2d49c4c2242f329ffd2c3153dd3c5cf5346b7",
+              "observed_at_utc": "2026-10-17T23:00:35.912273+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/search.py",
+              "returned_source_sha256": "9c70205301815a81bb0ef8bc7fbf74a1d913fb1570f2f17233d02cc89dc1ec9d",
+              "post_execution_source_sha256": "9c70205301815a81bb0ef8bc7fbf74a1d913fb1570f2f17233d02cc89dc1ec9d",
+              "observed_at_utc": "2026-10-17T23:00:35.913252+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/security.py",
+              "returned_source_sha256": "e829918599e17463ce3d6c76b7b2babca254d2f619eb775f63a0da2e15ba3cca",
+              "post_execution_source_sha256": "e829918599e17463ce3d6c76b7b2babca254d2f619eb775f63a0da2e15ba3cca",
+              "observed_at_utc": "2026-10-17T23:00:35.914366+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/config.py",
+              "returned_source_sha256": "73520066b7fe7a084a21262f724ac9a000620d25a8a7f1b0dc6e5595da018130",
+              "post_execution_source_sha256": "73520066b7fe7a084a21262f724ac9a000620d25a8a7f1b0dc6e5595da018130",
+              "observed_at_utc": "2026-10-17T23:00:35.914805+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            },
+            {
+              "path": "atlas/graph.py",
+              "returned_source_sha256": "bedf376d16927292a6ca3cb5df24b625320b90e6383c8bc710ee3368ce0c3e5b",
+              "post_execution_source_sha256": "bedf376d16927292a6ca3cb5df24b625320b90e6383c8bc710ee3368ce0c3e5b",
+              "observed_at_utc": "2026-10-17T23:00:35.915195+00:00",
+              "comparison": "match",
+              "unavailable_reason": null
+            }
+          ],
+          "returned_item_count": 10,
+          "unread_hash_only_paths": [],
+          "independently_verified_call_time_freshness": null
+        }
+      ],
+      "independently_verified_call_time_freshness": null,
+      "limitations": [
+        "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+        "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+        "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+        "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+        "Returned snippets are not independently checked for complete bodies or semantic completeness."
+      ]
+    },
+    "post_execution_audit_wall_seconds": 0.01593499899991002,
+    "post_execution_audit_cpu_seconds": 0.014752679999999962,
+    "protected_file_violations": [],
+    "treatment_valid": true,
+    "common_blocker": null,
+    "finished_at": "2026-10-17T23:00:36.154449+00:00",
+    "end_to_end_wall_seconds": 22.106710228999873
+  },
+  {
+    "run_id": "py-ttl-boundary-r1-A",
+    "task_id": "py-ttl-boundary",
+    "language": "python",
+    "configuration": "A",
+    "repeat": 1,
+    "order": 2,
+    "repository": "atlas-python-v1",
+    "original_run_id": "py-ttl-boundary-r1-A",
+    "supplemental": false,
+    "status": "completed",
+    "attempted": true,
+    "pending": false,
+    "started_at": "2026-10-17T23:00:36.207041+00:00",
+    "artifacts": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A",
+    "worktree": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/worktrees/py-ttl-boundary-r1-A",
+    "errors": [],
+    "grader": {
+      "task_id": "py-ttl-boundary",
+      "corpus_version": "1.0.0",
+      "passed": true,
+      "success": true,
+      "exit_code": 0,
+      "commands": [
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/held_out.py"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/behavior.stdout.log",
+          "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/behavior.stderr.log"
+        },
+        {
+          "command": [
+            "/workspace/Memglide/.venv/bin/python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "counts": {
+            "tests": 6
+          },
+          "stdout_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/smoke.stdout.log",
+          "stderr_path": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A/smoke.stderr.log"
+        }
+      ],
+      "test_count": 8,
+      "protected_files_unchanged": true,
+      "protected_files": [
+        {
+          "file": "README.md",
+          "unchanged": true,
+          "expected_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2",
+          "actual_sha256": "1a85c5374969698a3b65f9175af16a518c2b29461d83b3833d53f5c48090fac2"
+        },
+        {
+          "file": "AGENTS.md",
+          "unchanged": true,
+          "expected_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17",
+          "actual_sha256": "7db404ab8b0e6815a0a36b6c1c95261cb003eb7659c5a412519f389eae865e17"
+        },
+        {
+          "file": ".gitignore",
+          "unchanged": true,
+          "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+          "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+        },
+        {
+          "file": "tests/test_smoke.py",
+          "unchanged": true,
+          "expected_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879",
+          "actual_sha256": "3ca689af2cdefd64080214348ca7372d43a24202437b659845b128f0adb2c879"
+        }
+      ],
+      "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+    },
+    "actual_cost_usd": null,
+    "computed_cost_usd": null,
+    "starting_commit": "28df2f323ab1b5807e880b0cbb2e2f5e10669edd",
+    "prompt_sha256": "66a47d4518c1a8b312d24900d8a81bab95f895916ec2adf41246a99dff37100a",
+    "exit_code": 0,
+    "timed_out": false,
+    "wall_time_seconds": 17.272317423000004,
+    "overhead": {
+      "process_tree_peak_rss_bytes": 190730240,
+      "cpu_seconds": 2.92,
+      "memglide_peak_rss_bytes": null,
+      "memglide_cpu_seconds": null,
+      "observed_processes": 21,
+      "observed_memglide_processes": 0,
+      "samples": 302,
+      "sampling_interval_seconds": 0.05,
+      "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+      "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+    },
+    "telemetry": {
+      "source": "codex exec --json; turn.completed usage and item lifecycle events",
+      "event_count": 15,
+      "parse_errors": [],
+      "completed_turns": 1,
+      "failed_turns": 0,
+      "stream_terminal": true,
+      "usage": {
+        "input_tokens": 48601,
+        "cached_input_tokens": 43648,
+        "output_tokens": 934
+      },
+      "usage_unavailable_reasons": {},
+      "observed_completed_turn_usage": {
+        "input_tokens": 48601,
+        "cached_input_tokens": 43648,
+        "output_tokens": 934
+      },
+      "usage_coverage_complete": true,
+      "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+      "model_calls": null,
+      "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+      "actual_cost_usd": null,
+      "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+      "mcp_call_count": 0,
+      "mcp_calls": [],
+      "mcp_counts_complete": true,
+      "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+      "memglide_mcp_call_count": 0,
+      "memglide_successful_get_context_count": 0,
+      "memglide_successful_fetch_context_count": 0,
+      "memglide_successful_verify_context_count": 0,
+      "memglide_get_context_success_unknown_count": 0,
+      "command_count": 4,
+      "commands": [
+        {
+          "id": "item_1",
+          "command": "/bin/bash -lc \"pwd && rg --files -g 'AGENTS.md' -g '*.py' -g 'README*'\"",
+          "exit_code": 0,
+          "status": "completed"
+        },
+        {
+          "id": "item_2",
+          "command": "/bin/bash -lc 'cat AGENTS.md atlas/cache.py atlas/service.py tests/test_smoke.py'",
+          "exit_code": 0,
+          "status": "completed"
+        },
+        {
+          "id": "item_4",
+          "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+          "exit_code": 0,
+          "status": "completed"
+        },
+        {
+          "id": "item_5",
+          "command": "/bin/bash -lc 'git diff --check && git diff --stat'",
+          "exit_code": 0,
+          "status": "completed"
+        }
+      ],
+      "repeated_file_reads": null,
+      "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+      "observed_file_read_commands": 1,
+      "observed_repeated_read_commands": 0,
+      "observed_read_command_paths": [
+        "AGENTS.md",
+        "atlas/cache.py",
+        "atlas/service.py",
+        "tests/test_smoke.py"
+      ],
+      "repeated_read_command_paths": {},
+      "file_reads_complete": false,
+      "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+      "errors": []
+    },
+    "post_execution_context_audit": {
+      "schema_version": 1,
+      "phase": "post_codex_pre_grader",
+      "started_at_utc": "2026-10-17T23:00:53.523998+00:00",
+      "captured_at_utc": "2026-10-17T23:00:53.526317+00:00",
+      "capture_wall_seconds": 0.0023134349999054393,
+      "events_sha256": "c416af6d2ddaf8dca2443075426fc0df49f47451714ba257ee347a3042b9cf53",
+      "applicable": false,
+      "observed_memglide_call_count": 0,
+      "observed_fetch_context_call_count": 0,
+      "response_available_count": 0,
+      "call_error_count": 0,
+      "file_observation_count": 0,
+      "comparison_counts": {
+        "match": 0,
+        "mismatch": 0,
+        "unknown": 0
+      },
+      "event_errors": [],
+      "calls": [],
+      "independently_verified_call_time_freshness": null,
+      "limitations": [
+        "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+        "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+        "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+        "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+        "Returned snippets are not independently checked for complete bodies or semantic completeness."
+      ]
+    },
+    "post_execution_audit_wall_seconds": 0.005745479999859526,
+    "post_execution_audit_cpu_seconds": 0.0033179340000000224,
+    "protected_file_violations": [],
+    "treatment_valid": true,
+    "common_blocker": null,
+    "finished_at": "2026-10-17T23:00:53.822017+00:00",
+    "end_to_end_wall_seconds": 17.272317423000004
+  }
+]

@@ -1,0 +1,63 @@
+diff --git a/ledger/api.py b/ledger/api.py
+index 33c9a01..eed543b 100644
+--- a/ledger/api.py
++++ b/ledger/api.py
+@@ -25,10 +25,7 @@ def statement(records, start, end):
+     return _statement_timezones.statement(records, start, end)
+ 
+ def parse_bank_csv(text):
+-    try:
+-        return _csv_bank_import.parse_bank_csv(text)
+-    except ValueError:
+-        return []
++    return _csv_bank_import.parse_bank_csv(text)
+ 
+ def redact(value, keys):
+     return _nested_redaction.redact(value, keys)
+diff --git a/ledger/csv_bank_import.py b/ledger/csv_bank_import.py
+index f4953a7..07f0da7 100644
+--- a/ledger/csv_bank_import.py
++++ b/ledger/csv_bank_import.py
+@@ -1,15 +1,32 @@
+ import csv
+ import io
+ import re
++
++
+ def parse_bank_csv(text):
+-    reader = csv.reader(io.StringIO(text.removeprefix("\ufeff"), newline=""), strict=True)
+-    try: headers=next(reader)
+-    except StopIteration: raise ValueError("missing header") from None
+-    if sorted(headers) != ["amount","memo","reference"]: raise ValueError("bad columns")
+-    result=[]
+-    for row in reader:
+-        if len(row)!=3: raise ValueError("bad row")
+-        item=dict(zip(headers,row))
+-        if not re.fullmatch(r"[+-]?\d+",item["amount"]): raise ValueError("bad amount")
+-        result.append({"reference":item["reference"],"amount":int(item["amount"]),"memo":item["memo"].split(",")[0]})
++    """Parse a bank export, raising ValueError for invalid CSV or values."""
++    reader = csv.reader(
++        io.StringIO(text.removeprefix("\ufeff"), newline=""), strict=True
++    )
++    result = []
++    try:
++        try:
++            headers = next(reader)
++        except StopIteration:
++            raise ValueError("missing header") from None
++        if sorted(headers) != ["amount", "memo", "reference"]:
++            raise ValueError("bad columns")
++        for row in reader:
++            if len(row) != 3:
++                raise ValueError("bad row")
++            item = dict(zip(headers, row))
++            if not re.fullmatch(r"[+-]?[0-9]+", item["amount"]):
++                raise ValueError("bad amount")
++            result.append({
++                "reference": item["reference"],
++                "amount": int(item["amount"]),
++                "memo": item["memo"],
++            })
++    except csv.Error as exc:
++        raise ValueError("malformed CSV") from exc
+     return result

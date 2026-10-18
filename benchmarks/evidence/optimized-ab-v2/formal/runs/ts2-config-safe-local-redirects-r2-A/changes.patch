@@ -1,0 +1,24 @@
+diff --git a/src/api.ts b/src/api.ts
+index 6e536d0..25ddcaf 100644
+--- a/src/api.ts
++++ b/src/api.ts
+@@ -14,7 +14,7 @@ export function parseQuery(...args: Parameters<typeof _repeated_query_values.par
+ }
+ 
+ export function localRedirect(...args: Parameters<typeof _safe_local_redirects.localRedirect>): ReturnType<typeof _safe_local_redirects.localRedirect> {
+-  return _safe_local_redirects.localRedirect(...args).split('#')[0];
++  return _safe_local_redirects.localRedirect(...args);
+ }
+ 
+ export function slugify(...args: Parameters<typeof _unicode_ascii_slugs.slugify>): ReturnType<typeof _unicode_ascii_slugs.slugify> {
+diff --git a/src/safe_local_redirects.ts b/src/safe_local_redirects.ts
+index 8b9c8d2..7fd3ae1 100644
+--- a/src/safe_local_redirects.ts
++++ b/src/safe_local_redirects.ts
+@@ -1,5 +1,5 @@
+ export function localRedirect(base:string,target:string):string{
+   const source=new URL(base),destination=new URL(target,source);
+-  if(!["http:","https:"].includes(source.protocol)||!["http:","https:"].includes(destination.protocol)||destination.hostname!==source.hostname||destination.username||destination.password)throw new Error("unsafe redirect");
++  if(!["http:","https:"].includes(source.protocol)||!["http:","https:"].includes(destination.protocol)||destination.origin!==source.origin||source.username||source.password||destination.username||destination.password)throw new Error("unsafe redirect");
+   return destination.pathname+destination.search+destination.hash;
+ }

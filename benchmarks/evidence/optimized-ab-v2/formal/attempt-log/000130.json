@@ -1,0 +1,11 @@
+{
+  "sequence": 130,
+  "previous_sha256": "cdfd659f281ff2a397bbdb10b9f76f03fe79444434309a873fdd76f36ca49d8b",
+  "recorded_at": "2026-10-17T23:38:04.350254+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-stream-half-open-window-join-r1-A",
+  "original_run_id": "ts2-stream-half-open-window-join-r1-A",
+  "supplemental": false,
+  "start_sha256": "3d56598e7d73f0700d6385363bff9efb777896bb7595431a55b9079d3075de4d",
+  "sha256": "dc4a5b47d4c3c443ef94cb212b78ad04c414d80e5e828113324322bba1808608"
+}

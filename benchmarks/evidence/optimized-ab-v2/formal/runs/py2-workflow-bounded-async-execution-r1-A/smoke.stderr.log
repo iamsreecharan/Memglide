@@ -1,0 +1,19 @@
+test_bound_and_result_order (test_bounded_async_execution.BoundedAsyncExecutionTests.test_bound_and_result_order) ... ok
+test_caller_cancellation_cleans_up_workers (test_bounded_async_execution.BoundedAsyncExecutionTests.test_caller_cancellation_cleans_up_workers) ... ok
+test_empty_and_invalid_concurrency (test_bounded_async_execution.BoundedAsyncExecutionTests.test_empty_and_invalid_concurrency) ... ok
+test_failure_cancels_and_awaits_other_work (test_bounded_async_execution.BoundedAsyncExecutionTests.test_failure_cancels_and_awaits_other_work) ... ok
+test_atomic_pointer_updates (test_smoke.SmokeTests.test_atomic_pointer_updates) ... ok
+test_bounded_async_execution (test_smoke.SmokeTests.test_bounded_async_execution) ... ok
+test_capped_backoff (test_smoke.SmokeTests.test_capped_backoff) ... ok
+test_deep_settings_overlay (test_smoke.SmokeTests.test_deep_settings_overlay) ... ok
+test_deterministic_build_order (test_smoke.SmokeTests.test_deterministic_build_order) ... ok
+test_incremental_utf8_lines (test_smoke.SmokeTests.test_incremental_utf8_lines) ... ok
+test_interval_coalescing (test_smoke.SmokeTests.test_interval_coalescing) ... ok
+test_ready_job_order (test_smoke.SmokeTests.test_ready_job_order) ... ok
+test_strict_template_expansion (test_smoke.SmokeTests.test_strict_template_expansion) ... ok
+test_utf8_batch_budget (test_smoke.SmokeTests.test_utf8_batch_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.020s
+
+OK

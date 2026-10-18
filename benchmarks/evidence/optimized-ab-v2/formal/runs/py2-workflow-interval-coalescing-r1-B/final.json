@@ -1,0 +1,1 @@
+{"summary":"Fixed nested and chained interval merging by preserving the maximum endpoint. Added regression coverage for both domain and API behavior, input preservation, fresh lists, empty intervals, and reversed bounds. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 12 tests passed","git diff --check — passed"]}

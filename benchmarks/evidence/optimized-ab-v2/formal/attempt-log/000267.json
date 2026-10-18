@@ -1,0 +1,9 @@
+{
+  "sequence": 267,
+  "previous_sha256": "f52b52029e0583d72c513a4d0bf6b339d99196da418959adaea10486fc02690a",
+  "recorded_at": "2026-10-18T00:13:48.153260+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts2-config-casefold-header-collection-r2-B",
+  "result_sha256": "25c1e209a4e1f899dd5694e9a0b75c8c5a5b08b9ad406cc6a64831d742f9f972",
+  "sha256": "87a87e05414cc2bacf029a8997d62b103050aac5943f20322f3277c4501741f3"
+}

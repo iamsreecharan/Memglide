@@ -1,0 +1,16 @@
+2026-10-18T00:03:39.343151Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/py2-ledger-csv-bank-import-r2-B/ledger/csv_bank_import.py:
+import re
+def parse_bank_csv(text):
+    reader = csv.reader(io.StringIO(text.removeprefix("\ufeff"), newline=""), strict=True)
+    try:
+        headers=next(reader)
+    except StopIteration: raise ValueError("missing header") from None
+    if sorted(headers) != ["amount","memo","reference"]: raise ValueError("bad columns")
+    result=[]
+    for row in reader:
+        if len(row)!=3: raise ValueError("bad row")
+        item=dict(zip(headers,row))
+        if not re.fullmatch(r"[+-]?\d+",item["amount"]): raise ValueError("bad amount")
+        result.append({"reference":item["reference"],"amount":int(item["amount"]),"memo":item["memo"].split(",")[0]})
+    return result
+2026-10-18T00:03:47.721017Z ERROR codex_core::tools::router: error=apply_patch verification failed: invalid patch: multiple operations target /workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/py2-ledger-csv-bank-import-r2-B/ledger/csv_bank_import.py

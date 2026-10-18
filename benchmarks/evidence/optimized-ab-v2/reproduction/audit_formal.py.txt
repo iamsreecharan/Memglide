@@ -1,0 +1,478 @@
+"""Independent post-completion audit. Standard library only; never invokes a model.
+
+Refuses to parse run streams until the completed report and sealed finish event
+exist. Opens only explicit benchmark JSON/JSONL/prompts/source files; no database,
+auth bindings, native state, archives, arbitrary source paths, or environment.
+Every invocation writes a NEW output file; earlier audit errors stay preserved.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import math
+import re
+import statistics
+import subprocess
+import sys
+import tomllib
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path('/workspace/Memglide')
+EXPECTED_HEAD = '62e07cc98855b4cdde255395372e5d78b3a7e2a1'
+EXPECTED_APP = '5e867d309e0a24a3e52f15a1e40b837dc7a228074380a4aaa3b1419b989856f3'
+USAGE = ('input_tokens', 'cached_input_tokens', 'output_tokens')
+REPOS = {'ledger-python-v2': 'python', 'workflow-python-v2': 'python',
+         'stream-typescript-v2': 'typescript', 'config-typescript-v2': 'typescript'}
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':')).encode()
+
+
+def no_duplicates(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError('Duplicate JSON key')
+        result[key] = value
+    return result
+
+
+def decode(text):
+    return json.loads(text, object_pairs_hook=no_duplicates)
+
+
+def safe_bytes(path, base):
+    path, base = Path(path), Path(base).resolve()
+    if not path.is_absolute():
+        path = base / path
+    if not path.resolve().is_relative_to(base):
+        raise ValueError('Artifact pointer leaves approved audit root')
+    if any(part in {'auth.json', 'codex-state', 'memglide.db'} for part in path.parts):
+        raise ValueError('Private runtime data excluded')
+    for parent in (path, *path.parents):
+        if parent == base:
+            break
+        if parent.is_symlink():
+            raise ValueError('Symlink input excluded')
+    if not path.is_file() or path.stat().st_size > 128 * 1024 * 1024:
+        raise ValueError('Audit input is not a regular bounded file')
+    return path.read_bytes()
+
+
+def read_json(path, base):
+    return decode(safe_bytes(path, base).decode('utf-8'))
+
+
+def numeric(value):
+    return isinstance(value, (float, int)) and not isinstance(value, bool) and math.isfinite(value)
+
+
+def summary(values):
+    observed = [value for value in values if numeric(value)]
+    return {'n': len(observed), 'missing': len(values) - len(observed),
+            'mean': statistics.mean(observed) if observed else None,
+            'median': statistics.median(observed) if observed else None,
+            'known_total': sum(observed) if observed else None,
+            'total': sum(observed) if observed and len(observed) == len(values) else None}
+
+
+def payload(result):
+    if not isinstance(result, dict) or any(result.get(k) for k in ('isError', 'is_error', 'error')):
+        return None
+    candidates = []
+    for key in ('structured_content', 'structuredContent'):
+        if isinstance(result.get(key), dict):
+            candidates.append(result[key])
+    for block in result.get('content', []):
+        if isinstance(block, dict) and block.get('type') == 'text':
+            try:
+                value = decode(block.get('text', ''))
+            except (ValueError, TypeError):
+                continue
+            if isinstance(value, dict):
+                candidates.append(value)
+    if not candidates or any(value != candidates[0] for value in candidates[1:]):
+        return None
+    return candidates[0] if not candidates[0].get('error') else None
+
+
+def independent_stream(data, outcome_unknown=False):
+    events, parse_errors, items = [], [], {}
+    for number, line in enumerate(data.decode('utf-8').splitlines(), 1):
+        if not line.strip():
+            continue
+        try:
+            value = decode(line)
+            if not isinstance(value, dict) or not isinstance(value.get('type'), str):
+                raise ValueError('Malformed event')
+            events.append(value)
+        except (ValueError, TypeError):
+            parse_errors.append(number)
+    turns = [row for row in events if row['type'] == 'turn.completed']
+    failed = sum(row['type'] == 'turn.failed' for row in events)
+    terminal = bool(events and events[-1]['type'] in {'turn.completed', 'turn.failed'})
+    complete = bool(terminal and not failed and not parse_errors and not outcome_unknown)
+    observed = {}
+    for key in USAGE:
+        values = [(row.get('usage') or {}).get(key) for row in turns]
+        valid = values and all(type(value) is int and value >= 0 for value in values)
+        observed[key] = sum(values) if valid else None
+    usage = observed.copy() if complete else {key: None for key in USAGE}
+    for number, row in enumerate(events):
+        item = row.get('item')
+        if isinstance(item, dict) and row['type'] in {'item.started', 'item.updated', 'item.completed'}:
+            key = str(item.get('id', f'event-without-id-{number}'))
+            items[key] = {**items.get(key, {}), **item, '_lifecycle': row['type']}
+    calls, contexts, verifies = [], [], []
+    for key, item in items.items():
+        if item.get('type') != 'mcp_tool_call':
+            continue
+        result = item.get('result')
+        app_error = bool(item.get('error') or item.get('status') == 'failed')
+        value = payload(result)
+        if isinstance(result, dict):
+            app_error = app_error or any(result.get(k) for k in ('isError', 'is_error', 'error'))
+            if value is None:
+                # Missing or conflicting JSON is not source proof. Native call
+                # may still be successful transport; this is recorded separately.
+                for k in ('structured_content', 'structuredContent'):
+                    if isinstance(result.get(k), dict) and result[k].get('error'):
+                        app_error = True
+        succeeded = (not app_error and item.get('_lifecycle') == 'item.completed'
+                     and item.get('status') == 'completed' and result is not None)
+        proof = None
+        if succeeded and str(item.get('server', '')).lower() == 'memglide' and value:
+            retrieval = value.get('retrieval_id')
+            if isinstance(retrieval, str) and retrieval:
+                if item.get('tool') == 'fetch_context' and value.get('operation') == 'get_context':
+                    evidence, hashes = value.get('items'), value.get('source_hashes')
+                    valid = isinstance(evidence, list) and bool(evidence) and isinstance(hashes, dict)
+                    if valid:
+                        valid = all(isinstance(part, dict) and isinstance(part.get('path'), str)
+                                    and bool(part['path']) and isinstance(part.get('snippet'), str)
+                                    and re.fullmatch(r'[0-9a-f]{64}', str(hashes.get(part['path'], '')))
+                                    for part in evidence)
+                    if valid and any(part['snippet'].strip() for part in evidence):
+                        proof = 'get_context'
+                        contexts.append({'call_id': key, 'retrieval_id': retrieval,
+                                         'paths': sorted({part['path'] for part in evidence}),
+                                         'nonempty_paths': sorted({part['path'] for part in evidence if part['snippet'].strip()}),
+                                         'item_count': len(evidence),
+                                         'snippet_utf8_bytes': sum(len(part['snippet'].encode()) for part in evidence),
+                                         'status': value.get('status'),
+                                         'source_freshness': value.get('source_freshness'),
+                                         'truncated': value.get('truncated')})
+                elif (item.get('tool') == 'verify_context' and value.get('operation') == 'get_context_passport'
+                      and isinstance(value.get('status'), str) and isinstance(value.get('source_freshness'), str)
+                      and isinstance(value.get('stale_files'), list)):
+                    proof = 'get_context_passport'
+                    verifies.append({'call_id': key, 'retrieval_id': retrieval,
+                                     'status': value['status'], 'source_freshness': value['source_freshness']})
+        calls.append({'id': key, 'server': item.get('server'), 'tool': item.get('tool'),
+                      'status': item.get('status'), 'successful_transport': bool(succeeded),
+                      'proof': proof})
+    return {'usage': usage, 'observed_completed_turn_usage': observed, 'complete': complete,
+            'parse_error_lines': parse_errors, 'completed_turns': len(turns), 'failed_turns': failed,
+            'mcp_call_count': len(calls) if events else None,
+            'memglide_mcp_call_count': sum(str(c['server']).lower() == 'memglide' for c in calls) if events else None,
+            'fetches': len(contexts), 'verifies': len(verifies), 'calls': calls,
+            'contexts': contexts, 'verification_responses': verifies}
+
+
+class Audit:
+    def __init__(self, experiment):
+        self.experiment = experiment
+        self.errors, self.notes, self.checked = [], [], 0
+
+    def check(self, condition, code, run_id=None):
+        self.checked += 1
+        if not condition:
+            self.errors.append({'code': code, **({'run_id': run_id} if run_id else {})})
+
+    def run(self):
+        exp = self.experiment
+        metadata = read_json(exp / 'metadata.json', exp)
+        if not metadata.get('finished_at') or not (exp / 'report.json').is_file():
+            raise RuntimeError('Formal experiment has not finished; run streams were not opened')
+        log, previous = [], None
+        for sequence, path in enumerate(sorted((exp / 'attempt-log').glob('*.json')), 1):
+            record = read_json(path, exp)
+            body = {key: value for key, value in record.items() if key != 'sha256'}
+            self.check(path.name == f'{sequence:06d}.json', 'log_filename_sequence')
+            self.check(record.get('sequence') == sequence and record.get('previous_sha256') == previous,
+                       'log_sequence_and_previous_hash')
+            self.check(record.get('sha256') == sha(canonical(body)), 'log_record_hash')
+            previous = record.get('sha256')
+            log.append(record)
+        if not log or log[-1].get('event') != 'experiment.finished':
+            raise RuntimeError('Sealed experiment.finished event absent; run streams were not opened')
+        report = read_json(exp / 'report.json', exp)
+        self.check(log[-1].get('report_sha256') == sha(safe_bytes(exp / 'report.json', exp)), 'sealed_report_hash')
+        plan = read_json(exp / 'plan.json', exp)
+        runs = read_json(exp / 'runs.json', exp)
+        state = read_json(exp / 'state.json', exp)
+        supplemental = read_json(exp / 'supplemental-runs.json', exp)
+        frozen, settings = metadata['frozen_manifest'], metadata['frozen_manifest']['settings']
+        self.check(frozen.get('git_head') == EXPECTED_HEAD, 'expected_frozen_commit')
+        self.check(metadata.get('source_unchanged_during_experiment') is True, 'source_unchanged_attestation')
+        for label in ('memglide_source_before', 'memglide_source_after'):
+            source = metadata.get(label) or {}
+            self.check(source.get('source_tree_sha256') == EXPECTED_APP, f'{label}_expected_aggregate')
+            self.check(len(source.get('source_files', {})) == 22, f'{label}_source_count')
+        for relative, expected in frozen['files'].items():
+            self.check(sha(safe_bytes(ROOT / relative, ROOT)) == expected, 'frozen_source_file:' + relative)
+        head = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
+        self.check(head == EXPECTED_HEAD, 'current_head_frozen')
+        self.check(settings.get('require_verification') is False, 'formal_verification_on_demand_policy')
+        self.check(settings.get('model') == metadata.get('model') and settings.get('effort') == metadata.get('reasoning_effort'), 'same_recorded_model_and_effort')
+        self.check(metadata.get('codex_version') == settings.get('codex_version') == 'codex-cli 0.159.2', 'supported_frozen_native_cli_version')
+        for repository_id, repository in metadata['repositories'].items():
+            directory = exp / 'repositories' / repository_id
+            self.check(Path(repository['path']) == directory, 'frozen_fixture_repository_path:' + repository_id)
+            observed = subprocess.check_output(['git', '-C', str(directory), 'rev-parse', 'HEAD', 'HEAD^{tree}'], text=True).splitlines()
+            self.check(observed == [repository['commit'], repository['tree']], 'frozen_fixture_commit_and_tree:' + repository_id)
+        tasks = {task['id']: task for task in plan['tasks']}
+        assignments = {row['run_id']: row for row in plan['runs']}
+        by_id = {row['run_id']: row for row in runs}
+        reported = {row['run_id']: row for row in report['runs']}
+        self.check(len(tasks) == len(plan['tasks']) == 40, 'exact_40_unique_tasks')
+        self.check(Counter(task['language'] for task in tasks.values()) == {'python': 20, 'typescript': 20}, '20_tasks_each_language')
+        self.check(Counter(task['repository'] for task in tasks.values()) == {key: 10 for key in REPOS}, 'four_repositories_ten_each')
+        self.check(all(REPOS.get(task['repository']) == task['language'] for task in tasks.values()), 'repository_language_identity')
+        self.check(len(assignments) == len(plan['runs']) == 160, 'exact_160_original_assignments')
+        self.check(len(by_id) == len(runs) == 160 and set(by_id) == set(assignments), 'every_original_present_once')
+        self.check(set(reported) == set(assignments) and len(report['runs']) == 160, 'all_originals_in_report')
+        self.check(state['originals'] == by_id, 'state_and_runs_projection_equal')
+        self.check(state['supplemental'] == supplemental == report.get('supplemental_runs'), 'supplemental_separate_projection')
+        started, sealed = {}, {}
+        for record in log:
+            if record['event'] == 'attempt.started':
+                started.setdefault(record['attempt_id'], []).append(record)
+            if record['event'] in {'attempt.finished', 'attempt.interrupted'}:
+                sealed.setdefault(record['attempt_id'], []).append(record)
+                path = exp / 'runs' / record['attempt_id'] / 'result.json'
+                self.check(record['result_sha256'] == sha(safe_bytes(path, exp)), 'sealed_attempt_hash', record['attempt_id'])
+        observed_rows, command_templates = [], set()
+        for run in [*runs, *supplemental]:
+            identity = run['run_id']
+            original = run.get('original_run_id', identity)
+            assignment = assignments.get(original)
+            self.check(assignment is not None, 'attempt_identifies_planned_original', identity)
+            if assignment:
+                self.check(all(run.get(key) == assignment[key] for key in ('task_id', 'configuration', 'repeat', 'repository', 'language', 'order')), 'assignment_identity', identity)
+            if not run.get('attempted'):
+                self.check(run.get('status') == 'not_run', 'unattempted_remains_explicit', identity)
+                continue
+            artifacts = exp / 'runs' / identity
+            self.check(Path(run['artifacts']) == artifacts, 'artifact_pointer_expected', identity)
+            sealed_result = read_json(artifacts / 'result.json', exp)
+            self.check(run == sealed_result, 'projection_matches_immutable_result', identity)
+            start = read_json(artifacts / 'attempt-start.json', exp)
+            self.check(start.get('run_id') == identity and start.get('status') == 'running', 'durable_start_identity', identity)
+            self.check(bool(sealed.get(identity)), 'terminal_attempt_has_log_seal', identity)
+            if started.get(identity):
+                self.check(len(started[identity]) == 1 and started[identity][0]['start_sha256'] == sha(canonical(start)), 'durable_start_log_hash', identity)
+            else:
+                self.notes.append({'code': 'start_recovered_before_log_append', 'run_id': identity})
+            task = tasks[run['task_id']]
+            prompt_path = artifacts / 'prompt.txt'
+            if prompt_path.exists():
+                prompt_hash = sha(safe_bytes(prompt_path, exp))
+                self.check(prompt_hash == frozen['prompt_sha256'][task['id']] == run.get('prompt_sha256'), 'identical_frozen_prompt', identity)
+                self.check(run.get('starting_commit') == metadata['repositories'][task['repository']]['commit'], 'identical_frozen_starting_commit', identity)
+                command = read_json(artifacts / 'command.json', exp)
+                self.check('--json' in command and '--output-schema' in command and '--ignore-user-config' in command and '--ignore-rules' in command, 'native_structured_isolated_cli', identity)
+                self.check(command[command.index('--sandbox') + 1] == 'workspace-write' and command[command.index('--model') + 1] == settings['model'], 'native_sandbox_and_model', identity)
+                configs, normalized, index = {}, [], 0
+                while index < len(command):
+                    word = command[index]
+                    if word == '-c':
+                        decoded = tomllib.loads(command[index + 1])
+                        configs.update(decoded)
+                        if 'mcp_servers' not in decoded:
+                            normalized += [word, command[index + 1]]
+                        index += 2
+                    elif word in {'-C', '--output-schema', '--output-last-message'}:
+                        normalized += [word, '<isolated-path>']; index += 2
+                    else:
+                        normalized.append(word); index += 1
+                command_templates.add(tuple(normalized))
+                self.check(configs.get('approval_policy') == 'never' and configs.get('model_reasoning_effort') == settings['effort'], 'native_approval_and_effort', identity)
+                if run['configuration'] == 'A':
+                    self.check(configs.get('mcp_servers') == {}, 'A_has_no_mcp_servers', identity)
+                else:
+                    servers = configs.get('mcp_servers') or {}
+                    server = servers.get('memglide') or {}
+                    self.check(set(servers) == {'memglide'} and server.get('enabled_tools') == ['fetch_context', 'verify_context'], 'B_only_two_approved_tools', identity)
+                    self.check(server.get('required') is True and server.get('startup_readiness') == 'connection', 'B_required_live_connection', identity)
+                    self.check(server.get('tools') == {tool: {'approval_mode': 'approve'} for tool in ('fetch_context', 'verify_context')}, 'B_scoped_tool_approval', identity)
+                    self.check(server.get('args') == ['--db', str(artifacts / 'memglide.db'), 'mcp', '--profile', 'agent', '--project', run.get('setup', {}).get('project_id')], 'B_private_project_binding', identity)
+            events_path = artifacts / 'events.jsonl'
+            parsed = independent_stream(safe_bytes(events_path, exp), run.get('execution_outcome_unknown') is True) if events_path.exists() else None
+            telemetry = run.get('telemetry') or {}
+            if parsed is not None:
+                self.check(parsed['usage'] == telemetry.get('usage'), 'usage_matches_actual_native_events', identity)
+                self.check(parsed['observed_completed_turn_usage'] == telemetry.get('observed_completed_turn_usage'), 'partial_observed_usage_preserved', identity)
+                for key in ('mcp_call_count', 'memglide_mcp_call_count', 'completed_turns', 'failed_turns'):
+                    self.check(parsed[key] == telemetry.get(key), 'actual_event_count:' + key, identity)
+                self.check(parsed['complete'] == telemetry.get('mcp_counts_complete') == telemetry.get('usage_coverage_complete'), 'complete_stream_mask', identity)
+                self.check(parsed['fetches'] == telemetry.get('memglide_successful_fetch_context_count') and parsed['verifies'] == telemetry.get('memglide_successful_verify_context_count'), 'actual_source_and_verification_proofs', identity)
+                if all(parsed['usage'][key] is not None for key in USAGE):
+                    self.check(parsed['usage']['cached_input_tokens'] <= parsed['usage']['input_tokens'], 'cached_tokens_are_input_subset', identity)
+                if run.get('execution_outcome_unknown'):
+                    fidelity = None
+                elif run['configuration'] == 'B':
+                    fidelity = True if parsed['fetches'] > 0 else (False if parsed['complete'] else None)
+                    self.check(run.get('compact_protocol_fidelity', {}).get('required_operations') == ['fetch_context'], 'B_fetch_only_required_policy', identity)
+                else:
+                    fidelity = False if (parsed['mcp_call_count'] or 0) > 0 else (True if parsed['complete'] else None)
+                if identity in reported:
+                    self.check(reported[identity]['treatment_fidelity']['valid'] is fidelity, 'report_fidelity_matches_actual_policy', identity)
+                audit_path = artifacts / 'post-execution-source-audit.json'
+                if audit_path.exists():
+                    source_audit = read_json(audit_path, exp)
+                    self.check(source_audit.get('events_sha256') == sha(safe_bytes(events_path, exp)), 'source_audit_bound_to_native_stream', identity)
+                    self.check(source_audit.get('phase') == 'post_codex_pre_grader' and source_audit.get('independently_verified_call_time_freshness') is None, 'source_audit_has_correct_time_scope', identity)
+                expected_paths = set(task.get('target_files', []))
+                returned_paths = set().union(*(set(row['paths']) for row in parsed['contexts'])) if parsed['contexts'] else set()
+                observation = {'run_id': identity, 'task_id': run['task_id'], 'configuration': run['configuration'], 'repeat': run['repeat'],
+                               'status': run['status'], 'fidelity': fidelity,
+                               'success': (run.get('grader') or {}).get('success'),
+                               'usage': parsed['usage'], 'mcp_calls': parsed['mcp_call_count'] if parsed['complete'] else None,
+                               'observed_mcp_calls': parsed['mcp_call_count'], 'fetches': parsed['fetches'], 'verifies': parsed['verifies'],
+                               'wall_time_seconds': run.get('wall_time_seconds'), 'end_to_end_wall_seconds': run.get('end_to_end_wall_seconds'),
+                               'contexts': parsed['contexts'], 'verification_responses': parsed['verification_responses'],
+                               'declared_target_path_union_proxy': len(expected_paths & returned_paths) / len(expected_paths) if expected_paths and parsed['contexts'] else None,
+                               'independent_call_time_freshness': None, 'semantic_retrieval_completeness': None,
+                               'supplemental': run.get('supplemental', False)}
+                observed_rows.append(observation)
+            grader = run.get('grader') or {}
+            grade_path = artifacts / 'grade.json'
+            if grade_path.exists():
+                grade = read_json(grade_path, exp)
+                expected_grade_projection = dict(grade)
+                if run.get('protected_file_violations'):
+                    expected_grade_projection['success'] = False
+                self.check(expected_grade_projection == grader, 'external_grade_immutable_projection', identity)
+                commands = grade.get('commands') or []
+                expected_count = 2 if run['language'] == 'python' else 3
+                self.check(len(commands) == expected_count, 'all_independent_grade_commands_present', identity)
+                grade_truth = bool(grade.get('protected_files_unchanged')) and all(c.get('exit_code') == 0 for c in commands)
+                if run.get('protected_file_violations'):
+                    grade_truth = False
+                self.check(grader.get('success') is grade_truth, 'independent_grade_boolean_consistent', identity)
+                for protected in grade.get('protected_files', []):
+                    relative = Path(protected['file'])
+                    self.check(not relative.is_absolute() and '..' not in relative.parts, 'protected_fixture_path_safe', identity)
+                    if not relative.is_absolute() and '..' not in relative.parts:
+                        worktree = exp / 'worktrees' / identity
+                        try:
+                            actual_hash = sha(safe_bytes(worktree / relative, worktree))
+                        except (OSError, ValueError):
+                            actual_hash = sha(b'')
+                        self.check(actual_hash == protected['actual_sha256'], 'protected_fixture_observation_reproduced:' + str(relative), identity)
+                        self.check(protected['unchanged'] is (protected['expected_sha256'] == protected['actual_sha256']), 'protected_fixture_unchanged_boolean:' + str(relative), identity)
+                oracle = artifacts / ('held_out.py' if run['language'] == 'python' else 'held_out.test.mjs')
+                self.check(oracle.exists(), 'held_out_oracle_present_outside_worktree', identity)
+                if commands:
+                    self.check(str(oracle) in commands[0].get('command', []), 'grader_invoked_external_oracle', identity)
+            if run.get('status') == 'completed':
+                self.check(grader.get('success') is True and run.get('treatment_valid') is True and run.get('exit_code') == 0 and run.get('timed_out') is False, 'completed_requires_grade_execution_fidelity', identity)
+            self.check(run.get('actual_cost_usd') is None and run.get('computed_cost_usd') is None and telemetry.get('model_calls') is None, 'unavailable_cost_model_calls_null', identity)
+            self.check(telemetry.get('repeated_file_reads') is None, 'actual_filesystem_reads_remain_unavailable', identity)
+            if identity in reported:
+                self.check(reported[identity].get('successful') == grader.get('success'), 'success_comes_only_from_external_grade', identity)
+        self.check(len(command_templates) <= 1, 'identical_non_mcp_native_settings_all_attempts')
+        for task_id in tasks:
+            task_assignments = [row for row in assignments.values() if row['task_id'] == task_id]
+            self.check(Counter((row['repeat'], row['configuration']) for row in task_assignments) == {(rep, arm): 1 for rep in (1, 2) for arm in ('A', 'B')}, 'balanced_exact_two_repeats:' + task_id)
+            ordered = sorted(task_assignments, key=lambda row: row['order'])
+            self.check([r['configuration'] for r in ordered[:2]] == list(reversed([r['configuration'] for r in ordered[2:]])), 'counterbalanced_repeat_order:' + task_id)
+        primary = [row for row in observed_rows if not row['supplemental']]
+        independent_by_id = {row['run_id']: row for row in primary}
+        arm_summaries = {}
+        for arm in ('A', 'B'):
+            rows = [row for row in primary if row['configuration'] == arm]
+            original_rows = [row for row in runs if row['configuration'] == arm]
+            attempted = [row for row in original_rows if row.get('attempted')]
+            metrics = {key: summary([(independent_by_id.get(row['run_id'], {}).get('usage') or {}).get(key) for row in attempted]) for key in USAGE}
+            metrics.update({key: summary([row.get(key) for row in attempted]) for key in ('wall_time_seconds', 'end_to_end_wall_seconds')})
+            metrics['mcp_calls'] = summary([independent_by_id.get(row['run_id'], {}).get('mcp_calls') for row in attempted])
+            for key, values in metrics.items():
+                aggregate = report['aggregates'][arm]['metrics'][key]
+                for field in ('n', 'mean', 'median', 'total'):
+                    actual, recorded = values[field], aggregate[field]
+                    self.check(actual == recorded or numeric(actual) and numeric(recorded) and math.isclose(actual, recorded, rel_tol=1e-10, abs_tol=1e-9), 'reported_aggregate:' + arm + ':' + key + ':' + field)
+            successful = sum((row.get('grader') or {}).get('success') is True for row in original_rows)
+            self.check(report['aggregates'][arm]['successful_runs'] == successful, 'reported_success_count:' + arm)
+            self.check(report['aggregates'][arm]['actual_cost_per_successful_task_usd']['value'] is None, 'actual_cost_per_success_unknown:' + arm)
+            arm_summaries[arm] = {'planned': len(original_rows), 'attempted': sum(row.get('attempted') is True for row in original_rows),
+                                  'statuses': dict(Counter(row['status'] for row in original_rows)), 'externally_successful': successful,
+                                  'metrics': metrics, 'successful_fetch_calls': sum(row['fetches'] for row in rows),
+                                  'successful_verify_calls': sum(row['verifies'] for row in rows)}
+        by_pair = {}
+        for row in primary:
+            by_pair.setdefault((row['task_id'], row['repeat']), {})[row['configuration']] = row
+        pairs = []
+        for (task, repeat), arms in by_pair.items():
+            if set(arms) != {'A', 'B'} or any(row['fidelity'] is not True for row in arms.values()):
+                continue
+            a, b = arms['A'], arms['B']
+            pair = {'task_id': task, 'repeat': repeat, 'A_success': a['success'], 'B_success': b['success']}
+            for key in (*USAGE, 'wall_time_seconds', 'end_to_end_wall_seconds'):
+                av = a['usage'].get(key) if key in USAGE else a.get(key)
+                bv = b['usage'].get(key) if key in USAGE else b.get(key)
+                pair[key + '_B_over_A'] = bv / av if numeric(av) and av > 0 and numeric(bv) else None
+            pairs.append(pair)
+        self.check(report['paired_comparisons']['valid_pair_count'] == len(pairs), 'paired_count_reproduced')
+        return {'schema_version': 1, 'audited_at_utc': datetime.now(timezone.utc).isoformat(),
+                'audit_method': 'Independent standard-library native-stream parser; no model requests, test reruns, source changes, credential reads, or database reads',
+                'expected_frozen_commit': EXPECTED_HEAD, 'expected_app_aggregate': EXPECTED_APP,
+                'experiment_finished_at': metadata['finished_at'], 'experiment_report_sha256': sha(safe_bytes(exp / 'report.json', exp)),
+                'checked_assertion_count': self.checked, 'pass': not self.errors, 'errors': self.errors, 'notes': self.notes,
+                'planned_original_runs': len(assignments), 'task_count': len(tasks), 'supplemental_attempt_count': len(supplemental),
+                'attempt_log_record_count': len(log), 'resume_count': metadata.get('resume_count'),
+                'arms': arm_summaries, 'verified_pair_count': len(pairs), 'pairs': pairs, 'observed_runs': observed_rows,
+                'interpretation_limits': ['Optional verify_context is not required for formal B fidelity.',
+                    'A post-execution source mismatch can follow the model own edit; it is not a coding failure or proof of stale source at call time.',
+                    'Cached input is a subset of total input; actual billed cost, underlying model calls and filesystem reads remain unavailable.',
+                    'Target-path union coverage is a declared-task proxy, not body or semantic completeness.',
+                    'Repeat observations are correlated; ratios are descriptive and do not prove general superiority.']}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--experiment', type=Path, default=ROOT / '.local/optimization-v2/formal-40-v1')
+    parser.add_argument('--output', type=Path, required=True, help='Fresh ignored JSON output; never overwritten')
+    parser.add_argument('--after-finished', action='store_true', help='Root must confirm quiet formal window has ended')
+    args = parser.parse_args()
+    if not args.after_finished:
+        parser.error('Explicit --after-finished confirmation is required; streams were not opened')
+    destination = args.output.absolute()
+    allowed = ROOT / '.local/optimization-v2'
+    if not destination.resolve().is_relative_to(allowed.resolve()) or destination.exists():
+        parser.error('Output must be a fresh file inside ignored .local/optimization-v2')
+    try:
+        value = Audit(args.experiment.resolve()).run()
+    except Exception as error:
+        value = {'schema_version': 1, 'pass': False, 'audit_exception_type': type(error).__name__,
+                 'audit_exception_message': str(error), 'audited_at_utc': datetime.now(timezone.utc).isoformat()}
+    with destination.open('x', encoding='utf-8') as stream:
+        json.dump(value, stream, indent=2, ensure_ascii=False)
+        stream.write('\n')
+    print(json.dumps({'pass': value['pass'], 'output': str(destination), 'errors': len(value.get('errors', [])),
+                      'checked': value.get('checked_assertion_count'), 'exception': value.get('audit_exception_type')}))
+    return int(not value['pass'])
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

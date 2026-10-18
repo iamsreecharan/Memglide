@@ -1,0 +1,1 @@
+{"summary":"Updated decoding to deep-copy each object independently while preserving validation before allocation. Added regression coverage for domain and API behavior, invalid counts/caps, overflow, zero runs, and copy isolation. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

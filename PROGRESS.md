@@ -1,6 +1,34 @@
 # Memglide V1 verification record
 
-The original V1 results below are historical. The current authenticated Codex
+The latest [optimized assessment](benchmarks/optimized-ab-assessment.md),
+[160 individual runs](benchmarks/codex-ab-optimized.json) and
+[live context audit](benchmarks/codex-optimized-context.md) cover 40 fresh tasks
+across four purpose-built Python/TypeScript repositories, both configurations
+and two repeats. The frozen implementation is commit `62e07cc`; its source stayed
+unchanged throughout the 2026-10-17/18 UTC experiment. A and B each passed 80/80;
+all B runs made an actual MCP source-retrieval call. There were no failed,
+interrupted, supplemental or retried formal attempts. Across 80 verified pairs,
+B used 32.8% more total input tokens and took 17.9% longer including fresh indexing.
+Uncached input rose 2.2%, output rose 5.3%, and sampled CPU/RSS also increased.
+This corpus establishes no success or efficiency advantage. Billed cost and cost
+per successful task remain unavailable, rather than estimated as actual charges.
+
+The [candidate validation record](benchmarks/optimization-validation-v2.md)
+reports **623 distinct passing checks: 596 Python, 24 frontend and three production
+Chromium tests**, plus static/build/package/installed-wheel checks. Those totals
+include benchmark-tooling tests and do not add repeated executions or audit
+assertions. The new opt-in two-tool agent profile removes its background watcher
+and mandatory final verification round trip. Metadata-only candidate selection,
+bounded request-local source snapshots and whole-source overlap promotion reduce
+repeated retrieval work while retaining source checks. The
+[component report](benchmarks/optimization-component-v2.md) retains timing
+regressions, and [quality evidence](benchmarks/compact-quality-v2.md) explains why
+smaller budgets were rejected. The [research record](benchmarks/optimization-research-v2.md)
+cites inspected sources and distinguishes findings from untested proposals.
+The [report bundle](benchmarks/memglide-ab-optimized-report.zip) contains raw
+formal evidence, both unfavorable development pilots and the independent audit.
+
+The original V1 results below are historical. The earlier authenticated Codex
 comparison is in [benchmarks/live-ab-assessment.md](benchmarks/live-ab-assessment.md)
 and [its JSON analysis](benchmarks/live-ab-assessment.json), with
 [all 96 primary runs](benchmarks/codex-ab-authenticated.json) and

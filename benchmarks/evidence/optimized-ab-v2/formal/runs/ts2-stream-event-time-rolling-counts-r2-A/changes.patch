@@ -1,0 +1,23 @@
+diff --git a/src/event_time_rolling_counts.ts b/src/event_time_rolling_counts.ts
+index 35d125c..8888843 100644
+--- a/src/event_time_rolling_counts.ts
++++ b/src/event_time_rolling_counts.ts
+@@ -1,5 +1,17 @@
+ export type Event={id:string;at:number};
+ export function rollingCounts(events:Event[],width:number):{id:string;count:number}[]{
+   if(!Number.isFinite(width)||width<=0||events.some(e=>!Number.isFinite(e.at))) throw new Error("invalid time");
+-  return events.map((event,index)=>({id:event.id,count:events.slice(0,index+1).filter(other=>other.at>event.at-width&&other.at<=event.at).length}));
++  const ordered=events.map((event,index)=>({at:event.at,index})).sort((a,b)=>a.at-b.at);
++  const counts=new Array<number>(events.length);
++  let left=0;
++  for(let start=0;start<ordered.length;){
++    let end=start+1;
++    while(end<ordered.length&&ordered[end].at===ordered[start].at) end++;
++    const lower=ordered[start].at-width;
++    // Include the whole timestamp group, even if subtraction rounds back to at.
++    while(left<start&&ordered[left].at<=lower) left++;
++    for(let i=start;i<end;i++) counts[ordered[i].index]=end-left;
++    start=end;
++  }
++  return events.map((event,index)=>({id:event.id,count:counts[index]}));
+ }

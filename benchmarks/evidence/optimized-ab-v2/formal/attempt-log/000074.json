@@ -1,0 +1,11 @@
+{
+  "sequence": 74,
+  "previous_sha256": "2efc68958ceeaab53d1c97026e87b7a922a70a34c0c5845b00a379386d49d4f0",
+  "recorded_at": "2026-10-17T23:24:20.745615+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-workflow-ready-job-order-r1-B",
+  "original_run_id": "py2-workflow-ready-job-order-r1-B",
+  "supplemental": false,
+  "start_sha256": "920143e3b803fe4c31c2abfd94e10a8c262274ab98dfb7f61c196fa7ce22a383",
+  "sha256": "056548165496f25b334ed05a779024b7b8c43d4c261d0370f391de48af3fa174"
+}

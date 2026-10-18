@@ -1,0 +1,11 @@
+{
+  "sequence": 172,
+  "previous_sha256": "0280d9df1f4b6fbb298048bbf11984b151822afe38ba5caee289d7df0ab1ad64",
+  "recorded_at": "2026-10-17T23:48:27.774918+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-ledger-reconciliation-version-merge-r2-B",
+  "original_run_id": "py2-ledger-reconciliation-version-merge-r2-B",
+  "supplemental": false,
+  "start_sha256": "6d6653245df1c1eeb95bfb8bdcafb9ed5e6aac8d6c2bc5892ec556579fc4651d",
+  "sha256": "bb733aa1e02ec63803d99835bdb0dd9e882dd66ddb3e7a9e5fd7c1b05b7b763f"
+}

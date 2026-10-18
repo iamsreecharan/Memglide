@@ -1,0 +1,1 @@
+{"summary":"Implemented full-input event-time rolling counts, including equal timestamps, while preserving inputs and output order. Verified API delegation and added regression coverage for both interfaces. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

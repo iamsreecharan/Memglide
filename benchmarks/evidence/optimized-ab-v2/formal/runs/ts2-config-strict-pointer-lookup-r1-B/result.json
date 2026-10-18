@@ -1,0 +1,398 @@
+{
+  "run_id": "ts2-config-strict-pointer-lookup-r1-B",
+  "task_id": "ts2-config-strict-pointer-lookup",
+  "language": "typescript",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 2,
+  "repository": "config-typescript-v2",
+  "original_run_id": "ts2-config-strict-pointer-lookup-r1-B",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-17T23:05:19.817937+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/ts2-config-strict-pointer-lookup-r1-B",
+  "errors": [],
+  "grader": {
+    "task_id": "ts2-config-strict-pointer-lookup",
+    "repository": "config-typescript-v2",
+    "corpus_version": "2.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/smoke.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-strict-pointer-lookup-r1-B/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 12,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "002c794c0a2bf59c34b4a29bcbc6a37899d0964530a6ac83df8c4ce26a2a54bf",
+        "actual_sha256": "002c794c0a2bf59c34b4a29bcbc6a37899d0964530a6ac83df8c4ce26a2a54bf"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "4049e19f00c4e04d2bf8071b7faccae5bffb2b852546fb565445e993533caeab",
+        "actual_sha256": "4049e19f00c4e04d2bf8071b7faccae5bffb2b852546fb565445e993533caeab"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "3d86cadabd667f4def3e28712be44f6b913d9304fd1fb0e8eeadfc21b680f583",
+        "actual_sha256": "3d86cadabd667f4def3e28712be44f6b913d9304fd1fb0e8eeadfc21b680f583"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/smoke.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "09e0253ddae508ec15c20bde69b333c90b728f7f8f68c7b926174c0dba82958a",
+        "actual_sha256": "09e0253ddae508ec15c20bde69b333c90b728f7f8f68c7b926174c0dba82958a"
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "compact_protocol_fidelity": {
+    "valid": true,
+    "required_operations": [
+      "fetch_context"
+    ],
+    "verification_policy": "on_demand",
+    "successful_fetch_context_calls": 1,
+    "successful_verify_context_calls": 0,
+    "evidence": "Parsed actual MCP invocation results; not the final model summary"
+  },
+  "starting_commit": "6ac686c6379e81c78d272edbaae6ae074cc58888",
+  "prompt_sha256": "1ce91b5eace7c2c2f3336f3bfabbbe27cc113473a05c2d06d729e4542ccd7fdd",
+  "setup": {
+    "project_id": "c4af6da942634d4cbe5f74ad6e04138d",
+    "index_wall_seconds": 0.21279196300019976,
+    "wall_seconds": 0.21279196300019976,
+    "index_local_cpu_seconds": 0.04692458899999963,
+    "cpu_seconds": 0.04692458899999963,
+    "scope": "Required fresh project index only; no sessions or context retrieval before the model"
+  },
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 28.84458957200013,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 415977472,
+    "cpu_seconds": 7.41,
+    "memglide_peak_rss_bytes": 72073216,
+    "memglide_cpu_seconds": 2.24,
+    "observed_processes": 25,
+    "observed_memglide_processes": 1,
+    "samples": 475,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 18,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 93909,
+      "cached_input_tokens": 84480,
+      "output_tokens": 1451
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 93909,
+      "cached_input_tokens": 84480,
+      "output_tokens": 1451
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 1,
+    "mcp_calls": [
+      {
+        "id": "item_2",
+        "server": "memglide",
+        "tool": "fetch_context",
+        "status": "completed",
+        "completed": true,
+        "error": null,
+        "successful": true,
+        "success_evidence": "Completed CLI tool item returned a result without an explicit error",
+        "verified_compact_operation": "get_context"
+      }
+    ],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 1,
+    "memglide_successful_get_context_count": 1,
+    "memglide_successful_fetch_context_count": 1,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 4,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"pwd; rg --files -g '\"'!node_modules'\"' -g '\"'!package-lock.json'\"' -g '\"'!yarn.lock'\"'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'cat tests/smoke.test.mjs; git status --short; cat AGENTS.md'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_6",
+        "command": "/bin/bash -lc \"cat > tests/strict_pointer_lookup.test.mjs <<'EOF'\nimport test from \\\"node:test\\\";\nimport assert from \\\"node:assert/strict\\\";\nimport { lookup as domainLookup } from \\\"../src/strict_pointer_lookup.ts\\\";\nimport { lookup as apiLookup } from \\\"../src/api.ts\\\";\n\nfor (const [name, lookup] of [[\\\"domain\\\", domainLookup], [\\\"api\\\", apiLookup]]) {\n  test(\"'`${name}: preserves falsy values and root primitives`, () => {\n    for (const value of [false, 0, \"\", null, undefined]) {\n      assert.equal(lookup({ value }, \"/value\"), value);\n      assert.equal(lookup([value], \"/0\"), value);\n      assert.equal(lookup(value, \"\"), value);\n      assert.throws(() => lookup({ value }, \"/value/child\"));\n    }\n  });\n\n  test(`${name}: decodes pointer tokens in order and rejects invalid escapes`, () => {\n    const document = { \"\": { \"a/b\": { \"~\": 0 } }, \"~1\": false };\n    assert.equal(lookup(document, \"//a~1b/~0\"), 0);\n    assert.equal(lookup(document, \"/~01\"), false);\n    for (const pointer of [\"a\", \"#/a\", \"/~\", \"/~2\", \"/a~1~x\"]) {\n      assert.throws(() => lookup(document, pointer));\n    }\n  });\n\n  test(`${name}: requires own keys and existing canonical array indices`, () => {\n    const document = Object.assign(Object.create({ inherited: 1 }), { own: 0 });\n    assert.equal(lookup(document, \"/own\"), 0);\n    for (const pointer of [\"/inherited\", \"/toString\", \"/missing\", \"/__proto__\"]) {\n      assert.throws(() => lookup(document, pointer));\n    }\n    assert.equal(lookup({ \"01\": false }, \"/01\"), false);\n    const array = [0, false];\n    assert.equal(lookup(array, \"/0\"), 0);\n    assert.equal(lookup(array, \"/1\"), false);\n    for (const key of [\"\", \"01\", \"-\", \"-1\", \"+0\", \"1.0\", \"1e0\", \" 0\", \"0'\"\\\\n\\\", \\\"2\\\", \\\"999999999999999999999\\\", \\\"length\\\"]) {\n      assert.throws(() => lookup(array, \"'`/${key}`));\n    }\n    assert.throws(() => lookup(new Array(1), \"/0\"));\n  });\n\n  test(`${name}: returns independent deep copies for root and nested values`, () => {\n    for (const pointer of [\"\", \"/nested\"]) {\n      const document = { nested: { items: [{ enabled: false }] } };\n      const result = lookup(document, pointer);\n      const selected = pointer === \"\" ? result.nested : result;\n      selected.items[0].enabled = true;\n      selected.items.push({ enabled: true });\n      assert.deepEqual(document, { nested: { items: [{ enabled: false }] } });\n    }\n  });\n}\nEOF\nnode --test tests/*.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_7",
+        "command": "/bin/bash -lc 'git diff --check; git diff --stat; git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "tests/smoke.test.mjs",
+      "AGENTS.md"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "post_execution_context_audit": {
+    "schema_version": 1,
+    "phase": "post_codex_pre_grader",
+    "started_at_utc": "2026-10-17T23:05:48.963481+00:00",
+    "captured_at_utc": "2026-10-17T23:05:48.974191+00:00",
+    "capture_wall_seconds": 0.010697631999846635,
+    "events_sha256": "f1d21dc2e199b8f8a38c19e90f05ab5b094b1404149f968066e10adf96d7a650",
+    "applicable": true,
+    "observed_memglide_call_count": 1,
+    "observed_fetch_context_call_count": 1,
+    "response_available_count": 1,
+    "call_error_count": 0,
+    "file_observation_count": 13,
+    "comparison_counts": {
+      "match": 10,
+      "mismatch": 1,
+      "unknown": 2
+    },
+    "event_errors": [],
+    "calls": [
+      {
+        "native_call_id": "item_2",
+        "server": "memglide",
+        "tool": "fetch_context",
+        "native_status": "completed",
+        "event_lines": [
+          6,
+          7
+        ],
+        "retrieval_id": "ec1dc9dde967440ca52f5f100b8f8ab1",
+        "response_available": true,
+        "errors": [],
+        "files": [
+          {
+            "path": "src/strict_pointer_lookup.ts",
+            "returned_source_sha256": "b0349a443628a234f0b6447db06a97e3dab12114a774829c11d2933d47882937",
+            "post_execution_source_sha256": "e5de4564758f6ab3e2995c03306e33810b143de3f365e516654484173c9fbb5c",
+            "observed_at_utc": "2026-10-17T23:05:48.965895+00:00",
+            "comparison": "mismatch",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/api.ts",
+            "returned_source_sha256": "f12584e3cb336444472f0193641ff19dddaa4925008f5d434fac65c075233a37",
+            "post_execution_source_sha256": "f12584e3cb336444472f0193641ff19dddaa4925008f5d434fac65c075233a37",
+            "observed_at_utc": "2026-10-17T23:05:48.967127+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "tsconfig.json",
+            "returned_source_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+            "post_execution_source_sha256": null,
+            "observed_at_utc": null,
+            "comparison": "unknown",
+            "unavailable_reason": "Credential, database, state, and non-source paths are excluded"
+          },
+          {
+            "path": "package.json",
+            "returned_source_sha256": "3d86cadabd667f4def3e28712be44f6b913d9304fd1fb0e8eeadfc21b680f583",
+            "post_execution_source_sha256": null,
+            "observed_at_utc": null,
+            "comparison": "unknown",
+            "unavailable_reason": "Credential, database, state, and non-source paths are excluded"
+          },
+          {
+            "path": "src/utf8_feature_cohorts.ts",
+            "returned_source_sha256": "84f9fcb2954447150da9c9350b63a2265b28d61d4d1fba8b343674dfad7c224f",
+            "post_execution_source_sha256": "84f9fcb2954447150da9c9350b63a2265b28d61d4d1fba8b343674dfad7c224f",
+            "observed_at_utc": "2026-10-17T23:05:48.967547+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/quoted_env_values.ts",
+            "returned_source_sha256": "28407ecd71b922ccb2a10b07e2110f8557e86f865435c5edfa57e0c196fabee9",
+            "post_execution_source_sha256": "28407ecd71b922ccb2a10b07e2110f8557e86f865435c5edfa57e0c196fabee9",
+            "observed_at_utc": "2026-10-17T23:05:48.968469+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/casefold_header_collection.ts",
+            "returned_source_sha256": "55bf55386f1d75b9e77068d688df1d3acef506404a694121e0648ae85ad11930",
+            "post_execution_source_sha256": "55bf55386f1d75b9e77068d688df1d3acef506404a694121e0648ae85ad11930",
+            "observed_at_utc": "2026-10-17T23:05:48.969487+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/complete_form_errors.ts",
+            "returned_source_sha256": "e39067e3be46d7854c30526861b34022a488e3a39b17ab7de02a7e86213f0f9f",
+            "post_execution_source_sha256": "e39067e3be46d7854c30526861b34022a488e3a39b17ab7de02a7e86213f0f9f",
+            "observed_at_utc": "2026-10-17T23:05:48.969977+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/repeated_query_values.ts",
+            "returned_source_sha256": "a6c241dd9114e09c8c9259c9792e065d8f2ac4c9e78bb4f2b5a946f96a498178",
+            "post_execution_source_sha256": "a6c241dd9114e09c8c9259c9792e065d8f2ac4c9e78bb4f2b5a946f96a498178",
+            "observed_at_utc": "2026-10-17T23:05:48.970622+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/safe_local_redirects.ts",
+            "returned_source_sha256": "f7096d8652b8f5097b0dfc2b40ac391c1a1fa769b9177d250df2435d4e495702",
+            "post_execution_source_sha256": "f7096d8652b8f5097b0dfc2b40ac391c1a1fa769b9177d250df2435d4e495702",
+            "observed_at_utc": "2026-10-17T23:05:48.971359+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/semantic_version_precedence.ts",
+            "returned_source_sha256": "20a99192c570df2d2771345e4b26f090ddcc7ae542f44929a90cf3bdb3f6b608",
+            "post_execution_source_sha256": "20a99192c570df2d2771345e4b26f090ddcc7ae542f44929a90cf3bdb3f6b608",
+            "observed_at_utc": "2026-10-17T23:05:48.972133+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/specific_route_matching.ts",
+            "returned_source_sha256": "0fde1e9d7208db4cfa2e897ef8709f68440ed010af25554ced5467f8681abb1a",
+            "post_execution_source_sha256": "0fde1e9d7208db4cfa2e897ef8709f68440ed010af25554ced5467f8681abb1a",
+            "observed_at_utc": "2026-10-17T23:05:48.973564+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          },
+          {
+            "path": "src/unicode_ascii_slugs.ts",
+            "returned_source_sha256": "ef87714af73891a2113af56e408df315335669c53accf0080176d061f234d505",
+            "post_execution_source_sha256": "ef87714af73891a2113af56e408df315335669c53accf0080176d061f234d505",
+            "observed_at_utc": "2026-10-17T23:05:48.974164+00:00",
+            "comparison": "match",
+            "unavailable_reason": null
+          }
+        ],
+        "returned_item_count": 13,
+        "unread_hash_only_paths": [],
+        "independently_verified_call_time_freshness": null
+      }
+    ],
+    "independently_verified_call_time_freshness": null,
+    "limitations": [
+      "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+      "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+      "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+      "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+      "Returned snippets are not independently checked for complete bodies or semantic completeness."
+    ]
+  },
+  "post_execution_audit_wall_seconds": 0.01271922900014033,
+  "post_execution_audit_cpu_seconds": 0.01148826999999919,
+  "protected_file_violations": [],
+  "treatment_valid": true,
+  "common_blocker": null,
+  "finished_at": "2026-10-17T23:05:49.819869+00:00",
+  "end_to_end_wall_seconds": 29.05738153500033
+}

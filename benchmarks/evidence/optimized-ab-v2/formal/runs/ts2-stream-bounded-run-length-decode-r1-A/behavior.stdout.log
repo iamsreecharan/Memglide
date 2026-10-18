@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: copies and zero runs
+ok 1 - copies and zero runs
+  ---
+  duration_ms: 5.43491
+  type: 'test'
+  ...
+# Subtest: strict counts cap and overflow
+ok 2 - strict counts cap and overflow
+  ---
+  duration_ms: 1.3001
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 268.266765

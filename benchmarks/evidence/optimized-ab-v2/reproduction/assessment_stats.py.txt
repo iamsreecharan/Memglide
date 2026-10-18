@@ -1,0 +1,150 @@
+"""Offline-only descriptive statistics for the frozen experiment.
+
+Preparation is allowed during measurement; execute only after root ends the run.
+This helper imports no application or benchmark code and makes no model calls.
+"""
+
+from __future__ import annotations
+
+import argparse
+import collections
+import hashlib
+import json
+import math
+import statistics
+from pathlib import Path
+from typing import Any
+
+NON_ADDITIVE = {
+    "process_tree_peak_rss_bytes", "memglide_peak_rss_bytes", "cached_input_fraction",
+    "context_freshness", "retrieval_completeness", "probe_target_path_coverage_fraction",
+    "probe_expected_symbol_coverage_fraction",
+}
+
+
+def number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+
+def measurement(row: dict, name: str) -> int | float | None:
+    metrics = row.get("metrics") or {}
+    if name in {"uncached_input_tokens", "cached_input_fraction"}:
+        total, cached = metrics.get("input_tokens"), metrics.get("cached_input_tokens")
+        if not (number(total) and number(cached) and 0 <= cached <= total):
+            return None
+        return total - cached if name == "uncached_input_tokens" else cached / total if total else None
+    return metrics.get(name)
+
+
+def descriptive(values: list, additive: bool = True) -> dict:
+    observed = sorted(value for value in values if number(value))
+    n, missing = len(observed), len(values) - len(observed)
+    return {
+        "n": n, "missing": missing,
+        "mean": statistics.mean(observed) if n else None,
+        "median": statistics.median(observed) if n else None,
+        "p95": observed[math.ceil(0.95 * n) - 1] if n else None,
+        "min": observed[0] if n else None, "max": observed[-1] if n else None,
+        "known_subtotal": sum(observed) if n and additive else None,
+        "total": sum(observed) if n and not missing and additive else None,
+    }
+
+
+def summarize(rows: list[dict], metrics: list[str]) -> dict:
+    attempted = [row for row in rows if row.get("attempted") is True]
+    success = sum(row.get("successful") is True for row in attempted)
+    graded = sum(isinstance(row.get("successful"), bool) for row in attempted)
+    return {
+        "planned": len(rows), "attempted": len(attempted), "not_run": len(rows) - len(attempted),
+        "grader_passed": success, "graded": graded, "ungraded": len(attempted) - graded,
+        "completion_rate_all_attempted": success / len(attempted) if attempted else None,
+        "graded_only_pass_rate": success / graded if graded else None,
+        "status_counts": dict(collections.Counter(row.get("status") for row in rows)),
+        "fidelity_counts": dict(collections.Counter(str((row.get("treatment_fidelity") or {}).get("valid")) for row in attempted)),
+        "metrics": {name: descriptive([measurement(row, name) for row in attempted], name not in NON_ADDITIVE) for name in metrics},
+    }
+
+
+def paired(pairs: list[tuple[dict, dict]], metrics: list[str]) -> dict:
+    output = {}
+    for name in metrics:
+        eligible = [(measurement(a, name), measurement(b, name)) for a, b in pairs if number(measurement(a, name)) and number(measurement(b, name))]
+        aa, bb = [a for a, _ in eligible], [b for _, b in eligible]
+        output[name] = {
+            "n": len(eligible), "missing_pairs": len(pairs) - len(eligible),
+            "A": descriptive(aa, name not in NON_ADDITIVE), "B": descriptive(bb, name not in NON_ADDITIVE),
+            "B_minus_A": descriptive([b - a for a, b in eligible], False),
+            "individual_B_divided_by_A": descriptive([b / a for a, b in eligible if a > 0], False),
+            "ratio_of_matched_sums": sum(bb) / sum(aa) if aa and sum(aa) > 0 else None,
+            "B_lower": sum(b < a for a, b in eligible), "equal": sum(b == a for a, b in eligible), "B_higher": sum(b > a for a, b in eligible),
+        }
+    return {"pairs": len(pairs), "metrics": output}
+
+
+def analyze(report: dict) -> dict:
+    rows = report["runs"]
+    metrics = list(report["aggregates"]["A"]["metrics"]) + ["uncached_input_tokens", "cached_input_fraction"]
+    index = {(row["task_id"], row["repeat"], row["configuration"]): row for row in rows}
+    if len(index) != len(rows):
+        raise ValueError("Duplicate original task/repeat/configuration identity")
+    pairs = [(index[p["task_id"], p["repeat"], "A"], index[p["task_id"], p["repeat"], "B"]) for p in report["paired_comparisons"]["pairs"]]
+    def arms(group):
+        return {arm: summarize([r for r in group if r["configuration"] == arm], metrics) for arm in ["A", "B"]}
+    strata, paired_strata = {}, {}
+    for dimension, key in [("language", "language"), ("repeat", "repeat"), ("repository", "repository")]:
+        values = sorted({row.get(key) for row in rows}, key=str)
+        strata[dimension] = {str(v): arms([r for r in rows if r.get(key) == v]) for v in values}
+        paired_strata[dimension] = {str(v): paired([(a, b) for a, b in pairs if a.get(key) == v], metrics) for v in values}
+    paired_strata["arm_order"] = {
+        label: paired([(a, b) for a, b in pairs if (a["order"] < b["order"]) == (label == "A_first")], metrics)
+        for label in ["A_first", "B_first"]
+    }
+    strata["position_within_pair"] = {}
+    for position in ["first", "second"]:
+        group = []
+        for row in rows:
+            opposite = index.get((row["task_id"], row["repeat"], "B" if row["configuration"] == "A" else "A"))
+            if opposite and number(row.get("order")) and number(opposite.get("order")):
+                if (row["order"] < opposite["order"]) == (position == "first"):
+                    group.append(row)
+        strata["position_within_pair"][position] = arms(group)
+    calls = [call for row in rows for call in (row.get("telemetry") or {}).get("mcp_calls", [])]
+    audits = [row.get("post_execution_context_audit") for row in rows if isinstance(row.get("post_execution_context_audit"), dict)]
+    audit_counts = collections.Counter()
+    for audit in audits:
+        audit_counts.update(audit.get("comparison_counts", {}))
+    return {
+        "p95_method": "Nearest rank ceil(0.95*n), sorted observations, one-indexed; descriptive only.",
+        "ratio_definition": "Sum matched B values / sum matched A values, separate from mean individual B/A ratios. RSS is a ratio of paired means, not cumulative memory.",
+        "all_attempted": arms(rows), "verified_pairs": paired(pairs, metrics),
+        "all_attempted_strata": strata, "verified_pair_strata": paired_strata,
+        "excluded_pairs": report["paired_comparisons"]["excluded_pairs"],
+        "noncompleted_runs": [{k: row.get(k) for k in ["run_id", "task_id", "configuration", "repeat", "order", "status", "attempted", "successful", "errors", "treatment_fidelity"]} for row in rows if row.get("status") != "completed"],
+        "MCP": {
+            "observed_tools": dict(collections.Counter(call.get("tool") for call in calls)),
+            "observed_tool_outcomes": dict(collections.Counter(str(call.get("successful")) for call in calls)),
+            "observed_fetch_context_successes": sum((row.get("telemetry") or {}).get("memglide_successful_fetch_context_count", 0) or 0 for row in rows),
+            "observed_verify_context_successes": sum((row.get("telemetry") or {}).get("memglide_successful_verify_context_count", 0) or 0 for row in rows),
+        },
+        "post_exit_hash_audit": {
+            "runs_with_audit": len(audits), "comparison_counts": dict(audit_counts),
+            "call_time_freshness": None,
+            "scope": "Independent source observation after Codex exits and before grader mutations. A mismatch can reflect an intended edit; equality is not continuous or earlier call-time freshness.",
+        },
+        "supplemental_attempts_not_pooled": len(report.get("supplemental_runs", [])),
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("report", type=Path)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    raw = args.report.read_bytes()
+    report = json.loads(raw)
+    result = {"source_report": str(args.report), "source_sha256": hashlib.sha256(raw).hexdigest(), **analyze(report)}
+    args.output.write_text(json.dumps(result, indent=2) + "\n")
+
+
+if __name__ == "__main__":
+    main()

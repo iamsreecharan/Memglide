@@ -1,0 +1,9 @@
+{
+  "sequence": 111,
+  "previous_sha256": "e9a493c562eedee9b36ed02eb2df3369c3a996fa3000a52bf9b3f617f37bff08",
+  "recorded_at": "2026-10-17T23:34:16.662131+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "py2-workflow-capped-backoff-r1-B",
+  "result_sha256": "a1f85e871e1e44b1591157b8e628e1c14fd01d35f9e0e3ad6d1e1c1d7b8606a4",
+  "sha256": "9f7c89917caeaf1f4fdabd7a37bf3570004d311a1ccc68c6882f087ffc2b5604"
+}

@@ -1,0 +1,1 @@
+{"summary":"Implemented exact integer-cent parsing with safe-range checks and normalized negative zero. API now propagates parsing errors. Added regression tests for both entry points; preserved existing tests and made no commits.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

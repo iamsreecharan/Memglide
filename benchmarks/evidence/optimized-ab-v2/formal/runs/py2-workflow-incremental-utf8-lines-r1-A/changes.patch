@@ -1,0 +1,34 @@
+diff --git a/workflow/incremental_utf8_lines.py b/workflow/incremental_utf8_lines.py
+index d3bade5..ddb07ce 100644
+--- a/workflow/incremental_utf8_lines.py
++++ b/workflow/incremental_utf8_lines.py
+@@ -1,5 +1,25 @@
++import codecs
++
++
+ def decode_lines(chunks):
+-    text="".join(chunk.decode("utf-8") for chunk in chunks)
+-    lines=text.split("\n")
+-    if lines and lines[-1]=="": lines.pop()
+-    return [line.removesuffix("\r") for line in lines]
++    """Decode strict UTF-8 chunks into LF-delimited lines."""
++    decoder = codecs.getincrementaldecoder("utf-8")(errors="strict")
++    lines = []
++    fragments = []
++
++    def consume(text):
++        parts = text.split("\n")
++        for part in parts[:-1]:
++            fragments.append(part)
++            line = "".join(fragments)
++            lines.append(line[:-1] if line.endswith("\r") else line)
++            fragments.clear()
++        if parts[-1]:
++            fragments.append(parts[-1])
++
++    for chunk in chunks:
++        consume(decoder.decode(chunk))
++    consume(decoder.decode(b"", final=True))
++    if fragments:
++        lines.append("".join(fragments))
++    return lines

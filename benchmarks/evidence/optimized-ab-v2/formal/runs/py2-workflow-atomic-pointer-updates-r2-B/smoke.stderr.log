@@ -1,0 +1,21 @@
+test_empty_batch_returns_deep_copy (test_atomic_pointer_updates.AtomicPointerUpdatesTests.test_empty_batch_returns_deep_copy) ... ok
+test_escaped_and_empty_keys (test_atomic_pointer_updates.AtomicPointerUpdatesTests.test_escaped_and_empty_keys) ... ok
+test_invalid_pointers_fail_atomically (test_atomic_pointer_updates.AtomicPointerUpdatesTests.test_invalid_pointers_fail_atomically) ... ok
+test_missing_paths_fail_atomically (test_atomic_pointer_updates.AtomicPointerUpdatesTests.test_missing_paths_fail_atomically) ... ok
+test_result_is_detached_from_all_inputs (test_atomic_pointer_updates.AtomicPointerUpdatesTests.test_result_is_detached_from_all_inputs) ... ok
+test_root_replacement_and_sequential_updates (test_atomic_pointer_updates.AtomicPointerUpdatesTests.test_root_replacement_and_sequential_updates) ... ok
+test_atomic_pointer_updates (test_smoke.SmokeTests.test_atomic_pointer_updates) ... ok
+test_bounded_async_execution (test_smoke.SmokeTests.test_bounded_async_execution) ... ok
+test_capped_backoff (test_smoke.SmokeTests.test_capped_backoff) ... ok
+test_deep_settings_overlay (test_smoke.SmokeTests.test_deep_settings_overlay) ... ok
+test_deterministic_build_order (test_smoke.SmokeTests.test_deterministic_build_order) ... ok
+test_incremental_utf8_lines (test_smoke.SmokeTests.test_incremental_utf8_lines) ... ok
+test_interval_coalescing (test_smoke.SmokeTests.test_interval_coalescing) ... ok
+test_ready_job_order (test_smoke.SmokeTests.test_ready_job_order) ... ok
+test_strict_template_expansion (test_smoke.SmokeTests.test_strict_template_expansion) ... ok
+test_utf8_batch_budget (test_smoke.SmokeTests.test_utf8_batch_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.003s
+
+OK

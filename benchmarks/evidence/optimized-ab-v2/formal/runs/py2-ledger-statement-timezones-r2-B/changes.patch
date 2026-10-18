@@ -1,0 +1,35 @@
+diff --git a/ledger/statement_timezones.py b/ledger/statement_timezones.py
+index 6b2c4cf..15ab68d 100644
+--- a/ledger/statement_timezones.py
++++ b/ledger/statement_timezones.py
+@@ -1,6 +1,27 @@
+ from copy import deepcopy
+-from datetime import datetime
++from datetime import datetime, timedelta
++
++
++def _instant(value):
++    if not isinstance(value, datetime):
++        raise ValueError("aware ordered datetimes required")
++    offset = value.utcoffset()
++    if offset is None:
++        raise ValueError("aware ordered datetimes required")
++    # Use a duration so normalization also works at datetime's date limits.
++    return timedelta(days=value.toordinal(), hours=value.hour,
++                     minutes=value.minute, seconds=value.second,
++                     microseconds=value.microsecond) - offset
++
++
+ def statement(records, start, end):
+-    if any(not isinstance(value,datetime) or value.utcoffset() is None for value in [start,end]+[r["at"] for r in records]) or start > end:
++    start_instant, end_instant = _instant(start), _instant(end)
++    if start_instant > end_instant:
+         raise ValueError("aware ordered datetimes required")
+-    return sorted([deepcopy(r) for r in records if start <= r["at"] <= end], key=lambda r: r["at"])
++    selected = []
++    for record in records:
++        instant = _instant(record["at"])
++        if start_instant <= instant < end_instant:
++            selected.append((instant, record))
++    selected.sort(key=lambda item: item[0])
++    return [deepcopy(record) for _, record in selected]

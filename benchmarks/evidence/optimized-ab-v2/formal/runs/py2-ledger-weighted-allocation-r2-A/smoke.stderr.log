@@ -1,0 +1,17 @@
+test_atomic_transfer (test_smoke.SmokeTests.test_atomic_transfer) ... ok
+test_audit_hash_chain (test_smoke.SmokeTests.test_audit_hash_chain) ... ok
+test_csv_bank_import (test_smoke.SmokeTests.test_csv_bank_import) ... ok
+test_currency_netting (test_smoke.SmokeTests.test_currency_netting) ... ok
+test_invoice_line_discounts (test_smoke.SmokeTests.test_invoice_line_discounts) ... ok
+test_nested_redaction (test_smoke.SmokeTests.test_nested_redaction) ... ok
+test_reconciliation_version_merge (test_smoke.SmokeTests.test_reconciliation_version_merge) ... ok
+test_signed_tax_rounding (test_smoke.SmokeTests.test_signed_tax_rounding) ... ok
+test_statement_timezones (test_smoke.SmokeTests.test_statement_timezones) ... ok
+test_weighted_allocation (test_smoke.SmokeTests.test_weighted_allocation) ... ok
+test_invalid_inputs_through_both_entry_points (test_weighted_allocation.WeightedAllocationTests.test_invalid_inputs_through_both_entry_points) ... ok
+test_largest_remainders_through_both_entry_points (test_weighted_allocation.WeightedAllocationTests.test_largest_remainders_through_both_entry_points) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.002s
+
+OK

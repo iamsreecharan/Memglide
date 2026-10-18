@@ -1,0 +1,11 @@
+{
+  "sequence": 46,
+  "previous_sha256": "15c9be1c80fb8f963d0f8f71d1c51559b1c8b69d84be36cdbf401660f30dfc25",
+  "recorded_at": "2026-10-17T23:16:28.802512+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-config-repeated-query-values-r1-A",
+  "original_run_id": "ts2-config-repeated-query-values-r1-A",
+  "supplemental": false,
+  "start_sha256": "66438b50191b00c3942fee0e630eb56a0b0b88ef2ece77f4e32fb9f1814bc080",
+  "sha256": "8056c9b3a63d38e976c18966c6ed9544f994d2b27e74a3d76735ff58b9ed28a4"
+}

@@ -1,0 +1,16 @@
+diff --git a/src/strict_pointer_lookup.ts b/src/strict_pointer_lookup.ts
+index a5a5ba6..3335c91 100644
+--- a/src/strict_pointer_lookup.ts
++++ b/src/strict_pointer_lookup.ts
+@@ -4,10 +4,9 @@ export function lookup(document:unknown,pointer:string):unknown{
+   let current:unknown=document;
+   for(const encoded of pointer.slice(1).split("/")){
+     const key=encoded.replace(/~1/g,"/").replace(/~0/g,"~");
+-    if(Array.isArray(current)){if(!/^(0|[1-9]\d*)$(?![\s\S])/.test(key)||Number(key)>=current.length)throw new Error("missing index");current=current[Number(key)];}
++    if(Array.isArray(current)){if(!/^(0|[1-9]\d*)$(?![\s\S])/.test(key)||Number(key)>=current.length||!Object.hasOwn(current,key))throw new Error("missing index");current=current[Number(key)];}
+     else if(current!==null&&typeof current==="object"&&Object.hasOwn(current,key))current=(current as Record<string,unknown>)[key];
+     else throw new Error("missing key");
+-    if(!current)throw new Error("missing value");
+   }
+   return structuredClone(current);
+ }

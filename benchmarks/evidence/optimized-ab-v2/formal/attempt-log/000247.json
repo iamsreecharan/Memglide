@@ -1,0 +1,9 @@
+{
+  "sequence": 247,
+  "previous_sha256": "d7f630b3019ee23a93f4e407f115f5a42638cba373971e51c0bc88e477654a10",
+  "recorded_at": "2026-10-18T00:08:20.211578+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts2-stream-event-time-rolling-counts-r2-A",
+  "result_sha256": "bf1ef30486f4c65ae72a19691b566da59a65e3559b3df65a7151077c45f9e705",
+  "sha256": "bc2864f20693b376059ead9666ce3eaa7359f982a26a1bfad17b7553872a1d1b"
+}

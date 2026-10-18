@@ -1,0 +1,1 @@
+{"summary":"Updated query parsing to accumulate repeated values and preserve flags through the public adapter. Added regression coverage for decoding, empty fields, prototype-looking keys, malformed escapes, and adapter consistency. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

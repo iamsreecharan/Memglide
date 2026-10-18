@@ -1,0 +1,7 @@
+test_cycles_and_input (__main__.BehaviorTests.test_cycles_and_input) ... ok
+test_dependencies_ready_ties_and_external_nodes (__main__.BehaviorTests.test_dependencies_ready_ties_and_external_nodes) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+OK

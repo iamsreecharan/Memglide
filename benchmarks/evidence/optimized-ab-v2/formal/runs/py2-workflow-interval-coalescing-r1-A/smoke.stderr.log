@@ -1,0 +1,18 @@
+test_contract_through_domain_and_api (test_interval_coalescing.IntervalCoalescingTests.test_contract_through_domain_and_api) ... ok
+test_preserves_input_and_returns_fresh_lists (test_interval_coalescing.IntervalCoalescingTests.test_preserves_input_and_returns_fresh_lists) ... ok
+test_reversed_bounds_raise_even_inside_an_overlap (test_interval_coalescing.IntervalCoalescingTests.test_reversed_bounds_raise_even_inside_an_overlap) ... ok
+test_atomic_pointer_updates (test_smoke.SmokeTests.test_atomic_pointer_updates) ... ok
+test_bounded_async_execution (test_smoke.SmokeTests.test_bounded_async_execution) ... ok
+test_capped_backoff (test_smoke.SmokeTests.test_capped_backoff) ... ok
+test_deep_settings_overlay (test_smoke.SmokeTests.test_deep_settings_overlay) ... ok
+test_deterministic_build_order (test_smoke.SmokeTests.test_deterministic_build_order) ... ok
+test_incremental_utf8_lines (test_smoke.SmokeTests.test_incremental_utf8_lines) ... ok
+test_interval_coalescing (test_smoke.SmokeTests.test_interval_coalescing) ... ok
+test_ready_job_order (test_smoke.SmokeTests.test_ready_job_order) ... ok
+test_strict_template_expansion (test_smoke.SmokeTests.test_strict_template_expansion) ... ok
+test_utf8_batch_budget (test_smoke.SmokeTests.test_utf8_batch_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.002s
+
+OK

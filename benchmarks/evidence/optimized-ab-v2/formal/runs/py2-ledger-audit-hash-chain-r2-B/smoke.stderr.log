@@ -1,0 +1,18 @@
+test_change_propagates_to_every_later_digest (test_audit_hash_chain.AuditHashChainTests.test_change_propagates_to_every_later_digest) ... ok
+test_empty_and_repeated_events (test_audit_hash_chain.AuditHashChainTests.test_empty_and_repeated_events) ... ok
+test_exact_canonical_utf8_chain_and_input_preservation (test_audit_hash_chain.AuditHashChainTests.test_exact_canonical_utf8_chain_and_input_preservation) ... ok
+test_atomic_transfer (test_smoke.SmokeTests.test_atomic_transfer) ... ok
+test_audit_hash_chain (test_smoke.SmokeTests.test_audit_hash_chain) ... ok
+test_csv_bank_import (test_smoke.SmokeTests.test_csv_bank_import) ... ok
+test_currency_netting (test_smoke.SmokeTests.test_currency_netting) ... ok
+test_invoice_line_discounts (test_smoke.SmokeTests.test_invoice_line_discounts) ... ok
+test_nested_redaction (test_smoke.SmokeTests.test_nested_redaction) ... ok
+test_reconciliation_version_merge (test_smoke.SmokeTests.test_reconciliation_version_merge) ... ok
+test_signed_tax_rounding (test_smoke.SmokeTests.test_signed_tax_rounding) ... ok
+test_statement_timezones (test_smoke.SmokeTests.test_statement_timezones) ... ok
+test_weighted_allocation (test_smoke.SmokeTests.test_weighted_allocation) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.002s
+
+OK

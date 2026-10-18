@@ -1,0 +1,1 @@
+{"summary":"Implemented strict incremental UTF-8 decoding with correct LF/CRLF handling and final-line behavior. Added regression coverage for both domain and public API entry points. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed, including existing smoke tests.","git diff --check — passed."]}

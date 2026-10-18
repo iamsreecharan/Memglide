@@ -1,0 +1,8 @@
+{
+  "sequence": 6,
+  "previous_sha256": "803edf818bc07eecff04ebac3b5e8b88df4d4ed810667b63f3750a7a0a2a2c85",
+  "recorded_at": "2026-10-17T23:00:53.889314+00:00",
+  "event": "experiment.finished",
+  "report_sha256": "99acbf09a3865bdadb57810753619d6ba6da8797522e51653dd06353333a64a1",
+  "sha256": "e1b02fb3722268b8b9b895cf339c922213a000cd4aeed3f105cfb2a097320dda"
+}

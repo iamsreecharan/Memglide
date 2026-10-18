@@ -1,0 +1,1 @@
+{"summary":"Updated domain and API behavior: last row wins while keys retain first insertion order. Special keys and falsy payloads are preserved, results are deep copies, and input remains unchanged. Added regression tests; no commits made.","tests_run":["node --test tests/*.test.mjs — passed smoke and regression tests","git diff --check — passed"]}

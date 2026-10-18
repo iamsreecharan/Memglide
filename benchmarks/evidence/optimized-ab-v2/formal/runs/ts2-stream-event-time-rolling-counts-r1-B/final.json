@@ -1,0 +1,1 @@
+{"summary":"Updated rolling counts to consider all events regardless of arrival order, preserving inputs and output order. Added regression coverage for both domain and API entry points. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regressions","git diff --check — passed"]}

@@ -1,0 +1,39 @@
+diff --git a/workflow/atomic_pointer_updates.py b/workflow/atomic_pointer_updates.py
+index 0f8cd96..cc4f902 100644
+--- a/workflow/atomic_pointer_updates.py
++++ b/workflow/atomic_pointer_updates.py
+@@ -1,12 +1,25 @@
+ from copy import deepcopy
+ import re
+-def apply_updates(document,updates):
+-    result=deepcopy(document)
+-    for pointer,value in updates:
+-        if pointer=="": result=deepcopy(value); continue
+-        if not pointer.startswith("/") or re.search(r"~(?![01])",pointer): raise ValueError("invalid pointer")
+-        parts=[part.replace("~1","/").replace("~0","~") for part in pointer[1:].split("/")]
+-        current=result
+-        for part in parts[:-1]: current=current[part]
+-        current[parts[-1]]=value
++
++
++def apply_updates(document, updates):
++    """Apply replacements in order to a detached copy, or raise on failure."""
++    result = deepcopy(document)
++    for pointer, value in updates:
++        if pointer == "":
++            result = deepcopy(value)
++            continue
++        if not isinstance(pointer, str) or not pointer.startswith("/") or re.search(r"~(?![01])", pointer):
++            raise ValueError("invalid pointer")
++        parts = [part.replace("~1", "/").replace("~0", "~")
++                 for part in pointer[1:].split("/")]
++        current = result
++        for part in parts[:-1]:
++            if not isinstance(current, dict) or part not in current:
++                raise KeyError(part)
++            current = current[part]
++        leaf = parts[-1]
++        if not isinstance(current, dict) or leaf not in current:
++            raise KeyError(leaf)
++        current[leaf] = deepcopy(value)
+     return result

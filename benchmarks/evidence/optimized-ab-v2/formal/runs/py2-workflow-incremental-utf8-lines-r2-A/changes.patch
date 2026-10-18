@@ -1,0 +1,32 @@
+diff --git a/workflow/incremental_utf8_lines.py b/workflow/incremental_utf8_lines.py
+index d3bade5..d97f9a8 100644
+--- a/workflow/incremental_utf8_lines.py
++++ b/workflow/incremental_utf8_lines.py
+@@ -1,5 +1,23 @@
++import codecs
++
++
+ def decode_lines(chunks):
+-    text="".join(chunk.decode("utf-8") for chunk in chunks)
+-    lines=text.split("\n")
+-    if lines and lines[-1]=="": lines.pop()
+-    return [line.removesuffix("\r") for line in lines]
++    decoder = codecs.getincrementaldecoder("utf-8")(errors="strict")
++    lines = []
++    fragments = []
++    for chunk in chunks:
++        parts = decoder.decode(chunk).split("\n")
++        for part in parts[:-1]:
++            fragments.append(part)
++            line = "".join(fragments)
++            lines.append(line.removesuffix("\r"))
++            fragments.clear()
++        if parts[-1]:
++            fragments.append(parts[-1])
++
++    # Finalization rejects incomplete codepoints buffered at the end of input.
++    fragments.append(decoder.decode(b"", final=True))
++    final_line = "".join(fragments)
++    if final_line:
++        lines.append(final_line)
++    return lines

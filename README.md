@@ -50,6 +50,12 @@ The setup command registers the local STDIO command and refuses to overwrite an 
 
 An MCP server controls context returned by its tools. It cannot remove or rewrite Codex conversation history or access hidden model reasoning. A smaller retrieval response does **not** establish a reduction in total billed model tokens.
 
+An optional [project-bound agent profile](docs/mcp.md#optional-project-bound-agent-profile)
+offers two tools, compact source responses and on-demand freshness verification.
+Register it with `uv run memglide setup codex --project PROJECT_ID` after approving
+that repository. Existing Codex registrations are preserved; inspect them before
+deliberately switching profiles. The full fourteen-tool interface remains the default.
+
 ## Verify and develop
 
 ```sh
@@ -62,6 +68,26 @@ npm --prefix frontend run build
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for browser tests and packaging. [PROGRESS.md](PROGRESS.md) records observed validation and outstanding limitations; source-file presence alone is not a completion claim.
 
+The latest [optimized A/B assessment](benchmarks/optimized-ab-assessment.md) and
+[individual results](benchmarks/codex-ab-optimized.json) cover **40 fresh coding
+tasks, four purpose-built repositories and two repeats: 160 runs** using native
+`codex exec`. Both configurations passed 80/80; all 80 Memglide runs actually
+retrieved source through MCP. Memglide used **32.8% more total input tokens** and
+took **17.9% longer including indexing** on average. Uncached input increased
+2.2%, while output increased 5.3%; cached input is included in total input.
+There is no demonstrated task-success, token or speed advantage on this corpus.
+Billed cost and cost per successful task remain unavailable.
+
+The implementation passed [623 distinct application and tooling checks](benchmarks/optimization-validation-v2.md),
+including frontend, production-browser, security and actual MCP integration.
+[Research and rejected alternatives](benchmarks/optimization-research-v2.md),
+[retrieval component measurements](benchmarks/optimization-component-v2.md),
+[body-completeness checks](benchmarks/compact-quality-v2.md) and
+[live context observations](benchmarks/codex-optimized-context.md) document the
+changes and their limits. Component gains do not establish a Codex efficiency
+gain. The [downloadable report bundle](benchmarks/memglide-ab-optimized-report.zip)
+includes the reports and raw evidence. Earlier experiments below remain historical.
+
 The [Codex A/B benchmark](benchmarks/README.md) provides 24 Python/TypeScript tasks,
 isolated runs, independent grading and conservative telemetry. The retained
 [Markdown report](benchmarks/report.md) and [JSON report](benchmarks/report.json)
@@ -70,7 +96,7 @@ record the original authentication-blocked live experiment. The
 [JSON evidence index](benchmarks/improvements.json) cover the subsequent fixes,
 strategy comparisons, performance measurements and retained regressions.
 Declared-target coverage in independent MCP probes improved from 16/24 to 24/24.
-The [current refinement assessment](benchmarks/refinements.md) records subsequent
+The [earlier refinement assessment](benchmarks/refinements.md) records subsequent
 performance, lifecycle and dashboard fixes, including failed retrieval cases and
 reused validation after correcting selection defects. The
 [earlier Codex attempt](benchmarks/codex-ab-refined.md) retains the original

@@ -1,0 +1,384 @@
+#!/usr/bin/env python3
+"""After measurements finish, check or publish only explicit V2 text evidence.
+
+Default is check-only. --publish copies into a fresh directory after every
+selected file has passed validation. This helper never runs models, tests,
+repository code, or database queries. No directory is copied recursively.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_OUTPUT = ROOT / "benchmarks/evidence/optimized-ab-v2"
+EXPERIMENTS = (
+    ("formal", ".local/optimization-v2/formal-40-v1", 160, False),
+    ("compact-pilot-1", ".local/optimization-v2/compact-pilot-1", 2, True),
+    ("compact-pilot-2", ".local/optimization-v2/compact-pilot-2", 2, False),
+)
+TOP_FILES = (
+    "plan.json", "metadata.json", "state.json", "runs.json", "supplemental-runs.json",
+    "final-response-schema.json", "report.json", "report.md",
+)
+INVOCATION_FILES = (
+    "prompt.txt", "command.json", "events.jsonl", "stderr.log", "final.json",
+    "process-identity.json", "launch-grant.json", "result.json",
+)
+RUN_FILES = (
+    *INVOCATION_FILES, "attempt-start.json", "post-execution-source-audit.json",
+    "grade.json", "held_out.py", "held_out.test.mjs",
+    "behavior.stdout.log", "behavior.stderr.log", "smoke.stdout.log", "smoke.stderr.log",
+    "typecheck.stdout.log", "typecheck.stderr.log", "changes.patch", "git-status.txt",
+    "untracked-files.json",
+)
+EXTRA_FILES = (
+    (".local/optimization-v2/formal-40-v1.log", "progress/formal.log"),
+    (".local/optimization-v2/compact-pilot-1.log", "progress/compact-pilot-1.log"),
+    (".local/optimization-v2/compact-pilot-2.log", "progress/compact-pilot-2.log"),
+    (".local/optimization-v2/publish_evidence.py", "reproduction/publish_evidence.py.txt"),
+    (".local/optimization-v2/audit_formal.py", "reproduction/audit_formal.py.txt"),
+    (".local/optimization-v2/assessment_stats.py", "reproduction/assessment_stats.py.txt"),
+    (".local/optimization-v2/analyze_context_report.py", "reproduction/analyze_context_report.py.txt"),
+    (".local/optimization-v2/validate_context_report.py", "reproduction/validate_context_report.py.txt"),
+    (".local/optimization-v2/publication-check-1.log", "publisher-check-initial-failure.log"),
+)
+# Add independent review artifacts here only after their exact paths are known.
+INDEPENDENT_AUDIT_FILES: tuple[tuple[str, str], ...] = (
+    ("benchmarks/evidence/optimized-ab-independent-audit.json", "independent-review/audit.json"),
+    ("benchmarks/evidence/optimized-ab-independent-audit.md", "independent-review/audit.md"),
+    ("benchmarks/evidence/optimized-ab-independent-audit.log", "independent-review/audit.log"),
+    ("benchmarks/evidence/optimized-ab-process-completion.json", "independent-review/process-completion.json"),
+)
+OLD_PRESERVATION_MANIFESTS = (
+    "benchmarks/evidence/refinement-baseline-preservation.json",
+    "benchmarks/evidence/refinement-stage1-preservation.json",
+)
+FORBIDDEN_PARTS = {"auth.json", "codex-state", "worktrees", "repositories", "state", "initialization-partials"}
+FORBIDDEN_SUFFIXES = {".db", ".sqlite", ".sqlite3", ".tar", ".tgz", ".gz", ".zip"}
+SAFE_ID = re.compile(r"[A-Za-z0-9_-]+")
+SECRET_PATTERNS = (
+    re.compile(rb"-----BEGIN (?:[A-Z0-9 ]+ )?PRIVATE KEY-----"),
+    re.compile(rb"\bsk-(?:(?:proj|svcacct)-)?[A-Za-z0-9_-]{20,}\b"),
+    re.compile(rb"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
+    re.compile(rb"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b"),
+    re.compile(rb"\beyJ[A-Za-z0-9_-]{6,}\.[A-Za-z0-9_-]{12,}\.[A-Za-z0-9_-]{12,}\b"),
+    re.compile(
+        rb"(?i)(?:OPENAI_API_KEY|ANTHROPIC_API_KEY|api[_-]?key|access[_-]?token|refresh[_-]?token)"
+        rb"[\"'\s]*(?:=|:)[\"'\s]*[A-Za-z0-9_+/=-]{24,}"
+    ),
+)
+
+
+def fail(message: str, path: Path | None = None) -> None:
+    # Never print file content, matched credentials, or parser exception excerpts.
+    suffix = f": {path.relative_to(ROOT)}" if path is not None else ""
+    raise SystemExit(message + suffix)
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def canonical(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+
+
+def safe_source(path: Path) -> None:
+    if not path.is_relative_to(ROOT):
+        fail("Source is outside the repository")
+    if FORBIDDEN_PARTS.intersection(path.relative_to(ROOT).parts) or path.suffix in FORBIDDEN_SUFFIXES:
+        fail("Refusing excluded source", path)
+    current = path
+    while current != ROOT:
+        if current.is_symlink():
+            fail("Refusing a symlink in the source path", path)
+        current = current.parent
+    if not path.is_file():
+        fail("Required evidence is missing", path)
+
+
+def read_text_bytes(path: Path) -> bytes:
+    safe_source(path)
+    data = path.read_bytes()
+    try:
+        data.decode("utf-8")
+    except UnicodeError:
+        fail("Refusing nontext evidence", path)
+    if b"\0" in data:
+        fail("Refusing binary evidence", path)
+    if any(pattern.search(data) for pattern in SECRET_PATTERNS):
+        fail("Potential credential pattern; publication stopped", path)
+    return data
+
+
+def no_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("Duplicate key")
+        result[key] = value
+    return result
+
+
+def read_json(path: Path) -> Any:
+    try:
+        return json.loads(read_text_bytes(path), object_pairs_hook=no_duplicate_keys)
+    except (ValueError, UnicodeError):
+        fail("Invalid evidence JSON", path)
+
+
+def identifier(value: Any) -> str:
+    if not isinstance(value, str) or not SAFE_ID.fullmatch(value):
+        fail("Unsafe or missing attempt identifier")
+    return value
+
+
+@dataclass(frozen=True)
+class Artifact:
+    source: Path
+    destination: Path
+    size: int
+    sha256: str
+
+
+class Collection:
+    def __init__(self) -> None:
+        self.files: dict[str, Artifact] = {}
+        self.missing: list[dict[str, str]] = []
+        self.experiments: dict[str, Any] = {}
+
+    def add(self, source: Path, destination: Path, *, required: bool = False) -> None:
+        if destination.is_absolute() or ".." in destination.parts:
+            fail("Unsafe destination")
+        if FORBIDDEN_PARTS.intersection(destination.parts) or destination.suffix in FORBIDDEN_SUFFIXES:
+            fail("Excluded destination")
+        if not source.exists() and not source.is_symlink():
+            if required:
+                fail("Required evidence is missing", source)
+            self.missing.append({"source": str(source.relative_to(ROOT)), "reason": "Not emitted; inspect run status/language before interpreting absence"})
+            return
+        key = str(destination)
+        if key in self.files:
+            fail("Duplicate destination")
+        data = read_text_bytes(source)
+        self.files[key] = Artifact(source, destination, len(data), sha(data))
+
+    def attempt(self, source: Path, destination: Path) -> None:
+        for name in RUN_FILES:
+            self.add(source / name, destination / name)
+        for name in ("process-identity.json", "launch-grant.json"):
+            path = source / name
+            if path.exists():
+                identity = read_json(path)
+                if set(identity) != {"pid", "process_group", "start_ticks"} or not all(
+                    isinstance(v, int) and not isinstance(v, bool) and v > 0
+                    for v in identity.values()
+                ):
+                    fail("Unexpected process identity schema; review before publishing", path)
+
+    def experiment(self, label: str, source_relative: str, expected: int, strict: bool) -> None:
+        source, destination = ROOT / source_relative, Path(label)
+        metadata = read_json(source / "metadata.json")
+        if not metadata.get("finished_at"):
+            fail("Experiment is not finished; wait for root authorization", source / "metadata.json")
+        plan, state = read_json(source / "plan.json"), read_json(source / "state.json")
+        runs, supplemental = read_json(source / "runs.json"), read_json(source / "supplemental-runs.json")
+        report = read_json(source / "report.json")
+        planned = [identifier(row.get("run_id")) for row in plan["runs"]]
+        if len(planned) != expected or len(set(planned)) != expected:
+            fail("Unexpected plan size or duplicated original assignment", source / "plan.json")
+        if set(state["originals"]) != set(planned):
+            fail("State does not retain the complete original plan", source / "state.json")
+        if len(runs) != expected or {identifier(r.get("run_id")) for r in runs} != set(planned):
+            fail("Run projection does not retain every original", source / "runs.json")
+        if len(report["runs"]) != expected or {identifier(r.get("run_id")) for r in report["runs"]} != set(planned):
+            fail("Report does not retain every original", source / "report.json")
+        if runs != list(state["originals"].values()) or supplemental != state["supplemental"] or supplemental != report.get("supplemental_runs", []):
+            fail("State/projections/supplemental report disagree", source / "state.json")
+        settings = metadata["frozen_manifest"]["settings"]
+        policy_evidence = "Explicit frozen require_verification setting"
+        if "require_verification" in settings:
+            if settings["require_verification"] is not strict:
+                fail("Unexpected pilot/formal verification policy", source / "metadata.json")
+        elif label == "compact-pilot-1" and strict:
+            # This preserved pilot predates the later on-demand flag. Do not
+            # substitute the current default for its original two-call policy.
+            treatment = metadata.get("methodology", {}).get("treatment", "")
+            if "fetch_context and verify_context" not in treatment:
+                fail("Original two-call pilot policy is unverified", source / "metadata.json")
+            policy_evidence = "Older pilot has no require_verification field; its preserved methodology explicitly specifies fetch_context and verify_context"
+        else:
+            fail("Missing frozen verification policy", source / "metadata.json")
+        for name in TOP_FILES:
+            self.add(source / name, destination / name, required=True)
+        for name in INVOCATION_FILES:
+            self.add(source / "preflight" / name, destination / "preflight" / name)
+
+        # Only the narrowly named attempt-log directory and six-digit JSON files
+        # are enumerated. No arbitrary directory contents are copied.
+        logdir = source / "attempt-log"
+        if logdir.is_symlink() or not logdir.is_dir():
+            fail("Missing or unsafe immutable attempt log")
+        names = sorted(p.name for p in logdir.iterdir())
+        if any(not re.fullmatch(r"[0-9]{6}\.json", name) for name in names):
+            fail("Unexpected file in immutable attempt log")
+        records, previous = [], None
+        for index, name in enumerate(names, 1):
+            path = logdir / name
+            record = read_json(path)
+            body = {key: value for key, value in record.items() if key != "sha256"}
+            if name != f"{index:06d}.json" or body.get("sequence") != index or body.get("previous_sha256") != previous or sha(canonical(body)) != record.get("sha256"):
+                fail("Immutable attempt hash chain failed", path)
+            previous = record["sha256"]
+            records.append(record)
+            self.add(path, destination / "attempt-log" / name, required=True)
+        if not records or records[-1].get("event") != "experiment.finished" or records[-1].get("report_sha256") != sha(read_text_bytes(source / "report.json")):
+            fail("Experiment-finished seal is missing or invalid", source / "report.json")
+        for record in records:
+            event = record.get("event")
+            if event == "attempt.started":
+                path = source / "runs" / identifier(record.get("attempt_id")) / "attempt-start.json"
+                if sha(canonical(read_json(path))) != record.get("start_sha256"):
+                    fail("Immutable attempt-start seal failed", path)
+            if event in {"attempt.finished", "attempt.interrupted"}:
+                path = source / "runs" / identifier(record.get("attempt_id")) / "result.json"
+                if sha(read_text_bytes(path)) != record.get("result_sha256"):
+                    fail("Immutable result seal failed", path)
+
+        attempts = [r for r in runs if r.get("attempted")] + supplemental
+        attempt_ids = [identifier(r.get("run_id")) for r in attempts]
+        if len(attempt_ids) != len(set(attempt_ids)):
+            fail("Duplicate original/supplemental attempt identifier")
+        for row in attempts:
+            run_id = identifier(row["run_id"])
+            directory = source / "runs" / run_id
+            if Path(row["artifacts"]).absolute() != directory:
+                fail("Attempt artifact pointer escaped its designated run directory")
+            sealed = directory / "result.json"
+            if read_json(sealed) != row:
+                fail("State row differs from immutable result", sealed)
+            self.attempt(directory, destination / "runs" / run_id)
+        # Preserve whitelisted text from any unregistered partial attempt too;
+        # it stays explicitly separate from original/supplemental result rows.
+        unregistered = []
+        rundir = source / "runs"
+        if rundir.exists():
+            if rundir.is_symlink():
+                fail("Unsafe runs directory")
+            for directory in sorted(rundir.iterdir()):
+                run_id = identifier(directory.name)
+                if directory.is_symlink() or not directory.is_dir():
+                    fail("Unexpected object in runs directory")
+                if run_id not in attempt_ids:
+                    unregistered.append(run_id)
+                    self.attempt(directory, destination / "unregistered-partial-invocations" / run_id)
+        self.experiments[label] = {
+            "source": source_relative, "planned_originals": expected,
+            "original_status_counts": {status: sum(r.get("status") == status for r in runs) for status in sorted({r.get("status") for r in runs})},
+            "supplemental_attempts": len(supplemental), "unregistered_partial_invocations": unregistered,
+            "verification_policy": "required" if strict else "on_demand",
+            "verification_policy_evidence": policy_evidence,
+            "finished_at": metadata["finished_at"], "attempt_log_records": len(records),
+            "last_attempt_log_sha256": previous,
+            "source_unchanged_during_experiment": metadata.get("source_unchanged_during_experiment"),
+        }
+
+
+def verify_historical_evidence() -> dict[str, Any]:
+    v1root = ROOT / "benchmarks/evidence/live-ab-v1"
+    manifest = read_json(v1root / "manifest.json")
+    for record in manifest["files"]:
+        path = v1root / record["path"]
+        if Path(record["path"]).is_absolute() or ".." in Path(record["path"]).parts:
+            fail("Unsafe historical manifest entry")
+        # Historical files are verified in place, never selected for this new
+        # publication. Their original scans/fixtures are historical evidence.
+        safe_source(path)
+        data = path.read_bytes()
+        if len(data) != record["bytes"] or sha(data) != record["sha256"]:
+            fail("V1 public evidence changed", path)
+    checks = []
+    for name in OLD_PRESERVATION_MANIFESTS:
+        record = read_json(ROOT / name)
+        for item in record["files"]:
+            path = ROOT / item["path"]
+            if Path(item["path"]).is_absolute() or ".." in Path(item["path"]).parts:
+                fail("Unsafe historical preservation entry")
+            safe_source(path)
+            if sha(path.read_bytes()) != item["sha256"]:
+                fail("Historical report changed", path)
+        checks.append({"manifest": name, "unchanged_entries": len(record["files"])})
+    return {"V1_manifest_sha256": sha(read_text_bytes(v1root / "manifest.json")),
+            "V1_unchanged_files": len(manifest["files"]), "older_preservation_checks": checks}
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--publish", action="store_true")
+    args = parser.parse_args()
+    output = args.output.absolute()
+    evidence_root = ROOT / "benchmarks/evidence"
+    if not output.is_relative_to(evidence_root) or output == evidence_root or output.resolve() != output:
+        fail("Output must be a fresh nonsymlink path beneath benchmarks/evidence")
+    if output.exists() or output.is_symlink():
+        fail("Output already exists; no overwrite is supported")
+    collection = Collection()
+    for specification in EXPERIMENTS:
+        collection.experiment(*specification)
+    for source, destination in (*EXTRA_FILES, *INDEPENDENT_AUDIT_FILES):
+        collection.add(ROOT / source, Path(destination), required=True)
+    historical = verify_historical_evidence()
+    files = [collection.files[key] for key in sorted(collection.files)]
+    manifest = {
+        "schema_version": 2, "scope": "Whitelisted optimized live A/B raw evidence, including failed/interrupted/invalid original attempts and separate supplemental observations",
+        "experiments": collection.experiments, "historical_preservation": historical,
+        "whitelist": {"top": TOP_FILES, "preflight": INVOCATION_FILES, "runs": RUN_FILES,
+                      "extras": EXTRA_FILES, "independent_audits": INDEPENDENT_AUDIT_FILES,
+                      "attempt_log": "Only contiguous six-digit .json records with verified hashes"},
+        "never_selected": sorted(FORBIDDEN_PARTS) + sorted(FORBIDDEN_SUFFIXES),
+        "missing_optional_files": collection.missing,
+        "limitations": [
+            "Manifest excludes itself to avoid a circular checksum.",
+            "Original report pointers retain local artifact paths; manifest destinations identify public copies.",
+            "Readiness/preflight usage is separate from task comparisons; pilots are separate from the formal experiment.",
+            "Supplemental attempts never replace original rows or enter primary aggregates.",
+            "Untracked file contents in archives/worktrees and initialization fixture partials are excluded; tracked patches and untracked names remain.",
+            "Post-execution source hashes are a later point observation, not call-time or semantic freshness proof.",
+            "Credential-pattern scanning and explicit paths are guards, not proof against every possible secret.",
+        ],
+        "files": [{"path": str(a.destination), "source": str(a.source.relative_to(ROOT)),
+                   "bytes": a.size, "sha256": a.sha256} for a in files],
+    }
+    if args.publish:
+        # All selections, seals, scans and preservation checks finish before any copy.
+        output.mkdir(parents=True, exist_ok=False)
+        for artifact in files:
+            data = read_text_bytes(artifact.source)
+            if len(data) != artifact.size or sha(data) != artifact.sha256:
+                fail("Evidence changed after validation", artifact.source)
+            destination = output / artifact.destination
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            with destination.open("xb") as stream:
+                stream.write(data)
+        with (output / "manifest.json").open("x") as stream:
+            json.dump(manifest, stream, indent=2)
+            stream.write("\n")
+    print(json.dumps({"mode": "published" if args.publish else "check_only",
+                      "output": str(output.relative_to(ROOT)), "files": len(files),
+                      "bytes": sum(a.size for a in files),
+                      "missing_optional_files": len(collection.missing),
+                      "missing_optional_by_filename": dict(sorted(Counter(Path(item["source"]).name for item in collection.missing).items())),
+                      "credential_pattern_scan": "passed", "historical_preservation": historical}, indent=2))
+
+
+if __name__ == "__main__":
+    main()

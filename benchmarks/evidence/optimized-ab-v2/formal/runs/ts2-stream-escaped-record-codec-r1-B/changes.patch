@@ -1,0 +1,26 @@
+diff --git a/src/escaped_record_codec.ts b/src/escaped_record_codec.ts
+index 481e293..7cb355b 100644
+--- a/src/escaped_record_codec.ts
++++ b/src/escaped_record_codec.ts
+@@ -1,4 +1,19 @@
+ export function decodeRecord(text:string):string[]{
+-  if(/\\(?:[^|\\]|$)/.test(text))throw new Error("invalid escape");
+-  return text.split("|").map(part=>part.replace(/\\([|\\])/g,"$1"));
++  const fields: string[] = [];
++  let field = "";
++  for (let i = 0; i < text.length; i++) {
++    const char = text[i];
++    if (char === "\\") {
++      const escaped = text[++i];
++      if (escaped !== "|" && escaped !== "\\") throw new Error("invalid escape");
++      field += escaped;
++    } else if (char === "|") {
++      fields.push(field);
++      field = "";
++    } else {
++      field += char;
++    }
++  }
++  fields.push(field);
++  return fields;
+ }

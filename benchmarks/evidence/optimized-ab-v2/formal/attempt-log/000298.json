@@ -1,0 +1,11 @@
+{
+  "sequence": 298,
+  "previous_sha256": "8b9fea1ac4245ce0f71b8bd912b04d938e65ae36c500495207410a16e2feab13",
+  "recorded_at": "2026-10-18T00:21:33.244915+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-config-safe-local-redirects-r2-A",
+  "original_run_id": "ts2-config-safe-local-redirects-r2-A",
+  "supplemental": false,
+  "start_sha256": "bd78c5aaf16aa2d71b5a8d3b8b90381936b2ee02bca79a9fa32277597e051670",
+  "sha256": "7211ae633aa0918a2f375f587d4c304bf3111e9168d2b50f7367a9a5f9145dc1"
+}

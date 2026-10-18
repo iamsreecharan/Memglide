@@ -1,0 +1,1 @@
+{"summary":"Implemented strict semantic version precedence with exact comparison of arbitrarily large numbers. Added regression tests for both domain and public API behavior, including invalid syntax and build metadata. Existing smoke tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

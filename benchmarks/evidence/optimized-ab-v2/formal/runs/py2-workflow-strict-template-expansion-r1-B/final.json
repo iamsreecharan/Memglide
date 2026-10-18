@@ -1,0 +1,1 @@
+{"summary":"Updated the domain renderer to raise KeyError for missing names and the API adapter to preserve falsey values for str conversion. Added regression coverage for escaping, malformed syntax, and nonrecursive replacements. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 15 smoke and regression tests passed."]}

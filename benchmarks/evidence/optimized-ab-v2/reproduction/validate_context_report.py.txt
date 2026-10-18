@@ -1,0 +1,188 @@
+"""Controlled independent checks for the post-experiment report analyzer."""
+
+import copy
+import importlib.util
+import json
+import tempfile
+from pathlib import Path
+
+location = Path(__file__).with_name("analyze_context_report.py")
+spec = importlib.util.spec_from_file_location("context_report", location)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+
+checks = 0
+
+
+def check(value):
+    global checks
+    assert value
+    checks += 1
+
+
+def native(payload, tool="fetch_context", identifier="native-1", **kwargs):
+    return {
+        "type": "item.completed",
+        "item": {
+            "id": identifier,
+            "type": "mcp_tool_call",
+            "server": "memglide",
+            "tool": tool,
+            "status": "completed",
+            "result": {"content": [{"type": "text", "text": json.dumps(payload)}]},
+            **kwargs,
+        },
+    }
+
+
+source = "def value():\n    return 1\n"
+digest = module.sha(source.encode())
+label = module.source_label("module.py", source, "value", "python")
+baseline = [
+    {"expected_symbol": "module.value", "label": label, "file_sha256": digest, "error": None}
+]
+payload = {
+    "operation": "get_context",
+    "retrieval_id": "retrieval-1",
+    "source_hashes": {"module.py": digest},
+    "items": [{"path": "module.py", "start_line": 1, "end_line": 2, "snippet": source}],
+    "status": "Partial",
+    "source_freshness": "Current",
+    "truncated": False,
+    "warnings": [],
+}
+task = {"target_files": ["module.py"], "expected_symbols": ["module.value"]}
+calls, errors, commands = module.events(json.dumps(native(payload)).encode())
+check(len(calls) == 1 and not errors and not commands)
+row = module.call_analysis(calls[0], task, baseline, [])
+check(row["response_available"] is True)
+check(row["declared_target_file_coverage_fraction"] == 1)
+check(row["baseline_body_checks"][0]["eligible"] is True)
+check(row["baseline_body_checks"][0]["complete"] is True)
+check(row["independently_verified_call_time_freshness"] is None)
+check(row["semantic_completeness"] is None)
+check(row["completed_before_first_observable_command_start"] is None)
+check(
+    module.body_checks({**payload, "source_hashes": {"module.py": "f" * 64}}, baseline)[0][
+        "complete"
+    ]
+    is None
+)
+check(module.body_checks({**payload, "source_hashes": {}}, baseline)[0]["eligible"] is False)
+partial = copy.deepcopy(payload)
+partial["items"][0].update(end_line=1, snippet="def value():")
+check(module.body_checks(partial, baseline)[0]["complete"] is False)
+altered = copy.deepcopy(payload)
+altered["items"][0]["snippet"] = "def value():\n    return 2\n"
+check(module.body_checks(altered, baseline)[0]["complete"] is False)
+inconsistent = copy.deepcopy(payload)
+inconsistent["items"][0]["end_line"] = 200
+check(module.body_checks(inconsistent, baseline)[0]["complete"] is False)
+multi = copy.deepcopy(payload)
+multi["items"] = [
+    {"path": "module.py", "start_line": 1, "end_line": 1, "snippet": "def value():"},
+    {"path": "module.py", "start_line": 2, "end_line": 2, "snippet": "    return 1"},
+]
+check(module.body_checks(multi, baseline)[0]["complete"] is True)
+for data in [b"not json", b'{"type":"a","type":"b"}']:
+    check(len(module.events(data)[1]) == 1)
+duplicate = (json.dumps(native(payload)) + "\n" + json.dumps(native(payload))).encode()
+duplicate_call = module.events(duplicate)[0][0]
+check(bool(module.call_analysis(duplicate_call, task, baseline, [])["errors"]))
+for result in [None, {"isError": True}, {"content": [{"type": "text", "text": "malformed"}]}]:
+    bad_call = module.events(json.dumps(native(payload, result=result)).encode())[0][0]
+    check(module.call_analysis(bad_call, task, baseline, [])["response_available"] is False)
+conflicting = {
+    "structured_content": payload,
+    "content": [{"type": "text", "text": json.dumps({**payload, "retrieval_id": "other"})}],
+}
+bad_call = module.events(json.dumps(native(payload, result=conflicting)).encode())[0][0]
+check(module.call_analysis(bad_call, task, baseline, [])["response_available"] is False)
+verify = {
+    "operation": "get_context_passport",
+    "retrieval_id": "retrieval-1",
+    "status": "Stale",
+    "source_freshness": "Stale",
+    "stale_files": ["module.py"],
+}
+verify_call = module.events(json.dumps(native(verify, tool="verify_context")).encode())[0][0]
+check(
+    module.call_analysis(verify_call, task, baseline, [])["server_asserted_source_freshness"]
+    == "Stale"
+)
+check(
+    module.call_analysis(verify_call, task, baseline, [])[
+        "independently_verified_call_time_freshness"
+    ]
+    is None
+)
+commands = [
+    {
+        "native_call_id": "cmd-1",
+        "command": "cat module.py",
+        "exit_code": 0,
+        "started_line": 2,
+        "completed_line": 3,
+    }
+]
+overlap = module.read_overlap(commands, [row], {"configuration": "B", "worktree": "/tmp/repo"})
+check(overlap["commands_with_prior_retrieved_file_path_overlap"] == 1)
+check(overlap["exact_filesystem_reads"] is None)
+check(overlap["redundant_filesystem_reads"] is None)
+check(
+    module.read_overlap(commands, [row], {"configuration": "A", "worktree": "/tmp/repo"})[
+        "commands_with_prior_retrieved_file_path_overlap"
+    ]
+    is None
+)
+commands[0]["started_line"] = None
+check(
+    module.read_overlap(commands, [row], {"configuration": "B", "worktree": "/tmp/repo"})[
+        "commands_with_unknown_start_order"
+    ]
+    == 1
+)
+check(
+    module.read_overlap(commands, [row], {"configuration": "B", "worktree": "/tmp/repo"})[
+        "commands_with_prior_retrieved_file_path_overlap"
+    ]
+    == 0
+)
+ts = "export function value(): number {\n  return 1;\n}\n"
+check(module.source_label("module.ts", ts, "value", "typescript")["text"] == ts.rstrip())
+data = json.dumps(native(payload)).encode()
+snapshot = {
+    "phase": "post_codex_pre_grader",
+    "events_sha256": module.sha(data),
+    "calls": [
+        {"files": [{"comparison": "mismatch"}, {"comparison": "unknown"}, {"comparison": "match"}]}
+    ],
+}
+run = {"configuration": "B", "post_execution_context_audit": snapshot}
+observed = module.snapshot_analysis(run, data)
+check(observed["comparison_counts"] == {"match": 1, "mismatch": 1, "unknown": 1})
+check(observed["independently_verified_call_time_freshness"] is None)
+check(module.snapshot_analysis(run, b"different")["comparison_counts"] is None)
+check(module.snapshot_analysis({**run, "configuration": "A"}, data)["comparison_counts"] is None)
+check(
+    module.distribution([None, 2, 4])
+    == {"observed_count": 2, "unavailable_count": 1, "mean": 3, "median": 3.0, "min": 2, "max": 4}
+)
+with tempfile.TemporaryDirectory() as temp:
+    base = Path(temp)
+    experiment = base / "experiment"
+    artifact = experiment / "runs/example"
+    artifact.mkdir(parents=True)
+    check(
+        module.artifact_path(experiment, {"artifacts": str(artifact)}, "events.jsonl")
+        == artifact / "events.jsonl"
+    )
+    for path in [base, experiment / ".." / "outside"]:
+        try:
+            module.artifact_path(experiment, {"artifacts": str(path)}, "events.jsonl")
+        except ValueError:
+            check(True)
+        else:
+            raise AssertionError("Artifact traversal was not rejected")
+
+print(json.dumps({"controlled_assertions_passed": checks}))

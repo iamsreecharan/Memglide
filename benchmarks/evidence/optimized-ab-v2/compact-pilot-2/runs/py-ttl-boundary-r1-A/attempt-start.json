@@ -1,0 +1,24 @@
+{
+  "run_id": "py-ttl-boundary-r1-A",
+  "task_id": "py-ttl-boundary",
+  "language": "python",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 2,
+  "repository": "atlas-python-v1",
+  "original_run_id": "py-ttl-boundary-r1-A",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-17T23:00:36.207041+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/runs/py-ttl-boundary-r1-A",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/compact-pilot-2/worktrees/py-ttl-boundary-r1-A",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Attempt is not yet graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

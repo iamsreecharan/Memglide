@@ -1,0 +1,1 @@
+{"summary":"Reconciliation now retains the first record at the highest valid version and deep-copies results in lexical ID order. Regression tests verify both the public API and domain module, including invalid versions and mutation isolation. Existing tests preserved; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed."]}

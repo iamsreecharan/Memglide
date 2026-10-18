@@ -1,0 +1,1 @@
+{"summary":"Implemented exact integer tax rounding with halves away from zero, including refunds and large amounts. Preserved validation and public interfaces; added regressions covering domain and API behavior. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed, including existing smoke tests.","git diff --check — passed."]}

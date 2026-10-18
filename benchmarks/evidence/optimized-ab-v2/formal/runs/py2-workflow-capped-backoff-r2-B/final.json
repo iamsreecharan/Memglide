@@ -1,0 +1,1 @@
+{"summary":"Implemented capped exponential retry delays with strict input validation and prompt handling of enormous attempts. Added regression coverage for domain and API behavior. Preserved existing tests and public interfaces; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed","git diff --check — passed"]}

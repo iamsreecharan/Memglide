@@ -1,0 +1,1 @@
+{"summary":"Updated domain parsing and the public API to preserve complete fields, support reordered headers, BOM and quoted CSV, and consistently reject invalid input with ValueError. Added regression tests; preserved existing smoke tests. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

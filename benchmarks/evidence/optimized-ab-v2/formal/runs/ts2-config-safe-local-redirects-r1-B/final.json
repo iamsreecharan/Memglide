@@ -1,0 +1,1 @@
+{"summary":"Updated domain and API redirects to enforce normalized HTTP(S) same-origin URLs, reject credentials, and preserve pathname, query, fragment, and percent encodings. Added regression coverage for both interfaces. No commit created.","tests_run":["node --test tests/*.test.mjs — passed, including existing smoke tests and new regression tests","git diff --check — passed"]}

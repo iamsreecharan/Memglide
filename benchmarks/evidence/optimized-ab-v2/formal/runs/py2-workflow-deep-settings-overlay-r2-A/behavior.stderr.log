@@ -1,0 +1,7 @@
+test_no_aliases (__main__.BehaviorTests.test_no_aliases) ... ok
+test_recursive_merge_and_literal_null (__main__.BehaviorTests.test_recursive_merge_and_literal_null) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

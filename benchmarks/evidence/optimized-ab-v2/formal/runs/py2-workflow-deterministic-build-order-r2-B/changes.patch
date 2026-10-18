@@ -1,0 +1,35 @@
+diff --git a/workflow/deterministic_build_order.py b/workflow/deterministic_build_order.py
+index 44733e0..ecf4d2b 100644
+--- a/workflow/deterministic_build_order.py
++++ b/workflow/deterministic_build_order.py
+@@ -1,4 +1,27 @@
++import heapq
++
++
+ def build_order(graph):
+-    nodes=set(graph)
+-    for dependencies in graph.values(): nodes.update(dependencies)
+-    return sorted(nodes)
++    """Order jobs by prerequisites, choosing the smallest ready ID each time."""
++    remaining = {job: 0 for job in graph}
++    dependents = {}
++    for job, prerequisites in graph.items():
++        for prerequisite in prerequisites:
++            remaining.setdefault(prerequisite, 0)
++            remaining[job] += 1
++            dependents.setdefault(prerequisite, []).append(job)
++
++    ready = [job for job, count in remaining.items() if count == 0]
++    heapq.heapify(ready)
++    order = []
++    while ready:
++        job = heapq.heappop(ready)
++        order.append(job)
++        for dependent in dependents.get(job, ()):
++            remaining[dependent] -= 1
++            if remaining[dependent] == 0:
++                heapq.heappush(ready, dependent)
++
++    if len(order) != len(remaining):
++        raise ValueError("dependency graph contains a cycle")
++    return order

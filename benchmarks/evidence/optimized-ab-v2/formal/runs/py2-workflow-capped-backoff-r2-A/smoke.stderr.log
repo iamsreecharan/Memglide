@@ -1,0 +1,19 @@
+test_enormous_attempt (test_capped_backoff.CappedBackoffTests.test_enormous_attempt) ... ok
+test_exponential_delay_and_cap (test_capped_backoff.CappedBackoffTests.test_exponential_delay_and_cap) ... ok
+test_invalid_inputs_including_zero_shortcuts (test_capped_backoff.CappedBackoffTests.test_invalid_inputs_including_zero_shortcuts) ... ok
+test_large_integer_boundaries (test_capped_backoff.CappedBackoffTests.test_large_integer_boundaries) ... ok
+test_atomic_pointer_updates (test_smoke.SmokeTests.test_atomic_pointer_updates) ... ok
+test_bounded_async_execution (test_smoke.SmokeTests.test_bounded_async_execution) ... ok
+test_capped_backoff (test_smoke.SmokeTests.test_capped_backoff) ... ok
+test_deep_settings_overlay (test_smoke.SmokeTests.test_deep_settings_overlay) ... ok
+test_deterministic_build_order (test_smoke.SmokeTests.test_deterministic_build_order) ... ok
+test_incremental_utf8_lines (test_smoke.SmokeTests.test_incremental_utf8_lines) ... ok
+test_interval_coalescing (test_smoke.SmokeTests.test_interval_coalescing) ... ok
+test_ready_job_order (test_smoke.SmokeTests.test_ready_job_order) ... ok
+test_strict_template_expansion (test_smoke.SmokeTests.test_strict_template_expansion) ... ok
+test_utf8_batch_budget (test_smoke.SmokeTests.test_utf8_batch_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.036s
+
+OK

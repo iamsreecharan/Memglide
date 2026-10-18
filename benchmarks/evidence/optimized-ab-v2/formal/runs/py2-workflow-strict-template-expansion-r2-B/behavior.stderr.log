@@ -1,0 +1,7 @@
+test_malformed_inputs_and_plain_text (__main__.BehaviorTests.test_malformed_inputs_and_plain_text) ... ok
+test_missing_names_and_nonrecursive_values (__main__.BehaviorTests.test_missing_names_and_nonrecursive_values) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+OK

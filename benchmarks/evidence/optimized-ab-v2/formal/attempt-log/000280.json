@@ -1,0 +1,11 @@
+{
+  "sequence": 280,
+  "previous_sha256": "2a2c0f8bf50b97a0e009a05f897ed3fedd9ec0de9a0b23e165a850638de151d0",
+  "recorded_at": "2026-10-18T00:16:59.083151+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-stream-escaped-record-codec-r2-B",
+  "original_run_id": "ts2-stream-escaped-record-codec-r2-B",
+  "supplemental": false,
+  "start_sha256": "ff222da5fce03bc41fb7b5f4b2521139e93cd1abf2ec0b8fe08f692d82206593",
+  "sha256": "98309483b8bcf441228820806d967d42c0ee9cbdec627d5713bda08ddf7c18a0"
+}

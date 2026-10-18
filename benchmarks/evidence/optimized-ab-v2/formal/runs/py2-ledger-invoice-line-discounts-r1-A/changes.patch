@@ -1,0 +1,17 @@
+diff --git a/ledger/invoice_line_discounts.py b/ledger/invoice_line_discounts.py
+index a3c31e5..027cf84 100644
+--- a/ledger/invoice_line_discounts.py
++++ b/ledger/invoice_line_discounts.py
+@@ -1,8 +1,10 @@
+ def invoice_total(lines, discount_bps):
++    """Sum quantities of discounted unit prices, rounded half up to cents."""
+     if type(discount_bps) is not int or not 0 <= discount_bps <= 10000: raise ValueError("bad discount")
+     total=0
+     for line in lines:
+         price,quantity=line["price"],line["quantity"]
+         if any(type(n) is not int or n<0 for n in (price,quantity)): raise ValueError("bad line")
+-        total += price*quantity*(10000-discount_bps)
+-    return (total+5000)//10000
++        discounted_price = (price * (10000 - discount_bps) + 5000) // 10000
++        total += discounted_price * quantity
++    return total

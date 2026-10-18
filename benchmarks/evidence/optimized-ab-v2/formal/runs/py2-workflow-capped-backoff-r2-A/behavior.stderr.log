@@ -1,0 +1,7 @@
+test_exactness_and_validation (__main__.BehaviorTests.test_exactness_and_validation) ... ok
+test_exponential_zero_and_cap (__main__.BehaviorTests.test_exponential_zero_and_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

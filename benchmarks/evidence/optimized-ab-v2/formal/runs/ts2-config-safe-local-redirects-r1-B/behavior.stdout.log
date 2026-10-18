@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: origin includes scheme and port
+ok 1 - origin includes scheme and port
+  ---
+  duration_ms: 1.535634
+  type: 'test'
+  ...
+# Subtest: relative normalization malformed URL and encoding
+ok 2 - relative normalization malformed URL and encoding
+  ---
+  duration_ms: 0.457558
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 180.534207

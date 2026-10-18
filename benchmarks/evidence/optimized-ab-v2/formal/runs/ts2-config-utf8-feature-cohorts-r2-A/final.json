@@ -1,0 +1,1 @@
+{"summary":"Updated cohort hashing to use UTF-8 bytes with unsigned 32-bit FNV-1a. Added regression coverage for Unicode, cohort boundaries, and rate validation through both the domain module and public API. Preserved interfaces and existing smoke tests; no commit created.","tests_run":["node --test tests/*.test.mjs — passed"]}

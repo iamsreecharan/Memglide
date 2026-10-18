@@ -1,0 +1,11 @@
+{
+  "sequence": 100,
+  "previous_sha256": "32a6380b6ac45e3de8f6ddfae78755d4a03645ad53c93fa91ef2d78649fb4554",
+  "recorded_at": "2026-10-17T23:30:30.793002+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-ledger-atomic-transfer-r1-B",
+  "original_run_id": "py2-ledger-atomic-transfer-r1-B",
+  "supplemental": false,
+  "start_sha256": "1bba30782a18107f6b38fe24fb0ded09ead00f0a78026a1c44589baab0c51b50",
+  "sha256": "d213242331efeb9eaf79b7dea2f7bb293581eb5e174e00b42e7eebf1be9f179b"
+}

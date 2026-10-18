@@ -1,0 +1,25 @@
+diff --git a/ledger/reconciliation_version_merge.py b/ledger/reconciliation_version_merge.py
+index ffe7afc..03228bb 100644
+--- a/ledger/reconciliation_version_merge.py
++++ b/ledger/reconciliation_version_merge.py
+@@ -1,9 +1,14 @@
+ from copy import deepcopy
++
++
+ def reconcile(records):
+-    selected={}
++    """Return detached records by ID, keeping the first highest version."""
++    selected = {}
+     for record in records:
+-        version=record["version"]
+-        if type(version) is not int or version<0: raise ValueError("bad version")
+-        if record["id"] not in selected or version>=selected[record["id"]]["version"]:
+-            selected[record["id"]]=record
+-    return [selected[key] for key in sorted(selected)]
++        version = record["version"]
++        if type(version) is not int or version < 0:
++            raise ValueError("bad version")
++        record_id = record["id"]
++        if record_id not in selected or version > selected[record_id]["version"]:
++            selected[record_id] = record
++    return [deepcopy(selected[key]) for key in sorted(selected)]

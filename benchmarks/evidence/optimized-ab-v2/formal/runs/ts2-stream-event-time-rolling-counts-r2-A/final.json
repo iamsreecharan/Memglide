@@ -1,0 +1,1 @@
+{"summary":"Implemented event-time rolling counts across all arrivals, including equal timestamps, while preserving inputs and output order. Added regression coverage for both domain and public API, boundaries, and validation. No commits created.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regressions","git diff --check — passed"]}

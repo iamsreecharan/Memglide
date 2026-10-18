@@ -1,0 +1,1 @@
+{"summary":"Implemented quote-aware .env parsing with escape decoding and malformed-input rejection. Added regression tests for domain and public API behavior. Public interfaces preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regressions","git diff --check — passed"]}

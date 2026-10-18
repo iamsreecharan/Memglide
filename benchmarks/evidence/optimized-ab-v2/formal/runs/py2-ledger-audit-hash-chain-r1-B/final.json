@@ -1,0 +1,1 @@
+{"summary":"Implemented the deterministic SHA-256 audit chain with canonical JSON, explicit UTF-8 encoding, and previous-digest linking. Added regression tests for both domain and public API behavior, input preservation, and change propagation. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

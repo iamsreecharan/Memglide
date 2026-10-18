@@ -1,0 +1,11 @@
+{
+  "sequence": 148,
+  "previous_sha256": "61a7820d8d49a58475df2e5898e2b2ef6377d0f67ff51e4d55e98ec36080cd08",
+  "recorded_at": "2026-10-17T23:42:18.819456+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-workflow-interval-coalescing-r1-A",
+  "original_run_id": "py2-workflow-interval-coalescing-r1-A",
+  "supplemental": false,
+  "start_sha256": "1bf7110943b72ed327f5d353ab8573d847d0b4db710c8ad0f9065d924dab8f9f",
+  "sha256": "42b5532ac5325fa11507d871dc40b6bf17c9e0046d6543556c56749d11d8b538"
+}

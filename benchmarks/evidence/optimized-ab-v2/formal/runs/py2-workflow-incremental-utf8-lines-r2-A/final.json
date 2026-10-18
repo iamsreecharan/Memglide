@@ -1,0 +1,1 @@
+{"summary":"Implemented strict incremental UTF-8 line decoding, including split codepoints and CRLF, empty lines, and unterminated final lines. Added regression tests covering both the domain function and public API adapter. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed, including existing smoke tests."]}

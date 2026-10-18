@@ -1,0 +1,1 @@
+{"summary":"Implemented bounded async execution with ordered results, strict concurrency validation, and cancellation cleanup that preserves the original error. Updated the public adapter and added regression coverage. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed, including existing smoke tests.","git diff --check — passed."]}

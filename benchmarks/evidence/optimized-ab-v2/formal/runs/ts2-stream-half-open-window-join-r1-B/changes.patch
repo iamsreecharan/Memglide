@@ -1,0 +1,13 @@
+diff --git a/src/half_open_window_join.ts b/src/half_open_window_join.ts
+index 1256272..7e1eb2f 100644
+--- a/src/half_open_window_join.ts
++++ b/src/half_open_window_join.ts
+@@ -4,7 +4,7 @@ export function joinWindows(left: Window[], right: Window[]): {left:string;right
+   const result=[];
+   for (const a of left) for (const b of right) {
+     const start=Math.max(a.start,b.start),end=Math.min(a.end,b.end);
+-    if (start<=end) result.push({left:a.id,right:b.id,start,end});
++    if (start<end) result.push({left:String(a.id),right:String(b.id),start,end});
+   }
+   return result;
+ }

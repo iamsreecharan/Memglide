@@ -1,0 +1,1 @@
+{"summary":"Updated the API adapter and domain logic to return due queued jobs by descending priority with stable ties, validate limits, and deep-copy results. Added regression tests; preserved existing tests and made no commit.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed","git diff --check — passed"]}

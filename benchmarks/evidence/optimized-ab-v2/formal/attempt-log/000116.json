@@ -1,0 +1,11 @@
+{
+  "sequence": 116,
+  "previous_sha256": "e061901c50f96d76f3472e714e6f7b093ffd27fb1b8028855ad70f7900d8fedf",
+  "recorded_at": "2026-10-17T23:35:07.576852+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-workflow-deterministic-build-order-r1-A",
+  "original_run_id": "py2-workflow-deterministic-build-order-r1-A",
+  "supplemental": false,
+  "start_sha256": "e8dd47c378678ba0e1f76e12ca5d12a78474b4f911c3166fdc0eab39a52a97fd",
+  "sha256": "6e21f1257a745499504b3497fdadd9fedd4e68dd07643c69687c796e41eab024"
+}

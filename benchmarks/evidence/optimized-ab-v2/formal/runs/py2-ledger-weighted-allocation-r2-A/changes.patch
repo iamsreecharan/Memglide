@@ -1,0 +1,25 @@
+diff --git a/ledger/weighted_allocation.py b/ledger/weighted_allocation.py
+index ea6ac70..08226c3 100644
+--- a/ledger/weighted_allocation.py
++++ b/ledger/weighted_allocation.py
+@@ -1,4 +1,18 @@
+ def allocate(total, weights):
+-    if type(total) is not int or total < 0 or not weights or any(type(w) is not int or w < 0 for w in weights) or sum(weights) == 0:
++    """Allocate integer cents by largest remainder, breaking ties by index."""
++    if type(total) is not int or total < 0:
+         raise ValueError("invalid allocation")
+-    return [total * w // sum(weights) for w in weights]
++    weights = list(weights)
++    if not weights or any(type(w) is not int or w < 0 for w in weights):
++        raise ValueError("invalid allocation")
++    weight_sum = sum(weights)
++    if weight_sum == 0:
++        raise ValueError("invalid allocation")
++
++    shares = [divmod(total * weight, weight_sum) for weight in weights]
++    allocation = [share for share, remainder in shares]
++    leftover = total - sum(allocation)
++    order = sorted(range(len(weights)), key=lambda index: (-shares[index][1], index))
++    for index in order[:leftover]:
++        allocation[index] += 1
++    return allocation

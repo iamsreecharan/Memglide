@@ -1,0 +1,20 @@
+diff --git a/src/simultaneous_text_edits.ts b/src/simultaneous_text_edits.ts
+index 12b22b5..e8e06e7 100644
+--- a/src/simultaneous_text_edits.ts
++++ b/src/simultaneous_text_edits.ts
+@@ -2,7 +2,12 @@ export type Edit={start:number;end:number;text:string};
+ export function applyEdits(text:string,edits:Edit[]):string{
+   const ordered=[...edits].sort((a,b)=>a.start-b.start);
+   for(let i=0;i<ordered.length;i++){const e=ordered[i];if(!Number.isSafeInteger(e.start)||!Number.isSafeInteger(e.end)||e.start<0||e.end<e.start||e.end>text.length||(i>0&&(ordered[i-1].end>e.start||ordered[i-1].start===e.start)))throw new Error("bad edit");}
+-  let result=text;
+-  for(const edit of ordered) result=result.slice(0,edit.start)+edit.text+result.slice(edit.end);
+-  return result;
++  const parts:string[]=[];
++  let cursor=0;
++  for(const edit of ordered){
++    parts.push(text.slice(cursor,edit.start),edit.text);
++    cursor=edit.end;
++  }
++  parts.push(text.slice(cursor));
++  return parts.join("");
+ }

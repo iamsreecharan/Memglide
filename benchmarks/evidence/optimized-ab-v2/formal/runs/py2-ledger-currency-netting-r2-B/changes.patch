@@ -1,0 +1,40 @@
+diff --git a/ledger/api.py b/ledger/api.py
+index 33c9a01..8cdaa58 100644
+--- a/ledger/api.py
++++ b/ledger/api.py
+@@ -34,10 +34,7 @@ def redact(value, keys):
+     return _nested_redaction.redact(value, keys)
+ 
+ def net_by_currency(entries):
+-    try:
+-        return _currency_netting.net_by_currency(entries)
+-    except ValueError:
+-        return {}
++    return _currency_netting.net_by_currency(entries)
+ 
+ def audit_chain(events):
+     return _audit_hash_chain.audit_chain(events)
+diff --git a/ledger/currency_netting.py b/ledger/currency_netting.py
+index 6c88612..a8ef2b2 100644
+--- a/ledger/currency_netting.py
++++ b/ledger/currency_netting.py
+@@ -1,8 +1,15 @@
+ import re
++
++
+ def net_by_currency(entries):
+-    totals={}
++    totals = {}
+     for entry in entries:
+-        currency=entry["currency"].upper(); amount=entry["amount"]
+-        if not entry["currency"].isascii() or re.fullmatch(r"[A-Z]{3}",currency) is None or type(amount) is not int: raise ValueError("invalid entry")
+-        totals[currency]=amount
++        currency = entry["currency"]
++        amount = entry["amount"]
++        if (not isinstance(currency, str) or not currency.isascii()
++                or re.fullmatch(r"[A-Za-z]{3}", currency) is None
++                or type(amount) is not int):
++            raise ValueError("invalid entry")
++        currency = currency.upper()
++        totals[currency] = totals.get(currency, 0) + amount
+     return dict(sorted(totals.items()))

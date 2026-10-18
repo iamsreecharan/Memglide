@@ -1,0 +1,1 @@
+{"summary":"Fixed pointer lookup to preserve falsy values and reject missing array entries. Added regression coverage for both domain and API behavior, including escape validation, own keys, canonical indices, and deep copies. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

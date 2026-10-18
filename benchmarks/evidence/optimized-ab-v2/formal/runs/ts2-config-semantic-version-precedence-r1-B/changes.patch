@@ -1,0 +1,47 @@
+diff --git a/src/semantic_version_precedence.ts b/src/semantic_version_precedence.ts
+index 2026ffb..53cb859 100644
+--- a/src/semantic_version_precedence.ts
++++ b/src/semantic_version_precedence.ts
+@@ -1,9 +1,35 @@
+-function parts(value:string):string[]{
+-  if(!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$(?![\s\S])/.test(value))throw new Error("invalid version");
+-  const main=value.split("+")[0];const dash=main.indexOf("-");const pre=dash<0?[]:main.slice(dash+1).split(".");
+-  if(pre.some(p=>/^\d+$(?![\s\S])/.test(p)&&p.length>1&&p.startsWith("0")))throw new Error("leading zero");
+-  return [dash<0?main:main.slice(0,dash),...pre];
++function parts(value: string): { core: string[]; prerelease: string[] } {
++  const match = /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?![\s\S])/.exec(value);
++  if (!match) throw new Error("invalid version");
++  const prerelease = match[4] === undefined ? [] : match[4].split(".");
++  if (prerelease.some(p => /^[0-9]+$/.test(p) && p.length > 1 && p.startsWith("0"))) {
++    throw new Error("leading zero");
++  }
++  return { core: match.slice(1, 4), prerelease };
+ }
+-export function compareVersions(left:string,right:string):number{
+-  const a=parts(left).join("-"),b=parts(right).join("-");return a===b?0:a<b?-1:1;
++
++// Valid numeric identifiers have no leading zeroes, so length preserves magnitude.
++function compareNumeric(left: string, right: string): number {
++  if (left.length !== right.length) return left.length < right.length ? -1 : 1;
++  return left === right ? 0 : left < right ? -1 : 1;
++}
++
++export function compareVersions(left: string, right: string): number {
++  const a = parts(left), b = parts(right);
++  for (let i = 0; i < 3; i++) {
++    const order = compareNumeric(a.core[i], b.core[i]);
++    if (order !== 0) return order;
++  }
++  if (a.prerelease.length === 0 || b.prerelease.length === 0) {
++    return a.prerelease.length === b.prerelease.length ? 0 : a.prerelease.length === 0 ? 1 : -1;
++  }
++  for (let i = 0; i < Math.min(a.prerelease.length, b.prerelease.length); i++) {
++    const x = a.prerelease[i], y = b.prerelease[i];
++    if (x === y) continue;
++    const xNumeric = /^[0-9]+$/.test(x), yNumeric = /^[0-9]+$/.test(y);
++    if (xNumeric && yNumeric) return compareNumeric(x, y);
++    if (xNumeric !== yNumeric) return xNumeric ? -1 : 1;
++    return x < y ? -1 : 1;
++  }
++  return a.prerelease.length === b.prerelease.length ? 0 : a.prerelease.length < b.prerelease.length ? -1 : 1;
+ }

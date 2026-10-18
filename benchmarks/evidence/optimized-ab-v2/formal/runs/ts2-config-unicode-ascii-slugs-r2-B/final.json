@@ -1,0 +1,1 @@
+{"summary":"Implemented NFKD normalization, combining-mark removal, lowercasing, and ASCII slug filtering. Verified the public adapter delegates correctly. Added regression coverage for both entry points, including empty results. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

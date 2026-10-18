@@ -1,0 +1,9 @@
+{
+  "sequence": 239,
+  "previous_sha256": "a273d64f9d6a2e17bf96173e909ccdbee6b1a2b7d5bda410f92a15a33b5c2f4a",
+  "recorded_at": "2026-10-18T00:06:33.982205+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "py2-ledger-invoice-line-discounts-r2-B",
+  "result_sha256": "5a8ecfb07e56c188c601ab3a85774cd6e7a69a083ac60027dc6df18929b4d990",
+  "sha256": "6438dcd6fc7a0992b0a9199280c1de7b9dc6bce7616aa064cc37d917ed0e39f1"
+}

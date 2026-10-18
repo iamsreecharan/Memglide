@@ -1,0 +1,9 @@
+{
+  "sequence": 265,
+  "previous_sha256": "4a8630ea221e7e4183e0450aecf59e6044d215cacdfcc28ee83ed44890e297af",
+  "recorded_at": "2026-10-18T00:13:07.007611+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "py2-workflow-bounded-async-execution-r2-B",
+  "result_sha256": "1961df3c6fc029b3b2a2587846b6d2a9be99f3571f6dd37720fa6b653afb17b8",
+  "sha256": "64406f09a7809cc47146d3b955ee5ef1f37b95e599d3cff89175ea7c41fb74e2"
+}

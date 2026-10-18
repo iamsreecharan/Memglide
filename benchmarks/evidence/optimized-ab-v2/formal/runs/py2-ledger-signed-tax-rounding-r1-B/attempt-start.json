@@ -1,0 +1,31 @@
+{
+  "run_id": "py2-ledger-signed-tax-rounding-r1-B",
+  "task_id": "py2-ledger-signed-tax-rounding",
+  "language": "python",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 77,
+  "repository": "ledger-python-v2",
+  "original_run_id": "py2-ledger-signed-tax-rounding-r1-B",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-17T23:43:51.929734+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-signed-tax-rounding-r1-B",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/py2-ledger-signed-tax-rounding-r1-B",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Attempt is not yet graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "compact_protocol_fidelity": {
+    "valid": null,
+    "required_operations": [
+      "fetch_context"
+    ],
+    "verification_policy": "on_demand"
+  }
+}

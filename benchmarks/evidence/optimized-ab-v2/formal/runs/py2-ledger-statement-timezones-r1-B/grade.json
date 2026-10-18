@@ -1,0 +1,71 @@
+{
+  "task_id": "py2-ledger-statement-timezones",
+  "repository": "ledger-python-v2",
+  "corpus_version": "2.0.0",
+  "passed": true,
+  "success": true,
+  "exit_code": 0,
+  "commands": [
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-B/held_out.py"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-B/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-B/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 13
+      },
+      "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-B/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-B/smoke.stderr.log"
+    }
+  ],
+  "test_count": 15,
+  "protected_files_unchanged": true,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "0d70241e571f633e3af2dcf3cbb92fd9359c043170b692bf40fec16d6a11cd53",
+      "actual_sha256": "0d70241e571f633e3af2dcf3cbb92fd9359c043170b692bf40fec16d6a11cd53"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "8ed5055a65b8e15e27a8096ec35ceb999b7a0ee5bc4e2ba7ddea412a5d6eee32",
+      "actual_sha256": "8ed5055a65b8e15e27a8096ec35ceb999b7a0ee5bc4e2ba7ddea412a5d6eee32"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "tests/test_smoke.py",
+      "unchanged": true,
+      "expected_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a",
+      "actual_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a"
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

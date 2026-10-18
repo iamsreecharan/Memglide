@@ -1,0 +1,29 @@
+{
+  "applicable": false,
+  "call_error_count": 0,
+  "calls": [],
+  "capture_wall_seconds": 0.002890352000576968,
+  "captured_at_utc": "2026-10-17T23:51:27.035399+00:00",
+  "comparison_counts": {
+    "match": 0,
+    "mismatch": 0,
+    "unknown": 0
+  },
+  "event_errors": [],
+  "events_sha256": "fdfd727f1f1794834398810e10d7abdeb80f36098435a6834dac4825938ab0af",
+  "file_observation_count": 0,
+  "independently_verified_call_time_freshness": null,
+  "limitations": [
+    "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+    "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+    "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+    "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+    "Returned snippets are not independently checked for complete bodies or semantic completeness."
+  ],
+  "observed_fetch_context_call_count": 0,
+  "observed_memglide_call_count": 0,
+  "phase": "post_codex_pre_grader",
+  "response_available_count": 0,
+  "schema_version": 1,
+  "started_at_utc": "2026-10-17T23:51:27.032427+00:00"
+}

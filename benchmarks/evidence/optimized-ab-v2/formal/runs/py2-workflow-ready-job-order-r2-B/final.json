@@ -1,0 +1,1 @@
+{"summary":"Updated domain and API behavior for stable highest-priority ordering, strict limit validation, and deeply detached job dictionaries. Added regression coverage; preserved existing tests. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed","git diff --check — passed"]}

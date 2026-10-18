@@ -1,0 +1,1 @@
+{"summary":"Updated the domain validator and public API to return all applicable errors in email, password, confirmation, age order. Added regression coverage for error combinations, types, boundaries, and input preservation. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests."]}

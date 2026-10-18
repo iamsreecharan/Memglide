@@ -1,0 +1,9 @@
+{
+  "sequence": 299,
+  "previous_sha256": "7211ae633aa0918a2f375f587d4c304bf3111e9168d2b50f7367a9a5f9145dc1",
+  "recorded_at": "2026-10-18T00:21:58.469714+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts2-config-safe-local-redirects-r2-A",
+  "result_sha256": "b1b22916b0685896bf3960d3be9361f0221a5be73a4c32873c580a3085e9b8cd",
+  "sha256": "c1b92bcb68223c476a5b0baa5000c3dce4cc3ab842dc0663dc86326d7a23ce95"
+}

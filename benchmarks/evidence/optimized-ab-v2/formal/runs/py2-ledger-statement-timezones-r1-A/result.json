@@ -1,0 +1,232 @@
+{
+  "run_id": "py2-ledger-statement-timezones-r1-A",
+  "task_id": "py2-ledger-statement-timezones",
+  "language": "python",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 14,
+  "repository": "ledger-python-v2",
+  "original_run_id": "py2-ledger-statement-timezones-r1-A",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-17T23:11:43.544069+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-A",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/py2-ledger-statement-timezones-r1-A",
+  "errors": [],
+  "grader": {
+    "task_id": "py2-ledger-statement-timezones",
+    "repository": "ledger-python-v2",
+    "corpus_version": "2.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-A/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-A/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-A/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 13
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-A/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/py2-ledger-statement-timezones-r1-A/smoke.stderr.log"
+      }
+    ],
+    "test_count": 15,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "0d70241e571f633e3af2dcf3cbb92fd9359c043170b692bf40fec16d6a11cd53",
+        "actual_sha256": "0d70241e571f633e3af2dcf3cbb92fd9359c043170b692bf40fec16d6a11cd53"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "8ed5055a65b8e15e27a8096ec35ceb999b7a0ee5bc4e2ba7ddea412a5d6eee32",
+        "actual_sha256": "8ed5055a65b8e15e27a8096ec35ceb999b7a0ee5bc4e2ba7ddea412a5d6eee32"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_smoke.py",
+        "unchanged": true,
+        "expected_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a",
+        "actual_sha256": "c84a00f1ded87a5aaed778913628502a5457d77c4555631a56120b1676e6301a"
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "2b78ee8ee850842d3a9c9f16277d94b17980bd7b",
+  "prompt_sha256": "6d1e04c26532829bd992451e787f5d39aace30c31926af8aeab21914ac75bbcb",
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 30.967704245000277,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 261341184,
+    "cpu_seconds": 5.19,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 26,
+    "observed_memglide_processes": 0,
+    "samples": 509,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 24,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 80884,
+      "cached_input_tokens": 63744,
+      "output_tokens": 2011
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 80884,
+      "cached_input_tokens": 63744,
+      "output_tokens": 2011
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 6,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"pwd && rg --files -g '\"'! .git'\"'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'cat AGENTS.md ledger/statement_timezones.py ledger/api.py tests/test_smoke.py'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc 'git status --short && cat ledger/__init__.py'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_7",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 1,
+        "status": "failed"
+      },
+      {
+        "id": "item_9",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_10",
+        "command": "/bin/bash -lc 'git diff --check && git diff --stat && git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 2,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "AGENTS.md",
+      "ledger/statement_timezones.py",
+      "ledger/api.py",
+      "tests/test_smoke.py",
+      "ledger/__init__.py"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "post_execution_context_audit": {
+    "schema_version": 1,
+    "phase": "post_codex_pre_grader",
+    "started_at_utc": "2026-10-17T23:12:14.600072+00:00",
+    "captured_at_utc": "2026-10-17T23:12:14.601514+00:00",
+    "capture_wall_seconds": 0.0014168160000735952,
+    "events_sha256": "134de6b25725b2a5324f37369a3571b77b0afbacd7e77389bbf7ceb83b0327c2",
+    "applicable": false,
+    "observed_memglide_call_count": 0,
+    "observed_fetch_context_call_count": 0,
+    "response_available_count": 0,
+    "call_error_count": 0,
+    "file_observation_count": 0,
+    "comparison_counts": {
+      "match": 0,
+      "mismatch": 0,
+      "unknown": 0
+    },
+    "event_errors": [],
+    "calls": [],
+    "independently_verified_call_time_freshness": null,
+    "limitations": [
+      "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+      "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+      "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+      "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+      "Returned snippets are not independently checked for complete bodies or semantic completeness."
+    ]
+  },
+  "post_execution_audit_wall_seconds": 0.004801394999958575,
+  "post_execution_audit_cpu_seconds": 0.003172638999998867,
+  "protected_file_violations": [],
+  "treatment_valid": true,
+  "common_blocker": null,
+  "finished_at": "2026-10-17T23:12:15.133513+00:00",
+  "end_to_end_wall_seconds": 30.967704245000277
+}

@@ -1,0 +1,1 @@
+{"summary":"Implemented half-open statement selection using timezone-aware instant comparisons, stable chronological sorting, validation, and deep copies. Verified both domain and public API behavior with regression tests. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

@@ -1,0 +1,11 @@
+{
+  "sequence": 28,
+  "previous_sha256": "9ed1bef8c9435ef505b2d557e946a1c14750ae050c1e32885ed59777052c310b",
+  "recorded_at": "2026-10-17T23:11:43.549614+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-ledger-statement-timezones-r1-A",
+  "original_run_id": "py2-ledger-statement-timezones-r1-A",
+  "supplemental": false,
+  "start_sha256": "1792598c3fe94756347b936f3ae5cd68a932c7f295235ba5e9837b1726be86da",
+  "sha256": "75d0df999c7e52da273d5c7646336bee3859c102ee2037742cebe636fb2b9c9e"
+}

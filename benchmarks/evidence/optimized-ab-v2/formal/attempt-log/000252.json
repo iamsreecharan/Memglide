@@ -1,0 +1,11 @@
+{
+  "sequence": 252,
+  "previous_sha256": "838798e7e68d571e49d003de560fec2aed612c8298ba02077c3866c655c2cc26",
+  "recorded_at": "2026-10-18T00:09:18.241107+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-stream-fragmented-ndjson-r2-B",
+  "original_run_id": "ts2-stream-fragmented-ndjson-r2-B",
+  "supplemental": false,
+  "start_sha256": "45f3a6512526a28d464530c091b4ac9cf1945bda01d7da83b9f308d53525302e",
+  "sha256": "4019bd38bf2bd1d39668925d9d180fca343d32db1122cd9e91fa8c19c350fc7b"
+}

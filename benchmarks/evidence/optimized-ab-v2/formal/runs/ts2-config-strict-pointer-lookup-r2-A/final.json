@@ -1,0 +1,1 @@
+{"summary":"Fixed JSON pointer lookup to preserve falsy values and reject missing array entries. Added regression coverage for both the domain module and API adapter, including escapes, indices, own keys, and deep copies. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regressions","git diff --check — passed"]}

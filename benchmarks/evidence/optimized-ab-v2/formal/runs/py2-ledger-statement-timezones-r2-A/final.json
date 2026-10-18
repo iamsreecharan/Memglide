@@ -1,0 +1,1 @@
+{"summary":"Implemented half-open statement selection using UTC instants, aware-datetime validation, reversed-bound rejection, stable chronological sorting, and deep copies. Added regression coverage for both domain and public API. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

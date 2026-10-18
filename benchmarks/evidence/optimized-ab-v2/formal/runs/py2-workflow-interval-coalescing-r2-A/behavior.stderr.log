@@ -1,0 +1,7 @@
+test_input_and_errors (__main__.BehaviorTests.test_input_and_errors) ... ok
+test_nested_chains_adjacency_and_negatives (__main__.BehaviorTests.test_nested_chains_adjacency_and_negatives) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

@@ -1,0 +1,13 @@
+diff --git a/ledger/signed_tax_rounding.py b/ledger/signed_tax_rounding.py
+index d7e09fc..1dc5aa3 100644
+--- a/ledger/signed_tax_rounding.py
++++ b/ledger/signed_tax_rounding.py
+@@ -1,4 +1,7 @@
+ def tax_cents(amount, basis_points):
++    """Return tax rounded to nearest cent, with exact halves away from zero."""
+     if type(amount) is not int or type(basis_points) is not int or not 0 <= basis_points <= 10000:
+         raise ValueError("invalid money or rate")
+-    return amount * basis_points // 10000
++    product = amount * basis_points
++    rounded = (abs(product) + 5000) // 10000
++    return -rounded if product < 0 else rounded

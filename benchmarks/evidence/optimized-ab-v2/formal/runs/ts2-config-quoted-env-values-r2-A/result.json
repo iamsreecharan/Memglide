@@ -1,0 +1,249 @@
+{
+  "run_id": "ts2-config-quoted-env-values-r2-A",
+  "task_id": "ts2-config-quoted-env-values",
+  "language": "typescript",
+  "configuration": "A",
+  "repeat": 2,
+  "order": 148,
+  "repository": "config-typescript-v2",
+  "original_run_id": "ts2-config-quoted-env-values-r2-A",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T00:20:52.492647+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/ts2-config-quoted-env-values-r2-A",
+  "errors": [],
+  "grader": {
+    "task_id": "ts2-config-quoted-env-values",
+    "repository": "config-typescript-v2",
+    "corpus_version": "2.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/smoke.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 10,
+          "pass": 10,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-quoted-env-values-r2-A/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 12,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "002c794c0a2bf59c34b4a29bcbc6a37899d0964530a6ac83df8c4ce26a2a54bf",
+        "actual_sha256": "002c794c0a2bf59c34b4a29bcbc6a37899d0964530a6ac83df8c4ce26a2a54bf"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "4049e19f00c4e04d2bf8071b7faccae5bffb2b852546fb565445e993533caeab",
+        "actual_sha256": "4049e19f00c4e04d2bf8071b7faccae5bffb2b852546fb565445e993533caeab"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "3d86cadabd667f4def3e28712be44f6b913d9304fd1fb0e8eeadfc21b680f583",
+        "actual_sha256": "3d86cadabd667f4def3e28712be44f6b913d9304fd1fb0e8eeadfc21b680f583"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/smoke.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "09e0253ddae508ec15c20bde69b333c90b728f7f8f68c7b926174c0dba82958a",
+        "actual_sha256": "09e0253ddae508ec15c20bde69b333c90b728f7f8f68c7b926174c0dba82958a"
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "6ac686c6379e81c78d272edbaae6ae074cc58888",
+  "prompt_sha256": "e14c0f82b6a734f03a4e7783661e0d0ec5b426fcd11fa6688b3025c3d2d2c7d2",
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 39.276668221000364,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 337829888,
+    "cpu_seconds": 5.79,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 14,
+    "observed_memglide_processes": 0,
+    "samples": 659,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 14,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 82507,
+      "cached_input_tokens": 74752,
+      "output_tokens": 2636
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 82507,
+      "cached_input_tokens": 74752,
+      "output_tokens": 2636
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 4,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc \"pwd; rg --files -g '\"'!node_modules'\"' -g '\"'!package-lock.json'\"' -g '\"'!yarn.lock'\"'\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'cat AGENTS.md src/quoted_env_values.ts src/api.ts tests/smoke.test.mjs package.json'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc \"cat > src/quoted_env_values.ts <<'EOF'\nexport function parseEnv(text: string): Record<string, string> {\n  const result: Record<string, string> = Object.create(null);\n  const escapes: Record<string, string> = {\n    n: \\\"\\\\n\\\", r: \\\"\\\\r\\\", t: \\\"\\\\t\\\", \\\"\\\\\\\\\\\": \\\"\\\\\\\\\\\", '\\\"': '\\\"',\n  };\n  for (let line of text.split(/\\\\r?\\\\n/)) {\n    line = line.trim();\n    if (\"'!line || line.startsWith(\"#\")) continue;\n    line = line.replace(/''^export'\"\\\\s+/, \\\"\\\");\n    const match = /\"'^([A-Za-z_][A-Za-z0-9_]*)'\"\\\\s*=\\\\s*(.*)\"'$(?!['\"\\\\s\\\\S])/.exec(line);\n    if (\"'!match) throw new Error(\"invalid assignment\");\n    const raw = match[2];\n    const quote = raw[0];\n    if (quote !== '\"'\\\"' && quote \"'!== \"'\"'\\\") {\n      result[match[1]] = raw.split(\\\"#\\\")[0].trim();\n      continue;\n    }\n    let value = \\\"\\\";\n    let index = 1;\n    for (; index < raw.length && raw[index] \"'!== quote; index++) {\n      const character = raw[index];\n      if (quote === '\"'\\\"' && character === \\\"\\\\\\\\\\\") {\n        const escaped = raw[++index];\n        if (\"'!Object.hasOwn(escapes, escaped)) throw new Error(\"invalid escape\");\n        value += escapes[escaped];\n      } else {\n        value += character;\n      }\n    }\n    if (index === raw.length) throw new Error(\"unterminated quote\");\n    const remainder = raw.slice(index + 1).trim();\n    if (remainder && !remainder.startsWith(\"#\")) throw new Error(\"invalid assignment\");\n    result[match[1]] = value;\n  }\n  return result;\n}\nEOF\ncat > tests/quoted_env_values.test.mjs <<'\"'EOF'\nimport test from \\\"node:test\\\";\nimport assert from \\\"node:assert/strict\\\";\nimport { parseEnv as domainParseEnv } from \\\"../src/quoted_env_values.ts\\\";\nimport { parseEnv as apiParseEnv } from \\\"../src/api.ts\\\";\n\nfor (const [name, parseEnv] of [[\\\"domain\\\", domainParseEnv], [\\\"api\\\", apiParseEnv]]) {\n  test(\"'`${name}: assignments, comments, whitespace and duplicates`, () => {\n    const input = \"'\"\\\\r\\\\n # comment\\\\r\\\\n export A = first # comment\\\\r\\\\nA= last  \\\\r\\\\n_empty=\\\\r\\\\nB=before#after\\\\r\\\\n__proto__=safe\\\\r\\\\n\\\";\n    assert.deepEqual({ ...parseEnv(input) }, {\n      A: \\\"last\\\", _empty: \\\"\\\", B: \\\"before\\\", [\\\"__proto__\\\"]: \\\"safe\\\",\n    });\n  });\n\n  test(\"'`${name}: quoted content and double escapes`, () => {\n    const input = String.raw`A=\"  hello # world  \" # comment\nB='\"'  literal \\\\n # \\\" text  '\nC=\\\"\\\\n\\\\r\\\\t\\\\\\\\\\\\\\\"\\\"\nD=''\nE=\\\"\\\"#comment\nF='backslash\\\\'\nG=\\\"first\\\"\nG='last'\"'`;\n    assert.deepEqual({ ...parseEnv(input) }, {\n      A: \"  hello # world  \", B: String.raw`  literal '\"\\\\n # \\\" text  \"'`,\n      C: \"'\"\\\\n\\\\r\\\\t\\\\\\\\\\\\\\\"\\\", D: \\\"\\\", E: \\\"\\\", F: \\\"backslash\\\\\\\\\\\", G: \\\"last\\\",\n    });\n  });\n\n  test(\"'`${name}: rejects malformed assignments and quoted values`, () => {\n    for (const input of [\n      \"missing\", \"=value\", \"1KEY=value\", \"A-B=value\", \"A B=value\", \"export A\",\n      '\"'A=\\\"missing', \\\"A='missing\\\", 'A=\\\"wrong\\\\'',\n      'A=\\\"ok\\\" trailing', \\\"A='ok' trailing\\\", 'A=\\\"ok\\\"\\\"',\n      String.raw\"'`A=\"bad'\"\\\\q\\\"\"'`, String.raw`A=\"bad'\"\\\\'\\\"\"'`, '\"'A=\\\"dangling\\\\\\\\',\n      'A=\\\"line\\\\nbreak\\\"',\n    ]) {\n      assert.throws(() => parseEnv(input), Error, input);\n    }\n  });\n}\nEOF\nnode --test tests/*.test.mjs\"",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_5",
+        "command": "/bin/bash -lc 'git diff --check; git diff --stat; cat tsconfig.json; git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 2,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "AGENTS.md",
+      "src/quoted_env_values.ts",
+      "src/api.ts",
+      "tests/smoke.test.mjs",
+      "package.json",
+      "tsconfig.json"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "post_execution_context_audit": {
+    "schema_version": 1,
+    "phase": "post_codex_pre_grader",
+    "started_at_utc": "2026-10-18T00:21:32.023936+00:00",
+    "captured_at_utc": "2026-10-18T00:21:32.024596+00:00",
+    "capture_wall_seconds": 0.0014281519997894065,
+    "events_sha256": "6a86d7663a18dc1597e27cc228c439df409a3a4963ee2e9b6600831ca7477550",
+    "applicable": false,
+    "observed_memglide_call_count": 0,
+    "observed_fetch_context_call_count": 0,
+    "response_available_count": 0,
+    "call_error_count": 0,
+    "file_observation_count": 0,
+    "comparison_counts": {
+      "match": 0,
+      "mismatch": 0,
+      "unknown": 0
+    },
+    "event_errors": [],
+    "calls": [],
+    "independently_verified_call_time_freshness": null,
+    "limitations": [
+      "Hashes are independently observed after Codex exits and before grading, not at retrieval time.",
+      "A mismatch may result from the model's own intended edits; it is not a correctness failure or proof that the source was stale when retrieved.",
+      "A match establishes equality at this later observation, not uninterrupted historical freshness.",
+      "Only returned item paths with valid source hashes are read. Non-source, credential, state, database, symlink, unavailable, oversized, binary, and unsafe paths remain unknown.",
+      "Returned snippets are not independently checked for complete bodies or semantic completeness."
+    ]
+  },
+  "post_execution_audit_wall_seconds": 0.003947746000449115,
+  "post_execution_audit_cpu_seconds": 0.0029084679999868968,
+  "protected_file_violations": [],
+  "treatment_valid": true,
+  "common_blocker": null,
+  "finished_at": "2026-10-18T00:21:33.002384+00:00",
+  "end_to_end_wall_seconds": 39.276668221000364
+}

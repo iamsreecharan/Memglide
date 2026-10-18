@@ -1,0 +1,12 @@
+diff --git a/src/utf8_feature_cohorts.ts b/src/utf8_feature_cohorts.ts
+index cbb9eb7..5579e20 100644
+--- a/src/utf8_feature_cohorts.ts
++++ b/src/utf8_feature_cohorts.ts
+@@ -1,6 +1,6 @@
+ export function inCohort(user:string,salt:string,basisPoints:number):boolean{
+   if(!Number.isInteger(basisPoints)||basisPoints<0||basisPoints>10000)throw new Error("bad rate");
+   let hash=2166136261;const value=salt+":"+user;
+-  for(let i=0;i<value.length;i++)hash=Math.imul(hash^value.charCodeAt(i),16777619)>>>0;
++  for(const byte of new TextEncoder().encode(value))hash=Math.imul(hash^byte,16777619)>>>0;
+   return hash%10000<basisPoints;
+ }

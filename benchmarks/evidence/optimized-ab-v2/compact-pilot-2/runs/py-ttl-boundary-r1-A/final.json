@@ -1,0 +1,1 @@
+{"summary":"Fixed TTL expiration so entries are unavailable and removed at the deadline. Added regression coverage for unchanged expiration on reads, overwrite TTL renewal, and DocumentService. Existing tests preserved; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 6 tests passed","git diff --check — passed"]}

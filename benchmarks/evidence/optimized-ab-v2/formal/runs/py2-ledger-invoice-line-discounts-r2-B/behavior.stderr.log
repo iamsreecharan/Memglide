@@ -1,0 +1,7 @@
+test_per_unit_rounding_and_extremes (__main__.BehaviorTests.test_per_unit_rounding_and_extremes) ... ok
+test_validation_and_no_mutation (__main__.BehaviorTests.test_validation_and_no_mutation) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

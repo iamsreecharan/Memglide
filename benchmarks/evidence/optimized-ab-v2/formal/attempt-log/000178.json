@@ -1,0 +1,11 @@
+{
+  "sequence": 178,
+  "previous_sha256": "7e33b5de69936cff725ac5741d48acc3adf74571f40c6b2742ba0fc7d48ee254",
+  "recorded_at": "2026-10-17T23:50:06.450555+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py2-workflow-utf8-batch-budget-r2-A",
+  "original_run_id": "py2-workflow-utf8-batch-budget-r2-A",
+  "supplemental": false,
+  "start_sha256": "4050322effce7c80e19e6fe94d3a00508a39cad9a84f7d17dd12e6a6f79c3683",
+  "sha256": "d37f40c5084fc3f0a98147fa6312abb6a289f50bf672132dc1d1673f3ed144ec"
+}

@@ -1,0 +1,7 @@
+test_arbitrary_byte_boundaries_and_crlf (__main__.BehaviorTests.test_arbitrary_byte_boundaries_and_crlf) ... ok
+test_strict_utf8_and_final_fragment (__main__.BehaviorTests.test_strict_utf8_and_final_fragment) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

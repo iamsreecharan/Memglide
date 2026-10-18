@@ -1,0 +1,11 @@
+{
+  "sequence": 214,
+  "previous_sha256": "4edcf014314b92d34d0698148befd92f537e93484c910dd71d56b7e80a383129",
+  "recorded_at": "2026-10-17T23:59:39.297922+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts2-stream-keyed-upsert-order-r2-A",
+  "original_run_id": "ts2-stream-keyed-upsert-order-r2-A",
+  "supplemental": false,
+  "start_sha256": "0402af8abfb62af68a5734da0cb85cd0b24613707e1aa47abcf9623034201a27",
+  "sha256": "bda4f8eb79a24732b3289cdf7193dea89b120958df4d3a53d185d2f2e231ed36"
+}

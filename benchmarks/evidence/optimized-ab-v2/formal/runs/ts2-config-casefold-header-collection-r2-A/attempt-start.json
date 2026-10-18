@@ -1,0 +1,24 @@
+{
+  "run_id": "ts2-config-casefold-header-collection-r2-A",
+  "task_id": "ts2-config-casefold-header-collection",
+  "language": "typescript",
+  "configuration": "A",
+  "repeat": 2,
+  "order": 134,
+  "repository": "config-typescript-v2",
+  "original_run_id": "ts2-config-casefold-header-collection-r2-A",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T00:13:48.355525+00:00",
+  "artifacts": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/runs/ts2-config-casefold-header-collection-r2-A",
+  "worktree": "/workspace/Memglide/.local/optimization-v2/formal-40-v1/worktrees/ts2-config-casefold-header-collection-r2-A",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Attempt is not yet graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}
