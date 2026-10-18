@@ -1,0 +1,1 @@
+{"summary":"Implemented single-pass partitioning with one predicate call per item in input order. Preserves list order and input contents, supports one-shot iterables, and propagates exceptions unchanged. Added four regression tests; no commits made.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

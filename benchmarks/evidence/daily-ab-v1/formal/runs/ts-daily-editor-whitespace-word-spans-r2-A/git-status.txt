@@ -1,0 +1,3 @@
+M src/whitespace_word_spans.ts
+ M src/whitespace_word_spans_api.ts
+?? tests/whitespace_word_spans.test.mjs

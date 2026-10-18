@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "passthrough",
+    "reason": "context_supplied",
+    "task_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+    "prepared_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+    "files": [],
+    "context_bytes": 0,
+    "preparation_wall_seconds": 9.202100045513362e-05,
+    "preparation_cpu_seconds": 9.024500000000268e-05
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-catalog-saturday-weekend-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+    "bytes": 1804,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 16049.912231093
+}

@@ -1,0 +1,11 @@
+{
+  "sequence": 66,
+  "previous_sha256": "402523b826ad233af61b31de1a16a3e9ffdf6c7a485181612d3762f0e0cde4bf",
+  "recorded_at": "2026-10-18T02:41:53.185162+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts-daily-editor-inclusive-clamp-r1-A",
+  "original_run_id": "ts-daily-editor-inclusive-clamp-r1-A",
+  "supplemental": false,
+  "start_sha256": "1ab022cf182299a3ae5b667db43f1b527217cf3d902ea79347bf339d4e6760f0",
+  "sha256": "b465e40f469c256e98fcc3224cd0662c33c877777db96e448ca9066c9f63a0ee"
+}

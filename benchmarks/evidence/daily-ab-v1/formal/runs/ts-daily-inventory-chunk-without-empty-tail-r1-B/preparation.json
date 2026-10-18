@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "86b7023001cc7029b17255120a656f8f3679e75a9d05088cb4c029d0544fceed",
+    "prepared_prompt_sha256": "8787d4dab2b9fd0ea43e4fd5080acf577fff33cccc2ff2c415a0af7744df74b7",
+    "files": [
+      {
+        "path": "src/chunk_without_empty_tail.ts",
+        "sha256": "3ca652325123034b1e4e7a03bef230d24ba91d5abe788045225d078b7dd5110d",
+        "start_line": 1,
+        "end_line": 6
+      }
+    ],
+    "context_bytes": 756,
+    "preparation_wall_seconds": 0.036194525000610156,
+    "preparation_cpu_seconds": 0.036195625999999995
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/ts-daily-inventory-chunk-without-empty-tail-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/ts-daily-inventory-chunk-without-empty-tail-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "8787d4dab2b9fd0ea43e4fd5080acf577fff33cccc2ff2c415a0af7744df74b7",
+    "bytes": 2241,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 15627.973217886
+}

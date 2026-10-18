@@ -1,0 +1,456 @@
+{
+  "label": "Known-file utility-edit microbenchmark",
+  "generated_at": "2026-10-18T02:08:42.693057+00:00",
+  "tasks": 20,
+  "languages": {
+    "python": 10,
+    "typescript": 10
+  },
+  "task_kinds": {
+    "single-source": 8,
+    "integration": 8,
+    "supplied-context": 4
+  },
+  "scope_bytes": {
+    "min": 148,
+    "max": 1372,
+    "mean": 466.1,
+    "median": 340.5
+  },
+  "limitations": [
+    "Four purpose-built small repositories, not representative production repositories.",
+    "Every relevant production path is already explicitly disclosed to both configurations.",
+    "Complete relevant source is included in the four supplied-context task prompts.",
+    "Four nonsupplied integration tasks include typed application records and real public batch callers; this adds actual contract/caller complexity, not production repository scale.",
+    "One independent utility bug or pair of coupled utility/adapter bugs per task.",
+    "Does not evaluate unfamiliar large-repository discovery, longitudinal decisions, or cross-session memory.",
+    "Reference fixes and grading assertions are procedurally separated, not cryptographically hidden from a host-capable agent."
+  ],
+  "draft_preservation": {
+    "initial_snapshot": ".local/daily-v1/corpus-initial-draft",
+    "initial_validation": ".local/daily-v1/corpus-validation-1",
+    "final_validation": ".local/daily-v1/corpus-validation-2",
+    "reason_for_revision": "Independent review added genuine caller/data-contract coverage to four cases and corrected subnormal median reference arithmetic. No Codex runs or feature implementation were consulted in task design."
+  },
+  "file_hashes": [
+    {
+      "path": "benchmarks/corpus_daily.py",
+      "sha256": "a8109652a8897e74971212ff5501c3e93125afcf9b635926503796775117b5f1",
+      "bytes": 63263
+    },
+    {
+      "path": "benchmarks/tasks_daily.json",
+      "sha256": "55fb05ad09cd25a0d1745d0bc185cbfdc79f7ef096eac7abb839818c9a825c9f",
+      "bytes": 35001
+    },
+    {
+      "path": "tests/test_benchmark_corpus_daily.py",
+      "sha256": "f8725229526091f665bf9a6f3046eab7047899ef23674cf4c7bdd23119a277d0",
+      "bytes": 9959
+    }
+  ],
+  "individual_tasks": [
+    {
+      "task_id": "py-daily-desk-elapsed-clock",
+      "language": "python",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 343,
+      "scope_source_files": [
+        {
+          "path": "desk/elapsed_clock.py",
+          "bytes": 343,
+          "sha256": "2b93bc8fc7336001e3073ed5c106ee501a7d875d3ae46437cf17dbf26ec8ded6"
+        }
+      ],
+      "prompt_bytes": 687
+    },
+    {
+      "task_id": "py-daily-desk-rectangular-transpose",
+      "language": "python",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 160,
+      "scope_source_files": [
+        {
+          "path": "desk/rectangular_transpose.py",
+          "bytes": 160,
+          "sha256": "93819765f8917b00210f0c4679454f10bde456ed3bdce9366ea5642cffc85d1a"
+        }
+      ],
+      "prompt_bytes": 699
+    },
+    {
+      "task_id": "py-daily-desk-calendar-month-shift",
+      "language": "python",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": true,
+      "scope_bytes": 1268,
+      "scope_source_files": [
+        {
+          "path": "desk/calendar_month_shift.py",
+          "bytes": 441,
+          "sha256": "68e3fbdaa1371a3fd092a41d0f78481b2891d52981022f031445d18bb3e672c8"
+        },
+        {
+          "path": "desk/calendar_month_shift_api.py",
+          "bytes": 827,
+          "sha256": "1f2d55be5babfe1f50be519e09841e66482c4d059381c6b7ab4a0a7377f5cbeb"
+        }
+      ],
+      "prompt_bytes": 1085
+    },
+    {
+      "task_id": "py-daily-desk-export-line-endings",
+      "language": "python",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 569,
+      "scope_source_files": [
+        {
+          "path": "desk/export_line_endings.py",
+          "bytes": 362,
+          "sha256": "54ddba865b3b83f72eed54f3db2c7fd74b4e1b21b40af2b3ee037a9f0287227c"
+        },
+        {
+          "path": "desk/export_line_endings_api.py",
+          "bytes": 207,
+          "sha256": "6ef1ea974148abd0bce85b36006e661704ed82d5f5c01b67cabe302ca0376cc8"
+        }
+      ],
+      "prompt_bytes": 975
+    },
+    {
+      "task_id": "py-daily-desk-label-ellipsis",
+      "language": "python",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 338,
+      "scope_source_files": [
+        {
+          "path": "desk/label_ellipsis.py",
+          "bytes": 338,
+          "sha256": "33976a0fb0a96d60a95d2709923faa83ef92d85ceb676707f040daa8b543bd98"
+        }
+      ],
+      "prompt_bytes": 1218
+    },
+    {
+      "task_id": "py-daily-catalog-relative-indentation",
+      "language": "python",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 148,
+      "scope_source_files": [
+        {
+          "path": "catalog/relative_indentation.py",
+          "bytes": 148,
+          "sha256": "fb4cd3ff3e116f2f9213fcd025f5b52b9f9a85558496d4526ccf249c1165a019"
+        }
+      ],
+      "prompt_bytes": 821
+    },
+    {
+      "task_id": "py-daily-catalog-single-pass-partition",
+      "language": "python",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 211,
+      "scope_source_files": [
+        {
+          "path": "catalog/single_pass_partition.py",
+          "bytes": 211,
+          "sha256": "5fc4b130e0215b4da0341e01a79d6a6ac4fb3e1c3223d2d32a441e17e0ad5753"
+        }
+      ],
+      "prompt_bytes": 775
+    },
+    {
+      "task_id": "py-daily-catalog-tag-normalization",
+      "language": "python",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": true,
+      "scope_bytes": 1372,
+      "scope_source_files": [
+        {
+          "path": "catalog/tag_normalization.py",
+          "bytes": 151,
+          "sha256": "bdd46dd01363b1a3d56d69385f0d9a2a7c8b23a969b62864c1f03f9b16eb5906"
+        },
+        {
+          "path": "catalog/tag_normalization_api.py",
+          "bytes": 1221,
+          "sha256": "6894c201cc091f5be38351555cf9e15449b2147ac7c9b2e85de008e8a7b64c52"
+        }
+      ],
+      "prompt_bytes": 1086
+    },
+    {
+      "task_id": "py-daily-catalog-strict-column-projection",
+      "language": "python",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 397,
+      "scope_source_files": [
+        {
+          "path": "catalog/strict_column_projection.py",
+          "bytes": 157,
+          "sha256": "4edea0e1dde790b6a0481946f6b3d63e1846cc9796a9f5797002c0516566ec4c"
+        },
+        {
+          "path": "catalog/strict_column_projection_api.py",
+          "bytes": 240,
+          "sha256": "855cf605ec8ce1e02e11bcbdc36f82c59ac11da868974051e89d14aeaf2f7477"
+        }
+      ],
+      "prompt_bytes": 880
+    },
+    {
+      "task_id": "py-daily-catalog-saturday-weekend",
+      "language": "python",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 243,
+      "scope_source_files": [
+        {
+          "path": "catalog/saturday_weekend.py",
+          "bytes": 243,
+          "sha256": "1d18f092e7b505d1ba0f8b21d66c1b96dc3eef4829b16da927af14e009643768"
+        }
+      ],
+      "prompt_bytes": 1058
+    },
+    {
+      "task_id": "ts-daily-editor-crlf-line-position",
+      "language": "typescript",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 378,
+      "scope_source_files": [
+        {
+          "path": "src/crlf_line_position.ts",
+          "bytes": 378,
+          "sha256": "18823393b438ce8cedc210240bd79f0c9319ae4cbea33e175444c071ff67e61e"
+        }
+      ],
+      "prompt_bytes": 845
+    },
+    {
+      "task_id": "ts-daily-editor-html-text-escaping",
+      "language": "typescript",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 197,
+      "scope_source_files": [
+        {
+          "path": "src/html_text_escaping.ts",
+          "bytes": 197,
+          "sha256": "81b9a122fdcb62cb2e17979bef8da2bbcca307336520c77d0edf4d7493cbcdb8"
+        }
+      ],
+      "prompt_bytes": 765
+    },
+    {
+      "task_id": "ts-daily-editor-literal-replace-all",
+      "language": "typescript",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": true,
+      "scope_bytes": 992,
+      "scope_source_files": [
+        {
+          "path": "src/literal_replace_all.ts",
+          "bytes": 198,
+          "sha256": "2b322ac37552e909c46c539b0f554167d44fbda8dd4dba73e9c4cbe80ccb982c"
+        },
+        {
+          "path": "src/literal_replace_all_api.ts",
+          "bytes": 794,
+          "sha256": "73bcb4bc361c7f61c1fd1bad309a7d24921712b9e608944b3319e7db5335e7e3"
+        }
+      ],
+      "prompt_bytes": 1049
+    },
+    {
+      "task_id": "ts-daily-editor-whitespace-word-spans",
+      "language": "typescript",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 494,
+      "scope_source_files": [
+        {
+          "path": "src/whitespace_word_spans.ts",
+          "bytes": 254,
+          "sha256": "e0c9f3662c61852eee548e188022a68d5a304282cdbdb45a6cf95bdc1af61bf0"
+        },
+        {
+          "path": "src/whitespace_word_spans_api.ts",
+          "bytes": 240,
+          "sha256": "154c8d0a2403c615d3847f61e3eb1667cd68f24169a92e557e711b7f880d722c"
+        }
+      ],
+      "prompt_bytes": 908
+    },
+    {
+      "task_id": "ts-daily-editor-inclusive-clamp",
+      "language": "typescript",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 253,
+      "scope_source_files": [
+        {
+          "path": "src/inclusive_clamp.ts",
+          "bytes": 253,
+          "sha256": "c15efa931fd0dbe5bdb0cfa97519abae12eeeb86ac6ea08ea9c3439d8cbe806d"
+        }
+      ],
+      "prompt_bytes": 1071
+    },
+    {
+      "task_id": "ts-daily-inventory-numeric-median",
+      "language": "typescript",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 252,
+      "scope_source_files": [
+        {
+          "path": "src/numeric_median.ts",
+          "bytes": 252,
+          "sha256": "523baa6e7cf600aa9788cb03a3358ca88a6c616af4afbb4cf413dda67118cc0a"
+        }
+      ],
+      "prompt_bytes": 712
+    },
+    {
+      "task_id": "ts-daily-inventory-chunk-without-empty-tail",
+      "language": "typescript",
+      "task_kind": "single-source",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 314,
+      "scope_source_files": [
+        {
+          "path": "src/chunk_without_empty_tail.ts",
+          "bytes": 314,
+          "sha256": "3ca652325123034b1e4e7a03bef230d24ba91d5abe788045225d078b7dd5110d"
+        }
+      ],
+      "prompt_bytes": 735
+    },
+    {
+      "task_id": "ts-daily-inventory-signed-code-padding",
+      "language": "typescript",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 397,
+      "scope_source_files": [
+        {
+          "path": "src/signed_code_padding.ts",
+          "bytes": 241,
+          "sha256": "6889a8e26f8a6d9604ab033800914163221511035f13d5546f93dda9fad8f8f7"
+        },
+        {
+          "path": "src/signed_code_padding_api.ts",
+          "bytes": 156,
+          "sha256": "00d2f70e55db9b3ce23541bae8f3eccb4b46a3126be58c0be0a52e03c706bac1"
+        }
+      ],
+      "prompt_bytes": 853
+    },
+    {
+      "task_id": "ts-daily-inventory-equal-length-zip",
+      "language": "typescript",
+      "task_kind": "integration",
+      "context_supplied": false,
+      "application_call_chain_enriched": true,
+      "scope_bytes": 776,
+      "scope_source_files": [
+        {
+          "path": "src/equal_length_zip.ts",
+          "bytes": 126,
+          "sha256": "f4e6d752ef7babc9476ded9a10a8ce2f31b59fb85427c434a11f78296a255ffe"
+        },
+        {
+          "path": "src/equal_length_zip_api.ts",
+          "bytes": 650,
+          "sha256": "3c3de68f4c9a6220ee34f615abdc6ff9991f53fb3b31f4d3708acd6f1edf8a46"
+        }
+      ],
+      "prompt_bytes": 1076
+    },
+    {
+      "task_id": "ts-daily-inventory-zero-count-plural",
+      "language": "typescript",
+      "task_kind": "supplied-context",
+      "context_supplied": true,
+      "application_call_chain_enriched": false,
+      "scope_bytes": 220,
+      "scope_source_files": [
+        {
+          "path": "src/zero_count_plural.ts",
+          "bytes": 220,
+          "sha256": "dcb60245044034fbac11180f91c6a626a1613c01b97e1c42a0088b2f58275da6"
+        }
+      ],
+      "prompt_bytes": 1076
+    }
+  ],
+  "validation": {
+    "cli_runs": {
+      "corpus-validation-1": {
+        "valid": true,
+        "tasks": 20,
+        "half_fix_controls": 16,
+        "raw_file_count": 1093
+      },
+      "corpus-validation-2": {
+        "valid": true,
+        "tasks": 20,
+        "half_fix_controls": 16,
+        "raw_file_count": 1093
+      }
+    },
+    "ruff": "passed",
+    "model_requests_during_corpus_development": 0,
+    "prior_full_pytest": {
+      "passed": 46,
+      "failed": 0,
+      "seconds": 43.61,
+      "log": ".local/daily-v1/corpus-pytest-1.log",
+      "junit_xml": ".local/daily-v1/corpus-pytest-1.xml"
+    },
+    "new_integrity_regressions": {
+      "passed": 7,
+      "failed": 0,
+      "seconds": 4.61,
+      "log": ".local/daily-v1/review/grader-regression-1.log",
+      "junit_xml": ".local/daily-v1/review/grader-regression-1.xml",
+      "before_exploits_accepted": 2,
+      "after_identical_exploits_rejected": 2
+    },
+    "full_current_53_check_rerun": "Root coordinating after grader integrity fix"
+  },
+  "grading_integrity_revision": {
+    "task_definitions_changed": false,
+    "generated_source_bytes_changed": false,
+    "manifest_sha256_unchanged": true,
+    "reason": "Reject exit-zero early process termination and skipped/todo/expected-failure test suites; require exact2behavior and>=5smoke executed with clean framework summaries.",
+    "proof_directory": ".local/daily-v1/review"
+  }
+}

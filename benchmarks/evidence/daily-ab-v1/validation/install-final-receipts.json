@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "install_final_wheel",
+      "command": [
+        "uv",
+        "pip",
+        "install",
+        "--offline",
+        "--python",
+        "/workspace/Memglide/.local/daily-v1/installed-env/bin/python",
+        "--reinstall-package",
+        "memglide",
+        "--no-deps",
+        "/workspace/Memglide/.local/daily-v1/dist-final/memglide-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "/workspace/Memglide",
+      "returncode": 0,
+      "wall_seconds": 0.16917542699957266,
+      "log": ".local/daily-v1/install_final_wheel.log",
+      "log_sha256": "96f21302a2e4eab6d6ef5c930eb399f93cf8206ded99bb4869bd280518c9c57b"
+    },
+    {
+      "name": "installed_final_api",
+      "command": [
+        "/workspace/Memglide/.local/daily-v1/installed-env/bin/python",
+        "-I",
+        "/workspace/Memglide/.local/refinement-package/verify_installed.py",
+        "--state",
+        "/workspace/Memglide/.local/daily-v1/installed-api-state-final",
+        "--report",
+        "/workspace/Memglide/.local/daily-v1/installed-api-smoke-final.json"
+      ],
+      "cwd": "/tmp",
+      "returncode": 0,
+      "wall_seconds": 6.1464467929999955,
+      "log": ".local/daily-v1/installed_final_api.log",
+      "log_sha256": "60254329357734f03d90e090fc81fa4fd3c2b5907f264af4aa6e7e758ae55ee5"
+    },
+    {
+      "name": "installed_final_preload",
+      "command": [
+        "/workspace/Memglide/.local/daily-v1/installed-env/bin/python",
+        "-I",
+        "/workspace/Memglide/.local/daily-v1/verify_installed_preload.py",
+        "--state",
+        "/workspace/Memglide/.local/daily-v1/installed-preload-state-final",
+        "--report",
+        "/workspace/Memglide/.local/daily-v1/installed-preload-smoke-final.json"
+      ],
+      "cwd": "/tmp",
+      "returncode": 0,
+      "wall_seconds": 0.41534466600023734,
+      "log": ".local/daily-v1/installed_final_preload.log",
+      "log_sha256": "d1f14eeccb31c1978bc0de7a76f4221c445376028087b8738e58634395a72fd0"
+    }
+  ]
+}

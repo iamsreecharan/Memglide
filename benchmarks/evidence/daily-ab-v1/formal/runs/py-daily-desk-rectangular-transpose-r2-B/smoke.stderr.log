@@ -1,0 +1,13 @@
+test_empty_inputs (test_rectangular_transpose.TransposeTests.test_empty_inputs) ... ok
+test_non_numeric_cells_and_fresh_rows (test_rectangular_transpose.TransposeTests.test_non_numeric_cells_and_fresh_rows) ... ok
+test_rejects_ragged_rows (test_rectangular_transpose.TransposeTests.test_rejects_ragged_rows) ... ok
+test_calendar_month_shift (test_smoke.SmokeTests.test_calendar_month_shift) ... ok
+test_elapsed_clock (test_smoke.SmokeTests.test_elapsed_clock) ... ok
+test_export_line_endings (test_smoke.SmokeTests.test_export_line_endings) ... ok
+test_label_ellipsis (test_smoke.SmokeTests.test_label_ellipsis) ... ok
+test_rectangular_transpose (test_smoke.SmokeTests.test_rectangular_transpose) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.005s
+
+OK

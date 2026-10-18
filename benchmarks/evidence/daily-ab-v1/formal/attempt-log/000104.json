@@ -1,0 +1,11 @@
+{
+  "sequence": 104,
+  "previous_sha256": "85ed07dfe2570cfc6f726f725ba29522e089450878dfd283fe532c4ceef38b02",
+  "recorded_at": "2026-10-18T02:49:03.957037+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts-daily-inventory-zero-count-plural-r2-A",
+  "original_run_id": "ts-daily-inventory-zero-count-plural-r2-A",
+  "supplemental": false,
+  "start_sha256": "2f2ddf268f300be547360d30624c1e5d560b7bf8bd9b90547d342afb8ce9982a",
+  "sha256": "6f5603151b22fe707175e1c6950e0343dc60a42b1ea86fd42105102c06b5af22"
+}

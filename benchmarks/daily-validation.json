@@ -11704,7 +11704,7 @@
     "initial_final_python_shared_case_ids": 757,
     "initial_python_case_ids_absent_from_final": 0,
     "final_python_case_ids_absent_from_initial": 33,
-    "identity_algorithm": "sha256(classname + :: + original JUnit name), UTF-8; raw parameter names remain private",
+    "identity_algorithm": "sha256(classname + :: + original JUnit name), UTF-8; raw parameter names omitted from this JSON; original JUnit evidence preserves verified synthetic fixtures",
     "limit": "Matching names identify overlapping cases, not identical historical implementation bytes."
   },
   "counting_notes": [

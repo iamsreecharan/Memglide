@@ -1,0 +1,1 @@
+{"summary":"Fixed truncate_label to reserve one code point for the ellipsis, preserving zero-limit behavior, unchanged short strings, and invalid-limit validation. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 5 tests passed.","Additional boundary, Unicode, and invalid-limit checks passed."]}

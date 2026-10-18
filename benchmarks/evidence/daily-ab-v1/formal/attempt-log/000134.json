@@ -1,0 +1,11 @@
+{
+  "sequence": 134,
+  "previous_sha256": "a596c26b5a5ff1d34f1c25f665301fffe9348577a8d935cefd8604dfd802aee5",
+  "recorded_at": "2026-10-18T02:54:18.266303+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts-daily-inventory-numeric-median-r2-A",
+  "original_run_id": "ts-daily-inventory-numeric-median-r2-A",
+  "supplemental": false,
+  "start_sha256": "b2986d0b182257b704186d10316e9d2108b643de7b7645d15a5b1262244bd538",
+  "sha256": "2798e35ae4fdf40237e619d65fdad67e9926c747bdcbd592e977c551ae661105"
+}

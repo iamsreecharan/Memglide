@@ -1,0 +1,28 @@
+[
+  {
+    "name": "create-installed-env",
+    "command": [
+      "uv",
+      "venv",
+      "/workspace/Memglide/.local/daily-v1/installed-env"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.05694442899948626
+  },
+  {
+    "name": "install-runtime",
+    "command": [
+      "uv",
+      "pip",
+      "install",
+      "--offline",
+      "--python",
+      "/workspace/Memglide/.local/daily-v1/installed-env/bin/python",
+      "--require-hashes",
+      "-r",
+      "/workspace/Memglide/.local/daily-v1/runtime-requirements.txt"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.31419203500081494
+  }
+]

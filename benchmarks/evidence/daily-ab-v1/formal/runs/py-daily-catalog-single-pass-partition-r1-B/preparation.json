@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "13a8ea7726aeb0755dc8a045381d42597eb123309a65dc2f3fc71fdb49adcda7",
+    "prepared_prompt_sha256": "88e4bcba2d182b1f7ee3b2865b4f1e7aa848bfb9dba9118a7f8a7121c9b233c1",
+    "files": [
+      {
+        "path": "catalog/single_pass_partition.py",
+        "sha256": "5fc4b130e0215b4da0341e01a79d6a6ac4fb3e1c3223d2d32a441e17e0ad5753",
+        "start_line": 1,
+        "end_line": 4
+      }
+    ],
+    "context_bytes": 656,
+    "preparation_wall_seconds": 0.08520315900022979,
+    "preparation_cpu_seconds": 0.08520812400000002
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-catalog-single-pass-partition-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-single-pass-partition-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "88e4bcba2d182b1f7ee3b2865b4f1e7aa848bfb9dba9118a7f8a7121c9b233c1",
+    "bytes": 2182,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 16402.248255852
+}

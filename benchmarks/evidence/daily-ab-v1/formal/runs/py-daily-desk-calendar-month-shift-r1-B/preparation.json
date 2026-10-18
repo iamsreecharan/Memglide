@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "ec3b19094aa1f6072b9456d4fb9e1cd3708726b7cc7760d87f201d0fdfe68484",
+    "prepared_prompt_sha256": "02c61dbc168dc4209366eb07d274d5fcae9329cb98a153976f714f438b49362f",
+    "files": [
+      {
+        "path": "desk/calendar_month_shift.py",
+        "sha256": "68e3fbdaa1371a3fd092a41d0f78481b2891d52981022f031445d18bb3e672c8",
+        "start_line": 1,
+        "end_line": 9
+      },
+      {
+        "path": "desk/calendar_month_shift_api.py",
+        "sha256": "1f2d55be5babfe1f50be519e09841e66482c4d059381c6b7ab4a0a7377f5cbeb",
+        "start_line": 1,
+        "end_line": 25
+      }
+    ],
+    "context_bytes": 1921,
+    "preparation_wall_seconds": 0.06441975699999603,
+    "preparation_cpu_seconds": 0.06442328100000001
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-desk-calendar-month-shift-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-calendar-month-shift-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "02c61dbc168dc4209366eb07d274d5fcae9329cb98a153976f714f438b49362f",
+    "bytes": 3788,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 16296.713260029
+}

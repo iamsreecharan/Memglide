@@ -20,7 +20,9 @@ READ_METHOD = (
     "Heuristic command-intent proxy from successful command_execution items containing literal "
     "cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, "
     "scripts, directory searches, MCP reads, and internal reads are excluded. A repeated "
-    "command names a path recognized in an earlier command. This is not an I/O trace, "
+    "command names a path recognized in an earlier command. Unquoted shell newlines are "
+    "command separators; quoted newlines stay argument data and are excluded as paths. "
+    "This is not an I/O trace, "
     "an actual read count, or a guaranteed lower bound on filesystem reads."
 )
 
@@ -33,25 +35,83 @@ def _literal_path(value: str) -> bool:
     )
 
 
-def _command_segments(command: str) -> list[list[str]]:
+def _separate_unquoted_newlines(command: str) -> str:
+    """Keep shell newlines as separators without splitting quoted argument data.
+
+    shlex normally treats LF as whitespace, accidentally joining a following
+    ``git diff`` into preceding ``cat`` operands. Retaining LF before the inserted
+    semicolon also ends shlex comments correctly. This is lexical normalization,
+    not shell evaluation; unquoted/double-quoted backslash-LF is a continuation.
+    """
+    normalized: list[str] = []
+    quote: str | None = None
+    comment = False
+    index = 0
+    while index < len(command):
+        character = command[index]
+        if comment:
+            if character == "\n":
+                normalized.append("\n;\n")
+                comment = False
+            else:
+                normalized.append(character)
+            index += 1
+            continue
+        if quote == "'":
+            normalized.append(character)
+            if character == "'":
+                quote = None
+            index += 1
+            continue
+        if character == "\\" and index + 1 < len(command):
+            following = command[index + 1]
+            if following != "\n":
+                normalized.extend((character, following))
+            index += 2
+            continue
+        if quote == '"':
+            normalized.append(character)
+            if character == '"':
+                quote = None
+        elif character in {"'", '"'}:
+            normalized.append(character)
+            quote = character
+        elif character == "#":
+            normalized.append(character)
+            comment = True
+        elif character == "\n":
+            normalized.append("\n;\n")
+        else:
+            normalized.append(character)
+        index += 1
+    return "".join(normalized)
+
+
+def _command_segments(command: str, *, _wrapper_depth: int = 0) -> list[list[str]]:
     """Parse literal shell commands, without executing any user/model text."""
     try:
-        tokens = shlex.split(command)
-        # Codex commonly records a shell invocation around its original command.
-        if len(tokens) >= 3 and Path(tokens[0]).name in {"bash", "sh", "zsh"}:
-            if tokens[1] in {"-c", "-lc"}:
-                command = tokens[2]
-        lexer = shlex.shlex(command, posix=True, punctuation_chars=";&|<>")
+        lexer = shlex.shlex(
+            _separate_unquoted_newlines(command), posix=True, punctuation_chars=";&|<>"
+        )
         lexer.whitespace_split = True
         segments: list[list[str]] = [[]]
         for token in lexer:
             if token in {";", "&&"}:
                 segments.append([])
-            elif token in {"|", "||", "&", ">", ">>", "<", "<<"}:
+            elif token and all(character in ";&|<>" for character in token):
                 # Redirections and conditional/piped execution are too ambiguous.
                 return []
             else:
                 segments[-1].append(token)
+        segments = [segment for segment in segments if segment]
+        # Only unwrap a standalone shell command. Flattening a shell alongside
+        # outer commands would incorrectly let an inner `cd` change their scope.
+        if len(segments) == 1 and len(segments[0]) == 3:
+            executable, option, inner = segments[0]
+            if Path(executable).name in {"bash", "sh", "zsh"} and option in {"-c", "-lc"}:
+                if _wrapper_depth >= 4:
+                    return []
+                return _command_segments(inner, _wrapper_depth=_wrapper_depth + 1)
         return segments
     except ValueError:
         return []

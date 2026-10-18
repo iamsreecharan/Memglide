@@ -1,0 +1,1 @@
+{"summary":"Fixed tag trimming, Unicode casefolding, empty removal, and stable deduplication while preserving commas and inputs. Added regression coverage for card order, one-time normalization, and detached exports. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

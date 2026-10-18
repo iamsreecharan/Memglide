@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "6c4d5f514b25073ee4c9f35fd6fa78b8b05a292a229bcca27400d23e9695d9db",
+    "prepared_prompt_sha256": "aa8f0b78f5544a62c174c7519df8bf161132f4d5a8f5776a144f3d920a609ee0",
+    "files": [
+      {
+        "path": "src/literal_replace_all.ts",
+        "sha256": "2b322ac37552e909c46c539b0f554167d44fbda8dd4dba73e9c4cbe80ccb982c",
+        "start_line": 1,
+        "end_line": 4
+      },
+      {
+        "path": "src/literal_replace_all_api.ts",
+        "sha256": "73bcb4bc361c7f61c1fd1bad309a7d24921712b9e608944b3319e7db5335e7e3",
+        "start_line": 1,
+        "end_line": 17
+      }
+    ],
+    "context_bytes": 1606,
+    "preparation_wall_seconds": 0.0454537990008248,
+    "preparation_cpu_seconds": 0.045455889999999985
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/ts-daily-editor-literal-replace-all-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/ts-daily-editor-literal-replace-all-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "aa8f0b78f5544a62c174c7519df8bf161132f4d5a8f5776a144f3d920a609ee0",
+    "bytes": 3433,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 15886.092260131
+}

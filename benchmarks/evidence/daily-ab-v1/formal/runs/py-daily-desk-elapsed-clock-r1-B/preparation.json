@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "78ca5db113faab0308d682f0b3d3b040c41e8e85986057204c2ccd125eac7581",
+    "prepared_prompt_sha256": "d1b5225cd145945caf31db674941599ebeb659192e68210663490529aa088a46",
+    "files": [
+      {
+        "path": "desk/elapsed_clock.py",
+        "sha256": "2b93bc8fc7336001e3073ed5c106ee501a7d875d3ae46437cf17dbf26ec8ded6",
+        "start_line": 1,
+        "end_line": 7
+      }
+    ],
+    "context_bytes": 784,
+    "preparation_wall_seconds": 0.08130812600029458,
+    "preparation_cpu_seconds": 0.08030574599999998
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-desk-elapsed-clock-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-elapsed-clock-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "d1b5225cd145945caf31db674941599ebeb659192e68210663490529aa088a46",
+    "bytes": 2211,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 16092.589889463
+}

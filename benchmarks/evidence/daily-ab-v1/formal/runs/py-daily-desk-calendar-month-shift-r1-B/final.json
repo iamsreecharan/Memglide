@@ -1,0 +1,1 @@
+{"summary":"Fixed calendar-month day clamping and unchanged forwarding of zero and negative deltas. Added regression coverage for validation, date output, batch ordering, metadata detachment, and unchanged inputs. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed."]}

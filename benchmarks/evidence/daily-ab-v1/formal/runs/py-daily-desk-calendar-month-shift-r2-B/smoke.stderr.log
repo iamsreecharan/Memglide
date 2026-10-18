@@ -1,0 +1,13 @@
+test_batch_preserves_records_and_detaches_nested_metadata (test_calendar_month_shift.CalendarMonthShiftTests.test_batch_preserves_records_and_detaches_nested_metadata) ... ok
+test_invalid_arguments_raise_value_error (test_calendar_month_shift.CalendarMonthShiftTests.test_invalid_arguments_raise_value_error) ... ok
+test_signed_calendar_months_and_clamping (test_calendar_month_shift.CalendarMonthShiftTests.test_signed_calendar_months_and_clamping) ... ok
+test_calendar_month_shift (test_smoke.SmokeTests.test_calendar_month_shift) ... ok
+test_elapsed_clock (test_smoke.SmokeTests.test_elapsed_clock) ... ok
+test_export_line_endings (test_smoke.SmokeTests.test_export_line_endings) ... ok
+test_label_ellipsis (test_smoke.SmokeTests.test_label_ellipsis) ... ok
+test_rectangular_transpose (test_smoke.SmokeTests.test_rectangular_transpose) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.002s
+
+OK

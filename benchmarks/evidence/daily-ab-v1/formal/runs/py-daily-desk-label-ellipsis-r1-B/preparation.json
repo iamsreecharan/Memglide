@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "passthrough",
+    "reason": "context_supplied",
+    "task_prompt_sha256": "ae93e1dbc31a8b68f8da4da901e5a81c596c09b6b30928af743d8e3755d099ea",
+    "prepared_prompt_sha256": "ae93e1dbc31a8b68f8da4da901e5a81c596c09b6b30928af743d8e3755d099ea",
+    "files": [],
+    "context_bytes": 0,
+    "preparation_wall_seconds": 6.939599916222505e-05,
+    "preparation_cpu_seconds": 6.697999999999427e-05
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-desk-label-ellipsis-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "ae93e1dbc31a8b68f8da4da901e5a81c596c09b6b30928af743d8e3755d099ea",
+    "bytes": 1959,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 16035.046100875
+}

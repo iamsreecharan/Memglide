@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "f31f89223edcc4d46192d68ca26aa30c25aafab2e4a7ac71796df6c39af09b16",
+    "prepared_prompt_sha256": "aecb9f5c65731049ad39f986c33da580b9576ceb7161a922314683d2790308d9",
+    "files": [
+      {
+        "path": "src/numeric_median.ts",
+        "sha256": "523baa6e7cf600aa9788cb03a3358ca88a6c616af4afbb4cf413dda67118cc0a",
+        "start_line": 1,
+        "end_line": 5
+      }
+    ],
+    "context_bytes": 683,
+    "preparation_wall_seconds": 0.11240590400120709,
+    "preparation_cpu_seconds": 0.112412442
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/ts-daily-inventory-numeric-median-r2-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/ts-daily-inventory-numeric-median-r2-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "aecb9f5c65731049ad39f986c33da580b9576ceb7161a922314683d2790308d9",
+    "bytes": 2135,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 17034.246057022
+}

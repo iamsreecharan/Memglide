@@ -59,7 +59,51 @@ def _hash(prompt: str) -> str:
     return hashlib.sha256(prompt.encode("utf-8")).hexdigest()
 
 
-def _validated_preparation(value: Any, prompt: str) -> tuple[str, dict[str, Any]]:
+def _validate_compact_prefix(prepared: str, prompt: str, files: list[dict[str, Any]]) -> None:
+    """Check the entire compact envelope against private complete-file evidence."""
+    from memglide.integrations.preload import _COMPACT_NOTICE, TASK_SEPARATOR
+
+    suffix = TASK_SEPARATOR + prompt
+    if not prepared.endswith(suffix):
+        raise ValueError("compact preparation modified the original task suffix")
+    prefix = prepared[: -len(suffix)]
+    try:
+        envelope = json.loads(prefix)
+    except (json.JSONDecodeError, RecursionError) as exc:
+        raise ValueError("compact preparation returned invalid source JSON") from exc
+    if (
+        not isinstance(envelope, dict)
+        or set(envelope) != {"notice", "memglide_sources"}
+        or envelope["notice"] != _COMPACT_NOTICE
+        or not isinstance(envelope["memglide_sources"], list)
+        or len(envelope["memglide_sources"]) != len(files)
+        or [item["path"] for item in files] != sorted(item["path"] for item in files)
+    ):
+        raise ValueError("compact preparation returned invalid source envelope")
+    expected_sources = []
+    for source, metadata in zip(envelope["memglide_sources"], files, strict=True):
+        if (
+            not isinstance(source, dict)
+            or set(source) != {"path", "content"}
+            or source["path"] != metadata["path"]
+            or not isinstance(source["content"], str)
+            or _hash(source["content"]) != metadata["sha256"]
+            or len(source["content"].splitlines()) != metadata["end_line"]
+        ):
+            raise ValueError("compact preparation source does not match complete-file metadata")
+        expected_sources.append({"path": source["path"], "content": source["content"]})
+    canonical = json.dumps(
+        {"notice": _COMPACT_NOTICE, "memglide_sources": expected_sources},
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+    if prefix != canonical:
+        raise ValueError("compact preparation source JSON is not canonical")
+
+
+def _validated_preparation(
+    value: Any, prompt: str, context_format: str = "legacy"
+) -> tuple[str, dict[str, Any]]:
     """Reject a malformed preparer result before launching or reporting success."""
     if not isinstance(value, dict):
         raise ValueError("preparation returned invalid metadata")
@@ -70,23 +114,36 @@ def _validated_preparation(value: Any, prompt: str) -> tuple[str, dict[str, Any]
     size = value.get("context_bytes")
     if (
         not isinstance(prepared, str)
-        or not prepared.startswith(prompt)
         or not isinstance(mode, str)
         or mode not in {"passthrough", "preloaded"}
         or not isinstance(reason, str)
         or not reason
         or not isinstance(files, list)
         or type(size) is not int
-        or size != len(prepared[len(prompt) :].encode("utf-8"))
+        or size != len(prepared.encode("utf-8")) - len(prompt.encode("utf-8"))
         or value.get("task_prompt_sha256") != _hash(prompt)
         or value.get("prepared_prompt_sha256") != _hash(prepared)
+        or context_format not in {"legacy", "compact-prefix"}
+        or value.get("context_format") != context_format
     ):
         raise ValueError("preparation returned invalid metadata")
     if mode == "passthrough" and (prepared != prompt or files or size):
         raise ValueError("passthrough preparation modified the task")
     if mode == "preloaded" and (not files or size <= 0):
         raise ValueError("preloaded preparation returned no source context")
+    expected_layout = (
+        "unchanged"
+        if mode == "passthrough"
+        else "source_prefix"
+        if context_format == "compact-prefix"
+        else "task_suffix"
+    )
+    if value.get("prompt_layout") != expected_layout:
+        raise ValueError("preparation returned an invalid prompt layout")
+    if mode == "preloaded" and context_format == "legacy" and not prepared.startswith(prompt):
+        raise ValueError("legacy preparation modified the original task prefix")
     metadata_files = []
+    seen_paths: set[str] = set()
     for item in files:
         if not isinstance(item, dict):
             raise ValueError("preparation returned invalid source metadata")
@@ -100,6 +157,8 @@ def _validated_preparation(value: Any, prompt: str) -> tuple[str, dict[str, Any]
             or PurePosixPath(path).is_absolute()
             or PurePosixPath(path).as_posix() != path
             or ".." in PurePosixPath(path).parts
+            or not PurePosixPath(path).parts
+            or path in seen_paths
             or not isinstance(digest, str)
             or len(digest) != 64
             or any(char not in "0123456789abcdef" for char in digest)
@@ -112,6 +171,9 @@ def _validated_preparation(value: Any, prompt: str) -> tuple[str, dict[str, Any]
         metadata_files.append(
             {"path": path, "sha256": digest, "start_line": first, "end_line": last}
         )
+        seen_paths.add(path)
+    if mode == "preloaded" and context_format == "compact-prefix":
+        _validate_compact_prefix(prepared, prompt, metadata_files)
     report: dict[str, Any] = {
         "mode": mode,
         "reason": reason,
@@ -120,6 +182,9 @@ def _validated_preparation(value: Any, prompt: str) -> tuple[str, dict[str, Any]
         "files": metadata_files,
         "context_bytes": size,
     }
+    if context_format != "legacy":
+        report["context_format"] = context_format
+        report["prompt_layout"] = expected_layout
     for key in ("preparation_wall_seconds", "preparation_cpu_seconds"):
         duration = value.get(key)
         if (
@@ -179,6 +244,12 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
     parser.add_argument("--context-supplied", action="store_true", help="skip source preparation")
     parser.add_argument("--mode", choices=("auto", "off", "preload"), default="auto")
+    parser.add_argument(
+        "--context-format",
+        choices=("legacy", "compact-prefix"),
+        default="compact-prefix",
+        help="source layout; compact-prefix is experimental, legacy preserves the original layout",
+    )
     parser.add_argument("--max-context-bytes", type=int, default=12_000)
     parser.add_argument(
         "--preparation-report", type=Path, help="write private JSON before native exec"
@@ -220,8 +291,9 @@ def main(argv: list[str] | None = None) -> int:
             context_supplied=options.context_supplied,
             mode=options.mode,
             max_context_bytes=options.max_context_bytes,
+            context_format=options.context_format,
         )
-        prepared, metadata = _validated_preparation(preparation, prompt)
+        prepared, metadata = _validated_preparation(preparation, prompt, options.context_format)
         command = [executable, "exec", *native_options, "--", "-"]
         prepared_bytes = prepared.encode("utf-8")
         # A regular file cannot deadlock on a full pipe buffer, and passing '-'
@@ -234,7 +306,7 @@ def main(argv: list[str] | None = None) -> int:
                 _write_report(
                     options.preparation_report,
                     {
-                        "version": 1,
+                        "version": 1 if options.context_format == "legacy" else 2,
                         "preparation": metadata,
                         "executable": executable,
                         "exec_argv": command,

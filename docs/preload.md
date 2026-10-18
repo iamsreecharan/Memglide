@@ -33,6 +33,30 @@ installed executable; otherwise the launcher searches `PATH`. Executables in the
 current Git repository, including symlinks resolving into it, are rejected to
 avoid local command shadowing.
 
+The launcher defaults to `--context-format compact-prefix`: one canonical JSON
+source envelope comes **before** the task, followed by exactly `\n\nTask:\n` and
+the original task text. The envelope contains a short untrusted-source notice
+and sorted, unique source paths with complete file content. SHA-256 values and
+line ranges remain in private validation metadata; they are checked locally
+without repeating them in the model-visible source envelope. JSON escaping
+preserves the decoded source exactly.
+
+Use `--context-format legacy` to reproduce the earlier layout: original task
+first, followed by the longer explanation and source JSON including hashes and
+line ranges. The Python `prepare_prompt` API still defaults to `legacy` for
+compatibility; API callers must explicitly request `context_format="compact-prefix"`.
+The existing ordinary-task benchmark runner explicitly selects `legacy`, so its
+completed 80-run report is historical evidence for that layout, not a measurement
+of the new default.
+
+Putting stable source before a changed task can preserve more common prompt
+bytes when the same files are reused. It also removes avoidable envelope text.
+Neither proves a provider cache hit or a token/cost saving: native Codex owns
+its request construction and session cache affinity, and distinct sessions can
+receive different cache results despite identical task bytes. See the
+[cache refinement research](../benchmarks/cache-refinement-research.md) for the
+pinned client implementation and the limitations of the observed diagnosis.
+
 Omit the positional prompt, or use `-`, to read its UTF-8 text from stdin. With a
 positional prompt, that argument is the entire task input; additional piped stdin
 is not appended. Prepared text is delivered through a private temporary file on
@@ -54,7 +78,8 @@ fallback to the original task, with an explicit reason in the report and a
 stderr diagnostic for this mode. Files are never silently clipped or partially
 selected. Invalid arguments or malformed preparation metadata stop the launch
 with a nonzero exit status. The default 12,000-byte limit covers the entire added
-explanation and JSON envelope; `--max-context-bytes` accepts 1 through 256,000.
+notice/explanation, JSON envelope and format separator;
+`--max-context-bytes` accepts 1 through 256,000.
 Source and applicable ignore-policy hashes are checked again before delivery,
 but files may still change afterward; normal Codex reads remain available.
 
@@ -62,6 +87,9 @@ The optional report is atomically written with private permissions before
 native execution. It records the decision/reason, original and prepared prompt
 hashes, source paths/hashes/line ranges, added context bytes, preparation wall
 time and CPU time, actual executable/argv, and delivered stdin hash/byte count.
+Compact-prefix reports also record `context_format="compact-prefix"` and
+`prompt_layout="source_prefix"` (or `unchanged` for a bypass), using report
+version 2. Legacy forwarding reports retain their version 1 shape.
 It does not duplicate source text or capture authentication/configuration
 values. `native_exec_boundary_monotonic_seconds` is sampled before the report
 write and exec handoff, so a runner's derived native interval also includes
@@ -76,3 +104,24 @@ Manage that choice explicitly in your normal Codex profile/configuration; the
 launcher does not silently disable any registration. Native Codex inherits the
 existing authentication, proxy, CA trust, and environment without copying or
 printing credential contents.
+
+Both formats securely read current source and recheck policy/source hashes;
+neither reuses stale file contents, pads requests to trigger caching, invents a
+cache parameter, changes session IDs or makes a model call to decide retrieval.
+The compact format is a versioned layout refinement. Its actual model usage and
+whole-task performance require a separate measured comparison.
+
+For related work in an existing native thread, preserve Codex's own history
+instead of starting a fresh thread just to resend unchanged evidence. The
+installed CLI supports `codex exec resume SESSION_ID -`; the launcher forwards
+that native subcommand too:
+
+```sh
+memglide-codex --context-supplied "Continue the related task." \
+  -- resume SESSION_ID --json
+```
+
+Use `--context-supplied` only when the existing context actually contains the
+needed evidence; it is an explicit assertion, not a freshness check. Changed or
+missing files still need normal reads or a fresh approved bundle. Resuming keeps
+native session handling intact, but does not guarantee cache hits or lower cost.

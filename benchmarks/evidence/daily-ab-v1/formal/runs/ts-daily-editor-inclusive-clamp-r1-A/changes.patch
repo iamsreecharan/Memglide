@@ -1,0 +1,12 @@
+diff --git a/src/inclusive_clamp.ts b/src/inclusive_clamp.ts
+index a0d9649..815139c 100644
+--- a/src/inclusive_clamp.ts
++++ b/src/inclusive_clamp.ts
+@@ -1,6 +1,6 @@
+ export function clamp(value: number, min: number, max: number): number {
+   if (![value,min,max].every(Number.isFinite) || min > max) throw new Error("invalid bounds");
+   if (value < min) return min;
+-  if (value >= max) return max - 1;
++  if (value >= max) return max;
+   return value;
+ }

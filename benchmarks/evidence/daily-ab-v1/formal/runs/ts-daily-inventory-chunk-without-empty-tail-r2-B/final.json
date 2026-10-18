@@ -1,0 +1,1 @@
+{"summary":"Fixed chunk’s loop boundary to omit empty chunks. Added regression coverage for empty input, exact multiples, fresh subarrays, input preservation, and invalid sizes.","tests_run":["node --test tests/*.test.mjs — passed"]}

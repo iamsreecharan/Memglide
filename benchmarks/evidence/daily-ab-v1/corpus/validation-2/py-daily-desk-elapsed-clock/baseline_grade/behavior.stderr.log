@@ -1,0 +1,20 @@
+test_invalid_values (__main__.BehaviorTests.test_invalid_values) ... ok
+test_long_durations_and_boundaries (__main__.BehaviorTests.test_long_durations_and_boundaries) ... FAIL
+
+======================================================================
+FAIL: test_long_durations_and_boundaries (__main__.BehaviorTests.test_long_durations_and_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/daily-v1/corpus-validation-2/py-daily-desk-elapsed-clock/baseline_grade/held_out.py", line 8, in test_long_durations_and_boundaries
+    self.assertEqual(core.format_elapsed(seconds), expected)
+AssertionError: '0:00:00' != '24:00:00'
+- 0:00:00
+? ^
++ 24:00:00
+? ^^
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1)

@@ -1,0 +1,12 @@
+diff --git a/desk/elapsed_clock.py b/desk/elapsed_clock.py
+index 776615f..17861d3 100644
+--- a/desk/elapsed_clock.py
++++ b/desk/elapsed_clock.py
+@@ -2,6 +2,6 @@ def format_elapsed(seconds):
+     """Format a nonnegative elapsed duration, rather than a time of day."""
+     if type(seconds) is not int or seconds < 0:
+         raise ValueError("nonnegative integer seconds required")
+-    hours = (seconds // 3600) % 24
++    hours = seconds // 3600
+     minutes = (seconds // 60) % 60
+     return f"{hours}:{minutes:02d}:{seconds % 60:02d}"

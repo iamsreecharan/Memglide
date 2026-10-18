@@ -1,0 +1,81 @@
+{
+  "actual_cost_per_successful_task_usd": {
+    "A": null,
+    "B": null
+  },
+  "archive": "benchmarks/memglide-daily-ab-report.zip",
+  "archive_bytes": 2933384,
+  "archive_member_count": 2658,
+  "archive_sha256": "d8ed3d014e7d6230da1be4af17a09b59427321f38be5ba4226c9a40f8afc355d",
+  "builder_source_sha256": "15457ba7cbc252635600de04c60d65faced70b11d5ccc5c22a38e47f5e4d840f",
+  "checks": {
+    "all_selected_bytes_credential_scanned": true,
+    "crc_verified": true,
+    "every_member_sha256_verified": true,
+    "evidence_manifest_hashes_verified": true,
+    "exact_member_set_verified": true,
+    "overwrites_performed": false,
+    "source_bytes_unchanged_during_packaging": true
+  },
+  "created_at_utc": "2026-10-18T07:50:12.163401+00:00",
+  "end_to_end_time_percent_change": -4.755530087401027,
+  "frozen_commit": "6f4b6f6be83a7ad58ffba5f6c2176a9cc5d36dff",
+  "historical_preservation_scope": "Published audit proves 6294 old benchmark files unchanged plus one explicitly authorized telemetry source transition; original source and transition receipt are included. No old archive is included or changed by this builder.",
+  "limitations": [
+    "One small synthetic known-file corpus; no billing or cost-saving conclusion.",
+    "The private B stdin body is not persisted; common prompts and preparation identity metadata are retained.",
+    "Current working-tree App/source may include later authorized refinements; frozen blobs identify this historical baseline."
+  ],
+  "member_manifest": "MEMBER-MANIFEST.json",
+  "member_manifest_lists_members_excluding_itself": 2657,
+  "member_manifest_sha256": "b04cb3d992ae6b3a372cae339c68625ec3010b5c0179c4111d0097c6faf63e0a",
+  "original_runs": 80,
+  "published_evidence": {
+    "bytes": 9298819,
+    "files": 2632,
+    "manifest_sha256": "b4acba0ad2a8d0845487b89085f948a87932b10af86d177e0ba5f72c47ed99b7"
+  },
+  "schema_version": 1,
+  "scope": "Sealed 20-task, two-repeat, 80-original-run legacy-format daily A/B baseline; no cache-format-v2 measurements",
+  "synthetic_fixture_scan_exceptions": [
+    {
+      "all_other_original_bytes_scanned": true,
+      "fixture_source": "6f4b6f6be83a7ad58ffba5f6c2176a9cc5d36dff:tests/test_security_storage.py",
+      "fixture_source_sha256": "bb8aee17612136ce8bf257cd701c6e26e2def32e13fd3b65e7cdcf6f1769fd8d",
+      "matched_sha256": [
+        "3021d90eb9437b2d8f30e8363695c4418b5e5f1870801b5c317e9398ee0f572d",
+        "8bcac7908eb950419537b91e19adc83ce2c9cbfdacf4f81157fdadfec11f7017",
+        "7e5400d08af1a79400d0df020d076551686fda1910a49f6716e8d5aff119e35b",
+        "aadcebbf9c9ca71dcb9d334b44d555d980f68e3e0fd5d3d63f1cc8c94f219a9d",
+        "4b82f7466cc183e24dffcc235b8622f6795176c22f72aedf45584003e440f78f",
+        "aa4d6ed2a9eb80ae9af88445533e0abc21e67965923c7bd99192270c98f3381c",
+        "87117695a3cb65fc702e9328d6481780a57fefda3ddbc47d601302c406815022"
+      ],
+      "original_xml_bytes_preserved": true,
+      "path": ".local/daily-v1/full-python-v2.xml",
+      "pattern_matches": 7,
+      "sha256": "2ae2b8f64d79a579203e7318875948222395e8e8637ba0991fb90812916129d3"
+    },
+    {
+      "all_other_original_bytes_scanned": true,
+      "fixture_source": "6f4b6f6be83a7ad58ffba5f6c2176a9cc5d36dff:tests/test_security_storage.py",
+      "fixture_source_sha256": "bb8aee17612136ce8bf257cd701c6e26e2def32e13fd3b65e7cdcf6f1769fd8d",
+      "matched_sha256": [
+        "3021d90eb9437b2d8f30e8363695c4418b5e5f1870801b5c317e9398ee0f572d",
+        "8bcac7908eb950419537b91e19adc83ce2c9cbfdacf4f81157fdadfec11f7017",
+        "7e5400d08af1a79400d0df020d076551686fda1910a49f6716e8d5aff119e35b",
+        "aadcebbf9c9ca71dcb9d334b44d555d980f68e3e0fd5d3d63f1cc8c94f219a9d",
+        "4b82f7466cc183e24dffcc235b8622f6795176c22f72aedf45584003e440f78f",
+        "aa4d6ed2a9eb80ae9af88445533e0abc21e67965923c7bd99192270c98f3381c",
+        "87117695a3cb65fc702e9328d6481780a57fefda3ddbc47d601302c406815022"
+      ],
+      "original_xml_bytes_preserved": true,
+      "path": ".local/daily-v1/full-python.xml",
+      "pattern_matches": 7,
+      "sha256": "2c199624469fd770f00c852862fcb245f8b227542a16448e80c5ecfd54716d52"
+    }
+  ],
+  "uncached_input_percent_change": 27.138478848148505,
+  "uncompressed_member_bytes": 14351530,
+  "verified_pairs": 40
+}

@@ -1,0 +1,1 @@
+{"summary":"Fixed truncate_label to count the ellipsis within the limit, preserving unchanged strings, zero-limit behavior, and invalid-limit validation. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 5 tests passed.","Boundary, Unicode, and invalid-limit checks passed."]}

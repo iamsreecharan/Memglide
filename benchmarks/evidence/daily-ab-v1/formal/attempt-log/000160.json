@@ -1,0 +1,11 @@
+{
+  "sequence": 160,
+  "previous_sha256": "575726b1b0a6fbff6fe039ed6fcdd264694545d6672e411ea864afddfa3d3b1b",
+  "recorded_at": "2026-10-18T02:59:22.952154+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py-daily-catalog-single-pass-partition-r2-B",
+  "original_run_id": "py-daily-catalog-single-pass-partition-r2-B",
+  "supplemental": false,
+  "start_sha256": "2bbd3ff81d015c9eb824b428253c4e93c6a4eebced17edcf973509382f0e6a34",
+  "sha256": "e060463950392d5d77617c06ebfcae4363a4cf2fd96ba577d8e10daf96dea66a"
+}

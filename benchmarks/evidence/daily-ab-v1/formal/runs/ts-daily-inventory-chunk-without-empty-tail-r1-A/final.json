@@ -1,0 +1,1 @@
+{"summary":"Fixed chunk to return [] for empty input and omit empty trailing chunks. Added regression coverage for fresh subarrays, preserved values and input, and invalid sizes. Existing tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

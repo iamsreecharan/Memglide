@@ -143,6 +143,8 @@ def preload_command(
         "memglide.integrations.codex_preload",
         "--mode",
         "auto",
+        "--context-format",
+        "legacy",
         "--max-context-bytes",
         "12000",
         "--preparation-report",

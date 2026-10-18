@@ -1,0 +1,1 @@
+{"summary":"Fixed join_lines to honor final_newline and preserve supplied lines, and export_notes to forward both options. Added regression coverage for separators, empty inputs, embedded line endings, and iterators. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

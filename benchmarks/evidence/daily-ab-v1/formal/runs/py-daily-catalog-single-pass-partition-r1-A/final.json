@@ -1,0 +1,1 @@
+{"summary":"Updated partition to evaluate the predicate once per item in input order, preserve list order and input contents, support one-shot iterables, and propagate exceptions unchanged. Added regression tests; no commits made.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed."]}

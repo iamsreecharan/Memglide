@@ -1,0 +1,9 @@
+{
+  "sequence": 95,
+  "previous_sha256": "a09f23992d7b8f0fb65343b8697caf2373fad5141ca44e33300306199e080c23",
+  "recorded_at": "2026-10-18T02:47:30.199454+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts-daily-editor-html-text-escaping-r2-A",
+  "result_sha256": "cc93b22808030889bcf174c154619d96b62f35c83c8b01d7d985fb1d90ad3b50",
+  "sha256": "3d12fb5680c186e2d2c763c009abdcaa6db44adb3991f051dbe55041a9992fcf"
+}

@@ -1,0 +1,28 @@
+test_dedup_casefold_and_stable_order (__main__.BehaviorTests.test_dedup_casefold_and_stable_order) ... FAIL
+test_one_shot_input_and_no_mutation (__main__.BehaviorTests.test_one_shot_input_and_no_mutation) ... ok
+
+======================================================================
+FAIL: test_dedup_casefold_and_stable_order (__main__.BehaviorTests.test_dedup_casefold_and_stable_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/daily-v1/corpus-validation-2/py-daily-catalog-tag-normalization/domain_grade/held_out.py", line 9, in test_dedup_casefold_and_stable_order
+    self.assertEqual(api.tags_for_card(["a,b","C","A,B"]),["a,b","c"])
+AssertionError: Lists differ: ['a', 'b', 'c'] != ['a,b', 'c']
+
+First differing element 0:
+'a'
+'a,b'
+
+First list contains 1 additional elements.
+First extra element 2:
+'c'
+
+- ['a', 'b', 'c']
+?    - --
+
++ ['a,b', 'c']
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.114s
+
+FAILED (failures=1)

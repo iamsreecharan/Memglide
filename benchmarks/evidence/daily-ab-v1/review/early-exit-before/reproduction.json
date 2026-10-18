@@ -1,0 +1,48 @@
+{
+  "phase": "before",
+  "reproduced": true,
+  "runs": [
+    {
+      "language": "python",
+      "task_id": "py-daily-desk-elapsed-clock",
+      "exploit": "import os\nos._exit(0)\n",
+      "incorrectly_accepted": true,
+      "test_counts": [
+        {},
+        {}
+      ],
+      "exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "language": "typescript",
+      "task_id": "ts-daily-editor-crlf-line-position",
+      "exploit": "Function(\"return process\")().exit(0);\n",
+      "incorrectly_accepted": true,
+      "test_counts": [
+        {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        {}
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

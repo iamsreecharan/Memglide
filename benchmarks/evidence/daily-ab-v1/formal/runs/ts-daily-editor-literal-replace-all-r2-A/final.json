@@ -1,0 +1,1 @@
+{"summary":"Fixed literal replacement to replace every non-overlapping occurrence, preserve whitespace and literal '$' data, and reject empty needles. Added regression coverage for previews, batch order, and input immutability. Existing tests preserved; no commits made.","tests_run":["node --test tests/*.test.mjs — passed"]}

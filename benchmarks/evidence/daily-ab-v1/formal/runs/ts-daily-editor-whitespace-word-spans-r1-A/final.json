@@ -1,0 +1,1 @@
+{"summary":"Fixed wordSpans to return maximal non-whitespace runs with UTF-16 offsets. Updated wordsForSelection to preserve every span, including single-character words. Added regression coverage; no commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

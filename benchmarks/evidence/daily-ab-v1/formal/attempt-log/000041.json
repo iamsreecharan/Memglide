@@ -1,0 +1,9 @@
+{
+  "sequence": 41,
+  "previous_sha256": "776ae4e27afe96a6495e930b431aca6f495827098f8a9f28e8a97f2c76e04371",
+  "recorded_at": "2026-10-18T02:37:51.044670+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts-daily-inventory-equal-length-zip-r1-B",
+  "result_sha256": "635ed95ae4379eb6b8a23cad6114bd35d9c6ab7b3350a432c4a94031eb4960e0",
+  "sha256": "70f8cc9e80f084558c8639772d1c472a3a71fc3f13d39feaa50082e2221f0ef7"
+}

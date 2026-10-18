@@ -1,0 +1,7 @@
+test_invalid_values (__main__.BehaviorTests.test_invalid_values) ... ok
+test_long_durations_and_boundaries (__main__.BehaviorTests.test_long_durations_and_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

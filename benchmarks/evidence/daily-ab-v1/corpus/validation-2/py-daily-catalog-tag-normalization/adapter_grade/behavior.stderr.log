@@ -1,0 +1,47 @@
+test_dedup_casefold_and_stable_order (__main__.BehaviorTests.test_dedup_casefold_and_stable_order) ... FAIL
+test_one_shot_input_and_no_mutation (__main__.BehaviorTests.test_one_shot_input_and_no_mutation) ... FAIL
+
+======================================================================
+FAIL: test_dedup_casefold_and_stable_order (__main__.BehaviorTests.test_dedup_casefold_and_stable_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/daily-v1/corpus-validation-2/py-daily-catalog-tag-normalization/adapter_grade/held_out.py", line 8, in test_dedup_casefold_and_stable_order
+    self.assertEqual(core.normalize_tags([" B ","a","b"," A ","ß","SS"," "]),["b","a","ss"])
+AssertionError: Lists differ: ['b', 'a', 'b', 'a', 'ß', 'ss'] != ['b', 'a', 'ss']
+
+First differing element 2:
+'b'
+'ss'
+
+First list contains 3 additional elements.
+First extra element 3:
+'a'
+
+- ['b', 'a', 'b', 'a', 'ß', 'ss']
++ ['b', 'a', 'ss']
+
+======================================================================
+FAIL: test_one_shot_input_and_no_mutation (__main__.BehaviorTests.test_one_shot_input_and_no_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/daily-v1/corpus-validation-2/py-daily-catalog-tag-normalization/adapter_grade/held_out.py", line 15, in test_one_shot_input_and_no_mutation
+    self.assertEqual(api.tags_for_card(values),["one","two"])
+AssertionError: Lists differ: ['one', 'one', 'two'] != ['one', 'two']
+
+First differing element 1:
+'one'
+'two'
+
+First list contains 1 additional elements.
+First extra element 2:
+'two'
+
+- ['one', 'one', 'two']
+?         -------
+
++ ['one', 'two']
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+FAILED (failures=2)

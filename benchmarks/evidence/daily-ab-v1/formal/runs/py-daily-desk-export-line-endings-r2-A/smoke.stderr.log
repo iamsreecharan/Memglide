@@ -1,0 +1,14 @@
+test_embedded_line_endings (test_export_line_endings.ExportLineEndingsTests.test_embedded_line_endings) ... ok
+test_invalid_separators (test_export_line_endings.ExportLineEndingsTests.test_invalid_separators) ... ok
+test_iterable_lines (test_export_line_endings.ExportLineEndingsTests.test_iterable_lines) ... ok
+test_separators_and_final_newline (test_export_line_endings.ExportLineEndingsTests.test_separators_and_final_newline) ... ok
+test_calendar_month_shift (test_smoke.SmokeTests.test_calendar_month_shift) ... ok
+test_elapsed_clock (test_smoke.SmokeTests.test_elapsed_clock) ... ok
+test_export_line_endings (test_smoke.SmokeTests.test_export_line_endings) ... ok
+test_label_ellipsis (test_smoke.SmokeTests.test_label_ellipsis) ... ok
+test_rectangular_transpose (test_smoke.SmokeTests.test_rectangular_transpose) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.016s
+
+OK

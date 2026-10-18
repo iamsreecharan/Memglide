@@ -1,0 +1,1 @@
+{"summary":"Fixed escapeHtml to escape ampersands first, preventing double escaping while preserving other characters. Added regression tests for special characters, entity-looking input, and unchanged text. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

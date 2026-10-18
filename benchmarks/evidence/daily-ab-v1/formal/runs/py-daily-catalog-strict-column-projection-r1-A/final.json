@@ -1,0 +1,1 @@
+{"summary":"Fixed both functions to return a new dict in requested column order, preserve null and falsy values, and raise KeyError for missing columns. Added regression tests for input preservation and shallow copying. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

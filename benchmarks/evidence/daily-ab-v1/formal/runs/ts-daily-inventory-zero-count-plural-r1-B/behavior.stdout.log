@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: zero one many and supplied words
+ok 1 - zero one many and supplied words
+  ---
+  duration_ms: 1.817087
+  type: 'test'
+  ...
+# Subtest: invalid counts
+ok 2 - invalid counts
+  ---
+  duration_ms: 0.588755
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 239.385708

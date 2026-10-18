@@ -1,0 +1,18 @@
+from pathlib import Path
+import json, sys, time, traceback
+root = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(root))
+from benchmarks.run_daily import main
+receipt = root / ".local/daily-v1/formal-exit.json"
+assert not receipt.exists()
+started = time.time()
+try:
+    code = main(sys.argv[1:])
+except BaseException:
+    traceback.print_exc()
+    code = 70
+value = {"returncode": code, "started_unix": started, "finished_unix": time.time()}
+temporary = receipt.with_suffix(".tmp")
+temporary.write_text(json.dumps(value, indent=2) + "\n")
+temporary.replace(receipt)
+raise SystemExit(code)

@@ -1,6 +1,6 @@
 # Focused preparation for ordinary coding tasks
 
-Memglide now offers an **opt-in local source preloader** for native Codex. It supplies a few explicitly selected source files before Codex's first request, or forwards the task unchanged. This removes a *required* model-requested retrieval step from this integration; it does not establish a token, latency or dollar saving. The new matched benchmark measures those outcomes separately.
+Memglide offers an **opt-in local source preloader** for native Codex. It supplies a few explicitly selected source files before Codex's first request, or forwards the task unchanged. This removes a *required* model-requested retrieval step from this integration; it does not establish a token, latency or dollar saving. The completed [80-run ordinary-task comparison](../benchmarks/codex-ab-daily.md) used the original legacy layout. The current compact source-prefix default is a later refinement and is not measured by that cohort.
 
 The implementation is [preload.py](../src/memglide/integrations/preload.py), exposed by the lightweight [codex_preload.py](../src/memglide/integrations/codex_preload.py) launcher. The existing CLI, full MCP profile, compact MCP profile and memory API remain supported. This path does not read or write memories and does not demonstrate cross-session memory benefits.
 
@@ -14,7 +14,7 @@ flowchart TD
     C -->|No| D[Read existing approval and indexed path eligibility]
     D --> E[Check current ignore rules and securely read complete files]
     E --> F{Fits full byte cap and passes policy/source recheck?}
-    F -->|Yes| H[Append untrusted source JSON]
+    F -->|Yes| H[Place compact untrusted source JSON before task]
     F -->|No| G
     D -->|Unavailable| G
     E -->|Unavailable or unsafe| G
@@ -41,7 +41,7 @@ Returning unchanged text still costs local argument parsing, hashing and Python 
 
 ## The scoped path
 
-The caller provides an existing project ID, database selector and canonical relative paths. At most eight focus paths are accepted; duplicates are removed while preserving order. A path may contain at most 32 components. The default **12,000-byte cap covers the entire added explanation and JSON**, including source metadata and escaping, rather than only raw file contents. The original task is not charged against that addition cap. The caller can configure the cap up to the implementation's bounded maximum of 256,000 bytes.
+The caller provides an existing project ID, database selector and canonical relative paths. At most eight focus paths are accepted. Duplicates are removed; compact-prefix format sorts paths canonically, while legacy format retains the caller's order. A path may contain at most 32 components. The default **12,000-byte cap covers the entire added notice/explanation, JSON and separator**, including escaping, rather than only raw file contents. The original task is not charged against that addition cap. The caller can configure the cap up to the implementation's bounded maximum of 256,000 bytes.
 
 Preparation performs narrowly selected read-only SQLite lookups for the approved project, relevant settings and the requested indexed files. It does not migrate or repair state. SQLite row/value, VM-step and query-time guards limit corrupt or unexpectedly expensive state. These guards are not a promise of a hard end-to-end wall-clock deadline under arbitrary filesystem conditions.
 
@@ -49,7 +49,7 @@ The index supplies **eligibility**, not trusted source contents. Every requested
 
 Current root/ancestor `.gitignore` and `.memglideignore` rules, configured exclusions, default exclusions and secret guards are checked. Ignore parsing is limited to the ancestors of explicitly requested paths and has a shared 64,000-byte policy budget. It is not a whole-repository walk. Canonical containment and no-symlink checks apply to sources and policy files. Existing source protections reject unsuitable binary, invalid text, credential-like content and oversized data.
 
-Each successful item contains the **complete file**, its relative path, SHA-256 and full line range. There is no AST parsing, semantic ranking, automatic helper expansion or transitive dependency traversal. The caller may explicitly name direct helper files, subject to the same aggregate cap. This keeps selection observable and prevents an initial small hit from silently expanding into a large graph.
+Each compact model-visible item contains the **complete file** and relative path. Its SHA-256 and full line range remain in private validation/forwarding metadata; legacy format also includes them in model-visible JSON. There is no AST parsing, semantic ranking, automatic helper expansion or transitive dependency traversal. The caller may explicitly name direct helper files, subject to the same aggregate cap. This keeps selection observable and prevents an initial small hit from silently expanding into a large graph.
 
 After packing the response, preparation rechecks approval/settings, current ignore evidence and every source hash. A detected source, policy, deletion or symlink change discards the entire addition. It never silently trims a requested function or returns a partially accepted focus set. A snapshot can still become stale after preparation completes; the explanatory text tells Codex to use its normal tools when further or newer source is needed.
 
@@ -63,9 +63,15 @@ The prepared UTF-8 task is passed using native stdin from a private temporary fi
 
 An unchanged configuration can still start its own previously registered MCP servers. The launcher itself starts none; a clean no-MCP benchmark must declare and supply equivalent native MCP configuration for both arms. One native process is also not proof of one underlying model call: that count stays unavailable unless supported telemetry exposes it.
 
-Source is appended after the original task inside a compact JSON envelope with a stable explanation identifying it as **untrusted data, never instructions**. This is evidence for the coding task, not a new system prompt. Delimiters and source hashes help interpretation and validation but do not make prompt injection impossible. Native agent policies and normal behavioral testing still apply.
+The launcher defaults to `--context-format compact-prefix`: canonical JSON containing a short untrusted-source notice and sorted path/content pairs, then exactly `\n\nTask:\n`, then the original task bytes. The source remains evidence for the task, not a new system prompt. JSON escaping keeps embedded delimiters inside source data. The launcher validates the full canonical envelope against private source hashes/ranges and verifies the untouched task suffix before native execution. Delimiters and local validation do not make prompt injection impossible; native agent policies and normal behavioral testing still apply.
 
-Stable formatting, explicit ordering and source hashes avoid gratuitous timestamps, random session IDs and debug graphs in model-visible material. They improve reproducibility; they cannot force provider cache hits. The bundle still consumes model input and can be carried into subsequent requests. It pays for itself only when it avoids enough ordinary discovery or redundant context without harming task completion.
+`--context-format legacy` preserves the original task-first append layout, longer explanation and model-visible hash/range fields. For compatibility, the direct Python `prepare_prompt` API defaults to `legacy`; callers explicitly opt into `context_format="compact-prefix"`. The existing `run_daily.py` benchmark runner explicitly requests legacy. Its original 80-run report and evidence remain unchanged.
+
+The new layout removes avoidable repeated metadata and puts reusable source before changed task text. Equivalent focus sets produce the same sorted source prefix when current file bytes match. This increases common *bytes* in an offline same-source/different-task comparison; it is not a model-token count or a measured provider cache hit. No stale source cache, padding, auxiliary model decision or session-ID override is introduced.
+
+Native Codex's pinned client derives its default prompt cache key from session metadata, with internal override/parent-thread branches, and its authors explicitly associate ChatGPT cache affinity with the Responses session header. Memglide's source prefix does not control those native keys, preceding system/tool material, retention, routing or backend cache state. Fresh sessions therefore cannot be assumed to share a cache merely because supplied source matches. The [cache refinement research](../benchmarks/cache-refinement-research.md) distinguishes the inspected code, the observed repeat-to-repeat variability and the proposed layout improvement.
+
+Stable formatting avoids gratuitous timestamps, random IDs and debug graphs in model-visible material, but the bundle still consumes input and can be carried into subsequent requests. It pays for itself only when it avoids enough ordinary discovery or redundant context without harming task completion. Actual native input, cached input, output and full preparation-plus-execution time must decide that outcome.
 
 ## Example
 
@@ -107,6 +113,6 @@ The research constrains the architecture; no upstream percentage becomes a Memgl
 
 The candidate has focused tests for bypass imports/state behavior; complete source and envelope budgets; approval and current ignore policy; stale index/restored-mtime edits; mid-request mutations; symlinks, traversal, secrets, malformed/corrupt state and resource guards. Launcher integration tests use an isolated fake installed native executable to verify a single exec, exact UTF-8/CRLF task forwarding, option/environment preservation, exit status and private metadata delivery. These checks establish mechanics, not an actual model saving.
 
-The optional component report contains 500 observations for each of three bypasses and 20 scoped calls on an independent two-file Git fixture. It excludes Python startup, native execution and full task cost. The live experiment must include those costs, preserve every failure, report routed/skipped runs and use actual native structured usage. Cached input is already included in total OpenAI input. Actual costs and actual cost per success remain null when reliable billing is unavailable.
+The original optional component report contains 500 observations for each of three bypasses and 20 scoped calls on an independent two-file Git fixture. It measured the earlier legacy implementation and excludes Python startup, native execution and full task cost. It must not be relabeled as a compact-prefix timing result. A new native comparison must include those costs, preserve every failure, report routed/skipped runs and use actual native structured usage. Cached input is already included in total OpenAI input. Actual costs and actual cost per success remain null when reliable billing is unavailable.
 
-The architecture does not infer sufficient context automatically, discover relevant files without explicit hints, reclaim native Codex's existing history or ensure old decisions remain correct. Unfocused tasks can receive little benefit, and supplied source can still increase total tokens. The previous unfavorable comparisons remain evidence; the new 20-task results determine whether this narrower path improves the tested ordinary workload.
+The architecture does not infer sufficient context automatically, discover relevant files without explicit hints, reclaim native Codex's existing history or ensure old decisions remain correct. Unfocused tasks can receive little benefit, and supplied source can still increase total or uncached tokens. Previous favorable and unfavorable results remain evidence for their frozen implementations; actual compact-prefix benefits remain unproven until separately measured.

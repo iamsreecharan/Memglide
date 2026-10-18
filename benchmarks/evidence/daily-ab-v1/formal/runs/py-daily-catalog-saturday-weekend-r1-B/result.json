@@ -1,0 +1,277 @@
+{
+  "run_id": "py-daily-catalog-saturday-weekend-r1-B",
+  "task_id": "py-daily-catalog-saturday-weekend",
+  "language": "python",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 23,
+  "repository": "catalog-python-daily",
+  "task_kind": "supplied-context",
+  "selection_stratum": "caller_context_supplied",
+  "original_run_id": "py-daily-catalog-saturday-weekend-r1-B",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T02:38:20.490236+00:00",
+  "artifacts": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B",
+  "worktree": "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-catalog-saturday-weekend-r1-B",
+  "errors": [],
+  "grader": {
+    "task_id": "py-daily-catalog-saturday-weekend",
+    "repository": "catalog-python-daily",
+    "corpus_version": "daily-1.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 5
+        },
+        "stdout_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B/smoke.stderr.log"
+      }
+    ],
+    "test_count": 7,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "cd1047e79a604bd74a05b682f5b74f8c93280545db9abf7dee0c3048aa1f4dd2",
+        "actual_sha256": "cd1047e79a604bd74a05b682f5b74f8c93280545db9abf7dee0c3048aa1f4dd2"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3",
+        "actual_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_smoke.py",
+        "unchanged": true,
+        "expected_sha256": "58622f0fc794179becad9cb8cee28ae827899bca147e20d7084127d4fa322173",
+        "actual_sha256": "58622f0fc794179becad9cb8cee28ae827899bca147e20d7084127d4fa322173"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 5
+        },
+        "reported_counts": {
+          "tests": 5
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "8c73f02a74589ca273c9e727612376ccf817bb06",
+  "common_task_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+  "actual_model_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-catalog-saturday-weekend-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-catalog-saturday-weekend-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 9.361886061000405,
+  "process_started_monotonic_seconds": 16049.781499061,
+  "process_finished_monotonic_seconds": 16059.143385122,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 167571456,
+    "cpu_seconds": 2.87,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 12,
+    "observed_memglide_processes": 0,
+    "samples": 125,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 11,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 23332,
+      "cached_input_tokens": 11264,
+      "output_tokens": 225
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 23332,
+      "cached_input_tokens": 11264,
+      "output_tokens": 225
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 2,
+    "commands": [
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'git diff -- catalog/saturday_weekend.py'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 0,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 9.369227434001004,
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "cf7bd97c34d2bc3933514e246cb42f9af1bd131dabbcaf46633d52d226785336",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Observed pre-execution forwarding hashes, source provenance and complete MCP-free native stream",
+    "mode": "passthrough",
+    "selection_reason": "context_supplied",
+    "common_task_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+    "actual_model_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+    "source_file_count": 0,
+    "source_hashes": {},
+    "context_bytes": 0,
+    "preparation": {
+      "mode": "passthrough",
+      "reason": "context_supplied",
+      "task_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+      "prepared_prompt_sha256": "135abdd555e8fb3d239d2957bc087e9dc2b0c427f10bbdcaa7a881e1267c2f46",
+      "files": [],
+      "context_bytes": 0,
+      "preparation_wall_seconds": 9.202100045513362e-05,
+      "preparation_cpu_seconds": 9.024500000000268e-05
+    },
+    "native_exec_boundary_monotonic_seconds": 16049.912231093
+  },
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 9.231154029001118,
+  "native_exec_timing_scope": "Launcher boundary before report-write/exec handoff through observed native child exit",
+  "protected_file_violations": [],
+  "common_blocker": null,
+  "finished_at": "2026-10-18T02:38:30.313512+00:00"
+}

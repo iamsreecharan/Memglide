@@ -1,0 +1,1 @@
+{"summary":"Fixed select_columns and export_row to preserve requested order and all values, raise KeyError for missing columns, and leave inputs unchanged. Added regression tests; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed."]}

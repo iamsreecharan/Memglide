@@ -1,0 +1,313 @@
+{
+  "version": 1,
+  "passed": true,
+  "distinct_tests": 988,
+  "suites": {
+    "final-python": {
+      "tests": 961,
+      "passed": 961,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "per_class": {
+        "tests.test_agent_codex_registration": 2,
+        "tests.test_agent_context": 16,
+        "tests.test_agent_mcp": 4,
+        "tests.test_benchmark_cache_formats": 32,
+        "tests.test_benchmark_comparison": 14,
+        "tests.test_benchmark_corpus": 30,
+        "tests.test_benchmark_corpus_cache": 53,
+        "tests.test_benchmark_corpus_daily": 53,
+        "tests.test_benchmark_corpus_v2": 82,
+        "tests.test_benchmark_daily_runner": 63,
+        "tests.test_benchmark_probe": 6,
+        "tests.test_benchmark_read_paths": 40,
+        "tests.test_benchmark_runner": 13,
+        "tests.test_benchmark_runner_v2": 30,
+        "tests.test_benchmark_telemetry": 20,
+        "tests.test_codex_preload": 39,
+        "tests.test_compact_quality_evaluation": 6,
+        "tests.test_context_audit_v2": 42,
+        "tests.test_context_budgeting": 8,
+        "tests.test_context_diagnostics": 2,
+        "tests.test_context_efficiency_v2": 17,
+        "tests.test_context_focus": 23,
+        "tests.test_context_performance": 6,
+        "tests.test_context_request_scope": 12,
+        "tests.test_functional_lifecycle": 22,
+        "tests.test_indexer_context_candidates": 6,
+        "tests.test_indexing": 25,
+        "tests.test_live_context_analysis": 13,
+        "tests.test_mcp_import_isolation": 1,
+        "tests.test_memory_acknowledgement": 1,
+        "tests.test_memory_context": 20,
+        "tests.test_memory_versions": 20,
+        "tests.test_preload": 85,
+        "tests.test_query_focus": 4,
+        "tests.test_refinement_reporting": 10,
+        "tests.test_refinement_retrieval": 26,
+        "tests.test_retrieval_experiment": 9,
+        "tests.test_retrieval_holdout": 4,
+        "tests.test_search_relevance": 23,
+        "tests.test_security_storage": 69,
+        "tests.test_transports": 9,
+        "tests.test_workflow": 1
+      },
+      "receipt": ".local/cache-v2/final-python.xml",
+      "receipt_sha256": "3c9821b8d8735318a563e7e3f97cc55df4bea88ba84c6149ed822fb7242cd5ed"
+    },
+    "frontend": {
+      "tests": 24,
+      "passed": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "per_class": {
+        "tests/api.test.ts": 2,
+        "tests/ui.test.tsx": 4,
+        "tests/workflows.test.tsx": 18
+      },
+      "receipt": ".local/cache-v2/frontend.xml",
+      "receipt_sha256": "9b6e5676b5d460a2445c033a3dba95b69324a7cf5960d8e9244850b03035d9ae"
+    },
+    "browser": {
+      "tests": 3,
+      "passed": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "per_class": {
+        "workflow.spec.ts": 3
+      },
+      "receipt": ".local/cache-v2/browser.xml",
+      "receipt_sha256": "fa1dcb42fc2e57d1df49c1c2a5fad9bf1309b3484292a796f57839b9a9d1cae6"
+    }
+  },
+  "static_checks": [
+    {
+      "name": "ruff",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "ruff",
+        "check",
+        "."
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.09607327300000179
+    },
+    {
+      "name": "format",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.05495158699886815
+    },
+    {
+      "name": "mypy",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "mypy",
+        "src"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.45068411200009
+    }
+  ],
+  "wheel_install_receipts": [
+    {
+      "name": "build_wheel",
+      "command": [
+        "uv",
+        "build",
+        "--offline",
+        "--wheel",
+        "--out-dir",
+        "/workspace/Memglide/.local/cache-v2/dist"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.9107555200007482
+    },
+    {
+      "name": "export_runtime",
+      "command": [
+        "uv",
+        "export",
+        "--frozen",
+        "--no-dev",
+        "--no-emit-project",
+        "--format",
+        "requirements-txt",
+        "--output-file",
+        "/workspace/Memglide/.local/cache-v2/runtime-requirements.txt"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.03559412499998871
+    },
+    {
+      "name": "create_installed_env",
+      "command": [
+        "uv",
+        "venv",
+        "/workspace/Memglide/.local/cache-v2/installed-env"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.03273689900015597
+    },
+    {
+      "name": "install_runtime",
+      "command": [
+        "uv",
+        "pip",
+        "install",
+        "--offline",
+        "--python",
+        "/workspace/Memglide/.local/cache-v2/installed-env/bin/python",
+        "--require-hashes",
+        "-r",
+        "/workspace/Memglide/.local/cache-v2/runtime-requirements.txt"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.3393855699996493
+    },
+    {
+      "name": "install_wheel",
+      "command": [
+        "uv",
+        "pip",
+        "install",
+        "--offline",
+        "--python",
+        "/workspace/Memglide/.local/cache-v2/installed-env/bin/python",
+        "--no-deps",
+        "/workspace/Memglide/.local/cache-v2/dist/memglide-0.1.0-py3-none-any.whl"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.07053895300123258
+    }
+  ],
+  "package_audit": {
+    "passed": true,
+    "scope": "Wheel/sdist source-byte equality, compiled frontend, required files and exclusion audit. Archive hashes are external sidecars only; this public summary includes no archive hash or self-hash.",
+    "wheel_member_count": 48,
+    "sdist_member_count": 9110,
+    "wheel_python_files_verified": 24,
+    "sdist_source_files_verified": 9092,
+    "frontend_files_verified": 19,
+    "forbidden_state_and_symlink_entries": 0,
+    "required_groups": [
+      "src",
+      "tests",
+      "benchmarks",
+      "docs",
+      "scripts",
+      "frontend",
+      "uv.lock",
+      "pyproject.toml"
+    ],
+    "failures": []
+  },
+  "wheel_source_equality": {
+    "passed": true,
+    "runtime_python_files": 24,
+    "frontend_files": 19,
+    "wheel_sha256": "afa2bb3114704e460f1d35e0a7b7bc240595e137565408a0df37f4f72d9111c6",
+    "scope": "All current runtime Python/compiled asset bytes equal the installed smoke wheel. No report/source-archive inclusion claim."
+  },
+  "installed_api": {
+    "passed": true,
+    "package_location": "/workspace/Memglide/.local/cache-v2/installed-env/lib/python3.12/site-packages/memglide/__init__.py",
+    "isolated_imports": true,
+    "cwd": "/tmp",
+    "doctor": "passed",
+    "indexed_files": 2,
+    "search_hits": 2,
+    "context_items": 1,
+    "estimated_planning_tokens": 993,
+    "budget": 4000,
+    "source_hashes_match": true,
+    "old_passport_detected_edit": true,
+    "refreshed_context_hash_matches": true,
+    "indexed_source_not_executed": true,
+    "loopback_api_health": true,
+    "bundled_spa_route": true,
+    "production_assets": [
+      {
+        "path": "/assets/index-CkQhvrkj.js",
+        "bytes": 323235
+      },
+      {
+        "path": "/assets/index-D9jkCmj-.css",
+        "bytes": 51841
+      }
+    ],
+    "scope": "Clean installed wheel with pinned locked dependencies; isolated CLI imports, real index/context/passport and loopback HTTP/compiled assets. No model requests or token/cost measurements."
+  },
+  "installed_preload": {
+    "console_entrypoint": "/workspace/Memglide/.local/cache-v2/installed-env/bin/memglide-codex",
+    "functional_check_count": 12,
+    "functional_checks": {
+      "compact_full_source_private_hashes_ranges_and_original_task": true,
+      "context_supplied_nonexistent_database_bypass": true,
+      "explicit_git_approval_and_real_index": true,
+      "explicit_legacy_console_v1_compatibility": true,
+      "indexed_untrusted_source_never_executed": true,
+      "installed_default_compact_console_v2_exact_stdin_and_metadata": true,
+      "installed_entrypoint": true,
+      "isolated_installed_package": true,
+      "missing_source_fallback": true,
+      "oversized_complete_source_fallback": true,
+      "same_size_restored_mtime_freshness_without_reindex": true,
+      "stable_prefix_across_tasks_and_focus_order": true
+    },
+    "isolated_imports": true,
+    "model_requests": 0,
+    "native_execs_observed": 2,
+    "native_formats": [
+      {
+        "context_format": "compact-prefix",
+        "native_execs_observed": 1,
+        "native_exit_status": 29,
+        "passed": true,
+        "report_version": 2,
+        "stdin_bytes": 286,
+        "stdin_sha256": "10a180f0d7b2b6cda28b777ac52ae3bc443f44977f67794e9d74aff65c4a327e"
+      },
+      {
+        "context_format": "legacy",
+        "native_execs_observed": 1,
+        "native_exit_status": 29,
+        "passed": true,
+        "report_version": 1,
+        "stdin_bytes": 527,
+        "stdin_sha256": "9636074312d19fdf5af0f1441378e6a093706d5c84e358b525d86e640b68b441"
+      }
+    ],
+    "native_working_directory": "/tmp",
+    "network_requests": 0,
+    "package_location": "/workspace/Memglide/.local/cache-v2/installed-env/lib/python3.12/site-packages/memglide/__init__.py",
+    "passed": true,
+    "python_prefix": "/workspace/Memglide/.local/cache-v2/installed-env",
+    "scope": "Installed-wheel API/console smoke using trusted fake native Codex. Functional checks are not additional pytest cases; no usage/cost/speed claim."
+  },
+  "notes": [
+    "961 Python +24 frontend +3 production-browser cases; focused and earlier876case runs overlap and are not added.",
+    "Installed12functional assertions and2fake execs are not additional pytest cases or model measurements.",
+    "Corrected shell newline read-path attribution; original80runusage/timing/outcomes unchanged.",
+    "Pre-formal recovery bug reproduced an unknown legacy-A index duration incorrectly as zero; fixed to null before new format experiment. Before/after proofs and four actual recovery regressions retained.",
+    "New20task corpus preserves initial draft, initial/final controls and pre-model CSS whitespace-oracle correction.",
+    "Wheel source/compiled assets verified byte-for-byte; source archive audit applies at its pre-report build boundary. Future results/reports are not retroactively included.",
+    "Actual native-format performance is a separate experiment, not inferred from component bytes or passing tests."
+  ],
+  "formal_format_results": null
+}

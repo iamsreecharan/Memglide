@@ -1,0 +1,11 @@
+{
+  "sequence": 112,
+  "previous_sha256": "bb21810e9f8d01df85347b109a43c1660e417c20459da3559dcc084806d138c9",
+  "recorded_at": "2026-10-18T02:50:28.254017+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts-daily-editor-literal-replace-all-r2-A",
+  "original_run_id": "ts-daily-editor-literal-replace-all-r2-A",
+  "supplemental": false,
+  "start_sha256": "5340e3ed58815247642e214870cc32fa296ac2a9805dbe3596692ebe64d16ae6",
+  "sha256": "3d078de6dabd1a4c572417518c681156ed6f2741b45299fd5c98c1839170b5c8"
+}

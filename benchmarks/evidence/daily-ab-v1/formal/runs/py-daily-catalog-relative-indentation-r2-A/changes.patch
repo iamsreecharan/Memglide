@@ -1,0 +1,13 @@
+diff --git a/catalog/relative_indentation.py b/catalog/relative_indentation.py
+index 719b782..119e638 100644
+--- a/catalog/relative_indentation.py
++++ b/catalog/relative_indentation.py
+@@ -1,3 +1,7 @@
+ def dedent_lines(lines):
+     """Remove a shared left margin while preserving nested indentation."""
+-    return [line.lstrip(" ") for line in lines]
++    margin = min(
++        (len(line) - len(line.lstrip(" ")) for line in lines if line.strip()),
++        default=0,
++    )
++    return [line[margin:] if line.strip() else "" for line in lines]

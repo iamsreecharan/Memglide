@@ -1,0 +1,11 @@
+{
+  "sequence": 58,
+  "previous_sha256": "58fe83c006c4b11f2bcd1b643901d34e12b1d1831d22794982d44ff076d0e203",
+  "recorded_at": "2026-10-18T02:40:14.352948+00:00",
+  "event": "attempt.started",
+  "attempt_id": "ts-daily-editor-whitespace-word-spans-r1-A",
+  "original_run_id": "ts-daily-editor-whitespace-word-spans-r1-A",
+  "supplemental": false,
+  "start_sha256": "e27ba47afe1bb40b22ef035d2844fe17e177def9d86148e9c13422e990eb7fa8",
+  "sha256": "6a32f3771a8db58fb077a42f0234bed8642583384e49e43f45744516e569c389"
+}

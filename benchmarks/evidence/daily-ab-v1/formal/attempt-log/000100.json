@@ -1,0 +1,11 @@
+{
+  "sequence": 100,
+  "previous_sha256": "9ad81bd36eacc7a7ea80a4a86b20d50ed841c45178d26ab18902935ce8820b08",
+  "recorded_at": "2026-10-18T02:48:17.273348+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py-daily-catalog-tag-normalization-r2-A",
+  "original_run_id": "py-daily-catalog-tag-normalization-r2-A",
+  "supplemental": false,
+  "start_sha256": "0d931f1c4c2921c8e13b87f7b296207ec6e44f9894d6d047e32ca630449bc7d0",
+  "sha256": "18bb966043a61d0c2dce764e5862eca0eca86f685eec5665b8a292b286e76193"
+}

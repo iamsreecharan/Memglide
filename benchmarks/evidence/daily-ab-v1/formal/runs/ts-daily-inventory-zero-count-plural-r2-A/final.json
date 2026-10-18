@@ -1,0 +1,1 @@
+{"summary":"Updated pluralize to select singular only when count === 1; zero uses plural. Validation and supplied words remain unchanged. No commit created.","tests_run":["node --test tests/*.test.mjs — passed (1 test)."]}

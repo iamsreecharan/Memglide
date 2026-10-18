@@ -1,0 +1,1 @@
+{"summary":"Fixed padding to place zeros after the minus sign without truncating. labelCode now preserves zero. Added regression tests for formatting and input validation; existing tests remain unchanged. No commit made.","tests_run":["node --test tests/*.test.mjs — passed"]}

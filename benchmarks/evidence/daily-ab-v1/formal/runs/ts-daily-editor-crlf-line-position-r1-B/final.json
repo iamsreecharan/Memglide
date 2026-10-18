@@ -1,0 +1,1 @@
+{"summary":"Fixed lineColumn for CRLF, bare CR, and LF while preserving UTF-16 offset counting and validation. Added regression tests; existing tests remain unchanged. No commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

@@ -1,0 +1,9 @@
+{
+  "sequence": 65,
+  "previous_sha256": "d41d0a0a330406f4345ecf0554872790a06df82b1cca35238a953ecdbbf02ce9",
+  "recorded_at": "2026-10-18T02:41:53.060296+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "py-daily-desk-export-line-endings-r1-B",
+  "result_sha256": "2977f776445c3c5e7f9d7a02baa8cc1aee23c5e17284e1fd9c8b908a50e3eedb",
+  "sha256": "402523b826ad233af61b31de1a16a3e9ffdf6c7a485181612d3762f0e0cde4bf"
+}

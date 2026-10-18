@@ -1,0 +1,13 @@
+{
+  "accepted_early_exit_as_success": true,
+  "commands_exit_codes": [
+    0,
+    0
+  ],
+  "observed_test_counts": [
+    {},
+    {}
+  ],
+  "protected_files_unchanged": true,
+  "grader_source_sha256": "21852c902b6db47c617fc0da6ee8f4ce0d2dff710299ba3336656dce1dee83e2"
+}

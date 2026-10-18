@@ -1,0 +1,27 @@
+diff --git a/desk/export_line_endings.py b/desk/export_line_endings.py
+index a1e493d..f786d11 100644
+--- a/desk/export_line_endings.py
++++ b/desk/export_line_endings.py
+@@ -1,7 +1,10 @@
+ def join_lines(lines, *, newline="\n", final_newline=True):
+     """Export logical lines without adding line ending characters to data."""
+-    if newline not in ("\n", "\r\n") or any("\r" in line or "\n" in line for line in lines):
++    if newline not in ("\n", "\r\n"):
++        raise ValueError("invalid line or separator")
++    lines = tuple(lines)
++    if any("\r" in line or "\n" in line for line in lines):
+         raise ValueError("invalid line or separator")
+     if not lines:
+         return ""
+-    return newline.join(lines) + newline
++    return newline.join(lines) + (newline if final_newline else "")
+diff --git a/desk/export_line_endings_api.py b/desk/export_line_endings_api.py
+index d160c4f..fd30e11 100644
+--- a/desk/export_line_endings_api.py
++++ b/desk/export_line_endings_api.py
+@@ -2,4 +2,4 @@ from .export_line_endings import join_lines
+ 
+ def export_notes(lines, *, newline="\n", final_newline=True):
+     """Build a downloadable text note."""
+-    return join_lines(lines, final_newline=final_newline)
++    return join_lines(lines, newline=newline, final_newline=final_newline)

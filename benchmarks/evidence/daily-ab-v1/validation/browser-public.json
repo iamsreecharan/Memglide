@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "source_sha256": "f242c9cc20e7d021d6377a2a1f81ed9b5ee52b5ef86963c3660234843fceb40a",
+  "source_bytes": 13558,
+  "scope": "Allowlisted Playwright outcomes only; raw original stays private.",
+  "omission_note": "Confidential browser configuration/environment and arbitrary error message/stack/body fields are deliberately omitted. Test outcomes, counts, durations and retries are preserved. This is not omission of failed outcomes.",
+  "stats": {
+    "startTime": "2026-10-18T02:16:32.911Z",
+    "duration": 51923.217,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "global_error_count": 0,
+  "tests": [
+    {
+      "title_path": [
+        "workflow.spec.ts",
+        "production dashboard completes the repository, session, memory, retrieval, and evidence workflow"
+      ],
+      "file": "workflow.spec.ts",
+      "line": 25,
+      "project_name": "",
+      "expected_status": "passed",
+      "reported_status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 19737,
+          "retry": 0,
+          "errors_count": 0,
+          "error_present": false
+        }
+      ]
+    },
+    {
+      "title_path": [
+        "workflow.spec.ts",
+        "background cleanup cannot redirect a session deletion confirmation to another task"
+      ],
+      "file": "workflow.spec.ts",
+      "line": 150,
+      "project_name": "",
+      "expected_status": "passed",
+      "reported_status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 3266,
+          "retry": 0,
+          "errors_count": 0,
+          "error_present": false
+        }
+      ]
+    },
+    {
+      "title_path": [
+        "workflow.spec.ts",
+        "production routes retain useful empty and error states and fit desktop and tablet"
+      ],
+      "file": "workflow.spec.ts",
+      "line": 180,
+      "project_name": "",
+      "expected_status": "passed",
+      "reported_status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration_ms": 17635,
+          "retry": 0,
+          "errors_count": 0,
+          "error_present": false
+        }
+      ]
+    }
+  ]
+}

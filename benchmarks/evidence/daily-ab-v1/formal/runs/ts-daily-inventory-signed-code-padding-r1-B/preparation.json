@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "84953640211fb09c114ef5503451e4d7c4b001da981b30150d6d11cf5a5afa82",
+    "prepared_prompt_sha256": "7505764b5313274529f3f9a860c21fcbd59d653391fb1e9ae800425c18b5e775",
+    "files": [
+      {
+        "path": "src/signed_code_padding.ts",
+        "sha256": "6889a8e26f8a6d9604ab033800914163221511035f13d5546f93dda9fad8f8f7",
+        "start_line": 1,
+        "end_line": 4
+      },
+      {
+        "path": "src/signed_code_padding_api.ts",
+        "sha256": "00d2f70e55db9b3ce23541bae8f3eccb4b46a3126be58c0be0a52e03c706bac1",
+        "start_line": 1,
+        "end_line": 5
+      }
+    ],
+    "context_bytes": 1000,
+    "preparation_wall_seconds": 0.21287130699965928,
+    "preparation_cpu_seconds": 0.21269472700000003
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/ts-daily-inventory-signed-code-padding-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/ts-daily-inventory-signed-code-padding-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "7505764b5313274529f3f9a860c21fcbd59d653391fb1e9ae800425c18b5e775",
+    "bytes": 2631,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 15941.959043122
+}

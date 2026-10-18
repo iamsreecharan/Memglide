@@ -1,0 +1,71 @@
+{
+  "task_id": "py-daily-desk-elapsed-clock",
+  "repository": "desk-python-daily",
+  "corpus_version": "daily-1.0.0",
+  "passed": false,
+  "success": false,
+  "exit_code": 1,
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/Memglide/.local/daily-v1/corpus-validation-1/py-daily-desk-elapsed-clock/baseline_grade/held_out.py"
+      ],
+      "exit_code": 1,
+      "counts": {
+        "tests": 2,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/daily-v1/corpus-validation-1/py-daily-desk-elapsed-clock/baseline_grade/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/daily-v1/corpus-validation-1/py-daily-desk-elapsed-clock/baseline_grade/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 5
+      },
+      "stdout_path": "/workspace/Memglide/.local/daily-v1/corpus-validation-1/py-daily-desk-elapsed-clock/baseline_grade/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/daily-v1/corpus-validation-1/py-daily-desk-elapsed-clock/baseline_grade/smoke.stderr.log"
+    }
+  ],
+  "test_count": 7,
+  "protected_files_unchanged": true,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "9cc6679988dfa86f220a79bdb96d1d4f05ccbe202fb627b06cef7fe63e4191c6",
+      "actual_sha256": "9cc6679988dfa86f220a79bdb96d1d4f05ccbe202fb627b06cef7fe63e4191c6"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3",
+      "actual_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "tests/test_smoke.py",
+      "unchanged": true,
+      "expected_sha256": "459458288f9cdbc384d7c8f9813c98192a68fc41a8767c2af1807f3a595c23f8",
+      "actual_sha256": "459458288f9cdbc384d7c8f9813c98192a68fc41a8767c2af1807f3a595c23f8"
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

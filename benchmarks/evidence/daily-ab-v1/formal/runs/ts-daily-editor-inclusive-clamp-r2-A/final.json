@@ -1,0 +1,1 @@
+{"summary":"Fixed clamp to return max for values equal to or above max. Preserved validation and fractional values within bounds. No commit created.","tests_run":["node --test tests/*.test.mjs — passed (1 test)"]}

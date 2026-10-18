@@ -1,0 +1,14 @@
+test_all_blank_and_empty_inputs (test_relative_indentation.DedentLinesTests.test_all_blank_and_empty_inputs) ... ok
+test_blank_lines_do_not_set_margin (test_relative_indentation.DedentLinesTests.test_blank_lines_do_not_set_margin) ... ok
+test_preserves_relative_indentation_and_input (test_relative_indentation.DedentLinesTests.test_preserves_relative_indentation_and_input) ... ok
+test_unindented_line_keeps_shared_margin_at_zero (test_relative_indentation.DedentLinesTests.test_unindented_line_keeps_shared_margin_at_zero) ... ok
+test_relative_indentation (test_smoke.SmokeTests.test_relative_indentation) ... ok
+test_saturday_weekend (test_smoke.SmokeTests.test_saturday_weekend) ... ok
+test_single_pass_partition (test_smoke.SmokeTests.test_single_pass_partition) ... ok
+test_strict_column_projection (test_smoke.SmokeTests.test_strict_column_projection) ... ok
+test_tag_normalization (test_smoke.SmokeTests.test_tag_normalization) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK

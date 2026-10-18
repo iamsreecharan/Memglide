@@ -1,0 +1,1 @@
+{"summary":"Fixed median to sort numerically without mutating input and average even-length middle values. Preserved rejection of empty or nonfinite inputs. Added regression tests for fractions, negatives, immutability, and extreme finite values.","tests_run":["node --test tests/*.test.mjs — passed"]}

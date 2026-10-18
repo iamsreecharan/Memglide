@@ -1,0 +1,7 @@
+test_input_empty_and_error_identity (__main__.BehaviorTests.test_input_empty_and_error_identity) ... ok
+test_one_decision_in_order_and_iterators (__main__.BehaviorTests.test_one_decision_in_order_and_iterators) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

@@ -1,0 +1,13 @@
+test_relative_indentation (test_smoke.SmokeTests.test_relative_indentation) ... ok
+test_saturday_weekend (test_smoke.SmokeTests.test_saturday_weekend) ... ok
+test_single_pass_partition (test_smoke.SmokeTests.test_single_pass_partition) ... ok
+test_strict_column_projection (test_smoke.SmokeTests.test_strict_column_projection) ... ok
+test_tag_normalization (test_smoke.SmokeTests.test_tag_normalization) ... ok
+test_empty_selection_returns_new_empty_dict (test_strict_column_projection.StrictColumnProjectionTests.test_empty_selection_returns_new_empty_dict) ... ok
+test_missing_column_raises_without_changing_inputs (test_strict_column_projection.StrictColumnProjectionTests.test_missing_column_raises_without_changing_inputs) ... ok
+test_preserves_values_order_and_inputs (test_strict_column_projection.StrictColumnProjectionTests.test_preserves_values_order_and_inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK

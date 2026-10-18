@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: crlf-line-position
+ok 1 - crlf-line-position
+  ---
+  duration_ms: 3.99437
+  type: 'test'
+  ...
+# Subtest: html-text-escaping
+ok 2 - html-text-escaping
+  ---
+  duration_ms: 0.234529
+  type: 'test'
+  ...
+# Subtest: literal-replace-all
+ok 3 - literal-replace-all
+  ---
+  duration_ms: 0.285716
+  type: 'test'
+  ...
+# Subtest: whitespace-word-spans
+ok 4 - whitespace-word-spans
+  ---
+  duration_ms: 0.691493
+  type: 'test'
+  ...
+# Subtest: inclusive-clamp
+ok 5 - inclusive-clamp
+  ---
+  duration_ms: 0.402029
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 245.06223

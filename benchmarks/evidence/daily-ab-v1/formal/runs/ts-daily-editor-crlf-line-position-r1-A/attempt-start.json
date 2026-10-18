@@ -1,0 +1,26 @@
+{
+  "run_id": "ts-daily-editor-crlf-line-position-r1-A",
+  "task_id": "ts-daily-editor-crlf-line-position",
+  "language": "typescript",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 37,
+  "repository": "editor-typescript-daily",
+  "task_kind": "single-source",
+  "selection_stratum": "explicit_focus",
+  "original_run_id": "ts-daily-editor-crlf-line-position-r1-A",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T02:43:21.893020+00:00",
+  "artifacts": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/ts-daily-editor-crlf-line-position-r1-A",
+  "worktree": "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/ts-daily-editor-crlf-line-position-r1-A",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

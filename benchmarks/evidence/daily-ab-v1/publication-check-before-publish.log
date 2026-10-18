@@ -1,0 +1,30 @@
+{
+  "mode": "check_only",
+  "output": "benchmarks/evidence/daily-ab-v1",
+  "files": 2626,
+  "bytes": 9265944,
+  "missing_optional_files": 443,
+  "missing_optional_by_filename": {
+    "command.json": 1,
+    "events.jsonl": 1,
+    "final.json": 1,
+    "held_out.py": 98,
+    "held_out.test.mjs": 99,
+    "launch-grant.json": 1,
+    "preparation.json": 40,
+    "process-identity.json": 1,
+    "prompt.txt": 1,
+    "result.json": 1,
+    "stderr.log": 1,
+    "typecheck.stderr.log": 99,
+    "typecheck.stdout.log": 99
+  },
+  "credential_pattern_scan": "passed",
+  "historical_preservation": {
+    "manifest": ".local/daily-v1/baseline-preservation.json",
+    "base_commit": "5e9682b9063c6fd394a895678be31ff354d6c2fe",
+    "manifest_sha256": "b103f3945f7272b9e6f207e8dadb4cb9756fa71db1305ec0cddaa217b6718250",
+    "unchanged_files": 6295,
+    "unchanged_bytes": 87178077
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "phase": "pre-grader-integrity-fixes",
+  "full_python": {
+    "tests": 757,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 263.477
+  },
+  "frontend": {
+    "tests": 24,
+    "failures": 0,
+    "errors": 0
+  },
+  "browser": {
+    "tests": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "static_final": {
+    "checks": [
+      {
+        "name": "ruff",
+        "command": [
+          "uv",
+          "run",
+          "--frozen",
+          "ruff",
+          "check",
+          "."
+        ],
+        "returncode": 0,
+        "wall_seconds": 0.23143360799986112,
+        "log": ".local/daily-v1/static-final/ruff.log"
+      },
+      {
+        "name": "format",
+        "command": [
+          "uv",
+          "run",
+          "--frozen",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "returncode": 0,
+        "wall_seconds": 0.10523578799984534,
+        "log": ".local/daily-v1/static-final/format.log"
+      },
+      {
+        "name": "mypy",
+        "command": [
+          "uv",
+          "run",
+          "--frozen",
+          "mypy",
+          "src"
+        ],
+        "returncode": 0,
+        "wall_seconds": 1.923666187998606,
+        "log": ".local/daily-v1/static-final/mypy.log"
+      }
+    ],
+    "passed": true
+  },
+  "package_audit": {
+    "passed": true,
+    "scope": "Wheel/sdist source-byte equality, compiled frontend, required files and exclusion audit. Archive hashes are external sidecars only; this public summary includes no archive hash or self-hash.",
+    "wheel_member_count": 48,
+    "sdist_member_count": 6453,
+    "wheel_python_files_verified": 24,
+    "sdist_source_files_verified": 6435,
+    "frontend_files_verified": 19,
+    "forbidden_state_and_symlink_entries": 0,
+    "required_groups": [
+      "src",
+      "tests",
+      "benchmarks",
+      "docs",
+      "scripts",
+      "frontend",
+      "uv.lock",
+      "pyproject.toml"
+    ],
+    "failures": []
+  },
+  "installed_api": {
+    "passed": true,
+    "package_location": "/workspace/Memglide/.local/daily-v1/installed-env/lib/python3.12/site-packages/memglide/__init__.py",
+    "isolated_imports": true,
+    "cwd": "/tmp",
+    "doctor": "passed",
+    "indexed_files": 2,
+    "search_hits": 2,
+    "context_items": 1,
+    "estimated_planning_tokens": 993,
+    "budget": 4000,
+    "source_hashes_match": true,
+    "old_passport_detected_edit": true,
+    "refreshed_context_hash_matches": true,
+    "indexed_source_not_executed": true,
+    "loopback_api_health": true,
+    "bundled_spa_route": true,
+    "production_assets": [
+      {
+        "path": "/assets/index-CkQhvrkj.js",
+        "bytes": 323235
+      },
+      {
+        "path": "/assets/index-D9jkCmj-.css",
+        "bytes": 51841
+      }
+    ],
+    "scope": "Clean installed wheel with pinned locked dependencies; isolated CLI imports, real index/context/passport and loopback HTTP/compiled assets. No model requests or token/cost measurements."
+  },
+  "installed_preload": {
+    "console_entrypoint": "/workspace/Memglide/.local/daily-v1/installed-env/bin/memglide-codex",
+    "functional_check_count": 12,
+    "functional_checks": {
+      "complete_focused_sources_hashes_and_line_ranges": true,
+      "context_supplied_bypasses_nonexistent_database": true,
+      "explicit_git_project_approval_and_indexing": true,
+      "fresh_source_despite_unchanged_size_mtime_and_old_index": true,
+      "indexed_untrusted_source_never_executed": true,
+      "installed_console_exact_utf8_stdin_and_native_arguments": true,
+      "installed_entrypoint": true,
+      "isolated_installed_package": true,
+      "missing_source_fallback": true,
+      "oversized_complete_source_fallback": true,
+      "private_report_precedes_exec_and_matches_consumed_stdin": true,
+      "single_native_exec_and_exit_status_preserved": true
+    },
+    "isolated_imports": true,
+    "model_requests": 0,
+    "native_execs_observed": 1,
+    "native_exit_status": 29,
+    "native_working_directory": "/tmp",
+    "network_requests": 0,
+    "package_location": "/workspace/Memglide/.local/daily-v1/installed-env/lib/python3.12/site-packages/memglide/__init__.py",
+    "passed": true,
+    "prepared_stdin_bytes": 530,
+    "prepared_stdin_sha256": "ab37752337bc9d6b4c0f0085b42c1abfd2a625f6c4fe04314b329778395d8445",
+    "python_prefix": "/workspace/Memglide/.local/daily-v1/installed-env",
+    "scope": "Installed-wheel API/console smoke with trusted fake native Codex; no token/cost measurements. Functional checks are not additional pytest cases."
+  },
+  "initial_build_failure": {
+    "log": ".local/daily-v1/package-build.log",
+    "reason": "uv build does not support --locked",
+    "exit_code": 2
+  },
+  "successful_build": {
+    "log": ".local/daily-v1/package-build-v2.log",
+    "command": "uv build --offline --out-dir .local/daily-v1/dist",
+    "exit_code": 0
+  },
+  "notes": [
+    "All 784 distinct tests passed before later benchmark-only grader integrity refinements. Final targeted/full results are recorded separately.",
+    "Package snapshot precedes benchmark-only grading changes; installed runtime24Python files and19frontendassets remain separately hash-verifiable. Functional smoke checks are not additional pytest cases."
+  ],
+  "runtime_python": {
+    "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+    "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+    "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+    "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+    "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+    "src/memglide/core/context.py": "7b0c94938cfaeaff843d9c013c91d885747cecf73626317b3ca5acc607c4ac53",
+    "src/memglide/core/indexer.py": "8b84cd28858dd16c36b4ddf25edb62391721e6874fa0deb68dd48dd01bb50621",
+    "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+    "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+    "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+    "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+    "src/memglide/integrations/codex_preload.py": "4bef2eff9163d5aebf419d309ec89bbcdea1e8427c57cf9d4a6cdf3fc8a8cb66",
+    "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+    "src/memglide/integrations/preload.py": "e1bf1bc2bddff34d1ce68872ba762599b1426d140724a8c60fd26bcb8ff8d805",
+    "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/memory/engine.py": "82ff4f79c32dd2281026057098c9cffb872038640fa5ac387b1bd1ab6a5ab1d1",
+    "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+    "src/memglide/service.py": "6dd6f33a5adc3863ff68d6125296c84c32170085c9c20eb53c8809f02a4c2a7b",
+    "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/storage/database.py": "38a483c6e05758a8f7df743ce7965a0fe20b6ea5f13c4921788b61efa971f58e"
+  }
+}

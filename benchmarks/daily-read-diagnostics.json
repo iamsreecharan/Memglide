@@ -1,0 +1,3495 @@
+{
+  "diagnostic_version": "read-paths-2",
+  "generated_at": "2026-10-18T07:38:54.774924+00:00",
+  "scope": "Offline lexical correction of original 80-run read-command proxies; no new coding/model runs",
+  "experiment_directory": "/workspace/Memglide/.local/daily-v1/formal-20-v1",
+  "source_commit": "6f4b6f6be83a7ad58ffba5f6c2176a9cc5d36dff",
+  "frozen_telemetry_sha256": "21a6fa239c25ab1fb417aa7042f3f4e8412ef941172d1dfc42ec0d5895c6cc52",
+  "corrected_telemetry_sha256": "4e7a19e8c37d1cb47c0306dac2e962648267de23aa5b361c2e8a29d5b258a936",
+  "diagnostic_builder_sha256": "eabce2a470d6a595f898f9d80fe17c34d4d9db3c44037428ba3b85b54d23cda7",
+  "immutable_inputs": {
+    "checked_files": 84,
+    "unchanged": true,
+    "sha256": {
+      "metadata.json": "3421171e7403c24a5a2e811e4e662965c7694219ee129463ebcb2f70732b7722",
+      "report.json": "6d408cc324189c092de3709513bb9e33999fc58d73de3edb6d972e990b51d9c7",
+      "runs.json": "3b56afd490bf6c5ea61632b505fdba4aa0ff3c8764a933e05277f37707e471a0",
+      "plan.json": "d189510d80d73881d1267fbaadf009a49ae4a0f0874c13dc495833dafc147fe1",
+      "runs/py-daily-catalog-relative-indentation-r1-A/events.jsonl": "d5445622e45a072883c548e70de92da71dbed61c5c54d22d74ea636a779e97df",
+      "runs/py-daily-catalog-relative-indentation-r1-B/events.jsonl": "0ebb3b474bc9388e91363b20302c1b1a805572684d9422d1479d524d5db1a50d",
+      "runs/ts-daily-inventory-chunk-without-empty-tail-r1-A/events.jsonl": "899d5105d8be434af2cc07ee1d5f25f3d5cf1d01d9f130f2c7fd7c32ea862496",
+      "runs/ts-daily-inventory-chunk-without-empty-tail-r1-B/events.jsonl": "0ae69410b6b5c5d1e613787fe33ab983f7bced6946005e69f0534648a5c14c7f",
+      "runs/py-daily-catalog-strict-column-projection-r1-A/events.jsonl": "74340bf4c6c6655df3a88ef6f4ed0153a8c57158c57e8d6db81e220413150890",
+      "runs/py-daily-catalog-strict-column-projection-r1-B/events.jsonl": "90b470cb4935c35b1c831c6aa5cfc1f3647fca981ee8967827836b70aa328f1c",
+      "runs/ts-daily-editor-html-text-escaping-r1-B/events.jsonl": "cb56d0b2e23e7d1a9d0819b262fca4f217f18a37509d4a44445030e708e6566d",
+      "runs/ts-daily-editor-html-text-escaping-r1-A/events.jsonl": "f318f4fca088abcb0c081ecb5dfb86f7423602c1855d0e4886b6881ea3bac381",
+      "runs/py-daily-catalog-tag-normalization-r1-A/events.jsonl": "3bef21369b4554ac477d4b85cf9e7b671fbe72c230740a9fe32826b4ac2d6781",
+      "runs/py-daily-catalog-tag-normalization-r1-B/events.jsonl": "5eeeb5aa85a8f884dc8888e7b9780ced0e1de4f87d4e031061849b1fd4fd7596",
+      "runs/ts-daily-inventory-zero-count-plural-r1-A/events.jsonl": "db8a58b12f5d3c40cb88330905331b667812b5c3b012ccc119cd8f7c8943b23a",
+      "runs/ts-daily-inventory-zero-count-plural-r1-B/events.jsonl": "3332ffe96b016513f257f3b4020742bbfd62cd11f9911cc0b09a25f75c7cd7a4",
+      "runs/py-daily-desk-rectangular-transpose-r1-A/events.jsonl": "b603bceb951a7b43a61d6f3c386674f2fdd2bc9c8a9892468d00d186202c1853",
+      "runs/py-daily-desk-rectangular-transpose-r1-B/events.jsonl": "04ba5249d31780591760c02d1fa4f7bf6c51eba8ebd82227e0d63b05d5313d1b",
+      "runs/ts-daily-editor-literal-replace-all-r1-A/events.jsonl": "99ffa6f646835fcdfec9d0ca6b17fb08511f5f4a94ef98e34f3257ddf6f5f5b9",
+      "runs/ts-daily-editor-literal-replace-all-r1-B/events.jsonl": "9756453451cca877fba61ca98d740ef5a57f3a1602e3493b95276242809b2a17",
+      "runs/ts-daily-inventory-signed-code-padding-r1-A/events.jsonl": "8b15825f48d0e934e10e7dc31cf0986a5d14b553c83036333872d57fadb3c3b8",
+      "runs/ts-daily-inventory-signed-code-padding-r1-B/events.jsonl": "34021b3b024351e9cf99de30d20ec957f653545d89e61e53f2eb94187e212861",
+      "runs/ts-daily-inventory-equal-length-zip-r1-A/events.jsonl": "898c1b84e27af1090e7610783c0fe9681bdeee29e2f4fc8595061b849189301b",
+      "runs/ts-daily-inventory-equal-length-zip-r1-B/events.jsonl": "43fc8415161fb80786adf5539e1290b70d8157df9f9e37841fc6d2257727ebb2",
+      "runs/py-daily-desk-label-ellipsis-r1-A/events.jsonl": "6d0c9bbee360b6ad84b9ef230b0e06e7ae217d5a905bd165955cc0db144cfc8c",
+      "runs/py-daily-desk-label-ellipsis-r1-B/events.jsonl": "85ae4354c567a388cac1ccc7eda69e7bcc841cbfdfef2ddbc9fa99b53f062eeb",
+      "runs/py-daily-catalog-saturday-weekend-r1-B/events.jsonl": "3306347ef64924ac148d4ed5304d8fa599232d926143950a894580b38aafba80",
+      "runs/py-daily-catalog-saturday-weekend-r1-A/events.jsonl": "49231d58cc4cef6fb05a75979f61b750bbbd64186be39a44b0c3279b89507d2c",
+      "runs/py-daily-desk-elapsed-clock-r1-A/events.jsonl": "0e0e116feb11921aa39d8c4faa02d3cb1d5691a8bc13404fe0b650507221b86a",
+      "runs/py-daily-desk-elapsed-clock-r1-B/events.jsonl": "0dd3a9782ab2265bc943beb1b0de1dabf58bc3bb0c88099bf675bcad1573afe3",
+      "runs/ts-daily-inventory-numeric-median-r1-B/events.jsonl": "49db714b7a2b255cd1257c478be58eef83a180b40cb3f00673329d9dd88343bf",
+      "runs/ts-daily-inventory-numeric-median-r1-A/events.jsonl": "64f21df8c7c6a704b754c36a1f312ba2f5854b5e19ce8d90dc13924b9a0d1f07",
+      "runs/ts-daily-editor-whitespace-word-spans-r1-A/events.jsonl": "bf818f182b9262c42b876c61cd1a1b905e09e95a6bac13dfeeaa33235f196083",
+      "runs/ts-daily-editor-whitespace-word-spans-r1-B/events.jsonl": "ce12df03c9da8d459c0753cfdbb7b0a1850e915669f7e9d56be0b42aeef04d43",
+      "runs/py-daily-desk-export-line-endings-r1-A/events.jsonl": "6351b6181a797b7655755932df5eebc43001899b2fb184d79ba2a30e44772c9a",
+      "runs/py-daily-desk-export-line-endings-r1-B/events.jsonl": "bc40b1215f073337814e7443b7948099b6d9c9baa4b355c20e58d7c88585bbfe",
+      "runs/ts-daily-editor-inclusive-clamp-r1-A/events.jsonl": "3ff266e54e0178ae121979ae84593f769557c11a8f09dc26bf22b4000942070b",
+      "runs/ts-daily-editor-inclusive-clamp-r1-B/events.jsonl": "f640371621f71a9c9bd6ad10b5d0ca9d6138c1450aec92d167b9fddf64d43ba1",
+      "runs/py-daily-desk-calendar-month-shift-r1-B/events.jsonl": "45a531f529dd4624af21941875272b85263817c6795c65dd8820be5eb61fdfe6",
+      "runs/py-daily-desk-calendar-month-shift-r1-A/events.jsonl": "8c2804906610d388e92c559782f57deff6ec7bc66c29e685dd28f12a8b6620d2",
+      "runs/ts-daily-editor-crlf-line-position-r1-A/events.jsonl": "9c0a34924ec5e9295e25dc033cd74437880db36b9f640994c61120f3d5d95813",
+      "runs/ts-daily-editor-crlf-line-position-r1-B/events.jsonl": "753484dd677d6b5b033a15d7fdae25d97ae5277ed83cdf3f62d95891add343f2",
+      "runs/py-daily-catalog-single-pass-partition-r1-B/events.jsonl": "47597ce6bee136e868d38520f590d0e5981f9099126a7e4fec504b5e1d06a715",
+      "runs/py-daily-catalog-single-pass-partition-r1-A/events.jsonl": "ce4f6bc96d6a37305a81ccc498df38431647bef4999d29b8d5cfc6e347cdc1e6",
+      "runs/py-daily-catalog-relative-indentation-r2-B/events.jsonl": "89f89f789aabf2bde6d65848647c5a8d572e474251debae450f03d1f4f921eea",
+      "runs/py-daily-catalog-relative-indentation-r2-A/events.jsonl": "2c473646ce464afb93e5ab06fde69cf35b3d14eeca553cd31eaed331ac29091f",
+      "runs/ts-daily-inventory-chunk-without-empty-tail-r2-B/events.jsonl": "9cdd79d68f61afccbaac2058ae0a7b430fcbc60fcddf3d927b8294989a85b2e8",
+      "runs/ts-daily-inventory-chunk-without-empty-tail-r2-A/events.jsonl": "0445a8aab25e00ba1d4626f8f50bbc6292b57fae2b4a9b4dac36f7331fe21b7d",
+      "runs/py-daily-catalog-strict-column-projection-r2-B/events.jsonl": "b2cda88aac324119daeede93f509891e3cda07baaf0021f6779e7d69cd88acd6",
+      "runs/py-daily-catalog-strict-column-projection-r2-A/events.jsonl": "adbfb3fca387a43bdc40ca5f2c4e9402b59e5b4ae5087b1ac91ebcf7e19597aa",
+      "runs/ts-daily-editor-html-text-escaping-r2-A/events.jsonl": "e71820ec6dc854a177c9abce448d1575330893179cb81aa5aa1d4869187bfae4",
+      "runs/ts-daily-editor-html-text-escaping-r2-B/events.jsonl": "222319b546b03b29f0666392b602c3f6c77fbce6eef580aa7446b75c431c22d7",
+      "runs/py-daily-catalog-tag-normalization-r2-B/events.jsonl": "3dd983a702d07058e04d927092dfb7e859fb4804ee9b7807452e8a7d01f68b44",
+      "runs/py-daily-catalog-tag-normalization-r2-A/events.jsonl": "ed4ad8b41878d8ccbd83f2664aee609d055c47ab81c6d41c4ff2bd7b622e1a79",
+      "runs/ts-daily-inventory-zero-count-plural-r2-B/events.jsonl": "f8c6aa496bae552ed97d85caae38a26b4dac519755924b6ab652ad1704c07a32",
+      "runs/ts-daily-inventory-zero-count-plural-r2-A/events.jsonl": "eeb87f56bb8476db11e2bbf3158fab758081e7f21c70e773b89a13c2efd23435",
+      "runs/py-daily-desk-rectangular-transpose-r2-B/events.jsonl": "c1af10115128fd870e93c1dc54f49d21ced352ed38e7dd4b5f58c338b4760e8d",
+      "runs/py-daily-desk-rectangular-transpose-r2-A/events.jsonl": "055a235a3a03e71cde299de0d83d8919b07ff81038d34c552c426c26b68a5e0b",
+      "runs/ts-daily-editor-literal-replace-all-r2-B/events.jsonl": "85938a75d32f376d0644259c6d4b0e305704ddbdb4b521da8113b85382dac7c1",
+      "runs/ts-daily-editor-literal-replace-all-r2-A/events.jsonl": "edaee31d75d6823d47785f9e3949f5b0d74e2efb2a513997fcc515e908b07369",
+      "runs/ts-daily-inventory-signed-code-padding-r2-B/events.jsonl": "c3d48526045d7707578d96221fee08d91addfaa2d5acc3c4317433ae79b8103b",
+      "runs/ts-daily-inventory-signed-code-padding-r2-A/events.jsonl": "a8e5dacdf79e295716211749cb0dbaa1930ef99210739309225d3b4988b66da4",
+      "runs/ts-daily-inventory-equal-length-zip-r2-B/events.jsonl": "33386b042ee67824f3c349d72d691d4f52c109a57dd561509a369b0e7232a9b9",
+      "runs/ts-daily-inventory-equal-length-zip-r2-A/events.jsonl": "c901538374f4b8f3dca520b04785d978df57b17bcd231697b38a7315ed1ac0e6",
+      "runs/py-daily-desk-label-ellipsis-r2-B/events.jsonl": "ba9e23b20082daac784f2f94ba3697c04f1df694a1ad13825de6c89b80217d86",
+      "runs/py-daily-desk-label-ellipsis-r2-A/events.jsonl": "ffc62327d2ddeb1db3dd3d9c297c0bea4dd5f52764448b6f0549390f3ffdc0a6",
+      "runs/py-daily-catalog-saturday-weekend-r2-A/events.jsonl": "04e52bab149fcb2f499b973ff83d79cd7c04238a18eb70498d9ed65606dd3d74",
+      "runs/py-daily-catalog-saturday-weekend-r2-B/events.jsonl": "28914a9e172dc575acd059c2f1339fdfac645d8665ad7c88c9a56680154089bf",
+      "runs/py-daily-desk-elapsed-clock-r2-B/events.jsonl": "6236c74a3e675da8ac4711b0a70252dbd7bfcc746046f48060220395bfd77322",
+      "runs/py-daily-desk-elapsed-clock-r2-A/events.jsonl": "39a0deb0264d80053b9b56b51fe51b0a45798e56664bf9578f9fcc9f7b6ca573",
+      "runs/ts-daily-inventory-numeric-median-r2-A/events.jsonl": "4021df8d0264b60e4631d2d5d4312c787ca8c96ffa914c6aea62b38b178c35d3",
+      "runs/ts-daily-inventory-numeric-median-r2-B/events.jsonl": "9b49ceb6d3fca768defdb74c05673797a0f7daeca012929bc18747905ede3eb4",
+      "runs/ts-daily-editor-whitespace-word-spans-r2-B/events.jsonl": "30bb0971b34210e573a1c927dc3b477087f5b76678cc6e635f708bae5b5dbf12",
+      "runs/ts-daily-editor-whitespace-word-spans-r2-A/events.jsonl": "0fbd5d9641e36d0ac2d58fdebfd2cc0206f81e23251e4e84165a70b3d71c3cf9",
+      "runs/py-daily-desk-export-line-endings-r2-B/events.jsonl": "2498340721cedb8a4f657751218debd6db73093718f2a4debfec7790604ce4e2",
+      "runs/py-daily-desk-export-line-endings-r2-A/events.jsonl": "984d94effd07d6a49cbcfad60cc5d37a0dd82f30c83c809b29a25790eb04472f",
+      "runs/ts-daily-editor-inclusive-clamp-r2-B/events.jsonl": "3631f50f5595fdbc8becff713a83129188afe479884bc8d2822fc56433401b16",
+      "runs/ts-daily-editor-inclusive-clamp-r2-A/events.jsonl": "9a5c9d667b6adc30631b6c2bc12d4518b73335efbff49a894fd3c870f6120c1c",
+      "runs/py-daily-desk-calendar-month-shift-r2-A/events.jsonl": "c0272e4839e78986e91caa2151c944ada1444b4f68b38dac28803ff611d45d0d",
+      "runs/py-daily-desk-calendar-month-shift-r2-B/events.jsonl": "f0e3e23fbb53b057aa3fb7d8ee0a4de4ce58019f2d1fd554bca63b31378109ab",
+      "runs/ts-daily-editor-crlf-line-position-r2-B/events.jsonl": "084eba4a52f54c3fd0149dc76eda7fae1ea54f4dfdef8785502ba1dcce42fc4a",
+      "runs/ts-daily-editor-crlf-line-position-r2-A/events.jsonl": "50131faec87c16c3c6953adfc0eb3190c9aa32ece26922f33c09f1d56399278a",
+      "runs/py-daily-catalog-single-pass-partition-r2-A/events.jsonl": "4663cec932eaa1e3648678440a99a65905baa1860a38e604eed1186e0b7294ed",
+      "runs/py-daily-catalog-single-pass-partition-r2-B/events.jsonl": "50f8ad50daf35a9c68965e3eff8c89bd247711390f283af5060fcc7f778e248a"
+    }
+  },
+  "configurations": {
+    "A": {
+      "runs": 40,
+      "original": {
+        "observed_file_read_commands": {
+          "n": 40,
+          "total": 47,
+          "mean": 1.175,
+          "median": 1.0
+        },
+        "observed_repeated_read_commands": {
+          "n": 40,
+          "total": 0,
+          "mean": 0,
+          "median": 0.0
+        },
+        "recognized_path_mentions": {
+          "n": 40,
+          "total": 118,
+          "mean": 2.95,
+          "median": 3.0
+        },
+        "declared_focus_path_mentions": {
+          "n": 40,
+          "total": 48,
+          "mean": 1.2,
+          "median": 1.0
+        },
+        "test_path_mentions": {
+          "n": 40,
+          "total": 33,
+          "mean": 0.825,
+          "median": 1.0
+        },
+        "other_path_mentions": {
+          "n": 40,
+          "total": 37,
+          "mean": 0.925,
+          "median": 1.0
+        }
+      },
+      "corrected": {
+        "observed_file_read_commands": {
+          "n": 40,
+          "total": 47,
+          "mean": 1.175,
+          "median": 1.0
+        },
+        "observed_repeated_read_commands": {
+          "n": 40,
+          "total": 0,
+          "mean": 0,
+          "median": 0.0
+        },
+        "recognized_path_mentions": {
+          "n": 40,
+          "total": 118,
+          "mean": 2.95,
+          "median": 3.0
+        },
+        "declared_focus_path_mentions": {
+          "n": 40,
+          "total": 48,
+          "mean": 1.2,
+          "median": 1.0
+        },
+        "test_path_mentions": {
+          "n": 40,
+          "total": 33,
+          "mean": 0.825,
+          "median": 1.0
+        },
+        "other_path_mentions": {
+          "n": 40,
+          "total": 37,
+          "mean": 0.925,
+          "median": 1.0
+        }
+      },
+      "changed_command_count": 0,
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    "B": {
+      "runs": 40,
+      "original": {
+        "observed_file_read_commands": {
+          "n": 40,
+          "total": 33,
+          "mean": 0.825,
+          "median": 1.0
+        },
+        "observed_repeated_read_commands": {
+          "n": 40,
+          "total": 0,
+          "mean": 0,
+          "median": 0.0
+        },
+        "recognized_path_mentions": {
+          "n": 40,
+          "total": 78,
+          "mean": 1.95,
+          "median": 2.0
+        },
+        "declared_focus_path_mentions": {
+          "n": 40,
+          "total": 3,
+          "mean": 0.075,
+          "median": 0.0
+        },
+        "test_path_mentions": {
+          "n": 40,
+          "total": 33,
+          "mean": 0.825,
+          "median": 1.0
+        },
+        "other_path_mentions": {
+          "n": 40,
+          "total": 42,
+          "mean": 1.05,
+          "median": 1.0
+        }
+      },
+      "corrected": {
+        "observed_file_read_commands": {
+          "n": 40,
+          "total": 33,
+          "mean": 0.825,
+          "median": 1.0
+        },
+        "observed_repeated_read_commands": {
+          "n": 40,
+          "total": 0,
+          "mean": 0,
+          "median": 0.0
+        },
+        "recognized_path_mentions": {
+          "n": 40,
+          "total": 69,
+          "mean": 1.725,
+          "median": 2.0
+        },
+        "declared_focus_path_mentions": {
+          "n": 40,
+          "total": 0,
+          "mean": 0,
+          "median": 0.0
+        },
+        "test_path_mentions": {
+          "n": 40,
+          "total": 33,
+          "mean": 0.825,
+          "median": 1.0
+        },
+        "other_path_mentions": {
+          "n": 40,
+          "total": 36,
+          "mean": 0.9,
+          "median": 1.0
+        }
+      },
+      "changed_command_count": 3,
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    }
+  },
+  "runs": [
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r1-A",
+      "task_id": "py-daily-catalog-relative-indentation",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "d5445622e45a072883c548e70de92da71dbed61c5c54d22d74ea636a779e97df",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/relative_indentation.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/relative_indentation.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r1-B",
+      "task_id": "py-daily-catalog-relative-indentation",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "0ebb3b474bc9388e91363b20302c1b1a805572684d9422d1479d524d5db1a50d",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r1-A",
+      "task_id": "ts-daily-inventory-chunk-without-empty-tail",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "899d5105d8be434af2cc07ee1d5f25f3d5cf1d01d9f130f2c7fd7c32ea862496",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/chunk_without_empty_tail.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/chunk_without_empty_tail.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r1-B",
+      "task_id": "ts-daily-inventory-chunk-without-empty-tail",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "0ae69410b6b5c5d1e613787fe33ab983f7bced6946005e69f0534648a5c14c7f",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r1-A",
+      "task_id": "py-daily-catalog-strict-column-projection",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "74340bf4c6c6655df3a88ef6f4ed0153a8c57158c57e8d6db81e220413150890",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/strict_column_projection.py",
+          "catalog/strict_column_projection_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/strict_column_projection.py",
+          "catalog/strict_column_projection_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r1-B",
+      "task_id": "py-daily-catalog-strict-column-projection",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "90b470cb4935c35b1c831c6aa5cfc1f3647fca981ee8967827836b70aa328f1c",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r1-B",
+      "task_id": "ts-daily-editor-html-text-escaping",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "cb56d0b2e23e7d1a9d0819b262fca4f217f18a37509d4a44445030e708e6566d",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r1-A",
+      "task_id": "ts-daily-editor-html-text-escaping",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "f318f4fca088abcb0c081ecb5dfb86f7423602c1855d0e4886b6881ea3bac381",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/html_text_escaping.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/html_text_escaping.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r1-A",
+      "task_id": "py-daily-catalog-tag-normalization",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "3bef21369b4554ac477d4b85cf9e7b671fbe72c230740a9fe32826b4ac2d6781",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/tag_normalization.py",
+          "catalog/tag_normalization_api.py",
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/tag_normalization.py",
+          "catalog/tag_normalization_api.py",
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r1-B",
+      "task_id": "py-daily-catalog-tag-normalization",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "5eeeb5aa85a8f884dc8888e7b9780ced0e1de4f87d4e031061849b1fd4fd7596",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r1-A",
+      "task_id": "ts-daily-inventory-zero-count-plural",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "db8a58b12f5d3c40cb88330905331b667812b5c3b012ccc119cd8f7c8943b23a",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r1-B",
+      "task_id": "ts-daily-inventory-zero-count-plural",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "3332ffe96b016513f257f3b4020742bbfd62cd11f9911cc0b09a25f75c7cd7a4",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r1-A",
+      "task_id": "py-daily-desk-rectangular-transpose",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "b603bceb951a7b43a61d6f3c386674f2fdd2bc9c8a9892468d00d186202c1853",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/rectangular_transpose.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/rectangular_transpose.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r1-B",
+      "task_id": "py-daily-desk-rectangular-transpose",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "04ba5249d31780591760c02d1fa4f7bf6c51eba8ebd82227e0d63b05d5313d1b",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r1-A",
+      "task_id": "ts-daily-editor-literal-replace-all",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "99ffa6f646835fcdfec9d0ca6b17fb08511f5f4a94ef98e34f3257ddf6f5f5b9",
+      "original": {
+        "observed_file_read_commands": 3,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/literal_replace_all.ts",
+          "src/literal_replace_all_api.ts",
+          "tests/smoke.test.mjs",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 3,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/literal_replace_all.ts",
+          "src/literal_replace_all_api.ts",
+          "tests/smoke.test.mjs",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r1-B",
+      "task_id": "ts-daily-editor-literal-replace-all",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "9756453451cca877fba61ca98d740ef5a57f3a1602e3493b95276242809b2a17",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json",
+          "git",
+          "status"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 5,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 4
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [
+        {
+          "command_id": "item_2",
+          "command_sha256": "fd9cdde54a504e7416b4695aab54fa0d523bf1cc6507bacb1ab2373adc7a8fda",
+          "original_paths": [
+            "AGENTS.md",
+            "tests/smoke.test.mjs",
+            "package.json",
+            "git",
+            "status"
+          ],
+          "corrected_paths": [
+            "AGENTS.md",
+            "tests/smoke.test.mjs",
+            "package.json"
+          ],
+          "removed_path_mentions": [
+            "git",
+            "status"
+          ],
+          "added_path_mentions": []
+        }
+      ],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r1-A",
+      "task_id": "ts-daily-inventory-signed-code-padding",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "8b15825f48d0e934e10e7dc31cf0986a5d14b553c83036333872d57fadb3c3b8",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/signed_code_padding.ts",
+          "src/signed_code_padding_api.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 5,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/signed_code_padding.ts",
+          "src/signed_code_padding_api.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 5,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r1-B",
+      "task_id": "ts-daily-inventory-signed-code-padding",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "34021b3b024351e9cf99de30d20ec957f653545d89e61e53f2eb94187e212861",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r1-A",
+      "task_id": "ts-daily-inventory-equal-length-zip",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "898c1b84e27af1090e7610783c0fe9681bdeee29e2f4fc8595061b849189301b",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/equal_length_zip.ts",
+          "src/equal_length_zip_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/equal_length_zip.ts",
+          "src/equal_length_zip_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r1-B",
+      "task_id": "ts-daily-inventory-equal-length-zip",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "43fc8415161fb80786adf5539e1290b70d8157df9f9e37841fc6d2257727ebb2",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r1-A",
+      "task_id": "py-daily-desk-label-ellipsis",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "6d0c9bbee360b6ad84b9ef230b0e06e7ae217d5a905bd165955cc0db144cfc8c",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r1-B",
+      "task_id": "py-daily-desk-label-ellipsis",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "85ae4354c567a388cac1ccc7eda69e7bcc841cbfdfef2ddbc9fa99b53f062eeb",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r1-B",
+      "task_id": "py-daily-catalog-saturday-weekend",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "3306347ef64924ac148d4ed5304d8fa599232d926143950a894580b38aafba80",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r1-A",
+      "task_id": "py-daily-catalog-saturday-weekend",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "49231d58cc4cef6fb05a75979f61b750bbbd64186be39a44b0c3279b89507d2c",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r1-A",
+      "task_id": "py-daily-desk-elapsed-clock",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "0e0e116feb11921aa39d8c4faa02d3cb1d5691a8bc13404fe0b650507221b86a",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/elapsed_clock.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/elapsed_clock.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r1-B",
+      "task_id": "py-daily-desk-elapsed-clock",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "0dd3a9782ab2265bc943beb1b0de1dabf58bc3bb0c88099bf675bcad1573afe3",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r1-B",
+      "task_id": "ts-daily-inventory-numeric-median",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "49db714b7a2b255cd1257c478be58eef83a180b40cb3f00673329d9dd88343bf",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r1-A",
+      "task_id": "ts-daily-inventory-numeric-median",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "64f21df8c7c6a704b754c36a1f312ba2f5854b5e19ce8d90dc13924b9a0d1f07",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/numeric_median.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/numeric_median.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r1-A",
+      "task_id": "ts-daily-editor-whitespace-word-spans",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "bf818f182b9262c42b876c61cd1a1b905e09e95a6bac13dfeeaa33235f196083",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/whitespace_word_spans.ts",
+          "src/whitespace_word_spans_api.ts",
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/whitespace_word_spans.ts",
+          "src/whitespace_word_spans_api.ts",
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r1-B",
+      "task_id": "ts-daily-editor-whitespace-word-spans",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "ce12df03c9da8d459c0753cfdbb7b0a1850e915669f7e9d56be0b42aeef04d43",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r1-A",
+      "task_id": "py-daily-desk-export-line-endings",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "6351b6181a797b7655755932df5eebc43001899b2fb184d79ba2a30e44772c9a",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/export_line_endings.py",
+          "desk/export_line_endings_api.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/export_line_endings.py",
+          "desk/export_line_endings_api.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r1-B",
+      "task_id": "py-daily-desk-export-line-endings",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "bc40b1215f073337814e7443b7948099b6d9c9baa4b355c20e58d7c88585bbfe",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r1-A",
+      "task_id": "ts-daily-editor-inclusive-clamp",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "3ff266e54e0178ae121979ae84593f769557c11a8f09dc26bf22b4000942070b",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r1-B",
+      "task_id": "ts-daily-editor-inclusive-clamp",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "f640371621f71a9c9bd6ad10b5d0ca9d6138c1450aec92d167b9fddf64d43ba1",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r1-B",
+      "task_id": "py-daily-desk-calendar-month-shift",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "45a531f529dd4624af21941875272b85263817c6795c65dd8820be5eb61fdfe6",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py",
+          "git",
+          "diff",
+          "desk/calendar_month_shift.py",
+          "desk/calendar_month_shift_api.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 5,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [
+        {
+          "command_id": "item_2",
+          "command_sha256": "73a6d395025a518b5d95e81ec439bb4057f68bdb291a3832c49b09a52d61d467",
+          "original_paths": [
+            "tests/test_smoke.py",
+            "git",
+            "diff",
+            "desk/calendar_month_shift.py",
+            "desk/calendar_month_shift_api.py"
+          ],
+          "corrected_paths": [
+            "tests/test_smoke.py"
+          ],
+          "removed_path_mentions": [
+            "git",
+            "diff",
+            "desk/calendar_month_shift.py",
+            "desk/calendar_month_shift_api.py"
+          ],
+          "added_path_mentions": []
+        }
+      ],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r1-A",
+      "task_id": "py-daily-desk-calendar-month-shift",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "8c2804906610d388e92c559782f57deff6ec7bc66c29e685dd28f12a8b6620d2",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "desk/calendar_month_shift.py",
+          "desk/calendar_month_shift_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "desk/calendar_month_shift.py",
+          "desk/calendar_month_shift_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r1-A",
+      "task_id": "ts-daily-editor-crlf-line-position",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "9c0a34924ec5e9295e25dc033cd74437880db36b9f640994c61120f3d5d95813",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/crlf_line_position.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/crlf_line_position.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r1-B",
+      "task_id": "ts-daily-editor-crlf-line-position",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "753484dd677d6b5b033a15d7fdae25d97ae5277ed83cdf3f62d95891add343f2",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r1-B",
+      "task_id": "py-daily-catalog-single-pass-partition",
+      "repeat": 1,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "47597ce6bee136e868d38520f590d0e5981f9099126a7e4fec504b5e1d06a715",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r1-A",
+      "task_id": "py-daily-catalog-single-pass-partition",
+      "repeat": 1,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "ce4f6bc96d6a37305a81ccc498df38431647bef4999d29b8d5cfc6e347cdc1e6",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/single_pass_partition.py",
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/single_pass_partition.py",
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r2-B",
+      "task_id": "py-daily-catalog-relative-indentation",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "89f89f789aabf2bde6d65848647c5a8d572e474251debae450f03d1f4f921eea",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r2-A",
+      "task_id": "py-daily-catalog-relative-indentation",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "2c473646ce464afb93e5ab06fde69cf35b3d14eeca553cd31eaed331ac29091f",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/relative_indentation.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "catalog/relative_indentation.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r2-B",
+      "task_id": "ts-daily-inventory-chunk-without-empty-tail",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "9cdd79d68f61afccbaac2058ae0a7b430fcbc60fcddf3d927b8294989a85b2e8",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r2-A",
+      "task_id": "ts-daily-inventory-chunk-without-empty-tail",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "0445a8aab25e00ba1d4626f8f50bbc6292b57fae2b4a9b4dac36f7331fe21b7d",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/chunk_without_empty_tail.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/chunk_without_empty_tail.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r2-B",
+      "task_id": "py-daily-catalog-strict-column-projection",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "b2cda88aac324119daeede93f509891e3cda07baaf0021f6779e7d69cd88acd6",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r2-A",
+      "task_id": "py-daily-catalog-strict-column-projection",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "adbfb3fca387a43bdc40ca5f2c4e9402b59e5b4ae5087b1ac91ebcf7e19597aa",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/strict_column_projection.py",
+          "catalog/strict_column_projection_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/strict_column_projection.py",
+          "catalog/strict_column_projection_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r2-A",
+      "task_id": "ts-daily-editor-html-text-escaping",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "e71820ec6dc854a177c9abce448d1575330893179cb81aa5aa1d4869187bfae4",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/html_text_escaping.ts",
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/html_text_escaping.ts",
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r2-B",
+      "task_id": "ts-daily-editor-html-text-escaping",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "222319b546b03b29f0666392b602c3f6c77fbce6eef580aa7446b75c431c22d7",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r2-B",
+      "task_id": "py-daily-catalog-tag-normalization",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "3dd983a702d07058e04d927092dfb7e859fb4804ee9b7807452e8a7d01f68b44",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r2-A",
+      "task_id": "py-daily-catalog-tag-normalization",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "ed4ad8b41878d8ccbd83f2664aee609d055c47ab81c6d41c4ff2bd7b622e1a79",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/tag_normalization.py",
+          "catalog/tag_normalization_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/tag_normalization.py",
+          "catalog/tag_normalization_api.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r2-B",
+      "task_id": "ts-daily-inventory-zero-count-plural",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "f8c6aa496bae552ed97d85caae38a26b4dac519755924b6ab652ad1704c07a32",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs",
+          "git",
+          "diff",
+          "src/zero_count_plural.ts"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [
+        {
+          "command_id": "item_4",
+          "command_sha256": "8e4fdcf1a1ec6f7c337b5ad61c8bd13bcf7fc301109833f80db3d1b0a2065cec",
+          "original_paths": [
+            "tests/smoke.test.mjs",
+            "git",
+            "diff",
+            "src/zero_count_plural.ts"
+          ],
+          "corrected_paths": [
+            "tests/smoke.test.mjs"
+          ],
+          "removed_path_mentions": [
+            "git",
+            "diff",
+            "src/zero_count_plural.ts"
+          ],
+          "added_path_mentions": []
+        }
+      ],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r2-A",
+      "task_id": "ts-daily-inventory-zero-count-plural",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "eeb87f56bb8476db11e2bbf3158fab758081e7f21c70e773b89a13c2efd23435",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r2-B",
+      "task_id": "py-daily-desk-rectangular-transpose",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "c1af10115128fd870e93c1dc54f49d21ced352ed38e7dd4b5f58c338b4760e8d",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r2-A",
+      "task_id": "py-daily-desk-rectangular-transpose",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "055a235a3a03e71cde299de0d83d8919b07ff81038d34c552c426c26b68a5e0b",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/rectangular_transpose.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/rectangular_transpose.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r2-B",
+      "task_id": "ts-daily-editor-literal-replace-all",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "85938a75d32f376d0644259c6d4b0e305704ddbdb4b521da8113b85382dac7c1",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r2-A",
+      "task_id": "ts-daily-editor-literal-replace-all",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "edaee31d75d6823d47785f9e3949f5b0d74e2efb2a513997fcc515e908b07369",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/literal_replace_all.ts",
+          "src/literal_replace_all_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/literal_replace_all.ts",
+          "src/literal_replace_all_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r2-B",
+      "task_id": "ts-daily-inventory-signed-code-padding",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "c3d48526045d7707578d96221fee08d91addfaa2d5acc3c4317433ae79b8103b",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r2-A",
+      "task_id": "ts-daily-inventory-signed-code-padding",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "a8e5dacdf79e295716211749cb0dbaa1930ef99210739309225d3b4988b66da4",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/signed_code_padding.ts",
+          "src/signed_code_padding_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/signed_code_padding.ts",
+          "src/signed_code_padding_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r2-B",
+      "task_id": "ts-daily-inventory-equal-length-zip",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "33386b042ee67824f3c349d72d691d4f52c109a57dd561509a369b0e7232a9b9",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r2-A",
+      "task_id": "ts-daily-inventory-equal-length-zip",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "c901538374f4b8f3dca520b04785d978df57b17bcd231697b38a7315ed1ac0e6",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/equal_length_zip.ts",
+          "src/equal_length_zip_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/equal_length_zip.ts",
+          "src/equal_length_zip_api.ts",
+          "tests/smoke.test.mjs"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r2-B",
+      "task_id": "py-daily-desk-label-ellipsis",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "ba9e23b20082daac784f2f94ba3697c04f1df694a1ad13825de6c89b80217d86",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r2-A",
+      "task_id": "py-daily-desk-label-ellipsis",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "ffc62327d2ddeb1db3dd3d9c297c0bea4dd5f52764448b6f0549390f3ffdc0a6",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r2-A",
+      "task_id": "py-daily-catalog-saturday-weekend",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "04e52bab149fcb2f499b973ff83d79cd7c04238a18eb70498d9ed65606dd3d74",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r2-B",
+      "task_id": "py-daily-catalog-saturday-weekend",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "28914a9e172dc575acd059c2f1339fdfac645d8665ad7c88c9a56680154089bf",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r2-B",
+      "task_id": "py-daily-desk-elapsed-clock",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "6236c74a3e675da8ac4711b0a70252dbd7bfcc746046f48060220395bfd77322",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r2-A",
+      "task_id": "py-daily-desk-elapsed-clock",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "39a0deb0264d80053b9b56b51fe51b0a45798e56664bf9578f9fcc9f7b6ca573",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/elapsed_clock.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/elapsed_clock.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r2-A",
+      "task_id": "ts-daily-inventory-numeric-median",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "4021df8d0264b60e4631d2d5d4312c787ca8c96ffa914c6aea62b38b178c35d3",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/numeric_median.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/numeric_median.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r2-B",
+      "task_id": "ts-daily-inventory-numeric-median",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "9b49ceb6d3fca768defdb74c05673797a0f7daeca012929bc18747905ede3eb4",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r2-B",
+      "task_id": "ts-daily-editor-whitespace-word-spans",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "30bb0971b34210e573a1c927dc3b477087f5b76678cc6e635f708bae5b5dbf12",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r2-A",
+      "task_id": "ts-daily-editor-whitespace-word-spans",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "0fbd5d9641e36d0ac2d58fdebfd2cc0206f81e23251e4e84165a70b3d71c3cf9",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/whitespace_word_spans.ts",
+          "src/whitespace_word_spans_api.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 5,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "src/whitespace_word_spans.ts",
+          "src/whitespace_word_spans_api.ts",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 5,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r2-B",
+      "task_id": "py-daily-desk-export-line-endings",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "2498340721cedb8a4f657751218debd6db73093718f2a4debfec7790604ce4e2",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 1,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r2-A",
+      "task_id": "py-daily-desk-export-line-endings",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "984d94effd07d6a49cbcfad60cc5d37a0dd82f30c83c809b29a25790eb04472f",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/export_line_endings.py",
+          "desk/export_line_endings_api.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/export_line_endings.py",
+          "desk/export_line_endings_api.py",
+          "AGENTS.md",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r2-B",
+      "task_id": "ts-daily-editor-inclusive-clamp",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "3631f50f5595fdbc8becff713a83129188afe479884bc8d2822fc56433401b16",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r2-A",
+      "task_id": "ts-daily-editor-inclusive-clamp",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "caller_context_supplied",
+      "event_stream_sha256": "9a5c9d667b6adc30631b6c2bc12d4518b73335efbff49a894fd3c870f6120c1c",
+      "original": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "corrected": {
+        "observed_file_read_commands": 0,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 0,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 0,
+        "other_path_mentions": 0
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r2-A",
+      "task_id": "py-daily-desk-calendar-month-shift",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "c0272e4839e78986e91caa2151c944ada1444b4f68b38dac28803ff611d45d0d",
+      "original": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/calendar_month_shift.py",
+          "desk/calendar_month_shift_api.py",
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 2,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "desk/calendar_month_shift.py",
+          "desk/calendar_month_shift_api.py",
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 4,
+        "declared_focus_path_mentions": 2,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r2-B",
+      "task_id": "py-daily-desk-calendar-month-shift",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "f0e3e23fbb53b057aa3fb7d8ee0a4de4ce58019f2d1fd554bca63b31378109ab",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r2-B",
+      "task_id": "ts-daily-editor-crlf-line-position",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "084eba4a52f54c3fd0149dc76eda7fae1ea54f4dfdef8785502ba1dcce42fc4a",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "tests/smoke.test.mjs",
+          "package.json"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 2
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r2-A",
+      "task_id": "ts-daily-editor-crlf-line-position",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "typescript",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "50131faec87c16c3c6953adfc0eb3190c9aa32ece26922f33c09f1d56399278a",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/crlf_line_position.ts",
+          "tests/smoke.test.mjs",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "src/crlf_line_position.ts",
+          "tests/smoke.test.mjs",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r2-A",
+      "task_id": "py-daily-catalog-single-pass-partition",
+      "repeat": 2,
+      "configuration": "A",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "4663cec932eaa1e3648678440a99a65905baa1860a38e604eed1186e0b7294ed",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/single_pass_partition.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "AGENTS.md",
+          "catalog/single_pass_partition.py",
+          "tests/test_smoke.py"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 3,
+        "declared_focus_path_mentions": 1,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r2-B",
+      "task_id": "py-daily-catalog-single-pass-partition",
+      "repeat": 2,
+      "configuration": "B",
+      "language": "python",
+      "status": "completed",
+      "selection_stratum": "explicit_focus",
+      "event_stream_sha256": "50f8ad50daf35a9c68965e3eff8c89bd247711390f283af5060fcc7f778e248a",
+      "original": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "corrected": {
+        "observed_file_read_commands": 1,
+        "observed_repeated_read_commands": 0,
+        "observed_read_command_paths": [
+          "tests/test_smoke.py",
+          "AGENTS.md"
+        ],
+        "repeated_read_command_paths": {},
+        "recognized_path_mentions": 2,
+        "declared_focus_path_mentions": 0,
+        "test_path_mentions": 1,
+        "other_path_mentions": 1
+      },
+      "changed_commands": [],
+      "actual_filesystem_reads": null,
+      "actual_repeated_filesystem_reads": null
+    }
+  ],
+  "limitations": [
+    "Original report/raw events/results are unchanged; this versioned diagnostic does not replace the primary experiment.",
+    "Read-command counts are heuristic successful command_execution items containing recognized literal read commands. Path mentions are operands inferred from command text, not actual file opens, bytes read, unique files, or guaranteed I/O lower bounds.",
+    "Unquoted newlines now separate shell commands. Quoted newlines remain argument data and are excluded as literal paths; unquoted/double-quoted backslash-newline is treated as a line continuation. Redirection, here-doc, pipe, OR and background operators remain conservative exclusions.",
+    "Only standalone bash/sh/zsh -c/-lc wrappers are recursively unpacked. Mixed outer/wrapper commands are not flattened, preventing a subshell cd from changing the inferred outer directory.",
+    "Declared-focus/test classifications use caller-visible focus paths and lexical path normalization only; no source or grading oracle selects or reads files during these diagnostics.",
+    "Actual filesystem reads and actual repeated filesystem reads remain null. These proxy corrections do not change measured native token usage, execution timing, success, CPU, memory or cost conclusions."
+  ]
+}

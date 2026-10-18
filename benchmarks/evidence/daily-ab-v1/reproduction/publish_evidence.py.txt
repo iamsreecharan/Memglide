@@ -1,0 +1,615 @@
+#!/usr/bin/env python3
+"""After measurements finish, check or publish explicit daily A/B text evidence.
+
+Default is check-only. --publish copies into a fresh directory after every
+selected file has passed validation. This helper never runs models, tests,
+repository code, or database queries. No directory is copied recursively.
+"""
+
+from __future__ import annotations
+
+import argparse
+import ast
+import hashlib
+import json
+import re
+import subprocess
+import xml.etree.ElementTree as ET
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_OUTPUT = ROOT / "benchmarks/evidence/daily-ab-v1"
+EXPERIMENTS = (
+    ("formal", ".local/daily-v1/formal-20-v1", 80),
+)
+TOP_FILES = (
+    "plan.json", "metadata.json", "state.json", "runs.json", "supplemental-runs.json",
+    "final-response-schema.json", "report.json", "report.md",
+)
+INVOCATION_FILES = (
+    "prompt.txt", "command.json", "events.jsonl", "stderr.log", "final.json",
+    "process-identity.json", "launch-grant.json", "result.json",
+)
+RUN_FILES = (
+    *INVOCATION_FILES, "attempt-start.json", "preparation.json",
+    "grade.json", "held_out.py", "held_out.test.mjs",
+    "behavior.stdout.log", "behavior.stderr.log", "smoke.stdout.log", "smoke.stderr.log",
+    "typecheck.stdout.log", "typecheck.stderr.log", "changes.patch", "git-status.txt",
+    "untracked-files.json",
+)
+EXTRA_FILES = (
+    (".local/daily-v1/publish_evidence.py", "reproduction/publish_evidence.py.txt"),
+    (".local/daily-v1/baseline-preservation.json", "historical-preservation.json"),
+    (".local/daily-v1/corpus-initial-draft/corpus_daily.py", "corpus/initial-draft/corpus_daily.py.txt"),
+    (".local/daily-v1/corpus-initial-draft/manifest.json", "corpus/initial-draft/manifest.json"),
+    (".local/daily-v1/corpus-initial-draft/tasks_daily.json", "corpus/initial-draft/tasks_daily.json"),
+    (".local/daily-v1/corpus-initial-draft/test_benchmark_corpus_daily.py", "corpus/initial-draft/test_benchmark_corpus_daily.py.txt"),
+    (".local/daily-v1/corpus-validation-1.log", "corpus/validation-1/progress.log"),
+    (".local/daily-v1/corpus-validation-2.log", "corpus/validation-2/progress.log"),
+    (".local/daily-v1/corpus-scope.json", "corpus/scope-initial.json"),
+    (".local/daily-v1/corpus-scope-final.json", "corpus/scope-final.json"),
+    (".local/daily-v1/corpus-scope-final.md", "corpus/scope-final.md"),
+    (".local/daily-v1/research-engineering/requested-access.json", "research/engineering/requested-access.json"),
+    (".local/daily-v1/research-engineering/detail-access.json", "research/engineering/detail-access.json"),
+    (".local/daily-v1/research-engineering/alternate-access.json", "research/engineering/alternate-access.json"),
+    (".local/daily-v1/research-memory/fetch-log.json", "research/memory/fetch-log.json"),
+    (".local/daily-v1/freeze.json", "freeze.json"),
+    (".local/daily-v1/formal-exit.json", "formal-exit.json"),
+    (".local/daily-v1/run_formal_detached.py", "reproduction/run_formal_detached.py.txt"),
+    (".local/daily-v1/audit_daily.py", "reproduction/audit_daily.py.txt"),
+    (".local/daily-v1/audit_daily_framing.py", "reproduction/audit_daily_framing.py.txt"),
+    (".local/daily-v1/publication-check-2.log", "publication-check-before-publish.log"),
+    (".local/daily-v1/original-telemetry.py", "reproduction/original-telemetry.py.txt"),
+    (".local/daily-v1/telemetry-transition.json", "authorized-telemetry-transition.json"),
+    (".local/daily-v1/publication-publish.log", "publication-stopped-on-code-transition.log"),
+)
+OPTIONAL_EXTRA_FILES = (
+    (".local/daily-v1/formal-20-v1.log", "progress/formal.log"),
+)
+# Add independent review artifacts here only after their exact paths are known.
+INDEPENDENT_AUDIT_FILES: tuple[tuple[str, str], ...] = (
+    (".local/daily-v1/review/formal-independent-audit-v1.json", "independent-review/primary-audit.json"),
+    (".local/daily-v1/review/formal-independent-audit-v1.md", "independent-review/primary-audit.md"),
+    (".local/daily-v1/review/formal-independent-audit-v1.log", "independent-review/primary-audit.log"),
+    (".local/daily-v1/review/formal-framing-audit-v1.json", "independent-review/framing-audit.json"),
+    (".local/daily-v1/review/formal-framing-audit-v1.log", "independent-review/framing-audit.log"),
+    (".local/daily-v1/review/uncached-diagnostic-v1.md", "independent-review/uncached-diagnostic-v1.md"),
+    (".local/daily-v1/review/uncached-diagnostic-v1.json", "independent-review/uncached-diagnostic-v1.json"),
+)
+VALIDATION_FILES = (
+    "full-python-v2.xml", "full-python-v2.log", "full-python.xml", "full-python.log",
+    "frontend.xml", "frontend.log", "frontend-build.log", "frontend-command-receipts.json",
+    "browser-public.json", "static-final-v2/results.json", "static-final-v2/ruff.log",
+    "static-final-v2/format.log", "static-final-v2/mypy.log", "final-command-receipts.json",
+    "package-final-audit.json", "package-final-audit.log", "package-final-build.log",
+    "package-build.log", "package-build-v2.log", "package-audit.json", "package-audit.log",
+    "installed-api-smoke-final.json", "installed-preload-smoke-final.json",
+    "installed_final_api.log", "installed_final_preload.log", "install-final-receipts.json",
+    "installed-env-setup.json", "install_final_wheel.log", "pre-integrity-validation.json",
+)
+VALIDATION_REPRODUCTION = (
+    "write_validation_report.py", "validation-inputs.example.json", "validation-inputs.json",
+    "verify_installed_preload.py",
+)
+CORPUS_VALIDATIONS = (
+    (".local/daily-v1/corpus-validation-1", "corpus/validation-1"),
+    (".local/daily-v1/corpus-validation-2", "corpus/validation-2"),
+)
+CORPUS_GRADE_DIRS = ("baseline_grade", "reference_grade", "domain_grade", "adapter_grade")
+CORPUS_GRADE_FILES = (
+    "grade.json", "held_out.py", "held_out.test.mjs", "behavior.stdout.log", "behavior.stderr.log",
+    "smoke.stdout.log", "smoke.stderr.log", "typecheck.stdout.log", "typecheck.stderr.log",
+)
+REVIEW_FILES = (
+    (".local/daily-v1/review/early-exit-grading-v1/repro.json", "review/early-exit-grading-v1/repro.json"),
+    (".local/daily-v1/review/early-exit-before/reproduction.json", "review/early-exit-before/reproduction.json"),
+    (".local/daily-v1/review/early-exit-after/reproduction.json", "review/early-exit-after/reproduction.json"),
+    (".local/daily-v1/review/grader-regression-1.log", "review/grader-regression-1.log"),
+    (".local/daily-v1/review/grader-regression-1.xml", "review/grader-regression-1.xml"),
+    (".local/daily-v3/runner-validation/focused.log", "review/runner-final/focused.log"),
+    (".local/daily-v3/runner-validation/focused.xml", "review/runner-final/focused.xml"),
+    (".local/daily-v3/runner-validation/ruff.log", "review/runner-final/ruff.log"),
+    (".local/daily-v3/runner-validation/format.log", "review/runner-final/format.log"),
+    (".local/daily-v1/review/corrupt-policy-v1/before-fix.json", "review/corrupt-policy-v1/before-fix.json"),
+    (".local/daily-v1/review/corrupt-policy-v1/final.xml", "review/corrupt-policy-v1/final.xml"),
+    (".local/daily-v1/review/corrupt-policy-v1/independent-after-fix.json", "review/corrupt-policy-v1/independent-after-fix.json"),
+    (".local/daily-v1/review/corrupt-policy-v1/initial-validation.json", "review/corrupt-policy-v1/initial-validation.json"),
+    (".local/daily-v1/review/corrupt-policy-v1/integer-before-fix.json", "review/corrupt-policy-v1/integer-before-fix.json"),
+    (".local/daily-v1/review/corrupt-policy-v1/result.json", "review/corrupt-policy-v1/result.json"),
+    (".local/daily-v1/review/corrupt-policy-v1/reviewed-final.xml", "review/corrupt-policy-v1/reviewed-final.xml"),
+    (".local/daily-v1/review/corrupt-policy-v1/reviewed-validation.json", "review/corrupt-policy-v1/reviewed-validation.json"),
+)
+REVIEW_GRADE_ROOTS = (
+    (".local/daily-v1/review/early-exit-grading-v1/grade", "review/early-exit-grading-v1/grade"),
+    (".local/daily-v1/review/early-exit-before/python/grade", "review/early-exit-before/python/grade"),
+    (".local/daily-v1/review/early-exit-before/typescript/grade", "review/early-exit-before/typescript/grade"),
+    (".local/daily-v1/review/early-exit-after/python/grade", "review/early-exit-after/python/grade"),
+    (".local/daily-v1/review/early-exit-after/typescript/grade", "review/early-exit-after/typescript/grade"),
+)
+FORBIDDEN_PARTS = {"auth.json", "codex-state", "worktrees", "repositories", "state", "initialization-partials"}
+FORBIDDEN_SUFFIXES = {".db", ".sqlite", ".sqlite3", ".tar", ".tgz", ".gz", ".zip"}
+SAFE_ID = re.compile(r"[A-Za-z0-9_-]+")
+SECRET_PATTERNS = (
+    re.compile(rb"-----BEGIN (?:[A-Z0-9 ]+ )?PRIVATE KEY-----"),
+    re.compile(rb"\bsk-(?:(?:proj|svcacct)-)?[A-Za-z0-9_-]{20,}\b"),
+    re.compile(rb"\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
+    re.compile(rb"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b"),
+    re.compile(rb"\beyJ[A-Za-z0-9_-]{6,}\.[A-Za-z0-9_-]{12,}\.[A-Za-z0-9_-]{12,}\b"),
+    re.compile(
+        rb"(?i)(?:OPENAI_API_KEY|ANTHROPIC_API_KEY|api[_-]?key|access[_-]?token|refresh[_-]?token)"
+        rb"[\"'\s]*(?:=|:)[\"'\s]*[A-Za-z0-9_+/=-]{24,}"
+    ),
+)
+XML_FROZEN_COMMIT = "6f4b6f6be83a7ad58ffba5f6c2176a9cc5d36dff"
+XML_APPROVALS = {
+    ".local/daily-v1/full-python.xml": "2c199624469fd770f00c852862fcb245f8b227542a16448e80c5ecfd54716d52",
+    ".local/daily-v1/full-python-v2.xml": "2ae2b8f64d79a579203e7318875948222395e8e8637ba0991fb90812916129d3",
+}
+XML_SCAN_EXCEPTIONS: dict[str, Any] = {}
+XML_FIXTURES: tuple[list[bytes], str] | None = None
+
+
+def frozen_fixture_literals() -> tuple[list[bytes], str]:
+    global XML_FIXTURES
+    if XML_FIXTURES is not None:
+        return XML_FIXTURES
+    source = subprocess.check_output(
+        ["git", "show", f"{XML_FROZEN_COMMIT}:tests/test_security_storage.py"],
+        cwd=ROOT, stderr=subprocess.PIPE,
+    )
+
+    def literal(node: ast.AST) -> str | int:
+        if isinstance(node, ast.Constant) and type(node.value) in {str, int}:
+            return node.value
+        if isinstance(node, ast.BinOp):
+            a, b = literal(node.left), literal(node.right)
+            if isinstance(node.op, ast.Add) and isinstance(a, str) and isinstance(b, str):
+                return a + b
+            if isinstance(node.op, ast.Mult) and isinstance(a, str) and type(b) is int and 0 <= b <= 1000:
+                return a * b
+        raise ValueError
+
+    values = []
+    for node in ast.walk(ast.parse(source)):
+        try:
+            value = literal(node)
+        except ValueError:
+            continue
+        if isinstance(value, str):
+            values.append(value.encode())
+    XML_FIXTURES = values, sha(source)
+    return XML_FIXTURES
+
+
+def scan_frozen_synthetic_xml(path: Path, data: bytes) -> None:
+    relative = str(path.relative_to(ROOT))
+    if sha(data) != XML_APPROVALS[relative]:
+        fail("Exact frozen validation XML changed", path)
+    fixtures, source_sha = frozen_fixture_literals()
+    tree = ET.fromstring(data)
+    actual_names = Counter((e.get("classname"), e.get("name")) for e in tree.iter("testcase"))
+    spans = []
+    tag_pattern = re.compile(rb'''<testcase\b(?:[^"'<>]|"[^"]*"|'[^']*')*>''', re.DOTALL)
+    name_pattern = re.compile(rb'''\bname\s*=\s*(?:"(?P<double>[^"]*)"|'(?P<single>[^']*)')''', re.DOTALL)
+    for tag in tag_pattern.finditer(data):
+        opening = tag.group()
+        element = ET.fromstring(opening if opening.rstrip().endswith(b"/>") else opening[:-1] + b"/>")
+        name, classname = element.get("name", ""), element.get("classname", "")
+        identity = (classname, name)
+        if not actual_names[identity]:
+            continue
+        actual_names[identity] -= 1
+        if classname != "tests.test_security_storage" or name.split("[")[0] not in {
+            "test_detected_credentials_are_excluded", "test_additional_credential_exclusions"
+        }:
+            continue
+        attribute = name_pattern.search(opening)
+        if attribute is None:
+            fail("Missing validated synthetic testcase name", path)
+        group = "double" if attribute.group("double") is not None else "single"
+        spans.append((tag.start() + attribute.start(group), tag.start() + attribute.end(group)))
+    matches = [m for pattern in SECRET_PATTERNS for m in pattern.finditer(data)]
+    if len(matches) != 7:
+        fail("Unexpected frozen synthetic fixture match count", path)
+    masked = bytearray(data)
+    for match in matches:
+        if not any(start <= match.start() and match.end() <= end for start, end in spans) or not any(match.group() in fixture for fixture in fixtures):
+            fail("Credential pattern outside an exact public synthetic testcase name", path)
+        masked[match.start():match.end()] = b"_" * (match.end() - match.start())
+    # Scan the original byte stream with only proven match spans masked. XML
+    # comments, processing instructions, attributes and diagnostics stay intact.
+    if any(pattern.search(masked) for pattern in SECRET_PATTERNS):
+        fail("Credential pattern outside the frozen testcase-name exception", path)
+    XML_SCAN_EXCEPTIONS[relative] = {
+        "path": relative, "sha256": sha(data), "pattern_matches": len(matches),
+        "matched_sha256": [sha(match.group()) for match in matches],
+        "fixture_source": f"{XML_FROZEN_COMMIT}:tests/test_security_storage.py",
+        "fixture_source_sha256": source_sha, "original_xml_bytes_preserved": True,
+        "all_other_original_bytes_scanned": True,
+    }
+
+
+def fail(message: str, path: Path | None = None) -> None:
+    # Never print file content, matched credentials, or parser exception excerpts.
+    suffix = f": {path.relative_to(ROOT)}" if path is not None else ""
+    raise SystemExit(message + suffix)
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def canonical(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+
+
+def safe_source(path: Path) -> None:
+    if not path.is_relative_to(ROOT):
+        fail("Source is outside the repository")
+    if path == ROOT / ".local/daily-v1/browser.json":
+        fail("Raw browser configuration may contain credentials; use only a sanitized receipt")
+    if FORBIDDEN_PARTS.intersection(path.relative_to(ROOT).parts) or path.suffix in FORBIDDEN_SUFFIXES:
+        fail("Refusing excluded source", path)
+    current = path
+    while current != ROOT:
+        if current.is_symlink():
+            fail("Refusing a symlink in the source path", path)
+        current = current.parent
+    if not path.is_file():
+        fail("Required evidence is missing", path)
+
+
+def read_text_bytes(path: Path) -> bytes:
+    safe_source(path)
+    data = path.read_bytes()
+    try:
+        data.decode("utf-8")
+    except UnicodeError:
+        fail("Refusing nontext evidence", path)
+    if b"\0" in data:
+        fail("Refusing binary evidence", path)
+    if str(path.relative_to(ROOT)) in XML_APPROVALS:
+        scan_frozen_synthetic_xml(path, data)
+    elif any(pattern.search(data) for pattern in SECRET_PATTERNS):
+        fail("Potential credential pattern; publication stopped", path)
+    return data
+
+
+def no_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("Duplicate key")
+        result[key] = value
+    return result
+
+
+def read_json(path: Path) -> Any:
+    try:
+        return json.loads(read_text_bytes(path), object_pairs_hook=no_duplicate_keys)
+    except (ValueError, UnicodeError):
+        fail("Invalid evidence JSON", path)
+
+
+def identifier(value: Any) -> str:
+    if not isinstance(value, str) or not SAFE_ID.fullmatch(value):
+        fail("Unsafe or missing attempt identifier")
+    return value
+
+
+@dataclass(frozen=True)
+class Artifact:
+    source: Path
+    destination: Path
+    size: int
+    sha256: str
+
+
+class Collection:
+    def __init__(self) -> None:
+        self.files: dict[str, Artifact] = {}
+        self.missing: list[dict[str, str]] = []
+        self.experiments: dict[str, Any] = {}
+
+    def add(self, source: Path, destination: Path, *, required: bool = False) -> None:
+        if destination.is_absolute() or ".." in destination.parts:
+            fail("Unsafe destination")
+        if FORBIDDEN_PARTS.intersection(destination.parts) or destination.suffix in FORBIDDEN_SUFFIXES:
+            fail("Excluded destination")
+        if not source.exists() and not source.is_symlink():
+            if required:
+                fail("Required evidence is missing", source)
+            self.missing.append({"source": str(source.relative_to(ROOT)), "reason": "Not emitted; inspect run status/language before interpreting absence"})
+            return
+        key = str(destination)
+        if key in self.files:
+            fail("Duplicate destination")
+        data = read_text_bytes(source)
+        self.files[key] = Artifact(source, destination, len(data), sha(data))
+
+    def attempt(self, source: Path, destination: Path) -> None:
+        for name in RUN_FILES:
+            self.add(source / name, destination / name)
+        for name in ("process-identity.json", "launch-grant.json"):
+            path = source / name
+            if path.exists():
+                identity = read_json(path)
+                if set(identity) != {"pid", "process_group", "start_ticks"} or not all(
+                    isinstance(v, int) and not isinstance(v, bool) and v > 0
+                    for v in identity.values()
+                ):
+                    fail("Unexpected process identity schema; review before publishing", path)
+
+    def experiment(self, label: str, source_relative: str, expected: int) -> None:
+        source, destination = ROOT / source_relative, Path(label)
+        metadata = read_json(source / "metadata.json")
+        if not metadata.get("finished_at"):
+            fail("Experiment is not finished; wait for root authorization", source / "metadata.json")
+        plan, state = read_json(source / "plan.json"), read_json(source / "state.json")
+        runs, supplemental = read_json(source / "runs.json"), read_json(source / "supplemental-runs.json")
+        report = read_json(source / "report.json")
+        planned = [identifier(row.get("run_id")) for row in plan["runs"]]
+        if len(planned) != expected or len(set(planned)) != expected:
+            fail("Unexpected plan size or duplicated original assignment", source / "plan.json")
+        if set(state["originals"]) != set(planned):
+            fail("State does not retain the complete original plan", source / "state.json")
+        if len(runs) != expected or {identifier(r.get("run_id")) for r in runs} != set(planned):
+            fail("Run projection does not retain every original", source / "runs.json")
+        if len(report["runs"]) != expected or {identifier(r.get("run_id")) for r in report["runs"]} != set(planned):
+            fail("Report does not retain every original", source / "report.json")
+        if runs != list(state["originals"].values()) or supplemental != state["supplemental"] or supplemental != report.get("supplemental_runs", []):
+            fail("State/projections/supplemental report disagree", source / "state.json")
+        if metadata.get("experiment_version") != "daily-1":
+            fail("Unexpected experiment version", source / "metadata.json")
+        tasks = plan["tasks"]
+        if len(tasks) != 20 or len({task["id"] for task in tasks}) != 20:
+            fail("Expected the complete 20-task daily corpus", source / "plan.json")
+        selection_counts = Counter(row.get("selection_stratum") for row in plan["runs"] if row["configuration"] == "B")
+        if selection_counts != {"explicit_focus": 32, "caller_context_supplied": 8}:
+            fail("Unexpected original B selection strata", source / "plan.json")
+        for name in TOP_FILES:
+            self.add(source / name, destination / name, required=True)
+        for name in INVOCATION_FILES:
+            self.add(source / "preflight" / name, destination / "preflight" / name)
+
+        # Only the narrowly named attempt-log directory and six-digit JSON files
+        # are enumerated. No arbitrary directory contents are copied.
+        logdir = source / "attempt-log"
+        if logdir.is_symlink() or not logdir.is_dir():
+            fail("Missing or unsafe immutable attempt log")
+        names = sorted(p.name for p in logdir.iterdir())
+        if any(not re.fullmatch(r"[0-9]{6}\.json", name) for name in names):
+            fail("Unexpected file in immutable attempt log")
+        records, previous = [], None
+        for index, name in enumerate(names, 1):
+            path = logdir / name
+            record = read_json(path)
+            body = {key: value for key, value in record.items() if key != "sha256"}
+            if name != f"{index:06d}.json" or body.get("sequence") != index or body.get("previous_sha256") != previous or sha(canonical(body)) != record.get("sha256"):
+                fail("Immutable attempt hash chain failed", path)
+            previous = record["sha256"]
+            records.append(record)
+            self.add(path, destination / "attempt-log" / name, required=True)
+        if not records or records[-1].get("event") != "experiment.finished" or records[-1].get("report_sha256") != sha(read_text_bytes(source / "report.json")):
+            fail("Experiment-finished seal is missing or invalid", source / "report.json")
+        for record in records:
+            event = record.get("event")
+            if event == "attempt.started":
+                path = source / "runs" / identifier(record.get("attempt_id")) / "attempt-start.json"
+                if sha(canonical(read_json(path))) != record.get("start_sha256"):
+                    fail("Immutable attempt-start seal failed", path)
+            if event in {"attempt.finished", "attempt.interrupted"}:
+                path = source / "runs" / identifier(record.get("attempt_id")) / "result.json"
+                if sha(read_text_bytes(path)) != record.get("result_sha256"):
+                    fail("Immutable result seal failed", path)
+
+        attempts = [r for r in runs if r.get("attempted")] + supplemental
+        attempt_ids = [identifier(r.get("run_id")) for r in attempts]
+        if len(attempt_ids) != len(set(attempt_ids)):
+            fail("Duplicate original/supplemental attempt identifier")
+        for row in attempts:
+            run_id = identifier(row["run_id"])
+            directory = source / "runs" / run_id
+            if Path(row["artifacts"]).absolute() != directory:
+                fail("Attempt artifact pointer escaped its designated run directory")
+            sealed = directory / "result.json"
+            if read_json(sealed) != row:
+                fail("State row differs from immutable result", sealed)
+            self.attempt(directory, destination / "runs" / run_id)
+        # Preserve whitelisted text from any unregistered partial attempt too;
+        # it stays explicitly separate from original/supplemental result rows.
+        unregistered = []
+        rundir = source / "runs"
+        if rundir.exists():
+            if rundir.is_symlink():
+                fail("Unsafe runs directory")
+            for directory in sorted(rundir.iterdir()):
+                run_id = identifier(directory.name)
+                if directory.is_symlink() or not directory.is_dir():
+                    fail("Unexpected object in runs directory")
+                if run_id not in attempt_ids:
+                    unregistered.append(run_id)
+                    self.attempt(directory, destination / "unregistered-partial-invocations" / run_id)
+        self.experiments[label] = {
+            "source": source_relative, "planned_originals": expected,
+            "original_status_counts": {status: sum(r.get("status") == status for r in runs) for status in sorted({r.get("status") for r in runs})},
+            "supplemental_attempts": len(supplemental), "unregistered_partial_invocations": unregistered,
+            "treatment": "Conditional source preload before native Codex, not MCP",
+            "planned_B_selection_strata": dict(selection_counts),
+            "observed_B_preparation_modes": dict(Counter(row.get("preload_treatment_fidelity", {}).get("mode", "unknown") for row in runs if row["configuration"] == "B")),
+            "finished_at": metadata["finished_at"], "attempt_log_records": len(records),
+            "last_attempt_log_sha256": previous,
+            "source_unchanged_during_experiment": metadata.get("source_unchanged_during_experiment"),
+        }
+
+    def corpus_validation(self, source_relative: str, destination_relative: str) -> None:
+        source, destination = ROOT / source_relative, Path(destination_relative)
+        report = read_json(source / "validation.json")
+        self.add(source / "validation.json", destination / "validation.json", required=True)
+        seen = set()
+        for row in report["tasks"]:
+            task_id = identifier(row["task_id"])
+            if task_id in seen:
+                fail("Duplicate task in retained corpus validation", source / "validation.json")
+            seen.add(task_id)
+            # Copy only external grading artifacts. The sibling baseline,
+            # reference, domain and adapter fixture directories are never read.
+            for grade_name in CORPUS_GRADE_DIRS:
+                directory = source / task_id / grade_name
+                if directory.is_symlink():
+                    fail("Unsafe corpus grading artifact directory")
+                if not directory.exists():
+                    continue
+                if not directory.is_dir():
+                    fail("Unexpected corpus grading object")
+                for name in CORPUS_GRADE_FILES:
+                    self.add(directory / name, destination / task_id / grade_name / name)
+
+
+def verify_historical_evidence() -> dict[str, Any]:
+    manifest_path = ROOT / ".local/daily-v1/baseline-preservation.json"
+    manifest = read_json(manifest_path)
+    if len(manifest["files"]) != 6295:
+        fail("Unexpected historical baseline size", manifest_path)
+    seen = set()
+    total_bytes = 0
+    transitions = []
+    for record in manifest["files"]:
+        relative = Path(record["path"])
+        if relative.is_absolute() or ".." in relative.parts or not relative.parts or relative.parts[0] != "benchmarks":
+            fail("Unsafe historical manifest entry")
+        if record["path"] in seen:
+            fail("Duplicate historical baseline entry")
+        seen.add(record["path"])
+        path = ROOT / relative
+        # Historical files are verified in place, never selected for this new
+        # publication. Their original scans/fixtures are historical evidence.
+        # Existing binary report bundles are part of this trusted historical
+        # hash manifest. They are hashed in place, never opened as archives or
+        # selected for the new publication. Retain the same symlink/path checks.
+        current = path
+        while current != ROOT:
+            if current.is_symlink():
+                fail("Historical evidence path contains a symlink", path)
+            current = current.parent
+        if not path.is_file():
+            fail("Historical evidence is missing", path)
+        data = path.read_bytes()
+        if len(data) != record["bytes"] or sha(data) != record["sha256"]:
+            if record["path"] != "benchmarks/telemetry.py":
+                fail("Preexisting benchmark evidence changed", path)
+            receipt = read_json(ROOT / ".local/daily-v1/telemetry-transition.json")
+            original = subprocess.check_output(
+                ["git", "show", f"{XML_FROZEN_COMMIT}:benchmarks/telemetry.py"],
+                cwd=ROOT, stderr=subprocess.PIPE,
+            )
+            saved = read_text_bytes(ROOT / ".local/daily-v1/original-telemetry.py")
+            if saved != original or len(original) != record["bytes"] or sha(original) != record["sha256"]:
+                fail("Frozen original telemetry does not match immutable baseline", path)
+            if (receipt.get("path") != record["path"] or receipt.get("frozen_commit") != XML_FROZEN_COMMIT
+                    or receipt.get("old_sha256") != record["sha256"] or receipt.get("old_bytes") != record["bytes"]
+                    or receipt.get("new_sha256") != sha(data) or receipt.get("new_bytes") != len(data)
+                    or receipt.get("baseline_manifest_sha256") != sha(read_text_bytes(manifest_path))):
+                fail("Authorized telemetry transition differs from its exact receipt", path)
+            transitions.append(receipt)
+            continue
+        total_bytes += len(data)
+    if len(transitions) != 1:
+        fail("Expected exactly the disclosed telemetry source transition")
+    return {"manifest": str(manifest_path.relative_to(ROOT)), "base_commit": manifest.get("base_commit"),
+            "manifest_sha256": sha(read_text_bytes(manifest_path)),
+            "baseline_entries": len(seen), "unchanged_files": len(seen) - len(transitions),
+            "unchanged_bytes": total_bytes, "verified_frozen_original_code_files": len(transitions),
+            "authorized_code_transitions": transitions}
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--publish", action="store_true")
+    args = parser.parse_args()
+    output = args.output.absolute()
+    evidence_root = ROOT / "benchmarks/evidence"
+    if not output.is_relative_to(evidence_root) or output == evidence_root or output.resolve() != output:
+        fail("Output must be a fresh nonsymlink path beneath benchmarks/evidence")
+    if output.exists() or output.is_symlink():
+        fail("Output already exists; no overwrite is supported")
+    collection = Collection()
+    for specification in EXPERIMENTS:
+        collection.experiment(*specification)
+    for source, destination in (*EXTRA_FILES, *INDEPENDENT_AUDIT_FILES):
+        collection.add(ROOT / source, Path(destination), required=True)
+    for name in VALIDATION_FILES:
+        collection.add(ROOT / ".local/daily-v1" / name, Path("validation") / name, required=True)
+    for name in VALIDATION_REPRODUCTION:
+        collection.add(ROOT / ".local/daily-v1" / name, Path("reproduction/validation") / (name + ".txt"), required=True)
+    for source, destination in OPTIONAL_EXTRA_FILES:
+        collection.add(ROOT / source, Path(destination))
+    for source, destination in CORPUS_VALIDATIONS:
+        collection.corpus_validation(source, destination)
+    for source, destination in REVIEW_FILES:
+        collection.add(ROOT / source, Path(destination), required=True)
+    for source, destination in REVIEW_GRADE_ROOTS:
+        for name in CORPUS_GRADE_FILES:
+            collection.add(ROOT / source / name, Path(destination) / name)
+    historical = verify_historical_evidence()
+    files = [collection.files[key] for key in sorted(collection.files)]
+    manifest = {
+        "schema_version": "daily-1", "scope": "Whitelisted ordinary-task live A/B evidence, retaining failed/interrupted/invalid originals and separate supplemental observations",
+        "experiments": collection.experiments, "historical_preservation": historical,
+        "whitelist": {"top": TOP_FILES, "preflight": INVOCATION_FILES, "runs": RUN_FILES,
+                      "extras": EXTRA_FILES, "independent_audits": INDEPENDENT_AUDIT_FILES,
+                      "optional_extras": OPTIONAL_EXTRA_FILES,
+                      "corpus_validation_roots": CORPUS_VALIDATIONS,
+                      "corpus_grading_directories": CORPUS_GRADE_DIRS,
+                      "corpus_grading_files": CORPUS_GRADE_FILES,
+                      "review_files": REVIEW_FILES,
+                      "review_grading_directories": REVIEW_GRADE_ROOTS,
+                      "validation_files": VALIDATION_FILES,
+                      "validation_reproduction": VALIDATION_REPRODUCTION,
+                      "attempt_log": "Only contiguous six-digit .json records with verified hashes"},
+        "never_selected": sorted(FORBIDDEN_PARTS) + sorted(FORBIDDEN_SUFFIXES),
+        "missing_optional_files": collection.missing,
+        "synthetic_fixture_scan_exceptions": list(XML_SCAN_EXCEPTIONS.values()),
+        "limitations": [
+            "Manifest excludes itself to avoid a circular checksum.",
+            "Original report pointers retain local artifact paths; manifest destinations identify public copies.",
+            "Any readiness/preflight usage is separate from task comparisons. Earlier draft/corpus validation is retained separately and is not formal A/B evidence.",
+            "Supplemental attempts never replace original rows or enter primary aggregates.",
+            "Untracked file contents in archives/worktrees and initialization fixture partials are excluded; tracked patches and untracked names remain.",
+            "B passes prepared context through a private temporary descriptor. preparation.json retains forwarding/source hashes and byte counts, not the private stdin body; prompt.txt is the common caller input.",
+            "Preparation source hashes attest frozen pre-execution delivery, not semantic completeness or later freshness. Intentional caller-context bypasses remain primary B observations.",
+            "Research access/fetch JSON logs preserve failed HTTP requests; arbitrary raw .source bodies, binaries and research caches are not selected.",
+            "Credential-pattern scanning and explicit paths are guards, not proof against every possible secret.",
+            "Only the two exact frozen Python XML files permit literal-verified synthetic credential patterns inside designated testcase names; original bytes are preserved and every other byte is scanned. Raw browser configuration remains private.",
+        ],
+        "files": [{"path": str(a.destination), "source": str(a.source.relative_to(ROOT)),
+                   "bytes": a.size, "sha256": a.sha256} for a in files],
+    }
+    if args.publish:
+        # All selections, seals, scans and preservation checks finish before any copy.
+        output.mkdir(parents=True, exist_ok=False)
+        for artifact in files:
+            data = read_text_bytes(artifact.source)
+            if len(data) != artifact.size or sha(data) != artifact.sha256:
+                fail("Evidence changed after validation", artifact.source)
+            destination = output / artifact.destination
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            with destination.open("xb") as stream:
+                stream.write(data)
+        with (output / "manifest.json").open("x") as stream:
+            json.dump(manifest, stream, indent=2)
+            stream.write("\n")
+    print(json.dumps({"mode": "published" if args.publish else "check_only",
+                      "output": str(output.relative_to(ROOT)), "files": len(files),
+                      "bytes": sum(a.size for a in files),
+                      "missing_optional_files": len(collection.missing),
+                      "missing_optional_by_filename": dict(sorted(Counter(Path(item["source"]).name for item in collection.missing).items())),
+                      "credential_pattern_scan": "passed", "historical_preservation": historical}, indent=2))
+
+
+if __name__ == "__main__":
+    main()

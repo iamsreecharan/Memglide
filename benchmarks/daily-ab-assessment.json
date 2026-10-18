@@ -1,0 +1,2313 @@
+{
+  "version": 1,
+  "scope": "Frozen legacy-suffix Memglide versus native Codex: 20 fresh known-file utility tasks, two repeats, 80 original runs. Subsequent compact-prefix changes are not the measured treatment.",
+  "source_report_sha256": "6d408cc324189c092de3709513bb9e33999fc58d73de3edb6d972e990b51d9c7",
+  "frozen_commit": "6f4b6f6be83a7ad58ffba5f6c2176a9cc5d36dff",
+  "source_unchanged_during_experiment": true,
+  "configurations": {
+    "A": {
+      "planned_runs": 40,
+      "attempted_runs": 40,
+      "not_run": 0,
+      "graded_runs": 40,
+      "successful_runs": 40,
+      "behavior_grade_pass_count": 40,
+      "failed_grades": 0,
+      "ungraded_runs": 0,
+      "successful_task_completion_rate": 1.0,
+      "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+      "execution_status_counts": {
+        "completed": 40
+      },
+      "treatment_valid_runs": 40,
+      "metrics": {
+        "input_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 48580.35,
+          "median": 48222.5,
+          "p95": 62689,
+          "min": 23257,
+          "max": 63843,
+          "known_total": 1943214,
+          "total": 1943214
+        },
+        "cached_input_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 40048,
+          "median": 43392.0,
+          "p95": 56320,
+          "min": 0,
+          "max": 57728,
+          "known_total": 1601920,
+          "total": 1601920
+        },
+        "uncached_input_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 8532.35,
+          "median": 5609.5,
+          "p95": 14433,
+          "min": 3033,
+          "max": 23290,
+          "known_total": 341294,
+          "total": 341294
+        },
+        "output_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 865.85,
+          "median": 895.5,
+          "p95": 1310,
+          "min": 228,
+          "max": 1426,
+          "known_total": 34634,
+          "total": 34634
+        },
+        "wall_time_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 21.57133592357504,
+          "median": 22.789483034000114,
+          "p95": 28.191523838999274,
+          "min": 10.22198632800064,
+          "max": 30.811871562997112,
+          "known_total": 862.8534369430017,
+          "total": 862.8534369430017
+        },
+        "end_to_end_wall_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 21.583225552374643,
+          "median": 22.803341386497777,
+          "p95": 28.19815575100074,
+          "min": 10.22710784499941,
+          "max": 30.819003914999485,
+          "known_total": 863.3290220949857,
+          "total": 863.3290220949857
+        },
+        "native_exec_wall_seconds": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "approval_index_wall_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "approval_index_cpu_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "context_preparation_wall_seconds": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "context_preparation_cpu_seconds": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "n": 40,
+          "missing": 0,
+          "mean": 255377612.8,
+          "median": 261879808.0,
+          "p95": 314556416,
+          "min": 166727680,
+          "max": 317337600,
+          "known_total": null,
+          "total": null
+        },
+        "cpu_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 5.04,
+          "median": 5.075,
+          "p95": 6.89,
+          "min": 2.97,
+          "max": 8.64,
+          "known_total": 201.6,
+          "total": 201.6
+        },
+        "total_observed_local_cpu_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 5.04,
+          "median": 5.075,
+          "p95": 6.89,
+          "min": 2.97,
+          "max": 8.64,
+          "known_total": 201.6,
+          "total": 201.6
+        },
+        "mcp_calls": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "model_calls": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "repeated_file_reads": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "n": 40,
+          "missing": 0,
+          "mean": 1.175,
+          "median": 1.0,
+          "p95": 2,
+          "min": 0,
+          "max": 3,
+          "known_total": 47,
+          "total": 47
+        },
+        "observed_repeated_read_commands": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "actual_cost_usd": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "computed_cost_usd": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      },
+      "actual_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 40,
+        "successful_runs_in_denominator": 40
+      },
+      "computed_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 40,
+        "successful_runs_in_denominator": 40
+      }
+    },
+    "B": {
+      "planned_runs": 40,
+      "attempted_runs": 40,
+      "not_run": 0,
+      "graded_runs": 40,
+      "successful_runs": 40,
+      "behavior_grade_pass_count": 40,
+      "failed_grades": 0,
+      "ungraded_runs": 0,
+      "successful_task_completion_rate": 1.0,
+      "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+      "execution_status_counts": {
+        "completed": 40
+      },
+      "treatment_valid_runs": 40,
+      "metrics": {
+        "input_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 47151.9,
+          "median": 48524.0,
+          "p95": 63438,
+          "min": 23258,
+          "max": 63907,
+          "known_total": 1886076,
+          "total": 1886076
+        },
+        "cached_input_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 36304,
+          "median": 36800.0,
+          "p95": 55424,
+          "min": 11264,
+          "max": 58112,
+          "known_total": 1452160,
+          "total": 1452160
+        },
+        "uncached_input_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 10847.9,
+          "median": 10254.0,
+          "p95": 25875,
+          "min": 2906,
+          "max": 26965,
+          "known_total": 433916,
+          "total": 433916
+        },
+        "output_tokens": {
+          "n": 40,
+          "missing": 0,
+          "mean": 812.6,
+          "median": 855.5,
+          "p95": 1216,
+          "min": 195,
+          "max": 1304,
+          "known_total": 32504,
+          "total": 32504
+        },
+        "wall_time_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 20.375992150224967,
+          "median": 20.61164616250062,
+          "p95": 26.13050656699852,
+          "min": 9.26708817799954,
+          "max": 29.751634244999877,
+          "known_total": 815.0396860089986,
+          "total": 815.0396860089986
+        },
+        "end_to_end_wall_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 20.55682876739984,
+          "median": 20.866251201000523,
+          "p95": 26.265960871998686,
+          "min": 9.272769580000386,
+          "max": 30.035409254000115,
+          "known_total": 822.2731506959935,
+          "total": 822.2731506959935
+        },
+        "native_exec_wall_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 20.141813992674997,
+          "median": 20.415273531998537,
+          "p95": 25.927424423000048,
+          "min": 9.04673628099954,
+          "max": 29.57667424000101,
+          "known_total": 805.6725597069999,
+          "total": 805.6725597069999
+        },
+        "approval_index_wall_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0.16956338852496627,
+          "median": 0.14787324849930883,
+          "p95": 0.36148579500149935,
+          "min": 0,
+          "max": 0.592095332000099,
+          "known_total": 6.782535540998651,
+          "total": 6.782535540998651
+        },
+        "approval_index_cpu_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0.050234954850001776,
+          "median": 0.0491378855000022,
+          "p95": 0.09011933400000771,
+          "min": 0,
+          "max": 0.1992060160000051,
+          "known_total": 2.009398194000071,
+          "total": 2.009398194000071
+        },
+        "context_preparation_wall_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0.0537151947752136,
+          "median": 0.047921225499521825,
+          "p95": 0.11240590400120709,
+          "min": 6.939599916222505e-05,
+          "max": 0.21287130699965928,
+          "known_total": 2.148607791008544,
+          "total": 2.148607791008544
+        },
+        "context_preparation_cpu_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0.0536787476,
+          "median": 0.047917125500000005,
+          "p95": 0.112412442,
+          "min": 6.697999999999427e-05,
+          "max": 0.21269472700000003,
+          "known_total": 2.147149904,
+          "total": 2.147149904
+        },
+        "process_tree_peak_rss_bytes": {
+          "n": 40,
+          "missing": 0,
+          "mean": 250204774.4,
+          "median": 257349632.0,
+          "p95": 315674624,
+          "min": 167571456,
+          "max": 323846144,
+          "known_total": null,
+          "total": null
+        },
+        "cpu_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 4.91775,
+          "median": 4.65,
+          "p95": 7.91,
+          "min": 2.79,
+          "max": 10.96,
+          "known_total": 196.71,
+          "total": 196.71
+        },
+        "total_observed_local_cpu_seconds": {
+          "n": 40,
+          "missing": 0,
+          "mean": 4.967984954850002,
+          "median": 4.697723988999963,
+          "p95": 7.982625889000051,
+          "min": 2.79,
+          "max": 11.007475817999996,
+          "known_total": 198.71939819400006,
+          "total": 198.71939819400006
+        },
+        "mcp_calls": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "model_calls": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "repeated_file_reads": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0.825,
+          "median": 1.0,
+          "p95": 1,
+          "min": 0,
+          "max": 1,
+          "known_total": 33,
+          "total": 33
+        },
+        "observed_repeated_read_commands": {
+          "n": 40,
+          "missing": 0,
+          "mean": 0,
+          "median": 0.0,
+          "p95": 0,
+          "min": 0,
+          "max": 0,
+          "known_total": 0,
+          "total": 0
+        },
+        "actual_cost_usd": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "computed_cost_usd": {
+          "n": 0,
+          "missing": 40,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      },
+      "actual_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 40,
+        "successful_runs_in_denominator": 40
+      },
+      "computed_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+        "attempted_runs_in_numerator": 40,
+        "successful_runs_in_denominator": 40
+      }
+    }
+  },
+  "comparison": {
+    "input_tokens": {
+      "A_mean": 48580.35,
+      "B_mean": 47151.9,
+      "B_over_A_mean": 0.970596136092062,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -1428.45,
+        "median": 182.5,
+        "p95": 14029,
+        "min": -25016,
+        "max": 24983,
+        "known_total": -57138,
+        "total": -57138
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.9929283772472587,
+        "median": 1.0038110691672615,
+        "p95": 1.2906721365821316,
+        "min": 0.4822204743966552,
+        "max": 2.074214215075031,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "cached_input_tokens": {
+      "A_mean": 40048,
+      "B_mean": 36304,
+      "B_over_A_mean": 0.906512185377547,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -3744,
+        "median": -3264.0,
+        "p95": 14464,
+        "min": -23680,
+        "max": 22272,
+        "known_total": -149760,
+        "total": -149760
+      },
+      "paired_ratio": {
+        "n": 39,
+        "missing": 1,
+        "mean": 0.9249663566213131,
+        "median": 0.8860759493670886,
+        "p95": 1.6214285714285714,
+        "min": 0.32234432234432236,
+        "max": 2.0126582278481013,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "uncached_input_tokens": {
+      "A_mean": 8532.35,
+      "B_mean": 10847.9,
+      "B_over_A_mean": 1.271384788481485,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": 2315.55,
+        "median": 1211.0,
+        "p95": 12141,
+        "min": -11265,
+        "max": 18407,
+        "known_total": 92622,
+        "total": 92622
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 1.6100444537200096,
+        "median": 1.1439343072241805,
+        "p95": 3.5981168414294884,
+        "min": 0.2721230079282454,
+        "max": 4.222569641841956,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "output_tokens": {
+      "A_mean": 865.85,
+      "B_mean": 812.6,
+      "B_over_A_mean": 0.938499740139747,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -53.25,
+        "median": -31.5,
+        "p95": 50,
+        "min": -462,
+        "max": 415,
+        "known_total": -2130,
+        "total": -2130
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.9669934472967177,
+        "median": 0.9580981161950508,
+        "p95": 1.058343057176196,
+        "min": 0.35564853556485354,
+        "max": 2.765957446808511,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "wall_time_seconds": {
+      "A_mean": 21.57133592357504,
+      "B_mean": 20.375992150224967,
+      "B_over_A_mean": 0.9445864744962922,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -1.1953437733500778,
+        "median": -1.3445239395014141,
+        "p95": 2.7263344100028917,
+        "min": -9.48475062000034,
+        "max": 7.077841709000495,
+        "known_total": -47.81375093400311,
+        "total": -47.81375093400311
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.959729877650982,
+        "median": 0.9413569694052346,
+        "p95": 1.135092190731648,
+        "min": 0.5342437629942459,
+        "max": 1.6924135370453854,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "end_to_end_wall_seconds": {
+      "A_mean": 21.583225552374643,
+      "B_mean": 20.55682876739984,
+      "B_over_A_mean": 0.9524446991259897,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -1.0263967849748041,
+        "median": -1.0799491144998683,
+        "p95": 3.108212781000475,
+        "min": -9.482445121002456,
+        "max": 7.081620052002108,
+        "known_total": -41.05587139899217,
+        "total": -41.05587139899217
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.9669629514608779,
+        "median": 0.9533394619551101,
+        "p95": 1.140697698350437,
+        "min": 0.5344524271028878,
+        "max": 1.6924362350852395,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "native_exec_wall_seconds": {
+      "A_mean": null,
+      "B_mean": 20.141813992674997,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "approval_index_wall_seconds": {
+      "A_mean": 0,
+      "B_mean": 0.16956338852496627,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.16956338852496627,
+        "median": 0.14787324849930883,
+        "p95": 0.36148579500149935,
+        "min": 0,
+        "max": 0.592095332000099,
+        "known_total": 6.782535540998651,
+        "total": 6.782535540998651
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "approval_index_cpu_seconds": {
+      "A_mean": 0,
+      "B_mean": 0.050234954850001776,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.050234954850001776,
+        "median": 0.0491378855000022,
+        "p95": 0.09011933400000771,
+        "min": 0,
+        "max": 0.1992060160000051,
+        "known_total": 2.009398194000071,
+        "total": 2.009398194000071
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "context_preparation_wall_seconds": {
+      "A_mean": null,
+      "B_mean": 0.0537151947752136,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "context_preparation_cpu_seconds": {
+      "A_mean": null,
+      "B_mean": 0.0536787476,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "process_tree_peak_rss_bytes": {
+      "A_mean": 255377612.8,
+      "B_mean": 250204774.4,
+      "B_over_A_mean": 0.9797443544745986,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -5172838.4,
+        "median": -1992704.0,
+        "p95": 15634432,
+        "min": -71442432,
+        "max": 64458752,
+        "known_total": -206913536,
+        "total": -206913536
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.980326500658786,
+        "median": 0.99019608578801,
+        "p95": 1.067269394804554,
+        "min": 0.7279830320799738,
+        "max": 1.2723276861577864,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "cpu_seconds": {
+      "A_mean": 5.04,
+      "B_mean": 4.91775,
+      "B_over_A_mean": 0.9757440476190475,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -0.12224999999999993,
+        "median": -0.395,
+        "p95": 1.5300000000000002,
+        "min": -3.44,
+        "max": 5.720000000000001,
+        "known_total": -4.889999999999997,
+        "total": -4.889999999999997
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0.9983126102715841,
+        "median": 0.9286161665846859,
+        "p95": 1.4811320754716983,
+        "min": 0.5092724679029957,
+        "max": 2.0916030534351147,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "total_observed_local_cpu_seconds": {
+      "A_mean": 5.04,
+      "B_mean": 4.967984954850002,
+      "B_over_A_mean": 0.9857113005654766,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -0.07201504514999815,
+        "median": -0.32571994049998354,
+        "p95": 1.578377665999965,
+        "min": -3.383258481,
+        "max": 5.767475817999996,
+        "known_total": -2.880601805999926,
+        "total": -2.880601805999926
+      },
+      "paired_ratio": {
+        "n": 40,
+        "missing": 0,
+        "mean": 1.007954061536125,
+        "median": 0.9409737368835902,
+        "p95": 1.4949494949494946,
+        "min": 0.5173668358059914,
+        "max": 2.100663324045801,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "mcp_calls": {
+      "A_mean": 0,
+      "B_mean": 0,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "known_total": 0,
+        "total": 0
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "model_calls": {
+      "A_mean": null,
+      "B_mean": null,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "repeated_file_reads": {
+      "A_mean": null,
+      "B_mean": null,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "observed_file_read_commands": {
+      "A_mean": 1.175,
+      "B_mean": 0.825,
+      "B_over_A_mean": 0.702127659574468,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": -0.35,
+        "median": 0.0,
+        "p95": 0,
+        "min": -2,
+        "max": 1,
+        "known_total": -14,
+        "total": -14
+      },
+      "paired_ratio": {
+        "n": 33,
+        "missing": 7,
+        "mean": 0.7676767676767676,
+        "median": 1.0,
+        "p95": 1.0,
+        "min": 0.0,
+        "max": 1.0,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "observed_repeated_read_commands": {
+      "A_mean": 0,
+      "B_mean": 0,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 40,
+        "missing": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "known_total": 0,
+        "total": 0
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "actual_cost_usd": {
+      "A_mean": null,
+      "B_mean": null,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    },
+    "computed_cost_usd": {
+      "A_mean": null,
+      "B_mean": null,
+      "B_over_A_mean": null,
+      "paired_difference": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      },
+      "paired_ratio": {
+        "n": 0,
+        "missing": 40,
+        "mean": null,
+        "median": null,
+        "p95": null,
+        "min": null,
+        "max": null,
+        "known_total": null,
+        "total": null
+      }
+    }
+  },
+  "paired_metric_outcomes": {
+    "input_tokens": {
+      "B_lower": 15,
+      "equal": 0,
+      "B_higher": 25,
+      "unavailable_pairs": 0
+    },
+    "cached_input_tokens": {
+      "B_lower": 25,
+      "equal": 0,
+      "B_higher": 15,
+      "unavailable_pairs": 0
+    },
+    "uncached_input_tokens": {
+      "B_lower": 16,
+      "equal": 0,
+      "B_higher": 24,
+      "unavailable_pairs": 0
+    },
+    "output_tokens": {
+      "B_lower": 32,
+      "equal": 0,
+      "B_higher": 8,
+      "unavailable_pairs": 0
+    },
+    "wall_time_seconds": {
+      "B_lower": 28,
+      "equal": 0,
+      "B_higher": 12,
+      "unavailable_pairs": 0
+    },
+    "end_to_end_wall_seconds": {
+      "B_lower": 28,
+      "equal": 0,
+      "B_higher": 12,
+      "unavailable_pairs": 0
+    },
+    "native_exec_wall_seconds": {
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0,
+      "unavailable_pairs": 40
+    },
+    "approval_index_wall_seconds": {
+      "B_lower": 0,
+      "equal": 8,
+      "B_higher": 32,
+      "unavailable_pairs": 0
+    },
+    "approval_index_cpu_seconds": {
+      "B_lower": 0,
+      "equal": 8,
+      "B_higher": 32,
+      "unavailable_pairs": 0
+    },
+    "context_preparation_wall_seconds": {
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0,
+      "unavailable_pairs": 40
+    },
+    "context_preparation_cpu_seconds": {
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0,
+      "unavailable_pairs": 40
+    },
+    "process_tree_peak_rss_bytes": {
+      "B_lower": 24,
+      "equal": 0,
+      "B_higher": 16,
+      "unavailable_pairs": 0
+    },
+    "cpu_seconds": {
+      "B_lower": 21,
+      "equal": 0,
+      "B_higher": 19,
+      "unavailable_pairs": 0
+    },
+    "total_observed_local_cpu_seconds": {
+      "B_lower": 21,
+      "equal": 0,
+      "B_higher": 19,
+      "unavailable_pairs": 0
+    },
+    "mcp_calls": {
+      "B_lower": 0,
+      "equal": 40,
+      "B_higher": 0,
+      "unavailable_pairs": 0
+    },
+    "model_calls": {
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0,
+      "unavailable_pairs": 40
+    },
+    "repeated_file_reads": {
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0,
+      "unavailable_pairs": 40
+    },
+    "observed_file_read_commands": {
+      "B_lower": 14,
+      "equal": 25,
+      "B_higher": 1,
+      "unavailable_pairs": 0
+    },
+    "observed_repeated_read_commands": {
+      "B_lower": 0,
+      "equal": 40,
+      "B_higher": 0,
+      "unavailable_pairs": 0
+    },
+    "actual_cost_usd": {
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0,
+      "unavailable_pairs": 40
+    },
+    "computed_cost_usd": {
+      "B_lower": 0,
+      "equal": 0,
+      "B_higher": 0,
+      "unavailable_pairs": 40
+    }
+  },
+  "strata": {
+    "caller_context_supplied": {
+      "A": {
+        "planned_runs": 8,
+        "attempted_runs": 8,
+        "not_run": 0,
+        "graded_runs": 8,
+        "successful_runs": 8,
+        "behavior_grade_pass_count": 8,
+        "failed_grades": 0,
+        "ungraded_runs": 0,
+        "successful_task_completion_rate": 1.0,
+        "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+        "execution_status_counts": {
+          "completed": 8
+        },
+        "treatment_valid_runs": 8,
+        "metrics": {
+          "input_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 30972.375,
+            "median": 29268.5,
+            "p95": 48314,
+            "min": 23257,
+            "max": 48314,
+            "known_total": 247779,
+            "total": 247779
+          },
+          "cached_input_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 22512,
+            "median": 21632.0,
+            "p95": 34944,
+            "min": 0,
+            "max": 34944,
+            "known_total": 180096,
+            "total": 180096
+          },
+          "uncached_input_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 8460.375,
+            "median": 4629.0,
+            "p95": 23290,
+            "min": 3033,
+            "max": 23290,
+            "known_total": 67683,
+            "total": 67683
+          },
+          "output_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 371,
+            "median": 337.0,
+            "p95": 717,
+            "min": 228,
+            "max": 717,
+            "known_total": 2968,
+            "total": 2968
+          },
+          "wall_time_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 13.32185790362496,
+            "median": 12.782262341500427,
+            "p95": 20.36419454299903,
+            "min": 10.22198632800064,
+            "max": 20.36419454299903,
+            "known_total": 106.57486322899967,
+            "total": 106.57486322899967
+          },
+          "end_to_end_wall_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 13.328850806124592,
+            "median": 12.789621684500162,
+            "p95": 20.368369793000966,
+            "min": 10.22710784499941,
+            "max": 20.368369793000966,
+            "known_total": 106.63080644899674,
+            "total": 106.63080644899674
+          },
+          "native_exec_wall_seconds": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "approval_index_wall_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "approval_index_cpu_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "context_preparation_wall_seconds": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "context_preparation_cpu_seconds": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "process_tree_peak_rss_bytes": {
+            "n": 8,
+            "missing": 0,
+            "mean": 213037568,
+            "median": 204734464.0,
+            "p95": 306204672,
+            "min": 166727680,
+            "max": 306204672,
+            "known_total": null,
+            "total": null
+          },
+          "cpu_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 3.7325,
+            "median": 3.4050000000000002,
+            "p95": 5.11,
+            "min": 2.97,
+            "max": 5.11,
+            "known_total": 29.86,
+            "total": 29.86
+          },
+          "total_observed_local_cpu_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 3.7325,
+            "median": 3.4050000000000002,
+            "p95": 5.11,
+            "min": 2.97,
+            "max": 5.11,
+            "known_total": 29.86,
+            "total": 29.86
+          },
+          "mcp_calls": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "model_calls": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "repeated_file_reads": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "observed_file_read_commands": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0.125,
+            "median": 0.0,
+            "p95": 1,
+            "min": 0,
+            "max": 1,
+            "known_total": 1,
+            "total": 1
+          },
+          "observed_repeated_read_commands": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "actual_cost_usd": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "computed_cost_usd": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          }
+        },
+        "actual_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 8,
+          "successful_runs_in_denominator": 8
+        },
+        "computed_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 8,
+          "successful_runs_in_denominator": 8
+        }
+      },
+      "B": {
+        "planned_runs": 8,
+        "attempted_runs": 8,
+        "not_run": 0,
+        "graded_runs": 8,
+        "successful_runs": 8,
+        "behavior_grade_pass_count": 8,
+        "failed_grades": 0,
+        "ungraded_runs": 0,
+        "successful_task_completion_rate": 1.0,
+        "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+        "execution_status_counts": {
+          "completed": 8
+        },
+        "treatment_valid_runs": 8,
+        "metrics": {
+          "input_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 29431.375,
+            "median": 23316.5,
+            "p95": 48240,
+            "min": 23258,
+            "max": 48240,
+            "known_total": 235451,
+            "total": 235451
+          },
+          "cached_input_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 20656,
+            "median": 19136.0,
+            "p95": 40704,
+            "min": 11264,
+            "max": 40704,
+            "known_total": 165248,
+            "total": 165248
+          },
+          "uncached_input_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 8775.375,
+            "median": 9780.5,
+            "p95": 14855,
+            "min": 2906,
+            "max": 14855,
+            "known_total": 70203,
+            "total": 70203
+          },
+          "output_tokens": {
+            "n": 8,
+            "missing": 0,
+            "mean": 338.25,
+            "median": 247.5,
+            "p95": 650,
+            "min": 195,
+            "max": 650,
+            "known_total": 2706,
+            "total": 2706
+          },
+          "wall_time_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 12.751714445500284,
+            "median": 12.3208403514991,
+            "p95": 17.299828037001134,
+            "min": 9.26708817799954,
+            "max": 17.299828037001134,
+            "known_total": 102.01371556400227,
+            "total": 102.01371556400227
+          },
+          "end_to_end_wall_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 12.761737657999902,
+            "median": 12.328360731498833,
+            "p95": 17.308727897001518,
+            "min": 9.272769580000386,
+            "max": 17.308727897001518,
+            "known_total": 102.09390126399921,
+            "total": 102.09390126399921
+          },
+          "native_exec_wall_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 12.55211526262542,
+            "median": 12.173303896500329,
+            "p95": 16.874023165000835,
+            "min": 9.04673628099954,
+            "max": 16.874023165000835,
+            "known_total": 100.41692210100337,
+            "total": 100.41692210100337
+          },
+          "approval_index_wall_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "approval_index_cpu_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "context_preparation_wall_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0.0002086130002680875,
+            "median": 0.00018145750073017552,
+            "p95": 0.0004537349996098783,
+            "min": 6.939599916222505e-05,
+            "max": 0.0004537349996098783,
+            "known_total": 0.0016689040021447,
+            "total": 0.0016689040021447
+          },
+          "context_preparation_cpu_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0.00019138462499999724,
+            "median": 0.00017928549999999405,
+            "p95": 0.00034441200000001615,
+            "min": 6.697999999999427e-05,
+            "max": 0.00034441200000001615,
+            "known_total": 0.001531076999999978,
+            "total": 0.001531076999999978
+          },
+          "process_tree_peak_rss_bytes": {
+            "n": 8,
+            "missing": 0,
+            "mean": 211556352,
+            "median": 200767488.0,
+            "p95": 301154304,
+            "min": 167571456,
+            "max": 301154304,
+            "known_total": null,
+            "total": null
+          },
+          "cpu_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 3.53875,
+            "median": 3.475,
+            "p95": 4.4399999999999995,
+            "min": 2.79,
+            "max": 4.4399999999999995,
+            "known_total": 28.31,
+            "total": 28.31
+          },
+          "total_observed_local_cpu_seconds": {
+            "n": 8,
+            "missing": 0,
+            "mean": 3.53875,
+            "median": 3.475,
+            "p95": 4.4399999999999995,
+            "min": 2.79,
+            "max": 4.4399999999999995,
+            "known_total": 28.31,
+            "total": 28.31
+          },
+          "mcp_calls": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "model_calls": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "repeated_file_reads": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "observed_file_read_commands": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0.125,
+            "median": 0.0,
+            "p95": 1,
+            "min": 0,
+            "max": 1,
+            "known_total": 1,
+            "total": 1
+          },
+          "observed_repeated_read_commands": {
+            "n": 8,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "actual_cost_usd": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "computed_cost_usd": {
+            "n": 0,
+            "missing": 8,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          }
+        },
+        "actual_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 8,
+          "successful_runs_in_denominator": 8
+        },
+        "computed_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 8,
+          "successful_runs_in_denominator": 8
+        }
+      }
+    },
+    "explicit_focus": {
+      "A": {
+        "planned_runs": 32,
+        "attempted_runs": 32,
+        "not_run": 0,
+        "graded_runs": 32,
+        "successful_runs": 32,
+        "behavior_grade_pass_count": 32,
+        "failed_grades": 0,
+        "ungraded_runs": 0,
+        "successful_task_completion_rate": 1.0,
+        "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+        "execution_status_counts": {
+          "completed": 32
+        },
+        "treatment_valid_runs": 32,
+        "metrics": {
+          "input_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 52982.34375,
+            "median": 48889.5,
+            "p95": 63411,
+            "min": 47610,
+            "max": 63843,
+            "known_total": 1695435,
+            "total": 1695435
+          },
+          "cached_input_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 44432,
+            "median": 43648.0,
+            "p95": 56832,
+            "min": 32000,
+            "max": 57728,
+            "known_total": 1421824,
+            "total": 1421824
+          },
+          "uncached_input_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 8550.34375,
+            "median": 5609.5,
+            "p95": 14433,
+            "min": 3771,
+            "max": 16375,
+            "known_total": 273611,
+            "total": 273611
+          },
+          "output_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 989.5625,
+            "median": 970.5,
+            "p95": 1321,
+            "min": 646,
+            "max": 1426,
+            "known_total": 31666,
+            "total": 31666
+          },
+          "wall_time_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 23.633705428562564,
+            "median": 23.187165471001208,
+            "p95": 28.656829391999054,
+            "min": 17.198684643999513,
+            "max": 30.811871562997112,
+            "known_total": 756.278573714002,
+            "total": 756.278573714002
+          },
+          "end_to_end_wall_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 23.646819238937155,
+            "median": 23.196293213999525,
+            "p95": 28.66357379799956,
+            "min": 17.21686259499984,
+            "max": 30.819003914999485,
+            "known_total": 756.698215645989,
+            "total": 756.698215645989
+          },
+          "native_exec_wall_seconds": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "approval_index_wall_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "approval_index_cpu_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "context_preparation_wall_seconds": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "context_preparation_cpu_seconds": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "process_tree_peak_rss_bytes": {
+            "n": 32,
+            "missing": 0,
+            "mean": 265962624,
+            "median": 276776960.0,
+            "p95": 315850752,
+            "min": 177905664,
+            "max": 317337600,
+            "known_total": null,
+            "total": null
+          },
+          "cpu_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 5.366875,
+            "median": 5.369999999999999,
+            "p95": 7.01,
+            "min": 3.1799999999999997,
+            "max": 8.64,
+            "known_total": 171.74,
+            "total": 171.74
+          },
+          "total_observed_local_cpu_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 5.366875,
+            "median": 5.369999999999999,
+            "p95": 7.01,
+            "min": 3.1799999999999997,
+            "max": 8.64,
+            "known_total": 171.74,
+            "total": 171.74
+          },
+          "mcp_calls": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "model_calls": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "repeated_file_reads": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "observed_file_read_commands": {
+            "n": 32,
+            "missing": 0,
+            "mean": 1.4375,
+            "median": 1.0,
+            "p95": 2,
+            "min": 1,
+            "max": 3,
+            "known_total": 46,
+            "total": 46
+          },
+          "observed_repeated_read_commands": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "actual_cost_usd": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "computed_cost_usd": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          }
+        },
+        "actual_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 32,
+          "successful_runs_in_denominator": 32
+        },
+        "computed_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 32,
+          "successful_runs_in_denominator": 32
+        }
+      },
+      "B": {
+        "planned_runs": 32,
+        "attempted_runs": 32,
+        "not_run": 0,
+        "graded_runs": 32,
+        "successful_runs": 32,
+        "behavior_grade_pass_count": 32,
+        "failed_grades": 0,
+        "ungraded_runs": 0,
+        "successful_task_completion_rate": 1.0,
+        "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+        "execution_status_counts": {
+          "completed": 32
+        },
+        "treatment_valid_runs": 32,
+        "metrics": {
+          "input_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 51582.03125,
+            "median": 48872.5,
+            "p95": 63675,
+            "min": 47891,
+            "max": 63907,
+            "known_total": 1650625,
+            "total": 1650625
+          },
+          "cached_input_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 40216,
+            "median": 43584.0,
+            "p95": 57984,
+            "min": 22912,
+            "max": 58112,
+            "known_total": 1286912,
+            "total": 1286912
+          },
+          "uncached_input_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 11366.03125,
+            "median": 10651.0,
+            "p95": 26189,
+            "min": 3877,
+            "max": 26965,
+            "known_total": 363713,
+            "total": 363713
+          },
+          "output_tokens": {
+            "n": 32,
+            "missing": 0,
+            "mean": 931.1875,
+            "median": 904.0,
+            "p95": 1238,
+            "min": 546,
+            "max": 1304,
+            "known_total": 29798,
+            "total": 29798
+          },
+          "wall_time_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 22.282061576406136,
+            "median": 22.954087582500506,
+            "p95": 28.468049990999134,
+            "min": 16.536292673999924,
+            "max": 29.751634244999877,
+            "known_total": 713.0259704449963,
+            "total": 713.0259704449963
+          },
+          "end_to_end_wall_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 22.505601544749823,
+            "median": 23.060710261997883,
+            "p95": 28.691220468999745,
+            "min": 16.72966455200003,
+            "max": 30.035409254000115,
+            "known_total": 720.1792494319943,
+            "total": 720.1792494319943
+          },
+          "native_exec_wall_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 22.03923867518739,
+            "median": 22.789653920999626,
+            "p95": 28.288825702000395,
+            "min": 16.283556417,
+            "max": 29.57667424000101,
+            "known_total": 705.2556376059965,
+            "total": 705.2556376059965
+          },
+          "approval_index_wall_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0.21195423565620786,
+            "median": 0.20442739999998594,
+            "p95": 0.4033767180007999,
+            "min": 0.07892417800030671,
+            "max": 0.592095332000099,
+            "known_total": 6.782535540998651,
+            "total": 6.782535540998651
+          },
+          "approval_index_cpu_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0.06279369356250222,
+            "median": 0.05697185150000239,
+            "p95": 0.10029034899997669,
+            "min": 0.03322719400000551,
+            "max": 0.1992060160000051,
+            "known_total": 2.009398194000071,
+            "total": 2.009398194000071
+          },
+          "context_preparation_wall_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0.06709184021894998,
+            "median": 0.056909060000180034,
+            "p95": 0.11469796400160703,
+            "min": 0.036194525000610156,
+            "max": 0.21287130699965928,
+            "known_total": 2.1469388870063995,
+            "total": 2.1469388870063995
+          },
+          "context_preparation_cpu_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0.06705058834375,
+            "median": 0.05690203849999999,
+            "p95": 0.11469905199999997,
+            "min": 0.036195625999999995,
+            "max": 0.21269472700000003,
+            "known_total": 2.145618827,
+            "total": 2.145618827
+          },
+          "process_tree_peak_rss_bytes": {
+            "n": 32,
+            "missing": 0,
+            "mean": 259866880,
+            "median": 274665472.0,
+            "p95": 320131072,
+            "min": 175321088,
+            "max": 323846144,
+            "known_total": null,
+            "total": null
+          },
+          "cpu_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 5.2625,
+            "median": 4.955,
+            "p95": 8.06,
+            "min": 3.3400000000000003,
+            "max": 10.96,
+            "known_total": 168.4,
+            "total": 168.4
+          },
+          "total_observed_local_cpu_seconds": {
+            "n": 32,
+            "missing": 0,
+            "mean": 5.325293693562502,
+            "median": 5.0066443334999935,
+            "p95": 8.121713631999993,
+            "min": 3.5392060160000054,
+            "max": 11.007475817999996,
+            "known_total": 170.40939819400006,
+            "total": 170.40939819400006
+          },
+          "mcp_calls": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "model_calls": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "repeated_file_reads": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "observed_file_read_commands": {
+            "n": 32,
+            "missing": 0,
+            "mean": 1,
+            "median": 1.0,
+            "p95": 1,
+            "min": 1,
+            "max": 1,
+            "known_total": 32,
+            "total": 32
+          },
+          "observed_repeated_read_commands": {
+            "n": 32,
+            "missing": 0,
+            "mean": 0,
+            "median": 0.0,
+            "p95": 0,
+            "min": 0,
+            "max": 0,
+            "known_total": 0,
+            "total": 0
+          },
+          "actual_cost_usd": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          },
+          "computed_cost_usd": {
+            "n": 0,
+            "missing": 32,
+            "mean": null,
+            "median": null,
+            "p95": null,
+            "min": null,
+            "max": null,
+            "known_total": null,
+            "total": null
+          }
+        },
+        "actual_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 32,
+          "successful_runs_in_denominator": 32
+        },
+        "computed_cost_per_successful_task_usd": {
+          "value": null,
+          "reason": "Cost unavailable for one or more attempts; no estimate substituted",
+          "attempted_runs_in_numerator": 32,
+          "successful_runs_in_denominator": 32
+        }
+      }
+    }
+  },
+  "independent_audit": {
+    "passed": true,
+    "assertions": 9884,
+    "errors": [],
+    "framing_runs_verified": 80
+  },
+  "actual_cost_per_successful_task_usd": {
+    "A": null,
+    "B": null
+  },
+  "cost_reason": "Billing and applicable verified pricing unavailable; no dollar estimate substituted.",
+  "failure_count": 0,
+  "causes_and_limits": [
+    "Uncached delta equals total-input delta minus cached-input delta: -57138 - (-149760) = +92622 tokens.",
+    "B prepared-prompt hashes are identical across repeats for all 20 tasks, while uncached input changes from +75.20% to -11.42%; provider routing, eviction and per-inference cache keys are unobserved.",
+    "Corrected diagnostic shows no recognized B reads of the preloaded production paths. Three old source-path mentions were git-diff operands after multiline cat commands; read-command totals 47 versus 33 remain unchanged proxies.",
+    "Initial model-visible full source included metadata and framing; subsequent requests may carry it forward. Exact per-inference usage and model-call count are unavailable.",
+    "The source sets are distinct across the 20 tasks. This experiment does not test prefix reuse across different tasks with the same unchanged files.",
+    "Two repeats, small purpose-built repositories, explicit focus hints and a 100% success ceiling limit generality. No large-repository, cross-session or warm-index benefit is established."
+  ],
+  "research_access": {
+    "original_engineering_articles_read": 0,
+    "original_engineering_articles_requested": 5,
+    "full_scientific_papers_read": 0,
+    "full_scientific_papers_requested": 5,
+    "alternate_review": [
+      "daily-engineering-research.md",
+      "daily-memory-research.md"
+    ]
+  },
+  "future_changes_not_proven_by_this_experiment": [
+    "Compact canonical source prefix with private hash/range metadata",
+    "Prefer explicit context-supplied/off skips where source is already available",
+    "Keep native model/settings and session cache affinity under native Codex control"
+  ]
+}

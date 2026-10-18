@@ -1,0 +1,1180 @@
+"""Fresh format-regression coding tasks and independent, external behavioral oracles.
+
+All task source scopes are disclosed in the common prompts. Four tasks also
+include their complete relevant source. Reference fixes and hidden assertions
+never enter an agent worktree; that separation is procedural, not a sandbox.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+import re
+import shutil
+import sys
+import textwrap
+from pathlib import Path
+from typing import Any
+
+from benchmarks.corpus import _command
+
+CORPUS_VERSION = "cache-2.0.0"
+REPOSITORIES = {
+    "mailroom-python-cache": ("python", "mailroom"),
+    "metrics-python-cache": ("python", "metrics"),
+    "forms-typescript-cache": ("typescript", "forms"),
+    "collections-typescript-cache": ("typescript", "collections"),
+}
+SPECS: list[dict[str, Any]] = []
+
+
+def _clean(source: str) -> str:
+    return textwrap.dedent(source).strip("\n") + "\n"
+
+
+def _add(
+    repository: str,
+    slug: str,
+    function: str,
+    request: str,
+    source: str,
+    replacements: dict[str, str],
+    smoke: str,
+    cases: str,
+    *,
+    adapter: str | None = None,
+    adapter_replacements: dict[str, str] | None = None,
+    supplied: bool = False,
+) -> None:
+    baseline = _clean(source)
+    reference = baseline
+    for old, new in replacements.items():
+        if reference.count(old) != 1:
+            raise ValueError(f"nonunique domain reference edit: {slug}: {old!r}")
+        reference = reference.replace(old, new)
+    adapter_baseline = _clean(adapter) if adapter is not None else None
+    adapter_reference = adapter_baseline
+    for old, new in (adapter_replacements or {}).items():
+        if adapter_reference is None or adapter_reference.count(old) != 1:
+            raise ValueError(f"nonunique adapter reference edit: {slug}: {old!r}")
+        adapter_reference = adapter_reference.replace(old, new)
+    SPECS.append(
+        {
+            "repository": repository,
+            "slug": slug,
+            "function": function,
+            "request": request,
+            "baseline": baseline,
+            "reference": reference,
+            "adapter_baseline": adapter_baseline,
+            "adapter_reference": adapter_reference,
+            "supplied": supplied,
+            "smoke": smoke,
+            "cases": _clean(cases),
+        }
+    )
+
+
+_add(
+    "mailroom-python-cache",
+    "colon-password",
+    "parse_basic_credentials",
+    "Repair parse_basic_credentials(header): decode a Basic authentication header as strict base64 and UTF-8, then split decoded credentials on the first colon only. A password may contain further colons or be empty. Scheme matching is ASCII case-insensitive. Missing separator, invalid base64/UTF-8, an absent colon or embedded whitespace in the encoded payload must raise ValueError.",
+    '''
+    import base64
+    import binascii
+
+    def parse_basic_credentials(header):
+        """Decode a local Basic header without treating password colons as separators."""
+        try:
+            scheme, payload = header.split(" ", 1)
+            if scheme.lower() != "basic" or not payload or any(char.isspace() for char in payload):
+                raise ValueError("invalid authorization")
+            decoded = base64.b64decode(payload, validate=True).decode("utf-8")
+            username, password = decoded.split(":")
+            return username, password
+        except (ValueError, UnicodeError, binascii.Error):
+            raise ValueError("invalid authorization") from None
+    ''',
+    {'decoded.split(":")': 'decoded.split(":", 1)'},
+    'self.assertEqual(core.parse_basic_credentials("Basic dTpw"),("u","p"))',
+    """
+    def test_password_colons_and_unicode(self):
+        import base64
+        for user,password in (("user","a:b:c"),("","secret"),("user",""),("é","東京:x")):
+            header="bAsIc "+base64.b64encode((user+":"+password).encode()).decode()
+            self.assertEqual(core.parse_basic_credentials(header),(user,password))
+    def test_malformed_headers(self):
+        for header in ("Basic", "Bearer dTpw", "Basic ", "Basic dT pw", "Basic @@@", "Basic dXNlcg==", "Basic /zo="):
+            with self.assertRaises(ValueError): core.parse_basic_credentials(header)
+    """,
+)
+
+_add(
+    "mailroom-python-cache",
+    "folded-header-spacing",
+    "unfold_header",
+    "Fix unfold_header(lines) to insert one ASCII space between the first physical header line and each continuation after removing that continuation's leading spaces/tabs. Preserve interior and trailing characters. Empty input returns ''. A continuation without leading space/tab or any embedded CR/LF in a supplied line raises ValueError. Leave inputs unchanged.",
+    '''
+    def unfold_header(lines):
+        """Join an already separated header and its whitespace-led continuations."""
+        if not lines:
+            return ""
+        if any("\\r" in line or "\\n" in line for line in lines) or any(not line.startswith((" ", "\\t")) for line in lines[1:]):
+            raise ValueError("invalid folded header")
+        return "".join(line.lstrip(" \\t") for line in lines)
+    ''',
+    {
+        'return "".join(line.lstrip(" \\t") for line in lines)': 'return lines[0] + "".join(" " + line.lstrip(" \\t") for line in lines[1:])'
+    },
+    'self.assertEqual(core.unfold_header(["Subject: hello"]),"Subject: hello")',
+    """
+    def test_continuations_and_exact_content(self):
+        self.assertEqual(core.unfold_header(["Subject: hello","  world","\\tagain "]),"Subject: hello world again ")
+        self.assertEqual(core.unfold_header(["X: a  b"," "]),"X: a  b ")
+        self.assertEqual(core.unfold_header([]),"")
+    def test_invalid_lines_and_input_preservation(self):
+        for lines in (["X: a","not-indented"],["X: a\\nb"],["X: a"," b\\rc"]):
+            with self.assertRaises(ValueError): core.unfold_header(lines)
+        lines=[" X: a ","  b "]; result=core.unfold_header(lines)
+        self.assertEqual(result," X: a  b ")
+        self.assertEqual(lines,[" X: a ","  b "])
+    """,
+)
+
+_add(
+    "mailroom-python-cache",
+    "reply-subject-preservation",
+    "reply_subject",
+    "Repair reply_subject and subject_for_reply. If a subject already starts with 'Re:' under ASCII case-insensitive comparison, return it exactly unchanged; otherwise prepend 'Re: '. The public adapter must preserve all original whitespace and capitalization, rather than trim the subject. Empty input becomes 'Re: '.",
+    '''
+    def reply_subject(subject):
+        """Prefix a new reply without stacking an existing reply marker."""
+        return "Re: " + subject
+    ''',
+    {
+        'return "Re: " + subject': 'return subject if subject[:3].lower() == "re:" else "Re: " + subject'
+    },
+    'self.assertEqual(api.subject_for_reply("Hello"),"Re: Hello")',
+    """
+    def test_existing_prefix_and_adapter_whitespace(self):
+        self.assertEqual(core.reply_subject("rE: Topic"),"rE: Topic")
+        self.assertEqual(api.subject_for_reply("Re:  Topic "),"Re:  Topic ")
+        self.assertEqual(api.subject_for_reply(" Topic "),"Re:  Topic ")
+    def test_empty_similar_prefixes_and_unicode(self):
+        for value,expected in (("","Re: "),("RE","Re: RE"),("Reindeer","Re: Reindeer"),("東京","Re: 東京"),(" re: x","Re:  re: x")):
+            self.assertEqual(core.reply_subject(value),expected)
+            self.assertEqual(api.subject_for_reply(value),expected)
+    """,
+    adapter='''
+    from .reply_subject_preservation import reply_subject
+
+    def subject_for_reply(subject):
+        """Build the subject shown in the reply composer."""
+        return reply_subject(subject.strip())
+    ''',
+    adapter_replacements={"subject.strip()": "subject"},
+)
+
+_add(
+    "mailroom-python-cache",
+    "utf8-header-word",
+    "encode_header_word",
+    "Repair encode_header_word(value) and subject_header. ASCII-only strings are returned unchanged. Other strings become a single RFC2047-style UTF-8 base64 word '=?utf-8?b?PAYLOAD?=' using UTF-8 bytes. Reject CR or LF. The adapter must preserve the encoder output exactly, including ASCII capitalization and base64 letter case.",
+    '''
+    import base64
+
+    def encode_header_word(value):
+        """Encode a local Unicode header value without changing plain ASCII."""
+        if "\\r" in value or "\\n" in value:
+            raise ValueError("header injection")
+        if value.isascii():
+            return value
+        return "=?utf-8?b?" + base64.b64encode(value.encode("latin-1")).decode("ascii") + "?="
+    ''',
+    {'value.encode("latin-1")': 'value.encode("utf-8")'},
+    'self.assertEqual(api.subject_header("hello"),"hello")',
+    """
+    def test_utf8_and_exact_case(self):
+        import base64
+        for value in ("Été","東京","😀","HELLO"):
+            expected=value if value.isascii() else "=?utf-8?b?"+base64.b64encode(value.encode()).decode()+"?="
+            self.assertEqual(core.encode_header_word(value),expected)
+            self.assertEqual(api.subject_header(value),expected)
+    def test_empty_plain_text_and_injection(self):
+        self.assertEqual(api.subject_header(""),"")
+        self.assertEqual(core.encode_header_word("A & B"),"A & B")
+        for value in ("a\\nb","a\\rb"):
+            with self.assertRaises(ValueError): core.encode_header_word(value)
+            with self.assertRaises(ValueError): api.subject_header(value)
+    """,
+    adapter='''
+    from .utf8_header_word import encode_header_word
+
+    def subject_header(value):
+        """Return the encoded subject field for a local message export."""
+        return encode_header_word(value).lower()
+    ''',
+    adapter_replacements={"encode_header_word(value).lower()": "encode_header_word(value)"},
+)
+
+_add(
+    "mailroom-python-cache",
+    "quoted-display-backslash",
+    "quote_display_name",
+    "Fix quote_display_name(name) to quote a mail display name while escaping both existing backslashes and double quotes with a backslash. Existing backslashes must be escaped before quotes. Keep the existing CR/LF rejection and return a pair of quotes for an empty name.",
+    r'''
+    def quote_display_name(name):
+        """Quote a display name as literal data in a message header."""
+        if "\r" in name or "\n" in name:
+            raise ValueError("header injection")
+        return '"' + name.replace('"', '\\"') + '"'
+    ''',
+    {r"""name.replace('"', '\\"')""": r"""name.replace('\\', '\\\\').replace('"', '\\"')"""},
+    'self.assertEqual(core.quote_display_name("Ada"),\'"Ada"\')',
+    r"""
+    def test_backslashes_and_quotes(self):
+        slash=chr(92)
+        self.assertEqual(core.quote_display_name('a'+slash+'b'), '"a'+slash*2+'b"')
+        self.assertEqual(core.quote_display_name('a"b'), '"a'+slash+'"b"')
+        self.assertEqual(core.quote_display_name('a'+slash+'"b'), '"a'+slash*3+'"b"')
+    def test_empty_unicode_and_line_breaks(self):
+        self.assertEqual(core.quote_display_name(''), '""')
+        self.assertEqual(core.quote_display_name('é'), '"é"')
+        for name in ('a\nb','a\rb'):
+            with self.assertRaises(ValueError): core.quote_display_name(name)
+    """,
+    supplied=True,
+)
+
+_add(
+    "metrics-python-cache",
+    "warmup-moving-average",
+    "moving_average",
+    "Fix moving_average(values,window) to average the latest up-to-window values at each position, using the actual warmup count instead of dividing by the full window before it fills. Require a positive integer window (not bool) and finite numeric inputs (not bool); reject invalid values with ValueError. Return [] for empty input and do not mutate inputs.",
+    """
+    import math
+
+    def moving_average(values, window):
+        if type(window) is not int or window < 1 or any(type(value) not in (int,float) or not math.isfinite(value) for value in values):
+            raise ValueError("finite values and positive integer window required")
+        result = []
+        for index in range(len(values)):
+            selected = values[max(0,index-window+1):index+1]
+            result.append(sum(selected) / window)
+        return result
+    """,
+    {"sum(selected) / window": "sum(selected) / len(selected)"},
+    "self.assertEqual(core.moving_average([2,4],1),[2,4])",
+    """
+    def test_warmup_windows_and_signed_values(self):
+        self.assertEqual(core.moving_average([2,4,6,8],3),[2,3,4,6])
+        self.assertEqual(core.moving_average([-2,2],9),[-2,0])
+        self.assertEqual(core.moving_average([],2),[])
+    def test_validation_and_no_mutation(self):
+        values=[1.5,2.5];self.assertEqual(core.moving_average(values,2),[1.5,2]);self.assertEqual(values,[1.5,2.5])
+        for window in (0,-1,True,1.5):
+            with self.assertRaises(ValueError): core.moving_average([1],window)
+        for values in ([True],[float("nan")],[float("inf")],["1"]):
+            with self.assertRaises(ValueError): core.moving_average(values,1)
+    """,
+)
+
+_add(
+    "metrics-python-cache",
+    "negative-baseline-change",
+    "percent_change",
+    "Fix percent_change(previous,current) to divide the change by abs(previous), returning a percentage. A rise from -10 to -5 is +50, not -50. When previous is zero, return 0 for zero current and None otherwise. Require finite int/float inputs excluding bool, raising ValueError otherwise.",
+    """
+    import math
+
+    def percent_change(previous, current):
+        if any(type(value) not in (int,float) or not math.isfinite(value) for value in (previous,current)):
+            raise ValueError("finite numbers required")
+        if previous == 0:
+            return 0 if current == 0 else None
+        return (current - previous) / previous * 100
+    """,
+    {"/ previous * 100": "/ abs(previous) * 100"},
+    "self.assertEqual(core.percent_change(10,15),50)",
+    """
+    def test_negative_baselines_and_zero(self):
+        self.assertEqual(core.percent_change(-10,-5),50)
+        self.assertEqual(core.percent_change(-10,-15),-50)
+        self.assertEqual(core.percent_change(-10,10),200)
+        self.assertEqual(core.percent_change(0,0),0)
+        self.assertIsNone(core.percent_change(0,1))
+    def test_normal_values_and_validation(self):
+        self.assertEqual(core.percent_change(8,4),-50)
+        self.assertEqual(core.percent_change(1.25,2.5),100)
+        for args in ((True,1),(1,False),(float("nan"),1),(1,float("inf")),("1",2)):
+            with self.assertRaises(ValueError): core.percent_change(*args)
+    """,
+)
+
+_add(
+    "metrics-python-cache",
+    "histogram-boundary-slots",
+    "histogram",
+    "Repair histogram(values,bounds) and chart_buckets. Sorted, strictly increasing finite bounds define half-open bins: a value equal to a bound belongs in the bin to its right. Return len(bounds)+1 counts including all zero-count bins. Reject duplicate/unsorted/nonfinite bounds and nonfinite values. The chart adapter must retain empty bins and input arrays must remain unchanged.",
+    """
+    import bisect
+    import math
+
+    def histogram(values, bounds):
+        if any(not math.isfinite(value) for value in values+bounds) or any(left >= right for left,right in zip(bounds,bounds[1:])):
+            raise ValueError("finite values and increasing bounds required")
+        result = [0] * (len(bounds)+1)
+        for value in values:
+            result[bisect.bisect_left(bounds,value)] += 1
+        return result
+    """,
+    {"bisect.bisect_left(bounds,value)": "bisect.bisect_right(bounds,value)"},
+    "self.assertEqual(api.chart_buckets([-1,1],[0]),[1,1])",
+    """
+    def test_exact_boundaries_and_empty_bins(self):
+        self.assertEqual(core.histogram([0,10,20],[0,10,20]),[0,1,1,1])
+        self.assertEqual(api.chart_buckets([5],[0,10,20]),[0,1,0,0])
+        self.assertEqual(api.chart_buckets([],[]),[0])
+        self.assertEqual(api.chart_buckets([1,2],[]),[2])
+    def test_validation_and_input_immutability(self):
+        values=[-1,0,1];bounds=[0];self.assertEqual(api.chart_buckets(values,bounds),[1,2]);self.assertEqual(values,[-1,0,1]);self.assertEqual(bounds,[0])
+        for values,bounds in (([],[1,1]),([],[2,1]),([float("nan")],[0]),([],[float("inf")])):
+            with self.assertRaises(ValueError): core.histogram(values,bounds)
+            with self.assertRaises(ValueError): api.chart_buckets(values,bounds)
+    """,
+    adapter='''
+    from .histogram_boundary_slots import histogram
+
+    def chart_buckets(values, bounds):
+        """Return one plotted slot per configured histogram bin."""
+        return [count for count in histogram(values,bounds) if count]
+    ''',
+    adapter_replacements={
+        "[count for count in histogram(values,bounds) if count]": "histogram(values,bounds)"
+    },
+)
+
+_add(
+    "metrics-python-cache",
+    "fractional-sample-variance",
+    "sample_variance",
+    "Repair sample_variance(values) and variance_for_report to compute sample variance with denominator n-1 and preserve the fractional result through the public API. Require at least two finite numeric values excluding bool. Inputs must not change; a constant sample has variance zero.",
+    """
+    import math
+
+    def sample_variance(values):
+        if len(values)<2 or any(type(value) not in (int,float) or not math.isfinite(value) for value in values):
+            raise ValueError("two finite numbers required")
+        mean = sum(values)/len(values)
+        return sum((value-mean)**2 for value in values)/len(values)
+    """,
+    {"**2 for value in values)/len(values)": "**2 for value in values)/(len(values)-1)"},
+    "self.assertEqual(api.variance_for_report([2,2]),0)",
+    """
+    def test_sample_denominator_and_fractional_api(self):
+        self.assertEqual(core.sample_variance([1,2,3]),1)
+        self.assertEqual(api.variance_for_report([1,2]),0.5)
+        self.assertEqual(api.variance_for_report([-1.5,0.5]),2)
+    def test_validation_and_no_mutation(self):
+        values=[1,2,4];self.assertAlmostEqual(api.variance_for_report(values),7/3);self.assertEqual(values,[1,2,4])
+        for values in ([],[1],[1,True],[1,float("nan")],[1,float("inf")],[1,"2"]):
+            with self.assertRaises(ValueError): core.sample_variance(values)
+            with self.assertRaises(ValueError): api.variance_for_report(values)
+    """,
+    adapter='''
+    from .fractional_sample_variance import sample_variance
+
+    def variance_for_report(values):
+        """Expose the unrounded statistic to the report renderer."""
+        return int(sample_variance(values))
+    ''',
+    adapter_replacements={"int(sample_variance(values))": "sample_variance(values)"},
+)
+
+_add(
+    "metrics-python-cache",
+    "missing-not-falsy",
+    "is_missing",
+    "Fix is_missing(value): only None and float NaN count as missing. Zero, False, empty strings/containers and infinity are present values. Return a bool without raising for arbitrary ordinary Python objects.",
+    '''
+    import math
+
+    def is_missing(value):
+        """Recognize missing scalar observations without discarding falsy data."""
+        return not value
+    ''',
+    {"return not value": "return value is None or (isinstance(value,float) and math.isnan(value))"},
+    "self.assertFalse(core.is_missing(1))",
+    """
+    def test_missing_and_falsy_values(self):
+        self.assertIs(core.is_missing(None),True)
+        self.assertIs(core.is_missing(float("nan")),True)
+        for value in (0,0.0,False,"",[],{},()): self.assertIs(core.is_missing(value),False)
+    def test_other_present_objects(self):
+        for value in (1,-1,float("inf"),"nan",object(),[None]): self.assertIs(core.is_missing(value),False)
+    """,
+    supplied=True,
+)
+
+_add(
+    "forms-typescript-cache",
+    "strict-calendar-date",
+    "validDateParts",
+    "Fix validDateParts(year,month,day): accept only actual Gregorian dates with integer year 1..9999, month 1..12 and day 1..31. JavaScript date rollover must not make February 30 valid. Handle leap centuries and years below 100 correctly. Return false for invalid inputs rather than throwing.",
+    """
+    export function validDateParts(year: number, month: number, day: number): boolean {
+      if (![year,month,day].every(Number.isInteger) || year<1 || year>9999 || month<1 || month>12 || day<1 || day>31) return false;
+      return !Number.isNaN(Date.UTC(year,month-1,day));
+    }
+    """,
+    {
+        "return !Number.isNaN(Date.UTC(year,month-1,day));": "const date = new Date(0);\n  date.setUTCFullYear(year,month-1,day);\n  return date.getUTCFullYear()===year && date.getUTCMonth()===month-1 && date.getUTCDate()===day;"
+    },
+    "assert.equal(core.validDateParts(2025,1,15),true)",
+    """
+    test("month lengths leap centuries and small years",()=>{
+      for(const parts of [[2025,2,29],[2024,2,30],[2025,4,31],[1900,2,29]])assert.equal(core.validDateParts(...parts),false);
+      for(const parts of [[2024,2,29],[2000,2,29],[4,2,29],[99,1,1],[9999,12,31]])assert.equal(core.validDateParts(...parts),true);
+    });
+    test("integer bounds and nonfinite inputs",()=>{
+      for(const parts of [[0,1,1],[10000,1,1],[2025,0,1],[2025,13,1],[2025,1,0],[2025,1,32],[2025,1,1.5],[NaN,1,1],[2025,Infinity,1]])assert.equal(core.validDateParts(...parts),false);
+    });
+    """,
+)
+
+_add(
+    "forms-typescript-cache",
+    "hex-color-lengths",
+    "isHexColor",
+    "Fix isHexColor(value) to accept exactly CSS-style '#' followed by 3, 4, 6 or 8 ASCII hex digits, case-insensitively. Reject lengths 5/7, whitespace, line breaks, missing '#', and nonhex characters. Return boolean without normalizing the input.",
+    r"""
+    export function isHexColor(value: string): boolean {
+      return /^#[0-9a-f]{3,8}$/i.test(value) && !/\s/.test(value);
+    }
+    """,
+    {"[0-9a-f]{3,8}": "(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})"},
+    'assert.equal(core.isHexColor("#aBc"),true)',
+    r"""
+    test("only supported lengths and ASCII hexadecimal",()=>{
+      for(const value of ["#abc","#ABCD","#a1b2c3","#12345678"])assert.equal(core.isHexColor(value),true);
+      for(const value of ["#ab","#abcde","#abcdefg","#1234567","#123456789","#ggg","abc"])assert.equal(core.isHexColor(value),false);
+    });
+    test("strict complete input and empty text",()=>{
+      for(const value of [""," #abc","#abc ","#abc\n","#abc\r\n","#abc\u2028","#abc\u2029","#abc\u00a0","#１２３"])assert.equal(core.isHexColor(value),false);
+    });
+    """,
+)
+
+_add(
+    "forms-typescript-cache",
+    "strict-integer-range",
+    "parseIntegerRange",
+    "Repair parseIntegerRange(value) and rangeField. The complete input must be two signed ASCII decimal integers separated literally by '..', with no whitespace. Both endpoints must be safe integers and start<=end. Return {start,end}; leading zeroes and '+' are allowed. Reject malformed input. The adapter must not trim or otherwise change input before validation.",
+    """
+    export function parseIntegerRange(value: string): {start: number; end: number} {
+      const parts = value.split("..");
+      const start = Number(parts[0]), end = Number(parts[1]);
+      if (parts.length!==2 || !Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start>end) throw new Error("invalid range");
+      return {start,end};
+    }
+    """,
+    {
+        'const parts = value.split("..");': 'if (!/^[+-]?[0-9]+\\.\\.[+-]?[0-9]+$(?![\\s\\S])/.test(value)) throw new Error("invalid range");\n  const parts = value.split("..");'
+    },
+    'assert.deepEqual(api.rangeField("1..3"),{start:1,end:3})',
+    r"""
+    test("signed complete integer syntax",()=>{
+      assert.deepEqual(core.parseIntegerRange("-3..+05"),{start:-3,end:5});assert.deepEqual(api.rangeField("0..0"),{start:0,end:0});
+      for(const text of ["1 ..3","1.. 3","1.5..3","1e2..300","..3","1..","1..2..3"])assert.throws(()=>core.parseIntegerRange(text));
+      for(const text of [" 1..3","1..3 ","1..3\n"])assert.throws(()=>api.rangeField(text));
+    });
+    test("safe endpoints ordering and ordinary bounds",()=>{
+      for(const text of ["3..1","9007199254740992..9007199254740993","Infinity..Infinity","a..b"])assert.throws(()=>api.rangeField(text));
+      assert.deepEqual(api.rangeField("-9007199254740991..9007199254740991"),{start:-9007199254740991,end:9007199254740991});
+    });
+    """,
+    adapter="""
+    import {parseIntegerRange} from "./strict_integer_range.ts";
+
+    export function rangeField(value: string): {start: number; end: number} {
+      return parseIntegerRange(value.trim());
+    }
+    """,
+    adapter_replacements={"value.trim()": "value"},
+)
+
+_add(
+    "forms-typescript-cache",
+    "form-space-encoding",
+    "encodeFormComponent",
+    "Repair encodeFormComponent(value) and toFormPair(name,value). Apply encodeURIComponent to UTF-8 text and replace every encoded space '%20' with '+', while literal plus signs remain '%2B'. Build encodedName=encodedValue with the helper for both components. The adapter must preserve name capitalization; do not lowercase keys or coerce values.",
+    """
+    export function encodeFormComponent(value: string): string {
+      return encodeURIComponent(value);
+    }
+    """,
+    {
+        "return encodeURIComponent(value);": 'return encodeURIComponent(value).replaceAll("%20", "+");'
+    },
+    'assert.equal(api.toFormPair("name","Ada"),"name=Ada")',
+    r"""
+    test("space plus Unicode and original key case",()=>{
+      assert.equal(core.encodeFormComponent("a b+c"),"a+b%2Bc");
+      assert.equal(api.toFormPair("User Name","a b+c"),"User+Name=a+b%2Bc");
+      assert.equal(api.toFormPair("É","東京"),"%C3%89=%E6%9D%B1%E4%BA%AC");
+    });
+    test("empty values separators and repeated spaces",()=>{
+      assert.equal(api.toFormPair("X",""),"X=");assert.equal(api.toFormPair("",""),"=");
+      assert.equal(core.encodeFormComponent("  &="),"++%26%3D");
+      assert.equal(api.toFormPair("A+B","x=y&z"),"A%2BB=x%3Dy%26z");
+    });
+    """,
+    adapter="""
+    import {encodeFormComponent} from "./form_space_encoding.ts";
+
+    export function toFormPair(name: string, value: string): string {
+      return encodeFormComponent(name.toLowerCase()) + "=" + encodeFormComponent(value);
+    }
+    """,
+    adapter_replacements={"name.toLowerCase()": "name"},
+)
+
+_add(
+    "forms-typescript-cache",
+    "required-whitespace",
+    "isRequiredBlank",
+    "Fix isRequiredBlank(value) for string form values: an empty string or any string whose JavaScript trim() result is empty is blank. Ordinary visible text, including '0', is present. Do not modify or return a normalized value.",
+    """
+    export function isRequiredBlank(value: string): boolean {
+      return value.length === 0;
+    }
+    """,
+    {"value.length === 0": "value.trim().length === 0"},
+    'assert.equal(core.isRequiredBlank("hello"),false)',
+    r"""
+    test("empty Unicode and ASCII whitespace",()=>{
+      for(const value of [""," ","\t\r\n","\u00a0\u2003"])assert.equal(core.isRequiredBlank(value),true);
+    });
+    test("visible text zero and nontrimmed format character",()=>{
+      for(const value of ["0"," false "," a ","😀","\u200b"])assert.equal(core.isRequiredBlank(value),false);
+    });
+    """,
+    supplied=True,
+)
+
+_add(
+    "collections-typescript-cache",
+    "signed-left-rotation",
+    "rotateLeft",
+    "Fix rotateLeft(items,steps) so a negative step rotates right, and positive steps rotate left modulo length. Require an integer finite step; empty input returns []. Preserve inputs and return a fresh array even for zero rotation.",
+    """
+    export function rotateLeft<T>(items: T[], steps: number): T[] {
+      if (!Number.isInteger(steps)) throw new Error("integer steps required");
+      if (items.length===0) return [];
+      const shift = Math.abs(steps) % items.length;
+      return [...items.slice(shift), ...items.slice(0,shift)];
+    }
+    """,
+    {"Math.abs(steps) % items.length": "((steps % items.length) + items.length) % items.length"},
+    "assert.deepEqual(core.rotateLeft([1,2,3],1),[2,3,1])",
+    """
+    test("signed modulo and empty arrays",()=>{
+      assert.deepEqual(core.rotateLeft([1,2,3],-1),[3,1,2]);assert.deepEqual(core.rotateLeft([1,2,3],-4),[3,1,2]);
+      assert.deepEqual(core.rotateLeft([1,2,3],4),[2,3,1]);assert.deepEqual(core.rotateLeft([],4),[]);
+    });
+    test("fresh arrays values and validation",()=>{
+      const items=[0,false,""];const result=core.rotateLeft(items,0);assert.deepEqual(result,items);assert.notEqual(result,items);result[0]=1;assert.deepEqual(items,[0,false,""]);
+      for(const steps of [1.5,NaN,Infinity])assert.throws(()=>core.rotateLeft([1],steps));
+    });
+    """,
+)
+
+_add(
+    "collections-typescript-cache",
+    "unique-intersection",
+    "intersection",
+    "Fix intersection(left,right) to return each shared value only once, preserving its first appearance order in left. Use JavaScript Set equality (including NaN equality and object identity). Keep both inputs unchanged and return [] when no values match.",
+    """
+    export function intersection<T>(left: T[], right: T[]): T[] {
+      const allowed = new Set(right);
+      return left.filter(value => allowed.has(value));
+    }
+    """,
+    {
+        "return left.filter(value => allowed.has(value));": "const seen = new Set<T>();\n  return left.filter(value => { if (!allowed.has(value) || seen.has(value)) return false; seen.add(value); return true; });"
+    },
+    "assert.deepEqual(core.intersection([1,2],[2,3]),[2])",
+    """
+    test("deduplication left order and Set equality",()=>{
+      assert.deepEqual(core.intersection([3,1,3,2,1],[1,2,3]),[3,1,2]);assert.deepEqual(core.intersection([NaN,NaN,0,-0],[NaN,0]),[NaN,0]);
+      const item={id:1};assert.deepEqual(core.intersection([item,item,{id:1}],[item]),[item]);
+    });
+    test("empty inputs and no mutation",()=>{
+      const left=[2,1,2],right=[2];assert.deepEqual(core.intersection(left,right),[2]);assert.deepEqual(left,[2,1,2]);assert.deepEqual(right,[2]);
+      assert.deepEqual(core.intersection([],right),[]);assert.deepEqual(core.intersection([1],[]),[]);
+    });
+    """,
+)
+
+_add(
+    "collections-typescript-cache",
+    "consecutive-run-groups",
+    "groupRuns",
+    "Repair groupRuns and visibleRuns. Group only consecutive records having the same kind; later runs of a previously seen kind remain separate. Return {kind,items} groups in order, cloning each {kind,value} record so outputs do not mutate input records. visibleRuns must retain single-item groups, not filter them out. Empty input returns [].",
+    """
+    export type Item = {kind: string; value: number};
+    export type Run = {kind: string; items: Item[]};
+    export function groupRuns(items: Item[]): Run[] {
+      const groups = new Map<string,Run>();
+      for (const item of items) {
+        if (!groups.has(item.kind)) groups.set(item.kind,{kind:item.kind,items:[]});
+        groups.get(item.kind)!.items.push({...item});
+      }
+      return [...groups.values()];
+    }
+    """,
+    {
+        "const groups = new Map<string,Run>();\n  for (const item of items) {\n    if (!groups.has(item.kind)) groups.set(item.kind,{kind:item.kind,items:[]});\n    groups.get(item.kind)!.items.push({...item});\n  }\n  return [...groups.values()];": "const groups: Run[] = [];\n  for (const item of items) {\n    if (groups.length===0 || groups[groups.length-1].kind!==item.kind) groups.push({kind:item.kind,items:[]});\n    groups[groups.length-1].items.push({...item});\n  }\n  return groups;"
+    },
+    'assert.equal(api.visibleRuns([{kind:"a",value:1},{kind:"a",value:2}]).length,1)',
+    """
+    test("nonadjacent groups and single item visibility",()=>{
+      const items=[{kind:"a",value:1},{kind:"a",value:2},{kind:"b",value:3},{kind:"a",value:4}];
+      const expected=[{kind:"a",items:items.slice(0,2)},{kind:"b",items:[items[2]]},{kind:"a",items:[items[3]]}];
+      assert.deepEqual(core.groupRuns(items),expected);assert.deepEqual(api.visibleRuns(items),expected);
+    });
+    test("detached records empty input and ordinary string keys",()=>{
+      const items=[{kind:"__proto__",value:0}];const result=api.visibleRuns(items);assert.equal(result.length,1);result[0].items[0].value=9;assert.equal(items[0].value,0);
+      assert.deepEqual(core.groupRuns([]),[]);assert.deepEqual(api.visibleRuns([]),[]);assert.equal(api.visibleRuns([{kind:"",value:1}])[0].kind,"");
+    });
+    """,
+    adapter="""
+    import {groupRuns} from "./consecutive_run_groups.ts";
+    import type {Item,Run} from "./consecutive_run_groups.ts";
+
+    export function visibleRuns(items: Item[]): Run[] {
+      return groupRuns(items).filter(group => group.items.length > 1);
+    }
+    """,
+    adapter_replacements={
+        "groupRuns(items).filter(group => group.items.length > 1)": "groupRuns(items)"
+    },
+)
+
+_add(
+    "collections-typescript-cache",
+    "stable-feed-merge",
+    "mergeSorted",
+    "Repair mergeSorted(left,right) and mergeFeeds for feeds already sorted by ascending numeric key. Merge in order, preserving within-feed order and choosing left-feed records first for equal keys. Preserve record identity and do not mutate either input array; frozen input arrays must work. The adapter must not sort inputs in place before delegation. Return a fresh array even when a feed is empty.",
+    """
+    export type Entry = {key: number; id: string};
+    export function mergeSorted(left: Entry[], right: Entry[]): Entry[] {
+      const result: Entry[] = [];let a=0,b=0;
+      while (a<left.length && b<right.length) {
+        if (left[a].key < right[b].key) result.push(left[a++]);
+        else result.push(right[b++]);
+      }
+      return [...result,...left.slice(a),...right.slice(b)];
+    }
+    """,
+    {"left[a].key < right[b].key": "left[a].key <= right[b].key"},
+    'assert.deepEqual(api.mergeFeeds([{key:1,id:"a"}],[{key:2,id:"b"}]).map(row=>row.id),["a","b"])',
+    """
+    test("stable left ties and frozen public inputs",()=>{
+      const left=[{key:1,id:"l1"},{key:1,id:"l2"},{key:3,id:"l3"}],right=[{key:1,id:"r1"},{key:2,id:"r2"}];
+      assert.deepEqual(core.mergeSorted(left,right).map(row=>row.id),["l1","l2","r1","r2","l3"]);
+      Object.freeze(left);Object.freeze(right);assert.deepEqual(api.mergeFeeds(left,right).map(row=>row.id),["l1","l2","r1","r2","l3"]);
+    });
+    test("identity empty feeds and unchanged arrays",()=>{
+      const entry={key:1,id:"a"},left=[entry],right=[];const result=api.mergeFeeds(left,right);assert.notEqual(result,left);assert.equal(result[0],entry);
+      assert.deepEqual(left,[entry]);assert.deepEqual(right,[]);assert.deepEqual(api.mergeFeeds([],[]),[]);
+    });
+    """,
+    adapter="""
+    import {mergeSorted} from "./stable_feed_merge.ts";
+    import type {Entry} from "./stable_feed_merge.ts";
+
+    export function mergeFeeds(left: Entry[], right: Entry[]): Entry[] {
+      return mergeSorted(left.sort((a,b)=>a.key-b.key), right.sort((a,b)=>a.key-b.key));
+    }
+    """,
+    adapter_replacements={
+        "mergeSorted(left.sort((a,b)=>a.key-b.key), right.sort((a,b)=>a.key-b.key))": "mergeSorted(left,right)"
+    },
+)
+
+_add(
+    "collections-typescript-cache",
+    "last-value-fallback",
+    "lastOrDefault",
+    "Fix lastOrDefault(items,fallback): return the final element when the array is nonempty and use fallback only for an empty array. Preserve a final undefined, null, false, zero or empty string rather than substituting the fallback; leave the input unchanged.",
+    """
+    export function lastOrDefault<T>(items: T[], fallback: T): T {
+      if (items.length===0) return fallback;
+      return items[items.length];
+    }
+    """,
+    {"items[items.length]": "items[items.length-1]"},
+    'assert.equal(core.lastOrDefault([],"fallback"),"fallback")',
+    """
+    test("final position and falsy final values",()=>{
+      assert.equal(core.lastOrDefault([1,2,3],9),3);
+      for(const value of [undefined,null,false,0,""])assert.equal(core.lastOrDefault(["first",value],"fallback"),value);
+    });
+    test("empty fallback and unchanged input",()=>{
+      const fallback={id:1};assert.equal(core.lastOrDefault([],fallback),fallback);
+      const items=[1,2];assert.equal(core.lastOrDefault(items,0),2);assert.deepEqual(items,[1,2]);
+    });
+    """,
+    supplied=True,
+)
+
+
+def _task_id(spec: dict[str, Any]) -> str:
+    language, family = REPOSITORIES[spec["repository"]]
+    return f"{'py' if language == 'python' else 'ts'}-cache-{family}-{spec['slug']}"
+
+
+def _spec(task_id: str) -> dict[str, Any]:
+    for spec in SPECS:
+        if _task_id(spec) == task_id:
+            return spec
+    raise ValueError(f"unknown task: {task_id}")
+
+
+def _source_paths(spec: dict[str, Any]) -> list[str]:
+    language, family = REPOSITORIES[spec["repository"]]
+    directory, suffix = (family, "py") if language == "python" else ("src", "ts")
+    module = spec["slug"].replace("-", "_")
+    paths = [f"{directory}/{module}.{suffix}"]
+    if spec["adapter_baseline"] is not None:
+        paths.append(f"{directory}/{module}_api.{suffix}")
+    return paths
+
+
+def task_definitions() -> list[dict[str, Any]]:
+    tasks = []
+    for spec in SPECS:
+        language, _ = REPOSITORIES[spec["repository"]]
+        paths = _source_paths(spec)
+        scope = "\n".join(f"- `{path}`" for path in paths)
+        prompt = f"{spec['request']}\n\nThe source scope explicitly supplied for this task is:\n{scope}\n"
+        if spec["supplied"]:
+            prompt += "\nComplete current source for that scope is supplied below; it is sufficient context for this tiny fix:\n"
+            prompt += f"\nFile: `{paths[0]}`\n```{language}\n{spec['baseline']}```\n"
+        command = (
+            "python -m unittest discover -s tests -v"
+            if language == "python"
+            else "node --test tests/*.test.mjs"
+        )
+        prompt += (
+            f"\nImplement the fix in production source. Run the existing offline smoke tests with `{command}` "
+            "and add regression tests if useful. Preserve public interfaces and existing tests. "
+            "Do not change dependencies, build configuration, benchmark machinery or grading files, "
+            "and do not inspect files outside this repository. Finish with a brief description and tests run."
+        )
+        tasks.append(
+            {
+                "id": _task_id(spec),
+                "language": language,
+                "repository": spec["repository"],
+                "starting_repository": {
+                    "generator": "benchmarks.corpus_cache.build_repository",
+                    "repository": spec["repository"],
+                    "version": CORPUS_VERSION,
+                },
+                "prompt": prompt,
+                "focus_paths": paths,
+                "target_files": paths,
+                "expected_symbols": [spec["function"]],
+                "context_supplied": spec["supplied"],
+                "task_kind": "supplied-context"
+                if spec["supplied"]
+                else "integration"
+                if len(paths) == 2
+                else "single-source",
+                "oracle_id": spec["slug"],
+                "checks": {
+                    "held_out_behavior": True,
+                    "protected_smoke": True,
+                    "typescript_typecheck": language == "typescript",
+                },
+            }
+        )
+    return tasks
+
+
+def tasks() -> list[dict[str, Any]]:
+    return task_definitions()
+
+
+def _repository_files(repository_id: str) -> dict[str, str]:
+    if repository_id not in REPOSITORIES:
+        raise ValueError(f"unsupported repository: {repository_id}")
+    language, family = REPOSITORIES[repository_id]
+    specs = [spec for spec in SPECS if spec["repository"] == repository_id]
+    files = {}
+    for spec in specs:
+        paths = _source_paths(spec)
+        files[paths[0]] = spec["baseline"]
+        if len(paths) == 2:
+            files[paths[1]] = spec["adapter_baseline"]
+    command = (
+        "python -m unittest discover -s tests -v"
+        if language == "python"
+        else "node --test tests/*.test.mjs"
+    )
+    files["README.md"] = _clean(f"""
+        # {family.title()} utilities
+
+        Small offline {language} utilities used by an everyday application.
+        Production modules have local adapters only where a caller needs one.
+        Run existing ordinary-use smoke tests with `{command}`.
+    """)
+    files["AGENTS.md"] = _clean(f"""
+        # Development
+        Work in this checkout and keep tests offline and deterministic.
+        Run `{command}`. Preserve public interfaces and existing tests.
+        Do not modify dependency/build configuration or inspect benchmark
+        machinery, grading artifacts or files outside this repository.
+    """)
+    files[".gitignore"] = "__pycache__/\n*.pyc\nnode_modules/\n.cache/\n"
+    if language == "python":
+        files[f"{family}/__init__.py"] = f'"""Offline {family} utilities."""\n'
+        smoke = (
+            "import unittest\nfrom datetime import date\n\nclass SmokeTests(unittest.TestCase):\n"
+        )
+        for spec in specs:
+            module = spec["slug"].replace("-", "_")
+            smoke += (
+                f"    def test_{module}(self):\n        from {family} import {module} as core\n"
+            )
+            if spec["adapter_baseline"] is not None:
+                smoke += f"        from {family} import {module}_api as api\n"
+            smoke += f"        {spec['smoke']}\n\n"
+        files["tests/test_smoke.py"] = smoke
+    else:
+        files["package.json"] = (
+            json.dumps(
+                {
+                    "name": repository_id,
+                    "private": True,
+                    "type": "module",
+                    "scripts": {"test": command},
+                },
+                indent=2,
+            )
+            + "\n"
+        )
+        files["tsconfig.json"] = (
+            json.dumps(
+                {
+                    "compilerOptions": {
+                        "target": "ES2022",
+                        "module": "NodeNext",
+                        "moduleResolution": "NodeNext",
+                        "allowImportingTsExtensions": True,
+                        "noEmit": True,
+                        "strict": True,
+                        "skipLibCheck": True,
+                        "types": [],
+                    },
+                    "include": ["src/**/*.ts"],
+                },
+                indent=2,
+            )
+            + "\n"
+        )
+        smoke = 'import test from "node:test";\nimport assert from "node:assert/strict";\n'
+        for index, spec in enumerate(specs):
+            paths = _source_paths(spec)
+            smoke += f'import * as core{index} from "../{paths[0]}";\n'
+            if len(paths) == 2:
+                smoke += f'import * as api{index} from "../{paths[1]}";\n'
+            statement = (
+                spec["smoke"].replace("core.", f"core{index}.").replace("api.", f"api{index}.")
+            )
+            smoke += f"test({json.dumps(spec['slug'])},()=>{{{statement};}});\n"
+        files["tests/smoke.test.mjs"] = smoke
+    return files
+
+
+def build_repository(repository_id: str, destination: Path) -> None:
+    files = _repository_files(repository_id)
+    destination = Path(destination)
+    destination.mkdir(parents=True, exist_ok=True)
+    if any(destination.iterdir()):
+        raise ValueError("destination must be empty")
+    for relative, content in files.items():
+        path = destination / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+
+
+def _oracle(spec: dict[str, Any], worktree: Path) -> str:
+    language, family = REPOSITORIES[spec["repository"]]
+    paths = _source_paths(spec)
+    if language == "python":
+        module = spec["slug"].replace("-", "_")
+        source = "import json, unittest\nfrom datetime import date, datetime\n"
+        source += f"from {family} import {module} as core\n"
+        if len(paths) == 2:
+            source += f"from {family} import {module}_api as api\n"
+        source += "\nclass BehaviorTests(unittest.TestCase):\n" + textwrap.indent(
+            spec["cases"], "    "
+        )
+        source += _clean("""
+            if __name__ == "__main__":
+                suite = unittest.defaultTestLoader.loadTestsFromTestCase(BehaviorTests)
+                result = unittest.TextTestRunner(verbosity=2).run(suite)
+                print("CORPUS_RESULT=" + json.dumps({"tests":result.testsRun,"failures":len(result.failures),"errors":len(result.errors),"skipped":len(result.skipped)}))
+                raise SystemExit(not result.wasSuccessful())
+        """)
+        return source
+    source = 'import test from "node:test";\nimport assert from "node:assert/strict";\n'
+    source += f"import * as core from {json.dumps((worktree / paths[0]).resolve().as_uri())};\n"
+    if len(paths) == 2:
+        source += f"import * as api from {json.dumps((worktree / paths[1]).resolve().as_uri())};\n"
+    return source + spec["cases"]
+
+
+def _test_execution_integrity(command: dict[str, Any], language: str, stage: str) -> dict[str, Any]:
+    """Require actual clean test completion, not merely an exit-zero process."""
+    counts = command["counts"]
+    total = counts.get("tests")
+    count_valid = type(total) is int and (total == 2 if stage == "behavior" else total >= 5)
+    if language == "typescript":
+        required = ("tests", "pass", "fail", "cancelled", "skipped")
+        clean = (
+            all(type(counts.get(key)) is int for key in required)
+            and counts["pass"] == total
+            and all(counts[key] == 0 for key in ("fail", "cancelled", "skipped"))
+        )
+        summary_verified = clean
+    else:
+        stderr_path = command.get("stderr_path")
+        stderr = Path(stderr_path).read_text(encoding="utf-8") if stderr_path else ""
+        # unittest's decorated OK summaries include skipped/expected failures.
+        # Only an undecorated OK is a clean, fully executed suite.
+        summary_verified = re.search(r"^OK$", stderr, re.MULTILINE) is not None
+        required = ("tests", "failures", "errors", "skipped")
+        clean = summary_verified and (
+            stage == "smoke"
+            or (
+                all(type(counts.get(key)) is int for key in required)
+                and all(counts[key] == 0 for key in ("failures", "errors", "skipped"))
+            )
+        )
+    return {
+        "stage": stage,
+        "valid": command["exit_code"] == 0 and count_valid and clean,
+        "required_test_count": {"exact": 2} if stage == "behavior" else {"minimum": 5},
+        "reported_counts": dict(counts),
+        "count_requirement_met": count_valid,
+        "clean_summary_verified": summary_verified,
+        "zero_failures_errors_skips_cancellations": clean,
+    }
+
+
+def grade(task_id: str, worktree: Path, artifacts: Path) -> dict[str, Any]:
+    spec = _spec(task_id)
+    language, family = REPOSITORIES[spec["repository"]]
+    worktree, artifacts = Path(worktree).resolve(), Path(artifacts).resolve()
+    if artifacts == worktree or worktree in artifacts.parents:
+        raise ValueError("grading artifacts must be outside the agent worktree")
+    artifacts.mkdir(parents=True, exist_ok=True)
+    protected = []
+    source_prefix = family + "/" if language == "python" else "src/"
+    for relative, content in _repository_files(spec["repository"]).items():
+        if relative.startswith(source_prefix):
+            continue
+        path = worktree / relative
+        actual = path.read_bytes() if path.is_file() and not path.is_symlink() else b""
+        expected = content.encode("utf-8")
+        protected.append(
+            {
+                "file": relative,
+                "unchanged": actual == expected,
+                "expected_sha256": hashlib.sha256(expected).hexdigest(),
+                "actual_sha256": hashlib.sha256(actual).hexdigest(),
+            }
+        )
+    environment = dict(os.environ)
+    commands = []
+    if language == "python":
+        environment.update(PYTHONPATH=str(worktree), PYTHONDONTWRITEBYTECODE="1")
+        oracle = artifacts / "held_out.py"
+        oracle.write_text(_oracle(spec, worktree), encoding="utf-8")
+        commands.append(
+            _command([sys.executable, str(oracle)], worktree, artifacts / "behavior", environment)
+        )
+        commands.append(
+            _command(
+                [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
+                worktree,
+                artifacts / "smoke",
+                environment,
+            )
+        )
+    else:
+        node = shutil.which("node")
+        if node is None:
+            raise RuntimeError("Node with native TypeScript support is required")
+        oracle = artifacts / "held_out.test.mjs"
+        oracle.write_text(_oracle(spec, worktree), encoding="utf-8")
+        commands.append(
+            _command(
+                [node, "--test", "--test-reporter=tap", str(oracle)],
+                worktree,
+                artifacts / "behavior",
+                environment,
+            )
+        )
+        commands.append(
+            _command(
+                [node, "--test", "--test-reporter=tap", "tests/smoke.test.mjs"],
+                worktree,
+                artifacts / "smoke",
+                environment,
+            )
+        )
+        local = Path(__file__).resolve().parents[1] / "frontend/node_modules/typescript/bin/tsc"
+        compiler = os.environ.get("MEMGLIDE_BENCHMARK_TSC") or (
+            str(local) if local.is_file() else shutil.which("tsc")
+        )
+        if compiler is None:
+            commands.append(
+                {
+                    "command": ["tsc", "--project", "tsconfig.json"],
+                    "exit_code": None,
+                    "counts": {},
+                    "unavailable_reason": "TypeScript compiler not installed",
+                }
+            )
+        else:
+            commands.append(
+                _command(
+                    [node, compiler, "--project", "tsconfig.json"],
+                    worktree,
+                    artifacts / "typecheck",
+                    environment,
+                )
+            )
+    execution_checks = [
+        _test_execution_integrity(commands[0], language, "behavior"),
+        _test_execution_integrity(commands[1], language, "smoke"),
+    ]
+    execution_complete = all(item["valid"] for item in execution_checks)
+    tamper_free = all(item["unchanged"] for item in protected)
+    passed = tamper_free and execution_complete and all(item["exit_code"] == 0 for item in commands)
+    result = {
+        "task_id": task_id,
+        "repository": spec["repository"],
+        "corpus_version": CORPUS_VERSION,
+        "passed": passed,
+        "success": passed,
+        "exit_code": 0 if passed else 1,
+        "commands": commands,
+        "test_count": sum(item["counts"].get("tests", 0) for item in commands),
+        "protected_files_unchanged": tamper_free,
+        "protected_files": protected,
+        "test_execution_complete": execution_complete,
+        "test_execution_integrity": execution_checks,
+        "grading_separation": "held-out files outside worktree; not cryptographically hidden",
+    }
+    (artifacts / "grade.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    return result
+
+
+def _apply_reference_fix(task_id: str, destination: Path, *, side: str = "both") -> None:
+    spec = _spec(task_id)
+    paths = _source_paths(spec)
+    if side not in ("both", "domain", "adapter"):
+        raise ValueError("unsupported reference side")
+    if side != "adapter":
+        (destination / paths[0]).write_text(spec["reference"], encoding="utf-8")
+    if side != "domain" and len(paths) == 2:
+        (destination / paths[1]).write_text(spec["adapter_reference"], encoding="utf-8")
+
+
+def validate_corpus(destination: Path) -> dict[str, Any]:
+    destination = Path(destination).resolve()
+    destination.mkdir(parents=True, exist_ok=True)
+    if any(destination.iterdir()):
+        raise ValueError("validation destination must be empty")
+    results = []
+    for task in task_definitions():
+        root = destination / task["id"]
+        build_repository(task["repository"], root / "baseline")
+        build_repository(task["repository"], root / "reference")
+        baseline = grade(task["id"], root / "baseline", root / "baseline_grade")
+        _apply_reference_fix(task["id"], root / "reference")
+        reference = grade(task["id"], root / "reference", root / "reference_grade")
+        controls = []
+        if task["task_kind"] == "integration":
+            for side in ("domain", "adapter"):
+                worktree = root / side
+                build_repository(task["repository"], worktree)
+                _apply_reference_fix(task["id"], worktree, side=side)
+                partial = grade(task["id"], worktree, root / f"{side}_grade")
+                controls.append(
+                    {
+                        "side": side,
+                        "result": partial,
+                        "correctly_rejected": not partial["success"]
+                        and partial["protected_files_unchanged"]
+                        and all(command["exit_code"] == 0 for command in partial["commands"][1:]),
+                    }
+                )
+        valid = (
+            not baseline["success"]
+            and baseline["commands"][0]["exit_code"] != 0
+            and baseline["commands"][0]["counts"].get("tests") == 2
+            and all(command["exit_code"] == 0 for command in baseline["commands"][1:])
+            and baseline["protected_files_unchanged"]
+            and reference["success"]
+            and reference["test_count"] == 7
+            and all(control["correctly_rejected"] for control in controls)
+        )
+        results.append(
+            {
+                "task_id": task["id"],
+                "valid": valid,
+                "baseline": baseline,
+                "reference": reference,
+                "half_fix_controls": controls,
+            }
+        )
+        print(json.dumps({"task_id": task["id"], "valid": valid}), flush=True)
+    report = {
+        "corpus_version": CORPUS_VERSION,
+        "task_count": len(results),
+        "half_fix_controls": sum(len(row["half_fix_controls"]) for row in results),
+        "valid": all(row["valid"] for row in results),
+        "tasks": results,
+    }
+    (destination / "validation.json").write_text(
+        json.dumps(report, indent=2) + "\n", encoding="utf-8"
+    )
+    return report
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--write-manifest", type=Path)
+    parser.add_argument("--validate", type=Path)
+    args = parser.parse_args()
+    if args.write_manifest:
+        args.write_manifest.write_text(
+            json.dumps({"corpus_version": CORPUS_VERSION, "tasks": task_definitions()}, indent=2)
+            + "\n",
+            encoding="utf-8",
+        )
+    if args.validate:
+        report = validate_corpus(args.validate)
+        print(json.dumps({"valid": report["valid"], "task_count": report["task_count"]}))
+        raise SystemExit(not report["valid"])

@@ -83,7 +83,20 @@ npm --prefix frontend run build
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for browser tests and packaging. [PROGRESS.md](PROGRESS.md) records observed validation and outstanding limitations; source-file presence alone is not a completion claim.
 
-The latest [optimized A/B assessment](benchmarks/optimized-ab-assessment.md) and
+The latest [focused-launcher assessment](benchmarks/daily-ab-assessment.md) and
+[individual results](benchmarks/codex-ab-daily.json) cover **20 fresh tasks,
+two configurations and two repeats: 80 native Codex runs**. Both configurations
+passed 40/40. Memglide used 2.9% less total input and 6.2% less output, and took
+4.8% less time including cold indexing, but used **27.1% more uncached input**.
+Median paired total input increased slightly. These small, known-file utility
+tasks do not establish a general efficiency gain or money saving; actual cost
+and cost per successful task remain unavailable. The experiment used upfront
+source delivery with zero MCP calls in both arms, rather than the earlier MCP
+treatment. [817 distinct checks passed](benchmarks/daily-validation.md), and an
+independent audit verified all 80 outcomes. The [downloadable report bundle](benchmarks/memglide-daily-ab-report.zip)
+includes reports, research access limits, validation and raw evidence.
+
+The earlier [optimized MCP A/B assessment](benchmarks/optimized-ab-assessment.md) and
 [individual results](benchmarks/codex-ab-optimized.json) cover **40 fresh coding
 tasks, four purpose-built repositories and two repeats: 160 runs** using native
 `codex exec`. Both configurations passed 80/80; all 80 Memglide runs actually

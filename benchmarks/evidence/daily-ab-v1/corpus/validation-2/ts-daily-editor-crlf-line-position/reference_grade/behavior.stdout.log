@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: mixed newlines and offsets inside CRLF
+ok 1 - mixed newlines and offsets inside CRLF
+  ---
+  duration_ms: 3.119621
+  type: 'test'
+  ...
+# Subtest: UTF16 offsets empty input and invalid offsets
+ok 2 - UTF16 offsets empty input and invalid offsets
+  ---
+  duration_ms: 0.904153
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 286.961856

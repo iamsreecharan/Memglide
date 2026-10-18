@@ -1,0 +1,50 @@
+[
+  {
+    "id": "alt08-mcp-best-practices",
+    "url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/reference/mcp_best_practices.md",
+    "started_utc": "2026-10-18T01:59:47.294247+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/reference/mcp_best_practices.md",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 7330,
+    "sha256": "80fb4369a349447cf18ecdd7494fe7938b6065377e9f08c077cec411093a3007",
+    "success": true,
+    "finished_utc": "2026-10-18T01:59:47.544993+00:00"
+  },
+  {
+    "id": "alt09-mcp-evaluation-guide",
+    "url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/reference/evaluation.md",
+    "started_utc": "2026-10-18T01:59:47.297112+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/reference/evaluation.md",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 21663,
+    "sha256": "8c99479f8a2d22a636c38e274537aac3610879e26f34e0709825077c4576f427",
+    "success": true,
+    "finished_utc": "2026-10-18T01:59:47.610986+00:00"
+  },
+  {
+    "id": "alt10-mcp-evaluation-code",
+    "url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/scripts/evaluation.py",
+    "started_utc": "2026-10-18T01:59:47.298229+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/scripts/evaluation.py",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 12579,
+    "sha256": "49ed1d17cdce5da101b210197740713f49b935c29d4f339542a14b132658e6f7",
+    "success": true,
+    "finished_utc": "2026-10-18T01:59:47.616410+00:00"
+  },
+  {
+    "id": "alt11-mcp-evaluation-harness",
+    "url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/scripts/connections.py",
+    "started_utc": "2026-10-18T01:59:47.300101+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/anthropics/skills/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/mcp-builder/scripts/connections.py",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 4875,
+    "sha256": "9403668a2041568772082a8b334122c1f88daf0541fb393af4522d0094a47a6e",
+    "success": true,
+    "finished_utc": "2026-10-18T01:59:47.578466+00:00"
+  }
+]

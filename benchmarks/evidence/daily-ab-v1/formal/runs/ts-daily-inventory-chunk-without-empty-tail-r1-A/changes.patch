@@ -1,0 +1,12 @@
+diff --git a/src/chunk_without_empty_tail.ts b/src/chunk_without_empty_tail.ts
+index 32c5fbd..fc1fca6 100644
+--- a/src/chunk_without_empty_tail.ts
++++ b/src/chunk_without_empty_tail.ts
+@@ -1,6 +1,6 @@
+ export function chunk<T>(items: T[], size: number): T[][] {
+   if (!Number.isInteger(size) || size <= 0) throw new Error("positive integer size required");
+   const result: T[][] = [];
+-  for (let offset = 0; offset <= items.length; offset += size) result.push(items.slice(offset, offset + size));
++  for (let offset = 0; offset < items.length; offset += size) result.push(items.slice(offset, offset + size));
+   return result;
+ }

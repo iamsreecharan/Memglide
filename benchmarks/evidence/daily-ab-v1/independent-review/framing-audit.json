@@ -1,0 +1,812 @@
+{
+  "audited_at_utc": "2026-10-18T03:01:21.293608+00:00",
+  "scope": "Supplement to the unchanged successful 9,884-assertion primary audit; checks the late-added header and explicit completion flags",
+  "pass": true,
+  "original_count": 80,
+  "valid_framing_count": 80,
+  "matching_recorded_framing_count": 80,
+  "all_completion_flags_count": 80,
+  "auditor_sha256": "f918f0aacdd0c2f398c6f2093afb69e20aaa35140aea21a10b192bd16579839d",
+  "runs": [
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r1-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r1-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-relative-indentation-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-chunk-without-empty-tail-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-strict-column-projection-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-html-text-escaping-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-tag-normalization-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-zero-count-plural-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-rectangular-transpose-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-literal-replace-all-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-signed-code-padding-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-equal-length-zip-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-label-ellipsis-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-saturday-weekend-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-elapsed-clock-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-inventory-numeric-median-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-whitespace-word-spans-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-export-line-endings-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-inclusive-clamp-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-desk-calendar-month-shift-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "ts-daily-editor-crlf-line-position-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r2-A",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    },
+    {
+      "run_id": "py-daily-catalog-single-pass-partition-r2-B",
+      "valid_framing": true,
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ],
+      "recorded_framing_agrees": true,
+      "all_completed_flags_true": true
+    }
+  ]
+}

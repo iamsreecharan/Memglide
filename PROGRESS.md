@@ -1,6 +1,43 @@
 # Memglide V1 verification record
 
-The latest [optimized assessment](benchmarks/optimized-ab-assessment.md),
+The latest [focused-launcher assessment](benchmarks/daily-ab-assessment.md) and
+[80 individual runs](benchmarks/codex-ab-daily.json) cover 20 fresh known-file
+utility tasks, ten Python and ten TypeScript, with two repeats per configuration.
+Implementation and protocol were frozen at `6f4b6f6` before formal execution;
+no development model pilot was run. Source stayed
+unchanged throughout the 2026-10-18 UTC experiment. A and B each passed 40/40,
+with 40 verified pairs, no failed or retried formal runs, and no resumes.
+
+The new opt-in launcher makes its preparation decision locally without an
+auxiliary model or mandatory MCP request. B delivered 32 complete focused bundles
+and correctly bypassed eight supplied-context cases. Both native configurations
+had zero MCP calls. B's mean total input fell 2.9%, output fell 6.2%, and full
+execution time including cold indexing fell 4.8%; **uncached input rose 27.1%**.
+Median paired total input rose 182.5 tokens. Cached input is already part of total
+input. Actual billing and cost per successful task remain null. These results
+do not establish a money saving, general production-repository benefit,
+cross-session memory benefit or equivalently reset provider caches.
+
+The [final validation](benchmarks/daily-validation.md) passed **817 distinct
+cases: 790 Python, 24 frontend and three production Chromium tests**, plus
+static/build/package/installed-wheel checks. Independent review fixed corrupt
+policy fallback, an early-exit grading loophole, completion denominators,
+native structured-output/event integrity and resumed-state verification before
+the formal experiment. Initial repros and failures remain preserved. The
+post-run independent audit passed 9,884 assertions and reconstructed prepared
+stdin from frozen source. Audit assertions and overlapping reruns are not added
+to the test total.
+
+The [architecture](docs/daily-architecture.md),
+[engineering research](benchmarks/daily-engineering-research.md) and
+[memory/repository research](benchmarks/daily-memory-research.md) distinguish
+read official alternate implementations from inaccessible original articles and
+full papers. The [report bundle](benchmarks/memglide-daily-ab-report.zip) preserves
+the protocol, all formal attempts, validation and the research access logs.
+Earlier experiments below remain historical and used different treatments and
+corpora; their percentages are not a controlled comparison with this iteration.
+
+The earlier [optimized assessment](benchmarks/optimized-ab-assessment.md),
 [160 individual runs](benchmarks/codex-ab-optimized.json) and
 [live context audit](benchmarks/codex-optimized-context.md) cover 40 fresh tasks
 across four purpose-built Python/TypeScript repositories, both configurations

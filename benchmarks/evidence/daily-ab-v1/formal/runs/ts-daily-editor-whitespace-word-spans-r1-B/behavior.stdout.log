@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: Unicode punctuation single characters and precise spans
+ok 1 - Unicode punctuation single characters and precise spans
+  ---
+  duration_ms: 14.546237
+  type: 'test'
+  ...
+# Subtest: empty whitespace and detached output arrays
+ok 2 - empty whitespace and detached output arrays
+  ---
+  duration_ms: 0.62711
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 388.964683

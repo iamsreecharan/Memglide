@@ -1,0 +1,264 @@
+{
+  "run_id": "py-daily-desk-label-ellipsis-r2-A",
+  "task_id": "py-daily-desk-label-ellipsis",
+  "language": "python",
+  "configuration": "A",
+  "repeat": 2,
+  "order": 62,
+  "repository": "desk-python-daily",
+  "task_kind": "supplied-context",
+  "selection_stratum": "caller_context_supplied",
+  "original_run_id": "py-daily-desk-label-ellipsis-r2-A",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-18T02:53:02.059962+00:00",
+  "artifacts": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r2-A",
+  "worktree": "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-desk-label-ellipsis-r2-A",
+  "errors": [],
+  "grader": {
+    "task_id": "py-daily-desk-label-ellipsis",
+    "repository": "desk-python-daily",
+    "corpus_version": "daily-1.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r2-A/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r2-A/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r2-A/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 5
+        },
+        "stdout_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r2-A/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r2-A/smoke.stderr.log"
+      }
+    ],
+    "test_count": 7,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "9cc6679988dfa86f220a79bdb96d1d4f05ccbe202fb627b06cef7fe63e4191c6",
+        "actual_sha256": "9cc6679988dfa86f220a79bdb96d1d4f05ccbe202fb627b06cef7fe63e4191c6"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3",
+        "actual_sha256": "7034533a9aa6d85c34caf9cc990864202cc263105102d443e5c21221c71234c3"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_smoke.py",
+        "unchanged": true,
+        "expected_sha256": "b85b827f5075be8dd1ce609b6681e465e11093b1fae0e8d31e69b4a76eede51b",
+        "actual_sha256": "b85b827f5075be8dd1ce609b6681e465e11093b1fae0e8d31e69b4a76eede51b"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 5
+        },
+        "reported_counts": {
+          "tests": 5
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "a169e21e4684d2c0b28b8c6226eebd418ab407ce",
+  "common_task_prompt_sha256": "ae93e1dbc31a8b68f8da4da901e5a81c596c09b6b30928af743d8e3755d099ea",
+  "actual_model_prompt_sha256": "ae93e1dbc31a8b68f8da4da901e5a81c596c09b6b30928af743d8e3755d099ea",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/worktrees/py-daily-desk-label-ellipsis-r2-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/daily-v1/formal-20-v1/runs/py-daily-desk-label-ellipsis-r2-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 14.220013735000975,
+  "process_started_monotonic_seconds": 16931.400119239,
+  "process_finished_monotonic_seconds": 16945.620132974,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 170332160,
+    "cpu_seconds": 3.39,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 14,
+    "observed_memglide_processes": 0,
+    "samples": 222,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 13,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 35527,
+      "cached_input_tokens": 23040,
+      "output_tokens": 439
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 35527,
+      "cached_input_tokens": 23040,
+      "output_tokens": 439
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 3,
+    "commands": [
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'git diff -- desk/label_ellipsis.py'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc \"python - <<'PY'\nfrom desk.label_ellipsis import truncate_label\nfor value in ('', 'a', 'abcd', '😀é中xyz'):\n    for limit in range(8):\n        result = truncate_label(value, limit)\n        assert len(result) <= limit\n        assert result == (value if len(value) <= limit else value[:limit - 1] + '…' if limit else '')\nfor limit in (-1, True, 1.5, '2', None):\n    try:\n        truncate_label('abc', limit)\n    except ValueError:\n        pass\n    else:\n        raise AssertionError(limit)\nprint('Boundary, Unicode, and invalid-limit checks passed.')\nPY\"",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 0,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 14.230773489998683,
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "73c2fc1a7dae5e312cfc3384f192085114148bc8beb1c1b024ead812be7c3e6c",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Native event stream must complete without MCP calls"
+  },
+  "treatment_valid": true,
+  "native_exec_wall_seconds": null,
+  "protected_file_violations": [],
+  "common_blocker": null,
+  "finished_at": "2026-10-18T02:53:16.663880+00:00"
+}

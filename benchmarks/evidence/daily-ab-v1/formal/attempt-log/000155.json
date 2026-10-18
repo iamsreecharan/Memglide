@@ -1,0 +1,9 @@
+{
+  "sequence": 155,
+  "previous_sha256": "5ca52219a3ad5256dda10db936f2942cded91eeb800971a60debbd56a4df99e5",
+  "recorded_at": "2026-10-18T02:58:37.508643+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "ts-daily-editor-crlf-line-position-r2-B",
+  "result_sha256": "047ca54e88b56bfe624a2e01fa6867256bc77a06df6be8ac779410101d063a95",
+  "sha256": "a3c6df41a64c7ab2c02c2fdb783864985e769c5714670e45867e9c7760c3cde9"
+}

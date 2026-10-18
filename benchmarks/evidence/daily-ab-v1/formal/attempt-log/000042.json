@@ -1,0 +1,11 @@
+{
+  "sequence": 42,
+  "previous_sha256": "70f8cc9e80f084558c8639772d1c472a3a71fc3f13d39feaa50082e2221f0ef7",
+  "recorded_at": "2026-10-18T02:37:51.207492+00:00",
+  "event": "attempt.started",
+  "attempt_id": "py-daily-desk-label-ellipsis-r1-A",
+  "original_run_id": "py-daily-desk-label-ellipsis-r1-A",
+  "supplemental": false,
+  "start_sha256": "923c16fe7dbd70db77714fb1a14cfad3a0eac22e35a0d91b19083e0dd829f34e",
+  "sha256": "01c4e99bf85dac59a8eb9ce2cdc9bfc11572d2eae45421bafae8ad9ee97c1b14"
+}

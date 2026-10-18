@@ -1,0 +1,9 @@
+{
+  "sequence": 127,
+  "previous_sha256": "04a731e3276fd13a991c5fdbf83972065761bdd8d651fcaac028d33441887258",
+  "recorded_at": "2026-10-18T02:53:29.299115+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "py-daily-catalog-saturday-weekend-r2-A",
+  "result_sha256": "891d0d4ceff457556b36c7c358c144ed9bd5006a6a347c4e84931c2ecb51fffc",
+  "sha256": "cf3bf58c077ff70dd1e705ccbd9b1a80c6cd59dfffdfa6cba43af133459a3d17"
+}

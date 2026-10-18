@@ -1,0 +1,3 @@
+M catalog/strict_column_projection.py
+ M catalog/strict_column_projection_api.py
+?? tests/test_strict_column_projection.py

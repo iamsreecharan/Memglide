@@ -1,0 +1,7 @@
+Using Python 3.12.14 environment at: .local/daily-v1/installed-env
+Resolved 1 package in 4ms
+Prepared 1 package in 39ms
+Uninstalled 1 package in 3ms
+Installed 1 package in 9ms
+ - memglide==0.1.0 (from file:///workspace/Memglide/.local/daily-v1/dist/memglide-0.1.0-py3-none-any.whl)
+ + memglide==0.1.0 (from file:///workspace/Memglide/.local/daily-v1/dist-final/memglide-0.1.0-py3-none-any.whl)

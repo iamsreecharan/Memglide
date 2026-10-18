@@ -1,6 +1,6 @@
 # Ordinary-task candidate validation
 
-**817 distinct automated cases passed**: 790 Python, 24 frontend and 3 production Chromium cases. All final cases passed; none were skipped, failed or errored. Exact per-file counts and SHA-256 case identities are in [JSON](daily-validation.json); raw parameter names remain private to avoid duplicating synthetic secret fixtures.
+**817 distinct automated cases passed**: 790 Python, 24 frontend and 3 production Chromium cases. All final cases passed; none were skipped, failed or errored. Exact per-file counts and SHA-256 case identities are in [JSON](daily-validation.json); raw parameter names are not duplicated here; public raw JUnit evidence retains literal synthetic fixtures verified against the frozen security tests.
 
 ## Final verification
 

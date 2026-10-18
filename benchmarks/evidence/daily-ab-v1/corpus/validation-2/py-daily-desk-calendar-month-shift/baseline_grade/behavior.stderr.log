@@ -1,0 +1,19 @@
+test_month_end_and_negative_deltas (__main__.BehaviorTests.test_month_end_and_negative_deltas) ... ERROR
+test_types_and_year_rollover (__main__.BehaviorTests.test_types_and_year_rollover) ... ok
+
+======================================================================
+ERROR: test_month_end_and_negative_deltas (__main__.BehaviorTests.test_month_end_and_negative_deltas)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/daily-v1/corpus-validation-2/py-daily-desk-calendar-month-shift/baseline_grade/held_out.py", line 8, in test_month_end_and_negative_deltas
+    self.assertEqual(core.shift_month(date(2024,1,31),1), date(2024,2,29))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Memglide/.local/daily-v1/corpus-validation-2/py-daily-desk-calendar-month-shift/baseline/desk/calendar_month_shift.py", line 9, in shift_month
+    return date(year, month0 + 1, value.day)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: day is out of range for month
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (errors=1)

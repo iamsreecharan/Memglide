@@ -1,0 +1,1 @@
+{"summary":"Fixed all non-overlapping literal replacements, preserved needle whitespace and empty-needle rejection, and added regression coverage for literal characters, previews, batch order, and request immutability. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}
