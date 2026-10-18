@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-18T16:28:22.393662+00:00",
+  "status": "Official exact-model API pricing verified; actual per-task billing unavailable in this research.",
+  "pricing": {
+    "schema_version": 1,
+    "model": "gpt-6.1-sol",
+    "service_tier": "standard",
+    "currency": "USD",
+    "per_million_usd": {
+      "uncached_input": 2.0,
+      "cached_input": 0.1,
+      "cache_write_input": 2.5,
+      "output": 10.0
+    },
+    "context_threshold_tokens": 272000,
+    "context_threshold_comparison": ">",
+    "long_context_per_million_usd": {
+      "uncached_input": 4.0,
+      "cached_input": 0.2,
+      "cache_write_input": 5.0,
+      "output": 15.0
+    },
+    "context_threshold_scope": "Per model request, using full input. More than 272000 input tokens reprices the full request. Aggregate turn input is not one model request.",
+    "input_partition": "ordinary_input_tokens = total_input_tokens - cached_input_tokens - cache_write_input_tokens; ordinary, cache-read and cache-write prices are alternatives, not additive.",
+    "output_partition": "Reasoning output is already included in output_tokens and must not be added again.",
+    "estimate_kind": "API list-price-equivalent; not actual ChatGPT/Codex billing",
+    "retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+    "provenance": [
+      {
+        "url": "https://developers.openai.com/api/docs/pricing",
+        "final_url": "https://developers.openai.com/api/docs/pricing",
+        "retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+        "http_status": 200,
+        "body_bytes": 600758,
+        "body_sha256": "59379c0a6cb2bfaa7c696098e4073d7d95fa5da1f08b7b69bf4b2d61cfc6d059",
+        "reading_scope": "Official API pricing, flagship Standard/Batch/Flex/Fast/Ultrafast rows, regional footnote and tool billing notes; selected sections, not every model."
+      },
+      {
+        "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "final_url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "retrieved_at_utc": "2026-10-18T16:24:43.518218+00:00",
+        "http_status": 200,
+        "body_bytes": 454270,
+        "body_sha256": "9c43eeb7cc81f9b2bc1e992f1cdf5ba2a724a02171bf52ef1a6d052fcd30ae31",
+        "reading_scope": "Exact GPT-6.1 Sol model identity, pricing, >272K condition and tier multipliers; model main content reviewed."
+      },
+      {
+        "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+        "final_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+        "retrieved_at_utc": "2026-10-18T16:24:43.514846+00:00",
+        "http_status": 200,
+        "body_bytes": 776032,
+        "body_sha256": "777b3210fbc81cc3bbc604a483f930a55f13fbedba5ae5c8c960ca45e45d5dca",
+        "reading_scope": "Main caching guide, input partition, cache-write rates and usage fields, model comparison and cost calculation; selected sections, not every example."
+      }
+    ],
+    "tier_scenarios_relative_to_standard": {
+      "batch": 0.5,
+      "flex": 0.5,
+      "fast": 2.0,
+      "ultrafast": 6.0
+    },
+    "conditional_uplifts": {
+      "regional_processing_data_residency": 1.1,
+      "fedramp_endpoint": 1.1
+    },
+    "actual_billing_usd": null,
+    "native_usage_caveat": "Codex 0.159.2 JSONL reports cache_write_input_tokens, but its wire parser defaults a missing upstream cache_write_tokens field to zero. A reported zero does not prove upstream explicit zero.",
+    "cache_write_sensitivity": "Report native-reported W point estimate and an all-noncached-input-written sensitivity: set W = total_input_tokens - cached_input_tokens. This is a hypothetical upper scenario under the same tariff, not observed billing.",
+    "unknowns": [
+      "Actual account tariff, discounts and charges",
+      "Server-confirmed service tier and endpoint billing classification",
+      "Whether native-reported cache-write zero was explicit upstream zero or parser default",
+      "Local compute, hosting and any separately charged external-service costs"
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
+      "retrieved_at_utc": "2026-10-18T16:24:06.177213+00:00",
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "artifact": ".local/cost-v1/research/codex-chatgpt-help.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    },
+    {
+      "url": "https://developers.openai.com/codex/models",
+      "retrieved_at_utc": "2026-10-18T16:24:43.522067+00:00",
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "artifact": ".local/cost-v1/research/codex-models.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    },
+    {
+      "url": "https://developers.openai.com/codex/pricing",
+      "retrieved_at_utc": "2026-10-18T16:24:05.963259+00:00",
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "artifact": ".local/cost-v1/research/codex-pricing.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/usage",
+      "retrieved_at_utc": "2026-10-18T16:24:43.521030+00:00",
+      "status": 404,
+      "bytes": 9,
+      "sha256": "e3ebaa16dd9d9b9fc107c42183fb6cf9d22927e1af03dbbdfa0ccc38e4e4ac31",
+      "error_type": "HTTPError",
+      "artifact": ".local/cost-v1/research/costs.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "retrieved_at_utc": "2026-10-18T16:24:43.518218+00:00",
+      "status": 200,
+      "final_url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "bytes": 454270,
+      "sha256": "9c43eeb7cc81f9b2bc1e992f1cdf5ba2a724a02171bf52ef1a6d052fcd30ae31",
+      "artifact": ".local/cost-v1/research/gpt-6-1-sol.fetch.json",
+      "reading_scope": "Exact GPT-6.1 Sol model identity, pricing, >272K condition and tier multipliers; model main content reviewed."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/common.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:37.418903+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/common.rs",
+      "bytes": 14017,
+      "sha256": "1b01d4b2d7784c67e302b38d5b44aaa5ff733d8b575fb776cc4e2902ccb3a14c",
+      "artifact": ".local/cost-v1/research/installed-api-models.fetch.json",
+      "reading_scope": "Stored while locating parser; no claim of complete review."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/endpoint/responses.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:37.418199+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/endpoint/responses.rs",
+      "bytes": 4961,
+      "sha256": "4f2fff3da4ca3ca9fcfa40ada8e98a0229af296094e03febb4d823f32ef932c8",
+      "artifact": ".local/cost-v1/research/installed-api-responses.fetch.json",
+      "reading_scope": "Stored for request tracing; no claim of complete review."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/sse/responses.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:37.419969+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/sse/responses.rs",
+      "bytes": 69716,
+      "sha256": "6c7b6e9d121c03658954b759d5febf71667f673a9647bcd41f674fa7ecd63f65",
+      "artifact": ".local/cost-v1/research/installed-api-sse.fetch.json",
+      "reading_scope": "ResponseCompletedUsage/InputTokensDetails definitions and mapping lines 112–155, and cache-write usage test lines 799–823."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/docs/authentication.md",
+      "retrieved_at_utc": "2026-10-18T16:25:54.301433+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/docs/authentication.md",
+      "bytes": 134,
+      "sha256": "3fe4a065894ac5c1c212432a2c35b9e16a39a79377ea4c9521122a28ae0f7aef",
+      "artifact": ".local/cost-v1/research/installed-auth-doc.fetch.json",
+      "reading_scope": "Entire short pinned authentication redirect document."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/config/mod.rs",
+      "retrieved_at_utc": "2026-10-18T16:25:23.588593+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/config/mod.rs",
+      "bytes": 199711,
+      "sha256": "df6d6871a35a9e365e36beb3d388c2c39cae59d95bd84834321c8501390ec397",
+      "artifact": ".local/cost-v1/research/installed-config-mod.fetch.json",
+      "reading_scope": "Config service tier field, lines 624–626; override/sentinel preservation, lines 3957–3968."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/config_types.rs",
+      "retrieved_at_utc": "2026-10-18T16:25:23.590061+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/config_types.rs",
+      "bytes": 31651,
+      "sha256": "ce9b26223db7cc4b5cf474e571e4509e8cc52536e159510f153f94de0fcd37e8",
+      "artifact": ".local/cost-v1/research/installed-config-types.fetch.json",
+      "reading_scope": "ServiceTier enum and explicit standard-routing sentinel, lines 525–553."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/exec_events.rs",
+      "retrieved_at_utc": "2026-10-18T16:25:23.593807+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/exec_events.rs",
+      "bytes": 10713,
+      "sha256": "dafa872d7e86a099e56e28a329dcb9c03db90ed768c3b88cca8c91d46dc1d0e5",
+      "artifact": ".local/cost-v1/research/installed-events.fetch.json",
+      "reading_scope": "Entire JSONL event definitions, especially Usage lines 59–73."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_json.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:20.810670+00:00",
+      "status": 404,
+      "bytes": 14,
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "error_type": "HTTPError",
+      "artifact": ".local/cost-v1/research/installed-exec-json-short.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_with_json_output.rs",
+      "retrieved_at_utc": "2026-10-18T16:25:23.595870+00:00",
+      "status": 404,
+      "bytes": 14,
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "error_type": "HTTPError",
+      "artifact": ".local/cost-v1/research/installed-exec-json.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:37.417224+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
+      "bytes": 27168,
+      "sha256": "bc296541b385f9b4ca2c28cc638e25a8d6b1332b2cd67f5a03eaa97a3d612b19",
+      "artifact": ".local/cost-v1/research/installed-exec-jsonl.fetch.json",
+      "reading_scope": "Usage mapping lines 118–128; selected function, not entire file."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/lib.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:20.809520+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/lib.rs",
+      "bytes": 86172,
+      "sha256": "48be5b8d89283f1fe338682d634ea3e73847ef1eb7c7626ca801002980527de1",
+      "artifact": ".local/cost-v1/research/installed-exec-lib.fetch.json",
+      "reading_scope": "Module declarations used to locate JSONL producer; no unrelated full-file review."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client_common.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:20.812535+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client_common.rs",
+      "bytes": 4820,
+      "sha256": "0125e520f71798e6c31a1d0147934c0d90288ab9cc4bfce6e8374ac587f2b43a",
+      "artifact": ".local/cost-v1/research/installed-model-core.fetch.json",
+      "reading_scope": "Stored while locating parser; no claim of complete review."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/openai_models.rs",
+      "retrieved_at_utc": "2026-10-18T16:25:23.592186+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/openai_models.rs",
+      "bytes": 76868,
+      "sha256": "4c8b5cafd8c55db269f669e352321f787fcaf83785bce4476cb887abfce75dc6",
+      "artifact": ".local/cost-v1/research/installed-models.fetch.json",
+      "reading_scope": "Service tier validation/serialization, lines 990–1005 and tests 1959–2009."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/protocol.rs",
+      "retrieved_at_utc": "2026-10-18T16:26:20.811512+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/protocol.rs",
+      "bytes": 234299,
+      "sha256": "d3d3d384da91b2824c10091de4331a2bc26ec5474887ed0aef1e3f3c4ae110f4",
+      "artifact": ".local/cost-v1/research/installed-protocol.fetch.json",
+      "reading_scope": "TokenUsage fields lines 2240–2259 and aggregation fields lines 2467–2473."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/README.md",
+      "retrieved_at_utc": "2026-10-18T16:25:54.298601+00:00",
+      "status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/README.md",
+      "bytes": 3334,
+      "sha256": "ba4e1f69ff48386e72a9c5e1edaf76aad64a475c2d51af79ccba6d1128261ba7",
+      "artifact": ".local/cost-v1/research/installed-readme.fetch.json",
+      "reading_scope": "Entire pinned README, especially separate ChatGPT-plan and API-key authentication options."
+    },
+    {
+      "url": "https://openai.com/api/pricing/",
+      "retrieved_at_utc": "2026-10-18T16:24:05.740286+00:00",
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "artifact": ".local/cost-v1/research/openai-api-pricing.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+      "status": 200,
+      "final_url": "https://developers.openai.com/api/docs/pricing",
+      "bytes": 600758,
+      "sha256": "59379c0a6cb2bfaa7c696098e4073d7d95fa5da1f08b7b69bf4b2d61cfc6d059",
+      "artifact": ".local/cost-v1/research/platform-pricing.fetch.json",
+      "reading_scope": "Official API pricing, flagship Standard/Batch/Flex/Fast/Ultrafast rows, regional footnote and tool billing notes; selected sections, not every model."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "retrieved_at_utc": "2026-10-18T16:24:43.514846+00:00",
+      "status": 200,
+      "final_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "bytes": 776032,
+      "sha256": "777b3210fbc81cc3bbc604a483f930a55f13fbedba5ae5c8c960ca45e45d5dca",
+      "artifact": ".local/cost-v1/research/prompt-caching.fetch.json",
+      "reading_scope": "Main caching guide, input partition, cache-write rates and usage fields, model comparison and cost calculation; selected sections, not every example."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/api-reference/usage/costs",
+      "retrieved_at_utc": "2026-10-18T16:25:54.302737+00:00",
+      "status": 200,
+      "final_url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/usage/methods/costs",
+      "bytes": 994690,
+      "sha256": "a34e4e1741993c4585925adddc7b25c42e4df4a4e841e8f1c5fa665a12a7f36b",
+      "artifact": ".local/cost-v1/research/usage-api-oldpath.fetch.json",
+      "reading_scope": "Organization costs endpoint, groupings, monetary amount object and Admin-key request example; selected sections."
+    },
+    {
+      "url": "https://developers.openai.com/api/reference/resources/organization/subresources/costs/methods/retrieve",
+      "retrieved_at_utc": "2026-10-18T16:25:54.302082+00:00",
+      "status": 404,
+      "bytes": 9,
+      "sha256": "e3ebaa16dd9d9b9fc107c42183fb6cf9d22927e1af03dbbdfa0ccc38e4e4ac31",
+      "error_type": "HTTPError",
+      "artifact": ".local/cost-v1/research/usage-api.fetch.json",
+      "reading_scope": "No content read: access attempt failed or URL not found."
+    }
+  ],
+  "native_cli": {
+    "version_observed": "codex-cli 0.159.2",
+    "pinned_commit": "ff6aec96948b70d94983af2641a6b67c94faeff5",
+    "tag": "rust-v0.159.2",
+    "explicit_standard_routing_config": "service_tier=\"default\"",
+    "source_citations": [
+      {
+        "source": "installed-config-types",
+        "lines": [
+          533,
+          537
+        ],
+        "finding": "default is the explicit standard-routing sentinel that prevents model catalog defaults."
+      },
+      {
+        "source": "installed-config-mod",
+        "lines": [
+          3957,
+          3968
+        ],
+        "finding": "The config override preserves the explicit default sentinel."
+      },
+      {
+        "source": "installed-models",
+        "lines": [
+          1000,
+          1004
+        ],
+        "finding": "The sentinel is intentionally omitted from the outbound service tier field."
+      },
+      {
+        "source": "installed-events",
+        "lines": [
+          59,
+          73
+        ],
+        "finding": "JSONL Usage defines input, cached input, cache-write input, output and reasoning output."
+      },
+      {
+        "source": "installed-exec-jsonl",
+        "lines": [
+          118,
+          128
+        ],
+        "finding": "JSONL copies accumulated token usage without adding billing data."
+      },
+      {
+        "source": "installed-api-sse",
+        "lines": [
+          128,
+          150
+        ],
+        "finding": "Wire response usage maps cached and cache-write counts; omitted cache-write count defaults to zero."
+      },
+      {
+        "source": "installed-api-sse",
+        "lines": [
+          799,
+          823
+        ],
+        "finding": "Unit example maps output10/reasoning5/total110 for input100, confirming reasoning is within output."
+      }
+    ]
+  },
+  "cost_formulas": {
+    "reported_price_equivalent_usd": "((I-C-W)*2 + C*0.1 + W*2.5 + O*10) / 1000000",
+    "possible_unreported_write_upper_scenario_usd": "((I-C)*2.5 + C*0.1 + O*10) / 1000000",
+    "cost_per_success": "Sum costs of all attempted runs, including failed runs, divided by number of independently successful tasks. Undefined if success count is zero. Incomplete usage means incomplete cost.",
+    "savings_percent": "100 * (1 - B_cost_per_success / A_cost_per_success)",
+    "independent_write_uncertainty_savings_interval": "[100*(1-B_upper_per_success/A_lower_per_success), 100*(1-B_lower_per_success/A_upper_per_success)]"
+  },
+  "actual_billing": {
+    "available": false,
+    "usd": null,
+    "reason": "Research accessed public documentation and local non-secret CLI/source definitions only. No per-run provider bill, invoice, Admin Costs API result or tariff-specific account ledger was available. Subscription access and API list prices are distinct.",
+    "official_documentation": "Pinned official Codex README describes ChatGPT-plan sign-in separately from API-key setup. Organization Costs API exposes aggregated currency/value by time bucket and optional project/API-key/line-item groupings; it is not automatic per-Codex-task subscription billing."
+  },
+  "research_limits": [
+    "No model requests, logins, credential reads or billing API calls were made by this pricing research.",
+    "The primary OpenAI marketing pricing URL and Codex pricing/help pages failed with proxy403; failures retained. Reachable official API docs and immutable official Codex source corroborate exact-model rates and client behavior.",
+    "Public rates were retrieved on 2026-10-18; this records observed documentation rather than a guarantee of account-specific pricing.",
+    "No model alias was mapped to a differently priced model.",
+    "No actual savings conclusion is asserted before matched run outcomes are measured."
+  ]
+}

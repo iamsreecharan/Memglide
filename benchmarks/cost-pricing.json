@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "model": "gpt-6.1-sol",
+  "service_tier": "standard",
+  "currency": "USD",
+  "per_million_usd": {
+    "uncached_input": 2.0,
+    "cached_input": 0.1,
+    "cache_write_input": 2.5,
+    "output": 10.0
+  },
+  "context_threshold_tokens": 272000,
+  "context_threshold_comparison": ">",
+  "long_context_per_million_usd": {
+    "uncached_input": 4.0,
+    "cached_input": 0.2,
+    "cache_write_input": 5.0,
+    "output": 15.0
+  },
+  "context_threshold_scope": "Per model request, using full input. More than 272000 input tokens reprices the full request. Aggregate turn input is not one model request.",
+  "input_partition": "ordinary_input_tokens = total_input_tokens - cached_input_tokens - cache_write_input_tokens; ordinary, cache-read and cache-write prices are alternatives, not additive.",
+  "output_partition": "Reasoning output is already included in output_tokens and must not be added again.",
+  "estimate_kind": "API list-price-equivalent; not actual ChatGPT/Codex billing",
+  "retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+  "provenance": [
+    {
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "final_url": "https://developers.openai.com/api/docs/pricing",
+      "retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+      "http_status": 200,
+      "body_bytes": 600758,
+      "body_sha256": "59379c0a6cb2bfaa7c696098e4073d7d95fa5da1f08b7b69bf4b2d61cfc6d059",
+      "reading_scope": "Official API pricing, flagship Standard/Batch/Flex/Fast/Ultrafast rows, regional footnote and tool billing notes; selected sections, not every model."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "final_url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "retrieved_at_utc": "2026-10-18T16:24:43.518218+00:00",
+      "http_status": 200,
+      "body_bytes": 454270,
+      "body_sha256": "9c43eeb7cc81f9b2bc1e992f1cdf5ba2a724a02171bf52ef1a6d052fcd30ae31",
+      "reading_scope": "Exact GPT-6.1 Sol model identity, pricing, >272K condition and tier multipliers; model main content reviewed."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "final_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "retrieved_at_utc": "2026-10-18T16:24:43.514846+00:00",
+      "http_status": 200,
+      "body_bytes": 776032,
+      "body_sha256": "777b3210fbc81cc3bbc604a483f930a55f13fbedba5ae5c8c960ca45e45d5dca",
+      "reading_scope": "Main caching guide, input partition, cache-write rates and usage fields, model comparison and cost calculation; selected sections, not every example."
+    }
+  ],
+  "tier_scenarios_relative_to_standard": {
+    "batch": 0.5,
+    "flex": 0.5,
+    "fast": 2.0,
+    "ultrafast": 6.0
+  },
+  "conditional_uplifts": {
+    "regional_processing_data_residency": 1.1,
+    "fedramp_endpoint": 1.1
+  },
+  "actual_billing_usd": null,
+  "native_usage_caveat": "Codex 0.159.2 JSONL reports cache_write_input_tokens, but its wire parser defaults a missing upstream cache_write_tokens field to zero. A reported zero does not prove upstream explicit zero.",
+  "cache_write_sensitivity": "Report native-reported W point estimate and an all-noncached-input-written sensitivity: set W = total_input_tokens - cached_input_tokens. This is a hypothetical upper scenario under the same tariff, not observed billing.",
+  "unknowns": [
+    "Actual account tariff, discounts and charges",
+    "Server-confirmed service tier and endpoint billing classification",
+    "Whether native-reported cache-write zero was explicit upstream zero or parser default",
+    "Local compute, hosting and any separately charged external-service costs"
+  ]
+}
