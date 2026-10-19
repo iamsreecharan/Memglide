@@ -40,18 +40,27 @@ CREATE TABLE IF NOT EXISTS projects(id TEXT PRIMARY KEY, path TEXT UNIQUE NOT NU
 CREATE TABLE IF NOT EXISTS files(id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE, path TEXT NOT NULL, hash TEXT NOT NULL, language TEXT NOT NULL, size INTEGER NOT NULL, mtime REAL NOT NULL, structural INTEGER NOT NULL DEFAULT 0, parse_error TEXT, indexed_at REAL NOT NULL, UNIQUE(project_id,path));
 CREATE TABLE IF NOT EXISTS symbols(id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE, file_id TEXT NOT NULL REFERENCES files(id) ON DELETE CASCADE, path TEXT NOT NULL, name TEXT NOT NULL, qualified_name TEXT NOT NULL, kind TEXT NOT NULL, signature TEXT NOT NULL, start_line INTEGER NOT NULL, end_line INTEGER NOT NULL, exported INTEGER NOT NULL DEFAULT 0);
 CREATE INDEX IF NOT EXISTS symbols_names ON symbols(project_id,name);
+CREATE INDEX IF NOT EXISTS symbol_files ON symbols(file_id);
 CREATE TABLE IF NOT EXISTS dependencies(id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE, source_file TEXT NOT NULL, source_symbol TEXT, target_file TEXT, target_symbol TEXT, kind TEXT NOT NULL, reference TEXT NOT NULL, resolved INTEGER NOT NULL DEFAULT 0);
 CREATE INDEX IF NOT EXISTS dependency_sources ON dependencies(project_id,source_file);
 CREATE INDEX IF NOT EXISTS dependency_targets ON dependencies(project_id,target_file);
 CREATE VIRTUAL TABLE IF NOT EXISTS file_search USING fts5(project_id UNINDEXED,path,identifiers,content,tokenize='unicode61');
 CREATE TABLE IF NOT EXISTS sessions(id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE, task TEXT NOT NULL, created_at REAL NOT NULL, last_activity REAL NOT NULL, expires_at REAL NOT NULL, absolute_expires_at REAL NOT NULL, ended_at REAL);
 CREATE INDEX IF NOT EXISTS sessions_expiry ON sessions(expires_at);
+CREATE INDEX IF NOT EXISTS session_projects ON sessions(project_id,created_at DESC,id);
 CREATE TABLE IF NOT EXISTS memories(id TEXT PRIMARY KEY, session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE, category TEXT NOT NULL, content TEXT NOT NULL, provenance TEXT NOT NULL, created_at REAL NOT NULL, updated_at REAL NOT NULL, stale INTEGER NOT NULL DEFAULT 0, fingerprint TEXT NOT NULL, UNIQUE(session_id,fingerprint));
 CREATE TABLE IF NOT EXISTS memory_sources(memory_id TEXT NOT NULL REFERENCES memories(id) ON DELETE CASCADE, path TEXT NOT NULL, hash TEXT NOT NULL, PRIMARY KEY(memory_id,path));
+CREATE INDEX IF NOT EXISTS memory_source_paths ON memory_sources(path,memory_id);
 CREATE TABLE IF NOT EXISTS retrievals(id TEXT PRIMARY KEY, session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE, project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE, query TEXT NOT NULL, level INTEGER NOT NULL, budget INTEGER NOT NULL, estimated_tokens INTEGER NOT NULL, created_at REAL NOT NULL, result_json TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS retrieval_sessions ON retrievals(session_id);
+CREATE INDEX IF NOT EXISTS retrieval_projects ON retrievals(project_id);
+CREATE INDEX IF NOT EXISTS retrieval_created ON retrievals(created_at);
 CREATE TABLE IF NOT EXISTS passports(retrieval_id TEXT PRIMARY KEY REFERENCES retrievals(id) ON DELETE CASCADE, session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE, data TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS passport_sessions ON passports(session_id);
 CREATE TABLE IF NOT EXISTS events(id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE, session_id TEXT REFERENCES sessions(id) ON DELETE CASCADE, type TEXT NOT NULL, detail TEXT NOT NULL, created_at REAL NOT NULL);
 CREATE INDEX IF NOT EXISTS event_sessions ON events(session_id,created_at);
+CREATE INDEX IF NOT EXISTS event_projects ON events(project_id,created_at);
+CREATE INDEX IF NOT EXISTS event_created ON events(created_at);
 CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY,value TEXT NOT NULL);
 """
 

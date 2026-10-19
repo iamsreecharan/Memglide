@@ -160,12 +160,35 @@ def test_actual_sdk_arguments_override_unverified_supplied_settings(tmp_path):
                 {"name": name, "artifact": str(path), "wall_seconds": 0.1}
             )
     new["probe_identity"]["retrieval_requests"][0]["budget"] = 9999
-    report = compare_reports(_report(old), _report(new))
+    report = compare_reports(_report(old), _report(new), artifact_base=tmp_path)
     assert report["comparison_valid"]
     identity = report["paired_results"][0]["candidate_identity"]
     assert identity["settings_evidence"] == "retained_actual_sdk_arguments"
     assert identity["retrieval_requests"][0]["budget"] == 8000
     assert identity["session_task"] == "actual prompt"
+
+
+@pytest.mark.parametrize("symlink", [False, True])
+def test_artifact_pointers_outside_declared_root_cannot_override_settings(tmp_path, symlink):
+    inside = tmp_path / "allowed"
+    inside.mkdir()
+    outside = tmp_path / "outside.json"
+    outside.write_text(
+        json.dumps({"arguments": {"query": "untrusted", "level": 2, "budget": 1234}})
+    )
+    pointer = outside
+    if symlink:
+        pointer = inside / "escape.json"
+        pointer.symlink_to(outside)
+    old, new = _result(), _result()
+    for result in (old, new):
+        result["mcp_calls"] = [{"name": "get_context", "artifact": str(pointer)}]
+    new["probe_identity"]["retrieval_requests"][0]["budget"] = 9999
+    report = compare_reports(_report(old), _report(new), artifact_base=inside)
+    assert not report["comparison_valid"]
+    assert report["paired_results"][0]["candidate_identity"]["settings_evidence"] == (
+        "explicit_harness_identity"
+    )
 
 
 def test_source_version_is_never_inferred_from_current_checkout():

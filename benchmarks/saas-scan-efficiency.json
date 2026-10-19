@@ -1,0 +1,282 @@
+{
+  "fixture": {
+    "files": 40,
+    "source_bytes": 20971520,
+    "repeats_per_arm": 10,
+    "alternating_order": true,
+    "secure_full_scan_both_arms": true,
+    "os_cache_controlled": false,
+    "tracemalloc_enabled_both_arms": true
+  },
+  "baseline": "Current _scan with default complete-source retention",
+  "candidate": "Same scanner with known_hashes: releases live-verified unchanged bodies",
+  "summary": {
+    "baseline": {
+      "runs": 10,
+      "wall_seconds_mean": 3.974533600099676,
+      "wall_seconds_median": 3.6373496944979706,
+      "wall_seconds_total": 39.74533600099676,
+      "process_cpu_seconds_mean": 3.7652761349999992,
+      "process_cpu_seconds_median": 3.525154090500001,
+      "process_cpu_seconds_total": 37.65276134999999,
+      "tracemalloc_peak_bytes_mean": 21525591.2,
+      "tracemalloc_peak_bytes_median": 21525552.0,
+      "tracemalloc_peak_bytes_total": 215255912,
+      "retained_source_bytes_mean": 20971520,
+      "retained_source_bytes_median": 20971520.0,
+      "retained_source_bytes_total": 209715200,
+      "secure_source_reads_mean": 40,
+      "secure_source_reads_median": 40.0,
+      "secure_source_reads_total": 400
+    },
+    "candidate": {
+      "runs": 10,
+      "wall_seconds_mean": 3.6663819298992166,
+      "wall_seconds_median": 3.334262755000964,
+      "wall_seconds_total": 36.663819298992166,
+      "process_cpu_seconds_mean": 3.4997554836999982,
+      "process_cpu_seconds_median": 3.2208046344999985,
+      "process_cpu_seconds_total": 34.99755483699998,
+      "tracemalloc_peak_bytes_mean": 1601118.8,
+      "tracemalloc_peak_bytes_median": 1601106.0,
+      "tracemalloc_peak_bytes_total": 16011188,
+      "retained_source_bytes_mean": 0,
+      "retained_source_bytes_median": 0.0,
+      "retained_source_bytes_total": 0,
+      "secure_source_reads_mean": 40,
+      "secure_source_reads_median": 40.0,
+      "secure_source_reads_total": 400
+    },
+    "relative_change_percent": {
+      "wall_seconds_mean": -7.753152978571654,
+      "process_cpu_seconds_mean": -7.051824136664575,
+      "tracemalloc_peak_bytes_mean": -92.56178942950473,
+      "retained_source_bytes_mean": -100.0,
+      "secure_source_reads_mean": 0.0
+    }
+  },
+  "all_source_hash_outputs_equal": true,
+  "runs": [
+    {
+      "repeat": 1,
+      "arm": "baseline",
+      "wall_seconds": 6.828489601000911,
+      "process_cpu_seconds": 5.724621713,
+      "tracemalloc_peak_bytes": 21525976,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 1,
+      "arm": "candidate",
+      "wall_seconds": 6.374052009996376,
+      "process_cpu_seconds": 6.335249542,
+      "tracemalloc_peak_bytes": 1601258,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 2,
+      "arm": "candidate",
+      "wall_seconds": 5.6281295669978135,
+      "process_cpu_seconds": 4.660087119999998,
+      "tracemalloc_peak_bytes": 1601242,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 2,
+      "arm": "baseline",
+      "wall_seconds": 5.141189046000363,
+      "process_cpu_seconds": 4.7808045539999995,
+      "tracemalloc_peak_bytes": 21525672,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 3,
+      "arm": "baseline",
+      "wall_seconds": 4.7782778369946755,
+      "process_cpu_seconds": 4.567009375999998,
+      "tracemalloc_peak_bytes": 21525656,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 3,
+      "arm": "candidate",
+      "wall_seconds": 3.884506827998848,
+      "process_cpu_seconds": 3.828780322,
+      "tracemalloc_peak_bytes": 1601186,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 4,
+      "arm": "candidate",
+      "wall_seconds": 4.505685375996109,
+      "process_cpu_seconds": 4.1975802010000045,
+      "tracemalloc_peak_bytes": 1601170,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 4,
+      "arm": "baseline",
+      "wall_seconds": 5.128057707996049,
+      "process_cpu_seconds": 5.017137715000004,
+      "tracemalloc_peak_bytes": 21525592,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 5,
+      "arm": "baseline",
+      "wall_seconds": 5.936737285999698,
+      "process_cpu_seconds": 5.649360813000001,
+      "tracemalloc_peak_bytes": 21525576,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 5,
+      "arm": "candidate",
+      "wall_seconds": 3.8451160460026585,
+      "process_cpu_seconds": 3.620892335999997,
+      "tracemalloc_peak_bytes": 1601114,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 6,
+      "arm": "candidate",
+      "wall_seconds": 2.4210004870037665,
+      "process_cpu_seconds": 2.3645634429999944,
+      "tracemalloc_peak_bytes": 1601098,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 6,
+      "arm": "baseline",
+      "wall_seconds": 2.496421552001266,
+      "process_cpu_seconds": 2.483298805000004,
+      "tracemalloc_peak_bytes": 21525528,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 7,
+      "arm": "baseline",
+      "wall_seconds": 2.3829722970040166,
+      "process_cpu_seconds": 2.3828394789999976,
+      "tracemalloc_peak_bytes": 21525512,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 7,
+      "arm": "candidate",
+      "wall_seconds": 2.410907669000153,
+      "process_cpu_seconds": 2.4104528140000028,
+      "tracemalloc_peak_bytes": 1601050,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 8,
+      "arm": "candidate",
+      "wall_seconds": 2.3480554970010417,
+      "process_cpu_seconds": 2.3365124409999964,
+      "tracemalloc_peak_bytes": 1601042,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 8,
+      "arm": "baseline",
+      "wall_seconds": 2.3405624579972937,
+      "process_cpu_seconds": 2.336187934999991,
+      "tracemalloc_peak_bytes": 21525480,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 9,
+      "arm": "baseline",
+      "wall_seconds": 2.3507400680027786,
+      "process_cpu_seconds": 2.3507189900000043,
+      "tracemalloc_peak_bytes": 21525472,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 9,
+      "arm": "candidate",
+      "wall_seconds": 2.823409463999269,
+      "process_cpu_seconds": 2.820716933,
+      "tracemalloc_peak_bytes": 1601018,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 10,
+      "arm": "candidate",
+      "wall_seconds": 2.4229563549961313,
+      "process_cpu_seconds": 2.42271968499999,
+      "tracemalloc_peak_bytes": 1601010,
+      "retained_source_bytes": 0,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    },
+    {
+      "repeat": 10,
+      "arm": "baseline",
+      "wall_seconds": 2.361888147999707,
+      "process_cpu_seconds": 2.360781969999991,
+      "tracemalloc_peak_bytes": 21525448,
+      "retained_source_bytes": 20971520,
+      "source_manifest_sha256": "692a7e68403fe91ae9b086fe13e6321996ebb5b240cfa576481c894a29bb13b2",
+      "secure_source_reads": 40
+    }
+  ],
+  "version": 1,
+  "generated_at": "2026-10-19T05:05:00.578986+00:00",
+  "component": "scan",
+  "provenance": {
+    "baseline_ref": "6de6f150aaa90fba14e49439723a8139c03217eb",
+    "baseline_source_path": "src/memglide/core/indexer.py",
+    "baseline_source_sha256": "7c49242c79ee0b1f3aa1cc03c066f863de1727c91c3be7768c61201ace5d99c6",
+    "candidate_source_path": "src/memglide/core/indexer.py",
+    "candidate_source_sha256": "ab97faacfccd032e8dfae73ee526ad0952f877b646bb8c061466b14e270cf5ad",
+    "helper_sha256": "d469935124d19287ab92c4c1078918c692efa8007188b6d58c0b85f06204825c"
+  },
+  "model_requests": 0,
+  "model_tokens": null,
+  "model_cost": null,
+  "model_latency_seconds": null,
+  "actual_billing": null,
+  "measurement_limitations": [
+    "Host load and operating-system cache were uncontrolled.",
+    "Graph and scan component probes briefly overlapped; absolute timings must not be pooled across cohorts.",
+    "Point component observations are not native agent latency, actual model billing, or SaaS throughput."
+  ]
+}

@@ -71,6 +71,23 @@ settings and MCP registrations are preserved. See the [architecture and research
 limits](docs/daily-architecture.md) and [matched experiment protocol](benchmarks/daily-protocol.md);
 preparation alone does not establish a token, speed or cost benefit.
 
+## Local efficiency and warm-memory evaluation
+
+The [latest local-efficiency assessment](benchmarks/saas-efficiency-assessment.md)
+records less graph/SQLite work, lower unchanged-scan Python allocation and leaner
+watcher/dashboard bookkeeping. Complete live source reads and freshness checks
+remain enforced. These component measurements do not establish new model-token,
+billed-cost or native-task speed savings. See the
+[product architecture](docs/product-efficiency-architecture.md) and
+[primary-source research](benchmarks/saas-efficiency-research.md).
+
+The optional [memory preparation API](docs/memory-preload.md) supplies explicitly
+selected, current source-backed findings from one still-active Memglide session
+to a fresh agent process. It does not transfer memory into a new Memglide session
+or restore ended/expired sessions. Source-only launcher defaults are unchanged.
+The related-task native comparison is being prepared separately; no warm-memory
+benefit is established yet.
+
 ## Verify and develop
 
 ```sh

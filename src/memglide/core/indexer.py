@@ -35,6 +35,10 @@ MAX_INDEXED_FILES = 20_000
 MAX_INDEX_BYTES = 100 * 1024 * 1024
 FTS_QUERY_BATCH_SIZE = 64
 MAX_FTS_RANK_TERMS = 32
+# Bump when static graph resolution semantics change. Persisting this separately
+# from the lexical index lets older databases refresh once without rebuilding an
+# identical graph on every synchronous search or watcher poll.
+GRAPH_RESOLUTION_VERSION = 1
 
 
 def _identifier(*parts: str) -> str:
@@ -209,8 +213,18 @@ class Indexer:
         return {"project_id": project_id, "removed": True, "source_deleted": False}
 
     def _scan(
-        self, root: Path, settings: dict[str, Any]
+        self,
+        root: Path,
+        settings: dict[str, Any],
+        *,
+        known_hashes: dict[str, str] | None = None,
     ) -> tuple[dict[str, tuple[str, str]], list[dict[str, str]], list[dict[str, str]]]:
+        """Securely read every eligible source, retaining only needed bodies.
+
+        Existing hashes never avoid a read or establish freshness themselves.
+        They only allow an unchanged body to be released after live validation
+        and byte accounting. Default callers still receive complete source.
+        """
         sources: dict[str, tuple[str, str]] = {}
         ignored: list[dict[str, str]] = []
         errors: list[dict[str, str]] = []
@@ -324,8 +338,12 @@ class Indexer:
                         if len(ignored) < 1000:
                             ignored.append({"path": relative, "reason": "index resource limit"})
                         continue
-                    sources[relative] = pair
                     total_bytes += size
+                    sources[relative] = (
+                        ("", pair[1])
+                        if known_hashes is not None and known_hashes.get(relative) == pair[1]
+                        else pair
+                    )
                 except DomainError as exc:
                     if len(ignored) < 1000:
                         ignored.append({"path": relative, "reason": str(exc)})
@@ -345,19 +363,27 @@ class Indexer:
                     "Registered repository is unavailable or no longer canonical"
                 ) from exc
             settings = self.db.settings()
-            sources, ignored, errors = self._scan(root, settings)
             existing = {
                 row["path"]: row
                 for row in self.db.rows("SELECT * FROM files WHERE project_id=?", (project_id,))
             }
+            sources, ignored, errors = self._scan(
+                root,
+                settings,
+                known_hashes=None if full else {path: row["hash"] for path, row in existing.items()},
+            )
             changed = {
                 p: pair
                 for p, pair in sources.items()
                 if full or p not in existing or existing[p]["hash"] != pair[1]
             }
             removed = set(existing) - set(sources)
-            refresh_search = (
-                json.loads(project["index_stats"]).get("search_index_version") != INDEX_VERSION
+            previous_stats = json.loads(project["index_stats"])
+            refresh_search = previous_stats.get("search_index_version") != INDEX_VERSION
+            refresh_graph = (
+                bool(changed or removed)
+                or full
+                or previous_stats.get("graph_resolution_version") != GRAPH_RESOLUTION_VERSION
             )
             parsed = parse_sources({path: content for path, (content, _) in changed.items()})
             for path, result in parsed.items():
@@ -487,7 +513,13 @@ class Indexer:
                             "UPDATE file_search SET identifiers=? WHERE project_id=? AND path=?",
                             (" ".join(identifiers.get(path, [])), project_id, path),
                         )
-                self._resolve(conn, project_id)
+                # A complete live scan still establishes the source set and
+                # hashes above. If none changed, persisted symbols and edges are
+                # identical; rewriting all graph targets would add only work.
+                # A version mismatch refreshes legacy state and future resolver
+                # migrations even when the source bytes are unchanged.
+                if refresh_graph:
+                    self._resolve(conn, project_id)
                 modified = {
                     p for p in changed if p in existing and sources[p][1] != existing[p]["hash"]
                 } | removed
@@ -515,6 +547,7 @@ class Indexer:
                     "file_count": file_count,
                     "symbol_count": symbol_count,
                     "search_index_version": INDEX_VERSION,
+                    "graph_resolution_version": GRAPH_RESOLUTION_VERSION,
                     "search_index_refreshed": (
                         len(sources) - len(changed) if refresh_search else 0
                     ),

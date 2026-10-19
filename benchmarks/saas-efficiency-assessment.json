@@ -1,0 +1,604 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-19T05:08:38.061711+00:00",
+  "title": "Memglide local efficiency and product architecture assessment",
+  "scope": "New local component changes and optional SaaS architecture recommendation; not hosted readiness or a new native coding A/B outcome",
+  "source_state": {
+    "baseline_git_ref": "6de6f150aaa90fba14e49439723a8139c03217eb",
+    "candidate_status": "Engineering checks passed; native warm study pending",
+    "changed_application_paths": [
+      "src/memglide/core/indexer.py",
+      "src/memglide/core/watcher.py",
+      "src/memglide/service.py",
+      "src/memglide/storage/database.py"
+    ],
+    "model_facing_source_formats_changed_by_these_four_changes": false,
+    "optional_new_application_paths": [
+      "src/memglide/integrations/memory_preload.py"
+    ],
+    "application_source_tree_sha256": "d9f6134754776f04624e91fe0d35430896a0ae8134fbfc0cb7dc287bfb9431f7"
+  },
+  "architecture": {
+    "implemented_local_changes": [
+      "Resolve graph only when eligible source set/content, explicit-full request or resolver version requires it",
+      "Release securely re-read unchanged source bodies after live hash comparison and byte accounting",
+      "Read bounded watcher scheduling fields and avoid duplicate event/poll work; preserve worker identity during slow shutdown",
+      "Reuse dashboard session list and fetch only displayed event count",
+      "Add nine nonredundant relational query/foreign-key indexes without rewriting application records"
+    ],
+    "local_data_plane": "Repository approval, secure scanner, SQLite/FTS5, lexical/symbol retrieval, live freshness, bounded evidence, temporary provenance-bearing memory",
+    "optional_future_control_plane": [
+      "Accounts",
+      "Organizations",
+      "Entitlements",
+      "Release channels",
+      "Explicit policy configuration"
+    ],
+    "hosted_authentication_tenancy_tls_billing_recovery_implemented_or_validated": false,
+    "default_data_uploads_introduced": false,
+    "foreground_complete_live_source_refresh_preserved": true,
+    "background_reconciliation_configured_seconds": 5,
+    "background_interval_note": "Periodic interval follows each completed attempt; scan time and contention can extend start-to-start lag. No maximum freshness SLA established.",
+    "support_file_preload_promoted": false,
+    "default_source_only_preserved": true,
+    "new_selector_model_embedding_vector_or_graph_service_added": false
+  },
+  "research": {
+    "verified_primary_source_count": 6,
+    "sources": [
+      {
+        "key": "sqlite_wal_lock",
+        "url": "https://raw.githubusercontent.com/sqlite/sqlite/master/doc/wal-lock.md",
+        "status": 200,
+        "sha256": "ff2e417755f4d9b07c968bd30f55adf2551f7b4ebd1276fe4c9c0a9d0b0dc3d2",
+        "reading_scope": "Full short document; blocking-lock compile requirements, writer/read upgrade and checkpoint cases."
+      },
+      {
+        "key": "sqlite_fts5_main",
+        "url": "https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_main.c",
+        "status": 200,
+        "sha256": "01031dbcfc4bb818abb037be9476b95f6826f6c8be0b9f93df89854c2c108df5",
+        "reading_scope": "Selected lines 538-750, xBestIndex supported constraints, rowid/MATCH alternatives and planner-cost caveats."
+      },
+      {
+        "key": "ripgrep_guide",
+        "url": "https://raw.githubusercontent.com/BurntSushi/ripgrep/master/GUIDE.md",
+        "status": 200,
+        "sha256": "156337b59d9813beadc8f7489e9e86da9eec2c09e755e6baa31ec2c40c7e77eb",
+        "reading_scope": "Selected lines 174-255 (Automatic filtering) and 710-755 (Binary data); not whole guide."
+      },
+      {
+        "key": "vscode_watcher",
+        "url": "https://raw.githubusercontent.com/microsoft/vscode/main/src/vs/platform/files/node/watcher/baseWatcher.ts",
+        "status": 200,
+        "sha256": "51b0a8992856b872bc29111d59377fe94277fb476456578fb812adf2192b2d45",
+        "reading_scope": "Full source file: request tracking, suspended-watch failure handling, watcher reuse and targeted polling fallback."
+      },
+      {
+        "key": "mcp_tools",
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/docs/specification/2025-11-25/server/tools.mdx",
+        "status": 200,
+        "sha256": "39e56ad4f3d1ff1cb28ee62283e02947cd97db8aa6190782d629f4562a0f354c",
+        "reading_scope": "Full tools specification: tool/resource-link/text/structured result semantics, schema compatibility, errors and security."
+      },
+      {
+        "key": "mcp_resources",
+        "url": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/docs/specification/2025-11-25/server/resources.mdx",
+        "status": 200,
+        "sha256": "9c1aa45ee31c1e0f097c5d1f6316e796f0ee2d393fbc960be400e0f77cf82843",
+        "reading_scope": "Full resources specification: application-directed use, optional subscriptions, updates, templates, URI validation and access controls."
+      }
+    ],
+    "failed_urls": [
+      {
+        "url": "https://raw.githubusercontent.com/sqlite/sqlite/master/doc/walformat.md",
+        "status": 404,
+        "note": "No bypass or policy change attempted."
+      }
+    ],
+    "limitations": [
+      "Mutable upstream branch URLs; full response SHA-256 retained to identify exactly fetched content.",
+      "No billed money, model latency or token benefit inferred from primary guidance.",
+      "SQLite EXPLAIN observation is query-plan verification, not runtime benchmark."
+    ],
+    "ledger": {
+      "path": "benchmarks/saas-efficiency-research.json",
+      "sha256": "2120e36494eed05addb8d201c93035a573482c674bd4521012408b9ead66e2c8"
+    }
+  },
+  "measurements": {
+    "graph": {
+      "report": {
+        "path": "benchmarks/saas-graph-efficiency.json",
+        "sha256": "99ae4d4d921592fffe76c910a0dd656a68428cefdff978818b992f024cc56413"
+      },
+      "baseline": "Emulated former unconditional resolver branch in trusted current reindex",
+      "fixture": {
+        "files": 600,
+        "graph_edges": 1198,
+        "repeats_per_arm": 10,
+        "working_tree": "synthetic uncommitted Python repository",
+        "warm_up_both_paths": true,
+        "alternating_order": true,
+        "secure_full_scan_both_arms": true,
+        "os_cache_controlled": false
+      },
+      "summary": {
+        "baseline": {
+          "runs": 10,
+          "wall_seconds_mean": 0.7158320017988444,
+          "wall_seconds_median": 0.7027930799958995,
+          "wall_seconds_total": 7.158320017988444,
+          "process_cpu_seconds_mean": 0.6096268680000001,
+          "process_cpu_seconds_median": 0.5853808494999995,
+          "process_cpu_seconds_total": 6.096268680000001,
+          "child_cpu_seconds_mean": 0.024959000000000002,
+          "child_cpu_seconds_median": 0.023237999999999995,
+          "child_cpu_seconds_total": 0.24959000000000003,
+          "graph_row_updates_mean": 1198,
+          "graph_row_updates_median": 1198.0,
+          "graph_row_updates_total": 11980,
+          "secure_source_reads_mean": 600,
+          "secure_source_reads_median": 600.0,
+          "secure_source_reads_total": 6000
+        },
+        "candidate": {
+          "runs": 10,
+          "wall_seconds_mean": 0.6317054464998364,
+          "wall_seconds_median": 0.6110257005020685,
+          "wall_seconds_total": 6.317054464998364,
+          "process_cpu_seconds_mean": 0.5295907133,
+          "process_cpu_seconds_median": 0.5300673995000007,
+          "process_cpu_seconds_total": 5.295907132999999,
+          "child_cpu_seconds_mean": 0.0186995,
+          "child_cpu_seconds_median": 0.017300000000000017,
+          "child_cpu_seconds_total": 0.186995,
+          "graph_row_updates_mean": 0,
+          "graph_row_updates_median": 0.0,
+          "graph_row_updates_total": 0,
+          "secure_source_reads_mean": 600,
+          "secure_source_reads_median": 600.0,
+          "secure_source_reads_total": 6000
+        },
+        "relative_change_percent": {
+          "wall_seconds_mean": -11.75227638434756,
+          "process_cpu_seconds_mean": -13.128711823770889,
+          "child_cpu_seconds_mean": -25.079129772827436,
+          "graph_row_updates_mean": -100.0,
+          "secure_source_reads_mean": 0.0
+        }
+      },
+      "all_graph_outputs_equal": true,
+      "limitations": [
+        "Old resolver branch emulation in current reindex, not entire old application",
+        "Current scanner common to both arms; secure reads unchanged",
+        "OS caches and host load uncontrolled; graph and scan briefly overlapped",
+        "Process CPU excludes child CPU, reported separately",
+        "Point component timings, not model latency or SaaS throughput"
+      ]
+    },
+    "scan": {
+      "report": {
+        "path": "benchmarks/saas-scan-efficiency.json",
+        "sha256": "0826709afe1d4d48f162b9fdbadceb33cf5fa08c721f5c0469542001c22d8742"
+      },
+      "baseline": "Current _scan with default complete-source retention",
+      "candidate": "Same scanner with known_hashes: releases live-verified unchanged bodies",
+      "fixture": {
+        "files": 40,
+        "source_bytes": 20971520,
+        "repeats_per_arm": 10,
+        "alternating_order": true,
+        "secure_full_scan_both_arms": true,
+        "os_cache_controlled": false,
+        "tracemalloc_enabled_both_arms": true
+      },
+      "summary": {
+        "baseline": {
+          "runs": 10,
+          "wall_seconds_mean": 3.974533600099676,
+          "wall_seconds_median": 3.6373496944979706,
+          "wall_seconds_total": 39.74533600099676,
+          "process_cpu_seconds_mean": 3.7652761349999992,
+          "process_cpu_seconds_median": 3.525154090500001,
+          "process_cpu_seconds_total": 37.65276134999999,
+          "tracemalloc_peak_bytes_mean": 21525591.2,
+          "tracemalloc_peak_bytes_median": 21525552.0,
+          "tracemalloc_peak_bytes_total": 215255912,
+          "retained_source_bytes_mean": 20971520,
+          "retained_source_bytes_median": 20971520.0,
+          "retained_source_bytes_total": 209715200,
+          "secure_source_reads_mean": 40,
+          "secure_source_reads_median": 40.0,
+          "secure_source_reads_total": 400
+        },
+        "candidate": {
+          "runs": 10,
+          "wall_seconds_mean": 3.6663819298992166,
+          "wall_seconds_median": 3.334262755000964,
+          "wall_seconds_total": 36.663819298992166,
+          "process_cpu_seconds_mean": 3.4997554836999982,
+          "process_cpu_seconds_median": 3.2208046344999985,
+          "process_cpu_seconds_total": 34.99755483699998,
+          "tracemalloc_peak_bytes_mean": 1601118.8,
+          "tracemalloc_peak_bytes_median": 1601106.0,
+          "tracemalloc_peak_bytes_total": 16011188,
+          "retained_source_bytes_mean": 0,
+          "retained_source_bytes_median": 0.0,
+          "retained_source_bytes_total": 0,
+          "secure_source_reads_mean": 40,
+          "secure_source_reads_median": 40.0,
+          "secure_source_reads_total": 400
+        },
+        "relative_change_percent": {
+          "wall_seconds_mean": -7.753152978571654,
+          "process_cpu_seconds_mean": -7.051824136664575,
+          "tracemalloc_peak_bytes_mean": -92.56178942950473,
+          "retained_source_bytes_mean": -100.0,
+          "secure_source_reads_mean": 0.0
+        }
+      },
+      "all_source_hash_outputs_equal": true,
+      "limitations": [
+        "Tracemalloc peak is Python allocation peak, not RSS or complete native/remote memory",
+        "Both arms instrumented and securely read every eligible source",
+        "OS caches and host load uncontrolled; graph and scan briefly overlapped",
+        "Component timing includes instrumentation, not uninstrumented end-to-end latency"
+      ]
+    },
+    "database": {
+      "report": {
+        "path": "benchmarks/saas-database-efficiency.json",
+        "sha256": "992cc4f2e381a55232b0196659b48ae6813245c69c5866dc79f939fac9606065"
+      },
+      "method": "SQLite VM progress callbacks at instruction interval 1; not time or tokens",
+      "baseline": "Only the nine named indexes are dropped before seeding",
+      "attempts_retained": 3,
+      "statuses": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "all_data_unchanged": true,
+      "identical_fixture_data_across_runs": true,
+      "fixture_counts": {
+        "projects": 100,
+        "files": 5000,
+        "symbols": 5000,
+        "sessions": 5000,
+        "memories": 5000,
+        "memory_sources": 5000,
+        "retrievals": 5000,
+        "passports": 5000,
+        "events": 10000,
+        "settings": 9,
+        "file_search": 0,
+        "schema_migrations": 1
+      },
+      "first_attempt_query_vm_steps": {
+        "global_recent_events": {
+          "before": 152509,
+          "after": 5508,
+          "same_result_multiset": true
+        },
+        "project_recent_events": {
+          "before": 31912,
+          "after": 1216,
+          "same_result_multiset": true
+        },
+        "global_recent_retrievals": {
+          "before": 85149,
+          "after": 268,
+          "same_result_multiset": true
+        },
+        "project_sessions": {
+          "before": 16312,
+          "after": 863,
+          "same_result_multiset": true
+        },
+        "source_invalidation_lookup": {
+          "before": 15820,
+          "after": 1024,
+          "same_result_multiset": true
+        },
+        "delete_file_cascade": {
+          "before": 35067,
+          "after": 80,
+          "same_result_multiset": true
+        },
+        "delete_session_cascade": {
+          "before": 70310,
+          "after": 368,
+          "same_result_multiset": true
+        }
+      },
+      "new_index_bytes": 839680,
+      "database_bytes_before": 3686400,
+      "database_bytes_after": 4526080,
+      "event_append_vm_steps": {
+        "before": 44,
+        "after": 55
+      },
+      "exploratory_probe_retained_separately": {
+        "scope": "Preliminary same-scale fixture; setup and inspections not frozen",
+        "global_recent_events": [
+          152775,
+          5508
+        ],
+        "project_recent_events": [
+          31912,
+          1216
+        ],
+        "global_recent_retrievals": [
+          85149,
+          268
+        ],
+        "project_sessions": [
+          16312,
+          863
+        ],
+        "source_invalidation_lookup": [
+          15820,
+          1024
+        ],
+        "delete_file_cascade": [
+          35067,
+          80
+        ],
+        "delete_session_cascade": [
+          70310,
+          368
+        ],
+        "new_index_bytes": 839680,
+        "event_append": [
+          44,
+          55
+        ]
+      },
+      "limitations": [
+        "SQLite VM work counts, not milliseconds, tokens or throughput",
+        "Fixed synthetic fixture and one engine version",
+        "Added index storage and write work; first build takes a write lock",
+        "Before always precedes after; no native cache or billing conclusion"
+      ]
+    },
+    "scheduler_and_dashboard": {
+      "report": {
+        "path": "benchmarks/saas-scheduler-efficiency.json",
+        "sha256": "97db4a2724cfd87535193e03a9a2388623466d12097da06ea28f2ef0af3ed485"
+      },
+      "baseline": "Actual pinned prior watcher/service source with current DB and imported helpers common to both arms",
+      "fixture": {
+        "projects": 25,
+        "ignored_report_entries_per_project": 1000,
+        "events": 600,
+        "virtual_ticks": 60,
+        "virtual_seconds_per_tick": 0.2,
+        "poll_interval_seconds": 5
+      },
+      "scheduler_before": {
+        "connections": 120,
+        "decoded_json_bytes": 68877900,
+        "noop_scan_calls": 75,
+        "compute_wall_seconds": 0.7825914619970717,
+        "process_cpu_seconds": 0.7772204370000001
+      },
+      "scheduler_after": {
+        "connections": 12,
+        "decoded_json_bytes": 48,
+        "noop_scan_calls": 75,
+        "compute_wall_seconds": 0.01053061099810293,
+        "process_cpu_seconds": 0.010525506000000018
+      },
+      "scheduler_scan_sequence_equal": true,
+      "dashboard_before": {
+        "cleanup_calls": 4,
+        "session_list_calls": 2,
+        "event_rows_fetched": 500
+      },
+      "dashboard_after": {
+        "cleanup_calls": 2,
+        "session_list_calls": 1,
+        "event_rows_fetched": 20
+      },
+      "dashboard_response_equal": true,
+      "limitations": [
+        "Scheduler uses virtual time; waits and repository scans are not performed.",
+        "Compute durations measure only this fixture, not live daemon or model latency.",
+        "Baseline is actual pinned watcher/service source; both use current DB and imported helpers.",
+        "This tests bookkeeping, not end-to-end historical application performance.",
+        "No model token, billed-cost or native-task saving established."
+      ]
+    },
+    "initial_graph_cohort": {
+      "report": {
+        "path": "benchmarks/saas-graph-efficiency-initial.json",
+        "sha256": "f84462783170f2efe7d28f3a9d765e6fff7e005eb453a388a6d8f1dc417276a8"
+      },
+      "scope": "Local component benchmark, not native Codex A/B or SaaS billing",
+      "summary": {
+        "unconditional_resolve_baseline": {
+          "runs": 10,
+          "wall_seconds_mean": 0.23364614519960014,
+          "wall_seconds_median": 0.2313580429981812,
+          "cpu_seconds_mean": 0.2173197699999999,
+          "cpu_seconds_median": 0.21552029499999997,
+          "graph_row_updates": 11980,
+          "secure_source_reads": 6000
+        },
+        "conditional_resolve_candidate": {
+          "runs": 10,
+          "wall_seconds_mean": 0.21360439679992851,
+          "wall_seconds_median": 0.21121547049551737,
+          "cpu_seconds_mean": 0.19447924970000005,
+          "cpu_seconds_median": 0.19486211850000001,
+          "graph_row_updates": 0,
+          "secure_source_reads": 6000
+        },
+        "relative_changes": {
+          "wall_seconds_mean": -8.57782112456864,
+          "wall_seconds_median": -8.706233957391385,
+          "cpu_seconds_mean": -10.510097769751859,
+          "cpu_seconds_median": -9.585258084395232
+        }
+      },
+      "pooled_with_later_graph_scan_or_model_results": false
+    }
+  },
+  "historical_native_results": {
+    "source": "benchmarks/efficiency-assessment.md and separately frozen underlying reports",
+    "transfers_to_new_source_automatically": false,
+    "original_workflow_study": {
+      "assignments": 60,
+      "strict_successes": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      },
+      "reason": "All attempts modified protected existing tests; behavior-only checks did not override the strict grader; all failed attempts retained"
+    },
+    "fresh_confirmation_study": {
+      "assignments": 60,
+      "strict_successes": {
+        "A": 20,
+        "B": 20,
+        "C": 20
+      },
+      "focused_assignments_per_arm": 16,
+      "focused_source_only_B_vs_bare_A_point_estimated_cost_change_percent": -10.18827305840404,
+      "focused_source_only_B_vs_bare_A_mean_full_time_change_percent": 3.1787324974991815,
+      "focused_support_C_vs_source_only_B_point_estimated_cost_change_percent": 8.655252363117526,
+      "focused_support_C_vs_source_only_B_mean_full_time_change_percent": 9.155561480644492,
+      "support_promotion_gate_failed_checks": 17,
+      "support_promotion_gate_total_checks": 24,
+      "native_configured_mcp_calls": 0
+    },
+    "actual_billed_cost_and_cash_savings": null,
+    "limitations": [
+      "Different historical cohorts must remain separate",
+      "Native study evaluated source preload, not model efficiency through MCP",
+      "Point list-price-equivalent estimates are not actual charges",
+      "Cache-write attribution and provider caches uncontrolled; token reduction is not equivalent to money savings"
+    ]
+  },
+  "new_native_evaluation": {
+    "model_requests_by_these_local_component_probes": 0,
+    "measured_new_native_token_benefit": null,
+    "measured_new_native_billed_savings": null,
+    "warm_study_status": "Integration, corpus, runner and full application regression passed; native study pending",
+    "initial_memory_scope": "Related native sessions sharing the same still-active Memglide session; not durable reuse after Memglide session end/expiry",
+    "requirements": [
+      "Explicit opt-in memory selection and source freshness",
+      "Include preparation, memory writing, retrieval and unsuccessful attempt costs",
+      "Fresh matched tasks and controls; identical model/settings and comparable cache conditions",
+      "Independent grading and complete run retention"
+    ],
+    "status": "validated_integration_and_corpus_pending_native_study",
+    "memory_adapter": "src/memglide/integrations/memory_preload.py",
+    "prerequisite_report": "benchmarks/warm-memory-prerequisite.json",
+    "protocol": "benchmarks/warm-protocol.md",
+    "planned_original_assignments": 216
+  },
+  "validation": {
+    "status": "passed_recorded_scope",
+    "targeted_database_tests": {
+      "passed": 11,
+      "failed": 0
+    },
+    "relevant_regression_run": {
+      "passed": 168,
+      "failed": 0,
+      "note": "Security, indexing, memory, lifecycle, request scope, transports and database; overlaps targeted cases"
+    },
+    "combined_database_watcher_run": {
+      "passed": 22,
+      "failed": 0,
+      "note": "Overlaps database cases; do not add run counts as distinct tests"
+    },
+    "owned_database_probe_files_ruff_mypy": "passed",
+    "full_current_suite": {
+      "passed": 1626,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 514.833,
+      "xml_sha256": "305a1c20c30c61c8c98409ae3202c5088088ef4640ca95718708f318ead47a3a",
+      "scope": "Complete 1626-case collected suite; two later added benchmark recovery cases passed separately; runtime application source unchanged"
+    },
+    "frontend": {
+      "passed": 24,
+      "failed": 0,
+      "command": "npm ci && npm test -- --run"
+    },
+    "real_mcp": {
+      "status": "passed",
+      "scope": "Clean installed wheel, actual SDK STDIO default14-tool and project-bound2-tool profiles; context fetch/verification"
+    },
+    "production_browser": {
+      "passed": 3,
+      "failed": 0,
+      "command": "npm run e2e; builds production assets and tests real Chromium"
+    },
+    "installed_package": {
+      "status": "passed",
+      "checks": 5,
+      "source_and_asset_files_byte_verified": 44,
+      "scope": "memory preparation, CLI, loopback API/SPA, real default/agent MCP"
+    },
+    "memory_preparation": {
+      "passed": 43,
+      "failed": 0,
+      "prerequisite_checks": 9,
+      "scope": "One active Memglide session across fresh processes; no TTL extension"
+    },
+    "initial_full_run": {
+      "completed": false,
+      "passed": 390,
+      "failed": 1,
+      "errors": 0,
+      "duration_seconds": 402.847,
+      "reason": "Stopped after known artifact-root fixture failure to coordinate final freeze; failed test now corrected with explicit declared tmp root and two containment regressions",
+      "xml_sha256": "3da45df3801660913b2ad133104443c3389b79a06b13acc19026e298b317cf5d"
+    },
+    "artifact_scope_regression": {
+      "passed": 16,
+      "failed": 0,
+      "scope": "Explicit artifact root; out-of-root and symlink pointers still refused"
+    },
+    "warm_source_preflight": {
+      "passed": 36,
+      "failed": 0,
+      "scope": "Every canonical task stage successfully prepared by production source-preload API with exact current complete file hashes; zero model requests"
+    },
+    "supplemental_recovery_cases": {
+      "new_cases_passed": 2,
+      "targeted_run_passed": 4,
+      "note": "Two new pointer-mutation cases plus two overlapping orphan-recovery regressions"
+    },
+    "distinct_verified_python_cases": 1628,
+    "receipt": "benchmarks/saas-efficiency-validation.json",
+    "warm_runner_current_regression": {
+      "passed": 47,
+      "failed": 0,
+      "note": "Overlaps45casesinfullsuite; includes2newpointerrecoverycases"
+    }
+  },
+  "remaining_product_work": [
+    "Attributable per-request model/cache-write/billing telemetry",
+    "Fresh native warm-task evaluation; memory adapter first prerequisite",
+    "Durable cross-Memglide-session memory requires separate lifecycle/product design",
+    "Larger unfamiliar repositories and realistic long investigation histories",
+    "Explicit project-event retention, visible quotas and versioned pagination",
+    "Optional transactional FTS rowid mapping with migration and isolation tests",
+    "Hosted tenancy/auth/TLS/billing/recovery and operational testing before hosted-readiness claim"
+  ],
+  "not_justified_by_evidence": [
+    "Global best or most efficient architecture",
+    "Guaranteed lower actual model bill",
+    "Adding local speedup percentages together",
+    "Treating Python allocation peak as RSS",
+    "Treating virtual scheduler duration as live latency",
+    "Treating SQLite VM instructions as tokens or milliseconds",
+    "Treating prior native outcomes as outcomes on the changed source"
+  ]
+}

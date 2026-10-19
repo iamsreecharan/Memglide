@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-19T05:11:46.505205+00:00",
+  "study_scope": "Active Memglide session reused across fresh preparation processes; not persistence across new Memglide sessions.",
+  "native_model_requests": 0,
+  "db_expiration_test": "Force expires_at into the past; do not wait or extend deadlines.",
+  "module_sha256": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+  "defaults": {
+    "session_ttl_minutes": 60,
+    "max_session_hours": 8
+  },
+  "observations": {
+    "source_backed_initial_freshness": "Current",
+    "active_session_preparation_mode": "preloaded",
+    "active_session_selected_memories": 1,
+    "preparation_preserved_session_row": true,
+    "fresh_python_process_mode": "preloaded",
+    "fresh_python_process_same_prepared_hash": true,
+    "service_restart_same_active_session_mode": "preloaded",
+    "new_memglide_session_recalled_memories": 0,
+    "old_id_in_new_memglide_session_mode": "passthrough",
+    "source_change_mode": "passthrough",
+    "source_change_reason": "memory_not_current",
+    "ended_session_mode": "passthrough",
+    "ended_session_reason": "session_ended",
+    "ended_session_engine_recall_status": 410,
+    "past_deadline_preparation_reason": "session_expired",
+    "past_deadline_preparation_retained_memories": 1,
+    "explicit_cleanup_deleted_sessions": 1,
+    "memories_after_expiration_cleanup": 0
+  },
+  "checks": {
+    "active_memory_available": true,
+    "fresh_preparation_process_reuses_active_memory": true,
+    "no_preparation_ttl_refresh": true,
+    "restart_keeps_active_session": true,
+    "new_memglide_session_isolated": true,
+    "source_change_excluded": true,
+    "ended_session_blocked": true,
+    "expiration_declines_without_cleanup_write": true,
+    "normal_cleanup_deletes_memory": true
+  },
+  "all_checks_passed": true,
+  "interpretation": {
+    "supported": "Same valid Memglide session ID across fresh native agent processes, with explicit bounded source-backed memory preparation.",
+    "not_supported": "Automatic transfer into fresh, ended or expired Memglide sessions; source-only preload does not become persistent memory.",
+    "freshness_limit": "Matching source hashes do not independently establish semantic truth. Benchmark capture must validate observed quotes and exclude hidden graders."
+  }
+}

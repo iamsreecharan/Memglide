@@ -1,0 +1,719 @@
+{
+  "generated_at": "2026-10-19T05:03:04.983910+00:00",
+  "sqlite_version": "3.53.1",
+  "measurement": "SQLite VM progress callbacks at instruction interval 1; not time or tokens",
+  "old_schema_simulation": "Only the nine named indexes are dropped before seeding",
+  "index_names": [
+    "symbol_files",
+    "session_projects",
+    "memory_source_paths",
+    "retrieval_sessions",
+    "retrieval_projects",
+    "retrieval_created",
+    "passport_sessions",
+    "event_projects",
+    "event_created"
+  ],
+  "queries": {
+    "global_recent_events": [
+      "SELECT * FROM events ORDER BY created_at DESC LIMIT 500",
+      []
+    ],
+    "project_recent_events": [
+      "SELECT * FROM events WHERE project_id=? ORDER BY created_at DESC LIMIT 500",
+      [
+        "p99"
+      ]
+    ],
+    "global_recent_retrievals": [
+      "SELECT id,session_id,project_id,query,level,budget,estimated_tokens,created_at FROM retrievals ORDER BY created_at DESC LIMIT 20",
+      []
+    ],
+    "project_sessions": [
+      "SELECT * FROM sessions WHERE project_id=? ORDER BY created_at DESC,id",
+      [
+        "p99"
+      ]
+    ],
+    "source_invalidation_lookup": [
+      "SELECT ms.memory_id FROM memory_sources ms JOIN memories m ON m.id=ms.memory_id JOIN sessions s ON s.id=m.session_id WHERE s.project_id=? AND ms.path=?",
+      [
+        "p99",
+        "file0.py"
+      ]
+    ],
+    "delete_file_cascade": [
+      "DELETE FROM files WHERE id=?",
+      [
+        "p99-f0"
+      ]
+    ],
+    "delete_session_cascade": [
+      "DELETE FROM sessions WHERE id=?",
+      [
+        "p99-s0"
+      ]
+    ]
+  },
+  "event_append_query": [
+    "INSERT INTO events VALUES(?,?,?,?,?,?)",
+    [
+      "new-write-event",
+      "p99",
+      "p99-s0",
+      "context_retrieved",
+      "{}",
+      6000.0
+    ]
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok",
+      "fixture_counts": {
+        "projects": 100,
+        "files": 5000,
+        "symbols": 5000,
+        "sessions": 5000,
+        "memories": 5000,
+        "memory_sources": 5000,
+        "retrievals": 5000,
+        "passports": 5000,
+        "events": 10000,
+        "settings": 9,
+        "file_search": 0,
+        "schema_migrations": 1
+      },
+      "queries": {
+        "global_recent_events": {
+          "before": {
+            "vm_steps": 152509,
+            "returned_rows": 500,
+            "result_multiset_sha256": "3a1f5d29b0ac9b914974068f46bb039ea9cb92469c59a74ab2cacfa15e673cae",
+            "plan": [
+              "SCAN events",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 5508,
+            "returned_rows": 500,
+            "result_multiset_sha256": "3a1f5d29b0ac9b914974068f46bb039ea9cb92469c59a74ab2cacfa15e673cae",
+            "plan": [
+              "SCAN events USING INDEX event_created"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "project_recent_events": {
+          "before": {
+            "vm_steps": 31912,
+            "returned_rows": 100,
+            "result_multiset_sha256": "63929e5794b36817189225b19317d6e8bcd2aa9d01cabeeb6d2b63a899d43b73",
+            "plan": [
+              "SCAN events",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 1216,
+            "returned_rows": 100,
+            "result_multiset_sha256": "63929e5794b36817189225b19317d6e8bcd2aa9d01cabeeb6d2b63a899d43b73",
+            "plan": [
+              "SEARCH events USING INDEX event_projects (project_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "global_recent_retrievals": {
+          "before": {
+            "vm_steps": 85149,
+            "returned_rows": 20,
+            "result_multiset_sha256": "424af4aa4f4355799213a6d684140e6e0989417186fb37e571ae62c31a14b5a3",
+            "plan": [
+              "SCAN retrievals",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 268,
+            "returned_rows": 20,
+            "result_multiset_sha256": "424af4aa4f4355799213a6d684140e6e0989417186fb37e571ae62c31a14b5a3",
+            "plan": [
+              "SCAN retrievals USING INDEX retrieval_created"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "project_sessions": {
+          "before": {
+            "vm_steps": 16312,
+            "returned_rows": 50,
+            "result_multiset_sha256": "5f4cf696056cee9d26c0e1e2627d1271586e4b14c631cd916657a093fd897878",
+            "plan": [
+              "SCAN sessions",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 863,
+            "returned_rows": 50,
+            "result_multiset_sha256": "5f4cf696056cee9d26c0e1e2627d1271586e4b14c631cd916657a093fd897878",
+            "plan": [
+              "SEARCH sessions USING INDEX session_projects (project_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "source_invalidation_lookup": {
+          "before": {
+            "vm_steps": 15820,
+            "returned_rows": 1,
+            "result_multiset_sha256": "63888eeee207b6294d841d006845f6daf26d5d30ce152d1e8eb14cdac12f5d28",
+            "plan": [
+              "SCAN ms USING COVERING INDEX sqlite_autoindex_memory_sources_1",
+              "SEARCH m USING INDEX sqlite_autoindex_memories_1 (id=?)",
+              "SEARCH s USING INDEX sqlite_autoindex_sessions_1 (id=?)"
+            ]
+          },
+          "after": {
+            "vm_steps": 1024,
+            "returned_rows": 1,
+            "result_multiset_sha256": "63888eeee207b6294d841d006845f6daf26d5d30ce152d1e8eb14cdac12f5d28",
+            "plan": [
+              "SEARCH ms USING COVERING INDEX memory_source_paths (path=?)",
+              "SEARCH m USING INDEX sqlite_autoindex_memories_1 (id=?)",
+              "SEARCH s USING INDEX sqlite_autoindex_sessions_1 (id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "delete_file_cascade": {
+          "before": {
+            "vm_steps": 35067,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH files USING INDEX sqlite_autoindex_files_1 (id=?)",
+              "SCAN symbols"
+            ]
+          },
+          "after": {
+            "vm_steps": 80,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH files USING INDEX sqlite_autoindex_files_1 (id=?)",
+              "SEARCH symbols USING COVERING INDEX symbol_files (file_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "delete_session_cascade": {
+          "before": {
+            "vm_steps": 70310,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH sessions USING INDEX sqlite_autoindex_sessions_1 (id=?)",
+              "SEARCH events USING COVERING INDEX event_sessions (session_id=?)",
+              "SCAN passports",
+              "SCAN retrievals",
+              "SEARCH memories USING COVERING INDEX sqlite_autoindex_memories_2 (session_id=?)"
+            ]
+          },
+          "after": {
+            "vm_steps": 368,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH sessions USING INDEX sqlite_autoindex_sessions_1 (id=?)",
+              "SEARCH events USING COVERING INDEX event_sessions (session_id=?)",
+              "SEARCH passports USING COVERING INDEX passport_sessions (session_id=?)",
+              "SEARCH retrievals USING COVERING INDEX retrieval_sessions (session_id=?)",
+              "SEARCH memories USING COVERING INDEX sqlite_autoindex_memories_2 (session_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        }
+      },
+      "data_sha256_before": "84105b8fbf7281a1037a5f5bfe3a4d5c4c447983c818ffa7e0fc1af843656194",
+      "database_bytes_before": 3686400,
+      "event_append": {
+        "before": {
+          "vm_steps": 44,
+          "returned_rows": 0,
+          "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "plan": []
+        },
+        "after": {
+          "vm_steps": 55,
+          "returned_rows": 0,
+          "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "plan": []
+        }
+      },
+      "index_storage_bytes": {
+        "symbol_files": 77824,
+        "session_projects": 114688,
+        "memory_source_paths": 122880,
+        "retrieval_sessions": 77824,
+        "retrieval_projects": 61440,
+        "retrieval_created": 57344,
+        "passport_sessions": 77824,
+        "event_projects": 143360,
+        "event_created": 106496
+      },
+      "new_index_bytes": 839680,
+      "database_bytes_after": 4526080,
+      "data_sha256_after": "84105b8fbf7281a1037a5f5bfe3a4d5c4c447983c818ffa7e0fc1af843656194",
+      "data_unchanged": true,
+      "foreign_key_violations": [],
+      "integrity": "ok"
+    },
+    {
+      "attempt": 2,
+      "status": "ok",
+      "fixture_counts": {
+        "projects": 100,
+        "files": 5000,
+        "symbols": 5000,
+        "sessions": 5000,
+        "memories": 5000,
+        "memory_sources": 5000,
+        "retrievals": 5000,
+        "passports": 5000,
+        "events": 10000,
+        "settings": 9,
+        "file_search": 0,
+        "schema_migrations": 1
+      },
+      "queries": {
+        "global_recent_events": {
+          "before": {
+            "vm_steps": 152509,
+            "returned_rows": 500,
+            "result_multiset_sha256": "3a1f5d29b0ac9b914974068f46bb039ea9cb92469c59a74ab2cacfa15e673cae",
+            "plan": [
+              "SCAN events",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 5508,
+            "returned_rows": 500,
+            "result_multiset_sha256": "3a1f5d29b0ac9b914974068f46bb039ea9cb92469c59a74ab2cacfa15e673cae",
+            "plan": [
+              "SCAN events USING INDEX event_created"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "project_recent_events": {
+          "before": {
+            "vm_steps": 31912,
+            "returned_rows": 100,
+            "result_multiset_sha256": "63929e5794b36817189225b19317d6e8bcd2aa9d01cabeeb6d2b63a899d43b73",
+            "plan": [
+              "SCAN events",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 1216,
+            "returned_rows": 100,
+            "result_multiset_sha256": "63929e5794b36817189225b19317d6e8bcd2aa9d01cabeeb6d2b63a899d43b73",
+            "plan": [
+              "SEARCH events USING INDEX event_projects (project_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "global_recent_retrievals": {
+          "before": {
+            "vm_steps": 85149,
+            "returned_rows": 20,
+            "result_multiset_sha256": "424af4aa4f4355799213a6d684140e6e0989417186fb37e571ae62c31a14b5a3",
+            "plan": [
+              "SCAN retrievals",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 268,
+            "returned_rows": 20,
+            "result_multiset_sha256": "424af4aa4f4355799213a6d684140e6e0989417186fb37e571ae62c31a14b5a3",
+            "plan": [
+              "SCAN retrievals USING INDEX retrieval_created"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "project_sessions": {
+          "before": {
+            "vm_steps": 16312,
+            "returned_rows": 50,
+            "result_multiset_sha256": "5f4cf696056cee9d26c0e1e2627d1271586e4b14c631cd916657a093fd897878",
+            "plan": [
+              "SCAN sessions",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 863,
+            "returned_rows": 50,
+            "result_multiset_sha256": "5f4cf696056cee9d26c0e1e2627d1271586e4b14c631cd916657a093fd897878",
+            "plan": [
+              "SEARCH sessions USING INDEX session_projects (project_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "source_invalidation_lookup": {
+          "before": {
+            "vm_steps": 15820,
+            "returned_rows": 1,
+            "result_multiset_sha256": "63888eeee207b6294d841d006845f6daf26d5d30ce152d1e8eb14cdac12f5d28",
+            "plan": [
+              "SCAN ms USING COVERING INDEX sqlite_autoindex_memory_sources_1",
+              "SEARCH m USING INDEX sqlite_autoindex_memories_1 (id=?)",
+              "SEARCH s USING INDEX sqlite_autoindex_sessions_1 (id=?)"
+            ]
+          },
+          "after": {
+            "vm_steps": 1024,
+            "returned_rows": 1,
+            "result_multiset_sha256": "63888eeee207b6294d841d006845f6daf26d5d30ce152d1e8eb14cdac12f5d28",
+            "plan": [
+              "SEARCH ms USING COVERING INDEX memory_source_paths (path=?)",
+              "SEARCH m USING INDEX sqlite_autoindex_memories_1 (id=?)",
+              "SEARCH s USING INDEX sqlite_autoindex_sessions_1 (id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "delete_file_cascade": {
+          "before": {
+            "vm_steps": 35067,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH files USING INDEX sqlite_autoindex_files_1 (id=?)",
+              "SCAN symbols"
+            ]
+          },
+          "after": {
+            "vm_steps": 80,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH files USING INDEX sqlite_autoindex_files_1 (id=?)",
+              "SEARCH symbols USING COVERING INDEX symbol_files (file_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "delete_session_cascade": {
+          "before": {
+            "vm_steps": 70310,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH sessions USING INDEX sqlite_autoindex_sessions_1 (id=?)",
+              "SEARCH events USING COVERING INDEX event_sessions (session_id=?)",
+              "SCAN passports",
+              "SCAN retrievals",
+              "SEARCH memories USING COVERING INDEX sqlite_autoindex_memories_2 (session_id=?)"
+            ]
+          },
+          "after": {
+            "vm_steps": 368,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH sessions USING INDEX sqlite_autoindex_sessions_1 (id=?)",
+              "SEARCH events USING COVERING INDEX event_sessions (session_id=?)",
+              "SEARCH passports USING COVERING INDEX passport_sessions (session_id=?)",
+              "SEARCH retrievals USING COVERING INDEX retrieval_sessions (session_id=?)",
+              "SEARCH memories USING COVERING INDEX sqlite_autoindex_memories_2 (session_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        }
+      },
+      "data_sha256_before": "84105b8fbf7281a1037a5f5bfe3a4d5c4c447983c818ffa7e0fc1af843656194",
+      "database_bytes_before": 3686400,
+      "event_append": {
+        "before": {
+          "vm_steps": 44,
+          "returned_rows": 0,
+          "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "plan": []
+        },
+        "after": {
+          "vm_steps": 55,
+          "returned_rows": 0,
+          "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "plan": []
+        }
+      },
+      "index_storage_bytes": {
+        "symbol_files": 77824,
+        "session_projects": 114688,
+        "memory_source_paths": 122880,
+        "retrieval_sessions": 77824,
+        "retrieval_projects": 61440,
+        "retrieval_created": 57344,
+        "passport_sessions": 77824,
+        "event_projects": 143360,
+        "event_created": 106496
+      },
+      "new_index_bytes": 839680,
+      "database_bytes_after": 4526080,
+      "data_sha256_after": "84105b8fbf7281a1037a5f5bfe3a4d5c4c447983c818ffa7e0fc1af843656194",
+      "data_unchanged": true,
+      "foreign_key_violations": [],
+      "integrity": "ok"
+    },
+    {
+      "attempt": 3,
+      "status": "ok",
+      "fixture_counts": {
+        "projects": 100,
+        "files": 5000,
+        "symbols": 5000,
+        "sessions": 5000,
+        "memories": 5000,
+        "memory_sources": 5000,
+        "retrievals": 5000,
+        "passports": 5000,
+        "events": 10000,
+        "settings": 9,
+        "file_search": 0,
+        "schema_migrations": 1
+      },
+      "queries": {
+        "global_recent_events": {
+          "before": {
+            "vm_steps": 152509,
+            "returned_rows": 500,
+            "result_multiset_sha256": "3a1f5d29b0ac9b914974068f46bb039ea9cb92469c59a74ab2cacfa15e673cae",
+            "plan": [
+              "SCAN events",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 5508,
+            "returned_rows": 500,
+            "result_multiset_sha256": "3a1f5d29b0ac9b914974068f46bb039ea9cb92469c59a74ab2cacfa15e673cae",
+            "plan": [
+              "SCAN events USING INDEX event_created"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "project_recent_events": {
+          "before": {
+            "vm_steps": 31912,
+            "returned_rows": 100,
+            "result_multiset_sha256": "63929e5794b36817189225b19317d6e8bcd2aa9d01cabeeb6d2b63a899d43b73",
+            "plan": [
+              "SCAN events",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 1216,
+            "returned_rows": 100,
+            "result_multiset_sha256": "63929e5794b36817189225b19317d6e8bcd2aa9d01cabeeb6d2b63a899d43b73",
+            "plan": [
+              "SEARCH events USING INDEX event_projects (project_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "global_recent_retrievals": {
+          "before": {
+            "vm_steps": 85149,
+            "returned_rows": 20,
+            "result_multiset_sha256": "424af4aa4f4355799213a6d684140e6e0989417186fb37e571ae62c31a14b5a3",
+            "plan": [
+              "SCAN retrievals",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 268,
+            "returned_rows": 20,
+            "result_multiset_sha256": "424af4aa4f4355799213a6d684140e6e0989417186fb37e571ae62c31a14b5a3",
+            "plan": [
+              "SCAN retrievals USING INDEX retrieval_created"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "project_sessions": {
+          "before": {
+            "vm_steps": 16312,
+            "returned_rows": 50,
+            "result_multiset_sha256": "5f4cf696056cee9d26c0e1e2627d1271586e4b14c631cd916657a093fd897878",
+            "plan": [
+              "SCAN sessions",
+              "USE TEMP B-TREE FOR ORDER BY"
+            ]
+          },
+          "after": {
+            "vm_steps": 863,
+            "returned_rows": 50,
+            "result_multiset_sha256": "5f4cf696056cee9d26c0e1e2627d1271586e4b14c631cd916657a093fd897878",
+            "plan": [
+              "SEARCH sessions USING INDEX session_projects (project_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "source_invalidation_lookup": {
+          "before": {
+            "vm_steps": 15820,
+            "returned_rows": 1,
+            "result_multiset_sha256": "63888eeee207b6294d841d006845f6daf26d5d30ce152d1e8eb14cdac12f5d28",
+            "plan": [
+              "SCAN ms USING COVERING INDEX sqlite_autoindex_memory_sources_1",
+              "SEARCH m USING INDEX sqlite_autoindex_memories_1 (id=?)",
+              "SEARCH s USING INDEX sqlite_autoindex_sessions_1 (id=?)"
+            ]
+          },
+          "after": {
+            "vm_steps": 1024,
+            "returned_rows": 1,
+            "result_multiset_sha256": "63888eeee207b6294d841d006845f6daf26d5d30ce152d1e8eb14cdac12f5d28",
+            "plan": [
+              "SEARCH ms USING COVERING INDEX memory_source_paths (path=?)",
+              "SEARCH m USING INDEX sqlite_autoindex_memories_1 (id=?)",
+              "SEARCH s USING INDEX sqlite_autoindex_sessions_1 (id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "delete_file_cascade": {
+          "before": {
+            "vm_steps": 35067,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH files USING INDEX sqlite_autoindex_files_1 (id=?)",
+              "SCAN symbols"
+            ]
+          },
+          "after": {
+            "vm_steps": 80,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH files USING INDEX sqlite_autoindex_files_1 (id=?)",
+              "SEARCH symbols USING COVERING INDEX symbol_files (file_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        },
+        "delete_session_cascade": {
+          "before": {
+            "vm_steps": 70310,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH sessions USING INDEX sqlite_autoindex_sessions_1 (id=?)",
+              "SEARCH events USING COVERING INDEX event_sessions (session_id=?)",
+              "SCAN passports",
+              "SCAN retrievals",
+              "SEARCH memories USING COVERING INDEX sqlite_autoindex_memories_2 (session_id=?)"
+            ]
+          },
+          "after": {
+            "vm_steps": 368,
+            "returned_rows": 0,
+            "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "plan": [
+              "SEARCH sessions USING INDEX sqlite_autoindex_sessions_1 (id=?)",
+              "SEARCH events USING COVERING INDEX event_sessions (session_id=?)",
+              "SEARCH passports USING COVERING INDEX passport_sessions (session_id=?)",
+              "SEARCH retrievals USING COVERING INDEX retrieval_sessions (session_id=?)",
+              "SEARCH memories USING COVERING INDEX sqlite_autoindex_memories_2 (session_id=?)"
+            ]
+          },
+          "same_result_multiset": true
+        }
+      },
+      "data_sha256_before": "84105b8fbf7281a1037a5f5bfe3a4d5c4c447983c818ffa7e0fc1af843656194",
+      "database_bytes_before": 3686400,
+      "event_append": {
+        "before": {
+          "vm_steps": 44,
+          "returned_rows": 0,
+          "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "plan": []
+        },
+        "after": {
+          "vm_steps": 55,
+          "returned_rows": 0,
+          "result_multiset_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "plan": []
+        }
+      },
+      "index_storage_bytes": {
+        "symbol_files": 77824,
+        "session_projects": 114688,
+        "memory_source_paths": 122880,
+        "retrieval_sessions": 77824,
+        "retrieval_projects": 61440,
+        "retrieval_created": 57344,
+        "passport_sessions": 77824,
+        "event_projects": 143360,
+        "event_created": 106496
+      },
+      "new_index_bytes": 839680,
+      "database_bytes_after": 4526080,
+      "data_sha256_after": "84105b8fbf7281a1037a5f5bfe3a4d5c4c447983c818ffa7e0fc1af843656194",
+      "data_unchanged": true,
+      "foreign_key_violations": [],
+      "integrity": "ok"
+    }
+  ],
+  "exploratory_probe": {
+    "scope": "Preliminary same-scale fixture; setup and inspections not frozen",
+    "global_recent_events": [
+      152775,
+      5508
+    ],
+    "project_recent_events": [
+      31912,
+      1216
+    ],
+    "global_recent_retrievals": [
+      85149,
+      268
+    ],
+    "project_sessions": [
+      16312,
+      863
+    ],
+    "source_invalidation_lookup": [
+      15820,
+      1024
+    ],
+    "delete_file_cascade": [
+      35067,
+      80
+    ],
+    "delete_session_cascade": [
+      70310,
+      368
+    ],
+    "new_index_bytes": 839680,
+    "event_append": [
+      44,
+      55
+    ]
+  }
+}

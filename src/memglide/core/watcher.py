@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import threading
 import time
@@ -32,33 +33,44 @@ class RepositoryWatcher:
         self._scheduled: dict[str, Any] = {}
         self._pending: dict[str, float] = {}
         self._lock = threading.Lock()
+        self._lifecycle_lock = threading.Lock()
 
     @property
     def running(self) -> bool:
         return bool(self._thread and self._thread.is_alive())
 
     def start(self) -> None:
-        if self.running:
-            return
-        self._stop.clear()
-        self._observer = Observer()
-        try:
-            self._observer.start()
-        except OSError:
-            logger.warning("Filesystem notifications unavailable; using polling")
-            self._observer = None
-        self._thread = threading.Thread(target=self._run, name="memglide-watcher", daemon=True)
-        self._thread.start()
+        with self._lifecycle_lock:
+            if self.running:
+                return
+            self._scheduled.clear()
+            with self._lock:
+                self._pending.clear()
+            self._stop.clear()
+            self._observer = Observer()
+            try:
+                self._observer.start()
+            except OSError:
+                logger.warning("Filesystem notifications unavailable; using polling")
+                self._observer = None
+            self._thread = threading.Thread(target=self._run, name="memglide-watcher", daemon=True)
+            self._thread.start()
 
     def stop(self) -> None:
-        self._stop.set()
-        if self._observer:
-            self._observer.stop()
-            self._observer.join(timeout=3)
-        if self._thread:
-            self._thread.join(timeout=5)
-        self._thread = None
-        self._scheduled.clear()
+        with self._lifecycle_lock:
+            self._stop.set()
+            if self._observer:
+                self._observer.stop()
+                self._observer.join(timeout=3)
+            if self._thread:
+                self._thread.join(timeout=5)
+            # A large scan can outlast the bounded join. Retain its identity and
+            # stop event so start() cannot revive it alongside a second worker.
+            if not self.running:
+                self._thread = None
+                self._scheduled.clear()
+                with self._lock:
+                    self._pending.clear()
 
     def _handler(self, project_id: str, root: Path) -> FileSystemEventHandler:
         owner = self
@@ -67,26 +79,60 @@ class RepositoryWatcher:
             def on_any_event(self, event: FileSystemEvent) -> None:
                 if event.event_type in {"opened", "closed", "closed_no_write"}:
                     return
-                try:
-                    relative = Path(str(event.src_path)).relative_to(root).as_posix()
-                except ValueError:
-                    return
-                parts = Path(relative).parts
-                if secret_path(relative) or any(p in DEFAULT_IGNORED - {".git"} for p in parts):
-                    return
-                if ".git" in parts and not any(part in {"HEAD", "refs", "index"} for part in parts):
-                    return
-                with owner._lock:
-                    owner._pending[project_id] = time.monotonic()
+                # Moves can cross an ignored boundary. Either endpoint can make
+                # the registered source set change, including moves into root.
+                paths = [event.src_path, getattr(event, "dest_path", "")]
+                for path in paths:
+                    if not path:
+                        continue
+                    try:
+                        relative = Path(str(path)).relative_to(root).as_posix()
+                    except ValueError:
+                        continue
+                    parts = Path(relative).parts
+                    if secret_path(relative) or any(p in DEFAULT_IGNORED - {".git"} for p in parts):
+                        continue
+                    if ".git" in parts and not any(
+                        part in {"HEAD", "refs", "index"} for part in parts
+                    ):
+                        continue
+                    with owner._lock:
+                        owner._pending[project_id] = time.monotonic()
+                    break
 
         return Handler()
 
+    def _watch_state(self) -> tuple[bool, dict[str, dict[str, str]]]:
+        """Read only scheduling fields, without decoding full index reports."""
+        with self.db.connect() as conn:
+            row = conn.execute("SELECT value FROM settings WHERE key='watch_enabled'").fetchone()
+            enabled = bool(json.loads(row["value"])) if row else False
+            projects = {
+                row["id"]: dict(row) for row in conn.execute("SELECT id,path FROM projects")
+            }
+        return enabled, projects
+
     def _run(self) -> None:
-        last_poll = 0.0
+        # Wake promptly for debouncing but refresh small scheduling state at most
+        # once a second. Short explicit poll intervals keep their responsiveness.
+        control_interval = min(1.0, self.poll_interval)
+        next_control = 0.0
+        enabled = False
+        projects: dict[str, dict[str, str]] = {}
+        last_finished: dict[str, float] = {}
         while not self._stop.wait(0.2):
             try:
-                enabled = self.db.settings()["watch_enabled"]
-                projects = {p["id"]: p for p in self.indexer.list_projects()}
+                now = time.monotonic()
+                if now >= next_control:
+                    enabled, projects = self._watch_state()
+                    next_control = now + control_interval
+                    last_finished = {
+                        pid: at for pid, at in last_finished.items() if pid in projects
+                    }
+                    with self._lock:
+                        self._pending = {
+                            pid: at for pid, at in self._pending.items() if pid in projects
+                        }
                 if self._observer:
                     for project_id in set(self._scheduled) - (set(projects) if enabled else set()):
                         self._observer.unschedule(self._scheduled.pop(project_id))
@@ -116,9 +162,15 @@ class RepositoryWatcher:
                     }
                     for project_id in due:
                         self._pending.pop(project_id, None)
-                if now - last_poll >= self.poll_interval:
-                    due.update(projects)
-                    last_poll = now
+                # Each successful event-driven scan also satisfies the periodic
+                # audit. Keep full reconciliation at the existing interval, even
+                # if notifications disappear; do not immediately rescan a project
+                # that was just refreshed by a debounced event.
+                due.update(
+                    pid
+                    for pid in projects
+                    if pid not in last_finished or now - last_finished[pid] >= self.poll_interval
+                )
                 for project_id in sorted(due & set(projects)):
                     if self._stop.is_set():
                         break
@@ -126,5 +178,10 @@ class RepositoryWatcher:
                         self.indexer.reindex(project_id)
                     except Exception:
                         logger.exception("Background repository indexing failed")
+                    finally:
+                        # A slow scan must not trigger continuous audits just
+                        # because it took longer than the reconciliation period.
+                        # New pending events can still request a prompt refresh.
+                        last_finished[project_id] = time.monotonic()
             except Exception:
                 logger.exception("Repository watcher iteration failed")

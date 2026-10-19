@@ -1,0 +1,1500 @@
+{
+  "corpus_version": "warm-1.0.0",
+  "sequences": 12,
+  "tasks": [
+    {
+      "id": "py-warm-labels-s1",
+      "sequence_id": "py-warm-labels",
+      "stage": 1,
+      "language": "python",
+      "repository": "py-warm-labels",
+      "prompt": "Repair label normalization according to the active label policy.\n\nImplement `normalize_label(text)` in `labels/normalize_label.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_normalize_label.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "labels/normalize_label.py"
+      ],
+      "support_paths": [
+        "tests/test_normalize_label.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/labels-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "labels/normalize_label.py"
+      ],
+      "expected_symbols": [
+        "normalize_label"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-labels",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-labels-s2",
+      "sequence_id": "py-warm-labels",
+      "stage": 2,
+      "language": "python",
+      "repository": "py-warm-labels",
+      "prompt": "Repair the ordered unique-label collection using the active label policy; reuse the normalization API.\n\nImplement `unique_labels(values)` in `labels/unique_labels.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_unique_labels.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "labels/unique_labels.py"
+      ],
+      "support_paths": [
+        "tests/test_unique_labels.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/labels-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "labels/unique_labels.py"
+      ],
+      "expected_symbols": [
+        "unique_labels"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-labels",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-labels-s3",
+      "sequence_id": "py-warm-labels",
+      "stage": 3,
+      "language": "python",
+      "repository": "py-warm-labels",
+      "prompt": "Repair normalized label-to-value lookup. Read the CURRENT active label policy, including its duplicate-retention rule; that decision has changed in this stage.\n\nImplement `label_lookup(rows)` in `labels/label_lookup.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_label_lookup.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "labels/label_lookup.py"
+      ],
+      "support_paths": [
+        "tests/test_label_lookup.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/labels-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "labels/label_lookup.py"
+      ],
+      "expected_symbols": [
+        "label_lookup"
+      ],
+      "source_change_control": true,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-labels",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-intervals-s1",
+      "sequence_id": "py-warm-intervals",
+      "stage": 1,
+      "language": "python",
+      "repository": "py-warm-intervals",
+      "prompt": "Repair integer interval overlap length using the active interval policy.\n\nImplement `overlap_length(left, right)` in `intervals/overlap_length.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_overlap_length.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "intervals/overlap_length.py"
+      ],
+      "support_paths": [
+        "tests/test_overlap_length.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/intervals-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "intervals/overlap_length.py"
+      ],
+      "expected_symbols": [
+        "overlap_length"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-intervals",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-intervals-s2",
+      "sequence_id": "py-warm-intervals",
+      "stage": 2,
+      "language": "python",
+      "repository": "py-warm-intervals",
+      "prompt": "Repair interval point membership according to the same active interval policy.\n\nImplement `contains_point(interval, point)` in `intervals/contains_point.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_contains_point.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "intervals/contains_point.py"
+      ],
+      "support_paths": [
+        "tests/test_contains_point.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/intervals-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "intervals/contains_point.py"
+      ],
+      "expected_symbols": [
+        "contains_point"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-intervals",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-intervals-s3",
+      "sequence_id": "py-warm-intervals",
+      "stage": 3,
+      "language": "python",
+      "repository": "py-warm-intervals",
+      "prompt": "Repair range merging according to the active interval policy, including touching and empty ranges.\n\nImplement `merge_ranges(ranges)` in `intervals/merge_ranges.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_merge_ranges.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "intervals/merge_ranges.py"
+      ],
+      "support_paths": [
+        "tests/test_merge_ranges.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/intervals-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "intervals/merge_ranges.py"
+      ],
+      "expected_symbols": [
+        "merge_ranges"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-intervals",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-retries-s1",
+      "sequence_id": "py-warm-retries",
+      "stage": 1,
+      "language": "python",
+      "repository": "py-warm-retries",
+      "prompt": "Repair the backoff delay schedule using the active retry policy.\n\nImplement `retry_delays(base, attempts, cap)` in `retries/retry_delays.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_retry_delays.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "retries/retry_delays.py"
+      ],
+      "support_paths": [
+        "tests/test_retry_delays.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/retries-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "retries/retry_delays.py"
+      ],
+      "expected_symbols": [
+        "retry_delays"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-retries",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-retries-s2",
+      "sequence_id": "py-warm-retries",
+      "stage": 2,
+      "language": "python",
+      "repository": "py-warm-retries",
+      "prompt": "Repair retry eligibility according to the active retry policy.\n\nImplement `should_retry(status, attempt, max_attempts)` in `retries/should_retry.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_should_retry.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "retries/should_retry.py"
+      ],
+      "support_paths": [
+        "tests/test_should_retry.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/retries-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "retries/should_retry.py"
+      ],
+      "expected_symbols": [
+        "should_retry"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-retries",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-retries-s3",
+      "sequence_id": "py-warm-retries",
+      "stage": 3,
+      "language": "python",
+      "repository": "py-warm-retries",
+      "prompt": "Repair next-delay selection, reusing eligibility and the active retry policy.\n\nImplement `next_delay(status, attempt, max_attempts, base, cap)` in `retries/next_delay.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_next_delay.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "retries/next_delay.py"
+      ],
+      "support_paths": [
+        "tests/test_next_delay.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/retries-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "retries/next_delay.py"
+      ],
+      "expected_symbols": [
+        "next_delay"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-retries",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-pagination-s1",
+      "sequence_id": "py-warm-pagination",
+      "stage": 1,
+      "language": "python",
+      "repository": "py-warm-pagination",
+      "prompt": "Repair page-window calculation using the active pagination policy.\n\nImplement `page_window(total, size, page)` in `pagination/page_window.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_page_window.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "pagination/page_window.py"
+      ],
+      "support_paths": [
+        "tests/test_page_window.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/pagination-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "pagination/page_window.py"
+      ],
+      "expected_symbols": [
+        "page_window"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-pagination",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-pagination-s2",
+      "sequence_id": "py-warm-pagination",
+      "stage": 2,
+      "language": "python",
+      "repository": "py-warm-pagination",
+      "prompt": "Repair page counting according to the same active pagination policy.\n\nImplement `page_count(total, size)` in `pagination/page_count.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_page_count.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "pagination/page_count.py"
+      ],
+      "support_paths": [
+        "tests/test_page_count.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/pagination-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "pagination/page_count.py"
+      ],
+      "expected_symbols": [
+        "page_count"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-pagination",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-pagination-s3",
+      "sequence_id": "py-warm-pagination",
+      "stage": 3,
+      "language": "python",
+      "repository": "py-warm-pagination",
+      "prompt": "Repair ordered chunk pagination according to the active pagination policy.\n\nImplement `paginate(values, size)` in `pagination/paginate.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_paginate.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "pagination/paginate.py"
+      ],
+      "support_paths": [
+        "tests/test_paginate.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/pagination-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "pagination/paginate.py"
+      ],
+      "expected_symbols": [
+        "paginate"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-pagination",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-priority-s1",
+      "sequence_id": "py-warm-priority",
+      "stage": 1,
+      "language": "python",
+      "repository": "py-warm-priority",
+      "prompt": "Repair job priority ranking according to the active priority policy.\n\nImplement `priority_rank(priority)` in `priority/priority_rank.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_priority_rank.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "priority/priority_rank.py"
+      ],
+      "support_paths": [
+        "tests/test_priority_rank.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/priority-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "priority/priority_rank.py"
+      ],
+      "expected_symbols": [
+        "priority_rank"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-priority",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-priority-s2",
+      "sequence_id": "py-warm-priority",
+      "stage": 2,
+      "language": "python",
+      "repository": "py-warm-priority",
+      "prompt": "Repair stable job ordering using the active priority policy and ranking API.\n\nImplement `order_jobs(jobs)` in `priority/order_jobs.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_order_jobs.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "priority/order_jobs.py"
+      ],
+      "support_paths": [
+        "tests/test_order_jobs.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/priority-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "priority/order_jobs.py"
+      ],
+      "expected_symbols": [
+        "order_jobs"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-priority",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-priority-s3",
+      "sequence_id": "py-warm-priority",
+      "stage": 3,
+      "language": "python",
+      "repository": "py-warm-priority",
+      "prompt": "Repair pending-job selection according to the active priority policy.\n\nImplement `next_job(jobs)` in `priority/next_job.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_next_job.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "priority/next_job.py"
+      ],
+      "support_paths": [
+        "tests/test_next_job.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/priority-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "priority/next_job.py"
+      ],
+      "expected_symbols": [
+        "next_job"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-priority",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-redaction-s1",
+      "sequence_id": "py-warm-redaction",
+      "stage": 1,
+      "language": "python",
+      "repository": "py-warm-redaction",
+      "prompt": "Repair field redaction according to the active redaction policy.\n\nImplement `redact_field(key, value)` in `redaction/redact_field.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_redact_field.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "redaction/redact_field.py"
+      ],
+      "support_paths": [
+        "tests/test_redact_field.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/redaction-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "redaction/redact_field.py"
+      ],
+      "expected_symbols": [
+        "redact_field"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-redaction",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-redaction-s2",
+      "sequence_id": "py-warm-redaction",
+      "stage": 2,
+      "language": "python",
+      "repository": "py-warm-redaction",
+      "prompt": "Repair whole-record redaction using the field API and active redaction policy.\n\nImplement `redact_record(record)` in `redaction/redact_record.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_redact_record.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "redaction/redact_record.py"
+      ],
+      "support_paths": [
+        "tests/test_redact_record.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/redaction-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "redaction/redact_record.py"
+      ],
+      "expected_symbols": [
+        "redact_record"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-redaction",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-warm-redaction-s3",
+      "sequence_id": "py-warm-redaction",
+      "stage": 3,
+      "language": "python",
+      "repository": "py-warm-redaction",
+      "prompt": "Repair batch record redaction according to the same active redaction policy.\n\nImplement `redact_records(rows)` in `redaction/redact_records.py`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/test_redact_records.py`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "redaction/redact_records.py"
+      ],
+      "support_paths": [
+        "tests/test_redact_records.py"
+      ],
+      "memory_paths": [
+        "docs/decisions/redaction-contract.md"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "redaction/redact_records.py"
+      ],
+      "expected_symbols": [
+        "redact_records"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "py-warm-redaction",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "ts-warm-paths-s1",
+      "sequence_id": "ts-warm-paths",
+      "stage": 1,
+      "language": "typescript",
+      "repository": "ts-warm-paths",
+      "prompt": "Repair storage-key normalization according to the active storage-key policy.\n\nImplement `normalize_key(key: string): string` in `src/normalize_key.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/normalize_key.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/normalize_key.ts"
+      ],
+      "support_paths": [
+        "tests/normalize_key.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/paths-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/normalize_key.ts"
+      ],
+      "expected_symbols": [
+        "normalize_key"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-paths",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-paths-s2",
+      "sequence_id": "ts-warm-paths",
+      "stage": 2,
+      "language": "typescript",
+      "repository": "ts-warm-paths",
+      "prompt": "Repair key joining by applying the active storage-key policy across both parts.\n\nImplement `join_key(left: string, right: string): string` in `src/join_key.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/join_key.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/join_key.ts"
+      ],
+      "support_paths": [
+        "tests/join_key.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/paths-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/join_key.ts"
+      ],
+      "expected_symbols": [
+        "join_key"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-paths",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-paths-s3",
+      "sequence_id": "ts-warm-paths",
+      "stage": 3,
+      "language": "typescript",
+      "repository": "ts-warm-paths",
+      "prompt": "Repair parent-key extraction according to the active storage-key policy.\n\nImplement `parent_key(key: string): string` in `src/parent_key.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/parent_key.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/parent_key.ts"
+      ],
+      "support_paths": [
+        "tests/parent_key.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/paths-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/parent_key.ts"
+      ],
+      "expected_symbols": [
+        "parent_key"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-paths",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-clocks-s1",
+      "sequence_id": "ts-warm-clocks",
+      "stage": 1,
+      "language": "typescript",
+      "repository": "ts-warm-clocks",
+      "prompt": "Repair clock parsing according to the active clock protocol.\n\nImplement `parse_clock(text: string): number` in `src/parse_clock.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/parse_clock.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/parse_clock.ts"
+      ],
+      "support_paths": [
+        "tests/parse_clock.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/clocks-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/parse_clock.ts"
+      ],
+      "expected_symbols": [
+        "parse_clock"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-clocks",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-clocks-s2",
+      "sequence_id": "ts-warm-clocks",
+      "stage": 2,
+      "language": "typescript",
+      "repository": "ts-warm-clocks",
+      "prompt": "Repair clock formatting according to the same active clock protocol.\n\nImplement `format_clock(minutes: number): string` in `src/format_clock.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/format_clock.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/format_clock.ts"
+      ],
+      "support_paths": [
+        "tests/format_clock.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/clocks-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/format_clock.ts"
+      ],
+      "expected_symbols": [
+        "format_clock"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-clocks",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-clocks-s3",
+      "sequence_id": "ts-warm-clocks",
+      "stage": 3,
+      "language": "typescript",
+      "repository": "ts-warm-clocks",
+      "prompt": "Repair clock-window membership, including midnight wrapping, according to the active clock protocol.\n\nImplement `window_contains(start: number, end: number, minute: number): boolean` in `src/window_contains.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/window_contains.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/window_contains.ts"
+      ],
+      "support_paths": [
+        "tests/window_contains.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/clocks-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/window_contains.ts"
+      ],
+      "expected_symbols": [
+        "window_contains"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-clocks",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-quota-s1",
+      "sequence_id": "ts-warm-quota",
+      "stage": 1,
+      "language": "typescript",
+      "repository": "ts-warm-quota",
+      "prompt": "Repair remaining-capacity calculation according to the active quota policy.\n\nImplement `remaining_quota(limit: number, used: number): number` in `src/remaining_quota.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/remaining_quota.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/remaining_quota.ts"
+      ],
+      "support_paths": [
+        "tests/remaining_quota.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/quota-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/remaining_quota.ts"
+      ],
+      "expected_symbols": [
+        "remaining_quota"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-quota",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-quota-s2",
+      "sequence_id": "ts-warm-quota",
+      "stage": 2,
+      "language": "typescript",
+      "repository": "ts-warm-quota",
+      "prompt": "Repair allocation eligibility according to the active quota policy.\n\nImplement `can_allocate(limit: number, used: number, request: number): boolean` in `src/can_allocate.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/can_allocate.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/can_allocate.ts"
+      ],
+      "support_paths": [
+        "tests/can_allocate.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/quota-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/can_allocate.ts"
+      ],
+      "expected_symbols": [
+        "can_allocate"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-quota",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-quota-s3",
+      "sequence_id": "ts-warm-quota",
+      "stage": 3,
+      "language": "typescript",
+      "repository": "ts-warm-quota",
+      "prompt": "Repair ordered batch allocation according to the active quota policy; a rejected request must not terminate the batch.\n\nImplement `allocate_batch(limit: number, used: number, requests: readonly number[]): number[]` in `src/allocate_batch.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/allocate_batch.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/allocate_batch.ts"
+      ],
+      "support_paths": [
+        "tests/allocate_batch.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/quota-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/allocate_batch.ts"
+      ],
+      "expected_symbols": [
+        "allocate_batch"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-quota",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-versions-s1",
+      "sequence_id": "ts-warm-versions",
+      "stage": 1,
+      "language": "typescript",
+      "repository": "ts-warm-versions",
+      "prompt": "Repair numeric version comparison according to the active version policy; components may exceed JavaScript safe-integer precision.\n\nImplement `compare_versions(left: string, right: string): number` in `src/compare_versions.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/compare_versions.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/compare_versions.ts"
+      ],
+      "support_paths": [
+        "tests/compare_versions.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/versions-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/compare_versions.ts"
+      ],
+      "expected_symbols": [
+        "compare_versions"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-versions",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-versions-s2",
+      "sequence_id": "ts-warm-versions",
+      "stage": 2,
+      "language": "typescript",
+      "repository": "ts-warm-versions",
+      "prompt": "Repair stable version sorting using the active numeric version policy.\n\nImplement `sort_versions(values: readonly string[]): string[]` in `src/sort_versions.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/sort_versions.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/sort_versions.ts"
+      ],
+      "support_paths": [
+        "tests/sort_versions.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/versions-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/sort_versions.ts"
+      ],
+      "expected_symbols": [
+        "sort_versions"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-versions",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-versions-s3",
+      "sequence_id": "ts-warm-versions",
+      "stage": 3,
+      "language": "typescript",
+      "repository": "ts-warm-versions",
+      "prompt": "Repair newest-version selection, retaining the first input on semantic ties, according to the active policy.\n\nImplement `newest_version(values: readonly string[]): string | null` in `src/newest_version.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/newest_version.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/newest_version.ts"
+      ],
+      "support_paths": [
+        "tests/newest_version.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/versions-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/newest_version.ts"
+      ],
+      "expected_symbols": [
+        "newest_version"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-versions",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-headers-s1",
+      "sequence_id": "ts-warm-headers",
+      "stage": 1,
+      "language": "typescript",
+      "repository": "ts-warm-headers",
+      "prompt": "Repair header-name normalization according to the active header policy.\n\nImplement `normalize_header(name: string): string` in `src/normalize_header.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/normalize_header.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/normalize_header.ts"
+      ],
+      "support_paths": [
+        "tests/normalize_header.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/headers-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/normalize_header.ts"
+      ],
+      "expected_symbols": [
+        "normalize_header"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-headers",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-headers-s2",
+      "sequence_id": "ts-warm-headers",
+      "stage": 2,
+      "language": "typescript",
+      "repository": "ts-warm-headers",
+      "prompt": "Repair retrieval of all values for a header according to the active header policy.\n\nImplement `header_values(rows: readonly (readonly [string,string])[], name: string): string[]` in `src/header_values.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/header_values.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/header_values.ts"
+      ],
+      "support_paths": [
+        "tests/header_values.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/headers-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/header_values.ts"
+      ],
+      "expected_symbols": [
+        "header_values"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-headers",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-headers-s3",
+      "sequence_id": "ts-warm-headers",
+      "stage": 3,
+      "language": "typescript",
+      "repository": "ts-warm-headers",
+      "prompt": "Repair merged-header formatting according to the active header policy and values API.\n\nImplement `merge_header(rows: readonly (readonly [string,string])[], name: string): string` in `src/merge_header.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/merge_header.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/merge_header.ts"
+      ],
+      "support_paths": [
+        "tests/merge_header.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/headers-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/merge_header.ts"
+      ],
+      "expected_symbols": [
+        "merge_header"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-headers",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-routing-s1",
+      "sequence_id": "ts-warm-routing",
+      "stage": 1,
+      "language": "typescript",
+      "repository": "ts-warm-routing",
+      "prompt": "Repair route segment matching according to the active routing policy.\n\nImplement `segment_matches(pattern: string, segment: string): boolean` in `src/segment_matches.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/segment_matches.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/segment_matches.ts"
+      ],
+      "support_paths": [
+        "tests/segment_matches.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/routing-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/segment_matches.ts"
+      ],
+      "expected_symbols": [
+        "segment_matches"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-routing",
+        "stage": 1,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-routing-s2",
+      "sequence_id": "ts-warm-routing",
+      "stage": 2,
+      "language": "typescript",
+      "repository": "ts-warm-routing",
+      "prompt": "Repair complete route matching using segment matching and the active routing policy.\n\nImplement `match_route(pattern: string, path: string): boolean` in `src/match_route.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/match_route.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/match_route.ts"
+      ],
+      "support_paths": [
+        "tests/match_route.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/routing-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/match_route.ts"
+      ],
+      "expected_symbols": [
+        "match_route"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-routing",
+        "stage": 2,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-warm-routing-s3",
+      "sequence_id": "ts-warm-routing",
+      "stage": 3,
+      "language": "typescript",
+      "repository": "ts-warm-routing",
+      "prompt": "Repair ordered route selection according to the active routing policy.\n\nImplement `choose_route(routes: readonly {name:string,pattern:string}[], path: string): string | null` in `src/choose_route.ts`. The complete production edit scope is this one file. Current specifications are repository data under docs/; follow the accepted current decision, not archived drafts. Relevant existing tests: `tests/choose_route.test.mjs`. Prior related production APIs are already canonical in this starting snapshot.\n\nThe exact offline test command argv is: [\"node\", \"--test\"]. Run it from the repository root.\n\nAll existing tracked tests, docs, other production files and configuration are READ-ONLY; keep their bytes identical. Add regression tests only in NEW test files. Preserve the public signature, avoid new dependencies and keep behavior deterministic. Do not inspect benchmark machinery, grading artifacts or files outside this repository.\n\nIn your structured final result, provide at most three findings as {path, quote} objects. Each quote must be an EXACT contiguous quote of at most 500 characters from a CURRENT repository specification or production source file that you actually inspected. Prefer the accepted policy details that helped this task and would help later related work. Include no inferred claims or instructions. An empty findings list is allowed; do not fabricate a quote.",
+      "focus_paths": [
+        "src/choose_route.ts"
+      ],
+      "support_paths": [
+        "tests/choose_route.test.mjs"
+      ],
+      "memory_paths": [
+        "docs/decisions/routing-contract.md"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/choose_route.ts"
+      ],
+      "expected_symbols": [
+        "choose_route"
+      ],
+      "source_change_control": false,
+      "starting_repository": {
+        "generator": "benchmarks.corpus_warm.build_stage",
+        "sequence_id": "ts-warm-routing",
+        "stage": 3,
+        "version": "warm-1.0.0"
+      },
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    }
+  ]
+}

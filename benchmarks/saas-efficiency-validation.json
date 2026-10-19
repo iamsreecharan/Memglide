@@ -1,0 +1,92 @@
+{
+  "generated_at_utc": "2026-10-19T05:31:34.502394+00:00",
+  "application_source_files": {
+    "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+    "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+    "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+    "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+    "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+    "src/memglide/core/context.py": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+    "src/memglide/core/indexer.py": "ab97faacfccd032e8dfae73ee526ad0952f877b646bb8c061466b14e270cf5ad",
+    "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+    "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+    "src/memglide/core/watcher.py": "4a06c71b08789e8ca49a4b984c8aeeac2178a4b52bbe7122c011f7aecfbb52eb",
+    "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+    "src/memglide/integrations/codex_preload.py": "1a5b26ac2b010bac7473211115d16f49c9cd634555910e88d56a87e3b510448b",
+    "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+    "src/memglide/integrations/memory_preload.py": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+    "src/memglide/integrations/preload.py": "9ae8595b4b5f97993dcf177d78d090db5f1e0f6fdb8ce2e2da5e3d766d69afac",
+    "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/memory/engine.py": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+    "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+    "src/memglide/service.py": "518f1d0a7d57027ae31d585807ab76aec3a0ec021509b146c89ce75819fe6a58",
+    "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/storage/database.py": "403820dcaeadf0b1d67cb0691ce1c922eda34cbc7252b3e8cb7cc7607d2c703d"
+  },
+  "application_source_tree_sha256": "d9f6134754776f04624e91fe0d35430896a0ae8134fbfc0cb7dc287bfb9431f7",
+  "full_python_regression": {
+    "passed": 1626,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 514.833,
+    "xml_sha256": "305a1c20c30c61c8c98409ae3202c5088088ef4640ca95718708f318ead47a3a",
+    "scope": "Complete 1626-case collected suite; two later added benchmark recovery cases passed separately; runtime application source unchanged"
+  },
+  "supplemental_recovery_cases": {
+    "new_cases_passed": 2,
+    "targeted_run_passed": 4,
+    "note": "Two new pointer-mutation cases plus two overlapping orphan-recovery regressions"
+  },
+  "distinct_verified_python_cases": 1628,
+  "frontend": {
+    "passed": 24,
+    "failed": 0
+  },
+  "production_chromium": {
+    "passed": 3,
+    "failed": 0
+  },
+  "installed_package": {
+    "checks": {
+      "installed_memory_preparation": true,
+      "installed_default_mcp": true,
+      "installed_agent_mcp": true,
+      "installed_loopback_api_and_spa": true,
+      "installed_cli": true
+    },
+    "all_passed": true,
+    "model_requests": 0
+  },
+  "installed_source_asset_file_count": 44,
+  "warm_source_preparation_cases": 36,
+  "warm_memory_prerequisite_checks": 9,
+  "ruff": "passed",
+  "mypy": "passed,31 application/benchmark modules",
+  "initial_full_run": {
+    "completed": false,
+    "passed": 390,
+    "failed": 1,
+    "reason": "Interrupted to fix a test fixture artifact-root assumption before coordinated final run; explicit root and containment regressions pass; artifact reader unchanged",
+    "xml_sha256": "3da45df3801660913b2ad133104443c3389b79a06b13acc19026e298b317cf5d"
+  },
+  "model_requests_by_engineering_checks": 0,
+  "limitations": [
+    "Separate targeted runs overlap; do not sum run totals as distinct cases.",
+    "Two upstream Click deprecation warnings remain.",
+    "Installed-package checks are functional checks, not additional pytest cases.",
+    "Native warm-memory outcomes are pending."
+  ],
+  "warm_runner_current_regression": {
+    "passed": 47,
+    "failed": 0,
+    "seconds": 39.79,
+    "scope": "Current finalized runner; overlaps45cases in fullsuite and includes2additionalrecoverycases",
+    "xml_sha256": "8937c2935318276fe7b223c9630c3016347b74e4f3543b33961280e262cd86c4"
+  },
+  "warm_source_preparation_receipt": "benchmarks/warm-source-preflight.json"
+}

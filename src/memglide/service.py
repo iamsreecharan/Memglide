@@ -118,7 +118,11 @@ class Service:
         project_id: str | None = None,
         session_id: str | None = None,
         event_type: str | None = None,
+        *,
+        limit: int = 500,
     ) -> list[dict[str, Any]]:
+        if type(limit) is not int or not 1 <= limit <= 500:
+            raise DomainError("Event limit must be an integer between 1 and 500")
         self.memory.cleanup()
         where, params = [], []
         if project_id:
@@ -135,20 +139,22 @@ class Service:
         sql = (
             "SELECT * FROM events"
             + (" WHERE " + " AND ".join(where) if where else "")
-            + " ORDER BY created_at DESC LIMIT 500"
+            + " ORDER BY created_at DESC LIMIT ?"
         )
-        events = self.db.rows(sql, tuple(params))
+        events = self.db.rows(sql, (*params, limit))
         for event in events:
             event["detail"] = json.loads(event["detail"])
         return events
 
     def overview(self) -> dict[str, Any]:
-        self.memory.cleanup()
+        # list_sessions already performs expiration cleanup. Reuse its result
+        # for the count and body instead of repeating cleanup and list queries.
+        sessions = self.memory.list_sessions()
         counts = {
             name: (self.db.one(f"SELECT count(*) AS count FROM {name}") or {"count": 0})["count"]
             for name in ("projects", "files", "symbols", "memories", "retrievals")
         }
-        counts["sessions"] = len([s for s in self.memory.list_sessions() if not s.get("ended_at")])
+        counts["sessions"] = len([s for s in sessions if not s.get("ended_at")])
         counts["database_bytes"] = sum(
             p.stat().st_size
             for p in self.db.path.parent.glob(self.db.path.name + "*")
@@ -172,11 +178,11 @@ class Service:
             },
             "counts": counts,
             "projects": projects,
-            "sessions": self.memory.list_sessions(),
+            "sessions": sessions,
             "recent_retrievals": self.db.rows(
                 "SELECT id,session_id,project_id,query,level,budget,estimated_tokens,created_at FROM retrievals ORDER BY created_at DESC LIMIT 20"
             ),
-            "recent_events": self.events()[:20],
+            "recent_events": self.events(limit=20),
             "warnings": warnings,
             "settings": self.settings(),
         }

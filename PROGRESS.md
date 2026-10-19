@@ -1,5 +1,17 @@
 # Memglide V1 verification record
 
+The new [local-efficiency assessment](benchmarks/saas-efficiency-assessment.md)
+and [architecture](docs/product-efficiency-architecture.md) record this round's
+conditional graph refresh, released unchanged scan bodies, additive database
+indexes and leaner watcher/dashboard bookkeeping. Local component measurements
+and their write/storage tradeoffs are distinct from the prior native studies
+below. The complete Python run passed **1,626 tests**, with two additional recovery
+cases passing separately (**1,628 distinct Python cases**), plus **24 frontend**
+and **three Chromium** cases. Installed CLI/API/SPA/default-and-agent MCP checks
+pass. The new bounded warm-memory native comparison is pending; earlier native percentages do not automatically apply to this
+new source. Same-session warm memory is distinct from new/ended Memglide sessions.
+
+
 The latest [efficiency report](benchmarks/efficiency-assessment.md) preserves **120 native assignments in two separately frozen studies**. The original 60 remain strict protected-test failures; a fresh explicit-contract confirmation records A 20/20, B 20/20, C 20/20. The [validation](benchmarks/efficiency-validation.md) records **1,443 verified automated cases** and unchanged application source. In the confirmation's focused tasks, C versus bare Codex has 2.41% lower estimated cost per success and 12.63% higher mean full time. The frozen promotion gate is **False**; support stays explicit and optional. API-price equivalents are estimates, actual charges are unavailable, and the report includes every failed attempt's spend. [Download the complete evidence](benchmarks/memglide-efficiency-report.zip).
 
 Observed retrieval, lifecycle, invalidation and accounting defects are fixed within the recorded coverage. Source-only stays the default; complete caller-selected supporting tests remain optional. The original protection rule was retained, clarified before fresh tasks, and never weakened to change prior outcomes. The campaign [JSON](benchmarks/efficiency-assessment.json) includes every initial failure and all attempted estimated cost; cross-corpus efficacy and latency are not pooled.
