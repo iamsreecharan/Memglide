@@ -1,0 +1,9 @@
+{
+  "id": "openai-latency",
+  "url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+  "retrieved_at_utc": "2026-10-18T21:49:05.119775+00:00",
+  "http_status": 200,
+  "final_url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+  "body_bytes": 490457,
+  "body_sha256": "7119faa0183f12628dd457c89225ec4a5ac5dc5ffdb4323a3be283a15a97e2d6"
+}

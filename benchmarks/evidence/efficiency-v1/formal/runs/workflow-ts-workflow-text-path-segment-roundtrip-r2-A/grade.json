@@ -1,0 +1,147 @@
+{
+  "task_id": "ts-workflow-text-path-segment-roundtrip",
+  "repository": "text-typescript-workflow",
+  "corpus_version": "workflow-1.0.0",
+  "passed": false,
+  "success": false,
+  "exit_code": 1,
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-A/held_out.test.mjs"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-A/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-A/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-reporter=tap"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-A/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-A/smoke.stderr.log"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "exit_code": 0,
+      "counts": {},
+      "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-A/typecheck.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-A/typecheck.stderr.log"
+    }
+  ],
+  "test_count": 20,
+  "protected_files_unchanged": false,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "442e90d7e4de475c7835e8cd7870f5b602e0d433c62621c2d1ffa95c6e55d0ed",
+      "actual_sha256": "442e90d7e4de475c7835e8cd7870f5b602e0d433c62621c2d1ffa95c6e55d0ed"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "d1046751b7bb4d2209d66a79997a55146597549ba58ddfa1504d98904a2232b8",
+      "actual_sha256": "d1046751b7bb4d2209d66a79997a55146597549ba58ddfa1504d98904a2232b8"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "package.json",
+      "unchanged": true,
+      "expected_sha256": "bba9754a485c7ff7465dbe50f1c5cff06adfd9e6503f6e86815951c50cb141d9",
+      "actual_sha256": "bba9754a485c7ff7465dbe50f1c5cff06adfd9e6503f6e86815951c50cb141d9"
+    },
+    {
+      "file": "tsconfig.json",
+      "unchanged": true,
+      "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+      "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+    },
+    {
+      "file": "tests/utf8_byte_length.test.mjs",
+      "unchanged": true,
+      "expected_sha256": "6f493f822b40ecb473451bdb22307b3d5e08a74a9e308f4d65f06fe41bc69a01",
+      "actual_sha256": "6f493f822b40ecb473451bdb22307b3d5e08a74a9e308f4d65f06fe41bc69a01"
+    },
+    {
+      "file": "tests/path_segment_roundtrip.test.mjs",
+      "unchanged": false,
+      "expected_sha256": "c6ef3ecc8f7f4937a352dcf2dd0e90107d9ba0ebe64b3a76eea4183f36e9f8bc",
+      "actual_sha256": "25e0d80ff4e36e29ce8206d01a76c904d53877a2dedeaab3edc4ae33668e8770"
+    },
+    {
+      "file": "tests/negative_array_offset.test.mjs",
+      "unchanged": true,
+      "expected_sha256": "7a016881ca5145ab0475fd74cb5566a45016e16997882a4114a2ef06f6100639",
+      "actual_sha256": "7a016881ca5145ab0475fd74cb5566a45016e16997882a4114a2ef06f6100639"
+    }
+  ],
+  "test_execution_complete": true,
+  "test_execution_integrity": [
+    {
+      "stage": "behavior",
+      "valid": true,
+      "required_test_count": {
+        "exact": 2
+      },
+      "reported_counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    },
+    {
+      "stage": "smoke",
+      "valid": true,
+      "required_test_count": {
+        "minimum": 15
+      },
+      "reported_counts": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

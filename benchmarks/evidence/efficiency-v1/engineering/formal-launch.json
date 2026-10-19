@@ -1,0 +1,23 @@
+{
+  "pid": 94452,
+  "command": [
+    "/workspace/Memglide/.venv/bin/python",
+    "-u",
+    "/workspace/Memglide/.local/efficiency-v1/run_formal_detached.py",
+    "--output",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1",
+    "--model",
+    "gpt-6.1-sol",
+    "--effort",
+    "low",
+    "--repeats",
+    "2",
+    "--codex",
+    "/opt/codex/bin/codex",
+    "--codex-home",
+    "/workspace/Memglide/.local/codex-device-login-NlwVLVWg"
+  ],
+  "started_unix": 1792381206.521069,
+  "python_tests_passed": 1340,
+  "source_frozen": true
+}

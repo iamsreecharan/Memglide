@@ -1,0 +1,31 @@
+diff --git a/src/utf8_byte_length.ts b/src/utf8_byte_length.ts
+index 37d0e53..e176d45 100644
+--- a/src/utf8_byte_length.ts
++++ b/src/utf8_byte_length.ts
+@@ -1,4 +1,4 @@
+ export function utf8Size(text: string): number {
+   // Used for a byte-sized wire field rather than a display character limit.
+-  return text.length;
++  return new TextEncoder().encode(text).length;
+ }
+diff --git a/tests/utf8_byte_length.test.mjs b/tests/utf8_byte_length.test.mjs
+index 2836da1..6edf81e 100644
+--- a/tests/utf8_byte_length.test.mjs
++++ b/tests/utf8_byte_length.test.mjs
+@@ -6,3 +6,16 @@ test("ordinary-1",()=>{assert.equal(core.utf8Size("a"),1);});
+ test("ordinary-2",()=>{assert.equal(core.utf8Size("abc"),3);});
+ test("ordinary-3",()=>{assert.equal(core.utf8Size("a b"),3);});
+ test("ordinary-4",()=>{assert.equal(core.utf8Size("line\n"),5);});
++
++test("counts UTF-8 bytes for Unicode characters", () => {
++  assert.equal(core.utf8Size("é"), 2);
++  assert.equal(core.utf8Size("中文"), 6);
++  assert.equal(core.utf8Size("😀"), 4);
++  assert.equal(core.utf8Size("aé中😀"), 10);
++});
++
++test("encodes lone UTF-16 surrogates as replacement characters", () => {
++  assert.equal(core.utf8Size("\uD800"), 3);
++  assert.equal(core.utf8Size("\uDC00"), 3);
++  assert.equal(core.utf8Size("\uD800a\uDC00"), 7);
++});

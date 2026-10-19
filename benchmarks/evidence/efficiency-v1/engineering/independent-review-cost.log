@@ -1,0 +1,33 @@
+.....................................F                                   [100%]
+=================================== FAILURES ===================================
+________ test_cli_preserves_source_and_refuses_partial_output_overwrite ________
+
+tmp_path = PosixPath('/workspace/Memglide/.local/efficiency-v1/independent-review-cost-tmp/test_cli_preserves_source_and_0')
+pricing = {'context_threshold_tokens': 272000, 'model': 'exact-model', 'per_million_usd': {'cache_write_input': 2.5, 'cached_input': 0.1, 'output': 10, 'uncached_input': 2}, 'service_tier': 'standard'}
+
+    def test_cli_preserves_source_and_refuses_partial_output_overwrite(tmp_path, pricing):
+        rows = [raw_row(tmp_path, arm, arm=arm) for arm in "ABC"]
+        source = tmp_path / "source.json"
+        prices = tmp_path / "pricing.json"
+        source.write_text(json.dumps(report(rows)))
+        prices.write_text(json.dumps(pricing))
+        original = source.read_bytes()
+        prefix = tmp_path / "assessment"
+        argv = ["--report", str(source), "--pricing", str(prices), "--output-prefix", str(prefix)]
+        assert cost.main(argv) == 0
+        output = json.loads(prefix.with_suffix(".json").read_text())
+        assert output["unique_attempts"] == 3
+        assert output["provenance"]["primary_report_sha256"] == native_cost.digest(original)
+        assert source.read_bytes() == original
+        text = prefix.with_suffix(".md").read_text()
+        assert "not actual bills" in text
+>       assert all(label in text for label in LABELS.values())
+E       assert False
+E        +  where False = all(<generator object test_cli_preserves_source_and_refuses_partial_output_overwrite.<locals>.<genexpr> at 0x7fc675a3d8a0>)
+
+tests/test_benchmark_workflow_cost.py:472: AssertionError
+----------------------------- Captured stdout call -----------------------------
+{"unique_attempts": 3, "failures": 0, "promotion_gate_passed": false}
+=========================== short test summary info ============================
+FAILED tests/test_benchmark_workflow_cost.py::test_cli_preserves_source_and_refuses_partial_output_overwrite
+1 failed, 37 passed in 0.63s

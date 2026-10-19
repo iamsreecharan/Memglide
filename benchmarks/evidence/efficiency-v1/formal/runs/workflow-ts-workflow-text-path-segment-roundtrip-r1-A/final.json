@@ -1,0 +1,1 @@
+{"summary":"Fixed segment encoding with encodeURIComponent and preserved empty segments, order, and case when building paths. Added regression coverage for reserved characters and input immutability. No commits made.","tests_run":["node --test — passed all 3 test files."]}

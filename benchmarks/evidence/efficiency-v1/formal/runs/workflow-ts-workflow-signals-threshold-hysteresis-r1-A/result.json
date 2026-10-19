@@ -1,0 +1,321 @@
+{
+  "run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r1-A",
+  "task_id": "ts-workflow-signals-threshold-hysteresis",
+  "language": "typescript",
+  "repository": "signals-typescript-workflow",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 17,
+  "context_format": null,
+  "support_enabled": false,
+  "setup": {
+    "wall_seconds": 0,
+    "cpu_seconds": 0
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Direct native invocation receives exact common task stdin; no Memglide preparation or MCP",
+    "mode": "standard",
+    "context_format": null,
+    "source_file_count": 0,
+    "source_hashes": {},
+    "context_bytes": 0,
+    "actual_model_prompt_sha256": "8dc45d4929b379221a0f44044a2ae8a05ac0e7f1776b42eec4b0b9ebd3039a0f",
+    "common_task_prompt_sha256": "8dc45d4929b379221a0f44044a2ae8a05ac0e7f1776b42eec4b0b9ebd3039a0f"
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "1ab1fbd0748575e89739cf12f785a3a576d5e0bea84d30caddd4c8539d58785c",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r1-A",
+  "supplemental": false,
+  "status": "failed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T03:45:32.679975+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-signals-threshold-hysteresis-r1-A",
+  "errors": [
+    "Protected repository tests or Git metadata changed"
+  ],
+  "grader": {
+    "task_id": "ts-workflow-signals-threshold-hysteresis",
+    "repository": "signals-typescript-workflow",
+    "corpus_version": "workflow-1.0.0",
+    "passed": false,
+    "success": false,
+    "exit_code": 1,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 13,
+          "pass": 13,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 15,
+    "protected_files_unchanged": false,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "6c6f043129b2ca6c903535b09084f06459bf89d0a71d619abcd0dca81121dbc9",
+        "actual_sha256": "6c6f043129b2ca6c903535b09084f06459bf89d0a71d619abcd0dca81121dbc9"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "d1046751b7bb4d2209d66a79997a55146597549ba58ddfa1504d98904a2232b8",
+        "actual_sha256": "d1046751b7bb4d2209d66a79997a55146597549ba58ddfa1504d98904a2232b8"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "a7efef20bdead072d62eac2fd562b8420acf032cd30b9e8affd96f153fdad5b8",
+        "actual_sha256": "a7efef20bdead072d62eac2fd562b8420acf032cd30b9e8affd96f153fdad5b8"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/circular_angle_difference.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "06d50c50d8a56b3c3c1875fb5189a0b5f2944811d10f9cbd5035c2e6ca9c4814",
+        "actual_sha256": "06d50c50d8a56b3c3c1875fb5189a0b5f2944811d10f9cbd5035c2e6ca9c4814"
+      },
+      {
+        "file": "tests/threshold_hysteresis.test.mjs",
+        "unchanged": false,
+        "expected_sha256": "f64219af27ce22116b182144ee726f341a74c415685ba561c6689da160336a81",
+        "actual_sha256": "639ffe18a3fae635de69c7133cfe563e46b103cb6e1867b0a9e733ce2f344c92"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 10
+        },
+        "reported_counts": {
+          "tests": 13,
+          "pass": 13,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "e7dfe2518cf395a14bf0d5e020b481e3a675969a",
+  "common_task_prompt_sha256": "8dc45d4929b379221a0f44044a2ae8a05ac0e7f1776b42eec4b0b9ebd3039a0f",
+  "actual_model_prompt_sha256": "8dc45d4929b379221a0f44044a2ae8a05ac0e7f1776b42eec4b0b9ebd3039a0f",
+  "configuration_label": "Standard Codex",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-signals-threshold-hysteresis-r1-A",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r1-A/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 19.648451784996723,
+  "process_started_monotonic_seconds": 51274.442092404,
+  "process_finished_monotonic_seconds": 51294.090544189,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 278659072,
+    "cpu_seconds": 3.9600000000000004,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 19,
+    "observed_memglide_processes": 0,
+    "samples": 289,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 11,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 36095,
+      "cached_input_tokens": 11776,
+      "output_tokens": 780
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 36095,
+      "cached_input_tokens": 11776,
+      "output_tokens": 780
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 2,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc 'pwd && git status --short && cat src/threshold_hysteresis.ts src/threshold_hysteresis_api.ts tests/threshold_hysteresis.test.mjs'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'node --test'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "src/threshold_hysteresis.ts",
+      "src/threshold_hysteresis_api.ts",
+      "tests/threshold_hysteresis.test.mjs"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 19.658033272004104,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": null,
+  "native_exec_timing_scope": "B/C launcher boundary before report-write/exec handoff through native exit; A has no launcher boundary",
+  "protected_file_violations": [
+    "tests/threshold_hysteresis.test.mjs"
+  ],
+  "common_blocker": null,
+  "finished_at": "2026-10-19T03:45:53.457270+00:00"
+}

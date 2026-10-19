@@ -1,0 +1,22 @@
+diff --git a/src/unicode_common_prefix.ts b/src/unicode_common_prefix.ts
+index e96f0de..2300b33 100644
+--- a/src/unicode_common_prefix.ts
++++ b/src/unicode_common_prefix.ts
+@@ -1,3 +1,16 @@
+ export function commonPrefix(values: string[]): string {
+-  return values[0] ?? "";
++  const first = values[0] ?? "";
++  let end = 0;
++
++  for (const point of first) {
++    const codePoint = point.codePointAt(0);
++    for (let index = 1; index < values.length; index++) {
++      if (values[index].codePointAt(end) !== codePoint) {
++        return first.slice(0, end);
++      }
++    }
++    end += point.length;
++  }
++
++  return first;
+ }

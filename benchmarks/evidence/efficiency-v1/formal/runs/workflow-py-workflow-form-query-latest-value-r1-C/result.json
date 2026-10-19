@@ -1,0 +1,343 @@
+{
+  "run_id": "workflow-py-workflow-form-query-latest-value-r1-C",
+  "task_id": "py-workflow-form-query-latest-value",
+  "language": "python",
+  "repository": "form-python-workflow",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "configuration": "C",
+  "repeat": 1,
+  "order": 24,
+  "context_format": "compact-prefix",
+  "support_enabled": true,
+  "setup": {
+    "project_id": "65f972ece0a5422a9b7dd37dc7aa01ec",
+    "wall_seconds": 0.24011868200614117,
+    "cpu_seconds": 0.12195004200000881,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches launcher stdin and native options",
+    "context_format": "compact-prefix",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "159d11afd586460690d353803a34da9e0aa26589863314d674e51f453beca1ca",
+      "prepared_prompt_sha256": "68e77d172a9cc5847fd944aa7aa6eb074ebdc62f8a421accc7023a24c0822122",
+      "files": [
+        {
+          "path": "form/query_latest_value.py",
+          "sha256": "d369d924f3d4cb95423bec2d0f4973d8090d453de12ce537ceb70c87df480e08",
+          "start_line": 1,
+          "end_line": 6
+        },
+        {
+          "path": "form/query_latest_value_api.py",
+          "sha256": "6400acd163fd95b453261cda1c8bc34220e6c9e5cf10b3bd92d8706b771c19af",
+          "start_line": 1,
+          "end_line": 5
+        },
+        {
+          "path": "tests/test_query_latest_value.py",
+          "sha256": "e81e33e6f4654a9d6116249ce2f284e0ac4d269aeae6aa81822612db714b007e",
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "context_bytes": 1419,
+      "context_format": "compact-prefix",
+      "prompt_layout": "source_prefix",
+      "focus_paths": [
+        "form/query_latest_value.py",
+        "form/query_latest_value_api.py"
+      ],
+      "support_paths": [
+        "tests/test_query_latest_value.py"
+      ],
+      "preparation_wall_seconds": 0.08810759400512325,
+      "preparation_cpu_seconds": 0.08809713400000002
+    },
+    "source_file_count": 3,
+    "source_hashes": {
+      "form/query_latest_value.py": "d369d924f3d4cb95423bec2d0f4973d8090d453de12ce537ceb70c87df480e08",
+      "form/query_latest_value_api.py": "6400acd163fd95b453261cda1c8bc34220e6c9e5cf10b3bd92d8706b771c19af",
+      "tests/test_query_latest_value.py": "e81e33e6f4654a9d6116249ce2f284e0ac4d269aeae6aa81822612db714b007e"
+    },
+    "context_bytes": 1419,
+    "actual_model_prompt_sha256": "68e77d172a9cc5847fd944aa7aa6eb074ebdc62f8a421accc7023a24c0822122",
+    "common_task_prompt_sha256": "159d11afd586460690d353803a34da9e0aa26589863314d674e51f453beca1ca",
+    "native_exec_boundary_monotonic_seconds": 51417.710613891
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "04b61f6c5568ebe8a265ec89cce4ef1b140bfa3961c6370b14a72eefd394ab9a",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "workflow-py-workflow-form-query-latest-value-r1-C",
+  "supplemental": false,
+  "status": "failed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T03:47:55.405131+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r1-C",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-py-workflow-form-query-latest-value-r1-C",
+  "errors": [
+    "Protected repository tests or Git metadata changed"
+  ],
+  "grader": {
+    "task_id": "py-workflow-form-query-latest-value",
+    "repository": "form-python-workflow",
+    "corpus_version": "workflow-1.0.0",
+    "passed": false,
+    "success": false,
+    "exit_code": 1,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r1-C/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r1-C/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r1-C/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 18
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r1-C/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r1-C/smoke.stderr.log"
+      }
+    ],
+    "test_count": 20,
+    "protected_files_unchanged": false,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "d056d658d37069342bc4377c637519a42e038fe24ae67d759487648c86d6f895",
+        "actual_sha256": "d056d658d37069342bc4377c637519a42e038fe24ae67d759487648c86d6f895"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "f002aa485358ebd7b8a381e8f92c9c8073a5389e2cb1c85fae63c7605d7d188a",
+        "actual_sha256": "f002aa485358ebd7b8a381e8f92c9c8073a5389e2cb1c85fae63c7605d7d188a"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_form_plus_decoding.py",
+        "unchanged": true,
+        "expected_sha256": "f92d4891e9e0cc4588400cdb077d73032c2212b99b39305dc2b9c4812f154986",
+        "actual_sha256": "f92d4891e9e0cc4588400cdb077d73032c2212b99b39305dc2b9c4812f154986"
+      },
+      {
+        "file": "tests/test_query_latest_value.py",
+        "unchanged": false,
+        "expected_sha256": "e81e33e6f4654a9d6116249ce2f284e0ac4d269aeae6aa81822612db714b007e",
+        "actual_sha256": "1e0ed88b9b988dd8a6df2ffd2eee498afde28e3f24f7d3ca4dd9a0274f9f8fdc"
+      },
+      {
+        "file": "tests/test_ascii_count_field.py",
+        "unchanged": true,
+        "expected_sha256": "1da360f500a4fe0d02be88e105c6aab6b34202c09bf173ff70f45df402660adc",
+        "actual_sha256": "1da360f500a4fe0d02be88e105c6aab6b34202c09bf173ff70f45df402660adc"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 15
+        },
+        "reported_counts": {
+          "tests": 18
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "aebea27ff185aa19d4e8ef928caa9295bd3930fe",
+  "common_task_prompt_sha256": "159d11afd586460690d353803a34da9e0aa26589863314d674e51f453beca1ca",
+  "actual_model_prompt_sha256": "68e77d172a9cc5847fd944aa7aa6eb074ebdc62f8a421accc7023a24c0822122",
+  "configuration_label": "Memglide source plus support",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-py-workflow-form-query-latest-value-r1-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r1-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 19.914855081995483,
+  "process_started_monotonic_seconds": 51417.42043153,
+  "process_finished_monotonic_seconds": 51437.335286612,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 176091136,
+    "cpu_seconds": 5.23,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 27,
+    "observed_memglide_processes": 0,
+    "samples": 286,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 13,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 24791,
+      "cached_input_tokens": 11648,
+      "output_tokens": 612
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 24791,
+      "cached_input_tokens": 11648,
+      "output_tokens": 612
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 3,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc 'git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc 'git diff --check'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 0,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 20.168219546998444,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 19.624672720994567,
+  "native_exec_timing_scope": "B/C launcher boundary before report-write/exec handoff through native exit; A has no launcher boundary",
+  "protected_file_violations": [
+    "tests/test_query_latest_value.py"
+  ],
+  "common_blocker": null,
+  "finished_at": "2026-10-19T03:48:16.245814+00:00"
+}

@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 2.212322
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.424576
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.211129
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.168134
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 2.491221
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 6 - ordinary-0
+  ---
+  duration_ms: 6.601028
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 7 - ordinary-1
+  ---
+  duration_ms: 0.254316
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 8 - ordinary-2
+  ---
+  duration_ms: 2.281082
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 9 - ordinary-3
+  ---
+  duration_ms: 1.089209
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 10 - ordinary-4
+  ---
+  duration_ms: 0.30467
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 289.12128

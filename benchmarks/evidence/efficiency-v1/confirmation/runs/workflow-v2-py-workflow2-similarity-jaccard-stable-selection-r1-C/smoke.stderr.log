@@ -1,0 +1,20 @@
+test_ordinary_0 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_4) ... ok
+test_ordinary_0 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_4) ... ok
+test_duplicates_use_distinct_values_without_mutation (test_jaccard_stable_selection_regression.JaccardRegressionTests.test_duplicates_use_distinct_values_without_mutation) ... ok
+test_identical_distinct_values_score_one (test_jaccard_stable_selection_regression.JaccardRegressionTests.test_identical_distinct_values_score_one) ... ok
+test_one_empty_input (test_jaccard_stable_selection_regression.JaccardRegressionTests.test_one_empty_input) ... ok
+test_selection_uses_distinct_scores_without_mutation (test_jaccard_stable_selection_regression.JaccardRegressionTests.test_selection_uses_distinct_scores_without_mutation) ... ok
+test_ties_keep_earliest_best_candidate (test_jaccard_stable_selection_regression.JaccardRegressionTests.test_ties_keep_earliest_best_candidate) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK

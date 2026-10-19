@@ -1,0 +1,18 @@
+{
+  "started_at_utc": "2026-10-19T04:32:15.676285+00:00",
+  "argv": [
+    ".local/efficiency-v1/audit_workflow_v2.py",
+    "--experiment",
+    ".local/efficiency-v1/formal-workflow-confirmation-v2",
+    "--expected-head",
+    "85ebff2229efd62be2e3c0e179c3c8eae0f0cade",
+    "--expected-app",
+    "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+    "--assessment",
+    "benchmarks/workflow-confirmation-assessment.json",
+    "--output-prefix",
+    ".local/efficiency-v1/independent-review/confirmation-audit-v1"
+  ],
+  "auditor_sha256": "a821025027379256b6bbb66ecbb3411aaad8494480a1ae47d800089c8c51f0df",
+  "preflight_only": false
+}

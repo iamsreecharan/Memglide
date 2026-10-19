@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "corpus_version": "workflow-1.0.0",
+  "status": "passed and ready for frozen model comparison",
+  "synthetic_known_source_and_test_workload": true,
+  "production_scale_claim": false,
+  "task_count": 10,
+  "languages": {
+    "python": 5,
+    "typescript": 5
+  },
+  "task_kinds": {
+    "single-source": 4,
+    "integration": 4,
+    "supplied-context": 2
+  },
+  "repository_count": 4,
+  "baseline_rejected": 10,
+  "reference_passed": 10,
+  "partial_negative_controls_rejected": 8,
+  "strict_typescript_compilation": true,
+  "clean_public_argv_execution": "Four clean generated repositories execute the disclosed argv successfully without build/dist directories. Node defaults to spec reporter; grader requests TAP separately. Both execute all 10/15 ordinary tests.",
+  "ordinary_protected_tests_per_task": 5,
+  "ordinary_protected_tests_per_repository": [
+    10,
+    15
+  ],
+  "external_heldout_tests_per_task": 2,
+  "grading_outside_worktree_procedural_separation": true,
+  "all_frozen_smoke_count_minimum_enforced": true,
+  "pytest": {
+    "tests": 36,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "initial_results_preserved": {
+    "initial_draft": "corpus-initial-draft",
+    "initial_full_validation": "corpus-initial-validation/validation.json",
+    "initial_test_log": "corpus-tests.log",
+    "initial_test_counts": {
+      "passed": 28,
+      "failed": 4
+    },
+    "second_test_log": "corpus-tests-final.log",
+    "second_test_counts": {
+      "passed": 34,
+      "failed": 2
+    },
+    "causes": [
+      "Three initial file-not-found failures came from concurrent reset of shared .pytest_tmp; dedicated temp directories isolate reruns.",
+      "The original early-exit test exposed weaker >=5 smoke count from shared helper with multiple TS test files; new grader now requires all frozen 10/15 ordinary tests.",
+      "Two second-run test assertions assumed public Node default output was TAP. Actual argv succeeded; dedicated clean-command test now accepts the emitted spec summary."
+    ],
+    "pre_freeze_reference_refinement": "corpus-reference-refinement.json",
+    "reference_edge": "Initial angle formula could overflow for opposite-sign large finite inputs; common requirement and oracle disclose the case; reference normalizes operands before subtraction. No model runs existed before correction."
+  },
+  "final_validation": "corpus-final-validation-v2/validation.json",
+  "final_test_log": "corpus-tests-final-v2.log",
+  "final_junit": "corpus-tests-final-v2.xml",
+  "source_sha256": {
+    "benchmarks/corpus_workflow.py": "ede082dfc6c576380d3ca4d8cefa4cfa1872a38e0ac7c144b5128b7f5f0d9491",
+    "benchmarks/tasks_workflow.json": "a4d1a944ca4fbf5d83d8136f673cec2de4f4930ab415b55e42f40b8e7bdcab1d",
+    "tests/test_benchmark_corpus_workflow.py": "ed4850a6a725dededc9d052bcb98b585bf48f7b2ae75f18fd625ff9ba2493fff",
+    "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c",
+    "benchmarks/corpus_cost.py": "50a4223815d28f5afef378ca10be208762fceb8d35674194a95b941ea6de95e7"
+  },
+  "tasks": [
+    {
+      "id": "py-workflow-form-form-plus-decoding",
+      "language": "python",
+      "task_kind": "single-source",
+      "repository": "form-python-workflow",
+      "focus_paths": [
+        "form/form_plus_decoding.py"
+      ],
+      "support_paths": [
+        "tests/test_form_plus_decoding.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "context_supplied": false,
+      "source_bytes": 169,
+      "support_bytes": 558,
+      "common_prompt_bytes": 918
+    },
+    {
+      "id": "py-workflow-form-query-latest-value",
+      "language": "python",
+      "task_kind": "integration",
+      "repository": "form-python-workflow",
+      "focus_paths": [
+        "form/query_latest_value.py",
+        "form/query_latest_value_api.py"
+      ],
+      "support_paths": [
+        "tests/test_query_latest_value.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "context_supplied": false,
+      "source_bytes": 408,
+      "support_bytes": 632,
+      "common_prompt_bytes": 1034
+    },
+    {
+      "id": "py-workflow-form-ascii-count-field",
+      "language": "python",
+      "task_kind": "supplied-context",
+      "repository": "form-python-workflow",
+      "focus_paths": [
+        "form/ascii_count_field.py"
+      ],
+      "support_paths": [
+        "tests/test_ascii_count_field.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "context_supplied": true,
+      "source_bytes": 213,
+      "support_bytes": 530,
+      "common_prompt_bytes": 1837
+    },
+    {
+      "id": "py-workflow-finance-discount-before-tax",
+      "language": "python",
+      "task_kind": "single-source",
+      "repository": "finance-python-workflow",
+      "focus_paths": [
+        "finance/discount_before_tax.py"
+      ],
+      "support_paths": [
+        "tests/test_discount_before_tax.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "context_supplied": false,
+      "source_bytes": 175,
+      "support_bytes": 553,
+      "common_prompt_bytes": 921
+    },
+    {
+      "id": "py-workflow-finance-net-flow-report",
+      "language": "python",
+      "task_kind": "integration",
+      "repository": "finance-python-workflow",
+      "focus_paths": [
+        "finance/net_flow_report.py",
+        "finance/net_flow_report_api.py"
+      ],
+      "support_paths": [
+        "tests/test_net_flow_report.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "context_supplied": false,
+      "source_bytes": 364,
+      "support_bytes": 599,
+      "common_prompt_bytes": 963
+    },
+    {
+      "id": "ts-workflow-text-utf8-byte-length",
+      "language": "typescript",
+      "task_kind": "single-source",
+      "repository": "text-typescript-workflow",
+      "focus_paths": [
+        "src/utf8_byte_length.ts"
+      ],
+      "support_paths": [
+        "tests/utf8_byte_length.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "context_supplied": false,
+      "source_bytes": 150,
+      "support_bytes": 441,
+      "common_prompt_bytes": 841
+    },
+    {
+      "id": "ts-workflow-text-path-segment-roundtrip",
+      "language": "typescript",
+      "task_kind": "integration",
+      "repository": "text-typescript-workflow",
+      "focus_paths": [
+        "src/path_segment_roundtrip.ts",
+        "src/path_segment_roundtrip_api.ts"
+      ],
+      "support_paths": [
+        "tests/path_segment_roundtrip.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "context_supplied": false,
+      "source_bytes": 334,
+      "support_bytes": 553,
+      "common_prompt_bytes": 960
+    },
+    {
+      "id": "ts-workflow-text-negative-array-offset",
+      "language": "typescript",
+      "task_kind": "supplied-context",
+      "repository": "text-typescript-workflow",
+      "focus_paths": [
+        "src/negative_array_offset.ts"
+      ],
+      "support_paths": [
+        "tests/negative_array_offset.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "context_supplied": true,
+      "source_bytes": 179,
+      "support_bytes": 490,
+      "common_prompt_bytes": 1742
+    },
+    {
+      "id": "ts-workflow-signals-circular-angle-difference",
+      "language": "typescript",
+      "task_kind": "single-source",
+      "repository": "signals-typescript-workflow",
+      "focus_paths": [
+        "src/circular_angle_difference.ts"
+      ],
+      "support_paths": [
+        "tests/circular_angle_difference.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "context_supplied": false,
+      "source_bytes": 200,
+      "support_bytes": 490,
+      "common_prompt_bytes": 1016
+    },
+    {
+      "id": "ts-workflow-signals-threshold-hysteresis",
+      "language": "typescript",
+      "task_kind": "integration",
+      "repository": "signals-typescript-workflow",
+      "focus_paths": [
+        "src/threshold_hysteresis.ts",
+        "src/threshold_hysteresis_api.ts"
+      ],
+      "support_paths": [
+        "tests/threshold_hysteresis.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "context_supplied": false,
+      "source_bytes": 395,
+      "support_bytes": 585,
+      "common_prompt_bytes": 987
+    }
+  ]
+}

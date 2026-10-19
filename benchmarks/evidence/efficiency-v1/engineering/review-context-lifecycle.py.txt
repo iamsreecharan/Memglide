@@ -1,0 +1,61 @@
+"""Reproduce a retrieval committing after its session has ended/expired."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+import tempfile
+from pathlib import Path
+
+from memglide.service import Service
+from memglide.storage.database import DomainError
+
+
+def reproduce(transition: str) -> dict[str, object]:
+    with tempfile.TemporaryDirectory(prefix="memglide-lifecycle-review-") as directory:
+        root = Path(directory)
+        repo = root / "repository"
+        repo.mkdir()
+        subprocess.run(["git", "init", "-q", str(repo)], check=True)
+        (repo / "module.py").write_text("def verify():\n    return True\n")
+        service = Service(root / "state" / "state.db")
+        try:
+            project = service.indexer.add_project(str(repo))
+            session = service.memory.start_session(project["id"], "verify")
+            original_touch = service.memory.touch
+            touches = 0
+
+            def touch_then_transition(session_id: str) -> None:
+                nonlocal touches
+                original_touch(session_id)
+                touches += 1
+                if touches != 2:
+                    return
+                if transition == "end":
+                    service.memory.end_session(session_id)
+                else:
+                    service.db.execute(
+                        "UPDATE sessions SET expires_at=0 WHERE id=?", (session_id,)
+                    )
+
+            service.memory.touch = touch_then_transition
+            error = None
+            try:
+                service.context.get_context(session["id"], "verify", 2, 8000)
+            except DomainError as exc:
+                error = {"type": type(exc).__name__, "status": exc.status, "message": str(exc)}
+            count = service.db.one("SELECT count(*) AS count FROM retrievals")["count"]
+            return {
+                "transition": transition,
+                "touches": touches,
+                "error": error,
+                "retrievals_committed_after_transition": count,
+                "check_passed": count == 0 and error is not None,
+            }
+        finally:
+            service.close()
+
+
+results = [reproduce(transition) for transition in ("end", "expire")]
+print(json.dumps(results, indent=2))
+raise SystemExit(0 if all(result["check_passed"] for result in results) else 1)

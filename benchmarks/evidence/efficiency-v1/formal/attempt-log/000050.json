@@ -1,0 +1,11 @@
+{
+  "sequence": 50,
+  "previous_sha256": "0ef762e6b7dcbc7f7983990918103293d756503cb5c203748fc45fc5b5769e48",
+  "recorded_at": "2026-10-19T03:48:16.450216+00:00",
+  "event": "attempt.started",
+  "attempt_id": "workflow-ts-workflow-text-utf8-byte-length-r1-B",
+  "original_run_id": "workflow-ts-workflow-text-utf8-byte-length-r1-B",
+  "supplemental": false,
+  "start_sha256": "7ac4ac096ec960dbe896d0cb81a1816a65d2948e588fccf9fe79d7680c8a665c",
+  "sha256": "1d86ca4e4d8a6380f66269bef7f8b9606e5954c0ca7973f5dd87318eb7e5c899"
+}

@@ -1,0 +1,23 @@
+test_ordinary_0 (test_ascii_count_field.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_ascii_count_field.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_ascii_count_field.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_ascii_count_field.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_ascii_count_field.OrdinaryTests.test_ordinary_4) ... ok
+test_malformed_escapes_and_other_characters (test_form_plus_decoding.OrdinaryTests.test_malformed_escapes_and_other_characters) ... ok
+test_ordinary_0 (test_form_plus_decoding.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_form_plus_decoding.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_form_plus_decoding.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_form_plus_decoding.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_form_plus_decoding.OrdinaryTests.test_ordinary_4) ... ok
+test_raw_and_encoded_pluses (test_form_plus_decoding.OrdinaryTests.test_raw_and_encoded_pluses) ... ok
+test_utf8_and_invalid_utf8 (test_form_plus_decoding.OrdinaryTests.test_utf8_and_invalid_utf8) ... ok
+test_ordinary_0 (test_query_latest_value.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_query_latest_value.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_query_latest_value.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_query_latest_value.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_query_latest_value.OrdinaryTests.test_ordinary_4) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.001s
+
+OK

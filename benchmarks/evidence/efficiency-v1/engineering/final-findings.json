@@ -1,0 +1,9 @@
+{
+  "source_only_focused_cost_change_percent": -10.18827305840404,
+  "source_only_focused_time_change_percent": 3.1787324974991815,
+  "source_only_focused_write_saving_scenarios_percent": [
+    -3.540371228211825,
+    22.48944761981122
+  ],
+  "statement_scope": "Point price-equivalent estimate and scenarios; not actual billing or a general simultaneous cost/latency gain."
+}

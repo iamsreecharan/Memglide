@@ -1,0 +1,22 @@
+{
+  "pid": 116021,
+  "command": [
+    "/workspace/Memglide/.venv/bin/python",
+    "-u",
+    "/workspace/Memglide/.local/efficiency-v1/run_confirmation_detached.py",
+    "--output",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2",
+    "--model",
+    "gpt-6.1-sol",
+    "--effort",
+    "low",
+    "--repeats",
+    "2",
+    "--codex",
+    "/opt/codex/bin/codex",
+    "--codex-home",
+    "/workspace/Memglide/.local/codex-device-login-NlwVLVWg"
+  ],
+  "started_unix": 1792382911.1757264,
+  "frozen_git_head": "85ebff2229efd62be2e3c0e179c3c8eae0f0cade"
+}

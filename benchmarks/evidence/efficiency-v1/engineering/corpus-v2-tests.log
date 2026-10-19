@@ -1,0 +1,43 @@
+.................F............F..........                                [100%]
+=================================== FAILURES ===================================
+_ test_baseline_rejected_reference_passes_all_checks[ts-workflow2-coordinates-manhattan-symmetric] _
+
+tmp_path = PosixPath('/workspace/Memglide/.local/efficiency-v1/corpus-v2-tests-tmp/test_baseline_rejected_referen8')
+task = {'checks': {'held_out_behavior': True, 'protected_smoke': True, 'typescript_typecheck': True}, 'context_supplied': False, 'expected_symbols': ['manhattanDistance'], 'focus_paths': ['src/manhattan_symmetric.ts'], ...}
+
+    @pytest.mark.parametrize("task", corpus.task_definitions(), ids=lambda task: task["id"])
+    def test_baseline_rejected_reference_passes_all_checks(tmp_path, task):
+        root = tmp_path / "repo"
+        corpus.build_repository(task["repository"], root)
+        baseline = corpus.grade(task["id"], root, tmp_path / "baseline")
+        assert not baseline["success"]
+        assert baseline["commands"][0]["exit_code"] != 0
+>       assert baseline["commands"][0]["counts"].get("tests") == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = <built-in method get of dict object at 0x7f09595d8400>('tests')
+E        +    where <built-in method get of dict object at 0x7f09595d8400> = {'cancelled': 0, 'fail': 1, 'pass': 0, 'skipped': 0, ...}.get
+
+tests/test_benchmark_corpus_workflow_v2.py:111: AssertionError
+_ test_erasing_support_file_rejected_despite_correct_source[coordinates-typescript-workflow-v2] _
+
+tmp_path = PosixPath('/workspace/Memglide/.local/efficiency-v1/corpus-v2-tests-tmp/test_erasing_support_file_reje3')
+repository = 'coordinates-typescript-workflow-v2'
+
+    @pytest.mark.parametrize("repository", corpus.REPOSITORIES)
+    def test_erasing_support_file_rejected_despite_correct_source(tmp_path, repository):
+        task = next(t for t in corpus.task_definitions() if t["repository"] == repository)
+        root = tmp_path / "repo"
+        corpus.build_repository(repository, root)
+        corpus._apply_reference_fix(task["id"], root)
+        (root / task["support_paths"][0]).write_text(
+            "# erased\n" if task["language"] == "python" else "// erased\n"
+        )
+        grade = corpus.grade(task["id"], root, tmp_path / "grade")
+>       assert grade["commands"][0]["exit_code"] == 0
+E       assert 1 == 0
+
+tests/test_benchmark_corpus_workflow_v2.py:150: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_benchmark_corpus_workflow_v2.py::test_baseline_rejected_reference_passes_all_checks[ts-workflow2-coordinates-manhattan-symmetric]
+FAILED tests/test_benchmark_corpus_workflow_v2.py::test_erasing_support_file_rejected_despite_correct_source[coordinates-typescript-workflow-v2]
+2 failed, 39 passed in 45.20s

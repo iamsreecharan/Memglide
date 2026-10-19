@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 0.954078
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.353492
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.108177
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.092678
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 0.124351
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 6 - ordinary-0
+  ---
+  duration_ms: 3.858939
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 7 - ordinary-1
+  ---
+  duration_ms: 0.344158
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 8 - ordinary-2
+  ---
+  duration_ms: 0.387754
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 9 - ordinary-3
+  ---
+  duration_ms: 2.680443
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 10 - ordinary-4
+  ---
+  duration_ms: 0.646225
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 11 - ordinary-0
+  ---
+  duration_ms: 4.833251
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 12 - ordinary-1
+  ---
+  duration_ms: 5.959403
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 13 - ordinary-2
+  ---
+  duration_ms: 1.264746
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 14 - ordinary-3
+  ---
+  duration_ms: 0.295438
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 15 - ordinary-4
+  ---
+  duration_ms: 2.340573
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 685.763114

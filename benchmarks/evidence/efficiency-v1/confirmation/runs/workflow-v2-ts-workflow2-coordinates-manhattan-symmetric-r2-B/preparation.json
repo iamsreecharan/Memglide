@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "a07746a8ac8e7350c76249f7eafdf17bd1a176b7bf0d5dfc2d219c3e5e8d5a8f",
+    "prepared_prompt_sha256": "df733abcad9d81d5debb665273ac1a1f3174ead6787ad048e306b8aadc71a05a",
+    "files": [
+      {
+        "path": "src/manhattan_symmetric.ts",
+        "sha256": "5ee74f7dd5d6bbdb563dd9773bfe41244299eeb2b61802687687f6e23fa9b22b",
+        "start_line": 1,
+        "end_line": 3
+      }
+    ],
+    "context_bytes": 310,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.04042071800358826,
+    "preparation_cpu_seconds": 0.04042225399999999
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r2-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r2-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "df733abcad9d81d5debb665273ac1a1f3174ead6787ad048e306b8aadc71a05a",
+    "bytes": 2526,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 53580.793648421
+}

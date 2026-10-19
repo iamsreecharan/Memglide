@@ -1,0 +1,82 @@
+{
+  "version": 3,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "71ca85498e2fb1d9a3e8dedf1e7a4664f19ef10c7b61e80fb7cac93fb853d44e",
+    "prepared_prompt_sha256": "85aed25c865dd3e747f634f064b92d7f6b1f1a4797c202a4448a6b0f1254fe2f",
+    "files": [
+      {
+        "path": "src/bounded_cardinal_neighbors.ts",
+        "sha256": "0bcbe32d8b194733b55dc2575a8116064b7eda4c8596427fbcf96cb5c7faae5a",
+        "start_line": 1,
+        "end_line": 3
+      },
+      {
+        "path": "src/bounded_cardinal_neighbors_api.ts",
+        "sha256": "16f5f3a93ffcfebc285e8ce7a705b762356a29bfcf59da9dd286215ea3e16916",
+        "start_line": 1,
+        "end_line": 4
+      },
+      {
+        "path": "tests/bounded_cardinal_neighbors.test.mjs",
+        "sha256": "c3b76c891ae913adc14e712f90131970bcae3d233ef6d233ac9c1ddf3034e23b",
+        "start_line": 1,
+        "end_line": 9
+      }
+    ],
+    "context_bytes": 1427,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "focus_paths": [
+      "src/bounded_cardinal_neighbors.ts",
+      "src/bounded_cardinal_neighbors_api.ts"
+    ],
+    "support_paths": [
+      "tests/bounded_cardinal_neighbors.test.mjs"
+    ],
+    "preparation_wall_seconds": 0.038786050005001016,
+    "preparation_cpu_seconds": 0.038787272
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r2-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r2-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "85aed25c865dd3e747f634f064b92d7f6b1f1a4797c202a4448a6b0f1254fe2f",
+    "bytes": 3888,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 53784.006994657
+}

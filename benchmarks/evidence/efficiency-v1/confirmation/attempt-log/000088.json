@@ -1,0 +1,11 @@
+{
+  "sequence": 88,
+  "previous_sha256": "0e656145128d7eb407aa01e84d17d6c4c5e286e81b3df0e36055847b293a3e58",
+  "recorded_at": "2026-10-19T04:25:51.057899+00:00",
+  "event": "attempt.started",
+  "attempt_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r2-A",
+  "original_run_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r2-A",
+  "supplemental": false,
+  "start_sha256": "d10611efd55783d00ac365cc80d85c4230832c5874fac06f80abecc45b27e6b9",
+  "sha256": "283405b80ffb2115272111622433a412ed945d28b4c35e030b35ae6130f4c355"
+}

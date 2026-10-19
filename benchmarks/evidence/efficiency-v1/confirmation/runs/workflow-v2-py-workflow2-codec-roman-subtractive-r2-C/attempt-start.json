@@ -1,0 +1,43 @@
+{
+  "run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r2-C",
+  "task_id": "py-workflow2-codec-roman-subtractive",
+  "language": "python",
+  "repository": "codec-python-workflow-v2",
+  "task_kind": "supplied-context",
+  "selection_stratum": "caller_context_supplied",
+  "configuration": "C",
+  "repeat": 2,
+  "order": 34,
+  "context_format": "compact-prefix",
+  "support_enabled": true,
+  "setup": {
+    "wall_seconds": 0,
+    "cpu_seconds": 0
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this assignment yet",
+    "context_format": "compact-prefix"
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r2-C",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T04:22:30.983143+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-roman-subtractive-r2-C",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-py-workflow2-codec-roman-subtractive-r2-C",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

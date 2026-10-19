@@ -1,0 +1,43 @@
+{
+  "run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r2-C",
+  "task_id": "ts-workflow-text-path-segment-roundtrip",
+  "language": "typescript",
+  "repository": "text-typescript-workflow",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "configuration": "C",
+  "repeat": 2,
+  "order": 50,
+  "context_format": "compact-prefix",
+  "support_enabled": true,
+  "setup": {
+    "wall_seconds": null,
+    "cpu_seconds": null
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this assignment yet",
+    "context_format": "compact-prefix"
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r2-C",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T03:57:19.267319+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r2-C",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-text-path-segment-roundtrip-r2-C",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

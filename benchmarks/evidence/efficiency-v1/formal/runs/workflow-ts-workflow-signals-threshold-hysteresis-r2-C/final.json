@@ -1,0 +1,1 @@
+{"summary":"Fixed hysteresis transitions and initial state handling. Added regression tests for boundaries, state propagation, and input preservation. No commits made.","tests_run":["node --test — passed all existing and added tests."]}

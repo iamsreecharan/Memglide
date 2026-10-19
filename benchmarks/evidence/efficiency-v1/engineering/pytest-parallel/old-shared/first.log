@@ -1,0 +1,21 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________________________ test_first __________________________________
+
+tmp_path = PosixPath('/workspace/Memglide/.local/efficiency-v1/pytest-parallel/old-shared/shared/test_first0')
+
+    def test_first(tmp_path):
+     marker=tmp_path/'alive';marker.write_text('present')
+     Path(os.environ['PROOF_READY']).write_text(str(tmp_path))
+     deadline=time.monotonic()+15
+     while not Path(os.environ['PROOF_FINISH']).exists() and time.monotonic()<deadline:time.sleep(.02)
+>    assert marker.exists(), 'another pytest process removed the active fixture directory'
+E    AssertionError: another pytest process removed the active fixture directory
+E    assert False
+E     +  where False = exists()
+E     +    where exists = PosixPath('/workspace/Memglide/.local/efficiency-v1/pytest-parallel/old-shared/shared/test_first0/alive').exists
+
+.local/efficiency-v1/pytest-parallel/test_first.py:8: AssertionError
+=========================== short test summary info ============================
+FAILED .local/efficiency-v1/pytest-parallel/test_first.py::test_first - Asser...
+1 failed in 1.20s

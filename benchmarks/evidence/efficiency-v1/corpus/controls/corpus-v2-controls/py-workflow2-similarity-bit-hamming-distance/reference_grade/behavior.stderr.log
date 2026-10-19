@@ -1,0 +1,7 @@
+test_leading_zeros_and_long_values (__main__.BehaviorTests.test_leading_zeros_and_long_values) ... ok
+test_position_count_not_numeric_distance (__main__.BehaviorTests.test_position_count_not_numeric_distance) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

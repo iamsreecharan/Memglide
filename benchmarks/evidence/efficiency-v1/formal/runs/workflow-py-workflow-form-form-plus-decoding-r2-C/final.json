@@ -1,0 +1,1 @@
+{"summary":"Updated decode_component to use unquote_plus, converting raw plus signs to spaces while preserving encoded plus signs and standard decoding behavior. Added regression tests; all 18 tests pass.","tests_run":["python -m unittest discover -s tests -v","git diff --check"]}

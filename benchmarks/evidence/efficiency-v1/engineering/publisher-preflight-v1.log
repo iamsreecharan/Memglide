@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/efficiency-v1/publisher-preflight.py", line 110, in <module>
+    rejected(publisher.scan_text_bytes, xml, injected)
+  File "/workspace/Memglide/.local/efficiency-v1/publisher-preflight.py", line 26, in rejected
+    function(*args)
+  File "/workspace/Memglide/.local/efficiency-v1/publish_evidence.py", line 279, in scan_text_bytes
+    scan_frozen_synthetic_xml(source_path, data)
+  File "/workspace/Memglide/.local/efficiency-v1/publish_evidence.py", line 177, in scan_frozen_synthetic_xml
+    tree = ET.fromstring(data)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/xml/etree/ElementTree.py", line 1335, in XML
+    parser.feed(text)
+xml.etree.ElementTree.ParseError: not well-formed (invalid token): line 6, column 10

@@ -1,0 +1,320 @@
+{
+  "run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B",
+  "task_id": "py-workflow2-codec-glob-literal-escape",
+  "language": "python",
+  "repository": "codec-python-workflow-v2",
+  "task_kind": "single-source",
+  "selection_stratum": "explicit_focus",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 11,
+  "context_format": "compact-prefix",
+  "support_enabled": false,
+  "setup": {
+    "project_id": "a6e84ddf276841a4949ab602c6fd53ed",
+    "wall_seconds": 0.1898739820026094,
+    "cpu_seconds": 0.09915401699998938,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches launcher stdin and native options",
+    "context_format": "compact-prefix",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "b471e4405f9caf422d278f7e25793c54d6c8e8b61b602061d7556d99dc9e9b80",
+      "prepared_prompt_sha256": "c7fbcb62a4ac11edab20c86374a02a570039fdf26ae2230cca7b71e5d9b7b300",
+      "files": [
+        {
+          "path": "codec/glob_literal_escape.py",
+          "sha256": "89719f3cabc80ee2123bc1fb1b1c0242366a6ec2fa93d64b04f7fa1bde90b067",
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "context_bytes": 303,
+      "context_format": "compact-prefix",
+      "prompt_layout": "source_prefix",
+      "preparation_wall_seconds": 0.10133539199887309,
+      "preparation_cpu_seconds": 0.10082105799999999
+    },
+    "source_file_count": 1,
+    "source_hashes": {
+      "codec/glob_literal_escape.py": "89719f3cabc80ee2123bc1fb1b1c0242366a6ec2fa93d64b04f7fa1bde90b067"
+    },
+    "context_bytes": 303,
+    "actual_model_prompt_sha256": "c7fbcb62a4ac11edab20c86374a02a570039fdf26ae2230cca7b71e5d9b7b300",
+    "common_task_prompt_sha256": "b471e4405f9caf422d278f7e25793c54d6c8e8b61b602061d7556d99dc9e9b80",
+    "native_exec_boundary_monotonic_seconds": 52932.465897394
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "7306ec35649925587f0991ecfc398837c50cdf77b4abcedfde5d3aebb14d7902",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B",
+  "supplemental": false,
+  "status": "completed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T04:13:10.229076+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B",
+  "errors": [],
+  "grader": {
+    "task_id": "py-workflow2-codec-glob-literal-escape",
+    "repository": "codec-python-workflow-v2",
+    "corpus_version": "workflow-2.0.0",
+    "passed": true,
+    "success": true,
+    "exit_code": 0,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 17
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B/smoke.stderr.log"
+      }
+    ],
+    "test_count": 19,
+    "protected_files_unchanged": true,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "c2cdd932d6c07cfcf6ea39410e198e56cf0fdac091132faa817dcf115b90dfdd",
+        "actual_sha256": "c2cdd932d6c07cfcf6ea39410e198e56cf0fdac091132faa817dcf115b90dfdd"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "40c0b865fc2b54119311e28d52879e840ba0ca4bdb47569a7712be843ecf87cd",
+        "actual_sha256": "40c0b865fc2b54119311e28d52879e840ba0ca4bdb47569a7712be843ecf87cd"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_glob_literal_escape.py",
+        "unchanged": true,
+        "expected_sha256": "ea66d73b0c23e862d3b78b9657be78ca0f3a089fb572653322525ebcf0799beb",
+        "actual_sha256": "ea66d73b0c23e862d3b78b9657be78ca0f3a089fb572653322525ebcf0799beb"
+      },
+      {
+        "file": "tests/test_unsigned_varint_batch.py",
+        "unchanged": true,
+        "expected_sha256": "c22510485f53f657ebc7741bc1a6bb9909643edc6e5c524c85f33e6dc914fec4",
+        "actual_sha256": "c22510485f53f657ebc7741bc1a6bb9909643edc6e5c524c85f33e6dc914fec4"
+      },
+      {
+        "file": "tests/test_roman_subtractive.py",
+        "unchanged": true,
+        "expected_sha256": "09dde66168d20edd20907b3faa011a66a250917a10cc707e88f00b408bb806f8",
+        "actual_sha256": "09dde66168d20edd20907b3faa011a66a250917a10cc707e88f00b408bb806f8"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 15
+        },
+        "reported_counts": {
+          "tests": 17
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "44edccf0419b31bc58275331c23bdb276878286d",
+  "common_task_prompt_sha256": "b471e4405f9caf422d278f7e25793c54d6c8e8b61b602061d7556d99dc9e9b80",
+  "actual_model_prompt_sha256": "c7fbcb62a4ac11edab20c86374a02a570039fdf26ae2230cca7b71e5d9b7b300",
+  "configuration_label": "Memglide source-only",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 17.8981428449988,
+  "process_started_monotonic_seconds": 52932.127914823,
+  "process_finished_monotonic_seconds": 52950.026057668,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 178089984,
+    "cpu_seconds": 5.05,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 13,
+    "observed_memglide_processes": 0,
+    "samples": 177,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 13,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 36835,
+      "cached_input_tokens": 23424,
+      "output_tokens": 605
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 36835,
+      "cached_input_tokens": 23424,
+      "output_tokens": 605
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 3,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc 'git status --short\ncat tests/test_glob_literal_escape.py'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc 'git diff --check\ngit diff --stat\ngit status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 1,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [
+      "tests/test_glob_literal_escape.py"
+    ],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 18.107470456001465,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 17.560160273998918,
+  "native_exec_timing_scope": "B/C launcher boundary before report-write/exec handoff through native exit; A has no launcher boundary",
+  "protected_file_violations": [],
+  "common_blocker": null,
+  "finished_at": "2026-10-19T04:13:29.330491+00:00"
+}

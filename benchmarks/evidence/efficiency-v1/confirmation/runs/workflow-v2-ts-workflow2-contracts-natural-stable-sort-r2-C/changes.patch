@@ -1,0 +1,38 @@
+diff --git a/src/natural_stable_sort.ts b/src/natural_stable_sort.ts
+index 4ad7878..458602a 100644
+--- a/src/natural_stable_sort.ts
++++ b/src/natural_stable_sort.ts
+@@ -1,3 +1,22 @@
+ export function compareNatural(left: string,right: string): number {
+-  return left < right ? -1 : left > right ? 1 : 0;
++  const leftRuns = left.match(/[0-9]+|[^0-9]+/g) ?? [];
++  const rightRuns = right.match(/[0-9]+|[^0-9]+/g) ?? [];
++
++  for (let index = 0; index < Math.min(leftRuns.length, rightRuns.length); index++) {
++    let leftRun = leftRuns[index];
++    let rightRun = rightRuns[index];
++    if (/^[0-9]/.test(leftRun) && /^[0-9]/.test(rightRun)) {
++      // Compare significant digits directly so arbitrarily large integers stay exact.
++      leftRun = leftRun.replace(/^0+/, "");
++      rightRun = rightRun.replace(/^0+/, "");
++      if (leftRun.length !== rightRun.length) {
++        return leftRun.length < rightRun.length ? -1 : 1;
++      }
++    }
++    if (leftRun !== rightRun) {
++      return leftRun < rightRun ? -1 : 1;
++    }
++  }
++
++  return leftRuns.length < rightRuns.length ? -1 : leftRuns.length > rightRuns.length ? 1 : 0;
+ }
+diff --git a/src/natural_stable_sort_api.ts b/src/natural_stable_sort_api.ts
+index 77ca813..9fcfd24 100644
+--- a/src/natural_stable_sort_api.ts
++++ b/src/natural_stable_sort_api.ts
+@@ -1,4 +1,4 @@
+ import {compareNatural} from "./natural_stable_sort.ts";
+ export function sortedNatural(values: string[]): string[] {
+-  return values.sort(compareNatural);
++  return [...values].sort(compareNatural);
+ }

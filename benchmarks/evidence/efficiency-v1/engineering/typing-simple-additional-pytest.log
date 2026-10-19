@@ -1,0 +1,5 @@
+$ uv run pytest -q --basetemp=.local/efficiency-v1/typing-simple-additional-pytest-tmp tests/test_benchmark_corpus_cost.py tests/test_benchmark_corpus_cache.py -k early_exit_zero or python_added or typescript_extra
+..............                                                           [100%]
+14 passed, 74 deselected in 10.60s
+
+exit_code=0

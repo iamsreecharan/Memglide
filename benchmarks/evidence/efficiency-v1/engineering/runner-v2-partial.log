@@ -1,0 +1,40 @@
+..F...........................                                           [100%]
+=================================== FAILURES ===================================
+__ test_existing_test_append_is_protected_but_new_regression_file_is_allowed ___
+
+delivery = (PosixPath('/workspace/Memglide/.local/efficiency-v1/runner-v2-partial-tmp/test_existing_test_append_is_p0/worktree'),...f', 'path': '/workspace/Memglide/.local/efficiency-v1/runner-v2-partial-tmp/test_existing_test_append_is_p0/worktree'})
+
+    def test_existing_test_append_is_protected_but_new_regression_file_is_allowed(delivery):
+        worktree, _, _, repository = delivery
+>       frozen = run.legacy.protection_snapshot(worktree)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_benchmark_workflow_runner_v2.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+benchmarks/run.py:462: in protection_snapshot
+    return {path: hashlib.sha256((worktree / path).read_bytes()).hexdigest() for path in protected}
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/Memglide/.local/efficiency-v1/runner-v2-partial-tmp/test_existing_test_append_is_p0/worktree/.git')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IsADirectoryError: [Errno 21] Is a directory: '/workspace/Memglide/.local/efficiency-v1/runner-v2-partial-tmp/test_existing_test_append_is_p0/worktree/.git'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1013: IsADirectoryError
+=========================== short test summary info ============================
+FAILED tests/test_benchmark_workflow_runner_v2.py::test_existing_test_append_is_protected_but_new_regression_file_is_allowed
+1 failed, 29 passed, 5 deselected in 5.74s

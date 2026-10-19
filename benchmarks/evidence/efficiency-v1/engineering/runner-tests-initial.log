@@ -1,0 +1,60 @@
+.....E...........................                                        [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_compact_assignment_rejects_missing_source_or_forged_delivery[hash] _
+
+tmp_path = PosixPath('/workspace/Memglide/.pytest_tmp/test_compact_assignment_reject0')
+
+    @pytest.fixture
+    def delivery(tmp_path):
+        worktree = tmp_path / "worktree"
+        worktree.mkdir()
+        (worktree / "zeta.py").write_text("def zeta():\n    return '雪'\n")
+        (worktree / "alpha.py").write_text("def alpha():\n    return 1\n")
+        (worktree / "tests").mkdir()
+        (worktree / "tests/test_scope.py").write_text(
+            "import unittest\nclass Scope(unittest.TestCase):\n    def test_scope(self): self.assertEqual(1, 1)\n"
+        )
+        run.legacy.git(worktree, "init")
+        run.legacy.git(worktree, "add", ".")
+        run.legacy.git(
+            worktree,
+            "-c",
+            "user.name=Fixture",
+            "-c",
+            "user.email=fixture@example.invalid",
+            "commit",
+            "-m",
+            "Frozen",
+        )
+        artifacts = tmp_path / "artifacts"
+        artifacts.mkdir()
+>       setup = run.common.prepare_project(worktree, artifacts)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_benchmark_workflow_runner.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+benchmarks/run_daily.py:244: in prepare_project
+    project = Indexer(Database(artifacts / "memglide.db")).add_project(str(worktree))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/memglide/core/indexer.py:194: in add_project
+    self.reindex(project_id)
+src/memglide/core/indexer.py:390: in reindex
+    with self.db.connect() as conn:
+         ^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <memglide.storage.database.Database object at 0x7f1e0ab09ca0>
+
+    @contextmanager
+    def connect(self) -> Iterator[sqlite3.Connection]:
+>       conn = sqlite3.connect(self.path, timeout=30)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       sqlite3.OperationalError: unable to open database file
+
+src/memglide/storage/database.py:89: OperationalError
+=========================== short test summary info ============================
+ERROR tests/test_benchmark_workflow_runner.py::test_compact_assignment_rejects_missing_source_or_forged_delivery[hash]
+32 passed, 1 error in 14.13s

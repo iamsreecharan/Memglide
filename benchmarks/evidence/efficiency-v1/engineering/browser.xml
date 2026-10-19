@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="70.68163500000001">
+<testsuite name="workflow.spec.ts" timestamp="2026-10-18T22:04:07.814Z" hostname="" tests="3" failures="0" skipped="0" time="59.002" errors="0">
+<testcase name="production dashboard completes the repository, session, memory, retrieval, and evidence workflow" classname="workflow.spec.ts" time="40.41">
+</testcase>
+<testcase name="background cleanup cannot redirect a session deletion confirmation to another task" classname="workflow.spec.ts" time="4.445">
+</testcase>
+<testcase name="production routes retain useful empty and error states and fit desktop and tablet" classname="workflow.spec.ts" time="14.147">
+</testcase>
+</testsuite>
+</testsuites>

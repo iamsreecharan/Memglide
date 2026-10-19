@@ -1,0 +1,82 @@
+{
+  "version": 3,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "8dc45d4929b379221a0f44044a2ae8a05ac0e7f1776b42eec4b0b9ebd3039a0f",
+    "prepared_prompt_sha256": "1860f772f302c8ce1e94df1dbac8e2ec344af7d58cc207392f829e5258c2916d",
+    "files": [
+      {
+        "path": "src/threshold_hysteresis.ts",
+        "sha256": "b3722b08c18143a3f3fb2d3ce106cdd4afae8ef2f14cca3484e3ff6dfbf47732",
+        "start_line": 1,
+        "end_line": 3
+      },
+      {
+        "path": "src/threshold_hysteresis_api.ts",
+        "sha256": "25788be5f00acf49e30a2bd5905717dadc819a4a3e782096b606f5451262eccf",
+        "start_line": 1,
+        "end_line": 6
+      },
+      {
+        "path": "tests/threshold_hysteresis.test.mjs",
+        "sha256": "f64219af27ce22116b182144ee726f341a74c415685ba561c6689da160336a81",
+        "start_line": 1,
+        "end_line": 9
+      }
+    ],
+    "context_bytes": 1323,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "focus_paths": [
+      "src/threshold_hysteresis.ts",
+      "src/threshold_hysteresis_api.ts"
+    ],
+    "support_paths": [
+      "tests/threshold_hysteresis.test.mjs"
+    ],
+    "preparation_wall_seconds": 0.08859387900156435,
+    "preparation_cpu_seconds": 0.08855683500000003
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-signals-threshold-hysteresis-r2-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-threshold-hysteresis-r2-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "1860f772f302c8ce1e94df1dbac8e2ec344af7d58cc207392f829e5258c2916d",
+    "bytes": 3279,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 51944.17677619
+}

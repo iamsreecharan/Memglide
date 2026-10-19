@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 3.317538
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.269163
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.759409
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.659367
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 0.333492
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 6 - ordinary-0
+  ---
+  duration_ms: 3.63196
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 7 - ordinary-1
+  ---
+  duration_ms: 0.781638
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 8 - ordinary-2
+  ---
+  duration_ms: 1.120814
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 9 - ordinary-3
+  ---
+  duration_ms: 0.739838
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 10 - ordinary-4
+  ---
+  duration_ms: 0.297078
+  type: 'test'
+  ...
+# Subtest: reserved characters stay within a segment
+ok 11 - reserved characters stay within a segment
+  ---
+  duration_ms: 0.293395
+  type: 'test'
+  ...
+# Subtest: empty segments and input order are preserved without mutation
+ok 12 - empty segments and input order are preserved without mutation
+  ---
+  duration_ms: 2.809036
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 13 - ordinary-0
+  ---
+  duration_ms: 5.035889
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 14 - ordinary-1
+  ---
+  duration_ms: 0.26868
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 15 - ordinary-2
+  ---
+  duration_ms: 0.582973
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 16 - ordinary-3
+  ---
+  duration_ms: 1.363939
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 17 - ordinary-4
+  ---
+  duration_ms: 1.812715
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 425.40994

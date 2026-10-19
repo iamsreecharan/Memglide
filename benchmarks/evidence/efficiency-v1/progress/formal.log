@@ -1,0 +1,61 @@
+[1/60] workflow-ts-workflow-text-negative-array-offset-r1-A Standard Codex
+[2/60] workflow-ts-workflow-text-negative-array-offset-r1-C Memglide source plus support
+[3/60] workflow-ts-workflow-text-negative-array-offset-r1-B Memglide source-only
+[4/60] workflow-py-workflow-form-ascii-count-field-r1-A Standard Codex
+[5/60] workflow-py-workflow-form-ascii-count-field-r1-B Memglide source-only
+[6/60] workflow-py-workflow-form-ascii-count-field-r1-C Memglide source plus support
+[7/60] workflow-ts-workflow-signals-circular-angle-difference-r1-B Memglide source-only
+[8/60] workflow-ts-workflow-signals-circular-angle-difference-r1-C Memglide source plus support
+[9/60] workflow-ts-workflow-signals-circular-angle-difference-r1-A Standard Codex
+[10/60] workflow-py-workflow-form-form-plus-decoding-r1-C Memglide source plus support
+[11/60] workflow-py-workflow-form-form-plus-decoding-r1-B Memglide source-only
+[12/60] workflow-py-workflow-form-form-plus-decoding-r1-A Standard Codex
+[13/60] workflow-py-workflow-finance-net-flow-report-r1-B Memglide source-only
+[14/60] workflow-py-workflow-finance-net-flow-report-r1-A Standard Codex
+[15/60] workflow-py-workflow-finance-net-flow-report-r1-C Memglide source plus support
+[16/60] workflow-ts-workflow-signals-threshold-hysteresis-r1-C Memglide source plus support
+[17/60] workflow-ts-workflow-signals-threshold-hysteresis-r1-A Standard Codex
+[18/60] workflow-ts-workflow-signals-threshold-hysteresis-r1-B Memglide source-only
+[19/60] workflow-ts-workflow-text-path-segment-roundtrip-r1-A Standard Codex
+[20/60] workflow-ts-workflow-text-path-segment-roundtrip-r1-C Memglide source plus support
+[21/60] workflow-ts-workflow-text-path-segment-roundtrip-r1-B Memglide source-only
+[22/60] workflow-py-workflow-form-query-latest-value-r1-A Standard Codex
+[23/60] workflow-py-workflow-form-query-latest-value-r1-B Memglide source-only
+[24/60] workflow-py-workflow-form-query-latest-value-r1-C Memglide source plus support
+[25/60] workflow-ts-workflow-text-utf8-byte-length-r1-B Memglide source-only
+[26/60] workflow-ts-workflow-text-utf8-byte-length-r1-C Memglide source plus support
+[27/60] workflow-ts-workflow-text-utf8-byte-length-r1-A Standard Codex
+[28/60] workflow-py-workflow-finance-discount-before-tax-r1-C Memglide source plus support
+[29/60] workflow-py-workflow-finance-discount-before-tax-r1-B Memglide source-only
+[30/60] workflow-py-workflow-finance-discount-before-tax-r1-A Standard Codex
+[31/60] workflow-ts-workflow-text-negative-array-offset-r2-B Memglide source-only
+[32/60] workflow-ts-workflow-text-negative-array-offset-r2-C Memglide source plus support
+[33/60] workflow-ts-workflow-text-negative-array-offset-r2-A Standard Codex
+[34/60] workflow-py-workflow-form-ascii-count-field-r2-C Memglide source plus support
+[35/60] workflow-py-workflow-form-ascii-count-field-r2-B Memglide source-only
+[36/60] workflow-py-workflow-form-ascii-count-field-r2-A Standard Codex
+[37/60] workflow-ts-workflow-signals-circular-angle-difference-r2-A Standard Codex
+[38/60] workflow-ts-workflow-signals-circular-angle-difference-r2-C Memglide source plus support
+[39/60] workflow-ts-workflow-signals-circular-angle-difference-r2-B Memglide source-only
+[40/60] workflow-py-workflow-form-form-plus-decoding-r2-A Standard Codex
+[41/60] workflow-py-workflow-form-form-plus-decoding-r2-B Memglide source-only
+[42/60] workflow-py-workflow-form-form-plus-decoding-r2-C Memglide source plus support
+[43/60] workflow-py-workflow-finance-net-flow-report-r2-C Memglide source plus support
+[44/60] workflow-py-workflow-finance-net-flow-report-r2-A Standard Codex
+[45/60] workflow-py-workflow-finance-net-flow-report-r2-B Memglide source-only
+[46/60] workflow-ts-workflow-signals-threshold-hysteresis-r2-B Memglide source-only
+[47/60] workflow-ts-workflow-signals-threshold-hysteresis-r2-A Standard Codex
+[48/60] workflow-ts-workflow-signals-threshold-hysteresis-r2-C Memglide source plus support
+[49/60] workflow-ts-workflow-text-path-segment-roundtrip-r2-B Memglide source-only
+[50/60] workflow-ts-workflow-text-path-segment-roundtrip-r2-C Memglide source plus support
+[51/60] workflow-ts-workflow-text-path-segment-roundtrip-r2-A Standard Codex
+[52/60] workflow-py-workflow-form-query-latest-value-r2-C Memglide source plus support
+[53/60] workflow-py-workflow-form-query-latest-value-r2-B Memglide source-only
+[54/60] workflow-py-workflow-form-query-latest-value-r2-A Standard Codex
+[55/60] workflow-ts-workflow-text-utf8-byte-length-r2-A Standard Codex
+[56/60] workflow-ts-workflow-text-utf8-byte-length-r2-C Memglide source plus support
+[57/60] workflow-ts-workflow-text-utf8-byte-length-r2-B Memglide source-only
+[58/60] workflow-py-workflow-finance-discount-before-tax-r2-A Standard Codex
+[59/60] workflow-py-workflow-finance-discount-before-tax-r2-B Memglide source-only
+[60/60] workflow-py-workflow-finance-discount-before-tax-r2-C Memglide source plus support
+Workflow reports: /workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/report.md and /workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/report.json

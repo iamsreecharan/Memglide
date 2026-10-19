@@ -1,0 +1,205 @@
+{
+  "saved_memories": 55,
+  "irrelevant_memories": 40,
+  "potentially_relevant_memories": 15,
+  "selected_memories": 10,
+  "secure_source_read_invocations": 55,
+  "unique_source_paths_read": [
+    "other0.py",
+    "other1.py",
+    "other2.py",
+    "other3.py",
+    "other4.py",
+    "other5.py",
+    "other6.py",
+    "other7.py",
+    "other8.py",
+    "other9.py",
+    "relevant.py",
+    "shared.py"
+  ],
+  "selected_projection_sha256": "3dcdb3f03c8f28dc63b860798d5b03b35cc3531e430d29ad741b4f9744207cc6",
+  "selected_projection": [
+    {
+      "category": "verified_fix",
+      "content": "Verify behavior observation 13",
+      "provenance": "inspected fixture",
+      "created_at": 1053.0,
+      "updated_at": 1053.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "ad8b1bd358cf345ea45583680176d6c6284f12f6237c182f97ecdfb93a1b1d04"
+    },
+    {
+      "category": "verified_fix",
+      "content": "Verify behavior observation 11",
+      "provenance": "inspected fixture",
+      "created_at": 1051.0,
+      "updated_at": 1051.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "ecc16de60a55dffe39ade7b5e122329a2e846ff54256d1c0a135801190b80078"
+    },
+    {
+      "category": "verified_fix",
+      "content": "Verify behavior observation 9",
+      "provenance": "inspected fixture",
+      "created_at": 1049.0,
+      "updated_at": 1049.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "636bad135ec5ecb5ab69288edc5457f0d1e0f98af165a354ece19b15f65ffd7e"
+    },
+    {
+      "category": "verified_fix",
+      "content": "Verify behavior observation 7",
+      "provenance": "inspected fixture",
+      "created_at": 1047.0,
+      "updated_at": 1047.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "16d1d554272708d65bec7ad553fe164b5c9ea80d80ca38f997e2515764bcdc5d"
+    },
+    {
+      "category": "verified_fix",
+      "content": "Verify behavior observation 5",
+      "provenance": "inspected fixture",
+      "created_at": 1045.0,
+      "updated_at": 1045.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "1c04e500d50d9ce33cf6d5b366354ea3d07379d2a42f14cee3b242a25d83a141"
+    },
+    {
+      "category": "verified_fix",
+      "content": "Verify behavior observation 3",
+      "provenance": "inspected fixture",
+      "created_at": 1043.0,
+      "updated_at": 1043.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "7b70b1d94bfe1e8a14aa1bf19c4315c601b2537f85b9a8f0b15a4663d388c4b3"
+    },
+    {
+      "category": "observation",
+      "content": "Verify behavior observation 14",
+      "provenance": "inspected fixture",
+      "created_at": 1054.0,
+      "updated_at": 1054.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "9fee435be3dd28898217d4a70d40a8e1ea701c820e192d55fdee876bdb4d9959"
+    },
+    {
+      "category": "observation",
+      "content": "Verify behavior observation 12",
+      "provenance": "inspected fixture",
+      "created_at": 1052.0,
+      "updated_at": 1052.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "e881563a2af1ab84e27f747cb2cd43c458b84b8adfe620796b272d6cdf3c3625"
+    },
+    {
+      "category": "observation",
+      "content": "Verify behavior observation 10",
+      "provenance": "inspected fixture",
+      "created_at": 1050.0,
+      "updated_at": 1050.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "106e81e290600180129e0939f85e22841aed59a36b1fe26a99aaf0093893ad8b"
+    },
+    {
+      "category": "observation",
+      "content": "Verify behavior observation 8",
+      "provenance": "inspected fixture",
+      "created_at": 1048.0,
+      "updated_at": 1048.0,
+      "stale": false,
+      "sources": [
+        {
+          "path": "relevant.py",
+          "hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current_hash": "4b352c99172c45dee983603b52eca22475cb638f29d98ae16d63cb760e87e7d4",
+          "current": true
+        }
+      ],
+      "freshness": "Current",
+      "version": "623fabc6452ee5a8f114b96f8d84dc28f51191b5f2a32fcf5e7e042d621a4e2e"
+    }
+  ],
+  "measurement_scope": "Application read_source calls, not operating-system reads or model token/cost telemetry"
+}

@@ -1,0 +1,22 @@
+test_ordinary_0 (test_glob_literal_escape.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_glob_literal_escape.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_glob_literal_escape.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_glob_literal_escape.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_glob_literal_escape.OrdinaryTests.test_ordinary_4) ... ok
+test_exact_escapes_and_preserved_characters (test_glob_literal_escape_regression.GlobLiteralEscapeRegressionTests.test_exact_escapes_and_preserved_characters) ... ok
+test_literal_patterns_match_only_original_names (test_glob_literal_escape_regression.GlobLiteralEscapeRegressionTests.test_literal_patterns_match_only_original_names) ... ok
+test_ordinary_0 (test_roman_subtractive.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_roman_subtractive.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_roman_subtractive.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_roman_subtractive.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_roman_subtractive.OrdinaryTests.test_ordinary_4) ... ok
+test_ordinary_0 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_4) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.012s
+
+OK

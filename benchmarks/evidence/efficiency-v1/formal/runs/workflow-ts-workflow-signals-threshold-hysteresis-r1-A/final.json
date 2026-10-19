@@ -1,0 +1,1 @@
+{"summary":"Fixed hysteresis transitions and initial-state handling. Added regression tests for threshold boundaries, state persistence, and input immutability. Preserved existing tests; no commits made.","tests_run":["node --test — passed all tests."]}

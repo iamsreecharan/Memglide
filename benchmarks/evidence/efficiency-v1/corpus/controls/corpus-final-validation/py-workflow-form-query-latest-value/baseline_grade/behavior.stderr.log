@@ -1,0 +1,32 @@
+test_adapter_exact_case_default_and_preservation (__main__.BehaviorTests.test_adapter_exact_case_default_and_preservation) ... FAIL
+test_repeats_and_first_key_order (__main__.BehaviorTests.test_repeats_and_first_key_order) ... FAIL
+
+======================================================================
+FAIL: test_adapter_exact_case_default_and_preservation (__main__.BehaviorTests.test_adapter_exact_case_default_and_preservation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/efficiency-v1/corpus-final-validation/py-workflow-form-query-latest-value/baseline_grade/held_out.py", line 14, in test_adapter_exact_case_default_and_preservation
+    self.assertEqual(api.query_value(pairs,"A"),"last")
+AssertionError: 'lower' != 'last'
+- lower
++ last
+
+
+======================================================================
+FAIL: test_repeats_and_first_key_order (__main__.BehaviorTests.test_repeats_and_first_key_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/efficiency-v1/corpus-final-validation/py-workflow-form-query-latest-value/baseline_grade/held_out.py", line 10, in test_repeats_and_first_key_order
+    self.assertEqual(result,{"A":"3","b":"4"})
+AssertionError: {'A': '1', 'b': '2'} != {'A': '3', 'b': '4'}
+- {'A': '1', 'b': '2'}
+?        ^         ^
+
++ {'A': '3', 'b': '4'}
+?        ^         ^
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 0.953278
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.217513
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.156885
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.099501
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 0.2032
+  type: 'test'
+  ...
+# Subtest: digit runs compare exactly and ignore leading zeros
+ok 6 - digit runs compare exactly and ignore leading zeros
+  ---
+  duration_ms: 2.085222
+  type: 'test'
+  ...
+# Subtest: runs use case-sensitive lexical order and ASCII digits only
+ok 7 - runs use case-sensitive lexical order and ASCII digits only
+  ---
+  duration_ms: 0.386955
+  type: 'test'
+  ...
+# Subtest: sorting returns a new stable array without changing the input
+ok 8 - sorting returns a new stable array without changing the input
+  ---
+  duration_ms: 1.654456
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 9 - ordinary-0
+  ---
+  duration_ms: 3.621061
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 10 - ordinary-1
+  ---
+  duration_ms: 0.307378
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 11 - ordinary-2
+  ---
+  duration_ms: 0.378854
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 12 - ordinary-3
+  ---
+  duration_ms: 1.515597
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 13 - ordinary-4
+  ---
+  duration_ms: 1.328234
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 14 - ordinary-0
+  ---
+  duration_ms: 1.634318
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 15 - ordinary-1
+  ---
+  duration_ms: 0.33004
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 16 - ordinary-2
+  ---
+  duration_ms: 0.562464
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 17 - ordinary-3
+  ---
+  duration_ms: 0.168706
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 18 - ordinary-4
+  ---
+  duration_ms: 0.147197
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 338.133559

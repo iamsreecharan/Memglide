@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: alternating doubling and reduction
+ok 1 - alternating doubling and reduction
+  ---
+  duration_ms: 2.25719
+  type: 'test'
+  ...
+# Subtest: leading zeros parity and strict syntax
+ok 2 - leading zeros parity and strict syntax
+  ---
+  duration_ms: 0.372027
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 272.645849

@@ -1,0 +1,21 @@
+diff --git a/src/luhn_checksum.ts b/src/luhn_checksum.ts
+index b51c56f..a3f020c 100644
+--- a/src/luhn_checksum.ts
++++ b/src/luhn_checksum.ts
+@@ -1,4 +1,15 @@
+ export function luhnCheck(value: string): boolean {
+   if (!/^[0-9]+$/.test(value)) return false;
+-  return [...value].reduce((sum,digit)=>sum+Number(digit),0)%10===0;
++  let sum = 0;
++  let doubleDigit = false;
++  for (let index = value.length - 1; index >= 0; index--) {
++    let digit = value.charCodeAt(index) - 48;
++    if (doubleDigit) {
++      digit *= 2;
++      if (digit > 9) digit -= 9;
++    }
++    sum = (sum + digit) % 10;
++    doubleDigit = !doubleDigit;
++  }
++  return sum === 0;
+ }

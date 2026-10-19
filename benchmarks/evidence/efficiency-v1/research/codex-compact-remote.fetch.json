@@ -1,0 +1,9 @@
+{
+  "id": "codex-compact-remote",
+  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact_remote.rs",
+  "retrieved_at_utc": "2026-10-18T21:49:05.557199+00:00",
+  "http_status": 404,
+  "error_type": "HTTPError",
+  "error_body_bytes": 14,
+  "error_body_sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+}

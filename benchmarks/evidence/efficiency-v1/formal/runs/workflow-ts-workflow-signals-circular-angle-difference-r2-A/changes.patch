@@ -1,0 +1,48 @@
+diff --git a/src/circular_angle_difference.ts b/src/circular_angle_difference.ts
+index f4e9265..373c9ae 100644
+--- a/src/circular_angle_difference.ts
++++ b/src/circular_angle_difference.ts
+@@ -1,4 +1,8 @@
+ export function angleDifference(from: number, to: number): number {
+   if (!Number.isFinite(from) || !Number.isFinite(to)) throw new RangeError("finite angles required");
+-  return (to - from) % 360;
++  // Reduce each operand first so subtraction cannot overflow.
++  let difference = ((to % 360) - (from % 360)) % 360;
++  if (difference >= 180) difference -= 360;
++  if (difference < -180) difference += 360;
++  return difference === 0 ? 0 : difference;
+ }
+diff --git a/tests/circular_angle_difference.test.mjs b/tests/circular_angle_difference.test.mjs
+index 358ccdf..c56ed8f 100644
+--- a/tests/circular_angle_difference.test.mjs
++++ b/tests/circular_angle_difference.test.mjs
+@@ -6,3 +6,29 @@ test("ordinary-1",()=>{assert.equal(core.angleDifference(10,30),20);});
+ test("ordinary-2",()=>{assert.equal(core.angleDifference(30,10),-20);});
+ test("ordinary-3",()=>{assert.equal(core.angleDifference(0,90),90);});
+ test("ordinary-4",()=>{assert.equal(core.angleDifference(5.5,6),0.5);});
++
++test("wraps to the shortest signed rotation", () => {
++  for (const [from, to, expected] of [
++    [350, 10, 20], [10, 350, -20],
++    [0, 180, -180], [180, 0, -180],
++    [0, 540, -180], [0, -540, -180],
++    [-720, 1080, 0], [360, 0, 0], [0, -360, 0],
++    [359.75, 0.25, 0.5], [0.25, 359.75, -0.5],
++    [0, 0.000000000001, 0.000000000001],
++  ]) {
++    assert.equal(core.angleDifference(from, to), expected);
++  }
++});
++
++test("normalizes large operands before subtracting", () => {
++  assert.equal(core.angleDifference(-Number.MAX_VALUE, Number.MAX_VALUE), -104);
++  assert.equal(core.angleDifference(Number.MAX_VALUE, -Number.MAX_VALUE), 104);
++  assert.equal(core.angleDifference(Number.MAX_VALUE, Number.MAX_VALUE), 0);
++});
++
++test("rejects nonfinite angles in either operand", () => {
++  for (const value of [NaN, Infinity, -Infinity]) {
++    assert.throws(() => core.angleDifference(value, 0), RangeError);
++    assert.throws(() => core.angleDifference(0, value), RangeError);
++  }
++});

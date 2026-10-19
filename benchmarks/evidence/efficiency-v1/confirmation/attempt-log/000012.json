@@ -1,0 +1,11 @@
+{
+  "sequence": 12,
+  "previous_sha256": "f1bcf5270871b41f51214b100dc74b110d5e75922c9b682294c5c3ff06f98722",
+  "recorded_at": "2026-10-19T04:11:27.393856+00:00",
+  "event": "attempt.started",
+  "attempt_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r1-C",
+  "original_run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r1-C",
+  "supplemental": false,
+  "start_sha256": "103640cf641373bda31d0d5b179354b16561488acd83400d502d0cce8b41b338",
+  "sha256": "476a1fac04a3bdd3098ee4364a36283d74816e2e5bc64fcf3a52698b95b950f4"
+}

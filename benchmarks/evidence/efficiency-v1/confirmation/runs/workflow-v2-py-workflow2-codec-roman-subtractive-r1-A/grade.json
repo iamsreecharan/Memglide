@@ -1,0 +1,115 @@
+{
+  "task_id": "py-workflow2-codec-roman-subtractive",
+  "repository": "codec-python-workflow-v2",
+  "corpus_version": "workflow-2.0.0",
+  "passed": true,
+  "success": true,
+  "exit_code": 0,
+  "commands": [
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-roman-subtractive-r1-A/held_out.py"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-roman-subtractive-r1-A/behavior.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-roman-subtractive-r1-A/behavior.stderr.log"
+    },
+    {
+      "command": [
+        "/workspace/Memglide/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 17
+      },
+      "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-roman-subtractive-r1-A/smoke.stdout.log",
+      "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-roman-subtractive-r1-A/smoke.stderr.log"
+    }
+  ],
+  "test_count": 19,
+  "protected_files_unchanged": true,
+  "protected_files": [
+    {
+      "file": "README.md",
+      "unchanged": true,
+      "expected_sha256": "c2cdd932d6c07cfcf6ea39410e198e56cf0fdac091132faa817dcf115b90dfdd",
+      "actual_sha256": "c2cdd932d6c07cfcf6ea39410e198e56cf0fdac091132faa817dcf115b90dfdd"
+    },
+    {
+      "file": "AGENTS.md",
+      "unchanged": true,
+      "expected_sha256": "40c0b865fc2b54119311e28d52879e840ba0ca4bdb47569a7712be843ecf87cd",
+      "actual_sha256": "40c0b865fc2b54119311e28d52879e840ba0ca4bdb47569a7712be843ecf87cd"
+    },
+    {
+      "file": ".gitignore",
+      "unchanged": true,
+      "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+      "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+    },
+    {
+      "file": "tests/test_glob_literal_escape.py",
+      "unchanged": true,
+      "expected_sha256": "ea66d73b0c23e862d3b78b9657be78ca0f3a089fb572653322525ebcf0799beb",
+      "actual_sha256": "ea66d73b0c23e862d3b78b9657be78ca0f3a089fb572653322525ebcf0799beb"
+    },
+    {
+      "file": "tests/test_unsigned_varint_batch.py",
+      "unchanged": true,
+      "expected_sha256": "c22510485f53f657ebc7741bc1a6bb9909643edc6e5c524c85f33e6dc914fec4",
+      "actual_sha256": "c22510485f53f657ebc7741bc1a6bb9909643edc6e5c524c85f33e6dc914fec4"
+    },
+    {
+      "file": "tests/test_roman_subtractive.py",
+      "unchanged": true,
+      "expected_sha256": "09dde66168d20edd20907b3faa011a66a250917a10cc707e88f00b408bb806f8",
+      "actual_sha256": "09dde66168d20edd20907b3faa011a66a250917a10cc707e88f00b408bb806f8"
+    }
+  ],
+  "test_execution_complete": true,
+  "test_execution_integrity": [
+    {
+      "stage": "behavior",
+      "valid": true,
+      "required_test_count": {
+        "exact": 2
+      },
+      "reported_counts": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    },
+    {
+      "stage": "smoke",
+      "valid": true,
+      "required_test_count": {
+        "minimum": 15
+      },
+      "reported_counts": {
+        "tests": 17
+      },
+      "count_requirement_met": true,
+      "clean_summary_verified": true,
+      "zero_failures_errors_skips_cancellations": true
+    }
+  ],
+  "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+}

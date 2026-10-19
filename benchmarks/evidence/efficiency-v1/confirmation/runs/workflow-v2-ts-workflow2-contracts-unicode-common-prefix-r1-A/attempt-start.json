@@ -1,0 +1,43 @@
+{
+  "run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r1-A",
+  "task_id": "ts-workflow2-contracts-unicode-common-prefix",
+  "language": "typescript",
+  "repository": "contracts-typescript-workflow-v2",
+  "task_kind": "supplied-context",
+  "selection_stratum": "caller_context_supplied",
+  "configuration": "A",
+  "repeat": 1,
+  "order": 1,
+  "context_format": null,
+  "support_enabled": false,
+  "setup": {
+    "wall_seconds": 0,
+    "cpu_seconds": 0
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this assignment yet",
+    "context_format": null
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r1-A",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T04:09:09.147833+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r1-A",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r1-A",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

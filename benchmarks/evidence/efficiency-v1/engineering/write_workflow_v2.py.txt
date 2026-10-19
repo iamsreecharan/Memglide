@@ -1,0 +1,15 @@
+from pathlib import Path
+old=Path('benchmarks/corpus_workflow.py').read_text()
+head=old[:old.index('\n_add(')].replace('workflow-1.0.0','workflow-2.0.0')
+start=head.index('REPOSITORIES = {');end=head.index('\nSPECS:',start)
+head=head[:start]+'''REPOSITORIES = {
+    "codec-python-workflow-v2": ("python", "codec"),
+    "similarity-python-workflow-v2": ("python", "similarity"),
+    "contracts-typescript-workflow-v2": ("typescript", "contracts"),
+    "coordinates-typescript-workflow-v2": ("typescript", "coordinates"),
+}'''+head[end:]
+tail=old[old.index('\ndef _task_id('):]
+tail=tail.replace("-workflow-{family}","-workflow2-{family}").replace('benchmarks.corpus_workflow.build_repository','benchmarks.corpus_workflow_v2.build_repository')
+tail=tail.replace('Preserve public interfaces and existing tests.\\n','Preserve public interfaces. All existing tracked test files are READ-ONLY: keep their bytes identical.\\nAdd regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests.\\n')
+tail=tail.replace('Implement the fix in production source and add regression tests if useful. Preserve public interfaces and all existing tests.', 'Implement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces.')
+Path('benchmarks/corpus_workflow_v2.py').write_text(head+'\n'+Path('.local/efficiency-v1/workflow-v2-specs.txt').read_text()+tail)

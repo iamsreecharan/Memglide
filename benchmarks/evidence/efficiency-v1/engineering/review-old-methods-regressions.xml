@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="13" skipped="0" tests="23" time="3.528" timestamp="2026-10-18T21:54:18.477413+00:00" hostname="e66ccbdc3c12"><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata0]" time="0.075"><failure message="AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_fi...s': 'Current'}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  Left contains 2 more items:&#10;  {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f0795407dd0&gt;
+metadata = {'selected_files': [{'hash': 'hash', 'path': 'extra.py'}]}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_fi...s': 'Current'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         Left contains 2 more items:
+E         {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata1]" time="0.059"><failure message="AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_fi...s': 'Current'}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  Left contains 2 more items:&#10;  {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f0795404290&gt;
+metadata = {'selected_files': ['extra.py']}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_fi...s': 'Current'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         Left contains 2 more items:
+E         {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata2]" time="0.067"><failure message="AssertionError: assert {'missing_con... 'Stale', ...} == {'source_fres....py': 'hash'}}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  Left contains 2 more items:&#10;  {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f079542f020&gt;
+metadata = {'verified_source_hashes': {'extra.py': 'hash'}}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'missing_con... 'Stale', ...} == {'source_fres....py': 'hash'}}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         Left contains 2 more items:
+E         {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata3]" time="0.075"><failure message="AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_sy...s': 'Current'}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  Left contains 2 more items:&#10;  {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f079542fef0&gt;
+metadata = {'selected_symbols': [{'path': 'extra.py', 'symbol': 'extra'}]}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_sy...s': 'Current'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         Left contains 2 more items:
+E         {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata4]" time="0.106"><failure message="AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_fi...s': 'Current'}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  Left contains 2 more items:&#10;  {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f079542d610&gt;
+metadata = {'selected_files': [{'hash': 'hash', 'path': 'nested/a.py'}]}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'missing_con...['a.py'], ...} == {'selected_fi...s': 'Current'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         Left contains 2 more items:
+E         {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata5]" time="0.081"><failure message="AssertionError: assert {'missing_con...['a.py'], ...} == {'query': 'Co...s': 'Current'}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  Left contains 2 more items:&#10;  {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f079542d490&gt;
+metadata = {'query': 'Consider a.py after inspecting current evidence'}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'missing_con...['a.py'], ...} == {'query': 'Co...s': 'Current'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         Left contains 2 more items:
+E         {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata6]" time="0.066"><failure message="AssertionError: assert {'missing_con...tus': 'Stale'} == {'missing_con...s': 'Current'}&#10;  &#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  {'missing_context': ['a.py was deliberately omitted', 'Source changed: a.py']} != {'missing_context': ['a.py was deliberately omitted']}&#10;  Left contains 1 more item:&#10;  {'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f079542e900&gt;
+metadata = {'missing_context': ['a.py was deliberately omitted']}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'missing_con...tus': 'Stale'} == {'missing_con...s': 'Current'}
+E         
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         {'missing_context': ['a.py was deliberately omitted', 'Source changed: a.py']} != {'missing_context': ['a.py was deliberately omitted']}
+E         Left contains 1 more item:
+E         {'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_unselected_source_mentions_do_not_invalidate[metadata7]" time="0.065"><failure message="AssertionError: assert {'dependencie...['a.py'], ...} == {'dependencie...s': 'Current'}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  Left contains 2 more items:&#10;  {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}&#10;  Use -v to get more diff">database = &lt;memglide.storage.database.Database object at 0x7f07955a30e0&gt;
+metadata = {'dependencies': [{'source_file': 'extra.py', 'target_file': 'a.py'}]}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            {"selected_files": [{"path": "extra.py", "hash": "hash"}]},
+            {"selected_files": ["extra.py"]},
+            {"verified_source_hashes": {"extra.py": "hash"}},
+            {"selected_symbols": [{"path": "extra.py", "symbol": "extra"}]},
+            {"selected_files": [{"path": "nested/a.py", "hash": "hash"}]},
+            {"query": "Consider a.py after inspecting current evidence"},
+            {"missing_context": ["a.py was deliberately omitted"]},
+            {"dependencies": [{"source_file": "extra.py", "target_file": "a.py"}]},
+        ],
+    )
+    def test_unselected_source_mentions_do_not_invalidate(
+        database: Database, metadata: dict[str, Any]
+    ) -&gt; None:
+        passport = {"status": "Current", "source_freshness": "Current", **metadata}
+        retain(database, passport)
+&gt;       assert invalidate(database, {"a.py"}) == passport
+E       AssertionError: assert {'dependencie...['a.py'], ...} == {'dependencie...s': 'Current'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'status': 'Stale'} != {'status': 'Current'}
+E         {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E         Left contains 2 more items:
+E         {'missing_context': ['Source changed: a.py'], 'stale_files': ['a.py']}
+E         Use -v to get more diff
+
+tests/test_invalidation_references.py:70: AssertionError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_exact_selected_source_references_invalidate[metadata0]" time="0.059" /><testcase classname="tests.test_invalidation_references" name="test_exact_selected_source_references_invalidate[metadata1]" time="0.059" /><testcase classname="tests.test_invalidation_references" name="test_exact_selected_source_references_invalidate[metadata2]" time="0.068" /><testcase classname="tests.test_invalidation_references" name="test_exact_selected_source_references_invalidate[metadata3]" time="0.059" /><testcase classname="tests.test_invalidation_references" name="test_unicode_and_quoted_paths_invalidate_exactly_and_warnings_stay_bounded" time="0.062"><failure message="KeyError: 'stale_files'">database = &lt;memglide.storage.database.Database object at 0x7f0795432ff0&gt;
+
+    def test_unicode_and_quoted_paths_invalidate_exactly_and_warnings_stay_bounded(
+        database: Database,
+    ) -&gt; None:
+        paths = {'quoted".py', "模块.py"}
+        retain(
+            database,
+            {
+                "status": "Current",
+                "selected_files": [{"path": path, "hash": "hash"} for path in sorted(paths)],
+                "missing_context": ["Existing gap"],
+            },
+        )
+        first = invalidate(database, paths)
+        second = invalidate(database, paths)
+        assert first == second
+&gt;       assert first["stale_files"] == sorted(paths)
+               ^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stale_files'
+
+tests/test_invalidation_references.py:107: KeyError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_selected_memory_sources_invalidate_without_crossing_project_ownership" time="0.079"><failure message="KeyError: 'stale_files'">database = &lt;memglide.storage.database.Database object at 0x7f07953f0890&gt;
+
+    def test_selected_memory_sources_invalidate_without_crossing_project_ownership(
+        database: Database,
+    ) -&gt; None:
+        with database.connect() as conn:
+            for project in ("project", "foreign"):
+                conn.execute(
+                    "INSERT INTO memories VALUES(?,?,'observation','claim','test',0,0,0,?)",
+                    (project, project, project),
+                )
+                conn.execute("INSERT INTO memory_sources VALUES(?,'a.py','hash')", (project,))
+        retain(database, {"status": "Current", "selected_memory_ids": ["project"]})
+        retain(
+            database,
+            {"status": "Current", "selected_files": [{"path": "a.py", "hash": "hash"}]},
+            project="foreign",
+        )
+        passport = invalidate(database, {"a.py"})
+&gt;       assert passport["stale_files"] == ["a.py"]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'stale_files'
+
+tests/test_invalidation_references.py:131: KeyError</failure></testcase><testcase classname="tests.test_invalidation_references" name="test_foreign_memory_id_does_not_invalidate_project_passport" time="0.076" /><testcase classname="tests.test_invalidation_references" name="test_actual_retrieval_retains_freshness_until_its_selected_file_changes" time="0.315"><failure message="AssertionError: assert {'dependencie...pection', ...} == {'dependencie...pection', ...}&#10;  &#10;  Omitting 17 identical items, use -vv to show&#10;  Differing items:&#10;  {'status': 'Stale'} != {'status': 'Current'}&#10;  {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}&#10;  {'missing_context': ['Source changed: a.py']} != {'missing_context': []}&#10;  Left contains 1 more item:&#10;  {'stale_files': ['a.py']}&#10;  Use -v to get more diff">tmp_path = PosixPath('/workspace/Memglide/.local/efficiency-v1/review-old-methods-pytest-temp/test_actual_retrieval_retains_0')
+
+    def test_actual_retrieval_retains_freshness_until_its_selected_file_changes(tmp_path: Path) -&gt; None:
+        repo = tmp_path / "repository"
+        repo.mkdir()
+        subprocess.run(["git", "init", "-q", str(repo)], check=True)
+        (repo / "a.py").write_text("def a():\n    return 1\n")
+        (repo / "extra.py").write_text("def extra():\n    return 2\n")
+        service = Service(tmp_path / "state" / "memglide.db")
+        try:
+            project = service.indexer.add_project(str(repo))
+            session = service.memory.start_session(project["id"], "extra")
+            result = service.context.get_context(session["id"], "extra", 2, 8000)
+            assert [file["path"] for file in result["passport"]["selected_files"]] == ["extra.py"]
+            assert result["passport"]["source_freshness"] == "Current"
+    
+            (repo / "a.py").write_text("def a():\n    return 3\n")
+            service.indexer.reindex(project["id"])
+            unchanged = service.context.get_passport(session["id"], result["retrieval_id"])
+&gt;           assert unchanged == result["passport"]
+E           AssertionError: assert {'dependencie...pection', ...} == {'dependencie...pection', ...}
+E             
+E             Omitting 17 identical items, use -vv to show
+E             Differing items:
+E             {'status': 'Stale'} != {'status': 'Current'}
+E             {'source_freshness': 'Stale'} != {'source_freshness': 'Current'}
+E             {'missing_context': ['Source changed: a.py']} != {'missing_context': []}
+E             Left contains 1 more item:
+E             {'stale_files': ['a.py']}
+E             Use -v to get more diff
+
+tests/test_invalidation_references.py:166: AssertionError</failure></testcase><testcase classname="tests.test_context_atomic_lifecycle" name="test_transition_before_final_evidence_gate_cannot_commit_or_renew[end]" time="0.192" /><testcase classname="tests.test_context_atomic_lifecycle" name="test_transition_before_final_evidence_gate_cannot_commit_or_renew[expire]" time="0.252" /><testcase classname="tests.test_context_atomic_lifecycle" name="test_competing_lifecycle_write_cannot_slip_between_validation_and_insert[end]" time="0.209"><failure message="assert False&#10; +  where False = &lt;sqlite3.Connection object at 0x7f07954ae3e0&gt;.in_transaction">lifecycle = (&lt;memglide.service.Service object at 0x7f079542ca70&gt;, 'f8b1bf8de3e148c5b8c8a6d353bd2b14')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7f0795433050&gt;
+transition = 'end'
+
+    @pytest.mark.parametrize("transition", ["end", "expire"])
+    def test_competing_lifecycle_write_cannot_slip_between_validation_and_insert(
+        lifecycle: tuple[Service, str], monkeypatch: pytest.MonkeyPatch, transition: str
+    ) -&gt; None:
+        service, session_id = lifecycle
+        original_connect = service.db.connect
+        observed = []
+    
+        def compete(connection: sqlite3.Connection, sql: str) -&gt; None:
+            if not sql.startswith("INSERT INTO retrievals"):
+                return
+            # Use a real second SQLite connection with no wait, making the race
+            # deterministic. Before the fix it could end/expire the session here;
+            # the atomic gate now owns the write lock through evidence publication.
+            assert connection.in_transaction
+            with sqlite3.connect(service.db.path, timeout=0) as rival:
+                rival.execute("PRAGMA busy_timeout=0")
+                update = "ended_at=1" if transition == "end" else "expires_at=0"
+                with pytest.raises(sqlite3.OperationalError, match="locked"):
+                    rival.execute(f"UPDATE sessions SET {update} WHERE id=?", (session_id,))
+            observed.append(transition)
+    
+        @contextmanager
+        def connect():
+            with original_connect() as connection:
+                yield ConnectionProxy(connection, compete)
+    
+        monkeypatch.setattr(service.db, "connect", connect)
+&gt;       result = service.context.get_context(session_id, "verify", 2, 8000)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_context_atomic_lifecycle.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/memglide/core/context.py:665: in get_context
+    return self._get_context(
+frozen-HEAD/src/memglide/core/context.py:993: in _get_context
+    ???
+tests/test_context_atomic_lifecycle.py:84: in execute
+    self.before_execute(self.connection, sql)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+connection = &lt;sqlite3.Connection object at 0x7f07954ae3e0&gt;
+sql = 'INSERT INTO retrievals VALUES(?,?,?,?,?,?,?,?,?)'
+
+    def compete(connection: sqlite3.Connection, sql: str) -&gt; None:
+        if not sql.startswith("INSERT INTO retrievals"):
+            return
+        # Use a real second SQLite connection with no wait, making the race
+        # deterministic. Before the fix it could end/expire the session here;
+        # the atomic gate now owns the write lock through evidence publication.
+&gt;       assert connection.in_transaction
+E       assert False
+E        +  where False = &lt;sqlite3.Connection object at 0x7f07954ae3e0&gt;.in_transaction
+
+tests/test_context_atomic_lifecycle.py:105: AssertionError</failure></testcase><testcase classname="tests.test_context_atomic_lifecycle" name="test_competing_lifecycle_write_cannot_slip_between_validation_and_insert[expire]" time="0.220"><failure message="assert False&#10; +  where False = &lt;sqlite3.Connection object at 0x7f07952604f0&gt;.in_transaction">lifecycle = (&lt;memglide.service.Service object at 0x7f079542fc20&gt;, '7a3a0f04066a42b5ae9deb96dc42fdd0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7f0795432270&gt;
+transition = 'expire'
+
+    @pytest.mark.parametrize("transition", ["end", "expire"])
+    def test_competing_lifecycle_write_cannot_slip_between_validation_and_insert(
+        lifecycle: tuple[Service, str], monkeypatch: pytest.MonkeyPatch, transition: str
+    ) -&gt; None:
+        service, session_id = lifecycle
+        original_connect = service.db.connect
+        observed = []
+    
+        def compete(connection: sqlite3.Connection, sql: str) -&gt; None:
+            if not sql.startswith("INSERT INTO retrievals"):
+                return
+            # Use a real second SQLite connection with no wait, making the race
+            # deterministic. Before the fix it could end/expire the session here;
+            # the atomic gate now owns the write lock through evidence publication.
+            assert connection.in_transaction
+            with sqlite3.connect(service.db.path, timeout=0) as rival:
+                rival.execute("PRAGMA busy_timeout=0")
+                update = "ended_at=1" if transition == "end" else "expires_at=0"
+                with pytest.raises(sqlite3.OperationalError, match="locked"):
+                    rival.execute(f"UPDATE sessions SET {update} WHERE id=?", (session_id,))
+            observed.append(transition)
+    
+        @contextmanager
+        def connect():
+            with original_connect() as connection:
+                yield ConnectionProxy(connection, compete)
+    
+        monkeypatch.setattr(service.db, "connect", connect)
+&gt;       result = service.context.get_context(session_id, "verify", 2, 8000)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_context_atomic_lifecycle.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/memglide/core/context.py:665: in get_context
+    return self._get_context(
+frozen-HEAD/src/memglide/core/context.py:993: in _get_context
+    ???
+tests/test_context_atomic_lifecycle.py:84: in execute
+    self.before_execute(self.connection, sql)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+connection = &lt;sqlite3.Connection object at 0x7f07952604f0&gt;
+sql = 'INSERT INTO retrievals VALUES(?,?,?,?,?,?,?,?,?)'
+
+    def compete(connection: sqlite3.Connection, sql: str) -&gt; None:
+        if not sql.startswith("INSERT INTO retrievals"):
+            return
+        # Use a real second SQLite connection with no wait, making the race
+        # deterministic. Before the fix it could end/expire the session here;
+        # the atomic gate now owns the write lock through evidence publication.
+&gt;       assert connection.in_transaction
+E       assert False
+E        +  where False = &lt;sqlite3.Connection object at 0x7f07952604f0&gt;.in_transaction
+
+tests/test_context_atomic_lifecycle.py:105: AssertionError</failure></testcase><testcase classname="tests.test_context_atomic_lifecycle" name="test_success_commits_matching_evidence_and_respects_event_setting[True]" time="0.253" /><testcase classname="tests.test_context_atomic_lifecycle" name="test_success_commits_matching_evidence_and_respects_event_setting[False]" time="0.238" /><testcase classname="tests.test_context_atomic_lifecycle" name="test_failed_passport_insert_rolls_back_history_activity_and_event" time="0.355" /></testsuite></testsuites>

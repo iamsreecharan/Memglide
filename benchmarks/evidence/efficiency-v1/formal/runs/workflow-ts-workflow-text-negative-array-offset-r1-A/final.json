@@ -1,0 +1,1 @@
+{"summary":"Fixed atPosition to support negative indices and return undefined outside bounds, preserving integer validation, generic types, and input arrays. Added regression tests; no commits made.","tests_run":["node --test — all tests passed","git diff --check — passed"]}

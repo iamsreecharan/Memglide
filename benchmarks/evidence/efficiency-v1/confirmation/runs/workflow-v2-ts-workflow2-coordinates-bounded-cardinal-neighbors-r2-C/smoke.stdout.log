@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: grid boundaries preserve cardinal order across rectangular grids
+ok 1 - grid boundaries preserve cardinal order across rectangular grids
+  ---
+  duration_ms: 2.382651
+  type: 'test'
+  ...
+# Subtest: blocked neighbors use exact keys, preserve order, and leave the set unchanged
+ok 2 - blocked neighbors use exact keys, preserve order, and leave the set unchanged
+  ---
+  duration_ms: 0.456505
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 3 - ordinary-0
+  ---
+  duration_ms: 4.786476
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 4 - ordinary-1
+  ---
+  duration_ms: 0.836175
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 5 - ordinary-2
+  ---
+  duration_ms: 0.529111
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 6 - ordinary-3
+  ---
+  duration_ms: 0.580024
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 7 - ordinary-4
+  ---
+  duration_ms: 0.436805
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 8 - ordinary-0
+  ---
+  duration_ms: 4.336242
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 9 - ordinary-1
+  ---
+  duration_ms: 0.667634
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 10 - ordinary-2
+  ---
+  duration_ms: 0.198565
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 11 - ordinary-3
+  ---
+  duration_ms: 0.363418
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 12 - ordinary-4
+  ---
+  duration_ms: 0.748064
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 342.80244

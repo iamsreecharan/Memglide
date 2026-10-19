@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 5.312313
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.511521
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.298682
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.894304
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 1.668216
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 6 - ordinary-0
+  ---
+  duration_ms: 4.877072
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 7 - ordinary-1
+  ---
+  duration_ms: 0.634876
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 8 - ordinary-2
+  ---
+  duration_ms: 0.587632
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 9 - ordinary-3
+  ---
+  duration_ms: 3.054761
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 10 - ordinary-4
+  ---
+  duration_ms: 0.914323
+  type: 'test'
+  ...
+# Subtest: numeric runs compare exactly and ignore leading zeros
+ok 11 - numeric runs compare exactly and ignore leading zeros
+  ---
+  duration_ms: 5.577116
+  type: 'test'
+  ...
+# Subtest: maximal runs use case-sensitive JavaScript lexical order
+ok 12 - maximal runs use case-sensitive JavaScript lexical order
+  ---
+  duration_ms: 2.017874
+  type: 'test'
+  ...
+# Subtest: sorting preserves equal-run order and returns a new array
+ok 13 - sorting preserves equal-run order and returns a new array
+  ---
+  duration_ms: 3.064906
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 14 - ordinary-0
+  ---
+  duration_ms: 1.907548
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 15 - ordinary-1
+  ---
+  duration_ms: 0.234605
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 16 - ordinary-2
+  ---
+  duration_ms: 0.217093
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 17 - ordinary-3
+  ---
+  duration_ms: 0.388434
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 18 - ordinary-4
+  ---
+  duration_ms: 0.23561
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 758.20432

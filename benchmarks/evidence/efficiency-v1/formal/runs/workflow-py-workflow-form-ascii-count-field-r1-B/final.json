@@ -1,0 +1,1 @@
+{"summary":"Fixed parse_count to accept only nonempty ASCII digits, preserve leading zeros, and return exact integers even beyond Python’s string conversion limit. Added regression tests; preserved existing tests. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 19 tests passed","git diff --check — passed"]}

@@ -1,0 +1,16 @@
+import hashlib,json,urllib.request,urllib.error
+from pathlib import Path
+from datetime import datetime,timezone
+root=Path('.local/efficiency-v1/research')
+commit='ff6aec96948b70d94983af2641a6b67c94faeff5'
+paths={'codex-events':'codex-rs/exec/src/exec_events.rs','codex-jsonl':'codex-rs/exec/src/event_processor_with_jsonl_output.rs','codex-api-common':'codex-rs/codex-api/src/common.rs','codex-protocol-models':'codex-rs/protocol/src/models.rs'}
+for ident,path in paths.items():
+ url=f'https://raw.githubusercontent.com/openai/codex/{commit}/{path}'
+ rec={'id':ident,'url':url,'retrieved_at_utc':datetime.now(timezone.utc).isoformat(),'http_status':None}
+ try:
+  with urllib.request.urlopen(url,timeout=35) as r:body=r.read();rec.update(http_status=r.status,final_url=r.geturl(),body_bytes=len(body),body_sha256=hashlib.sha256(body).hexdigest())
+  (root/(ident+'.source')).write_bytes(body)
+ except urllib.error.HTTPError as exc: rec.update(http_status=exc.code,error_type=type(exc).__name__)
+ except Exception as exc:rec.update(error_type=type(exc).__name__,error=str(exc))
+ (root/(ident+'.fetch.json')).write_text(json.dumps(rec,indent=2)+'\n')
+ print(ident,rec['http_status'])

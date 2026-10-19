@@ -1,0 +1,1 @@
+{"summary":"Fixed angleDifference to return shortest signed rotations in [-180, 180), safely normalize large operands, preserve fractions, and reject nonfinite inputs. Added regression tests; no commit created.","tests_run":["node --test — passed all existing and added tests."]}

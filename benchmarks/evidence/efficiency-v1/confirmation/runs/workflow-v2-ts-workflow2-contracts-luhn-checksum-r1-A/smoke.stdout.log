@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: Luhn doubles alternating digits from the right and reduces doubled digits
+ok 1 - Luhn doubles alternating digits from the right and reduces doubled digits
+  ---
+  duration_ms: 2.842132
+  type: 'test'
+  ...
+# Subtest: leading zeros and long digit strings retain their exact digits
+ok 2 - leading zeros and long digit strings retain their exact digits
+  ---
+  duration_ms: 0.240744
+  type: 'test'
+  ...
+# Subtest: only nonempty ASCII digit strings are accepted
+ok 3 - only nonempty ASCII digit strings are accepted
+  ---
+  duration_ms: 0.288076
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 4 - ordinary-0
+  ---
+  duration_ms: 4.437163
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 5 - ordinary-1
+  ---
+  duration_ms: 0.592608
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 6 - ordinary-2
+  ---
+  duration_ms: 0.256157
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 7 - ordinary-3
+  ---
+  duration_ms: 0.178682
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 8 - ordinary-4
+  ---
+  duration_ms: 0.220036
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 9 - ordinary-0
+  ---
+  duration_ms: 2.809948
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 10 - ordinary-1
+  ---
+  duration_ms: 0.170575
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 11 - ordinary-2
+  ---
+  duration_ms: 0.147763
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 12 - ordinary-3
+  ---
+  duration_ms: 1.385774
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 13 - ordinary-4
+  ---
+  duration_ms: 1.1163
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 14 - ordinary-0
+  ---
+  duration_ms: 2.099942
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 15 - ordinary-1
+  ---
+  duration_ms: 0.161782
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 16 - ordinary-2
+  ---
+  duration_ms: 0.142901
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 17 - ordinary-3
+  ---
+  duration_ms: 0.189265
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 18 - ordinary-4
+  ---
+  duration_ms: 0.947544
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 533.58024

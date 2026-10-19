@@ -1,0 +1,45 @@
+TAP version 13
+# Subtest: reserved characters remain data
+ok 1 - reserved characters remain data
+  ---
+  duration_ms: 1.407068
+  type: 'test'
+  ...
+# Subtest: empty segments order unicode and unchanged input
+not ok 2 - empty segments order unicode and unchanged input
+  ---
+  duration_ms: 2.712874
+  type: 'test'
+  location: '/workspace/Memglide/.local/efficiency-v1/corpus-final-validation-v2/ts-workflow-text-path-segment-roundtrip/domain_grade/held_out.test.mjs:9:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '/A/%C3%A9'
+    - '/A//%C3%A9/'
+          ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '/A//%C3%A9/'
+  actual: '/A/%C3%A9'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/Memglide/.local/efficiency-v1/corpus-final-validation-v2/ts-workflow-text-path-segment-roundtrip/domain_grade/held_out.test.mjs:11:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 302.100106

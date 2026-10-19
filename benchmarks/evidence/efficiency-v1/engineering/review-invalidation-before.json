@@ -1,0 +1,69 @@
+{
+  "checks": {
+    "true_reference_invalidated": true,
+    "substring_reference_unchanged": false,
+    "query_only_reference_unchanged": false
+  },
+  "passports": {
+    "query_only": {
+      "status": "Stale",
+      "source_freshness": "Stale",
+      "selected_files": [
+        {
+          "path": "other.py",
+          "hash": "fixture"
+        }
+      ],
+      "verified_source_hashes": {
+        "other.py": "fixture"
+      },
+      "query": "Compare against a.py later",
+      "missing_context": [
+        "Source changed: a.py"
+      ],
+      "stale_files": [
+        "a.py"
+      ]
+    },
+    "referenced": {
+      "status": "Stale",
+      "source_freshness": "Stale",
+      "selected_files": [
+        {
+          "path": "a.py",
+          "hash": "fixture"
+        }
+      ],
+      "verified_source_hashes": {
+        "a.py": "fixture"
+      },
+      "query": "Inspect selected source",
+      "missing_context": [
+        "Source changed: a.py"
+      ],
+      "stale_files": [
+        "a.py"
+      ]
+    },
+    "substring": {
+      "status": "Stale",
+      "source_freshness": "Stale",
+      "selected_files": [
+        {
+          "path": "extra.py",
+          "hash": "fixture"
+        }
+      ],
+      "verified_source_hashes": {
+        "extra.py": "fixture"
+      },
+      "query": "Inspect extra.py",
+      "missing_context": [
+        "Source changed: a.py"
+      ],
+      "stale_files": [
+        "a.py"
+      ]
+    }
+  }
+}

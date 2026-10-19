@@ -1,0 +1,1 @@
+{"summary":"Fixed checkout_total to return (amount - discount) * (1 + tax_rate), preserving fractional results. Added three regression tests and preserved existing tests. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed.","git diff --check — passed."]}

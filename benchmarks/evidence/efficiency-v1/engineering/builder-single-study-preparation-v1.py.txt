@@ -1,0 +1,542 @@
+#!/usr/bin/env python3
+"""Verify and package completed, publicly copied workflow evidence into a fresh ZIP.
+
+All input identities are explicit arguments. This helper makes no model requests,
+reads no live experiment state, never overwrites, and verifies/scans every selected
+byte before opening the output archive. Default --check-only emits a receipt only.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import subprocess
+import sys
+import types
+import zipfile
+from datetime import datetime, timezone
+from pathlib import Path, PurePosixPath
+
+ROOT = Path(__file__).resolve().parents[2]
+EVIDENCE = ROOT / "benchmarks/evidence/efficiency-v1"
+OUTPUT = ROOT / "benchmarks/memglide-efficiency-report.zip"
+RECEIPT = ROOT / "benchmarks/efficiency-report-bundle.json"
+LABELS = {"A": "Standard Codex", "B": "Memglide source-only", "C": "Memglide source plus support"}
+REQUIRED_REPORTS = (
+    "benchmarks/codex-workflow-ab.md",
+    "benchmarks/codex-workflow-ab.json",
+    "benchmarks/workflow-assessment.md",
+    "benchmarks/workflow-assessment.json",
+    "benchmarks/efficiency-validation.md",
+    "benchmarks/efficiency-validation.json",
+    "benchmarks/efficiency-research.md",
+    "benchmarks/efficiency-research.json",
+    "benchmarks/efficiency-diagnosis.md",
+    "benchmarks/efficiency-diagnosis.json",
+    "benchmarks/workflow-protocol.md",
+    "benchmarks/cost-pricing.json",
+    "docs/efficiency-architecture.md",
+    "docs/preload.md",
+    "docs/daily-architecture.md",
+)
+REQUIRED_TESTS = (
+    "tests/test_invalidation_references.py",
+    "tests/test_context_atomic_lifecycle.py",
+    "tests/test_memory_selection_efficiency.py",
+    "tests/test_task_bundle.py",
+    "tests/test_codex_preload.py",
+    "tests/test_benchmark_corpus_workflow.py",
+    "tests/test_benchmark_workflow_runner.py",
+    "tests/test_benchmark_workflow_cost.py",
+    "tests/test_benchmark_cost_estimate.py",
+)
+FORBIDDEN = {
+    "auth.json",
+    "codex-state",
+    "native-state",
+    "worktrees",
+    "repositories",
+    "state",
+    "browser.json",
+    "config.toml",
+    "environment.json",
+    "environ.json",
+    "env.json",
+}
+BAD_SUFFIXES = {".db", ".sqlite", ".sqlite3", ".tar", ".tgz", ".gz", ".zip", ".whl", ".source"}
+
+
+def fail(message: str) -> None:
+    raise SystemExit(message)
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def encoded(value: object) -> bytes:
+    return (json.dumps(value, indent=2, sort_keys=True) + "\n").encode()
+
+
+def unique_json(data: bytes) -> object:
+    def pairs(items):
+        result = {}
+        for key, value in items:
+            if key in result:
+                fail("Duplicate JSON key")
+            result[key] = value
+        return result
+
+    return json.loads(data, object_pairs_hook=pairs)
+
+
+def safe_name(value: str) -> str:
+    path = PurePosixPath(value)
+    if (
+        not value
+        or "\\" in value
+        or path.is_absolute()
+        or str(path) != value
+        or any(part in {"", ".", ".."} | FORBIDDEN for part in path.parts)
+        or path.suffix.lower() in BAD_SUFFIXES
+    ):
+        fail("Unsafe or excluded archive member name")
+    return value
+
+
+def reject_symlinks(path: Path) -> None:
+    if not path.is_relative_to(ROOT) or path.absolute() != path.resolve():
+        fail("Selected path is outside the canonical repository or contains a symlink")
+    if not path.is_file():
+        fail("Selected artifact is not a regular file")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--expected-head", required=True)
+    parser.add_argument("--expected-app", required=True)
+    parser.add_argument("--expected-builder-sha256", required=True)
+    parser.add_argument("--manifest-sha256", required=True)
+    parser.add_argument("--scanner-sha256", required=True)
+    parser.add_argument("--evidence-files", type=int, required=True)
+    parser.add_argument("--evidence-bytes", type=int, required=True)
+    parser.add_argument(
+        "--final-files-json",
+        type=Path,
+        required=True,
+        help="Reviewed exact source/SHA list for every finalized report and optional current documentation",
+    )
+    parser.add_argument("--publish", action="store_true")
+    args = parser.parse_args()
+    if not re.fullmatch(r"[0-9a-f]{40}", args.expected_head) or not all(
+        re.fullmatch(r"[0-9a-f]{64}", item)
+        for item in (
+            args.expected_app,
+            args.expected_builder_sha256,
+            args.manifest_sha256,
+            args.scanner_sha256,
+        )
+    ):
+        fail("Expected full frozen Git and SHA-256 identities")
+    builder_path = Path(__file__).absolute()
+    if sha(builder_path.read_bytes()) != args.expected_builder_sha256:
+        fail("Builder differs from explicitly reviewed source identity")
+    if OUTPUT.exists() or OUTPUT.is_symlink() or RECEIPT.exists() or RECEIPT.is_symlink():
+        fail("Archive and receipt must both be fresh; overwrites are prohibited")
+    if OUTPUT.parent.resolve() != OUTPUT.parent:
+        fail("Archive parent contains a symlink")
+    manifest_path = EVIDENCE / "manifest.json"
+    reject_symlinks(manifest_path)
+    manifest_bytes = manifest_path.read_bytes()
+    if sha(manifest_bytes) != args.manifest_sha256:
+        fail("Evidence manifest differs from independent publication receipt")
+    manifest = unique_json(manifest_bytes)
+    if (
+        manifest.get("schema_version") != "efficiency-workflow-1"
+        or manifest["source_freeze"]["git_head"] != args.expected_head
+        or manifest["source_freeze"]["application_source_tree_sha256"] != args.expected_app
+    ):
+        fail("Evidence source freeze or schema differs")
+    records = manifest["files"]
+    if (
+        len(records) != args.evidence_files
+        or sum(row["bytes"] for row in records) != args.evidence_bytes
+    ):
+        fail("Evidence count/bytes differ from independent publisher receipt")
+    scanner_records = [
+        row for row in records if row["path"] == "reproduction/publish_evidence.py.txt"
+    ]
+    if len(scanner_records) != 1 or scanner_records[0]["sha256"] != args.scanner_sha256:
+        fail("Pinned scanner record differs")
+    scanner_path = EVIDENCE / scanner_records[0]["path"]
+    reject_symlinks(scanner_path)
+    scanner_source = scanner_path.read_bytes()
+    if (
+        sha(scanner_source) != args.scanner_sha256
+        or len(scanner_source) != scanner_records[0]["bytes"]
+    ):
+        fail("Pinned scanner source differs")
+    guard = types.ModuleType("frozen_efficiency_bundle_scanner")
+    guard.__file__ = str(scanner_path)
+    sys.modules[guard.__name__] = guard
+    exec(compile(scanner_source, str(scanner_path), "exec"), guard.__dict__)
+    guard.ROOT = ROOT
+    guard.FROZEN_COMMIT = guard.XML_FROZEN_COMMIT = args.expected_head
+    guard.FROZEN_APP = args.expected_app
+    guard.XML_APPROVALS = manifest["whitelist"]["explicit_extra_artifacts"].get("xml_approvals", {})
+    members, origins, identities = {}, {}, {}
+
+    def scan(data: bytes, label: str) -> None:
+        try:
+            data.decode("utf-8")
+        except UnicodeError:
+            fail("Selected artifact is not UTF-8 text: " + label)
+        if b"\0" in data or any(pattern.search(data) for pattern in guard.SECRET_PATTERNS):
+            fail("Potential credential or binary content: " + label)
+
+    def read(path: Path) -> bytes:
+        reject_symlinks(path)
+        guard.safe_source(path)
+        data = path.read_bytes()
+        identities[path] = (len(data), sha(data))
+        return data
+
+    def add(name: str, data: bytes, origin: dict, *, already_scanned=False) -> None:
+        safe_name(name)
+        if name in members:
+            fail("Duplicate selected archive member")
+        if not already_scanned:
+            scan(data, name)
+        members[name], origins[name] = data, origin
+
+    expected = {"manifest.json", "publication-audit.json"}
+    for record in records:
+        relative = safe_name(record["path"])
+        if relative in expected:
+            fail("Duplicate or reserved evidence manifest path")
+        expected.add(relative)
+        path = EVIDENCE / relative
+        data = read(path)
+        if len(data) != record["bytes"] or sha(data) != record["sha256"]:
+            fail("Published evidence size/hash differs: " + relative)
+        source = ROOT / record["source"]
+        if source.absolute() != source.resolve() or not source.is_relative_to(ROOT):
+            fail("Unsafe original source path in manifest")
+        guard.scan_text_bytes(source, data)
+        add(
+            str(path.relative_to(ROOT)),
+            data,
+            {
+                "kind": "manifested_public_evidence",
+                "source": str(path.relative_to(ROOT)),
+                "original_source": record["source"],
+            },
+            already_scanned=True,
+        )
+    actual = set()
+    for directory, directories, files in os.walk(EVIDENCE, followlinks=False):
+        for name in directories:
+            path = Path(directory) / name
+            if path.is_symlink() or path.resolve() != path:
+                fail("Symlink in public evidence tree")
+        for name in files:
+            path = Path(directory) / name
+            reject_symlinks(path)
+            actual.add(str(path.relative_to(EVIDENCE)))
+    if actual != expected:
+        fail("Public evidence has missing or unmanifested files")
+    exceptions = sorted(guard.XML_SCAN_EXCEPTIONS.values(), key=lambda row: row["path"])
+    if exceptions != sorted(
+        manifest["synthetic_fixture_scan_exceptions"], key=lambda row: row["path"]
+    ):
+        fail("Synthetic XML exceptions differ from independent publisher record")
+    if read(manifest_path) != manifest_bytes:
+        fail("Evidence manifest changed during selection")
+    add(
+        str(manifest_path.relative_to(ROOT)),
+        manifest_bytes,
+        {"kind": "pinned_evidence_manifest", "sha256": args.manifest_sha256},
+    )
+    audit_path = EVIDENCE / "publication-audit.json"
+    publication_bytes = read(audit_path)
+    publication = unique_json(publication_bytes)
+    if (
+        publication.get("pass") is not True
+        or publication.get("manifest_sha256") != args.manifest_sha256
+        or publication.get("selected_files") != args.evidence_files
+        or publication.get("bytes") != args.evidence_bytes
+        or publication.get("all_60_originals_retained") is not True
+    ):
+        fail("Publication audit does not validate selected evidence")
+    add(str(audit_path.relative_to(ROOT)), publication_bytes, {"kind": "publication_audit"})
+    final_config_path = args.final_files_json.absolute()
+    if not final_config_path.is_relative_to(ROOT / ".local/efficiency-v1"):
+        fail("Reviewed final artifact list must be inside ignored efficiency root")
+    final_config_bytes = read(final_config_path)
+    final_config = unique_json(final_config_bytes)
+    finalized_names = set()
+    for record in final_config["files"]:
+        if set(record) != {"source", "sha256"} or not re.fullmatch(
+            r"[0-9a-f]{64}", record["sha256"]
+        ):
+            fail("Invalid exact final artifact identity")
+        relative = safe_name(record["source"])
+        if (
+            relative in finalized_names
+            or relative.startswith(".local/")
+            or relative.startswith("benchmarks/evidence/")
+        ):
+            fail("Duplicate or unsafe finalized artifact")
+        finalized_names.add(relative)
+        data = read(ROOT / relative)
+        if sha(data) != record["sha256"]:
+            fail("Final artifact differs from reviewed identity: " + relative)
+        add(relative, data, {"kind": "finalized_report_or_documentation", "source": relative})
+    if not set(REQUIRED_REPORTS) <= finalized_names:
+        fail("Final artifact list omits a required report/document")
+    add(
+        "reproduction/final-artifacts.json",
+        final_config_bytes,
+        {"kind": "reviewed_exact_final_artifact_list"},
+    )
+    report_bytes = members["benchmarks/codex-workflow-ab.json"]
+    report = unique_json(report_bytes)
+    assessment_bytes = members["benchmarks/workflow-assessment.json"]
+    assessment = unique_json(assessment_bytes)
+    if (
+        report_bytes != members["benchmarks/evidence/efficiency-v1/formal/report.json"]
+        or members["benchmarks/codex-workflow-ab.md"]
+        != members["benchmarks/evidence/efficiency-v1/formal/report.md"]
+    ):
+        fail("Final primary report copies differ from immutable public evidence")
+    if (
+        len(report["tasks"]) != 10
+        or len(report["runs"]) != 60
+        or report.get("configuration_labels") != LABELS
+    ):
+        fail("Primary report scope/treatments differ")
+    for phase in ("before", "after"):
+        source = report["metadata"]["memglide_source_" + phase]
+        if (
+            source["git_head"] != args.expected_head
+            or source["source_tree_sha256"] != args.expected_app
+            or source.get("source_dirty_entries")
+        ):
+            fail("Primary report App source identity differs")
+    frozen_names = (
+        set(report["metadata"]["frozen_manifest"]["files"])
+        | set(report["metadata"]["memglide_source_before"]["source_files"])
+        | set(REQUIRED_TESTS)
+        | {
+            "pyproject.toml",
+            "uv.lock",
+            "frontend/package.json",
+            "frontend/package-lock.json",
+            "benchmarks/__init__.py",
+        }
+    )
+    for relative in sorted(frozen_names):
+        safe_name(relative)
+        data = subprocess.check_output(
+            ["git", "show", args.expected_head + ":" + relative], cwd=ROOT, stderr=subprocess.PIPE
+        )
+        add(
+            "frozen-source/" + relative + ".txt",
+            data,
+            {"kind": "frozen_git_source_text", "commit": args.expected_head, "path": relative},
+        )
+    provenance = assessment["provenance"]
+    if (
+        provenance.get("primary_report_sha256") != sha(report_bytes)
+        or provenance.get("pricing_document_sha256") != sha(members["benchmarks/cost-pricing.json"])
+        or provenance.get("workflow_estimator_sha256")
+        != sha(members["frozen-source/benchmarks/workflow_cost.py.txt"])
+        or provenance.get("shared_estimator_sha256")
+        != sha(members["frozen-source/benchmarks/estimate_cost.py.txt"])
+    ):
+        fail("Final accounting does not bind frozen estimators/report/pricing")
+    if (
+        assessment.get("actual_billed_cost_usd") is not None
+        or assessment.get("unique_attempts") != 60
+    ):
+        fail("Unknown actual billing or original attempt count differs")
+    for row in assessment["runs"]:
+        if row["cost"].get("actual_billed_cost_usd") is not None:
+            fail("Unavailable attempt billing was replaced")
+        native_name = (
+            "benchmarks/evidence/efficiency-v1/formal/runs/"
+            + safe_name(row["run_id"])
+            + "/events.jsonl"
+        )
+        if row.get("events_sha256") is not None and (
+            native_name not in members or row["events_sha256"] != sha(members[native_name])
+        ):
+            fail("Accounting row native event identity differs")
+    independent = manifest["independent_audit"]
+    audit_member = "benchmarks/evidence/efficiency-v1/" + independent["published_path"]
+    independent_bytes = members[audit_member]
+    independent_audit = unique_json(independent_bytes)
+    verification = independent_audit.get("assessment_verification", {})
+    if (
+        independent.get("pass") is not True
+        or sha(independent_bytes) != independent["sha256"]
+        or independent_audit.get("pass") is not True
+        or independent_audit.get("errors")
+        or verification.get("pass") is not True
+        or verification.get("errors")
+        or verification.get("assessment_sha256") != sha(assessment_bytes)
+        or independent_audit.get("source_report_sha256") != sha(report_bytes)
+        or independent_audit.get("pricing_sha256") != provenance["pricing_document_sha256"]
+    ):
+        fail("Final independent audit does not bind selected final bytes")
+    if report["metadata"].get("source_unchanged_during_experiment") is not True:
+        fail("Frozen source was not retained during measurements")
+    start = """# Memglide efficiency study: report and evidence
+
+Start with [the final assessment](benchmarks/workflow-assessment.md), [the full native-run report](benchmarks/codex-workflow-ab.md), [validation](benchmarks/efficiency-validation.md), [the protocol](benchmarks/workflow-protocol.md), [research](benchmarks/efficiency-research.md) and [the architecture](docs/efficiency-architecture.md).
+
+This study retains sixty original native invocations: ten fresh Python/TypeScript tasks, two repeats, and three matched configurations. A is standard Codex, B adds complete caller-selected production source, and C adds that source plus complete caller-selected supporting tests. Two supplied-context controls per repeat forward byte-identical prompts. All arms use the same model, settings, repository starting commits and common task inputs. Pairwise ordering is balanced across repeats. Backend and operating-system caches are uncontrolled.
+
+All dollars in the assessment are explicitly API-list-price equivalents, not actual provider bills or subscription charges. Failed attempts and unknown usage remain visible. Cost per successful task includes every attempted assignment in its numerator. Token usage, command items and file-change items are not model-call counts; unavailable model calls, actual filesystem reads and attributable model cost remain null. No auxiliary retrieval model or native MCP server is configured in this source-preload study. It does not establish cross-session memory or large-repository benefits.
+
+The prespecified default-promotion gate excludes supplied-context controls, requires complete successful matched evidence, and compares focused cost and full time means and medians against both other arms overall and separately in each repeat. Read its measured outcome and every failed gate check in the final assessment. The gate is a finite-corpus acceptance rule, not statistical proof or a promise of universal gains.
+
+All original native streams, common prompts, commands, preparation attestations, grading output, patches and durable attempt/result seals are under `benchmarks/evidence/efficiency-v1/`. Every original outcome, including any failure or interruption, remains in the report. Earlier failed validation/audit/research fetch receipts selected for this iteration remain in the evidence whitelist. Auth, native state, databases, fixture repositories/worktrees, raw browser/environment configuration, arbitrary full external research bodies and untracked file contents are excluded.
+
+Frozen application and transitive benchmark/corpus/estimator/protocol source from the measured commit is reference text under `frozen-source/`; the exact original paths and Git commit are in `MEMBER-MANIFEST.json`. This is not a full executable checkout. To recompute the assessment without model requests, restore all `frozen-source/benchmarks/*.py.txt` to their corresponding `benchmarks/*.py` paths, then run Python 3.11 or newer from the extracted directory:
+
+```sh
+python -m benchmarks.workflow_cost --report benchmarks/codex-workflow-ab.json --pricing benchmarks/cost-pricing.json --events-root benchmarks/evidence/efficiency-v1/formal/runs --output-prefix NEW_PREFIX
+```
+
+The new assessment creation timestamp can differ. Compare numerical fields, gate outcomes and bound input hashes. No pairwise view creates additional spend: every original attempt is priced once.
+
+`MEMBER-MANIFEST.json` lists every other member's exact size, SHA-256 and origin. The external `benchmarks/efficiency-report-bundle.json` binds that inventory, ZIP bytes, CRC and every member hash, avoiding circular self-hashes. All selected original text bytes are credential-pattern scanned before packaging. Narrow synthetic pytest XML exceptions require exact original hashes and matching frozen public Git literals inside approved testcase-name spans; all other XML bytes remain scanned and original bytes are preserved. Pattern scanning cannot prove absence of every possible secret. Earlier historical evidence and ZIPs were compared byte-for-byte to their pre-iteration Git blobs and remain unchanged.
+""".encode()
+    add("START-HERE.md", start, {"kind": "generated_final_guide"})
+    add(
+        "reproduction/build_bundle.py.txt",
+        read(builder_path),
+        {"kind": "explicit_builder_source", "sha256": args.expected_builder_sha256},
+    )
+    inventory = {
+        "schema_version": 1,
+        "scope": "Ten-task, two-repeat, three-arm workflow study; API-price equivalents, no actual billing claim",
+        "frozen_commit": args.expected_head,
+        "application_source_tree_sha256": args.expected_app,
+        "published_evidence_manifest_sha256": args.manifest_sha256,
+        "pinned_scanner_sha256": args.scanner_sha256,
+        "self_excluded_from_members": "MEMBER-MANIFEST.json; external receipt records its hash",
+        "synthetic_fixture_scan_exceptions": exceptions,
+        "files": [
+            {"path": name, "bytes": len(data), "sha256": sha(data), "origin": origins[name]}
+            for name, data in sorted(members.items())
+        ],
+    }
+    inventory_bytes = encoded(inventory)
+    add("MEMBER-MANIFEST.json", inventory_bytes, {"kind": "generated_member_inventory"})
+    for path, identity in identities.items():
+        reject_symlinks(path)
+        data = path.read_bytes()
+        if (len(data), sha(data)) != identity:
+            fail("Selected bytes changed during packaging")
+    if not args.publish:
+        print(
+            json.dumps(
+                {
+                    "mode": "check_only",
+                    "archive_member_count": len(members),
+                    "uncompressed_bytes": sum(map(len, members.values())),
+                    "all_selected_bytes_scanned": True,
+                    "member_manifest_sha256": sha(inventory_bytes),
+                    "builder_sha256": args.expected_builder_sha256,
+                }
+            )
+        )
+        return
+    with zipfile.ZipFile(OUTPUT, "x", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        for name, data in sorted(members.items()):
+            info = zipfile.ZipInfo(name, date_time=(2026, 10, 19, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o100644 << 16
+            archive.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
+    with zipfile.ZipFile(OUTPUT) as archive:
+        if (
+            archive.testzip() is not None
+            or len(archive.namelist()) != len(members)
+            or set(archive.namelist()) != set(members)
+        ):
+            fail("ZIP CRC, duplicate or exact-member verification failed")
+        for name, expected_bytes in members.items():
+            actual_bytes = archive.read(name)
+            if len(actual_bytes) != len(expected_bytes) or sha(actual_bytes) != sha(expected_bytes):
+                fail("ZIP member size/SHA verification failed")
+    data = OUTPUT.read_bytes()
+    receipt = {
+        "schema_version": 1,
+        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "archive": str(OUTPUT.relative_to(ROOT)),
+        "archive_bytes": len(data),
+        "archive_sha256": sha(data),
+        "frozen_commit": args.expected_head,
+        "application_source_tree_sha256": args.expected_app,
+        "original_runs": 60,
+        "verified_triplets": 20,
+        "archive_member_count": len(members),
+        "uncompressed_member_bytes": sum(map(len, members.values())),
+        "member_manifest": "MEMBER-MANIFEST.json",
+        "member_manifest_sha256": sha(inventory_bytes),
+        "member_manifest_lists_members_excluding_itself": len(inventory["files"]),
+        "published_evidence": {
+            "files": args.evidence_files,
+            "bytes": args.evidence_bytes,
+            "manifest_sha256": args.manifest_sha256,
+            "scanner_sha256": args.scanner_sha256,
+            "publication_audit_sha256": sha(publication_bytes),
+        },
+        "checks": {
+            "crc_verified": True,
+            "every_member_sha256_verified": True,
+            "exact_member_set_verified": True,
+            "all_selected_bytes_credential_scanned": True,
+            "evidence_manifest_hashes_verified": True,
+            "source_bytes_unchanged_during_packaging": True,
+            "overwrites_performed": False,
+        },
+        "synthetic_fixture_scan_exceptions": exceptions,
+        "actual_billed_cost_usd": None,
+        "estimated_cost_per_successful_task_usd": {
+            arm: assessment["configurations"][arm]["cost_per_successful_task_usd"] for arm in LABELS
+        },
+        "promotion_gate": assessment["promotion_gate"],
+        "final_independent_audit": independent,
+        "builder_source_sha256": args.expected_builder_sha256,
+        "limitations": assessment["limitations"],
+    }
+    receipt_bytes = encoded(receipt)
+    scan(receipt_bytes, "external archive receipt")
+    with RECEIPT.open("xb") as stream:
+        stream.write(receipt_bytes)
+    print(
+        json.dumps(
+            {
+                "mode": "published",
+                "archive": receipt["archive"],
+                "archive_bytes": len(data),
+                "archive_sha256": sha(data),
+                "archive_member_count": len(members),
+                "uncompressed_member_bytes": receipt["uncompressed_member_bytes"],
+                "member_manifest_sha256": sha(inventory_bytes),
+                "receipt_sha256": sha(receipt_bytes),
+                "checks": receipt["checks"],
+            },
+            indent=2,
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

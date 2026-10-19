@@ -1,0 +1,33 @@
+test_raw_plus_and_percent_order (__main__.BehaviorTests.test_raw_plus_and_percent_order) ... FAIL
+test_unicode_and_malformed (__main__.BehaviorTests.test_unicode_and_malformed) ... FAIL
+
+======================================================================
+FAIL: test_raw_plus_and_percent_order (__main__.BehaviorTests.test_raw_plus_and_percent_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/efficiency-v1/corpus-initial-validation/py-workflow-form-form-plus-decoding/baseline_grade/held_out.py", line 7, in test_raw_plus_and_percent_order
+    self.assertEqual(core.decode_component("a+b%2Bc"),"a b+c")
+AssertionError: 'a+b+c' != 'a b+c'
+- a+b+c
+?  ^
++ a b+c
+?  ^
+
+
+======================================================================
+FAIL: test_unicode_and_malformed (__main__.BehaviorTests.test_unicode_and_malformed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/efficiency-v1/corpus-initial-validation/py-workflow-form-form-plus-decoding/baseline_grade/held_out.py", line 10, in test_unicode_and_malformed
+    self.assertEqual(core.decode_component("caf%C3%A9+%E6%9D%B1%E4%BA%AC"),"café 東京")
+AssertionError: 'café+東京' != 'café 東京'
+- café+東京
+?     ^
++ café 東京
+?     ^
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+FAILED (failures=2)

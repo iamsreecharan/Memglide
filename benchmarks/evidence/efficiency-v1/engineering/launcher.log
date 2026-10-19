@@ -1,0 +1,16 @@
+.................F..............................                         [100%]
+=================================== FAILURES ===================================
+___________ test_complete_snapshot_cannot_include_unrequested_files ____________
+
+    def test_complete_snapshot_cannot_include_unrequested_files():
+        value, _ = compact_preparation("Task")
+        with pytest.raises(ValueError, match="complete requested file set"):
+            codex_preload._validated_preparation(value, "Task", "compact-prefix", focus_paths=["a.py"])
+>       assert len(observed["argv"]) == 5 and observed["argv"][-1] == "-"
+                   ^^^^^^^^
+E       NameError: name 'observed' is not defined
+
+tests/test_codex_preload.py:369: NameError
+=========================== short test summary info ============================
+FAILED tests/test_codex_preload.py::test_complete_snapshot_cannot_include_unrequested_files
+1 failed, 47 passed in 4.33s

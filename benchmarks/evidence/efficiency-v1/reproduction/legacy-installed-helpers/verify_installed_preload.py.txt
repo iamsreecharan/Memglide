@@ -1,0 +1,310 @@
+"""Installed compact-prefix/legacy smoke; no model or network requests.
+
+Run with the new installed wheel's Python -I. Functional checks are not pytest
+cases and do not measure token usage, cache hits, billing, or task performance.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+from typing import Any
+
+import memglide
+from memglide.core.indexer import Indexer
+from memglide.integrations.preload import (
+    TASK_SEPARATOR,
+    _COMPACT_NOTICE,
+    _EXPLANATION,
+    prepare_prompt,
+)
+from memglide.storage.database import Database
+
+
+def digest(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def checked_sources(preparation: dict[str, Any], prompt: str) -> dict[str, str]:
+    """Independently inspect complete bodies/private evidence and exact layout."""
+    text = preparation["prompt"]
+    metadata = preparation["files"]
+    assert preparation["task_prompt_sha256"] == digest(prompt.encode("utf-8"))
+    assert preparation["prepared_prompt_sha256"] == digest(text.encode("utf-8"))
+    assert preparation["context_bytes"] == len(text.encode("utf-8")) - len(prompt.encode("utf-8"))
+    if preparation["context_format"] == "compact-prefix":
+        assert preparation["prompt_layout"] == "source_prefix"
+        suffix = TASK_SEPARATOR + prompt
+        assert text.endswith(suffix)
+        prefix = text[: -len(suffix)]
+        envelope = json.loads(prefix)
+        assert set(envelope) == {"notice", "memglide_sources"}
+        assert envelope["notice"] == _COMPACT_NOTICE
+        assert prefix == json.dumps(envelope, ensure_ascii=False, separators=(",", ":"))
+        assert [entry["path"] for entry in metadata] == sorted(entry["path"] for entry in metadata)
+        assert all(set(entry) == {"path", "content"} for entry in envelope["memglide_sources"])
+    else:
+        assert preparation["context_format"] == "legacy"
+        assert preparation["prompt_layout"] == "task_suffix"
+        start = prompt + "\n\n" + _EXPLANATION
+        assert text.startswith(start)
+        envelope = json.loads(text[len(start) :])
+        assert set(envelope) == {"memglide_sources"}
+    sources = envelope["memglide_sources"]
+    assert len(sources) == len(metadata)
+    assert len({entry["path"] for entry in sources}) == len(sources)
+    result = {}
+    for source, evidence in zip(sources, metadata, strict=True):
+        assert source["path"] == evidence["path"]
+        assert digest(source["content"].encode("utf-8")) == evidence["sha256"]
+        assert evidence["start_line"] == 1
+        assert evidence["end_line"] == len(source["content"].splitlines())
+        if preparation["context_format"] == "legacy":
+            assert all(source[key] == value for key, value in evidence.items())
+        result[source["path"]] = source["content"]
+    return result
+
+
+def fake_console(
+    console: Path,
+    state: Path,
+    database: Path,
+    project_id: str,
+    prompt: str,
+    expected: dict[str, Any],
+    *,
+    context_format: str,
+) -> dict[str, Any]:
+    """Use the installed console with an external trusted stdin consumer once."""
+    directory = state / context_format
+    directory.mkdir(mode=0o700)
+    fake = directory / "codex"
+    marker = directory / "exactly-one-native-exec.txt"
+    capture = directory / "actual-native-stdin.bin"
+    observation_file = directory / "actual-native-observation.json"
+    report_file = directory / "console-preparation.json"
+    fake.write_text(
+        f"#!{sys.executable}\n"
+        "import hashlib,json,sys\nfrom pathlib import Path\n"
+        f"with Path({str(marker)!r}).open('x') as stream: "
+        "stream.write('one native execution\\n')\n"
+        "payload=sys.stdin.buffer.read()\n"
+        f"with Path({str(capture)!r}).open('xb') as stream: stream.write(payload)\n"
+        f"report=Path({str(report_file)!r})\n"
+        "observed={'argv':sys.argv,'stdin_sha256':hashlib.sha256(payload).hexdigest(),"
+        "'stdin_bytes':len(payload),'report_written_before_native_exec':report.is_file()}\n"
+        f"with Path({str(observation_file)!r}).open('x') as stream: json.dump(observed,stream)\n"
+        "raise SystemExit(29)\n",
+        encoding="utf-8",
+    )
+    fake.chmod(0o700)
+    # The compact case deliberately uses the new CLI default. The legacy case
+    # explicitly selects the old format and must retain the v1 report schema.
+    format_arguments = [] if context_format == "compact-prefix" else ["--context-format", "legacy"]
+    options = ["--json", "--model", "synthetic-no-model-request", "-c", 'model_reasoning_effort="low"']
+    completed = subprocess.run(
+        [
+            str(console),
+            *format_arguments,
+            "--codex-executable",
+            str(fake),
+            "--project",
+            project_id,
+            "--db",
+            str(database),
+            "--focus",
+            "totals.py",
+            "--preparation-report",
+            str(report_file),
+            "--",
+            *options,
+        ],
+        cwd="/tmp",
+        input=prompt.encode("utf-8"),
+        capture_output=True,
+        timeout=30,
+    )
+    assert completed.returncode == 29, completed.stderr.decode("utf-8", errors="replace")
+    assert not completed.stdout and not completed.stderr
+    assert marker.read_text() == "one native execution\n"
+    delivered = capture.read_bytes()
+    observed = json.loads(observation_file.read_text())
+    report = json.loads(report_file.read_text())
+    assert observed["report_written_before_native_exec"]
+    assert observed["argv"] == [str(fake), "exec", *options, "--", "-"]
+    assert report["exec_argv"] == observed["argv"]
+    assert delivered == expected["prompt"].encode("utf-8")
+    assert report["preparation"]["prepared_prompt_sha256"] == digest(delivered)
+    assert report["preparation"]["task_prompt_sha256"] == digest(prompt.encode("utf-8"))
+    assert report["native_stdin"]["sha256"] == observed["stdin_sha256"] == digest(delivered)
+    assert report["native_stdin"]["bytes"] == observed["stdin_bytes"] == len(delivered)
+    assert report["native_stdin"]["transport"] == "temporary_file_descriptor"
+    assert report["preparation"]["files"] == expected["files"]
+    assert report_file.stat().st_mode & 0o777 == 0o600
+    assert "calculate_total" not in report_file.read_text()
+    if context_format == "compact-prefix":
+        assert report["version"] == 2
+        assert report["preparation"]["context_format"] == context_format
+        assert report["preparation"]["prompt_layout"] == "source_prefix"
+    else:
+        assert report["version"] == 1
+        assert "context_format" not in report["preparation"]
+        assert "prompt_layout" not in report["preparation"]
+    assert checked_sources({**expected, "prompt": delivered.decode("utf-8")}, prompt)["totals.py"]
+    return {
+        "passed": True,
+        "context_format": context_format,
+        "report_version": report["version"],
+        "native_execs_observed": 1,
+        "native_exit_status": 29,
+        "stdin_bytes": len(delivered),
+        "stdin_sha256": digest(delivered),
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--state", type=Path, required=True)
+    parser.add_argument("--report", type=Path, required=True)
+    options = parser.parse_args()
+    assert sys.flags.isolated, "Run with the installed virtual environment Python -I"
+    package = Path(memglide.__file__).resolve()
+    assert package.is_relative_to(Path(sys.prefix).resolve()), "Imported checkout instead of wheel"
+    state, report = options.state.absolute(), options.report.absolute()
+    assert not report.exists(), "Choose a new report; never overwrite earlier evidence"
+    assert report.parent.is_dir()
+    assert not state.is_relative_to(Path("/tmp")), "--state must be outside launcher's /tmp cwd"
+    state.mkdir(parents=True, exist_ok=False, mode=0o700)
+    os.environ["MEMGLIDE_HOME"] = str(state)
+    console = Path(sys.executable).absolute().parent / "memglide-codex"
+    assert console.is_file() and os.access(console, os.X_OK)
+    checks = {"isolated_installed_package": True, "installed_entrypoint": True}
+    with tempfile.TemporaryDirectory(prefix="memglide-cache-v2-installed-", dir="/tmp") as temporary:
+        repository = Path(temporary)
+        subprocess.run(
+            ["git", "-c", f"core.hooksPath={os.devnull}", "init", "-q", str(repository)],
+            check=True,
+            capture_output=True,
+            timeout=15,
+        )
+        source = repository / "totals.py"
+        initial = b"def calculate_total(values):\n    return sum(values) + 1\n"
+        changed = b"def calculate_total(values):\n    return sum(values) + 2\n"
+        assert len(initial) == len(changed)
+        source.write_bytes(initial)
+        marker = state / "untrusted-source-must-not-execute"
+        untrusted = repository / "untrusted.py"
+        untrusted.write_text(
+            "from pathlib import Path\n"
+            f"Path({str(marker)!r}).write_text('executed')\n"
+            "raise RuntimeError('Indexed source must never execute')\n"
+        )
+        (repository / "large.py").write_text("# source exceeds a tiny complete-file budget\n" * 400)
+        database_path = state / "approved.db"
+        database = Database(database_path)
+        project_id = Indexer(database).add_project(str(repository))["id"]
+        assert not marker.exists()
+        checks["explicit_git_approval_and_real_index"] = True
+        prompt = "Review 'totals': $HOME `no-shell`; λ\r\nnext\rfinal\n\nTask:\n"
+        prepared = prepare_prompt(
+            prompt,
+            project_id=project_id,
+            db_path=database_path,
+            focus_paths=("untrusted.py", "totals.py"),
+            context_format="compact-prefix",
+        )
+        assert prepared["mode"] == "preloaded"
+        bodies = checked_sources(prepared, prompt)
+        assert bodies["totals.py"].encode("utf-8") == initial
+        assert bodies["untrusted.py"] == untrusted.read_text()
+        checks["compact_full_source_private_hashes_ranges_and_original_task"] = True
+        next_prompt = "A different related task.\r\n"
+        next_prepared = prepare_prompt(
+            next_prompt,
+            project_id=project_id,
+            db_path=database_path,
+            focus_paths=("totals.py", "untrusted.py", "totals.py"),
+            context_format="compact-prefix",
+        )
+        assert prepared["prompt"].removesuffix(TASK_SEPARATOR + prompt) == next_prepared["prompt"].removesuffix(TASK_SEPARATOR + next_prompt)
+        checks["stable_prefix_across_tasks_and_focus_order"] = True
+        before = source.stat()
+        old_row = database.one("SELECT hash FROM files WHERE project_id=? AND path=?", (project_id, "totals.py"))
+        assert old_row is not None and old_row["hash"] == digest(initial)
+        source.write_bytes(changed)
+        os.utime(source, ns=(before.st_atime_ns, before.st_mtime_ns))
+        assert source.stat().st_size == before.st_size and source.stat().st_mtime_ns == before.st_mtime_ns
+        refreshed = prepare_prompt(
+            prompt, project_id=project_id, db_path=database_path,
+            focus_paths=("totals.py",), context_format="compact-prefix",
+        )
+        assert checked_sources(refreshed, prompt)["totals.py"].encode("utf-8") == changed
+        assert refreshed["files"][0]["sha256"] == digest(changed) != digest(initial)
+        assert database.one("SELECT hash FROM files WHERE project_id=? AND path=?", (project_id, "totals.py")) == old_row
+        checks["same_size_restored_mtime_freshness_without_reindex"] = True
+        for label, focus, budget in (
+            ("oversized_complete_source_fallback", ("large.py",), 500),
+            ("missing_source_fallback", ("missing.py",), 12_000),
+        ):
+            fallback = prepare_prompt(
+                prompt, project_id=project_id, db_path=database_path,
+                focus_paths=focus, max_context_bytes=budget, context_format="compact-prefix",
+            )
+            assert fallback["mode"] == "passthrough" and fallback["prompt_layout"] == "unchanged"
+            assert fallback["prompt"].encode("utf-8") == prompt.encode("utf-8")
+            assert fallback["files"] == [] and fallback["context_bytes"] == 0
+            checks[label] = True
+        absent_database = state / "never-created" / "state.db"
+        bypass = prepare_prompt(
+            prompt, project_id=project_id, db_path=absent_database, focus_paths=("totals.py",),
+            context_supplied=True, context_format="compact-prefix",
+        )
+        assert bypass["mode"] == "passthrough" and bypass["reason"] == "context_supplied"
+        assert bypass["prompt"].encode("utf-8") == prompt.encode("utf-8")
+        assert not absent_database.parent.exists()
+        checks["context_supplied_nonexistent_database_bypass"] = True
+        compact_native = fake_console(
+            console, state, database_path, project_id, prompt, refreshed,
+            context_format="compact-prefix",
+        )
+        checks["installed_default_compact_console_v2_exact_stdin_and_metadata"] = True
+        legacy = prepare_prompt(
+            prompt, project_id=project_id, db_path=database_path,
+            focus_paths=("totals.py",), context_format="legacy",
+        )
+        assert checked_sources(legacy, prompt)["totals.py"].encode("utf-8") == changed
+        legacy_native = fake_console(
+            console, state, database_path, project_id, prompt, legacy, context_format="legacy",
+        )
+        checks["explicit_legacy_console_v1_compatibility"] = True
+        assert not marker.exists()
+        checks["indexed_untrusted_source_never_executed"] = True
+    summary = {
+        "passed": True,
+        "package_location": str(package),
+        "python_prefix": sys.prefix,
+        "console_entrypoint": str(console),
+        "isolated_imports": True,
+        "native_working_directory": "/tmp",
+        "functional_checks": checks,
+        "functional_check_count": len(checks),
+        "native_formats": [compact_native, legacy_native],
+        "native_execs_observed": 2,
+        "model_requests": 0,
+        "network_requests": 0,
+        "scope": "Installed-wheel API/console smoke using trusted fake native Codex. Functional checks are not additional pytest cases; no usage/cost/speed claim.",
+    }
+    with report.open("x", encoding="utf-8") as output:
+        json.dump(summary, output, sort_keys=True, separators=(",", ":"))
+        output.write("\n")
+    print(json.dumps(summary, sort_keys=True, separators=(",", ":")))
+
+
+if __name__ == "__main__":
+    main()

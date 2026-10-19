@@ -1,0 +1,6 @@
+{
+  "benchmarks/search_frequency.py": "30b3a6c2152defb39d035f58f98a852a8df1a517962d760badf552eb12e34580",
+  "benchmarks/compact_quality_evaluation.py": "0a5317f093cfd369d589f6411bb4d0288a6a3c6ff65cae5549bd3659e91a3d97",
+  "benchmarks/context_performance.py": "b89e5b9a8efbb25993ee404bcf8416469fd845e3d88da6d09b08d38da21509fa",
+  "benchmarks/context_efficiency_v2.py": "b71227983a1e5f600eac06a4285f1c6b4a0d4438d9de0cd6dc31eb0d94960349"
+}

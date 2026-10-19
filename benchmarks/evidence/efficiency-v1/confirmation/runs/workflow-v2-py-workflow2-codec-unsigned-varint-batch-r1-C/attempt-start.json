@@ -1,0 +1,43 @@
+{
+  "run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r1-C",
+  "task_id": "py-workflow2-codec-unsigned-varint-batch",
+  "language": "python",
+  "repository": "codec-python-workflow-v2",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "configuration": "C",
+  "repeat": 1,
+  "order": 24,
+  "context_format": "compact-prefix",
+  "support_enabled": true,
+  "setup": {
+    "wall_seconds": null,
+    "cpu_seconds": null
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this assignment yet",
+    "context_format": "compact-prefix"
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r1-C",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T04:18:43.956807+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-codec-unsigned-varint-batch-r1-C",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-py-workflow2-codec-unsigned-varint-batch-r1-C",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

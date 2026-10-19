@@ -1,0 +1,11 @@
+benchmarks/refinement_reporting.py:370: error: Item "list[str]" of "dict[str, Any | None] | list[str] | bool | str | Any | None" has no attribute "items"  [union-attr]
+benchmarks/refinement_reporting.py:370: error: Item "bool" of "dict[str, Any | None] | list[str] | bool | str | Any | None" has no attribute "items"  [union-attr]
+benchmarks/refinement_reporting.py:370: error: Item "str" of "dict[str, Any | None] | list[str] | bool | str | Any | None" has no attribute "items"  [union-attr]
+benchmarks/refinement_reporting.py:370: error: Item "None" of "dict[str, Any | None] | list[str] | bool | str | Any | None" has no attribute "items"  [union-attr]
+benchmarks/refinement_reporting.py:402: error: No overload variant of "__getitem__" of "list" matches argument type "str"  [call-overload]
+benchmarks/refinement_reporting.py:402: note: Possible overload variants:
+benchmarks/refinement_reporting.py:402: note:     def __getitem__(self, SupportsIndex, /) -> str
+benchmarks/refinement_reporting.py:402: note:     def __getitem__(self, slice[Any, Any, Any], /) -> list[str]
+benchmarks/refinement_reporting.py:402: error: Value of type "dict[str, Any | None] | list[str] | bool | str | Any | None" is not indexable  [index]
+benchmarks/refinement_reporting.py:402: error: Invalid index type "str" for "str"; expected type "SupportsIndex | slice[Any, Any, Any]"  [index]
+Found 7 errors in 1 file (checked 2 source files)

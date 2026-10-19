@@ -1,0 +1,11 @@
+{
+  "sequence": 76,
+  "previous_sha256": "182eee03b65e284f38d254c56e4c379655302fcaf92f679cd246b453183b90f8",
+  "recorded_at": "2026-10-19T04:23:42.343625+00:00",
+  "event": "attempt.started",
+  "attempt_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r2-C",
+  "original_run_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r2-C",
+  "supplemental": false,
+  "start_sha256": "628018c80bc58c4fb80cad1badf9606b980bbe0ec19e99be657ddf1f8e4c9748",
+  "sha256": "0e02e6598d9307d0b05ffdcc5ce3012cf6cd8c91a821b5d8be2288182ed294df"
+}

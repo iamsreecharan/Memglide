@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 4.239403
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.208538
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.244282
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.129102
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 0.131757
+  type: 'test'
+  ...
+# Subtest: rectangular grid boundaries preserve cardinal order
+ok 6 - rectangular grid boundaries preserve cardinal order
+  ---
+  duration_ms: 6.811592
+  type: 'test'
+  ...
+# Subtest: single-cell and single-axis grids exclude out-of-bounds neighbors
+ok 7 - single-cell and single-axis grids exclude out-of-bounds neighbors
+  ---
+  duration_ms: 2.172265
+  type: 'test'
+  ...
+# Subtest: blocked exact keys are removed without mutation or reordering
+ok 8 - blocked exact keys are removed without mutation or reordering
+  ---
+  duration_ms: 1.226015
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 9 - ordinary-0
+  ---
+  duration_ms: 2.286312
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 10 - ordinary-1
+  ---
+  duration_ms: 0.538854
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 11 - ordinary-2
+  ---
+  duration_ms: 0.163648
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 12 - ordinary-3
+  ---
+  duration_ms: 0.237617
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 13 - ordinary-4
+  ---
+  duration_ms: 0.281706
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 573.820701

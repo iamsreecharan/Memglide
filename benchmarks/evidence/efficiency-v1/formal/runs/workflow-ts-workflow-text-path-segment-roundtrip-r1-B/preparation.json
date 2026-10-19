@@ -1,0 +1,69 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "f1810d7c4cc6d30856093d89e2b4b37ec2668105308a5424b3fff6888bb07bba",
+    "prepared_prompt_sha256": "a226c65c3eeece2f1aa02bf8f66efd057b8931e2a108be9799aa8f50121fe5d9",
+    "files": [
+      {
+        "path": "src/path_segment_roundtrip.ts",
+        "sha256": "c41838e31e7718ed18820fb15bbb662d7a0c7cbf4577a239cf3d1c6f2d3461d7",
+        "start_line": 1,
+        "end_line": 4
+      },
+      {
+        "path": "src/path_segment_roundtrip_api.ts",
+        "sha256": "10965452d682dd6f4012d829b55c61b2b4092e4596ccee2269a1e02a92e02dbd",
+        "start_line": 1,
+        "end_line": 5
+      }
+    ],
+    "context_bytes": 598,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.08488123700226424,
+    "preparation_cpu_seconds": 0.08463429199999997
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-text-path-segment-roundtrip-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-text-path-segment-roundtrip-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "a226c65c3eeece2f1aa02bf8f66efd057b8931e2a108be9799aa8f50121fe5d9",
+    "bytes": 2533,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 51356.273998781
+}

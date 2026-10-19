@@ -1,0 +1,1400 @@
+{
+  "schema_version": 1,
+  "selection_scope": "Completed pre-formal engineering/research-fetch/validation evidence only; no formal model events/grades or private state read during preparation",
+  "selection_notes": [
+    "Top-level logs/XML/JSON preserve initial failures, intermediate revisions and final passes.",
+    "full-python-pre-freeze-interrupted retains90 test cases and an interrupted run; it is not a completed full-suite pass.",
+    "The full final Python receipt has1340 passes; overlapping focused-suite receipts must not be added to that count.",
+    "Raw research source/HTML bodies and environment/browser configuration are excluded.",
+    "Final formal metadata/raw streams/grades/durable seals are separately selected only after the finishedmetadata+driver-exit guard passes.",
+    "All three corpus-oracle validation stages use exact *_grade directories and named logs; fixture source workspaces are excluded.",
+    "Publisher proof v1 exposed malformed-synthetic-XML exception handling and v3 hit an existing-receipt no-overwrite guard; final v4 passed44 assertions. These are pre-publication helper checks, not native benchmark runs."
+  ],
+  "xml_approvals": {
+    ".local/efficiency-v1/full-python.xml": "07bb1ce7767947bf1f94e5dbb5253eb9fa4ff095f92e2168f16b86f12be9be3a"
+  },
+  "files": [
+    {
+      "source": ".local/efficiency-v1/browser.log",
+      "destination": "engineering/browser.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/browser.xml",
+      "destination": "engineering/browser.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-final-validation-v2.log",
+      "destination": "engineering/corpus-final-validation-v2.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-final-validation.log",
+      "destination": "engineering/corpus-final-validation.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-initial-validation.log",
+      "destination": "engineering/corpus-initial-validation.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-reference-refinement.json",
+      "destination": "engineering/corpus-reference-refinement.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-summary.json",
+      "destination": "engineering/corpus-summary.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-test-initial-issues.json",
+      "destination": "engineering/corpus-test-initial-issues.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-tests-final-v2.log",
+      "destination": "engineering/corpus-tests-final-v2.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-tests-final-v2.xml",
+      "destination": "engineering/corpus-tests-final-v2.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-tests-final.log",
+      "destination": "engineering/corpus-tests-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-tests-final.xml",
+      "destination": "engineering/corpus-tests-final.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-tests.log",
+      "destination": "engineering/corpus-tests.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-tests.xml",
+      "destination": "engineering/corpus-tests.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/cost-guards.log",
+      "destination": "engineering/cost-guards.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/cost-guards.xml",
+      "destination": "engineering/cost-guards.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/diagnosis.json",
+      "destination": "engineering/diagnosis.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/diagnosis.log",
+      "destination": "engineering/diagnosis.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/diagnosis.py",
+      "destination": "engineering/diagnosis.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/diagnosis_report.py",
+      "destination": "engineering/diagnosis_report.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/diff-check-final.log",
+      "destination": "engineering/diff-check-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/diff-check.log",
+      "destination": "engineering/diff-check.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/formal-launch.json",
+      "destination": "engineering/formal-launch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/frontend-build.log",
+      "destination": "engineering/frontend-build.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/frontend-bundle.log",
+      "destination": "engineering/frontend-bundle.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/frontend-install.log",
+      "destination": "engineering/frontend-install.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/frontend.log",
+      "destination": "engineering/frontend.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/frontend.xml",
+      "destination": "engineering/frontend.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/full-python-pre-freeze-interrupted.log",
+      "destination": "engineering/full-python-pre-freeze-interrupted.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/full-python-pre-freeze-interrupted.xml",
+      "destination": "engineering/full-python-pre-freeze-interrupted.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/full-python.log",
+      "destination": "engineering/full-python.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/full-python.xml",
+      "destination": "engineering/full-python.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/historical-immutability-baseline.json",
+      "destination": "engineering/historical-immutability-baseline.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/historical-immutability-check.json",
+      "destination": "engineering/historical-immutability-check.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-cost-format-after.log",
+      "destination": "engineering/independent-review-cost-format-after.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-cost-format-fix.log",
+      "destination": "engineering/independent-review-cost-format-fix.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-cost-format.log",
+      "destination": "engineering/independent-review-cost-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-cost-mypy.log",
+      "destination": "engineering/independent-review-cost-mypy.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-cost-ruff.log",
+      "destination": "engineering/independent-review-cost-ruff.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-cost.log",
+      "destination": "engineering/independent-review-cost.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-cost.xml",
+      "destination": "engineering/independent-review-cost.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-fixes-format.log",
+      "destination": "engineering/independent-review-fixes-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-full-format.log",
+      "destination": "engineering/independent-review-full-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-full-mypy-live.json",
+      "destination": "engineering/independent-review-full-mypy-live.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-full-mypy-live.log",
+      "destination": "engineering/independent-review-full-mypy-live.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-full-mypy.log",
+      "destination": "engineering/independent-review-full-mypy.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-full-ruff.log",
+      "destination": "engineering/independent-review-full-ruff.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-full-static.json",
+      "destination": "engineering/independent-review-full-static.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-owned-mypy-final.log",
+      "destination": "engineering/independent-review-owned-mypy-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-reproductions-v2.json",
+      "destination": "engineering/independent-review-reproductions-v2.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-reproductions.json",
+      "destination": "engineering/independent-review-reproductions.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-v1.json",
+      "destination": "engineering/independent-review-v1.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-v2.json",
+      "destination": "engineering/independent-review-v2.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-v3.json",
+      "destination": "engineering/independent-review-v3.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-workflow-final.log",
+      "destination": "engineering/independent-review-workflow-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review-workflow-final.xml",
+      "destination": "engineering/independent-review-workflow-final.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-behavior.json",
+      "destination": "engineering/independent-typing-behavior.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-format.log",
+      "destination": "engineering/independent-typing-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-full-format.log",
+      "destination": "engineering/independent-typing-full-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-full-mypy.log",
+      "destination": "engineering/independent-typing-full-mypy.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-full-ruff.log",
+      "destination": "engineering/independent-typing-full-ruff.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-full-static.json",
+      "destination": "engineering/independent-typing-full-static.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-tests.log",
+      "destination": "engineering/independent-typing-tests.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-tests.xml",
+      "destination": "engineering/independent-typing-tests.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/launcher-final.log",
+      "destination": "engineering/launcher-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/launcher-final.xml",
+      "destination": "engineering/launcher-final.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/launcher.log",
+      "destination": "engineering/launcher.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/launcher.xml",
+      "destination": "engineering/launcher.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/make_validation.py",
+      "destination": "engineering/make_validation.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/mypy-benchmarks.log",
+      "destination": "engineering/mypy-benchmarks.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/mypy-combined-final.log",
+      "destination": "engineering/mypy-combined-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/mypy-src.log",
+      "destination": "engineering/mypy-src.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-api.json",
+      "destination": "engineering/package-api.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-api.log",
+      "destination": "engineering/package-api.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-audit.json",
+      "destination": "engineering/package-audit.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-audit.log",
+      "destination": "engineering/package-audit.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-audit.py",
+      "destination": "engineering/package-audit.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-build.log",
+      "destination": "engineering/package-build.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-export.log",
+      "destination": "engineering/package-export.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-install.log",
+      "destination": "engineering/package-install.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-preload.json",
+      "destination": "engineering/package-preload.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-preload.log",
+      "destination": "engineering/package-preload.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-requirements.txt",
+      "destination": "engineering/package-requirements.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-support-mcp-initial.py",
+      "destination": "engineering/package-support-mcp-initial.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-support-mcp-v2.json",
+      "destination": "engineering/package-support-mcp-v2.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-support-mcp-v2.log",
+      "destination": "engineering/package-support-mcp-v2.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-support-mcp.log",
+      "destination": "engineering/package-support-mcp.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-support-mcp.py",
+      "destination": "engineering/package-support-mcp.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-validation.json",
+      "destination": "engineering/package-validation.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/package-venv.log",
+      "destination": "engineering/package-venv.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-preflight-v1.log",
+      "destination": "engineering/publisher-preflight-v1.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-preflight-v2.json",
+      "destination": "engineering/publisher-preflight-v2.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-preflight-v2.log",
+      "destination": "engineering/publisher-preflight-v2.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-preflight.py",
+      "destination": "engineering/publisher-preflight.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research_fetch.py",
+      "destination": "engineering/research_fetch.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research_more_fetch.py",
+      "destination": "engineering/research_more_fetch.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research_usage_fetch.py",
+      "destination": "engineering/research_usage_fetch.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research_write_report.py",
+      "destination": "engineering/research_write_report.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-context-lifecycle-before.json",
+      "destination": "engineering/review-context-lifecycle-before.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-context-lifecycle-tests.log",
+      "destination": "engineering/review-context-lifecycle-tests.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-context-lifecycle.py",
+      "destination": "engineering/review-context-lifecycle.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-final-regressions.log",
+      "destination": "engineering/review-final-regressions.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-final-regressions.xml",
+      "destination": "engineering/review-final-regressions.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-head-regression-provenance.json",
+      "destination": "engineering/review-head-regression-provenance.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-invalidation-after.json",
+      "destination": "engineering/review-invalidation-after.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-invalidation-before.json",
+      "destination": "engineering/review-invalidation-before.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-invalidation-tests-final.log",
+      "destination": "engineering/review-invalidation-tests-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-invalidation-tests.log",
+      "destination": "engineering/review-invalidation-tests.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-invalidation.py",
+      "destination": "engineering/review-invalidation.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-lifecycle-final.log",
+      "destination": "engineering/review-lifecycle-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-independent.json",
+      "destination": "engineering/review-memory-independent.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-independent.py",
+      "destination": "engineering/review-memory-independent.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection-after.json",
+      "destination": "engineering/review-memory-selection-after.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection-before.json",
+      "destination": "engineering/review-memory-selection-before.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection-final.log",
+      "destination": "engineering/review-memory-selection-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection-final.xml",
+      "destination": "engineering/review-memory-selection-final.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection-summary.json",
+      "destination": "engineering/review-memory-selection-summary.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection-tests.log",
+      "destination": "engineering/review-memory-selection-tests.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection-tests.xml",
+      "destination": "engineering/review-memory-selection-tests.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-selection.py",
+      "destination": "engineering/review-memory-selection.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-source-final.log",
+      "destination": "engineering/review-memory-source-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-memory-source-final.xml",
+      "destination": "engineering/review-memory-source-final.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-old-methods-regressions.log",
+      "destination": "engineering/review-old-methods-regressions.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-old-methods-regressions.xml",
+      "destination": "engineering/review-old-methods-regressions.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/review-regressions-against-head.py",
+      "destination": "engineering/review-regressions-against-head.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/ruff-check-final.log",
+      "destination": "engineering/ruff-check-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/ruff-check.log",
+      "destination": "engineering/ruff-check.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/ruff-format-final.log",
+      "destination": "engineering/ruff-format-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/ruff-format.log",
+      "destination": "engineering/ruff-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/run_formal_detached.py",
+      "destination": "engineering/run_formal_detached.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-mypy-final.log",
+      "destination": "engineering/runner-mypy-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-ruff-final.log",
+      "destination": "engineering/runner-ruff-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-tests-complete.log",
+      "destination": "engineering/runner-tests-complete.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-tests-complete.xml",
+      "destination": "engineering/runner-tests-complete.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-tests-final.log",
+      "destination": "engineering/runner-tests-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-tests-final.xml",
+      "destination": "engineering/runner-tests-final.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-tests-initial.log",
+      "destination": "engineering/runner-tests-initial.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-tests-initial.xml",
+      "destination": "engineering/runner-tests-initial.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/runner-validation.json",
+      "destination": "engineering/runner-validation.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/task-bundle-format.log",
+      "destination": "engineering/task-bundle-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/task-bundle-mypy.log",
+      "destination": "engineering/task-bundle-mypy.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/task-bundle-proof.json",
+      "destination": "engineering/task-bundle-proof.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/task-bundle-ruff.log",
+      "destination": "engineering/task-bundle-ruff.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/task-bundle-static.log",
+      "destination": "engineering/task-bundle-static.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/task-bundle-tests.log",
+      "destination": "engineering/task-bundle-tests.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/task-bundle-tests.xml",
+      "destination": "engineering/task-bundle-tests.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-additional-after.json",
+      "destination": "engineering/typing-additional-after.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-additional-before.json",
+      "destination": "engineering/typing-additional-before.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-additional-diff-check.log",
+      "destination": "engineering/typing-additional-diff-check.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-after.log",
+      "destination": "engineering/typing-after.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-all-final-receipt.json",
+      "destination": "engineering/typing-all-final-receipt.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-all-final.log",
+      "destination": "engineering/typing-all-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-before.log",
+      "destination": "engineering/typing-before.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-broader-receipt.json",
+      "destination": "engineering/typing-broader-receipt.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-broader.log",
+      "destination": "engineering/typing-broader.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-complex-additional-before.json",
+      "destination": "engineering/typing-complex-additional-before.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-complex-additional-format.log",
+      "destination": "engineering/typing-complex-additional-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-complex-additional-mypy-initial.log",
+      "destination": "engineering/typing-complex-additional-mypy-initial.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-complex-additional-mypy.log",
+      "destination": "engineering/typing-complex-additional-mypy.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-complex-additional-pytest.log",
+      "destination": "engineering/typing-complex-additional-pytest.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-complex-additional-ruff.log",
+      "destination": "engineering/typing-complex-additional-ruff.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-complex-additional-runtime.log",
+      "destination": "engineering/typing-complex-additional-runtime.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-cost-reproduction.json",
+      "destination": "engineering/typing-cost-reproduction.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-file-transitions.json",
+      "destination": "engineering/typing-file-transitions.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-focused.log",
+      "destination": "engineering/typing-focused.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-focused.xml",
+      "destination": "engineering/typing-focused.xml",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-parent-expanded-final.log",
+      "destination": "engineering/typing-parent-expanded-final.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-parent-expanded.log",
+      "destination": "engineering/typing-parent-expanded.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-simple-additional-after.json",
+      "destination": "engineering/typing-simple-additional-after.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-simple-additional-ast-and-diff.log",
+      "destination": "engineering/typing-simple-additional-ast-and-diff.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-simple-additional-before.json",
+      "destination": "engineering/typing-simple-additional-before.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-simple-additional-mypy.log",
+      "destination": "engineering/typing-simple-additional-mypy.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-simple-additional-pytest.log",
+      "destination": "engineering/typing-simple-additional-pytest.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-simple-additional-ruff-check.log",
+      "destination": "engineering/typing-simple-additional-ruff-check.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-simple-additional-ruff-format.log",
+      "destination": "engineering/typing-simple-additional-ruff-format.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-style-final-1.log",
+      "destination": "engineering/typing-style-final-1.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-style-final-2.log",
+      "destination": "engineering/typing-style-final-2.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-style-final-3.log",
+      "destination": "engineering/typing-style-final-3.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/typing-style-final.json",
+      "destination": "engineering/typing-style-final.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/uv-sync.log",
+      "destination": "engineering/uv-sync.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v1.invocation.json",
+      "destination": "independent-review/workflow-preflight-v1.invocation.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v1.json",
+      "destination": "independent-review/workflow-preflight-v1.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v1.md",
+      "destination": "independent-review/workflow-preflight-v1.md",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v2.invocation.json",
+      "destination": "independent-review/workflow-preflight-v2.invocation.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v2.json",
+      "destination": "independent-review/workflow-preflight-v2.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v2.md",
+      "destination": "independent-review/workflow-preflight-v2.md",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v3.invocation.json",
+      "destination": "independent-review/workflow-preflight-v3.invocation.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v3.json",
+      "destination": "independent-review/workflow-preflight-v3.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-review/workflow-preflight-v3.md",
+      "destination": "independent-review/workflow-preflight-v3.md",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-before/compact_quality_evaluation.py",
+      "destination": "independent-typing-before/compact_quality_evaluation.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-before/manifest.json",
+      "destination": "independent-typing-before/manifest.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-before/ranking_development.py",
+      "destination": "independent-typing-before/ranking_development.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-before/refinement_eval.py",
+      "destination": "independent-typing-before/refinement_eval.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-before/retrieval_experiment.py",
+      "destination": "independent-typing-before/retrieval_experiment.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/independent-typing-before/search_frequency.py",
+      "destination": "independent-typing-before/search_frequency.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/anthropic-context.fetch.json",
+      "destination": "research/anthropic-context.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/anthropic-tools.fetch.json",
+      "destination": "research/anthropic-tools.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-api-common.fetch.json",
+      "destination": "research/codex-api-common.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-app-protocol-v2.fetch.json",
+      "destination": "research/codex-app-protocol-v2.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-client.fetch.json",
+      "destination": "research/codex-client.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-compact-remote.fetch.json",
+      "destination": "research/codex-compact-remote.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-compact.fetch.json",
+      "destination": "research/codex-compact.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-core.fetch.json",
+      "destination": "research/codex-core.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-events.fetch.json",
+      "destination": "research/codex-events.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-exec-cli.fetch.json",
+      "destination": "research/codex-exec-cli.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-exec-lib.fetch.json",
+      "destination": "research/codex-exec-lib.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-jsonl.fetch.json",
+      "destination": "research/codex-jsonl.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-protocol-models.fetch.json",
+      "destination": "research/codex-protocol-models.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/codex-protocol.fetch.json",
+      "destination": "research/codex-protocol.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/fetch-log.json",
+      "destination": "research/fetch-log.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/native-version.json",
+      "destination": "research/native-version.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/openai-conversation-state.fetch.json",
+      "destination": "research/openai-conversation-state.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/openai-cost-optimization.fetch.json",
+      "destination": "research/openai-cost-optimization.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/openai-latency.fetch.json",
+      "destination": "research/openai-latency.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/research/openai-prompt-caching.fetch.json",
+      "destination": "research/openai-prompt-caching.fetch.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-initial-draft/corpus_workflow.py",
+      "destination": "corpus-initial-draft/corpus_workflow.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/corpus-initial-draft/tasks_workflow.json",
+      "destination": "corpus-initial-draft/tasks_workflow.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/pytest-parallel/proof.json",
+      "destination": "engineering/pytest-parallel/proof.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/pytest-parallel/test_first.py",
+      "destination": "engineering/pytest-parallel/test_first.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/pytest-parallel/test_second.py",
+      "destination": "engineering/pytest-parallel/test_second.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/pytest-parallel/old-shared/first.log",
+      "destination": "engineering/pytest-parallel/old-shared/first.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/pytest-parallel/old-shared/second.log",
+      "destination": "engineering/pytest-parallel/old-shared/second.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/pytest-parallel/native-unique/first.log",
+      "destination": "engineering/pytest-parallel/native-unique/first.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/pytest-parallel/native-unique/second.log",
+      "destination": "engineering/pytest-parallel/native-unique/second.log",
+      "required": true
+    },
+    {
+      "source": ".local/cache-v2/verify_installed_preload.py",
+      "destination": "reproduction/legacy-installed-helpers/verify_installed_preload.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/refinement-package/verify_installed.py",
+      "destination": "reproduction/legacy-installed-helpers/verify_installed.py.txt",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-preflight-v3.log",
+      "destination": "engineering/publisher-preflight-v3.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-preflight-v4.log",
+      "destination": "engineering/publisher-preflight-v4.log",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-preflight-v4.json",
+      "destination": "engineering/publisher-preflight-v4.json",
+      "required": true
+    },
+    {
+      "source": ".local/efficiency-v1/publisher-extras-preflight-v1.json",
+      "destination": "engineering/publisher-extras-preflight-v1.json",
+      "required": true
+    }
+  ],
+  "selected_source_sha256": {
+    ".local/efficiency-v1/browser.log": "c4b9043707164b4c7fed43b85c827adc70028046d26c86c3bb2e29fe28991f0f",
+    ".local/efficiency-v1/browser.xml": "d24adbeabfe4338c0c2af6d66931e2d3104a1558b87db66f0d50c748bb406993",
+    ".local/efficiency-v1/corpus-final-validation-v2.log": "ed14dd0b096b903f965dc80eec8be428e3889ede7fe4376b04ab023f1d7542cd",
+    ".local/efficiency-v1/corpus-final-validation.log": "ed14dd0b096b903f965dc80eec8be428e3889ede7fe4376b04ab023f1d7542cd",
+    ".local/efficiency-v1/corpus-initial-validation.log": "ed14dd0b096b903f965dc80eec8be428e3889ede7fe4376b04ab023f1d7542cd",
+    ".local/efficiency-v1/corpus-reference-refinement.json": "ba1957d8893c9e47051f6c54cabd95942d6718330e4583e9648c6119189033bd",
+    ".local/efficiency-v1/corpus-summary.json": "8bd0e8203f522abc12fc81530a77bd3d800d2467aec8f12aca5534b887e40592",
+    ".local/efficiency-v1/corpus-test-initial-issues.json": "534fb387f81f302e6fe1b7adf71aca73894c7416ef5606108995f45cb683bc9c",
+    ".local/efficiency-v1/corpus-tests-final-v2.log": "ac47a87006795653eb7bbb37ee666b0fc89123c35b48b8b5a83ab1932c36b8ed",
+    ".local/efficiency-v1/corpus-tests-final-v2.xml": "f16dfbc2b1ab74985aead9f86b80c550b1705476a3399566db254a97f758e797",
+    ".local/efficiency-v1/corpus-tests-final.log": "a5916b8646d1a31662c42261ce99bdc1c54aa103a5d0e7e8609ec84d83d58ad3",
+    ".local/efficiency-v1/corpus-tests-final.xml": "d2b62bdf9eccefcb1865ac58a31a373efc540bb96777ec3351d77439c6b1bb51",
+    ".local/efficiency-v1/corpus-tests.log": "8075929c16dcf69eda81291da254f86712992ded4c96da0cb00f78eb1828a8bb",
+    ".local/efficiency-v1/corpus-tests.xml": "e77cf7fab3db6c1ee08ca78e210f7fdf9505e5f319ca9d6482e028855fab5275",
+    ".local/efficiency-v1/cost-guards.log": "3e1376b9dd68271b9975b8f2e923bdd1ba565ef09f58df9ee75c83771db2256b",
+    ".local/efficiency-v1/cost-guards.xml": "3f9f70532d3a5244e174a037c25cd1aa10ab1da2af5a6f942154843f6c47ad2e",
+    ".local/efficiency-v1/diagnosis.json": "bd5e0992f49ea38871e09123f8af6e7fa63fcb40605069030e5d8b8bdb302f20",
+    ".local/efficiency-v1/diagnosis.log": "f06fb4e73352c6da50d2ce78b27300064c8bf8c420ed7b053929f95076e7842e",
+    ".local/efficiency-v1/diagnosis.py": "475b6b130ee3db4db099d38d1b026cabffe7b0ee004de9447ff9780ae5c9e1bb",
+    ".local/efficiency-v1/diagnosis_report.py": "8b237c13e3d902315813d0d4dba3796cac0853626ca677b9079632f13f692cf4",
+    ".local/efficiency-v1/diff-check-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/efficiency-v1/diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/efficiency-v1/formal-launch.json": "764c0a594b2c831586a6b533a66ac6d601eccda0144e2693e96f4f23f136a680",
+    ".local/efficiency-v1/frontend-build.log": "b421227081c6b93deae2173342cf11d6fa542e05e83fcf5b3fc81a0de161e96c",
+    ".local/efficiency-v1/frontend-bundle.log": "60d2ff7ef040c8b2b4d3c192787fde1c3203f492edc48985b71798b63da8878e",
+    ".local/efficiency-v1/frontend-install.log": "7596ecc25743a1ea6b9625fceb92aeade07b8113d6f3168ba232d21bf040ae51",
+    ".local/efficiency-v1/frontend.log": "69b323017d9dc3b2b48460397e18121946853c3a0b307b775f99d06b85780c15",
+    ".local/efficiency-v1/frontend.xml": "514a52a25db81f017f8be8e43e2fe7ff5feddc2f69045adf5231fe46357f5d92",
+    ".local/efficiency-v1/full-python-pre-freeze-interrupted.log": "6829ed7a4d2792e4a8fdedadee8ee3d1c74f6f31451e44f770db8731c62014ba",
+    ".local/efficiency-v1/full-python-pre-freeze-interrupted.xml": "1dfc4dbeed40db923e8fc3c0952ded0af783c87ca45543666e482e76511a440c",
+    ".local/efficiency-v1/full-python.log": "d95ad1eb10ec98ed82db9d5c719e47eb40d75788b1e8106961fe63bfb0a45369",
+    ".local/efficiency-v1/full-python.xml": "07bb1ce7767947bf1f94e5dbb5253eb9fa4ff095f92e2168f16b86f12be9be3a",
+    ".local/efficiency-v1/historical-immutability-baseline.json": "a3494e058957640effcf357ac3013796a4bef97a391f01ee6112f2cfd1d92934",
+    ".local/efficiency-v1/historical-immutability-check.json": "611df18c72f04634038efeeb66ae95de4edb6e4e663fc3e81d8dcd554068b0c8",
+    ".local/efficiency-v1/independent-review-cost-format-after.log": "3bc53bf3e981a98a34a852e175bf9b77af841edea74fca595d9aedcbaf9a4938",
+    ".local/efficiency-v1/independent-review-cost-format-fix.log": "413a709001976657cb743636fd34e48fc41d8d302d665460d3f874b3313da127",
+    ".local/efficiency-v1/independent-review-cost-format.log": "e6abc6e9fae99749c51bdbe06690042af782daad211eeb2987992a920349f7a9",
+    ".local/efficiency-v1/independent-review-cost-mypy.log": "5d4b6d285b77932e3d08212c3b4974d0a803f98ec60408ac6ccf6a063fa6c19e",
+    ".local/efficiency-v1/independent-review-cost-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/independent-review-cost.log": "369bef59bf12e9b55ccc057438ccccb3029588e9a02169073b693640462322b7",
+    ".local/efficiency-v1/independent-review-cost.xml": "1307d9d62f868e190cc6317d1380fda2d0519b9bbd393c4089482d4a858c645b",
+    ".local/efficiency-v1/independent-review-fixes-format.log": "ecadcab6ba8db65f26e491b8a5abf181e94e6e96cf96718dc2e4c83e7c8ab2c5",
+    ".local/efficiency-v1/independent-review-full-format.log": "c9572de1182ff9a0c4f57870e5328e649df7ba707cfc802e2cb7ff048643cb93",
+    ".local/efficiency-v1/independent-review-full-mypy-live.json": "b80a79f98a1c0575c70ff8f823066141d9b9f47271da78d0e65f3fb1928b5aba",
+    ".local/efficiency-v1/independent-review-full-mypy-live.log": "13ae0085bc4d2dcb8ad4afdfb4a9950409aa6f9af01277365716a77ee67d274c",
+    ".local/efficiency-v1/independent-review-full-mypy.log": "135fd5dd3d51c4008a2c0a943671a15a069287ebc681d9f96d57ddb662d5efc0",
+    ".local/efficiency-v1/independent-review-full-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/independent-review-full-static.json": "97bd94622d6b84db70d2b105cfd20ca4094f91b70a4c975e6def0d3338c9c5f9",
+    ".local/efficiency-v1/independent-review-owned-mypy-final.log": "5107f9446510710cfc458474a6bae8746bf7ed9a2bccb85b1de3b0a14e84c8ad",
+    ".local/efficiency-v1/independent-review-reproductions-v2.json": "390aabcbea88bd667dfa76faf31b8cb76dda7ce53adc60e8471f4531cb9ebae8",
+    ".local/efficiency-v1/independent-review-reproductions.json": "8d92fd44d9b04353fca57bc2f5a935b8220c8c372f8bad9c0594849665f78bfc",
+    ".local/efficiency-v1/independent-review-v1.json": "aed379f75ed1c5800ca8e71a1a3aed848711883556531df3ecbdf2faff79291d",
+    ".local/efficiency-v1/independent-review-v2.json": "38de7bc34442b32726fbc4ebccbc646d6f7824da0718828a524d110139a11710",
+    ".local/efficiency-v1/independent-review-v3.json": "141084eff5c749299f1e839bf033c0daa0e03b8be82c910aae00a6c2210f11b2",
+    ".local/efficiency-v1/independent-review-workflow-final.log": "b85e40b82a3607476e431730f7853ade54c7b34fd62379d705da2a1fdf909f45",
+    ".local/efficiency-v1/independent-review-workflow-final.xml": "090f79b901e35dcb4e4f5174fb827a60c513ad5aa082af313ec85c44663ed7c1",
+    ".local/efficiency-v1/independent-typing-behavior.json": "ea6a00d3db8f7e69bdc2b6a958672836882707c93614b32c52fdc1ba17fbb04d",
+    ".local/efficiency-v1/independent-typing-format.log": "b50f638daffdda7d81d9153fbfc62bafbf49467d36e3a9f039067ade7d55ecf6",
+    ".local/efficiency-v1/independent-typing-full-format.log": "c9572de1182ff9a0c4f57870e5328e649df7ba707cfc802e2cb7ff048643cb93",
+    ".local/efficiency-v1/independent-typing-full-mypy.log": "8797c60315242ee16057cb107ea1ec62e2678d358c86bc2be797e23d87e87578",
+    ".local/efficiency-v1/independent-typing-full-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/independent-typing-full-static.json": "e78d51a6408f22a5d50d0c4d3a18652822bfe56543aacb7badaa3d8e6544ec0b",
+    ".local/efficiency-v1/independent-typing-tests.log": "16efe79beaef8d265aab7d69bc94cc8eef5f2991afe304392e3638fbb399c1bc",
+    ".local/efficiency-v1/independent-typing-tests.xml": "7f7f0c2b1d1451cc8ed4800e76e0a333edec58f2997c54cf07818bd5732cd8fa",
+    ".local/efficiency-v1/launcher-final.log": "8b19fb12ab647cd79a5fa755522b773cc20ccd29917789df35531803aaff93d6",
+    ".local/efficiency-v1/launcher-final.xml": "c480c684cb6fb629fc4d7dccff7dc12fd3fdcc9d8ab98926e9aa26d11a79b601",
+    ".local/efficiency-v1/launcher.log": "e4a4071bf145d82f5aad3118fca711a6106b581e2728744a469effea75f70338",
+    ".local/efficiency-v1/launcher.xml": "f05324794fd445b52888eab13205b60aebb94bca65be6e7e2a22cfebcd9a8e39",
+    ".local/efficiency-v1/make_validation.py": "766028dd2ae1b6ba8ff8ed031966d501513faef544fa0a8e8ffec7fc95191c8a",
+    ".local/efficiency-v1/mypy-benchmarks.log": "2964f4e84ac77897e510c8d7fa5b664a688c51c01f2c3733e4c2fa20c1f6c174",
+    ".local/efficiency-v1/mypy-combined-final.log": "8797c60315242ee16057cb107ea1ec62e2678d358c86bc2be797e23d87e87578",
+    ".local/efficiency-v1/mypy-src.log": "fa935e779fe5886f2480e415c7e46616bdedad407f9da1cca28e7d341d95f4d7",
+    ".local/efficiency-v1/package-api.json": "2e995659de4d314d8e2691fc232f205d44b94d099c142758b9ba14f7a5d4bf21",
+    ".local/efficiency-v1/package-api.log": "2e995659de4d314d8e2691fc232f205d44b94d099c142758b9ba14f7a5d4bf21",
+    ".local/efficiency-v1/package-audit.json": "a8166e61a5689535fd438f06d8106febbdd5b8dd775b49631e338dd9a3543a87",
+    ".local/efficiency-v1/package-audit.log": "a8166e61a5689535fd438f06d8106febbdd5b8dd775b49631e338dd9a3543a87",
+    ".local/efficiency-v1/package-audit.py": "980bec7284035133ab688d78ee467e83ceb31383fc5087eb6b787b90b216b4d8",
+    ".local/efficiency-v1/package-build.log": "92a02a72f3c107508c4f7f9c86fc3dc79c6b53d10c1db3e677b78d1b88123bb7",
+    ".local/efficiency-v1/package-export.log": "561a057d66ae4d781736c1129a9339978fe6a9548baa075b7a1433911250b997",
+    ".local/efficiency-v1/package-install.log": "c819fa5508bb27546349c619e1436b1e48f7cc4eb7a4dd4bba3d31965c8d6bb3",
+    ".local/efficiency-v1/package-preload.json": "090abc4b894d4e04278509e83b30523b85092961abea231371cf52148b58de64",
+    ".local/efficiency-v1/package-preload.log": "090abc4b894d4e04278509e83b30523b85092961abea231371cf52148b58de64",
+    ".local/efficiency-v1/package-requirements.txt": "561a057d66ae4d781736c1129a9339978fe6a9548baa075b7a1433911250b997",
+    ".local/efficiency-v1/package-support-mcp-initial.py": "ff6e6c6b3c20c0085e2f0309c8a8d134b2ad71dae9c91c20318e8d5e5cc5743f",
+    ".local/efficiency-v1/package-support-mcp-v2.json": "12c6eead1e87984bb9d44d0095fd47bc69ae8984038d7deeb5fe5a3ab278ff3d",
+    ".local/efficiency-v1/package-support-mcp-v2.log": "12c6eead1e87984bb9d44d0095fd47bc69ae8984038d7deeb5fe5a3ab278ff3d",
+    ".local/efficiency-v1/package-support-mcp.log": "8a0cb74cd38b869d240bfbd43e3c8ce3642af2d1d4af7a34650aff3821965dc0",
+    ".local/efficiency-v1/package-support-mcp.py": "460de066a776f705eddb75cecf80b67a7ef1b8913287a4102b50bc5d3f7a899f",
+    ".local/efficiency-v1/package-validation.json": "94d21efbf0ecd76c21c7f953eb2f90a91704ce9ce3eb811821a31c7b1d4ceeba",
+    ".local/efficiency-v1/package-venv.log": "755daea03d49a5c9b6e5b62308c99a49903e5e0a442bd1ebd05944a5ed85a19e",
+    ".local/efficiency-v1/publisher-preflight-v1.log": "54732d305b35fcb04e6d4d679cc330dc600a85433dca44e2956164d2be8b7818",
+    ".local/efficiency-v1/publisher-preflight-v2.json": "3a175109cc9a83f1369245f52e2e3787b0fb0a77c992d38422283ceca1479d74",
+    ".local/efficiency-v1/publisher-preflight-v2.log": "7833167d62440d2a6d92b4571a9b5234091a86a365c1f984fba808a95c8f527e",
+    ".local/efficiency-v1/publisher-preflight.py": "0864f98d66dddb550284e9bc920dedd608dbe7c0aa3cad9a5c6a2248c54ef061",
+    ".local/efficiency-v1/research_fetch.py": "ad5f721b737b80c2451a65b791e75f64295e851158883229bcdb7c7c63429752",
+    ".local/efficiency-v1/research_more_fetch.py": "3e650dc2a695ab2fa3436a90a8f925089ea64cbf81043d692621f72b7e91e8cf",
+    ".local/efficiency-v1/research_usage_fetch.py": "d6b90cc6ddc19c76904eec2acff8cb92d42f55a17bb411ad66be327b73491424",
+    ".local/efficiency-v1/research_write_report.py": "7018f015632221a40e9c2b43370f8cc3829252eddd3de55d911fa15035906467",
+    ".local/efficiency-v1/review-context-lifecycle-before.json": "82916eaa4494d9e292bc6e4a6bc4ff7d7d08019c9085df442458d8ca384bacde",
+    ".local/efficiency-v1/review-context-lifecycle-tests.log": "3da95dd06d88aefe3ed8ca431452bcfc469cd90aec0f63d7af4e2d8799941710",
+    ".local/efficiency-v1/review-context-lifecycle.py": "bef4244d96354ea252e9b9db7abd18746e879499feeee0b073cc514549b5dec6",
+    ".local/efficiency-v1/review-final-regressions.log": "0697e9c058c47ae88489e78e0dd599c29586dc812102bb9a8918b8afa552e0bc",
+    ".local/efficiency-v1/review-final-regressions.xml": "f7c34c436965a954de26cf0f38fb27766f9827b7bb825b4f3d985d893befb55a",
+    ".local/efficiency-v1/review-head-regression-provenance.json": "f5e8733b75c0e75979d677a05ca1442adfee44bfa033fb6ed153713f47484881",
+    ".local/efficiency-v1/review-invalidation-after.json": "2e8707b2ff058e5eb567c4e194b13a286afd065176d89d0a1020831cb01434d0",
+    ".local/efficiency-v1/review-invalidation-before.json": "30e2c719532135636b22b9d609e783c21a8b174774953c6a975dd22fb036735e",
+    ".local/efficiency-v1/review-invalidation-tests-final.log": "2ecb4148dc1f5e5781f1d0a8842e41a5d1dbd87e0ca66f218616348e14c81e8b",
+    ".local/efficiency-v1/review-invalidation-tests.log": "12182fe8954f90728cab60c65b0b66736b761b370f8ce444c7dabda1cc11776b",
+    ".local/efficiency-v1/review-invalidation.py": "11bf8ce259113f36bbf1eed66b41850cb83a719cd433a5ef67fbdb2dd5bba034",
+    ".local/efficiency-v1/review-lifecycle-final.log": "0e7f46a78f33082cdb423edde146394a661d3de5c68ad4d6364d9471ef23d52b",
+    ".local/efficiency-v1/review-memory-independent.json": "72740bd8382308aed03a313c2e594a90180f4a7429cdfe6fba6820582af84f14",
+    ".local/efficiency-v1/review-memory-independent.py": "18bcc2361bacd19ba70564247b84686b9a7c2f0ef8647a4135f870301a2cc597",
+    ".local/efficiency-v1/review-memory-selection-after.json": "4f9eff70529419b3c2e661df9591c053ff7cf81aeee5d9e27757aea14e340f55",
+    ".local/efficiency-v1/review-memory-selection-before.json": "e7c45b205378660888394b5ee9947ee8568234a943fa0e0aec4752fae1eb4c85",
+    ".local/efficiency-v1/review-memory-selection-final.log": "b7971c66a1bb74d9bdad56f40ede16d1a3f2e9b3e666957e4acfdfb0cfec0aa6",
+    ".local/efficiency-v1/review-memory-selection-final.xml": "67ec2d191bb25ba1e394702955523a8954bbdd17ce079b400df6b97f34396f62",
+    ".local/efficiency-v1/review-memory-selection-summary.json": "c690ff92ae49d4ce58ccb0bbe6ba4664ee8746597d3235fa22d74f9beefdd31e",
+    ".local/efficiency-v1/review-memory-selection-tests.log": "965566334a89f670041392f55bf17fba8aca8d4669bbb22f2776fb1f180f4061",
+    ".local/efficiency-v1/review-memory-selection-tests.xml": "52bf7e690669baaab8641cc30e24560679d6d48e82e01e09edb2d67e7744c5f8",
+    ".local/efficiency-v1/review-memory-selection.py": "235d9e57db2bff5a705c242830da4b7fc05a9931aa0d3e612215aa8fa1b663b6",
+    ".local/efficiency-v1/review-memory-source-final.log": "3caefa9c258fe6d1d0bce9a910ae015ea42bfe95e216fde2d71b92e6b4933dd2",
+    ".local/efficiency-v1/review-memory-source-final.xml": "b23576358dccfdad7d97b48bd7da2ed2ee71a81afa2c51ac898f79ce536e0076",
+    ".local/efficiency-v1/review-old-methods-regressions.log": "46654a13062e61536ecf8701e2369afec9bc279ce80c51e2b1f1feb73b5c9a01",
+    ".local/efficiency-v1/review-old-methods-regressions.xml": "91a263f68d8d43c5119a64100e4259c5a34634e0b1dd25beb41079dcead81177",
+    ".local/efficiency-v1/review-regressions-against-head.py": "c9e2ed7bfec353b8e13cf3b759a136280b663e07bf24995631be969511a5cc41",
+    ".local/efficiency-v1/ruff-check-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/ruff-check.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/ruff-format-final.log": "67e4bf8f396fefa7f8830b9533fb5eb02129af09cf3d399e36ec9c6d6b248625",
+    ".local/efficiency-v1/ruff-format.log": "67e4bf8f396fefa7f8830b9533fb5eb02129af09cf3d399e36ec9c6d6b248625",
+    ".local/efficiency-v1/run_formal_detached.py": "5fc91b7153fd5f467c902a4dba4fd23044cbaffbbc6a504a343fa30ed5a39cf1",
+    ".local/efficiency-v1/runner-mypy-final.log": "5d4b6d285b77932e3d08212c3b4974d0a803f98ec60408ac6ccf6a063fa6c19e",
+    ".local/efficiency-v1/runner-ruff-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/runner-tests-complete.log": "b2ea3950c6eb6e862c468d61df0cc55b76d0a5da4e8510334740bb99e5b30962",
+    ".local/efficiency-v1/runner-tests-complete.xml": "c388724873c40d42e1410c336dcb076c8065f49f65c2239ddafd1be6dd8f67ce",
+    ".local/efficiency-v1/runner-tests-final.log": "d708e0675fe912727d471f6e5b03a9146fe94a88fd62ba61c3a40619ec8ed2a2",
+    ".local/efficiency-v1/runner-tests-final.xml": "fb4a8783b9101e9593102c7f5d02ef0c45695cdcf13ad78edba6d69c993565f0",
+    ".local/efficiency-v1/runner-tests-initial.log": "4b3466e0cc539d9b708f27eca9faadb8515bc2c13d265e3b47eddb7ed759b65a",
+    ".local/efficiency-v1/runner-tests-initial.xml": "b4c7c5d204cdd810ddce22422ba38cf4a287704f4a3b16a6b11a8a069118adfe",
+    ".local/efficiency-v1/runner-validation.json": "058edcbbb665349b23f00db304e5fcabfbf733a21d117e9c24257d561246b2c4",
+    ".local/efficiency-v1/task-bundle-format.log": "3bc53bf3e981a98a34a852e175bf9b77af841edea74fca595d9aedcbaf9a4938",
+    ".local/efficiency-v1/task-bundle-mypy.log": "5d4b6d285b77932e3d08212c3b4974d0a803f98ec60408ac6ccf6a063fa6c19e",
+    ".local/efficiency-v1/task-bundle-proof.json": "3e4e900ca0422e54762e72eeaf842ebff7f90d7ecdbc1e2bb6cedb6b24586ea4",
+    ".local/efficiency-v1/task-bundle-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/task-bundle-static.log": "5d4b6d285b77932e3d08212c3b4974d0a803f98ec60408ac6ccf6a063fa6c19e",
+    ".local/efficiency-v1/task-bundle-tests.log": "eebda2780f211b214194784175d4a88199e0e9133cc6436aedf7ebac8b147460",
+    ".local/efficiency-v1/task-bundle-tests.xml": "722ba4c4ad49d41dd915713c8db72ce956ce2a047c9f749700c1e6651661068a",
+    ".local/efficiency-v1/typing-additional-after.json": "0e5ff2049ef590e988f6a1308f68f76cc6e6da58dd3c57c10d60ec97b599313b",
+    ".local/efficiency-v1/typing-additional-before.json": "d14a65011a9e2dcebb4acb37f79eda3f524bc4d19d37b54ff84cae7ebf12edd1",
+    ".local/efficiency-v1/typing-additional-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/efficiency-v1/typing-after.log": "5d4b6d285b77932e3d08212c3b4974d0a803f98ec60408ac6ccf6a063fa6c19e",
+    ".local/efficiency-v1/typing-all-final-receipt.json": "e2418052869b4d683bd6806bf6bb5bbc4ae3365158af10051710414385d97581",
+    ".local/efficiency-v1/typing-all-final.log": "9161fdbf6e938dc0ff27d5d15bbad888b3e60ce4592d74a684cd5ae4231d8a4b",
+    ".local/efficiency-v1/typing-before.log": "f08db4d1580fb5b3908c65eb6dbf23cb16183963a639c41c3803b8ee16cbd1fb",
+    ".local/efficiency-v1/typing-broader-receipt.json": "2b84d8ae0b88a6a20cdc58489fe14d358f367728ee449cb71cf5d95c2232367f",
+    ".local/efficiency-v1/typing-broader.log": "bde78a85a34a36b18a0dcf642fbc90acf384e08c494e34ea78a8823dddccbf7a",
+    ".local/efficiency-v1/typing-complex-additional-before.json": "6111719527afa60af3c41dc9051e69635ab70170591b6802a5accfbe13055299",
+    ".local/efficiency-v1/typing-complex-additional-format.log": "177f260a5645724013185e4b140c7045cc39e56c0c97b120f5cb23599f85f0de",
+    ".local/efficiency-v1/typing-complex-additional-mypy-initial.log": "71144743c83babea384888a735db0c4daba3d4d7b7942b6839984bd5c21b52bb",
+    ".local/efficiency-v1/typing-complex-additional-mypy.log": "71144743c83babea384888a735db0c4daba3d4d7b7942b6839984bd5c21b52bb",
+    ".local/efficiency-v1/typing-complex-additional-pytest.log": "31fb7a40ed4a752b17e74ef35880abf760460da79dc3c4dfdb7422f000b9097b",
+    ".local/efficiency-v1/typing-complex-additional-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/typing-complex-additional-runtime.log": "34e95870ac9c2097da2d6f874db2783b99f4c6d14acf5e7a5eba9e4eecbef98b",
+    ".local/efficiency-v1/typing-cost-reproduction.json": "f25416250c9c1133b4a55b0b207ae7ee48297a81cd9c00719faf1528c75033f4",
+    ".local/efficiency-v1/typing-file-transitions.json": "316d5f59024d80400e8a01d14f560bce18781816b06962326057a8a0381417d5",
+    ".local/efficiency-v1/typing-focused.log": "6d16303b0d14398d08201815cc7e454d12ce62238ffbcd5bcbd56960e43f2d77",
+    ".local/efficiency-v1/typing-focused.xml": "89ef7beed698c8557db66b62ab14d522336615f5cddc3e03284cfabe0eaed312",
+    ".local/efficiency-v1/typing-parent-expanded-final.log": "8228fcc5ce46d42d01caf3cd941f4e9c5f2bcc372bb5b147a2f0572d2dd675a8",
+    ".local/efficiency-v1/typing-parent-expanded.log": "4d8e6c7e4afdf242d88fd6343f61b4de629fcd284411318d2231f830f59cb4e1",
+    ".local/efficiency-v1/typing-simple-additional-after.json": "493d31851c9f2bda30063b6c93b421cc680b92ec56d4d5d269a4fdc5f3678734",
+    ".local/efficiency-v1/typing-simple-additional-ast-and-diff.log": "42877ff38894f8effde4f5ccc8f1bf55369c55574fd9ab11ea9a7f9a0980f206",
+    ".local/efficiency-v1/typing-simple-additional-before.json": "709ba1327f146f61cf9a1711fb23dde70c0a3f924777f8fcfa65f94af7f8af34",
+    ".local/efficiency-v1/typing-simple-additional-mypy.log": "0a140ba0b31b77e995a5a11e74c963f54e44ad09af34281cc35330cb529762b6",
+    ".local/efficiency-v1/typing-simple-additional-pytest.log": "0aa3ebce24337423b817e387138e43e8abeb18edc5d2485d0564b505b73e3779",
+    ".local/efficiency-v1/typing-simple-additional-ruff-check.log": "232f75764caee6e7f9ef1080b18066117e8869a5ea974abc3f1550d65ad845ff",
+    ".local/efficiency-v1/typing-simple-additional-ruff-format.log": "8ac1b7865a1cb862eb22c01b053449d470923d0d649433d275003cdbcab77235",
+    ".local/efficiency-v1/typing-style-final-1.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    ".local/efficiency-v1/typing-style-final-2.log": "a0a0f191878d553ae2b88299d5ead34d7a6367937ff1bd9e304fb73059c83f8a",
+    ".local/efficiency-v1/typing-style-final-3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/efficiency-v1/typing-style-final.json": "7ae593b6f1c72aaabb1dca7738157a3a7a078b78df6d1db640e7f4a0dd46bcef",
+    ".local/efficiency-v1/uv-sync.log": "e869b06b200c8494083a4711ee204678df11217b92eafa02e45f7ba527cfd3ef",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v1.invocation.json": "6690008ecd66c9b55039eecf0993ab8b2fd44e0458fd9e426b9a0bda10f205b7",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v1.json": "16c54fb92da91150a1c29f6e85dbd670dd2f228738aae7ac5b5c913861589a26",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v1.md": "7ef5803f442f1bb350477f1ff1ca1c1315db1cfe667c30ef8eb949347aafa3d8",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v2.invocation.json": "5e3876a9a7b07f705afb2a0a9a4c42b74b8ae7ad010a946c24a9ab32d5235a99",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v2.json": "8e1f96f827e931c459b26573d35dc8af818ba91815953c5c6900615f71f45dca",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v2.md": "7ef5803f442f1bb350477f1ff1ca1c1315db1cfe667c30ef8eb949347aafa3d8",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v3.invocation.json": "5798c7842145282bc3eff46abf6e07b3935a33792edf60d41f98110099e21f10",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v3.json": "50bc2219161ad7aaf34d6342cbeb76ff8b978627a17cfed3ab0455ffc27eee62",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v3.md": "7ef5803f442f1bb350477f1ff1ca1c1315db1cfe667c30ef8eb949347aafa3d8",
+    ".local/efficiency-v1/independent-typing-before/compact_quality_evaluation.py": "63505a898be839c7cf894e26958d099730d99b67e542c0389640380f55ceb116",
+    ".local/efficiency-v1/independent-typing-before/manifest.json": "91673eae453dad9b3116fbd6830ba05fac641c6d9a56db397eb16a3f07279ce8",
+    ".local/efficiency-v1/independent-typing-before/ranking_development.py": "d2ee5332d78842b288bb4f92022ccb55296373f5efccb4a1487aaae6f514ebd4",
+    ".local/efficiency-v1/independent-typing-before/refinement_eval.py": "51274bc5663eac092add890676eea0f73c1d8b88f2f620b4e390a173d18b57fe",
+    ".local/efficiency-v1/independent-typing-before/retrieval_experiment.py": "3a65bde1ba27eed5e379484403b2bcc09c13510b0aeaa6b3f59b54978ff0bd85",
+    ".local/efficiency-v1/independent-typing-before/search_frequency.py": "f00b6ae5a27f6d8762f718ed0d5718ba7da9a3af398f0c21bc31b5c61ed2f411",
+    ".local/efficiency-v1/research/anthropic-context.fetch.json": "d4f131295ffa4d3e54720b7e09e188877ffdef303d1a61bd2fa5ded860e61721",
+    ".local/efficiency-v1/research/anthropic-tools.fetch.json": "d5f62947588e61446588518c9913e9b0f4c412d82884e0066d16ef4339d4cfb9",
+    ".local/efficiency-v1/research/codex-api-common.fetch.json": "aece05645aa225ecaae250e697fc47a319a902a3908cce6c53dd01896b989f72",
+    ".local/efficiency-v1/research/codex-app-protocol-v2.fetch.json": "a8a2f20006b576d6d918572953e482c97db0b916fd42bb89b183aeda4b6a56ee",
+    ".local/efficiency-v1/research/codex-client.fetch.json": "c3acee26f7684e901612c7cc65dec51044408b3c05eddf24b607bd2dda467b99",
+    ".local/efficiency-v1/research/codex-compact-remote.fetch.json": "c662f9c476ddb6fac344f99e50602bd12f15692e3a9cfa8ae066effad1f35b8f",
+    ".local/efficiency-v1/research/codex-compact.fetch.json": "42b691144c797da7b1b2495d492acccd0fac48b0e1132c464d25c0fec896edd6",
+    ".local/efficiency-v1/research/codex-core.fetch.json": "497eaa37d0801fb39a712f494320744c515c3df10e10385a2f980918a7130f6c",
+    ".local/efficiency-v1/research/codex-events.fetch.json": "76f957292bc558e34fdf87bed15a292af061748db5f03a8b4c46281d32908d2d",
+    ".local/efficiency-v1/research/codex-exec-cli.fetch.json": "0673f903fc8f95dea152bfca234602fca00c7854fbc8a2fd4254b92a3973a244",
+    ".local/efficiency-v1/research/codex-exec-lib.fetch.json": "cf585f94834a0692590ef1603ab9e4114fe3b9e98c42041067aed96d3fd2d30a",
+    ".local/efficiency-v1/research/codex-jsonl.fetch.json": "46a9144e40f8f7d991275616fc4ccd1891cecd34e97c8d057e512e63ad403f06",
+    ".local/efficiency-v1/research/codex-protocol-models.fetch.json": "46c8eb97c247915c76db9aa0332455b6689b9f4799e3fe6d72bf6d016c8d7cc7",
+    ".local/efficiency-v1/research/codex-protocol.fetch.json": "68e70a6334039cf9932f94883370710147cb3aecab16d1f82c1ccbcbbd70d02b",
+    ".local/efficiency-v1/research/fetch-log.json": "ad57a0c6f3d4f5712d7d9f4880666f1655c295ae0107834e848bc2190c6c0812",
+    ".local/efficiency-v1/research/native-version.json": "15bd0efe9622125ad91c3341fd03ea0c793b7c1a974fedcfaae370f67244768d",
+    ".local/efficiency-v1/research/openai-conversation-state.fetch.json": "54e48f078f9045cc9a10ee2ac198ca90ac2d2f60da8efb98fe3e73b42d2f2376",
+    ".local/efficiency-v1/research/openai-cost-optimization.fetch.json": "91f194eca2982b55e80c39b380265de1816864878ef2420e6597f3ef3153c0ea",
+    ".local/efficiency-v1/research/openai-latency.fetch.json": "07de315a380d35a65cb22efacbc96f9da9f3a1a198f1d1b4a789e292ce705e83",
+    ".local/efficiency-v1/research/openai-prompt-caching.fetch.json": "8a37e199989580d7686751db400166d39010a4b51ccc4304775427b3335175a9",
+    ".local/efficiency-v1/corpus-initial-draft/corpus_workflow.py": "b94363963e9556d40e0ce459294d61dcf4d30bc6483eee8e401e3f4ab0c502f0",
+    ".local/efficiency-v1/corpus-initial-draft/tasks_workflow.json": "666af7db10a5edbc4f6c3d8d38847dfad18779f69e9a515ef88f9d11fc4bef77",
+    ".local/efficiency-v1/pytest-parallel/proof.json": "a111aca445413e2e5bafe7c85e939577cc86c93082e73ccd193cc16379f1ee7a",
+    ".local/efficiency-v1/pytest-parallel/test_first.py": "54318c3a45749caa6e00479a33c32b94678e34ee76fa21c409895a6e35f024bf",
+    ".local/efficiency-v1/pytest-parallel/test_second.py": "ef0ced81b91bf9b38353ed8eed0bc98e877be46538b01d749a32e12a09eb89d3",
+    ".local/efficiency-v1/pytest-parallel/old-shared/first.log": "522918c2689337992ccc44f29119c60d346fca25182a1ec80b5c5a4606111b94",
+    ".local/efficiency-v1/pytest-parallel/old-shared/second.log": "c91dad03511eb111dba9f317cdb7962c64ec389c7d259de488e167c78aac1b31",
+    ".local/efficiency-v1/pytest-parallel/native-unique/first.log": "b3634ada821ed90bc490bdadc743fe74a1c5a55261f3235ef02701cf9d70934c",
+    ".local/efficiency-v1/pytest-parallel/native-unique/second.log": "c91dad03511eb111dba9f317cdb7962c64ec389c7d259de488e167c78aac1b31",
+    ".local/cache-v2/verify_installed_preload.py": "37c8aae13ac51f5a80861d6ff51f5cb47a5244839e6574a1bfbef4ed9847b4ea",
+    ".local/refinement-package/verify_installed.py": "a9bd63b208e3bcf631adab517f3e1def02032b4415065c9591fa277b22d1d3e4",
+    ".local/efficiency-v1/publisher-preflight-v3.log": "ff89d1231ace704d9b2210c79b0487e46174945447ba33b10d5821bf38071dc8",
+    ".local/efficiency-v1/publisher-preflight-v4.log": "0f28ce3513c723f3aa01419bcf97331a172496bc85c623cc336c3a5abbe5f5ef",
+    ".local/efficiency-v1/publisher-preflight-v4.json": "cc6f6cc51132fff4847c6a3887e1409362f6a0c17d5e89401f7a1f58d47f0ddd",
+    ".local/efficiency-v1/publisher-extras-preflight-v1.json": "d36fcfa476c9b3233ad4a310563e1bc530b754420aa731e3bef579e7b1fad7c5"
+  }
+}

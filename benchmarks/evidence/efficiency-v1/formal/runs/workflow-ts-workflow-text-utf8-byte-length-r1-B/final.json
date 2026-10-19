@@ -1,0 +1,1 @@
+{"summary":"Updated utf8Size to use TextEncoder for UTF-8 byte length. Added regression tests for accented letters, CJK, supplementary characters, and lone surrogates. Preserved existing tests; no commit created.","tests_run":["node --test — passed all 3 test files."]}

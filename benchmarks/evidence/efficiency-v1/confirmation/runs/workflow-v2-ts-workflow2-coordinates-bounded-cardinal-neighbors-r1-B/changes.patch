@@ -1,0 +1,24 @@
+diff --git a/src/bounded_cardinal_neighbors.ts b/src/bounded_cardinal_neighbors.ts
+index 93873af..d8d4777 100644
+--- a/src/bounded_cardinal_neighbors.ts
++++ b/src/bounded_cardinal_neighbors.ts
+@@ -1,3 +1,8 @@
+ export function gridNeighbors(x:number,y:number,width:number,height:number): [number,number][] {
+-  return [[x-1,y],[x+1,y],[x,y-1],[x,y+1]];
++  const neighbors: [number,number][] = [];
++  if (x > 0) neighbors.push([x-1,y]);
++  if (x+1 < width) neighbors.push([x+1,y]);
++  if (y > 0) neighbors.push([x,y-1]);
++  if (y+1 < height) neighbors.push([x,y+1]);
++  return neighbors;
+ }
+diff --git a/src/bounded_cardinal_neighbors_api.ts b/src/bounded_cardinal_neighbors_api.ts
+index 7ae636c..a91f033 100644
+--- a/src/bounded_cardinal_neighbors_api.ts
++++ b/src/bounded_cardinal_neighbors_api.ts
+@@ -1,4 +1,4 @@
+ import {gridNeighbors} from "./bounded_cardinal_neighbors.ts";
+ export function reachableNeighbors(x:number,y:number,width:number,height:number,blocked:ReadonlySet<string>): [number,number][] {
+-  return gridNeighbors(x,y,width,height);
++  return gridNeighbors(x,y,width,height).filter(([nx,ny]) => !blocked.has(`${nx},${ny}`));
+ }

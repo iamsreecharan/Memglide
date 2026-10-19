@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-10-19T03:35:59.650558+00:00",
+  "argv": [
+    ".local/efficiency-v1/audit_workflow_v1.py",
+    "--preflight",
+    "--output-prefix",
+    ".local/efficiency-v1/independent-review/workflow-preflight-v3"
+  ],
+  "auditor_sha256": "80dea85e0974a08db8595576e2fe10cfec1ab9e44a3b6143a3f680e7b6714441",
+  "preflight_only": true
+}

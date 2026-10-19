@@ -1,0 +1,203 @@
+from pathlib import Path
+p=Path('.local/efficiency-v1/publish_evidence.py')
+s=p.read_text()
+s=s.replace('EXPERIMENTS = (("formal", ".local/efficiency-v1/formal-workflow-v1", 60),)', '''EXPERIMENTS = (
+    {"label": "formal", "source": ".local/efficiency-v1/formal-workflow-v1", "expected": 60, "version": "workflow-1", "corpus": "workflow", "freeze": "freeze.json", "exit": "formal-exit.json", "progress": "formal.log", "report": "benchmarks/codex-workflow-ab", "assessment": "benchmarks/workflow-assessment", "git_head": "UNCONFIGURED", "app": "UNCONFIGURED"},
+    {"label": "confirmation", "source": ".local/efficiency-v1/formal-workflow-confirmation-v2", "expected": 60, "version": "workflow-2", "corpus": "workflow-v2", "freeze": "confirmation-freeze.json", "exit": "confirmation-exit.json", "progress": "confirmation.log", "report": "benchmarks/codex-workflow-confirmation", "assessment": "benchmarks/workflow-confirmation-assessment", "git_head": "UNCONFIGURED", "app": "UNCONFIGURED"},
+)''')
+s=s.replace('''    (".local/efficiency-v1/freeze.json", "freeze.json"),
+    (".local/efficiency-v1/formal-exit.json", "formal-exit.json"),
+    (".local/efficiency-v1/formal.log", "progress/formal.log"),
+''','''    (".local/efficiency-v1/freeze.json", "freeze.json"),
+    (".local/efficiency-v1/formal-exit.json", "formal-exit.json"),
+    (".local/efficiency-v1/formal.log", "progress/formal.log"),
+    (".local/efficiency-v1/confirmation-freeze.json", "confirmation-freeze.json"),
+    (".local/efficiency-v1/confirmation-exit.json", "confirmation-exit.json"),
+    (".local/efficiency-v1/confirmation.log", "progress/confirmation.log"),
+''')
+s=s.replace('def experiment(self, label: str, source_relative: str, expected: int) -> None:', 'def experiment(self, label: str, source_relative: str, expected: int, version: str, corpus: str) -> None:')
+s=s.replace('metadata.get("experiment_version") != "workflow-1"', 'metadata.get("experiment_version") != version')
+s=s.replace(' or any("-workflow-" not in task_id for task_id in task_ids)', '')
+s=s.replace('metadata.get("corpus") != "workflow"', 'metadata.get("corpus") != corpus')
+a=s.index('def verify_frozen_source()');b=s.index('\ndef verify_historical_evidence()',a)
+s=s[:a]+'''def verify_frozen_source() -> dict[str, Any]:
+    head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT).decode().strip()
+    if head != FROZEN_COMMIT:
+        fail("Final confirmation frozen Git HEAD changed")
+    studies = {}
+    for study in EXPERIMENTS:
+        expected_head, expected_app = study["git_head"], study["app"]
+        source = ROOT / study["source"]
+        metadata = read_json(source / "metadata.json")
+        freeze = read_json(ROOT / ".local/efficiency-v1" / study["freeze"])
+        if read_json(ROOT / ".local/efficiency-v1" / study["exit"]).get("returncode") != 0:
+            fail("Study driver did not finish with exit 0")
+        if freeze.get("git_head", freeze.get("frozen_commit")) != expected_head or freeze["application"]["source_tree_sha256"] != expected_app:
+            fail("Study freeze receipt differs from its authorized source")
+        for phase in ("before", "after"):
+            record = metadata["memglide_source_" + phase]
+            if record.get("git_head") != expected_head or record.get("source_tree_sha256") != expected_app or record.get("source_dirty_entries"):
+                fail("Per-study application source attestation differs")
+            if sha(json.dumps(record["source_files"], sort_keys=True).encode()) != expected_app:
+                fail("Application aggregate does not match study's frozen source map")
+            for name, digest in record["source_files"].items():
+                if not name.startswith("src/memglide/") or not name.endswith(".py"):
+                    fail("Application source map contains an unexpected path")
+                data = read_text_bytes(ROOT / name)
+                original = subprocess.check_output(["git", "show", f"{expected_head}:{name}"], cwd=ROOT, stderr=subprocess.PIPE)
+                if sha(data) != digest or data != original:
+                    fail("Unchanged current application differs from per-study frozen Git bytes", ROOT / name)
+        for name, digest in metadata["frozen_manifest"]["files"].items():
+            data = read_text_bytes(ROOT / name)
+            original = subprocess.check_output(["git", "show", f"{expected_head}:{name}"], cwd=ROOT, stderr=subprocess.PIPE)
+            if sha(data) != digest or data != original:
+                fail("Frozen measurement/source input differs from its study's exact Git bytes", ROOT / name)
+        if metadata.get("source_unchanged_during_experiment") is not True:
+            fail("Study did not attest unchanged measured source")
+        studies[study["label"]] = {"git_head": expected_head, "application_source_tree_sha256": expected_app, "formal_driver_returncode": 0, "current_source_and_frozen_inputs_verified": True}
+    return {"final_git_head": head, "studies": studies, "independent_study_freezes": True}
+
+''' + s[b:]
+a=s.index('def finished_guard()');b=s.index('\ndef main()',a)
+s=s[:a]+'''def finished_guard() -> None:
+    """Read only both completion receipts/metadata before any raw study input."""
+    for study in EXPERIMENTS:
+        receipt = read_json(ROOT / ".local/efficiency-v1" / study["exit"])
+        metadata = read_json(ROOT / study["source"] / "metadata.json")
+        if receipt.get("returncode") != 0 or not metadata.get("finished_at"):
+            fail("Both study driver/metadata pairs must attest completion before raw evidence is inspected")
+
+
+def verify_independent_audit(study: dict[str, Any], audit_path: Path, auditor_path: Path) -> dict[str, Any]:
+    audit = read_json(audit_path)
+    report_path = ROOT / study["source"] / "report.json"
+    assessment_bytes = read_text_bytes(ROOT / (study["assessment"] + ".json"))
+    assessment = json.loads(assessment_bytes)
+    verification = audit.get("assessment_verification", {})
+    if (audit.get("pass") is not True or audit.get("errors") or audit.get("expected_frozen_head") != study["git_head"] or audit.get("expected_app_sha256") != study["app"] or audit.get("source_report_sha256") != sha(read_text_bytes(report_path)) or audit.get("auditor_sha256") != sha(read_text_bytes(auditor_path)) or audit.get("planned_originals") != 60 or audit.get("verified_triplets") != 20 or not isinstance(audit.get("checked_assertions"), int) or audit["checked_assertions"] <= 0):
+        fail("Independent study audit does not bind its complete frozen sixty-assignment study")
+    if (verification.get("pass") is not True or verification.get("errors") or verification.get("assessment_sha256") != sha(assessment_bytes) or not isinstance(verification.get("checked_assertions"), int) or verification["checked_assertions"] <= 0 or audit.get("pricing_sha256") != sha(read_text_bytes(ROOT / "benchmarks/cost-pricing.json"))):
+        fail("Independent study numeric comparison does not bind final assessment/pricing")
+    if assessment.get("actual_billed_cost_usd") is not None:
+        fail("Unavailable actual charges must remain null")
+    return {"source": str(audit_path.relative_to(ROOT)), "published_path": "audit/" + study["label"] + "-independent-audit.json", "sha256": sha(read_text_bytes(audit_path)), "auditor_sha256": sha(read_text_bytes(auditor_path)), "pass": True, "checked_assertions": audit["checked_assertions"], "assessment_verification": verification, "source_report_sha256": audit["source_report_sha256"], "pricing_sha256": audit["pricing_sha256"]}
+
+''' + s[b:]
+a=s.index('def main()')
+s=s[:a]+'''def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--expected-head", required=True, help="Final confirmation freeze")
+    parser.add_argument("--expected-app", required=True)
+    parser.add_argument("--expected-v1-head", required=True)
+    parser.add_argument("--expected-v1-app", required=True)
+    parser.add_argument("--expected-scanner-sha256", required=True)
+    parser.add_argument("--extras-json", type=Path, required=True)
+    parser.add_argument("--audit-json", type=Path, required=True, help="Confirmation final independent audit")
+    parser.add_argument("--auditor", type=Path, required=True)
+    parser.add_argument("--v1-audit-json", type=Path, required=True)
+    parser.add_argument("--v1-auditor", type=Path, required=True)
+    parser.add_argument("--campaign-audit-json", type=Path, required=True)
+    parser.add_argument("--campaign-auditor", type=Path, required=True)
+    parser.add_argument("--publish", action="store_true")
+    args = parser.parse_args()
+    global FROZEN_COMMIT, FROZEN_APP, XML_FROZEN_COMMIT, XML_APPROVALS
+    if not all(re.fullmatch(r"[0-9a-f]{40}", value) for value in (args.expected_head, args.expected_v1_head)) or not all(re.fullmatch(r"[0-9a-f]{64}", value) for value in (args.expected_app, args.expected_v1_app, args.expected_scanner_sha256)):
+        fail("Expected full independent frozen Git/application/scanner SHA values")
+    if sha(Path(__file__).read_bytes()) != args.expected_scanner_sha256:
+        fail("Scanner differs from explicitly reviewed source identity")
+    FROZEN_COMMIT, FROZEN_APP, XML_FROZEN_COMMIT = args.expected_head, args.expected_app, args.expected_v1_head
+    EXPERIMENTS[0]["git_head"], EXPERIMENTS[0]["app"] = args.expected_v1_head, args.expected_v1_app
+    EXPERIMENTS[1]["git_head"], EXPERIMENTS[1]["app"] = args.expected_head, args.expected_app
+    finished_guard()
+    output = DEFAULT_OUTPUT
+    if output.resolve() != output or output.exists() or output.is_symlink():
+        fail("Evidence target must be fresh and nonsymlink; no overwrite supported")
+    selected_paths = [path.absolute() for path in (args.extras_json, args.audit_json, args.auditor, args.v1_audit_json, args.v1_auditor, args.campaign_audit_json, args.campaign_auditor)]
+    if any(not path.is_relative_to(ROOT / ".local/efficiency-v1") for path in selected_paths):
+        fail("Configuration/audit inputs must be below the ignored efficiency study root")
+    extras_path = args.extras_json.absolute()
+    extras = read_json(extras_path)
+    XML_APPROVALS = extras.get("xml_approvals", {})
+    if not isinstance(XML_APPROVALS, dict) or any(not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{64}", value) or not path.startswith(".local/efficiency-v1/") or not path.endswith(".xml") for path, value in XML_APPROVALS.items()):
+        fail("Unsafe exact XML synthetic-fixture approval")
+    source_frozen = verify_frozen_source()
+    audit_inputs = ((EXPERIMENTS[0], args.v1_audit_json.absolute(), args.v1_auditor.absolute()), (EXPERIMENTS[1], args.audit_json.absolute(), args.auditor.absolute()))
+    audits = {study["label"]: verify_independent_audit(study, audit_path, auditor_path) for study, audit_path, auditor_path in audit_inputs}
+    campaign_path, campaign_auditor = args.campaign_audit_json.absolute(), args.campaign_auditor.absolute()
+    campaign = read_json(campaign_path)
+    campaign_assessment_bytes = read_text_bytes(ROOT / "benchmarks/efficiency-assessment.json")
+    if campaign.get("pass") is not True or campaign.get("errors") or campaign.get("campaign_assessment_sha256") != sha(campaign_assessment_bytes) or campaign.get("auditor_sha256") != sha(read_text_bytes(campaign_auditor)) or campaign.get("planned_originals") != 120 or campaign.get("originals_per_arm") != 40 or not isinstance(campaign.get("checked_assertions"), int) or campaign["checked_assertions"] <= 0:
+        fail("Independent campaign accounting does not bind all120originals and final narrative")
+    for study in EXPERIMENTS:
+        binding = campaign.get("studies", {}).get(study["label"], {})
+        if binding.get("source_report_sha256") != audits[study["label"]]["source_report_sha256"] or binding.get("assessment_sha256") != audits[study["label"]]["assessment_verification"]["assessment_sha256"]:
+            fail("Campaign accounting does not bind both separate immutable study outputs")
+    campaign_proof = {"source": str(campaign_path.relative_to(ROOT)), "published_path": "audit/campaign-independent-audit.json", "sha256": sha(read_text_bytes(campaign_path)), "auditor_sha256": sha(read_text_bytes(campaign_auditor)), "campaign_assessment_sha256": sha(campaign_assessment_bytes), "pass": True, "checked_assertions": campaign["checked_assertions"]}
+    collection = Collection()
+    for study in EXPERIMENTS:
+        collection.experiment(study["label"], study["source"], study["expected"], study["version"], study["corpus"])
+    for source, destination in EXTRA_FILES:
+        collection.add(ROOT / source, Path(destination), required=True)
+    expected_extra_hashes = extras.get("selected_source_sha256", {})
+    if not isinstance(expected_extra_hashes, dict) or set(expected_extra_hashes) != {entry.get("source") for entry in extras["files"]} or any(not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest) for digest in expected_extra_hashes.values()):
+        fail("Explicit extra artifacts require a complete reviewed source/SHA map")
+    for entry in extras["files"]:
+        if set(entry) - {"source", "destination", "required"} or not isinstance(entry.get("source"), str) or not isinstance(entry.get("destination"), str):
+            fail("Invalid explicit artifact specification")
+        selected = ROOT / entry["source"]
+        if not selected.is_relative_to(ROOT / ".local/efficiency-v1") and entry["source"] not in EXPLICIT_LEGACY_HELPERS:
+            fail("Extra originals must be inside efficiency root or exact legacy helper allowlist")
+        if sha(read_text_bytes(selected)) != expected_extra_hashes[entry["source"]]:
+            fail("Extra artifact differs from reviewed original bytes", selected)
+        collection.add(selected, Path(entry["destination"]), required=entry.get("required", True))
+    collection.add(extras_path, Path("reproduction/explicit-artifacts.json"), required=True)
+    for study, audit_path, auditor_path in audit_inputs:
+        collection.add(audit_path, Path(audits[study["label"]]["published_path"]), required=True)
+        collection.add(auditor_path, Path("reproduction") / (auditor_path.name + ".txt"), required=True)
+    collection.add(campaign_path, Path(campaign_proof["published_path"]), required=True)
+    collection.add(campaign_auditor, Path("reproduction") / (campaign_auditor.name + ".txt"), required=True)
+    collection.corpus_validation()
+    historical = verify_historical_evidence()
+    files = [collection.files[key] for key in sorted(collection.files)]
+    manifest = {
+        "schema_version": "efficiency-campaign-2", "scope": "Two separately frozen ten-task/two-repeat60assignment studies; all120originals retained, initial strictfailures not replaced and efficacy not pooled",
+        "experiments": collection.experiments, "source_freeze": source_frozen, "historical_preservation": historical,
+        "independent_audits": audits, "campaign_audit": campaign_proof,
+        "whitelist": {"top": TOP_FILES, "preflight": INVOCATION_FILES, "runs": RUN_FILES, "extras": EXTRA_FILES, "explicit_extra_artifacts": extras, "corpus_validation_stages": CORPUS_STAGES, "corpus_grading_directories": CORPUS_GRADE_DIRS, "corpus_grading_files": CORPUS_GRADE_FILES, "attempt_log": "Only contiguous six-digit JSON records with verified hash chain"},
+        "never_selected": sorted(FORBIDDEN_PARTS) + sorted(FORBIDDEN_SUFFIXES) + ["raw external research bodies", "untracked file contents", "environment dumps"],
+        "missing_optional_files": collection.missing, "synthetic_fixture_scan_exceptions": sorted(XML_SCAN_EXCEPTIONS.values(), key=lambda row: row["path"]),
+        "limitations": ["Manifest excludes itself and post-copy publication audit to avoid circular checksums.", "Both study protocols and source snapshots remain independent; all initial strict failures and spend remain visible.", "Campaign cost per success includes failed prior-study attempts; it is operational accounting, not pooled causal efficacy.", "Credential scanning is pattern-based and cannot prove absence of every possible secret.", "Exact Git-AST-bound synthetic XML exceptions preserve original bytes and scan all other original spans.", "Common prompts and delivery attestations are preserved; private stdin descriptors, native state, auth, SQLite, fixture repositories/worktrees and untracked file contents are excluded."],
+        "files": [{"path": str(a.destination), "source": str(a.source.relative_to(ROOT)), "bytes": a.size, "sha256": a.sha256} for a in files],
+    }
+    manifest_bytes = json.dumps(manifest, indent=2).encode() + b"\\n"
+    scan_text_bytes(output / "manifest.json", manifest_bytes)
+    if args.publish:
+        output.mkdir(parents=True, exist_ok=False)
+        for artifact in files:
+            data = read_text_bytes(artifact.source)
+            if len(data) != artifact.size or sha(data) != artifact.sha256:
+                fail("Evidence changed after complete pre-copy validation", artifact.source)
+            target = output / artifact.destination
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("xb") as stream:
+                stream.write(data)
+        with (output / "manifest.json").open("xb") as stream:
+            stream.write(manifest_bytes)
+        for artifact in files:
+            copied = (output / artifact.destination).read_bytes()
+            if len(copied) != artifact.size or sha(copied) != artifact.sha256 or copied != read_text_bytes(artifact.source):
+                fail("Published source/target bytes differ", artifact.source)
+        if verify_historical_evidence() != historical or verify_frozen_source() != source_frozen:
+            fail("Frozen sources or historical evidence changed during publication")
+        receipt = {"pass": True, "selected_files": len(files), "bytes": sum(a.size for a in files), "manifest_sha256": sha(manifest_bytes), "every_source_and_target_sha256_verified": True, "all_120_originals_retained": True, "durable_log_and_result_seals_verified": True, "credential_pattern_scan": "passed", "independent_audits": audits, "campaign_audit": campaign_proof, "historical_preservation_rechecked_after_copy": historical, "source_freeze_rechecked_after_copy": source_frozen, "synthetic_fixture_scan_exceptions": manifest["synthetic_fixture_scan_exceptions"]}
+        receipt_bytes = json.dumps(receipt, indent=2).encode() + b"\\n"
+        scan_text_bytes(output / "publication-audit.json", receipt_bytes)
+        with (output / "publication-audit.json").open("xb") as stream:
+            stream.write(receipt_bytes)
+    print(json.dumps({"mode": "published" if args.publish else "check_only", "output": str(output.relative_to(ROOT)), "files": len(files), "bytes": sum(a.size for a in files), "manifest_sha256": sha(manifest_bytes), "scanner_sha256": args.expected_scanner_sha256, "originals": 120, "triplets_per_study": 20, "independent_audits_pass": True, "missing_optional_files": len(collection.missing), "credential_pattern_scan": "passed", "synthetic_fixture_exceptions": len(XML_SCAN_EXCEPTIONS), "source_freeze": source_frozen}, indent=2))
+
+
+if __name__ == "__main__":
+    main()
+'''
+p.write_text(s)

@@ -1,0 +1,82 @@
+{
+  "version": 3,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "159d11afd586460690d353803a34da9e0aa26589863314d674e51f453beca1ca",
+    "prepared_prompt_sha256": "68e77d172a9cc5847fd944aa7aa6eb074ebdc62f8a421accc7023a24c0822122",
+    "files": [
+      {
+        "path": "form/query_latest_value.py",
+        "sha256": "d369d924f3d4cb95423bec2d0f4973d8090d453de12ce537ceb70c87df480e08",
+        "start_line": 1,
+        "end_line": 6
+      },
+      {
+        "path": "form/query_latest_value_api.py",
+        "sha256": "6400acd163fd95b453261cda1c8bc34220e6c9e5cf10b3bd92d8706b771c19af",
+        "start_line": 1,
+        "end_line": 5
+      },
+      {
+        "path": "tests/test_query_latest_value.py",
+        "sha256": "e81e33e6f4654a9d6116249ce2f284e0ac4d269aeae6aa81822612db714b007e",
+        "start_line": 1,
+        "end_line": 20
+      }
+    ],
+    "context_bytes": 1419,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "focus_paths": [
+      "form/query_latest_value.py",
+      "form/query_latest_value_api.py"
+    ],
+    "support_paths": [
+      "tests/test_query_latest_value.py"
+    ],
+    "preparation_wall_seconds": 0.051771817001281306,
+    "preparation_cpu_seconds": 0.051774155000000016
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-py-workflow-form-query-latest-value-r2-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-form-query-latest-value-r2-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "68e77d172a9cc5847fd944aa7aa6eb074ebdc62f8a421accc7023a24c0822122",
+    "bytes": 3460,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 52019.440918057
+}

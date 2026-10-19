@@ -1,0 +1,7 @@
+{
+  "id": "codex-app-protocol-v2",
+  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/app-server-protocol/src/protocol/v2.rs",
+  "retrieved_at_utc": "2026-10-18T21:51:33.285284+00:00",
+  "http_status": 404,
+  "error_type": "HTTPError"
+}

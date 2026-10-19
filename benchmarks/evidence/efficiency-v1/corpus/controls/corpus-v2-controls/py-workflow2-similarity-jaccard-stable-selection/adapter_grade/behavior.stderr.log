@@ -1,0 +1,15 @@
+test_distinct_set_denominator (__main__.BehaviorTests.test_distinct_set_denominator) ... FAIL
+test_earliest_tie_and_nonmutation (__main__.BehaviorTests.test_earliest_tie_and_nonmutation) ... ok
+
+======================================================================
+FAIL: test_distinct_set_denominator (__main__.BehaviorTests.test_distinct_set_denominator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Memglide/.local/efficiency-v1/corpus-v2-controls/py-workflow2-similarity-jaccard-stable-selection/adapter_grade/held_out.py", line 8, in test_distinct_set_denominator
+    self.assertEqual(core.jaccard_score(["a","a"],["a","b","b"]),0.5)
+AssertionError: 0.25 != 0.5
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1)

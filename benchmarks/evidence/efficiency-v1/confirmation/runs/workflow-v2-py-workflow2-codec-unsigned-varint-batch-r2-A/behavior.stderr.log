@@ -1,0 +1,7 @@
+test_batch_order_and_nonmutation (__main__.BehaviorTests.test_batch_order_and_nonmutation) ... ok
+test_continuation_boundaries_and_large_values (__main__.BehaviorTests.test_continuation_boundaries_and_large_values) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

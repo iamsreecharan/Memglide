@@ -1,0 +1,1 @@
+{"summary":"Fixed angleDifference to normalize operands before subtraction and return the shortest signed rotation in [-180, 180), with -180 for ties. Added regression coverage for overflow, wraparound, fractions, full turns, and nonfinite inputs.","tests_run":["node --test — passed all existing and regression tests."]}

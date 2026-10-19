@@ -1,0 +1,60 @@
+"""Reproduce imprecise source invalidation without model/network access."""
+
+from __future__ import annotations
+
+import json
+import tempfile
+from pathlib import Path
+
+from memglide.core.indexer import Indexer
+from memglide.storage.database import Database
+
+
+def main() -> None:
+    with tempfile.TemporaryDirectory(prefix="memglide-review-") as directory:
+        root = Path(directory)
+        db = Database(root / "state" / "state.db")
+        with db.connect() as conn:
+            conn.execute(
+                "INSERT INTO projects(id,path,name,created_at) VALUES('p',?,'fixture',0)",
+                (str(root),),
+            )
+            conn.execute(
+                "INSERT INTO sessions VALUES('s','p','fixture',0,0,99999999999,99999999999,NULL)"
+            )
+            for name, selected, query in (
+                ("substring", "extra.py", "Inspect extra.py"),
+                ("query_only", "other.py", "Compare against a.py later"),
+                ("referenced", "a.py", "Inspect selected source"),
+            ):
+                passport = {
+                    "status": "Current",
+                    "source_freshness": "Current",
+                    "selected_files": [{"path": selected, "hash": "fixture"}],
+                    "verified_source_hashes": {selected: "fixture"},
+                    "query": query,
+                    "missing_context": [],
+                }
+                conn.execute(
+                    "INSERT INTO retrievals VALUES(?,'s','p',?,2,4000,10,0,'{}')",
+                    (name, query),
+                )
+                conn.execute(
+                    "INSERT INTO passports VALUES(?,'s',?)", (name, json.dumps(passport))
+                )
+            Indexer._invalidate(conn, "p", {"a.py"})
+        result = {
+            row["retrieval_id"]: json.loads(row["data"])
+            for row in db.rows("SELECT retrieval_id,data FROM passports ORDER BY retrieval_id")
+        }
+        assertions = {
+            "true_reference_invalidated": result["referenced"]["status"] == "Stale",
+            "substring_reference_unchanged": result["substring"]["status"] == "Current",
+            "query_only_reference_unchanged": result["query_only"]["status"] == "Current",
+        }
+        print(json.dumps({"checks": assertions, "passports": result}, indent=2))
+        raise SystemExit(0 if all(assertions.values()) else 1)
+
+
+if __name__ == "__main__":
+    main()

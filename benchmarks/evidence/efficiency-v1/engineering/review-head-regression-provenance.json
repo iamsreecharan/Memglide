@@ -1,0 +1,8 @@
+{
+  "head": "448f70555698b56f2f7b257a84628106846fb55e",
+  "source_sha256": {
+    "src/memglide/core/context.py": "7b0c94938cfaeaff843d9c013c91d885747cecf73626317b3ca5acc607c4ac53",
+    "src/memglide/core/indexer.py": "8b84cd28858dd16c36b4ddf25edb62391721e6874fa0deb68dd48dd01bb50621"
+  },
+  "method_replacements_only": true
+}

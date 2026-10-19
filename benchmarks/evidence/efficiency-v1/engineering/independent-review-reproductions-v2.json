@@ -1,0 +1,16 @@
+{
+  "historical_20_fresh_attempt_count": 20,
+  "historical_run_cost_usage_metrics_equal": true,
+  "mismatches": [],
+  "source_sha256": {
+    "benchmarks/codex-cost-ab.json": "de4067e198d3ad573ef633b8d2a47c45134092b5284b6ec67dacc7202d2cb8af",
+    "benchmarks/cost-assessment.json": "c75118743ba1239e7afe66dc635dcf2d2ecfec6f62f7f466372a596dac6aa886",
+    "benchmarks/cost-pricing.json": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+    "/workspace/Memglide/benchmarks/estimate_cost.py": "e7f1cf8a4c62bfb929a69bcee9d3498b9cf68393e229f2fb442f3f148578778e"
+  },
+  "unknown_control_cost_gate_passed": false,
+  "unknown_control_cost_gate_reasons": [
+    "Every original arm, including provided-context controls, needs a known finite nonnegative estimated cost"
+  ],
+  "focused_benefit_checks_still_all_pass": true
+}

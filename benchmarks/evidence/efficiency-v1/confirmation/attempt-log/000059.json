@@ -1,0 +1,9 @@
+{
+  "sequence": 59,
+  "previous_sha256": "f3de04754ec64905d092e83c8027efd500bc28a11a7e64b50360f9543223c1ae",
+  "recorded_at": "2026-10-19T04:20:58.245344+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "workflow-v2-py-workflow2-similarity-bit-hamming-distance-r1-B",
+  "result_sha256": "59f4301b8b90006830baa3fe58d0f2ccc9b7b3c8990091b6ce79761963e22735",
+  "sha256": "7d4c93d693c23c2f0e6827507e72ded4230b5047210208d4aa3cae94a8086391"
+}

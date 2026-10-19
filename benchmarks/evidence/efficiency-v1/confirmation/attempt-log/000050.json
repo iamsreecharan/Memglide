@@ -1,0 +1,11 @@
+{
+  "sequence": 50,
+  "previous_sha256": "8ffa6286daa32f73b0c5fa23a5e25ec5277329fcb68aa87b090e9d109a89ba45",
+  "recorded_at": "2026-10-19T04:19:01.319151+00:00",
+  "event": "attempt.started",
+  "attempt_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r1-B",
+  "original_run_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r1-B",
+  "supplemental": false,
+  "start_sha256": "33a3e571345becc3a4155a9925c2bbaeb8aed035e973d487a8aea71d048a9c3e",
+  "sha256": "09400f6a284d0d48c9c3dca80b977675e47934ee80b63af91b5011a2bd17d62a"
+}

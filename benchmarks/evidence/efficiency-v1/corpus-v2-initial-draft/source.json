@@ -1,0 +1,4 @@
+{
+  "sha256": "60deacbc71e2abae1e0febd9b4a9970ceeb12595d0d36939666d2ebb4de37b11",
+  "correction": "Hidden JavaScript .mjs case accidentally contained tuple type annotation, preventing native oracle execution; remove annotation before any model run. Initial test failures and control grades retained."
+}

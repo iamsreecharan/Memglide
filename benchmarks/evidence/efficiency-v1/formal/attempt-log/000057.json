@@ -1,0 +1,9 @@
+{
+  "sequence": 57,
+  "previous_sha256": "40830cafffcdb932b3372f0aa18f348894353d5afdfa7c43dbf7ec470152c900",
+  "recorded_at": "2026-10-19T03:49:36.840633+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "workflow-py-workflow-finance-discount-before-tax-r1-C",
+  "result_sha256": "dd2a5f5a4d0707607091aec84209dab86779f33bb04fd73fa496b12256be741f",
+  "sha256": "cfad3409a65aecc914de763d1fe49850c92a3a833022ed3df8c4b12233ba544a"
+}

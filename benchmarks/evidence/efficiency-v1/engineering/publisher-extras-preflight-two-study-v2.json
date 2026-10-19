@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "preconfirmation_explicit_files": 341,
+  "preconfirmation_bytes": 4721093,
+  "xml_exact_frozen_fixture_approvals": {
+    ".local/efficiency-v1/full-python.xml": "07bb1ce7767947bf1f94e5dbb5253eb9fa4ff095f92e2168f16b86f12be9be3a"
+  },
+  "selected_corpus_grade_artifacts": 985,
+  "corpus_stages": [
+    "corpus-initial-validation",
+    "corpus-final-validation",
+    "corpus-final-validation-v2",
+    "corpus-v2-controls",
+    "corpus-v2-controls-final"
+  ],
+  "full_original_bytes_credential_scanned": true,
+  "native_formal_stream_grade_reads": 0,
+  "public_mutations": 0,
+  "changed_previously_selected_source_paths": [
+    ".local/efficiency-v1/publisher-preflight.py"
+  ],
+  "extras_config_sha256": "39d99ff2b68037034c9e53cc47f4753ff5341c2d0de6b1954654321dd04fc763",
+  "files_template_sha256": "1bee36a1766d5c34c7d844a079b99a0abc19034db29afc6d677340da4c465a73"
+}

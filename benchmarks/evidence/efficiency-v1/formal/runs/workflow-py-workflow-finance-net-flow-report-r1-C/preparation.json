@@ -1,0 +1,82 @@
+{
+  "version": 3,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "8e965c14e2ddf4364a9da767e9846ab58aa7501eb4c7533dcfb093bd7a43e6d4",
+    "prepared_prompt_sha256": "9e5ccbd9e1d56aad1bb65a062d37d482187376655906d7eedfdbdb40fabe2e40",
+    "files": [
+      {
+        "path": "finance/net_flow_report.py",
+        "sha256": "7e74f9ab916635b6cadc334d7ae0fdd12ec9701eb0a5be609ebc0d57efec92af",
+        "start_line": 1,
+        "end_line": 3
+      },
+      {
+        "path": "finance/net_flow_report_api.py",
+        "sha256": "4390822a9920fbada5b85981d21bab540cd499aa177e2060a4d689ece72b09b1",
+        "start_line": 1,
+        "end_line": 5
+      },
+      {
+        "path": "tests/test_net_flow_report.py",
+        "sha256": "5269cac342f6e3b15743e57b6204a4481e32327f1cad51eb0c7ed3f1b1424b4d",
+        "start_line": 1,
+        "end_line": 20
+      }
+    ],
+    "context_bytes": 1312,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "focus_paths": [
+      "finance/net_flow_report.py",
+      "finance/net_flow_report_api.py"
+    ],
+    "support_paths": [
+      "tests/test_net_flow_report.py"
+    ],
+    "preparation_wall_seconds": 0.07154001299932133,
+    "preparation_cpu_seconds": 0.07153765299999998
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-py-workflow-finance-net-flow-report-r1-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "9e5ccbd9e1d56aad1bb65a062d37d482187376655906d7eedfdbdb40fabe2e40",
+    "bytes": 3279,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 51236.539161145
+}

@@ -83,7 +83,11 @@ npm --prefix frontend run build
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for browser tests and packaging. [PROGRESS.md](PROGRESS.md) records observed validation and outstanding limitations; source-file presence alone is not a completion claim.
 
-The latest [cost study](benchmarks/cost-assessment.md) compares **bare Codex with
+The latest [efficiency report](benchmarks/efficiency-assessment.md) preserves **120 native assignments in two separately frozen studies**. The original 60 remain strict protected-test failures; a fresh explicit-contract confirmation records A 20/20, B 20/20, C 20/20. The [validation](benchmarks/efficiency-validation.md) records **1,443 verified automated cases** and unchanged application source. In the confirmation's focused tasks, C versus bare Codex has 2.41% lower estimated cost per success and 12.63% higher mean full time. The frozen promotion gate is **False**; support stays explicit and optional. API-price equivalents are estimates, actual charges are unavailable, and the report includes every failed attempt's spend. [Download the complete evidence](benchmarks/memglide-efficiency-report.zip).
+
+Source-only B is the best focused-task point estimate in this confirmation: **10.19% lower estimated cost per successful task** than A, but **3.18% longer mean full time**. Its median time is also longer. This is not a joint cost-and-speed win. Under independent possible cache-write attribution, its focused saving range is **-3.54% to 22.49%**; these are scenarios, not confidence intervals or actual billing.
+
+The preceding [cost study](benchmarks/cost-assessment.md) compares **bare Codex with
 compact-prefix Memglide on ten fresh paired tasks: 20 runs, all successful**.
 At [verified standard API rates](benchmarks/cost-pricing-research.md), estimated
 cost per successful task was **$0.03923 for Codex and $0.03833 for Memglide**,

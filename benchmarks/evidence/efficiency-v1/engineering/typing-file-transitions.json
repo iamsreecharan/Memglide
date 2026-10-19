@@ -1,0 +1,34 @@
+{
+  "before": {
+    "benchmarks/telemetry.py": "4e7a19e8c37d1cb47c0306dac2e962648267de23aa5b361c2e8a29d5b258a936",
+    "benchmarks/context_audit_v2.py": "d473d241237364b08f228e3f6ea7092d414bcb2ce9b347c9918a967ee95a3a4a",
+    "benchmarks/reporting.py": "3e1d1c86cf0d091db7d7e04576110687e267de025397e6ef87c9a0d319577c8e",
+    "benchmarks/compare_components.py": "c9c0b463068a7fc679e4387566daeefc82b556b789c0de98b568880b13aea89e",
+    "benchmarks/corpus_daily.py": "a8109652a8897e74971212ff5501c3e93125afcf9b635926503796775117b5f1",
+    "benchmarks/run.py": "ccf8d44ca7ea8286a8a9241b030eaa76ca339ec15032aeb95cb4e256ef500a26",
+    "benchmarks/run_v2.py": "eaa1d36af3796bf54de4137fd406af2fa3233421855e49628644e9572a358c69",
+    "benchmarks/run_daily.py": "b8b115528a59e94f891a79517a0e5bd09578f940e27c5cfab29cc1480796439f",
+    "benchmarks/run_cache_formats.py": "f4fddce2b5ea22541d7d9b34fe0c25383dc872983a5c2d839c3bbd272a38e913",
+    "benchmarks/estimate_cost.py": "d94225afe8a5931c9ee59ea342004fb6eb561cb0276991971681c5e446157352",
+    "benchmarks/refinement_reporting.py": "0477d1b34cd201129af0cf295d85d2e60b8ae1e8681bbb51d8c99f2588d0311b"
+  },
+  "after_parent_annotation_edits": {
+    "benchmarks/telemetry.py": "e10ade6b7ad728ee7517d9cda6ec6670fd5fe9be5010088775b085af53646191",
+    "benchmarks/context_audit_v2.py": "b09531bc97986d5d1d9d53bd95ee75e847116b38c3a1cff77b58b1dd66063c23",
+    "benchmarks/reporting.py": "719fa45fca6f458ca9905d5f0c2567dbd5911cdfc56da04f2fbfb24acff32831",
+    "benchmarks/compare_components.py": "0496df9bcf9f5268048dbb9912f24aa373d329c06c73c6dff85cf836f75cfd37",
+    "benchmarks/corpus_daily.py": "d30b71dc53373f8307be3a37b8420c66b52df7597f49d86402f7734fc3446984",
+    "benchmarks/run.py": "de12449d6e2382ffc6bd37ea4df67b17d85818dc8f8ffd7756c9122bfd934115",
+    "benchmarks/run_v2.py": "4855a0eb8c286b0ab39fb495e05fa31e0f3d8e84c96a7798e4947d2543d41ed4",
+    "benchmarks/run_daily.py": "b9947926df3ba7130cec81264b7abb6a28c5c1dd30697235052b5d401d729521",
+    "benchmarks/run_cache_formats.py": "6cc1b200b38601aff54f04114caefd3cbb905956dafa7fb912b2b5b118e63d3e",
+    "benchmarks/estimate_cost.py": "f54e1fc5b07d52aeb10416120679076bfa13dcf71e92263d8e39a309f6462cbe",
+    "benchmarks/refinement_reporting.py": "d1599b63269d56d36c4b0c219f83deba2fbe685ade694c7d793b2a7417c57a5a"
+  },
+  "validation": {
+    "typing-before.log": "32 imported errors in 9 files",
+    "typing-parent-expanded-final.log": "No issues in run_cost.py estimate_cost.py refinement_reporting.py",
+    "typing-focused.xml": "275 passed; 0 failures/errors/skipped",
+    "typing-cost-reproduction.json": "All17 generated result keys except generated_at unchanged for all20 original cost runs"
+  }
+}

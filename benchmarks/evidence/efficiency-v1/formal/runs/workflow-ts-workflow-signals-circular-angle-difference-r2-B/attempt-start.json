@@ -1,0 +1,43 @@
+{
+  "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r2-B",
+  "task_id": "ts-workflow-signals-circular-angle-difference",
+  "language": "typescript",
+  "repository": "signals-typescript-workflow",
+  "task_kind": "single-source",
+  "selection_stratum": "explicit_focus",
+  "configuration": "B",
+  "repeat": 2,
+  "order": 39,
+  "context_format": "compact-prefix",
+  "support_enabled": false,
+  "setup": {
+    "wall_seconds": null,
+    "cpu_seconds": null
+  },
+  "preload_treatment_fidelity": {
+    "valid": null,
+    "reason": "No durable completion of this assignment yet",
+    "context_format": "compact-prefix"
+  },
+  "native_execution_validity": {
+    "valid": null,
+    "reasons": [
+      "Native completion not yet durably observed"
+    ]
+  },
+  "original_run_id": "workflow-ts-workflow-signals-circular-angle-difference-r2-B",
+  "supplemental": false,
+  "status": "running",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T03:53:26.797307+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r2-B",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-signals-circular-angle-difference-r2-B",
+  "errors": [],
+  "grader": {
+    "success": null,
+    "reason": "Not yet independently graded"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null
+}

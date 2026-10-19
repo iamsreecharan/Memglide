@@ -1,0 +1,14 @@
+{
+  "started_at_utc": "2026-10-19T04:32:52.746383+00:00",
+  "argv": [
+    ".local/efficiency-v1/audit_workflow_campaign_v1.py",
+    "--formal-audit",
+    ".local/efficiency-v1/independent-review/workflow-audit-v1.json",
+    "--confirmation-audit",
+    ".local/efficiency-v1/independent-review/confirmation-audit-v1.json",
+    "--output-prefix",
+    ".local/efficiency-v1/independent-review/campaign-audit-v1"
+  ],
+  "auditor_sha256": "9792177e2f5c16ab4d64998e3326f95c48d9da0662ca0ad87e7706bb3f44e743",
+  "preflight_only": false
+}

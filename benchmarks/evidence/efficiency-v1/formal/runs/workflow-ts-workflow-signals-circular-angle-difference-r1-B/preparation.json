@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "5f7cd3fd99828752c0239a6d6b003dd5e28967916826869b1d18776bcef9072e",
+    "prepared_prompt_sha256": "5c085d0ebba7af4d22f6f81afe9c6ff103841fb88b82ce76a251fad0a4147fe9",
+    "files": [
+      {
+        "path": "src/circular_angle_difference.ts",
+        "sha256": "02ac779a0fd1b97c1edd261bb8f3de083780e97a37f7e9d8894e169d918a3061",
+        "start_line": 1,
+        "end_line": 4
+      }
+    ],
+    "context_bytes": 400,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "preparation_wall_seconds": 0.031040841997310054,
+    "preparation_cpu_seconds": 0.03104212699999999
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-signals-circular-angle-difference-r1-B",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-B/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "5c085d0ebba7af4d22f6f81afe9c6ff103841fb88b82ce76a251fad0a4147fe9",
+    "bytes": 2361,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 51078.604160588
+}

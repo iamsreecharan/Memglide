@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    ".local/efficiency-v1/publish_evidence.py",
+    "--expected-head",
+    "85ebff2229efd62be2e3c0e179c3c8eae0f0cade",
+    "--expected-app",
+    "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+    "--expected-v1-head",
+    "93acf63e1583bd66239b22dc53c2aaf196e3a35a",
+    "--expected-v1-app",
+    "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+    "--expected-scanner-sha256",
+    "f098dd8ce073885e7de2696736c81146472269779676c6ad30aec9908a6cd2ce",
+    "--extras-json",
+    ".local/efficiency-v1/publisher-extras.json",
+    "--audit-json",
+    ".local/efficiency-v1/independent-review/confirmation-audit-v1.json",
+    "--auditor",
+    ".local/efficiency-v1/audit_workflow_v2.py",
+    "--v1-audit-json",
+    ".local/efficiency-v1/independent-review/workflow-audit-v1.json",
+    "--v1-auditor",
+    ".local/efficiency-v1/audit_workflow_v1.py",
+    "--campaign-audit-json",
+    ".local/efficiency-v1/independent-review/campaign-audit-v1.json",
+    "--campaign-auditor",
+    ".local/efficiency-v1/audit_workflow_campaign_v1.py"
+  ]
+}

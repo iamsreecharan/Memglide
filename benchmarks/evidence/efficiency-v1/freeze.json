@@ -1,0 +1,54 @@
+{
+  "git_head": "93acf63e1583bd66239b22dc53c2aaf196e3a35a",
+  "application": {
+    "captured_at": "2026-10-19T03:36:19.219987+00:00",
+    "attestation": "captured_source_state_before_probe",
+    "git_head": "93acf63e1583bd66239b22dc53c2aaf196e3a35a",
+    "source_dirty_entries": [],
+    "source_files": {
+      "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+      "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+      "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+      "src/memglide/core/context.py": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+      "src/memglide/core/indexer.py": "7c49242c79ee0b1f3aa1cc03c066f863de1727c91c3be7768c61201ace5d99c6",
+      "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+      "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+      "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+      "src/memglide/integrations/codex_preload.py": "1a5b26ac2b010bac7473211115d16f49c9cd634555910e88d56a87e3b510448b",
+      "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+      "src/memglide/integrations/preload.py": "9ae8595b4b5f97993dcf177d78d090db5f1e0f6fdb8ce2e2da5e3d766d69afac",
+      "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/memory/engine.py": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+      "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "src/memglide/service.py": "6dd6f33a5adc3863ff68d6125296c84c32170085c9c20eb53c8809f02a4c2a7b",
+      "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/storage/database.py": "38a483c6e05758a8f7df743ce7965a0fe20b6ea5f13c4921788b61efa971f58e"
+    },
+    "source_tree_sha256": "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+    "measurement_files": {
+      "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0",
+      "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c"
+    },
+    "scope": "On-disk public Python source at capture time, not a proof of earlier runtime state"
+  },
+  "workflow_source_sha256": {
+    "benchmarks/run_workflow.py": "472fc995e05f4f83397cb283274df052199c722b5c3b961936a854424dd353c4",
+    "benchmarks/workflow_cost.py": "c4e7d2175c7dd026919c48e52f58f5b26d85f29ae6702fab14e4a4c2a2d5d676",
+    "benchmarks/tasks_workflow.json": "a4d1a944ca4fbf5d83d8136f673cec2de4f4930ab415b55e42f40b8e7bdcab1d",
+    "benchmarks/corpus_workflow.py": "ede082dfc6c576380d3ca4d8cefa4cfa1872a38e0ac7c144b5128b7f5f0d9491",
+    "benchmarks/workflow-protocol.md": "3e57bacd591b82d9256bb0453a6aed9ff9609666da643a5f4153cedf2188948c",
+    "benchmarks/cost-pricing.json": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+    "benchmarks/estimate_cost.py": "e7f1cf8a4c62bfb929a69bcee9d3498b9cf68393e229f2fb442f3f148578778e"
+  },
+  "live_native_runs_started": false,
+  "expected_original_assignments": 60,
+  "repeats": 2,
+  "promotion_policy_frozen_before_requests": true
+}

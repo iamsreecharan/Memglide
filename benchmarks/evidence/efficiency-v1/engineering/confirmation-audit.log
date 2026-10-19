@@ -1,0 +1,1 @@
+{"pass": true, "observed_attempts": 60, "successful_assignments": 60, "planned_originals": 60, "verified_triplets": 20, "verified_pairs": {"C_over_A": 20, "C_over_B": 20, "B_over_A": 20}, "checked_assertions": 15802}

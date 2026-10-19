@@ -1,0 +1,1 @@
+{"summary":"Fixed encodeSegment to use encodeURIComponent and buildPath to preserve empty segments, order, and case without mutating input. Added regression tests. No commits made.","tests_run":["node --test — passed all existing tests and new regressions","git diff --check — passed"]}

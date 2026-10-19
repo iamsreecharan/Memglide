@@ -1,0 +1,1 @@
+{"summary":"Fixed net_flow to subtract outgoing and flow_report to preserve signed nets. Added regression coverage for negative balances, ordered case-sensitive duplicate labels, and unchanged inputs. All 12 tests passed; no commit created.","tests_run":["python -m unittest discover -s tests -v","git diff --check"]}

@@ -1,0 +1,1 @@
+{"summary":"Fixed latest_values to keep the last value while preserving first-seen key order. Fixed query_value to use exact, case-sensitive keys. Added regression coverage for ordering, unchanged inputs, values, and defaults.","tests_run":["python -m unittest discover -s tests -v — all 18 tests passed","git diff --check — passed"]}

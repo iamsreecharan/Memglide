@@ -1,0 +1,9 @@
+{
+  "sequence": 107,
+  "previous_sha256": "2713f6a1cb7ad9880fcab47f60ee8905a88500c9779219c9539de56a5a027b45",
+  "recorded_at": "2026-10-19T04:29:52.710298+00:00",
+  "event": "attempt.finished",
+  "attempt_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r2-B",
+  "result_sha256": "42844d3389b1ebe69be94f2a534d17278769264cd429dd34f224bafe2ed58688",
+  "sha256": "1e84e67f216e1f2467c9e1288a88ac4e17262326a9d94fd93abb6ecac468df27"
+}

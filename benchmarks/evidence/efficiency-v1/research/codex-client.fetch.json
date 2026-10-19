@@ -1,0 +1,9 @@
+{
+  "id": "codex-client",
+  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client.rs",
+  "retrieved_at_utc": "2026-10-18T21:49:05.677848+00:00",
+  "http_status": 200,
+  "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client.rs",
+  "body_bytes": 118699,
+  "body_sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c"
+}

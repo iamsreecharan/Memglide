@@ -1,0 +1,11 @@
+{
+  "sequence": 38,
+  "previous_sha256": "3c46abdd1b475db6e06b1d34752b2535aef5a8e88bac1d92d353fdee18790553",
+  "recorded_at": "2026-10-19T03:46:13.344091+00:00",
+  "event": "attempt.started",
+  "attempt_id": "workflow-ts-workflow-text-path-segment-roundtrip-r1-A",
+  "original_run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r1-A",
+  "supplemental": false,
+  "start_sha256": "b28431554d24fc5a43a79d963fbc33bdca7f2a4d8cd2948f67847de2de0e46bf",
+  "sha256": "c6b6950c58b0a194097efa251acd4710eb79b0b744ce9674568b9df74b89e0b4"
+}

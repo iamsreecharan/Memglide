@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "scope": "Fresh workflow-2 confirmation runner; no real model requests",
+  "distinct_final_pytest_cases": 35,
+  "pytest": {
+    "tests": 35,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": {
+    "benchmarks/run_workflow_v2.py": "dd95f6f73d8db66cdb5b42834b9b6d4f30049545f936952d8012fff4e087bc0f",
+    "benchmarks/workflow-protocol-v2.md": "7a690b99215583f8ad7d8bf3c39c7ba929a08594d7570925fb5dcb41188d1166",
+    "tests/test_benchmark_workflow_runner_v2.py": "f30278be2876e4736a9f8aa5b48943ed83bd08f5dc06144ffdfe16c8cb7e2036"
+  },
+  "checks": {
+    "ruff": true,
+    "ruff_format": true,
+    "mypy": true,
+    "three_arm_fake_end_to_end_and_finished_resume": true,
+    "full_source_fidelity_and_private_support_classifications": true,
+    "source_and_auth_shared_blocker_preserves_originals": true,
+    "six_real_orphan_recovery_combinations": true,
+    "existing_test_append_rejected_new_file_allowed": true,
+    "common_byte_policy_before_task": true,
+    "prior_study_and_issue_files_frozen": true,
+    "standard_service_tier_and_fresh_ephemeral_native": true
+  },
+  "old_sources_edited": false,
+  "model_requests": 0,
+  "initial_fixture_failure": {
+    "log": "runner-v2-partial.log",
+    "snapshot": "runner-v2-tests-initial.py",
+    "reason": "New protection test used standalone repository .git directory; production operates on worktrees with .git files. Corrected fixture to actual isolated git worktree. 29 cases passed and one failed in this initial partial run; all final 35 pass."
+  },
+  "evidence_sha256": {
+    "runner-v2-partial.log": "0860681d2ddb87e385b0730469796947b712037e5875f74830085b9e5db0c154",
+    "runner-v2-partial.xml": "10b90e9f36a8a4ff0b298057730893ccfdef4dd296a2e1a2cb1717cc37df8315",
+    "runner-v2-tests-initial.py": "8b9fc32ab0d1c233e0f8f865db68a06440ae87850de072bc41d57a9c5162f5b7",
+    "runner-v2-final.log": "a4b6042a3f683994d6bc6d69ccf1f3514168a5fffad5abb7290c4cc9693d54e9",
+    "runner-v2-final.xml": "06cc289ac251b8607f78266f8baf81ca8c10596e21b15655901c7a0209b66a36",
+    "runner-v2-sealed.log": "cfa8da3537df9fd136087d61742315f391a256efd9f48b80a083c322e68b58c2",
+    "runner-v2-sealed.xml": "ff041fc48cee65198c8f1c8f37ffd7b388961fd2a7cf5a0547deed97a2691ee5",
+    "runner-v2-ready.log": "45508020513d0a2605ae4d26993067046cfb004bd81553e51a1f9da218f47d4d",
+    "runner-v2-ready.xml": "15086786c4aa8cb4319f0dbed090f194d425df6d48ba87e59f0d5e4a59c65d92",
+    "runner-v2-ready-ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "runner-v2-ready-format.log": "3bc53bf3e981a98a34a852e175bf9b77af841edea74fca595d9aedcbaf9a4938",
+    "runner-v2-ready-mypy.log": "5d4b6d285b77932e3d08212c3b4974d0a803f98ec60408ac6ccf6a063fa6c19e"
+  }
+}

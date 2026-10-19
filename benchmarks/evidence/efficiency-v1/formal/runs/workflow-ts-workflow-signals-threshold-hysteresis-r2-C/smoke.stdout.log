@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 3.323153
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.409533
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.28457
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.114265
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 0.56473
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 6 - ordinary-0
+  ---
+  duration_ms: 1.363462
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 7 - ordinary-1
+  ---
+  duration_ms: 0.277043
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 8 - ordinary-2
+  ---
+  duration_ms: 1.273223
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 9 - ordinary-3
+  ---
+  duration_ms: 0.342434
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 10 - ordinary-4
+  ---
+  duration_ms: 0.243267
+  type: 'test'
+  ...
+# Subtest: threshold boundaries and the hysteresis band respect the current state
+ok 11 - threshold boundaries and the hysteresis band respect the current state
+  ---
+  duration_ms: 0.550832
+  type: 'test'
+  ...
+# Subtest: traces carry state through repeated threshold crossings without mutating values
+ok 12 - traces carry state through repeated threshold crossings without mutating values
+  ---
+  duration_ms: 0.177861
+  type: 'test'
+  ...
+# Subtest: traces respect an initially active state
+ok 13 - traces respect an initially active state
+  ---
+  duration_ms: 0.568031
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 355.314118

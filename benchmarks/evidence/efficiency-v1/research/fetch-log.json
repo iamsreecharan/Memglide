@@ -1,0 +1,101 @@
+[
+  {
+    "id": "openai-prompt-caching",
+    "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+    "retrieved_at_utc": "2026-10-18T21:49:05.118012+00:00",
+    "http_status": 200,
+    "final_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+    "body_bytes": 776034,
+    "body_sha256": "645a1f1b6f1e5380c558a0fe5ecb9e6cf86e7da418c735072e6ef36a2f577f8b"
+  },
+  {
+    "id": "openai-latency",
+    "url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+    "retrieved_at_utc": "2026-10-18T21:49:05.119775+00:00",
+    "http_status": 200,
+    "final_url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+    "body_bytes": 490457,
+    "body_sha256": "7119faa0183f12628dd457c89225ec4a5ac5dc5ffdb4323a3be283a15a97e2d6"
+  },
+  {
+    "id": "openai-cost-optimization",
+    "url": "https://developers.openai.com/api/docs/guides/cost-optimization",
+    "retrieved_at_utc": "2026-10-18T21:49:05.121649+00:00",
+    "http_status": 200,
+    "final_url": "https://developers.openai.com/api/docs/guides/cost-optimization",
+    "body_bytes": 367669,
+    "body_sha256": "ffa82b3944d55c9f9da92f9d17e67d578fceb6c72f7d41118b55e8e8ca921738"
+  },
+  {
+    "id": "openai-conversation-state",
+    "url": "https://developers.openai.com/api/docs/guides/conversation-state",
+    "retrieved_at_utc": "2026-10-18T21:49:05.123938+00:00",
+    "http_status": 200,
+    "final_url": "https://developers.openai.com/api/docs/guides/conversation-state",
+    "body_bytes": 715469,
+    "body_sha256": "24241ed9602358a679525aed11e501049447999852084c14118d9346b228806d"
+  },
+  {
+    "id": "anthropic-context",
+    "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+    "retrieved_at_utc": "2026-10-18T21:49:05.125921+00:00",
+    "http_status": 200,
+    "final_url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+    "body_bytes": 165122,
+    "body_sha256": "44ac15c4175c7a60f9f02f5bf0fd39e7337439f01651228cee138bcbfea110c6"
+  },
+  {
+    "id": "anthropic-tools",
+    "url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+    "retrieved_at_utc": "2026-10-18T21:49:05.370883+00:00",
+    "http_status": 200,
+    "final_url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+    "body_bytes": 197554,
+    "body_sha256": "cf8723d5882f4ff3bb1e80c5f78abe154c74ccc047f1318d4aae67f12816935f"
+  },
+  {
+    "id": "codex-exec-lib",
+    "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/lib.rs",
+    "retrieved_at_utc": "2026-10-18T21:49:05.372477+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/lib.rs",
+    "body_bytes": 86172,
+    "body_sha256": "48be5b8d89283f1fe338682d634ea3e73847ef1eb7c7626ca801002980527de1"
+  },
+  {
+    "id": "codex-exec-cli",
+    "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/cli.rs",
+    "retrieved_at_utc": "2026-10-18T21:49:05.442299+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/cli.rs",
+    "body_bytes": 9863,
+    "body_sha256": "6abb86feb8fac2a192b34a617634527d0747b6d7fa09ee4827c0dc95abbe2f75"
+  },
+  {
+    "id": "codex-compact",
+    "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact.rs",
+    "retrieved_at_utc": "2026-10-18T21:49:05.522795+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact.rs",
+    "body_bytes": 30403,
+    "body_sha256": "715756709185c29499c328617a7907a7fc8ede9e89fe55b4dbddfe9c15e22080"
+  },
+  {
+    "id": "codex-compact-remote",
+    "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact_remote.rs",
+    "retrieved_at_utc": "2026-10-18T21:49:05.557199+00:00",
+    "http_status": 404,
+    "error_type": "HTTPError",
+    "error_body_bytes": 14,
+    "error_body_sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+  },
+  {
+    "id": "codex-client",
+    "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client.rs",
+    "retrieved_at_utc": "2026-10-18T21:49:05.677848+00:00",
+    "http_status": 200,
+    "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client.rs",
+    "body_bytes": 118699,
+    "body_sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c"
+  }
+]

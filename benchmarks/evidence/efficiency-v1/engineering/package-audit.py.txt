@@ -1,0 +1,76 @@
+"""Package byte-integrity/exclusion audit; no credential files are opened."""
+from __future__ import annotations
+import hashlib, json, tarfile, zipfile
+from pathlib import Path, PurePosixPath
+
+ROOT = Path('/workspace/Memglide')
+BASE = ROOT / '.local/efficiency-v1'
+DIST = BASE / 'dist'
+failures = []
+checks = {}
+sha = lambda data: hashlib.sha256(data).hexdigest()
+def check(name, condition):
+    checks[name] = bool(condition)
+    if not condition:
+        failures.append(name)
+
+wheel, = DIST.glob('*.whl')
+sdist, = DIST.glob('*.tar.gz')
+py_files = {p.relative_to(ROOT / 'src').as_posix(): p for p in (ROOT/'src/memglide').rglob('*.py')}
+web_files = {p.relative_to(ROOT / 'src').as_posix(): p for p in (ROOT/'src/memglide/web').rglob('*') if p.is_file()}
+check('expected_application_python_count_24', len(py_files) == 24)
+check('expected_production_frontend_count_19', len(web_files) == 19)
+forbidden_parts = {'.local', '.git', '.venv', 'node_modules', '__pycache__', '.pytest_cache', '.env'}
+with zipfile.ZipFile(wheel) as archive:
+    names = archive.namelist()
+    check('wheel_unique_paths', len(names) == len(set(names)))
+    check('wheel_no_symlinks', all((item.external_attr >> 16) & 0o170000 != 0o120000 for item in archive.infolist()))
+    check('wheel_no_private_runtime_paths', not any(forbidden_parts.intersection(PurePosixPath(name).parts) or PurePosixPath(name).name in {'auth.json', 'config.toml', 'memglide.db'} for name in names))
+    check('wheel_exact_application_python_set', {name for name in names if name.endswith('.py')} == set(py_files))
+    check('wheel_exact_frontend_set', {name for name in names if name.startswith('memglide/web/')} == set(web_files))
+    for name, path in {**py_files, **web_files}.items():
+        check('wheel_bytes_' + name, archive.read(name) == path.read_bytes())
+    check('wheel_crc', archive.testzip() is None)
+    wheel_count = len(names)
+
+with tarfile.open(sdist, 'r:gz') as archive:
+    members = archive.getmembers()
+    names = [member.name for member in members]
+    check('sdist_unique_paths', len(names) == len(set(names)))
+    check('sdist_no_links', not any(member.issym() or member.islnk() for member in members))
+    roots = {PurePosixPath(name).parts[0] for name in names}
+    check('sdist_single_root', len(roots) == 1)
+    relative = {str(PurePosixPath(member.name).relative_to(next(iter(roots)))): member for member in members}
+    check('sdist_no_private_runtime_paths', not any(forbidden_parts.intersection(PurePosixPath(name).parts) or PurePosixPath(name).name in {'auth.json', 'memglide.db'} for name in relative))
+    for name, path in {**py_files, **web_files}.items():
+        member = relative.get('src/' + name)
+        check('sdist_contains_' + name, member is not None and member.isfile())
+        if member is not None and member.isfile():
+            data = archive.extractfile(member)
+            assert data is not None
+            check('sdist_bytes_' + name, data.read() == path.read_bytes())
+    required = ['src', 'tests', 'benchmarks', 'docs', 'scripts', 'frontend', 'uv.lock', 'pyproject.toml']
+    for group in required:
+        check('sdist_required_' + group, any(name == group or name.startswith(group + '/') for name in relative))
+    verified = 0
+    for name, member in relative.items():
+        path = ROOT / name
+        if member.isfile() and path.is_file():
+            data = archive.extractfile(member)
+            assert data is not None
+            check('sdist_current_bytes_' + name, data.read() == path.read_bytes())
+            verified += 1
+    sdist_count = len(members)
+
+summary = {'passed': not failures, 'functional_checks': len(checks), 'failures': failures,
+           'application_python_files': len(py_files), 'production_frontend_files': len(web_files),
+           'wheel_member_count': wheel_count, 'sdist_member_count': sdist_count,
+           'sdist_current_files_verified': verified,
+           'archive_sha256': {wheel.name: sha(wheel.read_bytes()), sdist.name: sha(sdist.read_bytes())},
+           'scope': 'Archive source equality, compiled assets, paths, symlink exclusion and CRC; no models or pytest cases.'}
+out = BASE/'package-audit.json'
+with out.open('x') as stream:
+    json.dump(summary, stream, indent=2)
+    stream.write('\n')
+print(json.dumps(summary, indent=2))
+assert summary['passed'], failures

@@ -1,0 +1,44 @@
+  + Exception Group Traceback (most recent call last):
+  |   File "/workspace/Memglide/.local/efficiency-v1/package-support-mcp.py", line 176, in <module>
+  |     mcp = asyncio.run(check_mcp(repo,db,project))
+  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 195, in run
+  |     return runner.run(main)
+  |            ^^^^^^^^^^^^^^^^
+  |   File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+  |     return self._loop.run_until_complete(task)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+  |     return future.result()
+  |            ^^^^^^^^^^^^^^^
+  |   File "/workspace/Memglide/.local/efficiency-v1/package-support-mcp.py", line 80, in check_mcp
+  |     async with stdio_client(parameters) as (read,write), ClientSession(read,write) as client:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/workspace/Memglide/.local/efficiency-v1/package-venv/lib/python3.12/site-packages/mcp/client/stdio.py", line 201, in stdio_client
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/workspace/Memglide/.local/efficiency-v1/package-venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "/workspace/Memglide/.local/efficiency-v1/package-venv/lib/python3.12/site-packages/mcp/client/stdio.py", line 205, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "/workspace/Memglide/.local/efficiency-v1/package-support-mcp.py", line 80, in check_mcp
+    |     async with stdio_client(parameters) as (read,write), ClientSession(read,write) as client:
+    |                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/workspace/Memglide/.local/efficiency-v1/package-venv/lib/python3.12/site-packages/mcp/client/session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/workspace/Memglide/.local/efficiency-v1/package-venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+    |     raise BaseExceptionGroup(
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "/workspace/Memglide/.local/efficiency-v1/package-support-mcp.py", line 88, in check_mcp
+      |     assert not remembered.is_error, remembered
+      |            ^^^^^^^^^^^^^^^^^^^^^^^
+      | AssertionError: meta=None content=[TextContent(type='text', text='Error executing tool save_memory: Memglide (400): Unknown memory category; use checkpoint, decision, error, failed_attempt, observation, open_issue, verified_fix', annotations=None, meta=None)] structured_content=None is_error=True result_type='complete'
+      +------------------------------------

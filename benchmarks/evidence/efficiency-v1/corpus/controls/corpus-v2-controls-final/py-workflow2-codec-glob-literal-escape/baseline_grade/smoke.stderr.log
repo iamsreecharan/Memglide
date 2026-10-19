@@ -1,0 +1,20 @@
+test_ordinary_0 (test_glob_literal_escape.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_glob_literal_escape.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_glob_literal_escape.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_glob_literal_escape.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_glob_literal_escape.OrdinaryTests.test_ordinary_4) ... ok
+test_ordinary_0 (test_roman_subtractive.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_roman_subtractive.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_roman_subtractive.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_roman_subtractive.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_roman_subtractive.OrdinaryTests.test_ordinary_4) ... ok
+test_ordinary_0 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_unsigned_varint_batch.OrdinaryTests.test_ordinary_4) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK

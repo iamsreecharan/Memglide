@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 1.29902
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.140291
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.096474
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.100709
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 0.136842
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 6 - ordinary-0
+  ---
+  duration_ms: 4.836373
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 7 - ordinary-1
+  ---
+  duration_ms: 0.960092
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 8 - ordinary-2
+  ---
+  duration_ms: 2.631661
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 9 - ordinary-3
+  ---
+  duration_ms: 1.798188
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 10 - ordinary-4
+  ---
+  duration_ms: 0.227914
+  type: 'test'
+  ...
+# Subtest: nextState respects both boundaries and retains state between them
+ok 11 - nextState respects both boundaries and retains state between them
+  ---
+  duration_ms: 1.00172
+  type: 'test'
+  ...
+# Subtest: traceStates carries state across repeated crossings without mutating values
+ok 12 - traceStates carries state across repeated crossings without mutating values
+  ---
+  duration_ms: 0.400638
+  type: 'test'
+  ...
+# Subtest: traceStates respects an initially active state
+ok 13 - traceStates respects an initially active state
+  ---
+  duration_ms: 0.181164
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 380.323988

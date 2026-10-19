@@ -1,0 +1,75 @@
+{
+  "version": 3,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "51e6ae7a188e163ab56ea0fbfbb7b0600e8a77f43a9247b10997c46343848993",
+    "prepared_prompt_sha256": "8b824c60d4118dabf9382ac47a5f6f2a4bb0050661b2e5c2c57925b532b1f3a1",
+    "files": [
+      {
+        "path": "finance/discount_before_tax.py",
+        "sha256": "308df7a08d5dbbd382e86fc95e17f4f41dbd344aac08cec39f4ed982c3dbaa20",
+        "start_line": 1,
+        "end_line": 3
+      },
+      {
+        "path": "tests/test_discount_before_tax.py",
+        "sha256": "4f7473a65b5af8081c3e437ac9abf40ab29cf85d7c53c3ff970df7949481429e",
+        "start_line": 1,
+        "end_line": 19
+      }
+    ],
+    "context_bytes": 1006,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "focus_paths": [
+      "finance/discount_before_tax.py"
+    ],
+    "support_paths": [
+      "tests/test_discount_before_tax.py"
+    ],
+    "preparation_wall_seconds": 0.053433711000252515,
+    "preparation_cpu_seconds": 0.053436770999999994
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-py-workflow-finance-discount-before-tax-r2-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-discount-before-tax-r2-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "8b824c60d4118dabf9382ac47a5f6f2a4bb0050661b2e5c2c57925b532b1f3a1",
+    "bytes": 2906,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 52166.674774205
+}

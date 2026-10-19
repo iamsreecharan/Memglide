@@ -1,0 +1,9 @@
+{
+  "id": "codex-compact",
+  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact.rs",
+  "retrieved_at_utc": "2026-10-18T21:49:05.522795+00:00",
+  "http_status": 200,
+  "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact.rs",
+  "body_bytes": 30403,
+  "body_sha256": "715756709185c29499c328617a7907a7fc8ede9e89fe55b4dbddfe9c15e22080"
+}

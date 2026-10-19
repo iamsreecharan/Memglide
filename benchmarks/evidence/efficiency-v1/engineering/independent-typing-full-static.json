@@ -1,0 +1,76 @@
+[
+  {
+    "command": [
+      "uv",
+      "run",
+      "ruff",
+      "check",
+      "src",
+      "tests",
+      "benchmarks"
+    ],
+    "exit_code": 0,
+    "log": ".local/efficiency-v1/independent-typing-full-ruff.log",
+    "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  {
+    "command": [
+      "uv",
+      "run",
+      "ruff",
+      "format",
+      "--check",
+      "src",
+      "tests",
+      "benchmarks"
+    ],
+    "exit_code": 0,
+    "log": ".local/efficiency-v1/independent-typing-full-format.log",
+    "log_sha256": "c9572de1182ff9a0c4f57870e5328e649df7ba707cfc802e2cb7ff048643cb93"
+  },
+  {
+    "command": [
+      "uv",
+      "run",
+      "mypy",
+      "src",
+      "benchmarks/__init__.py",
+      "benchmarks/cache_preparation.py",
+      "benchmarks/compact_quality_evaluation.py",
+      "benchmarks/compare_components.py",
+      "benchmarks/context_audit_v2.py",
+      "benchmarks/context_efficiency_v2.py",
+      "benchmarks/context_performance.py",
+      "benchmarks/corpus.py",
+      "benchmarks/corpus_cache.py",
+      "benchmarks/corpus_cost.py",
+      "benchmarks/corpus_daily.py",
+      "benchmarks/corpus_v2.py",
+      "benchmarks/corpus_workflow.py",
+      "benchmarks/estimate_cost.py",
+      "benchmarks/live_context_analysis.py",
+      "benchmarks/probe.py",
+      "benchmarks/ranking_development.py",
+      "benchmarks/read_path_diagnostics.py",
+      "benchmarks/refinement_corpus.py",
+      "benchmarks/refinement_eval.py",
+      "benchmarks/refinement_reporting.py",
+      "benchmarks/reporting.py",
+      "benchmarks/retrieval_experiment.py",
+      "benchmarks/run.py",
+      "benchmarks/run_cache_formats.py",
+      "benchmarks/run_cost.py",
+      "benchmarks/run_daily.py",
+      "benchmarks/run_v2.py",
+      "benchmarks/run_workflow.py",
+      "benchmarks/search_frequency.py",
+      "benchmarks/search_scale.py",
+      "benchmarks/telemetry.py",
+      "benchmarks/verify_rank_equivalence.py",
+      "benchmarks/workflow_cost.py"
+    ],
+    "exit_code": 0,
+    "log": ".local/efficiency-v1/independent-typing-full-mypy.log",
+    "log_sha256": "8797c60315242ee16057cb107ea1ec62e2678d358c86bc2be797e23d87e87578"
+  }
+]

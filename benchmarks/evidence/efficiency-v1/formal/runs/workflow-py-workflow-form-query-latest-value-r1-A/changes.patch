@@ -1,0 +1,52 @@
+diff --git a/form/query_latest_value.py b/form/query_latest_value.py
+index 59f02f3..7e9e165 100644
+--- a/form/query_latest_value.py
++++ b/form/query_latest_value.py
+@@ -2,5 +2,5 @@ def latest_values(pairs):
+     """Collect repeated form fields into their final submitted values."""
+     result = {}
+     for key, value in pairs:
+-        result.setdefault(key, value)
++        result[key] = value
+     return result
+diff --git a/form/query_latest_value_api.py b/form/query_latest_value_api.py
+index b82bd6c..70692a9 100644
+--- a/form/query_latest_value_api.py
++++ b/form/query_latest_value_api.py
+@@ -2,4 +2,4 @@ from .query_latest_value import latest_values
+ 
+ def query_value(pairs, key, default=""):
+     """Read a submitted field without changing its value."""
+-    return latest_values(pairs).get(key.lower(), default)
++    return latest_values(pairs).get(key, default)
+diff --git a/tests/test_query_latest_value.py b/tests/test_query_latest_value.py
+index 6020810..dc47899 100644
+--- a/tests/test_query_latest_value.py
++++ b/tests/test_query_latest_value.py
+@@ -18,3 +18,26 @@ class OrdinaryTests(unittest.TestCase):
+     def test_ordinary_4(self):
+         self.assertEqual(api.query_value([],"a","missing"),"missing")
+ 
++class RegressionTests(unittest.TestCase):
++    def test_latest_values_preserves_first_key_order_and_input(self):
++        pairs = [("B", "first"), ("a", "middle"), ("B", "Last Value"),
++                 ("b", "distinct"), ("a", "")]
++        original = pairs.copy()
++        result = core.latest_values(pairs)
++        self.assertEqual(list(result.items()),
++                         [("B", "Last Value"), ("a", ""), ("b", "distinct")])
++        self.assertEqual(pairs, original)
++
++    def test_query_uses_exact_key_and_latest_unchanged_value(self):
++        pairs = [("Field", "old"), ("field", "lower"),
++                 ("Field", "  Mixed CASE  ")]
++        original = pairs.copy()
++        self.assertEqual(api.query_value(pairs, "Field"), "  Mixed CASE  ")
++        self.assertEqual(api.query_value(pairs, "field"), "lower")
++        self.assertEqual(api.query_value(pairs, "FIELD", "  Default  "),
++                         "  Default  ")
++        self.assertEqual(pairs, original)
++
++    def test_empty_value_does_not_use_default(self):
++        self.assertEqual(api.query_value([("a", "old"), ("a", "")],
++                                         "a", "missing"), "")

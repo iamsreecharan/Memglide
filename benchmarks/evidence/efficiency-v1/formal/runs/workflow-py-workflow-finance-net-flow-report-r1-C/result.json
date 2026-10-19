@@ -1,0 +1,337 @@
+{
+  "run_id": "workflow-py-workflow-finance-net-flow-report-r1-C",
+  "task_id": "py-workflow-finance-net-flow-report",
+  "language": "python",
+  "repository": "finance-python-workflow",
+  "task_kind": "integration",
+  "selection_stratum": "explicit_focus",
+  "configuration": "C",
+  "repeat": 1,
+  "order": 15,
+  "context_format": "compact-prefix",
+  "support_enabled": true,
+  "setup": {
+    "project_id": "efb074c11d2944628a1e0d359226ccf9",
+    "wall_seconds": 0.28661311899486464,
+    "cpu_seconds": 0.15237170599999672,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches launcher stdin and native options",
+    "context_format": "compact-prefix",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "8e965c14e2ddf4364a9da767e9846ab58aa7501eb4c7533dcfb093bd7a43e6d4",
+      "prepared_prompt_sha256": "9e5ccbd9e1d56aad1bb65a062d37d482187376655906d7eedfdbdb40fabe2e40",
+      "files": [
+        {
+          "path": "finance/net_flow_report.py",
+          "sha256": "7e74f9ab916635b6cadc334d7ae0fdd12ec9701eb0a5be609ebc0d57efec92af",
+          "start_line": 1,
+          "end_line": 3
+        },
+        {
+          "path": "finance/net_flow_report_api.py",
+          "sha256": "4390822a9920fbada5b85981d21bab540cd499aa177e2060a4d689ece72b09b1",
+          "start_line": 1,
+          "end_line": 5
+        },
+        {
+          "path": "tests/test_net_flow_report.py",
+          "sha256": "5269cac342f6e3b15743e57b6204a4481e32327f1cad51eb0c7ed3f1b1424b4d",
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "context_bytes": 1312,
+      "context_format": "compact-prefix",
+      "prompt_layout": "source_prefix",
+      "focus_paths": [
+        "finance/net_flow_report.py",
+        "finance/net_flow_report_api.py"
+      ],
+      "support_paths": [
+        "tests/test_net_flow_report.py"
+      ],
+      "preparation_wall_seconds": 0.07154001299932133,
+      "preparation_cpu_seconds": 0.07153765299999998
+    },
+    "source_file_count": 3,
+    "source_hashes": {
+      "finance/net_flow_report.py": "7e74f9ab916635b6cadc334d7ae0fdd12ec9701eb0a5be609ebc0d57efec92af",
+      "finance/net_flow_report_api.py": "4390822a9920fbada5b85981d21bab540cd499aa177e2060a4d689ece72b09b1",
+      "tests/test_net_flow_report.py": "5269cac342f6e3b15743e57b6204a4481e32327f1cad51eb0c7ed3f1b1424b4d"
+    },
+    "context_bytes": 1312,
+    "actual_model_prompt_sha256": "9e5ccbd9e1d56aad1bb65a062d37d482187376655906d7eedfdbdb40fabe2e40",
+    "common_task_prompt_sha256": "8e965c14e2ddf4364a9da767e9846ab58aa7501eb4c7533dcfb093bd7a43e6d4",
+    "native_exec_boundary_monotonic_seconds": 51236.539161145
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "234b192121a7a3231fb4b3d12c9b4946e9f68f750f30b8c29bbf42e26b56f7fe",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "workflow-py-workflow-finance-net-flow-report-r1-C",
+  "supplemental": false,
+  "status": "failed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T03:44:54.022544+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-py-workflow-finance-net-flow-report-r1-C",
+  "errors": [
+    "Protected repository tests or Git metadata changed"
+  ],
+  "grader": {
+    "task_id": "py-workflow-finance-net-flow-report",
+    "repository": "finance-python-workflow",
+    "corpus_version": "workflow-1.0.0",
+    "passed": false,
+    "success": false,
+    "exit_code": 1,
+    "commands": [
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C/held_out.py"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/workspace/Memglide/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 12
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C/smoke.stderr.log"
+      }
+    ],
+    "test_count": 14,
+    "protected_files_unchanged": false,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "0ff109ee841d10fa1928d603aa705d5f488eb64f11e0581e0a5a5ad28c94371e",
+        "actual_sha256": "0ff109ee841d10fa1928d603aa705d5f488eb64f11e0581e0a5a5ad28c94371e"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "f002aa485358ebd7b8a381e8f92c9c8073a5389e2cb1c85fae63c7605d7d188a",
+        "actual_sha256": "f002aa485358ebd7b8a381e8f92c9c8073a5389e2cb1c85fae63c7605d7d188a"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "tests/test_discount_before_tax.py",
+        "unchanged": true,
+        "expected_sha256": "4f7473a65b5af8081c3e437ac9abf40ab29cf85d7c53c3ff970df7949481429e",
+        "actual_sha256": "4f7473a65b5af8081c3e437ac9abf40ab29cf85d7c53c3ff970df7949481429e"
+      },
+      {
+        "file": "tests/test_net_flow_report.py",
+        "unchanged": false,
+        "expected_sha256": "5269cac342f6e3b15743e57b6204a4481e32327f1cad51eb0c7ed3f1b1424b4d",
+        "actual_sha256": "d1628f17b5cd6741f30d76f17bf98a52838847253b99116db05cb8bdeea1666f"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 10
+        },
+        "reported_counts": {
+          "tests": 12
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "5802ca424e0c90ea2070f23ebba284cc2d84bc4a",
+  "common_task_prompt_sha256": "8e965c14e2ddf4364a9da767e9846ab58aa7501eb4c7533dcfb093bd7a43e6d4",
+  "actual_model_prompt_sha256": "9e5ccbd9e1d56aad1bb65a062d37d482187376655906d7eedfdbdb40fabe2e40",
+  "configuration_label": "Memglide source plus support",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-py-workflow-finance-net-flow-report-r1-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-py-workflow-finance-net-flow-report-r1-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 14.366349659001571,
+  "process_started_monotonic_seconds": 51236.056184747,
+  "process_finished_monotonic_seconds": 51250.422534406,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 172445696,
+    "cpu_seconds": 3.33,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 19,
+    "observed_memglide_processes": 0,
+    "samples": 212,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 13,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 24476,
+      "cached_input_tokens": 11648,
+      "output_tokens": 504
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 24476,
+      "cached_input_tokens": 11648,
+      "output_tokens": 504
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 3,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc 'git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_3",
+        "command": "/bin/bash -lc 'python -m unittest discover -s tests -v'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc 'git diff --check'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 0,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 14.661079663994315,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 13.883373261000088,
+  "native_exec_timing_scope": "B/C launcher boundary before report-write/exec handoff through native exit; A has no launcher boundary",
+  "protected_file_violations": [
+    "tests/test_net_flow_report.py"
+  ],
+  "common_blocker": null,
+  "finished_at": "2026-10-19T03:45:09.281029+00:00"
+}

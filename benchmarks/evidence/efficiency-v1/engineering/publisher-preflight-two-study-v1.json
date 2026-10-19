@@ -1,0 +1,48 @@
+{
+  "pass": true,
+  "checked_assertions": 54,
+  "models_requested": 0,
+  "live_experiment_files_read": 0,
+  "public_mutations": 0,
+  "public_fixture_git_commit": "93acf63e1583bd66239b22dc53c2aaf196e3a35a",
+  "unchanged_application_source_sha256": "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+  "publisher_sha256": "88a8ad99e95748502c6e30b2f4a5e04009ab04907ddf0b182da0c3de40d009f0",
+  "builder_sha256": "2756861e9cac655c386fc54e5cf5e6673a086fae64a556f3b50b08ae3d31ff26",
+  "historical_preservation": {
+    "base_commit": "448f70555698b56f2f7b257a84628106846fb55e",
+    "scope": "All pre-iteration tracked benchmarks reports/configs/evidence/archives; authorized Python helper edits excluded unless under immutable evidence",
+    "unchanged_files": 11501,
+    "unchanged_bytes": 116758605,
+    "sha256_of_sorted_file_records": "ec0e37d664c073c480cd201769dd0f1632c023c70dca8a823f08a54fbe32eb16",
+    "whole_original_zip_files": [
+      {
+        "path": "benchmarks/memglide-ab-final-report.zip",
+        "bytes": 2147774,
+        "sha256": "ad28247777436fd58cfec080dea1c00b982303f2495615ec46beffeebc82ea06"
+      },
+      {
+        "path": "benchmarks/memglide-ab-optimized-report.zip",
+        "bytes": 6211466,
+        "sha256": "98f2862b7a712323f16598980c44222c8b78abf8ddabcb31d821501053896265"
+      },
+      {
+        "path": "benchmarks/memglide-cache-refinement-report.zip",
+        "bytes": 2136453,
+        "sha256": "b60b29a4d7db761efb473f032d5440cdbe3f9acbf78567f754c7f12d72f69e15"
+      },
+      {
+        "path": "benchmarks/memglide-cost-ab-report.zip",
+        "bytes": 1122603,
+        "sha256": "2f211d7ea082e2dda961c1486809ea17c45c432a1fd1ae6ad91e3515e3948520"
+      },
+      {
+        "path": "benchmarks/memglide-daily-ab-report.zip",
+        "bytes": 2933384,
+        "sha256": "d8ed3d014e7d6230da1be4af17a09b59427321f38be5ba4226c9a40f8afc355d"
+      }
+    ]
+  },
+  "limitations": [
+    "Synthetic two-study guard proof; actual confirmation/public ZIP checks remain pending completion and parent authorization."
+  ]
+}

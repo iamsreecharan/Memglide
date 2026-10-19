@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: Unicode byte sizes
+ok 1 - Unicode byte sizes
+  ---
+  duration_ms: 1.85145
+  type: 'test'
+  ...
+# Subtest: replacement semantics and controls
+ok 2 - replacement semantics and controls
+  ---
+  duration_ms: 0.717648
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 233.942438

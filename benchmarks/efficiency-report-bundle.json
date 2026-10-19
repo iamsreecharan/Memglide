@@ -1,0 +1,2029 @@
+{
+  "actual_billed_cost_usd": null,
+  "archive": "benchmarks/memglide-efficiency-report.zip",
+  "archive_bytes": 6242803,
+  "archive_member_count": 4139,
+  "archive_sha256": "a7164f0cf7fcaabd73707edf194900bb83449174a55cadeed2080de309b92217",
+  "builder_source_sha256": "f106b56a2000712ed3057ee26f753b81be4b6ff216d1fd29244ed6c15be1f83d",
+  "campaign_accounting": {
+    "configurations": {
+      "A": {
+        "attempts": 40,
+        "cost_per_successful_task_usd": {
+          "native_reported_price_equivalent_usd": 0.06444774,
+          "possible_write_price_lower_usd": 0.06444774,
+          "possible_write_price_upper_usd": 0.075512865
+        },
+        "cost_total_usd": {
+          "native_reported_price_equivalent_usd": 1.2889548,
+          "possible_write_price_lower_usd": 1.2889548,
+          "possible_write_price_upper_usd": 1.5102573
+        },
+        "failed_assignments": 20,
+        "successful_assignments": 20,
+        "unknown_cost_assignments": 0
+      },
+      "B": {
+        "attempts": 40,
+        "cost_per_successful_task_usd": {
+          "native_reported_price_equivalent_usd": 0.06413004,
+          "possible_write_price_lower_usd": 0.06413004,
+          "possible_write_price_upper_usd": 0.07536829
+        },
+        "cost_total_usd": {
+          "native_reported_price_equivalent_usd": 1.2826008,
+          "possible_write_price_lower_usd": 1.2826008,
+          "possible_write_price_upper_usd": 1.5073658
+        },
+        "failed_assignments": 20,
+        "successful_assignments": 20,
+        "unknown_cost_assignments": 0
+      },
+      "C": {
+        "attempts": 40,
+        "cost_per_successful_task_usd": {
+          "native_reported_price_equivalent_usd": 0.0623735,
+          "possible_write_price_lower_usd": 0.0623735,
+          "possible_write_price_upper_usd": 0.07319005
+        },
+        "cost_total_usd": {
+          "native_reported_price_equivalent_usd": 1.24747,
+          "possible_write_price_lower_usd": 1.24747,
+          "possible_write_price_upper_usd": 1.463801
+        },
+        "failed_assignments": 20,
+        "successful_assignments": 20,
+        "unknown_cost_assignments": 0
+      }
+    },
+    "original_assignments": 120,
+    "originals_per_arm": 40,
+    "runs": [
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0384,
+          "possible_write_price_lower_usd": 0.0384,
+          "possible_write_price_upper_usd": 0.0450055
+        },
+        "run_id": "workflow-ts-workflow-text-negative-array-offset-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0372472,
+          "possible_write_price_lower_usd": 0.0372472,
+          "possible_write_price_upper_usd": 0.0438452
+        },
+        "run_id": "workflow-ts-workflow-text-negative-array-offset-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0324892,
+          "possible_write_price_lower_usd": 0.0324892,
+          "possible_write_price_upper_usd": 0.0387792
+        },
+        "run_id": "workflow-ts-workflow-text-negative-array-offset-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.032694,
+          "possible_write_price_lower_usd": 0.032694,
+          "possible_write_price_upper_usd": 0.039137
+        },
+        "run_id": "workflow-py-workflow-form-ascii-count-field-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0602764,
+          "possible_write_price_lower_usd": 0.0602764,
+          "possible_write_price_upper_usd": 0.0729419
+        },
+        "run_id": "workflow-py-workflow-form-ascii-count-field-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.03355,
+          "possible_write_price_lower_usd": 0.03355,
+          "possible_write_price_upper_usd": 0.040027
+        },
+        "run_id": "workflow-py-workflow-form-ascii-count-field-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0581568,
+          "possible_write_price_lower_usd": 0.0581568,
+          "possible_write_price_upper_usd": 0.0703573
+        },
+        "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0371668,
+          "possible_write_price_lower_usd": 0.0371668,
+          "possible_write_price_upper_usd": 0.0437418
+        },
+        "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0375692,
+          "possible_write_price_lower_usd": 0.0375692,
+          "possible_write_price_upper_usd": 0.0440887
+        },
+        "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.030858,
+          "possible_write_price_lower_usd": 0.030858,
+          "possible_write_price_upper_usd": 0.037257
+        },
+        "run_id": "workflow-py-workflow-form-form-plus-decoding-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.034,
+          "possible_write_price_lower_usd": 0.034,
+          "possible_write_price_upper_usd": 0.0406065
+        },
+        "run_id": "workflow-py-workflow-form-form-plus-decoding-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0325712,
+          "possible_write_price_lower_usd": 0.0325712,
+          "possible_write_price_upper_usd": 0.0390262
+        },
+        "run_id": "workflow-py-workflow-form-form-plus-decoding-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0341208,
+          "possible_write_price_lower_usd": 0.0341208,
+          "possible_write_price_upper_usd": 0.0406818
+        },
+        "run_id": "workflow-py-workflow-finance-net-flow-report-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.03455,
+          "possible_write_price_lower_usd": 0.03455,
+          "possible_write_price_upper_usd": 0.041114
+        },
+        "run_id": "workflow-py-workflow-finance-net-flow-report-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0318608,
+          "possible_write_price_lower_usd": 0.0318608,
+          "possible_write_price_upper_usd": 0.0382748
+        },
+        "run_id": "workflow-py-workflow-finance-net-flow-report-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0371444,
+          "possible_write_price_lower_usd": 0.0371444,
+          "possible_write_price_upper_usd": 0.0440914
+        },
+        "run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0576156,
+          "possible_write_price_lower_usd": 0.0576156,
+          "possible_write_price_upper_usd": 0.0697751
+        },
+        "run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0347588,
+          "possible_write_price_lower_usd": 0.0347588,
+          "possible_write_price_upper_usd": 0.0412843
+        },
+        "run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0330232,
+          "possible_write_price_lower_usd": 0.0330232,
+          "possible_write_price_upper_usd": 0.0394137
+        },
+        "run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.014296,
+          "possible_write_price_lower_usd": 0.014296,
+          "possible_write_price_upper_usd": 0.016143
+        },
+        "run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.036036,
+          "possible_write_price_lower_usd": 0.036036,
+          "possible_write_price_upper_usd": 0.0425975
+        },
+        "run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.037636,
+          "possible_write_price_lower_usd": 0.037636,
+          "possible_write_price_upper_usd": 0.044424
+        },
+        "run_id": "workflow-py-workflow-form-query-latest-value-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0580312,
+          "possible_write_price_lower_usd": 0.0580312,
+          "possible_write_price_upper_usd": 0.0706092
+        },
+        "run_id": "workflow-py-workflow-form-query-latest-value-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0335708,
+          "possible_write_price_lower_usd": 0.0335708,
+          "possible_write_price_upper_usd": 0.0401423
+        },
+        "run_id": "workflow-py-workflow-form-query-latest-value-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0331372,
+          "possible_write_price_lower_usd": 0.0331372,
+          "possible_write_price_upper_usd": 0.0395112
+        },
+        "run_id": "workflow-ts-workflow-text-utf8-byte-length-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.03043,
+          "possible_write_price_lower_usd": 0.03043,
+          "possible_write_price_upper_usd": 0.0366295
+        },
+        "run_id": "workflow-ts-workflow-text-utf8-byte-length-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0330432,
+          "possible_write_price_lower_usd": 0.0330432,
+          "possible_write_price_upper_usd": 0.0393412
+        },
+        "run_id": "workflow-ts-workflow-text-utf8-byte-length-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.030572,
+          "possible_write_price_lower_usd": 0.030572,
+          "possible_write_price_upper_usd": 0.036917
+        },
+        "run_id": "workflow-py-workflow-finance-discount-before-tax-r1-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0152828,
+          "possible_write_price_lower_usd": 0.0152828,
+          "possible_write_price_upper_usd": 0.0172228
+        },
+        "run_id": "workflow-py-workflow-finance-discount-before-tax-r1-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0325052,
+          "possible_write_price_lower_usd": 0.0325052,
+          "possible_write_price_upper_usd": 0.0389687
+        },
+        "run_id": "workflow-py-workflow-finance-discount-before-tax-r1-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0326732,
+          "possible_write_price_lower_usd": 0.0326732,
+          "possible_write_price_upper_usd": 0.0389717
+        },
+        "run_id": "workflow-ts-workflow-text-negative-array-offset-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0359132,
+          "possible_write_price_lower_usd": 0.0359132,
+          "possible_write_price_upper_usd": 0.0424452
+        },
+        "run_id": "workflow-ts-workflow-text-negative-array-offset-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0381856,
+          "possible_write_price_lower_usd": 0.0381856,
+          "possible_write_price_upper_usd": 0.0448606
+        },
+        "run_id": "workflow-ts-workflow-text-negative-array-offset-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.032458,
+          "possible_write_price_lower_usd": 0.032458,
+          "possible_write_price_upper_usd": 0.0388795
+        },
+        "run_id": "workflow-py-workflow-form-ascii-count-field-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.015656,
+          "possible_write_price_lower_usd": 0.015656,
+          "possible_write_price_upper_usd": 0.0176155
+        },
+        "run_id": "workflow-py-workflow-form-ascii-count-field-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.032016,
+          "possible_write_price_lower_usd": 0.032016,
+          "possible_write_price_upper_usd": 0.0384145
+        },
+        "run_id": "workflow-py-workflow-form-ascii-count-field-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0186852,
+          "possible_write_price_lower_usd": 0.0186852,
+          "possible_write_price_upper_usd": 0.0206522
+        },
+        "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0349536,
+          "possible_write_price_lower_usd": 0.0349536,
+          "possible_write_price_upper_usd": 0.0414296
+        },
+        "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0575872,
+          "possible_write_price_lower_usd": 0.0575872,
+          "possible_write_price_upper_usd": 0.0698342
+        },
+        "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0330492,
+          "possible_write_price_lower_usd": 0.0330492,
+          "possible_write_price_upper_usd": 0.0395762
+        },
+        "run_id": "workflow-py-workflow-form-form-plus-decoding-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.033988,
+          "possible_write_price_lower_usd": 0.033988,
+          "possible_write_price_upper_usd": 0.040589
+        },
+        "run_id": "workflow-py-workflow-form-form-plus-decoding-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.031754,
+          "possible_write_price_lower_usd": 0.031754,
+          "possible_write_price_upper_usd": 0.038197
+        },
+        "run_id": "workflow-py-workflow-form-form-plus-decoding-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0358072,
+          "possible_write_price_lower_usd": 0.0358072,
+          "possible_write_price_upper_usd": 0.0427042
+        },
+        "run_id": "workflow-py-workflow-finance-net-flow-report-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.01764,
+          "possible_write_price_lower_usd": 0.01764,
+          "possible_write_price_upper_usd": 0.01973
+        },
+        "run_id": "workflow-py-workflow-finance-net-flow-report-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0172028,
+          "possible_write_price_lower_usd": 0.0172028,
+          "possible_write_price_upper_usd": 0.0192978
+        },
+        "run_id": "workflow-py-workflow-finance-net-flow-report-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0236052,
+          "possible_write_price_lower_usd": 0.0236052,
+          "possible_write_price_upper_usd": 0.0270937
+        },
+        "run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.035148,
+          "possible_write_price_lower_usd": 0.035148,
+          "possible_write_price_upper_usd": 0.041639
+        },
+        "run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.035976,
+          "possible_write_price_lower_usd": 0.035976,
+          "possible_write_price_upper_usd": 0.042673
+        },
+        "run_id": "workflow-ts-workflow-signals-threshold-hysteresis-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.032966,
+          "possible_write_price_lower_usd": 0.032966,
+          "possible_write_price_upper_usd": 0.0393615
+        },
+        "run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.03086,
+          "possible_write_price_lower_usd": 0.03086,
+          "possible_write_price_upper_usd": 0.0371645
+        },
+        "run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0365624,
+          "possible_write_price_lower_usd": 0.0365624,
+          "possible_write_price_upper_usd": 0.0431544
+        },
+        "run_id": "workflow-ts-workflow-text-path-segment-roundtrip-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.038446,
+          "possible_write_price_lower_usd": 0.038446,
+          "possible_write_price_upper_usd": 0.0463535
+        },
+        "run_id": "workflow-py-workflow-form-query-latest-value-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0359128,
+          "possible_write_price_lower_usd": 0.0359128,
+          "possible_write_price_upper_usd": 0.0426493
+        },
+        "run_id": "workflow-py-workflow-form-query-latest-value-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0589464,
+          "possible_write_price_lower_usd": 0.0589464,
+          "possible_write_price_upper_usd": 0.0715789
+        },
+        "run_id": "workflow-py-workflow-form-query-latest-value-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0165352,
+          "possible_write_price_lower_usd": 0.0165352,
+          "possible_write_price_upper_usd": 0.0184047
+        },
+        "run_id": "workflow-ts-workflow-text-utf8-byte-length-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.013276,
+          "possible_write_price_lower_usd": 0.013276,
+          "possible_write_price_upper_usd": 0.0149905
+        },
+        "run_id": "workflow-ts-workflow-text-utf8-byte-length-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0323492,
+          "possible_write_price_lower_usd": 0.0323492,
+          "possible_write_price_upper_usd": 0.0386587
+        },
+        "run_id": "workflow-ts-workflow-text-utf8-byte-length-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0333672,
+          "possible_write_price_lower_usd": 0.0333672,
+          "possible_write_price_upper_usd": 0.0398662
+        },
+        "run_id": "workflow-py-workflow-finance-discount-before-tax-r2-A",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0199868,
+          "possible_write_price_lower_usd": 0.0199868,
+          "possible_write_price_upper_usd": 0.0231743
+        },
+        "run_id": "workflow-py-workflow-finance-discount-before-tax-r2-B",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0305,
+          "possible_write_price_lower_usd": 0.0305,
+          "possible_write_price_upper_usd": 0.0368445
+        },
+        "run_id": "workflow-py-workflow-finance-discount-before-tax-r2-C",
+        "study": "formal",
+        "success": false
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0411828,
+          "possible_write_price_lower_usd": 0.0411828,
+          "possible_write_price_upper_usd": 0.0480528
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0407136,
+          "possible_write_price_lower_usd": 0.0407136,
+          "possible_write_price_upper_usd": 0.0475481
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0442524,
+          "possible_write_price_lower_usd": 0.0442524,
+          "possible_write_price_upper_usd": 0.0512334
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0165468,
+          "possible_write_price_lower_usd": 0.0165468,
+          "possible_write_price_upper_usd": 0.0186883
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0354628,
+          "possible_write_price_lower_usd": 0.0354628,
+          "possible_write_price_upper_usd": 0.0421548
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0186008,
+          "possible_write_price_lower_usd": 0.0186008,
+          "possible_write_price_upper_usd": 0.0208133
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0161316,
+          "possible_write_price_lower_usd": 0.0161316,
+          "possible_write_price_upper_usd": 0.0181281
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0339144,
+          "possible_write_price_lower_usd": 0.0339144,
+          "possible_write_price_upper_usd": 0.0404474
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0344928,
+          "possible_write_price_lower_usd": 0.0344928,
+          "possible_write_price_upper_usd": 0.0410193
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.020596,
+          "possible_write_price_lower_usd": 0.020596,
+          "possible_write_price_upper_usd": 0.0230165
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0352144,
+          "possible_write_price_lower_usd": 0.0352144,
+          "possible_write_price_upper_usd": 0.0419199
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0355544,
+          "possible_write_price_lower_usd": 0.0355544,
+          "possible_write_price_upper_usd": 0.0422374
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0386308,
+          "possible_write_price_lower_usd": 0.0386308,
+          "possible_write_price_upper_usd": 0.0455508
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0392832,
+          "possible_write_price_lower_usd": 0.0392832,
+          "possible_write_price_upper_usd": 0.0462552
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0399384,
+          "possible_write_price_lower_usd": 0.0399384,
+          "possible_write_price_upper_usd": 0.0470189
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0489268,
+          "possible_write_price_lower_usd": 0.0489268,
+          "possible_write_price_upper_usd": 0.0575748
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0456732,
+          "possible_write_price_lower_usd": 0.0456732,
+          "possible_write_price_upper_usd": 0.0540552
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.020202,
+          "possible_write_price_lower_usd": 0.020202,
+          "possible_write_price_upper_usd": 0.0224415
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0425056,
+          "possible_write_price_lower_usd": 0.0425056,
+          "possible_write_price_upper_usd": 0.0494171
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-natural-stable-sort-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.02468,
+          "possible_write_price_lower_usd": 0.02468,
+          "possible_write_price_upper_usd": 0.027109
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-natural-stable-sort-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0295028,
+          "possible_write_price_lower_usd": 0.0295028,
+          "possible_write_price_upper_usd": 0.0322468
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-natural-stable-sort-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0215904,
+          "possible_write_price_lower_usd": 0.0215904,
+          "possible_write_price_upper_usd": 0.0240684
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.039754,
+          "possible_write_price_lower_usd": 0.039754,
+          "possible_write_price_upper_usd": 0.046843
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0186404,
+          "possible_write_price_lower_usd": 0.0186404,
+          "possible_write_price_upper_usd": 0.0209089
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0199636,
+          "possible_write_price_lower_usd": 0.0199636,
+          "possible_write_price_upper_usd": 0.0220956
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0486972,
+          "possible_write_price_lower_usd": 0.0486972,
+          "possible_write_price_upper_usd": 0.0563032
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0472152,
+          "possible_write_price_lower_usd": 0.0472152,
+          "possible_write_price_upper_usd": 0.0555702
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0147448,
+          "possible_write_price_lower_usd": 0.0147448,
+          "possible_write_price_upper_usd": 0.0167758
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-bit-hamming-distance-r1-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0178344,
+          "possible_write_price_lower_usd": 0.0178344,
+          "possible_write_price_upper_usd": 0.0201084
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-bit-hamming-distance-r1-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0171728,
+          "possible_write_price_lower_usd": 0.0171728,
+          "possible_write_price_upper_usd": 0.0193453
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-bit-hamming-distance-r1-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0210984,
+          "possible_write_price_lower_usd": 0.0210984,
+          "possible_write_price_upper_usd": 0.0233259
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0409296,
+          "possible_write_price_lower_usd": 0.0409296,
+          "possible_write_price_upper_usd": 0.0477731
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0239048,
+          "possible_write_price_lower_usd": 0.0239048,
+          "possible_write_price_upper_usd": 0.0263113
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-unicode-common-prefix-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.023202,
+          "possible_write_price_lower_usd": 0.023202,
+          "possible_write_price_upper_usd": 0.026737
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0350108,
+          "possible_write_price_lower_usd": 0.0350108,
+          "possible_write_price_upper_usd": 0.0416873
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0181328,
+          "possible_write_price_lower_usd": 0.0181328,
+          "possible_write_price_upper_usd": 0.0203258
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-roman-subtractive-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0165388,
+          "possible_write_price_lower_usd": 0.0165388,
+          "possible_write_price_upper_usd": 0.0185953
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0155348,
+          "possible_write_price_lower_usd": 0.0155348,
+          "possible_write_price_upper_usd": 0.0175508
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0174796,
+          "possible_write_price_lower_usd": 0.0174796,
+          "possible_write_price_upper_usd": 0.0195656
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-manhattan-symmetric-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.04119,
+          "possible_write_price_lower_usd": 0.04119,
+          "possible_write_price_upper_usd": 0.0493805
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0190684,
+          "possible_write_price_lower_usd": 0.0190684,
+          "possible_write_price_upper_usd": 0.0213509
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.03594,
+          "possible_write_price_lower_usd": 0.03594,
+          "possible_write_price_upper_usd": 0.042673
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0223604,
+          "possible_write_price_lower_usd": 0.0223604,
+          "possible_write_price_upper_usd": 0.0249674
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.044716,
+          "possible_write_price_lower_usd": 0.044716,
+          "possible_write_price_upper_usd": 0.0532005
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0392248,
+          "possible_write_price_lower_usd": 0.0392248,
+          "possible_write_price_upper_usd": 0.0461933
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.020636,
+          "possible_write_price_lower_usd": 0.020636,
+          "possible_write_price_upper_usd": 0.022874
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.026966,
+          "possible_write_price_lower_usd": 0.026966,
+          "possible_write_price_upper_usd": 0.0295565
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0461432,
+          "possible_write_price_lower_usd": 0.0461432,
+          "possible_write_price_upper_usd": 0.0545567
+        },
+        "run_id": "workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.046008,
+          "possible_write_price_lower_usd": 0.046008,
+          "possible_write_price_upper_usd": 0.0543155
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-natural-stable-sort-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0346848,
+          "possible_write_price_lower_usd": 0.0346848,
+          "possible_write_price_upper_usd": 0.0378928
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-natural-stable-sort-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0262272,
+          "possible_write_price_lower_usd": 0.0262272,
+          "possible_write_price_upper_usd": 0.0287337
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-natural-stable-sort-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0215684,
+          "possible_write_price_lower_usd": 0.0215684,
+          "possible_write_price_upper_usd": 0.0240424
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0427068,
+          "possible_write_price_lower_usd": 0.0427068,
+          "possible_write_price_upper_usd": 0.0510658
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0219552,
+          "possible_write_price_lower_usd": 0.0219552,
+          "possible_write_price_upper_usd": 0.0245037
+        },
+        "run_id": "workflow-v2-py-workflow2-codec-unsigned-varint-batch-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0211312,
+          "possible_write_price_lower_usd": 0.0211312,
+          "possible_write_price_upper_usd": 0.0233522
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0437912,
+          "possible_write_price_lower_usd": 0.0437912,
+          "possible_write_price_upper_usd": 0.0519602
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r2-C",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0290344,
+          "possible_write_price_lower_usd": 0.0290344,
+          "possible_write_price_upper_usd": 0.0331394
+        },
+        "run_id": "workflow-v2-ts-workflow2-contracts-luhn-checksum-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "A",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0172328,
+          "possible_write_price_lower_usd": 0.0172328,
+          "possible_write_price_upper_usd": 0.0194178
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-bit-hamming-distance-r2-A",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "B",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0171684,
+          "possible_write_price_lower_usd": 0.0171684,
+          "possible_write_price_upper_usd": 0.0192884
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-bit-hamming-distance-r2-B",
+        "study": "confirmation",
+        "success": true
+      },
+      {
+        "configuration": "C",
+        "cost": {
+          "native_reported_price_equivalent_usd": 0.0172232,
+          "possible_write_price_lower_usd": 0.0172232,
+          "possible_write_price_upper_usd": 0.0193812
+        },
+        "run_id": "workflow-v2-py-workflow2-similarity-bit-hamming-distance-r2-C",
+        "study": "confirmation",
+        "success": true
+      }
+    ]
+  },
+  "checks": {
+    "all_selected_bytes_credential_scanned": true,
+    "crc_verified": true,
+    "every_member_sha256_verified": true,
+    "evidence_manifest_hashes_verified": true,
+    "exact_member_set_verified": true,
+    "overwrites_performed": false,
+    "source_bytes_unchanged_during_packaging": true
+  },
+  "created_at_utc": "2026-10-19T04:41:22.158721+00:00",
+  "final_independent_campaign_audit": {
+    "auditor_sha256": "9792177e2f5c16ab4d64998e3326f95c48d9da0662ca0ad87e7706bb3f44e743",
+    "campaign_assessment_sha256": "6ca4bf2cb1c901fa5180a1f19460371971d0d7cf3b32e3782359df186be0ab51",
+    "checked_assertions": 664,
+    "pass": true,
+    "published_path": "audit/campaign-independent-audit.json",
+    "sha256": "85a356ea303e041cc4939910590efe866b79059c5db69b981bfaaf121ba9b0dc",
+    "source": ".local/efficiency-v1/independent-review/campaign-audit-v1.json"
+  },
+  "final_independent_study_audits": {
+    "confirmation": {
+      "assessment_verification": {
+        "assessment_sha256": "40dc99b5a5cd03fd687a10da0c312e789f2a19d29b55323dad5eeccae14d601b",
+        "checked_assertions": 2272,
+        "errors": [],
+        "pass": true
+      },
+      "auditor_sha256": "a821025027379256b6bbb66ecbb3411aaad8494480a1ae47d800089c8c51f0df",
+      "checked_assertions": 15802,
+      "pass": true,
+      "pricing_sha256": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+      "published_path": "audit/confirmation-independent-audit.json",
+      "sha256": "903b5f8cf8d8d90dc53289d8a54280ce65fff21eb5415a6bec762641f06ef70a",
+      "source": ".local/efficiency-v1/independent-review/confirmation-audit-v1.json",
+      "source_report_sha256": "f3797f911537daa80c1d4afebd20716d9fc3cf7a1d0fa9f130f1f9034f568173"
+    },
+    "formal": {
+      "assessment_verification": {
+        "assessment_sha256": "3ae65603a11f5a8ad83be14e178916c9147f8d854fa2a0dddf1ee5a0fc5a8b0c",
+        "checked_assertions": 2272,
+        "errors": [],
+        "pass": true
+      },
+      "auditor_sha256": "df92c683428a78b6b545a0a799c67c584c5bcc00f6c626e7bc51d03fab8f1336",
+      "checked_assertions": 15651,
+      "pass": true,
+      "pricing_sha256": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+      "published_path": "audit/formal-independent-audit.json",
+      "sha256": "cf3a5cbda35730f67195682f64c5664b0167436a71f6ab371af0761818406eae",
+      "source": ".local/efficiency-v1/independent-review/workflow-audit-v1.json",
+      "source_report_sha256": "a6586d655fc55b0abaecb3153cb62a1c30ff97e7d03ab279f52caebb47f28596"
+    }
+  },
+  "limitations": [
+    "All120originals retained; efficacy and latency comparisons remain study-specific.",
+    "Campaign accounting includes failed initial-study spend and is not a pooled causal estimate.",
+    "Every dollar amount is a standard API list-price equivalent, not actual provider billing or a subscription charge.",
+    "Cache writes reported as zero may reflect an upstream default. Conservative possible-write ranges are scenarios, not confidence intervals.",
+    "Each native attempt is priced once. All failures and unknown attempts remain in per-arm numerators; unknown usage prevents a complete total or cost per success.",
+    "Cached input is included in total input and reasoning is included in output; neither is billed twice.",
+    "Completed command/file-change items are invocation/patch proxies, not provider model calls, individual file reads or unique edits. Missing telemetry remains null.",
+    "Local CPU is a sampled lower bound; child RSS can double-count shared pages and omits parent indexing. Neither has a fabricated dollar rate.",
+    "Provided-context controls are excluded from source-benefit promotion checks. Repeat consistency is descriptive, not statistical proof.",
+    "Fresh small synthetic tasks with uncontrolled provider/OS caches do not establish production, long-term memory or universal efficiency gains."
+  ],
+  "member_manifest": "MEMBER-MANIFEST.json",
+  "member_manifest_lists_members_excluding_itself": 4138,
+  "member_manifest_sha256": "5eafc7e066daae0c245fc6871586bddb0dad13af2e99206effddfb124f9692af",
+  "original_runs": 120,
+  "originals_per_arm": 40,
+  "per_study_estimated_cost_per_successful_task_usd": {
+    "confirmation": {
+      "A": {
+        "native_reported_price_equivalent_usd": 0.029960599999999997,
+        "possible_write_price_lower_usd": 0.029960599999999997,
+        "possible_write_price_upper_usd": 0.034604325000000005
+      },
+      "B": {
+        "native_reported_price_equivalent_usd": 0.02921922,
+        "possible_write_price_lower_usd": 0.02921922,
+        "possible_write_price_upper_usd": 0.03377642
+      },
+      "C": {
+        "native_reported_price_equivalent_usd": 0.0305415,
+        "possible_write_price_lower_usd": 0.0305415,
+        "possible_write_price_upper_usd": 0.035252525
+      }
+    },
+    "formal": {
+      "A": {
+        "native_reported_price_equivalent_usd": null,
+        "possible_write_price_lower_usd": null,
+        "possible_write_price_upper_usd": null
+      },
+      "B": {
+        "native_reported_price_equivalent_usd": null,
+        "possible_write_price_lower_usd": null,
+        "possible_write_price_upper_usd": null
+      },
+      "C": {
+        "native_reported_price_equivalent_usd": null,
+        "possible_write_price_lower_usd": null,
+        "possible_write_price_upper_usd": null
+      }
+    }
+  },
+  "per_study_promotion_gates": {
+    "confirmation": {
+      "action": "Keep support explicitly optional; do not promote defaults",
+      "checks": [
+        {
+          "baseline": "A",
+          "baseline_value": 0.031215299999999998,
+          "candidate_value": 0.0304615,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.030729399999999997,
+          "candidate_value": 0.0292972,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 20.222006497625898,
+          "candidate_value": 22.77510049624925,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 19.51521687350396,
+          "candidate_value": 21.121428667502187,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.03543595,
+          "candidate_value": 0.03126725,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.0374188,
+          "candidate_value": 0.0292972,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 21.128625760875366,
+          "candidate_value": 22.78346777124989,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 21.762894271498226,
+          "candidate_value": 21.2080493320027,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.02699465,
+          "candidate_value": 0.02965575,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.0240912,
+          "candidate_value": 0.028522600000000002,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 19.31538723437643,
+          "candidate_value": 22.766733221248614,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 18.407903618001,
+          "candidate_value": 20.531078583000635,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.028035,
+          "candidate_value": 0.0304615,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0248352,
+          "candidate_value": 0.0292972,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 20.86480998981233,
+          "candidate_value": 22.77510049624925,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 21.299643013499008,
+          "candidate_value": 21.121428667502187,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0271542,
+          "candidate_value": 0.03126725,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0248524,
+          "candidate_value": 0.0292972,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 22.184130238376383,
+          "candidate_value": 22.78346777124989,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 22.89865534099954,
+          "candidate_value": 21.2080493320027,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0289158,
+          "candidate_value": 0.02965575,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0248352,
+          "candidate_value": 0.028522600000000002,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 19.545489741248275,
+          "candidate_value": 22.766733221248614,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 19.946147188500618,
+          "candidate_value": 20.531078583000635,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "median"
+        }
+      ],
+      "control_exclusion": "caller_context_supplied rows affect correctness/coverage, not benefit checks",
+      "passed": false,
+      "policy": {
+        "baselines": [
+          "A",
+          "B"
+        ],
+        "benefit_population": "explicit_focus; provided-context controls excluded",
+        "candidate": "C",
+        "consequence": "Failure or unknown evidence keeps support explicitly optional; no default promotion",
+        "correctness": "Every original candidate assignment succeeds with verified source/native fidelity",
+        "coverage": "Complete unique matched A/B/C triplets for every task and repeat; no missing or unknown cost",
+        "interpretation": "Prespecified finite-corpus acceptance rule, not statistical proof or a production guarantee",
+        "nonregression": "Focused cost per attempt and full execution time: candidate mean AND median <= each baseline overall AND in each repeat",
+        "required_repeats": [
+          1,
+          2
+        ],
+        "version": "workflow-promotion-1"
+      },
+      "reasons": [
+        "Focused cost/full-time mean or median regresses or is unavailable overall or in a repeat"
+      ]
+    },
+    "formal": {
+      "action": "Keep support explicitly optional; do not promote defaults",
+      "checks": [
+        {
+          "baseline": "A",
+          "baseline_value": 0.03427795,
+          "candidate_value": 0.031091975,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.0332082,
+          "candidate_value": 0.0318074,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 19.822469212751912,
+          "candidate_value": 18.694596057124272,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 19.550878439502412,
+          "candidate_value": 15.773304921498493,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.0373142,
+          "candidate_value": 0.03073735,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.033796599999999996,
+          "candidate_value": 0.0313594,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 19.134726324625262,
+          "candidate_value": 17.406442611123566,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 19.564450802001375,
+          "candidate_value": 15.773304921498493,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.0312417,
+          "candidate_value": 0.0314466,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 0.0332082,
+          "candidate_value": 0.0333538,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "median"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 20.51021210087856,
+          "candidate_value": 19.982749503124978,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "A",
+          "baseline_value": 19.538071233502706,
+          "candidate_value": 16.04001947299912,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_2",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0348201,
+          "candidate_value": 0.031091975,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.033993999999999996,
+          "candidate_value": 0.0318074,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 18.6343776574372,
+          "candidate_value": 18.694596057124272,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "overall",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 18.190707326000847,
+          "candidate_value": 15.773304921498493,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "overall",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.03794045,
+          "candidate_value": 0.03073735,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0344398,
+          "candidate_value": 0.0313594,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 18.299767552000958,
+          "candidate_value": 17.406442611123566,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 18.797695686003863,
+          "candidate_value": 15.773304921498493,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_1",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.03169975,
+          "candidate_value": 0.0314466,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": true,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 0.0326576,
+          "candidate_value": 0.0333538,
+          "metric": "native_reported_price_equivalent_usd",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "median"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 18.96898776287344,
+          "candidate_value": 19.982749503124978,
+          "metric": "end_to_end_wall_seconds",
+          "passed": false,
+          "scope": "repeat_2",
+          "statistic": "mean"
+        },
+        {
+          "baseline": "B",
+          "baseline_value": 17.612772964497708,
+          "candidate_value": 16.04001947299912,
+          "metric": "end_to_end_wall_seconds",
+          "passed": true,
+          "scope": "repeat_2",
+          "statistic": "median"
+        }
+      ],
+      "control_exclusion": "caller_context_supplied rows affect correctness/coverage, not benefit checks",
+      "passed": false,
+      "policy": {
+        "baselines": [
+          "A",
+          "B"
+        ],
+        "benefit_population": "explicit_focus; provided-context controls excluded",
+        "candidate": "C",
+        "consequence": "Failure or unknown evidence keeps support explicitly optional; no default promotion",
+        "correctness": "Every original candidate assignment succeeds with verified source/native fidelity",
+        "coverage": "Complete unique matched A/B/C triplets for every task and repeat; no missing or unknown cost",
+        "interpretation": "Prespecified finite-corpus acceptance rule, not statistical proof or a production guarantee",
+        "nonregression": "Focused cost per attempt and full execution time: candidate mean AND median <= each baseline overall AND in each repeat",
+        "required_repeats": [
+          1,
+          2
+        ],
+        "version": "workflow-promotion-1"
+      },
+      "reasons": [
+        "Every original arm must complete successfully with valid source/native fidelity",
+        "Focused cost/full-time mean or median regresses or is unavailable overall or in a repeat"
+      ]
+    }
+  },
+  "published_evidence": {
+    "bytes": 19051684,
+    "files": 3981,
+    "manifest_sha256": "9fec816ace0474698f039adc4ab4897f77fa3c9f4e89302270834f3099d7f3ab",
+    "publication_audit_sha256": "f2b36b5a3ee2263b5a81fd26e4f03303afdf631c23277ba8f6f2bbccab9782ef",
+    "scanner_sha256": "f098dd8ce073885e7de2696736c81146472269779676c6ad30aec9908a6cd2ce"
+  },
+  "schema_version": 1,
+  "study_source_freezes": {
+    "final_git_head": "85ebff2229efd62be2e3c0e179c3c8eae0f0cade",
+    "independent_study_freezes": true,
+    "studies": {
+      "confirmation": {
+        "application_source_tree_sha256": "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+        "current_source_and_frozen_inputs_verified": true,
+        "formal_driver_returncode": 0,
+        "git_head": "85ebff2229efd62be2e3c0e179c3c8eae0f0cade"
+      },
+      "formal": {
+        "application_source_tree_sha256": "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+        "current_source_and_frozen_inputs_verified": true,
+        "formal_driver_returncode": 0,
+        "git_head": "93acf63e1583bd66239b22dc53c2aaf196e3a35a"
+      }
+    }
+  },
+  "synthetic_fixture_scan_exceptions": [
+    {
+      "all_other_original_bytes_scanned": true,
+      "fixture_source": "93acf63e1583bd66239b22dc53c2aaf196e3a35a:tests/test_security_storage.py",
+      "fixture_source_sha256": "bb8aee17612136ce8bf257cd701c6e26e2def32e13fd3b65e7cdcf6f1769fd8d",
+      "matched_sha256": [
+        "3021d90eb9437b2d8f30e8363695c4418b5e5f1870801b5c317e9398ee0f572d",
+        "8bcac7908eb950419537b91e19adc83ce2c9cbfdacf4f81157fdadfec11f7017",
+        "7e5400d08af1a79400d0df020d076551686fda1910a49f6716e8d5aff119e35b",
+        "aadcebbf9c9ca71dcb9d334b44d555d980f68e3e0fd5d3d63f1cc8c94f219a9d",
+        "4b82f7466cc183e24dffcc235b8622f6795176c22f72aedf45584003e440f78f",
+        "aa4d6ed2a9eb80ae9af88445533e0abc21e67965923c7bd99192270c98f3381c",
+        "87117695a3cb65fc702e9328d6481780a57fefda3ddbc47d601302c406815022"
+      ],
+      "original_xml_bytes_preserved": true,
+      "path": ".local/efficiency-v1/full-python.xml",
+      "pattern_matches": 7,
+      "sha256": "07bb1ce7767947bf1f94e5dbb5253eb9fa4ff095f92e2168f16b86f12be9be3a"
+    }
+  ],
+  "uncompressed_member_bytes": 36117930,
+  "verified_triplets_per_study": 20
+}

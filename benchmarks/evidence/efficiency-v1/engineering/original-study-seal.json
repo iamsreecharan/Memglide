@@ -1,0 +1,13 @@
+{
+  "frozen_git_head": "93acf63e1583bd66239b22dc53c2aaf196e3a35a",
+  "files": {
+    "benchmarks/codex-workflow-ab.json": "a6586d655fc55b0abaecb3153cb62a1c30ff97e7d03ab279f52caebb47f28596",
+    "benchmarks/codex-workflow-ab.md": "db874e5f9d7b126429f25e3e2e1e12903a9b06064f5f074c1c849fabf95eff56",
+    "benchmarks/workflow-assessment.json": "3ae65603a11f5a8ad83be14e178916c9147f8d854fa2a0dddf1ee5a0fc5a8b0c",
+    "benchmarks/workflow-assessment.md": "a27079b7d9e5bbeb9e2772e6f8176a30ddccf8485b91b9b5ecf6aab58882844b",
+    "benchmarks/workflow-contract-issue.json": "375098524c54bfcb7c3a5146a48797e6c52894b9efcf8f3a979f472f60fdaf2e",
+    "benchmarks/workflow-contract-issue.md": "9802f942a02e5900912d4f22b950cfd2a1238e41db80a052cea7cf5ca5767d50"
+  },
+  "strict_failures_preserved": 60,
+  "regrading": false
+}

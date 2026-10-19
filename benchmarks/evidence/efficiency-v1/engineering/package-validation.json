@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-19T03:35:43.478307+00:00",
+  "passed": true,
+  "checks": {
+    "archive_integrity": true,
+    "installed_legacy_and_compact": true,
+    "installed_cli_api_spa": true,
+    "installed_support_and_real_mcp": true
+  },
+  "package_name": "memglide",
+  "package_version": "0.1.0",
+  "installed_direct_versions": {
+    "memglide": "0.1.0",
+    "fastapi": "0.143.2",
+    "uvicorn": "0.42.0",
+    "pydantic": "2.12.5",
+    "mcp": "2.3.0",
+    "tree-sitter": "0.25.2",
+    "tree-sitter-javascript": "0.25.0",
+    "tree-sitter-typescript": "0.23.2",
+    "watchdog": "6.0.0",
+    "pathspec": "1.0.4",
+    "typer": "0.24.1",
+    "rich": "14.3.3"
+  },
+  "source_snapshot": {
+    "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+    "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+    "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+    "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+    "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+    "src/memglide/core/context.py": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+    "src/memglide/core/indexer.py": "7c49242c79ee0b1f3aa1cc03c066f863de1727c91c3be7768c61201ace5d99c6",
+    "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+    "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+    "src/memglide/core/watcher.py": "c851302b1d47c45b7742fa8fed69b500ade914e03f3cc6a33a985badd64f1511",
+    "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+    "src/memglide/integrations/codex_preload.py": "1a5b26ac2b010bac7473211115d16f49c9cd634555910e88d56a87e3b510448b",
+    "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+    "src/memglide/integrations/preload.py": "9ae8595b4b5f97993dcf177d78d090db5f1e0f6fdb8ce2e2da5e3d766d69afac",
+    "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/memory/engine.py": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+    "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+    "src/memglide/service.py": "6dd6f33a5adc3863ff68d6125296c84c32170085c9c20eb53c8809f02a4c2a7b",
+    "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/memglide/storage/database.py": "38a483c6e05758a8f7df743ce7965a0fe20b6ea5f13c4921788b61efa971f58e",
+    "src/memglide/web/assets/Context-BObgkM7w.js": "2e63ffd9d1f96dbd6c519b8ba8465215a7b5cbca85f414d688faa825921acafa",
+    "src/memglide/web/assets/Evidence-BC7z3qYl.js": "4e8f356ee82d7916352259bbf9c3ab0590e605ff8a4646ea305db599ab8576d3",
+    "src/memglide/web/assets/Memory-DEwoxLSl.js": "7caeb6c9b99f7edf06a0b8c0d3c6c88880a8b788941b808a366c7b6444a0f57e",
+    "src/memglide/web/assets/Overview-BDF2Ra8u.js": "334dd91c8dcf06ede50bb39cb4c25ae63e9e12ebf1f6236a394e6270bf189c0b",
+    "src/memglide/web/assets/Passport-Vyb96h0_.js": "3bd7330e01c84ca84f5d83b4a619e269bc0b4056d29fc80a7fe64d8369de7540",
+    "src/memglide/web/assets/Projects-CHoHwzzU.js": "68e1c1830719f0efbc98f6f896b866dd123aeb89feb25f8c1808aed4424a7160",
+    "src/memglide/web/assets/Settings-sOhP4hJV.js": "6cabc87cc255854fb2cab0a20b3c21791d6ca46e5f70fc5e9ee94fa61f2e43b9",
+    "src/memglide/web/assets/Timeline-CVxCJ4l9.js": "32cdc6eb5110b2ce32245396c511e67ac60b69a59170120680012a13d602b584",
+    "src/memglide/web/assets/chevron-down-BonYGe0o.js": "0574ada4906b38f02d8415c091b8750e0bb0d2cb5071eed5e44de7efab8eef32",
+    "src/memglide/web/assets/database-DcGu3rga.js": "40ebfd1e8c6421b9b3f2b6d3f6b607cd6c97131499b19a923ab7e0a9d34aca46",
+    "src/memglide/web/assets/file-code-corner-C9UA9t_s.js": "67c9a3ff6e919aee36e29b3bfa9389f914d9b2a8ba9ce0ef58fbd4b52be2721e",
+    "src/memglide/web/assets/git-branch-hdz_rTrC.js": "657e04ff682ecd1168aef58fad9adb94324d816ceff2013196dcc3e8318ef31c",
+    "src/memglide/web/assets/index-CkQhvrkj.js": "9c44d25009f330e1fba87fca045bcd0c5602264c325843c8f99072edcd5e70ff",
+    "src/memglide/web/assets/index-D9jkCmj-.css": "1f1ea72f38ed31b04ba233798d3d585cda0a42fdabeebd77abd8ad926dc120fe",
+    "src/memglide/web/assets/refresh-cw-BC9m3cSz.js": "e6632715561ed33c81d101a75abb695ebbef87cc1ab456f69484bbca7423488f",
+    "src/memglide/web/assets/search-DYIp2QDE.js": "1cfb32fa6bfb550522498a1dbe2a68af82417147ae49d3e0bb0358f07b39e106",
+    "src/memglide/web/assets/shield-alert-C9pbL8YH.js": "5e678e9671996341fd42c385db8fed11a6726df5bd5ea2d66c8dc80df7476a23",
+    "src/memglide/web/favicon.svg": "754d5d08b7ede810a923e3b23cf6a5d41f9d597666dc181d2398cedcb91c5547",
+    "src/memglide/web/index.html": "6338e7898d8674a6b869318f63845e51294c4cb67d11039a8bd2c5368b452212"
+  },
+  "application_python_files": 24,
+  "production_frontend_files": 19,
+  "archive_integrity_checks": 11851,
+  "final_preload_functional_checks": 12,
+  "final_support_mcp_functional_checks": 31,
+  "final_cli_api_spa_smoke_passed": true,
+  "functional_checks_are_not_pytest_cases": true,
+  "model_requests": 0,
+  "dummy_native_execs_successful_final_smokes": 5,
+  "dummy_native_execs_all_attempts": 8,
+  "real_mcp_profiles": [
+    "default",
+    "agent"
+  ],
+  "initial_failure": {
+    "retained": true,
+    "log": "package-support-mcp.log",
+    "script": "package-support-mcp-initial.py",
+    "cause": "Validation fixture requested unsupported memory category finding; server correctly rejected it. Corrected to supported observation for fresh v2 run. No application changes."
+  },
+  "archives": {
+    "memglide-0.1.0-py3-none-any.whl": "520d47ebfe762752e1a978ee4257a6c552bdba6fbbf4132c75510a8f92fcb3d6",
+    "memglide-0.1.0.tar.gz": "f863451e4a74a7f3aa4eead78d46ff9f301196d9adff23fe3338b73b7fac0e7c"
+  },
+  "evidence": {
+    "package-build.log": {
+      "sha256": "92a02a72f3c107508c4f7f9c86fc3dc79c6b53d10c1db3e677b78d1b88123bb7",
+      "bytes": 219
+    },
+    "package-export.log": {
+      "sha256": "561a057d66ae4d781736c1129a9339978fe6a9548baa075b7a1433911250b997",
+      "bytes": 46141
+    },
+    "package-requirements.txt": {
+      "sha256": "561a057d66ae4d781736c1129a9339978fe6a9548baa075b7a1433911250b997",
+      "bytes": 46141
+    },
+    "package-install.log": {
+      "sha256": "c819fa5508bb27546349c619e1436b1e48f7cc4eb7a4dd4bba3d31965c8d6bb3",
+      "bytes": 1334
+    },
+    "package-audit.py": {
+      "sha256": "980bec7284035133ab688d78ee467e83ceb31383fc5087eb6b787b90b216b4d8",
+      "bytes": 4339
+    },
+    "package-audit.json": {
+      "sha256": "a8166e61a5689535fd438f06d8106febbdd5b8dd775b49631e338dd9a3543a87",
+      "bytes": 585
+    },
+    "package-audit.log": {
+      "sha256": "a8166e61a5689535fd438f06d8106febbdd5b8dd775b49631e338dd9a3543a87",
+      "bytes": 585
+    },
+    "package-preload.log": {
+      "sha256": "090abc4b894d4e04278509e83b30523b85092961abea231371cf52148b58de64",
+      "bytes": 1657
+    },
+    "package-preload.json": {
+      "sha256": "090abc4b894d4e04278509e83b30523b85092961abea231371cf52148b58de64",
+      "bytes": 1657
+    },
+    "package-api.log": {
+      "sha256": "2e995659de4d314d8e2691fc232f205d44b94d099c142758b9ba14f7a5d4bf21",
+      "bytes": 930
+    },
+    "package-api.json": {
+      "sha256": "2e995659de4d314d8e2691fc232f205d44b94d099c142758b9ba14f7a5d4bf21",
+      "bytes": 930
+    },
+    "package-support-mcp-initial.py": {
+      "sha256": "ff6e6c6b3c20c0085e2f0309c8a8d134b2ad71dae9c91c20318e8d5e5cc5743f",
+      "bytes": 13574
+    },
+    "package-support-mcp.log": {
+      "sha256": "8a0cb74cd38b869d240bfbd43e3c8ce3642af2d1d4af7a34650aff3821965dc0",
+      "bytes": 3587
+    },
+    "package-support-mcp.py": {
+      "sha256": "460de066a776f705eddb75cecf80b67a7ef1b8913287a4102b50bc5d3f7a899f",
+      "bytes": 13584
+    },
+    "package-support-mcp-v2.log": {
+      "sha256": "12c6eead1e87984bb9d44d0095fd47bc69ae8984038d7deeb5fe5a3ab278ff3d",
+      "bytes": 2954
+    },
+    "package-support-mcp-v2.json": {
+      "sha256": "12c6eead1e87984bb9d44d0095fd47bc69ae8984038d7deeb5fe5a3ab278ff3d",
+      "bytes": 2954
+    }
+  },
+  "scope": "Fresh locked-dependency wheel installation with isolated imports outside checkout; exact archive/App/assets bytes and private state/symlink exclusion; installed CLI/index/context/passport, real loopback API/SPA, old legacy-v1 and compact-v2 and new support-v3 dummy-native transport; support all-or-nothing/freshness/security; real default/agent MCP. No model/cost/latency measurement."
+}

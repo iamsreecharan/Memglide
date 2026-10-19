@@ -1,0 +1,367 @@
+{
+  "run_id": "workflow-ts-workflow-signals-circular-angle-difference-r1-C",
+  "task_id": "ts-workflow-signals-circular-angle-difference",
+  "language": "typescript",
+  "repository": "signals-typescript-workflow",
+  "task_kind": "single-source",
+  "selection_stratum": "explicit_focus",
+  "configuration": "C",
+  "repeat": 1,
+  "order": 8,
+  "context_format": "compact-prefix",
+  "support_enabled": true,
+  "setup": {
+    "project_id": "ce3a989d9994450080557bd618081527",
+    "wall_seconds": 0.4051135190020432,
+    "cpu_seconds": 0.15185997100000037,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "preload_treatment_fidelity": {
+    "valid": true,
+    "reason": "Independent frozen Git complete-source reconstruction matches launcher stdin and native options",
+    "context_format": "compact-prefix",
+    "mode": "preloaded",
+    "selection_reason": "explicit_focus",
+    "preparation": {
+      "mode": "preloaded",
+      "reason": "explicit_focus",
+      "task_prompt_sha256": "5f7cd3fd99828752c0239a6d6b003dd5e28967916826869b1d18776bcef9072e",
+      "prepared_prompt_sha256": "9807c412b98735af295e47c9d960d40b7ac36c457b40b17fd1da5d41425ff796",
+      "files": [
+        {
+          "path": "src/circular_angle_difference.ts",
+          "sha256": "02ac779a0fd1b97c1edd261bb8f3de083780e97a37f7e9d8894e169d918a3061",
+          "start_line": 1,
+          "end_line": 4
+        },
+        {
+          "path": "tests/circular_angle_difference.test.mjs",
+          "sha256": "06d50c50d8a56b3c3c1875fb5189a0b5f2944811d10f9cbd5035c2e6ca9c4814",
+          "start_line": 1,
+          "end_line": 8
+        }
+      ],
+      "context_bytes": 979,
+      "context_format": "compact-prefix",
+      "prompt_layout": "source_prefix",
+      "focus_paths": [
+        "src/circular_angle_difference.ts"
+      ],
+      "support_paths": [
+        "tests/circular_angle_difference.test.mjs"
+      ],
+      "preparation_wall_seconds": 0.04711901799601037,
+      "preparation_cpu_seconds": 0.04710381000000001
+    },
+    "source_file_count": 2,
+    "source_hashes": {
+      "src/circular_angle_difference.ts": "02ac779a0fd1b97c1edd261bb8f3de083780e97a37f7e9d8894e169d918a3061",
+      "tests/circular_angle_difference.test.mjs": "06d50c50d8a56b3c3c1875fb5189a0b5f2944811d10f9cbd5035c2e6ca9c4814"
+    },
+    "context_bytes": 979,
+    "actual_model_prompt_sha256": "9807c412b98735af295e47c9d960d40b7ac36c457b40b17fd1da5d41425ff796",
+    "common_task_prompt_sha256": "5f7cd3fd99828752c0239a6d6b003dd5e28967916826869b1d18776bcef9072e",
+    "native_exec_boundary_monotonic_seconds": 51101.566800057
+  },
+  "native_execution_validity": {
+    "valid": true,
+    "reasons": [],
+    "final_output_sha256": "4f8eac95676ce4fa3360c70d93179ccbda5d53e0dbfa9059904d13673d3a878b",
+    "scope": "Native execution and supported final-output schema only; external behavior grade is separate"
+  },
+  "original_run_id": "workflow-ts-workflow-signals-circular-angle-difference-r1-C",
+  "supplemental": false,
+  "status": "failed",
+  "attempted": true,
+  "pending": false,
+  "started_at": "2026-10-19T03:42:39.307793+00:00",
+  "artifacts": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C",
+  "worktree": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-signals-circular-angle-difference-r1-C",
+  "errors": [
+    "Protected repository tests or Git metadata changed"
+  ],
+  "grader": {
+    "task_id": "ts-workflow-signals-circular-angle-difference",
+    "repository": "signals-typescript-workflow",
+    "corpus_version": "workflow-1.0.0",
+    "passed": false,
+    "success": false,
+    "exit_code": 1,
+    "commands": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/held_out.test.mjs"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/behavior.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/behavior.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap"
+        ],
+        "exit_code": 0,
+        "counts": {
+          "tests": 15,
+          "pass": 15,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/smoke.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/smoke.stderr.log"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "--project",
+          "tsconfig.json"
+        ],
+        "exit_code": 0,
+        "counts": {},
+        "stdout_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/typecheck.stdout.log",
+        "stderr_path": "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/typecheck.stderr.log"
+      }
+    ],
+    "test_count": 17,
+    "protected_files_unchanged": false,
+    "protected_files": [
+      {
+        "file": "README.md",
+        "unchanged": true,
+        "expected_sha256": "6c6f043129b2ca6c903535b09084f06459bf89d0a71d619abcd0dca81121dbc9",
+        "actual_sha256": "6c6f043129b2ca6c903535b09084f06459bf89d0a71d619abcd0dca81121dbc9"
+      },
+      {
+        "file": "AGENTS.md",
+        "unchanged": true,
+        "expected_sha256": "d1046751b7bb4d2209d66a79997a55146597549ba58ddfa1504d98904a2232b8",
+        "actual_sha256": "d1046751b7bb4d2209d66a79997a55146597549ba58ddfa1504d98904a2232b8"
+      },
+      {
+        "file": ".gitignore",
+        "unchanged": true,
+        "expected_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7",
+        "actual_sha256": "bd44e9739c4a5a6cd1122802772dcf6d36f75112ac8abef106677e6627dba5f7"
+      },
+      {
+        "file": "package.json",
+        "unchanged": true,
+        "expected_sha256": "a7efef20bdead072d62eac2fd562b8420acf032cd30b9e8affd96f153fdad5b8",
+        "actual_sha256": "a7efef20bdead072d62eac2fd562b8420acf032cd30b9e8affd96f153fdad5b8"
+      },
+      {
+        "file": "tsconfig.json",
+        "unchanged": true,
+        "expected_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c",
+        "actual_sha256": "4c7b37ff69f90b5626ef64e46bc47070057d292ec372bd41f1edcbefb54e9f3c"
+      },
+      {
+        "file": "tests/circular_angle_difference.test.mjs",
+        "unchanged": false,
+        "expected_sha256": "06d50c50d8a56b3c3c1875fb5189a0b5f2944811d10f9cbd5035c2e6ca9c4814",
+        "actual_sha256": "46ad65c30404999f007159dd1abeb2b96950cb22a93f6dc9f524ed5b81496491"
+      },
+      {
+        "file": "tests/threshold_hysteresis.test.mjs",
+        "unchanged": true,
+        "expected_sha256": "f64219af27ce22116b182144ee726f341a74c415685ba561c6689da160336a81",
+        "actual_sha256": "f64219af27ce22116b182144ee726f341a74c415685ba561c6689da160336a81"
+      }
+    ],
+    "test_execution_complete": true,
+    "test_execution_integrity": [
+      {
+        "stage": "behavior",
+        "valid": true,
+        "required_test_count": {
+          "exact": 2
+        },
+        "reported_counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      },
+      {
+        "stage": "smoke",
+        "valid": true,
+        "required_test_count": {
+          "minimum": 10
+        },
+        "reported_counts": {
+          "tests": 15,
+          "pass": 15,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "count_requirement_met": true,
+        "clean_summary_verified": true,
+        "zero_failures_errors_skips_cancellations": true
+      }
+    ],
+    "grading_separation": "held-out files outside worktree; not cryptographically hidden"
+  },
+  "actual_cost_usd": null,
+  "computed_cost_usd": null,
+  "starting_commit": "e7dfe2518cf395a14bf0d5e020b481e3a675969a",
+  "common_task_prompt_sha256": "5f7cd3fd99828752c0239a6d6b003dd5e28967916826869b1d18776bcef9072e",
+  "actual_model_prompt_sha256": "9807c412b98735af295e47c9d960d40b7ac36c457b40b17fd1da5d41425ff796",
+  "configuration_label": "Memglide source plus support",
+  "native_command": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/worktrees/workflow-ts-workflow-signals-circular-angle-difference-r1-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-v1/runs/workflow-ts-workflow-signals-circular-angle-difference-r1-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "-"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_time_seconds": 23.036123083002167,
+  "process_started_monotonic_seconds": 51101.396808863,
+  "process_finished_monotonic_seconds": 51124.432931946,
+  "overhead": {
+    "process_tree_peak_rss_bytes": 299810816,
+    "cpu_seconds": 4.28,
+    "memglide_peak_rss_bytes": null,
+    "memglide_cpu_seconds": null,
+    "observed_processes": 19,
+    "observed_memglide_processes": 0,
+    "samples": 281,
+    "sampling_interval_seconds": 0.05,
+    "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+    "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+  },
+  "telemetry": {
+    "source": "codex exec --json; turn.completed usage and item lifecycle events",
+    "event_count": 15,
+    "parse_errors": [],
+    "completed_turns": 1,
+    "failed_turns": 0,
+    "stream_terminal": true,
+    "usage": {
+      "input_tokens": 36318,
+      "cached_input_tokens": 23168,
+      "output_tokens": 855
+    },
+    "usage_unavailable_reasons": {},
+    "observed_completed_turn_usage": {
+      "input_tokens": 36318,
+      "cached_input_tokens": 23168,
+      "output_tokens": 855
+    },
+    "usage_coverage_complete": true,
+    "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+    "model_calls": null,
+    "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+    "actual_cost_usd": null,
+    "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+    "mcp_call_count": 0,
+    "mcp_calls": [],
+    "mcp_counts_complete": true,
+    "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+    "memglide_mcp_call_count": 0,
+    "memglide_successful_get_context_count": 0,
+    "memglide_successful_fetch_context_count": 0,
+    "memglide_successful_verify_context_count": 0,
+    "memglide_get_context_success_unknown_count": 0,
+    "command_count": 4,
+    "commands": [
+      {
+        "id": "item_1",
+        "command": "/bin/bash -lc 'git status --short'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_2",
+        "command": "/bin/bash -lc 'node --version'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_4",
+        "command": "/bin/bash -lc 'node --test'",
+        "exit_code": 0,
+        "status": "completed"
+      },
+      {
+        "id": "item_5",
+        "command": "/bin/bash -lc 'git diff --check'",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    ],
+    "repeated_file_reads": null,
+    "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+    "observed_file_read_commands": 0,
+    "observed_repeated_read_commands": 0,
+    "observed_read_command_paths": [],
+    "repeated_read_command_paths": {},
+    "file_reads_complete": false,
+    "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+    "errors": []
+  },
+  "event_stream_framing": {
+    "valid": true,
+    "reasons": [],
+    "prefix_types": [
+      "thread.started",
+      "turn.started"
+    ]
+  },
+  "end_to_end_wall_seconds": 23.44772673799889,
+  "treatment_valid": true,
+  "native_exec_wall_seconds": 22.866131889000826,
+  "native_exec_timing_scope": "B/C launcher boundary before report-write/exec handoff through native exit; A has no launcher boundary",
+  "protected_file_violations": [
+    "tests/circular_angle_difference.test.mjs"
+  ],
+  "common_blocker": null,
+  "finished_at": "2026-10-19T03:43:04.137836+00:00"
+}

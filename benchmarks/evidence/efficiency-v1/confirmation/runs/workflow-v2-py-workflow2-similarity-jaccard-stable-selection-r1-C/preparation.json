@@ -1,0 +1,82 @@
+{
+  "version": 3,
+  "preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "task_prompt_sha256": "ed874a7807039aab8f4f50012efbb66f26ed1f70d60acf517b2ab857d1c9a1bf",
+    "prepared_prompt_sha256": "f5baa6d32e740353920ca22c294bb1b731546a173f204fb7b3cad61d9a4675b0",
+    "files": [
+      {
+        "path": "similarity/jaccard_stable_selection.py",
+        "sha256": "13bb44d9eeb0b7883d21009c79723daddf29c5d9c85243a6f4db94e6fb69cdb3",
+        "start_line": 1,
+        "end_line": 5
+      },
+      {
+        "path": "similarity/jaccard_stable_selection_api.py",
+        "sha256": "dc4a0b4528cb5f73fea098c6f278f71afa328e350058287fb2d56d3026cbb705",
+        "start_line": 1,
+        "end_line": 9
+      },
+      {
+        "path": "tests/test_jaccard_stable_selection.py",
+        "sha256": "a3f81820d3b38ff9a5e4dcedcbf148508b234b39f27aed3423a49b62ab637751",
+        "start_line": 1,
+        "end_line": 20
+      }
+    ],
+    "context_bytes": 1497,
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "focus_paths": [
+      "similarity/jaccard_stable_selection.py",
+      "similarity/jaccard_stable_selection_api.py"
+    ],
+    "support_paths": [
+      "tests/test_jaccard_stable_selection.py"
+    ],
+    "preparation_wall_seconds": 0.07434227300109342,
+    "preparation_cpu_seconds": 0.07403864099999996
+  },
+  "executable": "/opt/codex/bin/codex",
+  "exec_argv": [
+    "/opt/codex/bin/codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--color",
+    "never",
+    "--sandbox",
+    "workspace-write",
+    "--model",
+    "gpt-6.1-sol",
+    "--disable",
+    "apps",
+    "-c",
+    "model_reasoning_effort=\"low\"",
+    "-c",
+    "web_search=\"disabled\"",
+    "-C",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/worktrees/workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r1-C",
+    "--output-schema",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/final-response-schema.json",
+    "--output-last-message",
+    "/workspace/Memglide/.local/efficiency-v1/formal-workflow-confirmation-v2/runs/workflow-v2-py-workflow2-similarity-jaccard-stable-selection-r1-C/final.json",
+    "-c",
+    "mcp_servers={}",
+    "-c",
+    "approval_policy=\"never\"",
+    "-c",
+    "service_tier=\"default\"",
+    "--",
+    "-"
+  ],
+  "native_stdin": {
+    "sha256": "f5baa6d32e740353920ca22c294bb1b731546a173f204fb7b3cad61d9a4675b0",
+    "bytes": 4037,
+    "transport": "temporary_file_descriptor"
+  },
+  "native_exec_boundary_monotonic_seconds": 53016.133078434
+}

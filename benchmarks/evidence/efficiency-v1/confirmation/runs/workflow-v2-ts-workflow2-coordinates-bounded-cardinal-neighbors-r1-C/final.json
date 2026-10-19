@@ -1,0 +1,1 @@
+{"summary":"Implemented in-bounds cardinal neighbors and exact-key blocked filtering, preserving order and leaving blocked unchanged. Added regression tests; existing tests remain unchanged.","tests_run":["node --test — passed all 3 test files."]}

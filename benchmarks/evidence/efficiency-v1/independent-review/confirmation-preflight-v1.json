@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "mode": "preflight_only",
+  "checked_source_ast": [
+    "benchmarks/run_workflow_v2.py",
+    "benchmarks/corpus_workflow_v2.py",
+    "benchmarks/workflow_cost.py",
+    "benchmarks/estimate_cost.py"
+  ],
+  "synthetic_checks": 10,
+  "no_live_experiment_inputs_opened": true,
+  "auditor_sha256": "a821025027379256b6bbb66ecbb3411aaad8494480a1ae47d800089c8c51f0df"
+}

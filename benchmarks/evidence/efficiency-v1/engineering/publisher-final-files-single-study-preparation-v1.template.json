@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "note": "Template only. Fill/recompute every hash from finalized reviewed files; null is rejected by the builder.",
+  "files": [
+    {
+      "source": "benchmarks/codex-workflow-ab.md",
+      "sha256": null
+    },
+    {
+      "source": "benchmarks/codex-workflow-ab.json",
+      "sha256": null
+    },
+    {
+      "source": "benchmarks/workflow-assessment.md",
+      "sha256": null
+    },
+    {
+      "source": "benchmarks/workflow-assessment.json",
+      "sha256": null
+    },
+    {
+      "source": "benchmarks/efficiency-validation.md",
+      "sha256": null
+    },
+    {
+      "source": "benchmarks/efficiency-validation.json",
+      "sha256": null
+    },
+    {
+      "source": "benchmarks/efficiency-research.md",
+      "sha256": "6dc21f6651e14cf9324cfde093cdeebe337d1fe5a4e063f656f748f31973e95d"
+    },
+    {
+      "source": "benchmarks/efficiency-research.json",
+      "sha256": "99bb33cb1711048e297a10eb120e4c5a294f9c101397c32e96361c3f402f3e79"
+    },
+    {
+      "source": "benchmarks/efficiency-diagnosis.md",
+      "sha256": "8b441164bc1cd9677cdc61f276ab80bafe898421c0909a41023c9d463ca5066d"
+    },
+    {
+      "source": "benchmarks/efficiency-diagnosis.json",
+      "sha256": "cfaa8e2f237d8799eff05f047eafa685b303e0b7fa922b8c5840a2ec15bdcd1c"
+    },
+    {
+      "source": "benchmarks/workflow-protocol.md",
+      "sha256": "3e57bacd591b82d9256bb0453a6aed9ff9609666da643a5f4153cedf2188948c"
+    },
+    {
+      "source": "benchmarks/cost-pricing.json",
+      "sha256": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634"
+    },
+    {
+      "source": "docs/efficiency-architecture.md",
+      "sha256": "57fdc0aaeb29ceabdfba7b4caf8ef1cf2e6768449ba892bc8d944673aaecf707"
+    },
+    {
+      "source": "docs/preload.md",
+      "sha256": "d4034c20e4c6e4dc6465fe37e800c1d1bb83ecdcfa7401720e5a33126b60c787"
+    },
+    {
+      "source": "docs/daily-architecture.md",
+      "sha256": "99f5a12b40f731e1ee9c4ced7f45c769e57383d17f8facfc9b3ea0385580d0ef"
+    },
+    {
+      "source": "README.md",
+      "sha256": null
+    },
+    {
+      "source": "PROGRESS.md",
+      "sha256": null
+    }
+  ]
+}

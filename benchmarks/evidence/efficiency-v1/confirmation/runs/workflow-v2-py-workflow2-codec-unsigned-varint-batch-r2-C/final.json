@@ -1,0 +1,1 @@
+{"summary":"Fixed unsigned varint boundary encoding and preserved caller order in batch encoding. Added regression tests for boundaries, integers beyond 64 bits, and input preservation. Existing tracked tests remain unchanged; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 19 tests passed","git diff --check — passed"]}

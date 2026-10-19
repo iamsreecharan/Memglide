@@ -1,0 +1,1 @@
+{"summary":"Fixed Manhattan distance using absolute coordinate differences. Added regression coverage for symmetry, negative and fractional coordinates, and unchanged inputs. Existing tests remain unchanged.","tests_run":["node --test — passed all 3 discovered test files."]}

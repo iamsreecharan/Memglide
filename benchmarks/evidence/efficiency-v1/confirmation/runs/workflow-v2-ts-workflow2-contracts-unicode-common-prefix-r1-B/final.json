@@ -1,0 +1,1 @@
+{"summary":"Fixed commonPrefix to compare complete Unicode code points without mutating inputs. Added regression coverage; existing tests remain unchanged. No commit created.","tests_run":["node --test — passed all 4 test files","git diff --check — passed"]}

@@ -1,0 +1,1 @@
+{"summary":"Implemented backward indexing for negative integers with explicit bounds checks. Preserved the generic interface, input array, and existing tests; added regression coverage. No commit created.","tests_run":["node --test — passed all tests","git diff --check — passed"]}

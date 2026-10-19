@@ -1,0 +1,1 @@
+{"summary":"Fixed escape_glob to escape original characters once without reprocessing. Added regression tests in a new file; existing tests remain unchanged.","tests_run":["python -m unittest discover -s tests -v — all 18 tests passed."]}

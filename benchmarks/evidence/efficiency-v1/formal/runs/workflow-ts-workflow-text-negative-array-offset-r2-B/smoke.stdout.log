@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 8.136195
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 0.673106
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 1.064974
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.420456
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 0.248696
+  type: 'test'
+  ...
+# Subtest: negative indices count backward from the end
+ok 6 - negative indices count backward from the end
+  ---
+  duration_ms: 0.27051
+  type: 'test'
+  ...
+# Subtest: indices outside either bound return undefined
+ok 7 - indices outside either bound return undefined
+  ---
+  duration_ms: 0.564754
+  type: 'test'
+  ...
+# Subtest: noninteger indices throw RangeError
+ok 8 - noninteger indices throw RangeError
+  ---
+  duration_ms: 1.673998
+  type: 'test'
+  ...
+# Subtest: lookup preserves the array and element identity
+ok 9 - lookup preserves the array and element identity
+  ---
+  duration_ms: 1.22745
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 10 - ordinary-0
+  ---
+  duration_ms: 2.238913
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 11 - ordinary-1
+  ---
+  duration_ms: 0.480472
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 12 - ordinary-2
+  ---
+  duration_ms: 0.228131
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 13 - ordinary-3
+  ---
+  duration_ms: 0.639274
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 14 - ordinary-4
+  ---
+  duration_ms: 0.289141
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 15 - ordinary-0
+  ---
+  duration_ms: 1.035198
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 16 - ordinary-1
+  ---
+  duration_ms: 0.449472
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 17 - ordinary-2
+  ---
+  duration_ms: 0.133074
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 18 - ordinary-3
+  ---
+  duration_ms: 0.096249
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 19 - ordinary-4
+  ---
+  duration_ms: 0.957317
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 352.310244

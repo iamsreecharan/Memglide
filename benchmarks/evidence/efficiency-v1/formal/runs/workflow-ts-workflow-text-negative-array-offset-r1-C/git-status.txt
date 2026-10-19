@@ -1,0 +1,2 @@
+M src/negative_array_offset.ts
+ M tests/negative_array_offset.test.mjs

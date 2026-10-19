@@ -1,0 +1,1 @@
+{"summary":"Fixed negative indexing and explicit bounds handling while preserving integer validation, input arrays, and generic element types. Added regression tests. No commit created.","tests_run":["node --test — passed all 3 test files","git diff --check — passed"]}

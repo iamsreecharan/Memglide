@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: ordinary-0
+ok 1 - ordinary-0
+  ---
+  duration_ms: 3.391347
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 2 - ordinary-1
+  ---
+  duration_ms: 1.031713
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 3 - ordinary-2
+  ---
+  duration_ms: 0.378853
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 4 - ordinary-3
+  ---
+  duration_ms: 0.700853
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 5 - ordinary-4
+  ---
+  duration_ms: 1.087736
+  type: 'test'
+  ...
+# Subtest: negative indices count backward from the end
+ok 6 - negative indices count backward from the end
+  ---
+  duration_ms: 2.600559
+  type: 'test'
+  ...
+# Subtest: noninteger indices throw RangeError
+ok 7 - noninteger indices throw RangeError
+  ---
+  duration_ms: 1.850782
+  type: 'test'
+  ...
+# Subtest: returns the original element without changing the array
+ok 8 - returns the original element without changing the array
+  ---
+  duration_ms: 0.383897
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 9 - ordinary-0
+  ---
+  duration_ms: 1.18374
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 10 - ordinary-1
+  ---
+  duration_ms: 0.283762
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 11 - ordinary-2
+  ---
+  duration_ms: 0.300868
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 12 - ordinary-3
+  ---
+  duration_ms: 0.133871
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 13 - ordinary-4
+  ---
+  duration_ms: 0.660945
+  type: 'test'
+  ...
+# Subtest: ordinary-0
+ok 14 - ordinary-0
+  ---
+  duration_ms: 3.920837
+  type: 'test'
+  ...
+# Subtest: ordinary-1
+ok 15 - ordinary-1
+  ---
+  duration_ms: 0.620014
+  type: 'test'
+  ...
+# Subtest: ordinary-2
+ok 16 - ordinary-2
+  ---
+  duration_ms: 0.534915
+  type: 'test'
+  ...
+# Subtest: ordinary-3
+ok 17 - ordinary-3
+  ---
+  duration_ms: 0.2075
+  type: 'test'
+  ...
+# Subtest: ordinary-4
+ok 18 - ordinary-4
+  ---
+  duration_ms: 0.951941
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 469.397356

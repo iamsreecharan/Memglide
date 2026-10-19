@@ -1,0 +1,29 @@
+...............F........................................................ [ 93%]
+.....                                                                    [100%]
+=================================== FAILURES ===================================
+___ test_actual_retrieval_retains_freshness_until_its_selected_file_changes ____
+
+tmp_path = PosixPath('/workspace/Memglide/.local/efficiency-v1/review-pytest-temp/test_actual_retrieval_retains_0')
+
+    def test_actual_retrieval_retains_freshness_until_its_selected_file_changes(tmp_path: Path) -> None:
+        repo = tmp_path / "repository"
+        repo.mkdir()
+        subprocess.run(["git", "init", "-q", str(repo)], check=True)
+        (repo / "a.py").write_text("def a():\n    return 1\n")
+        (repo / "extra.py").write_text("def extra():\n    return 2\n")
+        service = Service(tmp_path / "state" / "memglide.db")
+        try:
+            project = service.indexer.add_project(str(repo))
+            session = service.memory.start_session(project["id"], "extra.py")
+            result = service.context.get_context(session["id"], "extra.py", 2, 8000)
+>           assert [file["path"] for file in result["passport"]["selected_files"]] == ["extra.py"]
+E           AssertionError: assert ['a.py', 'extra.py'] == ['extra.py']
+E             
+E             At index 0 diff: 'a.py' != 'extra.py'
+E             Left contains one more item: 'extra.py'
+E             Use -v to get more diff
+
+tests/test_invalidation_references.py:160: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_invalidation_references.py::test_actual_retrieval_retains_freshness_until_its_selected_file_changes
+1 failed, 76 passed in 13.55s

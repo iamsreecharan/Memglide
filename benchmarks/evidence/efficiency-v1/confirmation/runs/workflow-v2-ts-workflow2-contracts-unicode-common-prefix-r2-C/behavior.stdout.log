@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: longest prefix across every string
+ok 1 - longest prefix across every string
+  ---
+  duration_ms: 2.507582
+  type: 'test'
+  ...
+# Subtest: complete code points and unchanged input
+ok 2 - complete code points and unchanged input
+  ---
+  duration_ms: 3.737231
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 348.841245

@@ -1,0 +1,220 @@
+"""Prepare explicit pre-confirmation receipts only; never inspect native runs/state."""
+
+from __future__ import annotations
+
+import argparse
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+BASE = ROOT / ".local/efficiency-v1"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--revision", required=True)
+args = parser.parse_args()
+if not args.revision.replace("-", "").isalnum():
+    raise SystemExit("Unsafe fresh revision")
+spec = importlib.util.spec_from_file_location(
+    "efficiency_explicit_extras_preparation", BASE / "publish_evidence.py"
+)
+pub = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = pub
+spec.loader.exec_module(pub)
+pub.XML_FROZEN_COMMIT = "93acf63e1583bd66239b22dc53c2aaf196e3a35a"
+old = (
+    json.loads((BASE / "publisher-extras.json").read_text())
+    if (BASE / "publisher-extras.json").exists()
+    else {}
+)
+selected = []
+# These are selected independently after BOTH native studies finish. Never read
+# their raw streams, grades, runner state, stdout progress or private directories
+# while preparing the engineering whitelist.
+skip = {
+    f"publisher-extras-preflight-{args.revision}.log",  # This invocation writes it after hashing.
+    "publish_evidence.py",
+    "build_bundle.py",
+    "audit_workflow_v1.py",
+    "audit_workflow_v2.py",
+    "audit_workflow_campaign_v1.py",
+    "freeze.json",
+    "formal-exit.json",
+    "formal.log",
+    "confirmation-freeze.json",
+    "confirmation-exit.json",
+    "confirmation.log",
+    "confirmation-collection.log",  # Exact SHA/count/AST-bound omission receipt is published.
+    "publisher-extras.json",
+    "publisher-final-files.template.json",
+}
+for path in sorted(BASE.iterdir()):
+    if (
+        path.is_file()
+        and not path.is_symlink()
+        and path.name not in skip
+        and path.suffix in {".py", ".json", ".xml", ".log", ".txt", ".md"}
+    ):
+        selected.append(
+            (
+                path,
+                Path("engineering") / (path.name + ".txt" if path.suffix == ".py" else path.name),
+            )
+        )
+for name in [
+    "independent-review",
+    "independent-typing-before",
+    "research",
+    "corpus-initial-draft",
+    "corpus-v2-initial-draft",
+]:
+    directory = BASE / name
+    if not directory.exists():
+        continue
+    for path in sorted(directory.iterdir()):
+        if not path.is_file() or path.is_symlink():
+            continue
+        if name == "research" and not (
+            path.name.endswith(".fetch.json")
+            or path.name in {"fetch-log.json", "native-version.json"}
+        ):
+            continue
+        if path.suffix not in {".py", ".json", ".md", ".log", ".txt"}:
+            continue
+        selected.append(
+            (path, Path(name) / (path.name + ".txt" if path.suffix == ".py" else path.name))
+        )
+for relative in [
+    "proof.json",
+    "test_first.py",
+    "test_second.py",
+    "old-shared/first.log",
+    "old-shared/second.log",
+    "native-unique/first.log",
+    "native-unique/second.log",
+]:
+    path = BASE / "pytest-parallel" / relative
+    destination = Path("engineering/pytest-parallel") / relative
+    if path.suffix == ".py":
+        destination = destination.with_suffix(".py.txt")
+    selected.append((path, destination))
+for relative in sorted(pub.EXPLICIT_LEGACY_HELPERS):
+    path = ROOT / relative
+    if path.is_file():
+        selected.append(
+            (path, Path("reproduction/legacy-installed-helpers") / (path.name + ".txt"))
+        )
+# Exact extra test-policy oracle output only; fixture repositories are excluded.
+summary = json.loads((BASE / "corpus-v2-validation.json").read_text())
+for policy in summary["test_file_policy_controls"]:
+    grade = ROOT / policy["grade_path"]
+    if (
+        not grade.is_relative_to(BASE / "corpus-v2-tests-final-tmp")
+        or grade.parent.name != "grade"
+        or grade.name != "grade.json"
+        or grade.absolute() != grade.resolve()
+    ):
+        raise SystemExit("Unsafe external test-policy grade path")
+    if pub.sha(grade.read_bytes()) != policy["grade_sha256"]:
+        raise SystemExit("External test-policy grade changed from final receipt")
+    for name in pub.CORPUS_GRADE_FILES:
+        path = grade.parent / name
+        if path.is_file() and not path.is_symlink():
+            selected.append(
+                (path, Path("corpus/test-file-policy-controls") / grade.parent.parent.name / name)
+            )
+xml_approvals = {}
+for path, _ in selected:
+    if path.suffix == ".xml":
+        data = path.read_bytes()
+        if any(pattern.search(data) for pattern in pub.SECRET_PATTERNS):
+            xml_approvals[str(path.relative_to(ROOT))] = pub.sha(data)
+pub.XML_APPROVALS = xml_approvals
+collection = pub.Collection()
+for source, destination in selected:
+    collection.add(source, destination, required=True)
+collection.corpus_validation()
+rows = [
+    {"source": str(source.relative_to(ROOT)), "destination": str(destination), "required": True}
+    for source, destination in selected
+]
+hashes = {str(source.relative_to(ROOT)): pub.sha(source.read_bytes()) for source, _ in selected}
+changed = [
+    name
+    for name, value in old.get("selected_source_sha256", {}).items()
+    if name in hashes and hashes[name] != value
+]
+result = {
+    "schema_version": 2,
+    "selection_scope": "Engineering/validation/research-fetch receipts finalized before confirmation; initial60nativefailures preserved separately under their own sealed study",
+    "selection_notes": [
+        "All original60strict failures remain failures; new explicit-contract confirmation is a separately frozen corpus, not a regrade or replacement.",
+        "Top-level logs/XML/JSON retain initial failures, intermediate revisions, interrupted validation and final passes.",
+        "The first full Python receipt has1340passes; overlapping focused-suite receipts must not be added to that count.",
+        "full-python-pre-freeze-interrupted retains90completedcases and an interrupted full invocation, not a completed full-suite pass.",
+        "Raw research source/HTML, native progress/streams/grades/state, browser/environment configuration, private SQLite and fixture repositories are excluded from whitelist preparation.",
+        "Both native study artifacts are selected only after both completion guards and all independent audits pass.",
+        "Passing confirmation-collection.log duplicates seven public synthetic credential IDs; publish its exact SHA/count/AST-match receipt, keep raw text excluded. Full final XML preserves these IDs with narrow frozen-fixture exceptions. No native or failed-run evidence is omitted.",
+        "All corpus oracle stages use exact *_grade directories and named logs; four final test-file-policy controls preserve only external oracle outputs.",
+        "Earlier publisher proof failure/no-overwrite diagnostics remain historical tooling checks, not native benchmark outcomes.",
+    ],
+    "xml_approvals": xml_approvals,
+    "files": rows,
+    "selected_source_sha256": hashes,
+}
+(BASE / "publisher-extras.json").write_text(json.dumps(result, indent=2) + "\n")
+bspec = importlib.util.spec_from_file_location(
+    "efficiency_final_files_template_v2", BASE / "build_bundle.py"
+)
+builder = importlib.util.module_from_spec(bspec)
+sys.modules[bspec.name] = builder
+bspec.loader.exec_module(builder)
+files = []
+for name in (*builder.REQUIRED_REPORTS, "README.md", "PROGRESS.md"):
+    path = ROOT / name
+    pending = name in {
+        "benchmarks/codex-workflow-confirmation.md",
+        "benchmarks/codex-workflow-confirmation.json",
+        "benchmarks/workflow-confirmation-assessment.md",
+        "benchmarks/workflow-confirmation-assessment.json",
+        "benchmarks/efficiency-assessment.md",
+        "benchmarks/efficiency-assessment.json",
+        "benchmarks/efficiency-validation.md",
+        "benchmarks/efficiency-validation.json",
+        "README.md",
+        "PROGRESS.md",
+    }
+    files.append(
+        {
+            "source": name,
+            "sha256": None if pending or not path.exists() else pub.sha(path.read_bytes()),
+        }
+    )
+(BASE / "publisher-final-files.template.json").write_text(
+    json.dumps(
+        {
+            "schema_version": 2,
+            "note": "Template only. Recompute every hash from final reviewed files; null is rejected by the builder.",
+            "files": files,
+        },
+        indent=2,
+    )
+    + "\n"
+)
+receipt = {
+    "pass": True,
+    "preconfirmation_explicit_files": len(rows),
+    "preconfirmation_bytes": sum(path.stat().st_size for path, _ in selected),
+    "xml_exact_frozen_fixture_approvals": xml_approvals,
+    "selected_corpus_grade_artifacts": len(collection.files) - len(rows),
+    "corpus_stages": pub.CORPUS_STAGES,
+    "full_original_bytes_credential_scanned": True,
+    "native_formal_stream_grade_reads": 0,
+    "public_mutations": 0,
+    "changed_previously_selected_source_paths": changed,
+    "extras_config_sha256": pub.sha((BASE / "publisher-extras.json").read_bytes()),
+    "files_template_sha256": pub.sha((BASE / "publisher-final-files.template.json").read_bytes()),
+}
+with (BASE / f"publisher-extras-preflight-{args.revision}.json").open("x") as stream:
+    stream.write(json.dumps(receipt, indent=2) + "\n")
+print(json.dumps(receipt, indent=2))

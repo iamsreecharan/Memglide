@@ -1,0 +1,4 @@
+benchmarks/evidence/cache-formats-v1/corpus/final/py-cache-mailroom-colon-password/reference_grade/held_out.py: error: Duplicate module named "held_out" (also at "benchmarks/evidence/cache-formats-v1/corpus/final/py-cache-mailroom-colon-password/baseline_grade/held_out.py")
+benchmarks/evidence/cache-formats-v1/corpus/final/py-cache-mailroom-colon-password/reference_grade/held_out.py: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#mapping-file-paths-to-modules for more info
+benchmarks/evidence/cache-formats-v1/corpus/final/py-cache-mailroom-colon-password/reference_grade/held_out.py: note: Common resolutions include: a) using `--exclude` to avoid checking one of them, b) adding `__init__.py` somewhere, c) using `--explicit-package-bases` or adjusting MYPYPATH
+Found 1 error in 1 file (errors prevented further checking)

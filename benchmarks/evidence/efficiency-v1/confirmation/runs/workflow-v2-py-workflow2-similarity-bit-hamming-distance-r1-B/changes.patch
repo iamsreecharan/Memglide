@@ -1,0 +1,8 @@
+diff --git a/similarity/bit_hamming_distance.py b/similarity/bit_hamming_distance.py
+index 61b4b4e..c27a535 100644
+--- a/similarity/bit_hamming_distance.py
++++ b/similarity/bit_hamming_distance.py
+@@ -1,2 +1,2 @@
+ def hamming_distance(left,right):
+-    return abs(int(left,2)-int(right,2))
++    return sum(left_bit != right_bit for left_bit, right_bit in zip(left, right))

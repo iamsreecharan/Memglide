@@ -1,0 +1,51 @@
+diff --git a/form/query_latest_value.py b/form/query_latest_value.py
+index 59f02f3..7e9e165 100644
+--- a/form/query_latest_value.py
++++ b/form/query_latest_value.py
+@@ -2,5 +2,5 @@ def latest_values(pairs):
+     """Collect repeated form fields into their final submitted values."""
+     result = {}
+     for key, value in pairs:
+-        result.setdefault(key, value)
++        result[key] = value
+     return result
+diff --git a/form/query_latest_value_api.py b/form/query_latest_value_api.py
+index b82bd6c..70692a9 100644
+--- a/form/query_latest_value_api.py
++++ b/form/query_latest_value_api.py
+@@ -2,4 +2,4 @@ from .query_latest_value import latest_values
+ 
+ def query_value(pairs, key, default=""):
+     """Read a submitted field without changing its value."""
+-    return latest_values(pairs).get(key.lower(), default)
++    return latest_values(pairs).get(key, default)
+diff --git a/tests/test_query_latest_value.py b/tests/test_query_latest_value.py
+index 6020810..a59a497 100644
+--- a/tests/test_query_latest_value.py
++++ b/tests/test_query_latest_value.py
+@@ -18,3 +18,25 @@ class OrdinaryTests(unittest.TestCase):
+     def test_ordinary_4(self):
+         self.assertEqual(api.query_value([],"a","missing"),"missing")
+ 
++    def test_latest_values_preserves_first_key_order_and_inputs(self):
++        pairs = [("B", "first"), ("a", "second"), ("B", "last"),
++                 ("b", "case sensitive"), ("a", "")]
++        original = list(pairs)
++        result = core.latest_values(pairs)
++        self.assertEqual(list(result.items()),
++                         [("B", "last"), ("a", ""), ("b", "case sensitive")])
++        self.assertEqual(pairs, original)
++
++    def test_query_value_uses_exact_key_and_preserves_value(self):
++        pairs = [("Name", "old"), ("name", "lowercase"),
++                 ("Name", "  Final Value  ")]
++        original = list(pairs)
++        self.assertEqual(api.query_value(pairs, "Name"), "  Final Value  ")
++        self.assertEqual(api.query_value(pairs, "name"), "lowercase")
++        default = object()
++        self.assertIs(api.query_value(pairs, "NAME", default), default)
++        self.assertEqual(pairs, original)
++
++    def test_query_value_preserves_empty_final_value(self):
++        self.assertEqual(api.query_value(iter([("a", "old"), ("a", "")]),
++                                         "a", "missing"), "")

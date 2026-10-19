@@ -1,0 +1,1 @@
+{"summary":"Fixed angleDifference to normalize operands before subtraction and return the shortest signed rotation in [-180, 180), with ties returning -180. Preserved fractions and nonfinite-input rejection. Added regression tests; no commits made.","tests_run":["node --test — passed all existing and added tests."]}

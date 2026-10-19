@@ -1,0 +1,49 @@
+diff --git a/src/negative_array_offset.ts b/src/negative_array_offset.ts
+index 50806b7..43f9c24 100644
+--- a/src/negative_array_offset.ts
++++ b/src/negative_array_offset.ts
+@@ -1,4 +1,6 @@
+ export function atPosition<T>(items: T[], index: number): T | undefined {
+   if (!Number.isInteger(index)) throw new RangeError("integer index required");
+-  return items[index];
++  const position = index < 0 ? items.length + index : index;
++  if (position < 0 || position >= items.length) return undefined;
++  return items[position];
+ }
+diff --git a/tests/negative_array_offset.test.mjs b/tests/negative_array_offset.test.mjs
+index 435e66d..db6139f 100644
+--- a/tests/negative_array_offset.test.mjs
++++ b/tests/negative_array_offset.test.mjs
+@@ -6,3 +6,32 @@ test("ordinary-1",()=>{assert.equal(core.atPosition(["a","b"],1),"b");});
+ test("ordinary-2",()=>{assert.equal(core.atPosition([],0),undefined);});
+ test("ordinary-3",()=>{assert.equal(core.atPosition([1],1),undefined);});
+ test("ordinary-4",()=>{assert.equal(core.atPosition([7],-0),7);});
++
++test("negative indices count backward from the end", () => {
++  assert.equal(core.atPosition(["a", "b", "c"], -1), "c");
++  assert.equal(core.atPosition(["a", "b", "c"], -3), "a");
++});
++
++test("indices outside either bound return undefined", () => {
++  const items = ["a", "b"];
++  items[-1] = "outside";
++  items[2 ** 32] = "outside";
++  assert.equal(core.atPosition(items, -3), undefined);
++  assert.equal(core.atPosition(items, 2 ** 32), undefined);
++  assert.equal(core.atPosition([], -1), undefined);
++});
++
++test("noninteger indices throw RangeError", () => {
++  for (const index of [0.5, -1.5, NaN, Infinity, -Infinity]) {
++    assert.throws(() => core.atPosition([1, 2], index), RangeError);
++  }
++});
++
++test("lookup preserves the array and element identity", () => {
++  const first = { value: 1 };
++  const last = { value: 2 };
++  const items = Object.freeze([first, last]);
++  assert.equal(core.atPosition(items, -1), last);
++  assert.equal(core.atPosition(items, 0), first);
++  assert.deepEqual(items, [first, last]);
++});

@@ -1,0 +1,23 @@
+test_ordinary_0 (test_ascii_count_field.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_ascii_count_field.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_ascii_count_field.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_ascii_count_field.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_ascii_count_field.OrdinaryTests.test_ordinary_4) ... ok
+test_invalid_fields (test_ascii_count_field.RegressionTests.test_invalid_fields) ... ok
+test_large_integer_is_exact (test_ascii_count_field.RegressionTests.test_large_integer_is_exact) ... ok
+test_many_leading_zeros (test_ascii_count_field.RegressionTests.test_many_leading_zeros) ... ok
+test_ordinary_0 (test_form_plus_decoding.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_form_plus_decoding.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_form_plus_decoding.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_form_plus_decoding.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_form_plus_decoding.OrdinaryTests.test_ordinary_4) ... ok
+test_ordinary_0 (test_query_latest_value.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_query_latest_value.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_query_latest_value.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_query_latest_value.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_query_latest_value.OrdinaryTests.test_ordinary_4) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.010s
+
+OK

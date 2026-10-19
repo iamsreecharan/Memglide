@@ -1,0 +1,205 @@
+"""Compare exact frequency implementations using a retained search_scale fixture.
+
+Run search_scale first, then pass its output directory as --fixture. All timings
+are local synthetic searches; no coding model is invoked.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import statistics
+import time
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Literal, TypedDict
+
+from benchmarks.compare_components import capture_provenance
+from memglide.service import Service
+
+
+class _ReturnedCandidate(TypedDict):
+    path: str
+    symbol: str | None
+    score: float
+    reason: str
+    hash: str
+
+
+class _FrequencyRun(TypedDict):
+    case: str
+    repeat: int
+    policy: str
+    order_within_pair: int
+    wall_seconds: float
+    process_cpu_seconds: float
+    returned_candidates: list[_ReturnedCandidate]
+
+
+class _MetricSummary(TypedDict):
+    n: int
+    mean: float
+    median: float
+    min: float
+    max: float
+
+
+_TimingMetric = Literal["wall_seconds", "process_cpu_seconds"]
+
+
+def run(fixture: Path, output: Path) -> None:
+    if output.exists() or output.with_suffix(".md").exists():
+        raise ValueError("Use a fresh output path to retain previous measurements")
+    if not (fixture / "state/memglide.db").is_file():
+        raise ValueError("Build a fixture with benchmarks.search_scale first")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    service = Service(fixture / "state/memglide.db")
+    original = service.indexer._document_frequencies
+
+    def prior(conn, project_id, expressions):
+        return {
+            word: conn.execute(
+                "SELECT count(*) FROM file_search WHERE file_search MATCH ? AND project_id=?",
+                (expression, project_id),
+            ).fetchone()[0]
+            for word, expression in expressions.items()
+        }
+
+    created_at = datetime.now(UTC).isoformat()
+    source_before = capture_provenance()
+    runs: list[_FrequencyRun] = []
+    report: dict[str, object] = {
+        "created_at": created_at,
+        "scope": "Paired exact document-frequency implementations on the same manually populated 20,000-file/78 MB index. Both rank at most 32 informative FTS terms. This is a local search stress check, not a coding model benchmark or indexing measurement.",
+        "source_before": source_before,
+        "fixture_report_sha256": hashlib.sha256((fixture / "report.json").read_bytes()).hexdigest(),
+        "conditions": "Same process, DB, source bytes, query, refresh=False and limit=20. Shared unflushed OS/SQLite caches; alternate order in repeat 2. Process CPU only; no model, cost, remote resource or exact filesystem-read telemetry. Prior implementation uses the retained project_id-payload COUNT query; optimized uses exact vocabulary or row-ID membership.",
+        "runs": runs,
+    }
+    try:
+        project = service.indexer.list_projects()[0]
+        queries = {
+            "short_common": " ".join(f"w{i:04d}" for i in range(8)),
+            "long_absent": " ".join(f"z{i:04d}" for i in range(650)),
+            "long_common": " ".join(f"w{i:04d}" for i in range(650)),
+        }
+        for repetition in (1, 2):
+            order = (
+                ("prior_payload_count", "optimized_exact_count")
+                if repetition == 1
+                else ("optimized_exact_count", "prior_payload_count")
+            )
+            for case, query in queries.items():
+                for position, policy in enumerate(order, 1):
+                    service.indexer._document_frequencies = (
+                        prior if policy == "prior_payload_count" else original
+                    )
+                    start, cpu = time.perf_counter(), time.process_time()
+                    hits = service.indexer.search(project["id"], query, limit=20, refresh=False)
+                    row: _FrequencyRun = {
+                        "case": case,
+                        "repeat": repetition,
+                        "policy": policy,
+                        "order_within_pair": position,
+                        "wall_seconds": time.perf_counter() - start,
+                        "process_cpu_seconds": time.process_time() - cpu,
+                        "returned_candidates": [
+                            {
+                                "path": h["path"],
+                                "symbol": h["symbol"],
+                                "score": h["score"],
+                                "reason": h["reason"],
+                                "hash": h["hash"],
+                            }
+                            for h in hits
+                        ],
+                    }
+                    runs.append(row)
+                    output.write_text(json.dumps(report, indent=2) + "\n")
+                    print(
+                        json.dumps({k: v for k, v in row.items() if k != "returned_candidates"}),
+                        flush=True,
+                    )
+        source_after = capture_provenance()
+        report["source_after"] = source_after
+        report["source_unchanged"] = (
+            source_before["source_tree_sha256"] == source_after["source_tree_sha256"]
+        )
+        report["all_pairs_identical"] = all(
+            next(
+                r
+                for r in runs
+                if r["case"] == case and r["repeat"] == rep and r["policy"] == "prior_payload_count"
+            )["returned_candidates"]
+            == next(
+                r
+                for r in runs
+                if r["case"] == case
+                and r["repeat"] == rep
+                and r["policy"] == "optimized_exact_count"
+            )["returned_candidates"]
+            for case in queries
+            for rep in (1, 2)
+        )
+        timing_metrics: tuple[_TimingMetric, ...] = ("wall_seconds", "process_cpu_seconds")
+        summary: dict[str, dict[str, dict[str, _MetricSummary]]] = {
+            case: {
+                policy: {
+                    metric: {
+                        "n": len(
+                            values := [
+                                r[metric]
+                                for r in runs
+                                if r["case"] == case and r["policy"] == policy
+                            ]
+                        ),
+                        "mean": statistics.mean(values),
+                        "median": statistics.median(values),
+                        "min": min(values),
+                        "max": max(values),
+                    }
+                    for metric in timing_metrics
+                }
+                for policy in ("prior_payload_count", "optimized_exact_count")
+            }
+            for case in queries
+        }
+        report["summary"] = summary
+        output.write_text(json.dumps(report, indent=2) + "\n")
+        lines = [
+            "# Exact document-frequency performance check",
+            "",
+            "Local synthetic search measurements. No coding tasks, token usage or cost measured.",
+            "",
+            "20,000 files, 78 MB, shared caches, two repeats with reversed policy order. Both policies use the same 32-term BM25 shortlist. The retained prior implementation reads the unindexed project_id payload for each matching posting; the optimized implementation uses equivalent vocabulary counts or project-scoped row IDs.",
+            "",
+            "| Query | Prior mean / median seconds | Optimized mean / median seconds |",
+            "|---|---:|---:|",
+        ]
+        for case, policies in summary.items():
+            a, b = (
+                policies[p]["wall_seconds"]
+                for p in ("prior_payload_count", "optimized_exact_count")
+            )
+            lines.append(
+                f"| {case} | {a['mean']:.4f} / {a['median']:.4f} | {b['mean']:.4f} / {b['median']:.4f} |"
+            )
+        lines += [
+            "",
+            f"All six paired candidate lists (paths, symbols, scores, reasons and source hashes) identical: {report['all_pairs_identical']}. Source unchanged during measurement: {report['source_unchanged']}.",
+            "",
+            "Individual runs, CPU measurements, source hashes and fixture digest are retained in [JSON](search-frequency-performance.json). Two repeats do not establish a stable production latency distribution. Earlier all-terms-versus-shortlist slow observations are retained separately; these results must not replace them.",
+        ]
+        output.with_suffix(".md").write_text("\n".join(lines) + "\n")
+    finally:
+        service.indexer._document_frequencies = original
+        service.close()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--fixture", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    run(args.fixture.resolve(), args.output.resolve())

@@ -1,0 +1,20 @@
+from pathlib import Path
+import json
+root=Path(__file__).resolve().parents[2]; x=json.loads((root/'benchmarks/workflow-confirmation-assessment.json').read_text()); f=x['strata']['selection_stratum']['explicit_focus']; key='native_reported_price_equivalent_usd'
+def delta(a,b): return (b/a-1)*100
+A,B,C=(f[a] for a in ('A','B','C'))
+a=A['cost_per_successful_task_usd']; b=B['cost_per_successful_task_usd']; lo=(1-b['possible_write_price_upper_usd']/a['possible_write_price_lower_usd'])*100; hi=(1-b['possible_write_price_lower_usd']/a['possible_write_price_upper_usd'])*100
+cost=delta(a[key],b[key]); time=delta(A['metrics']['end_to_end_wall_seconds']['mean'],B['metrics']['end_to_end_wall_seconds']['mean'])
+paragraph=(f"Source-only B is the best focused-task point estimate in this confirmation: **{-cost:.2f}% lower estimated cost per successful task** than A, but **{time:.2f}% longer mean full time**. Its median time is also longer. This is not a joint cost-and-speed win. Under independent possible cache-write attribution, its focused saving range is **{lo:.2f}% to {hi:.2f}%**; these are scenarios, not confidence intervals or actual billing.\n\n")
+cause=("The support ablation explains the failed promotion. On focused tasks, C reduces recognized read-command items to **0.25/run**, versus B's **1.125/run**, while total completed command items rise to **4.625/run**, versus **3.6875/run**. Fewer reads did not eliminate enough other work. C also has **9,349.375 mean ordinary-input tokens versus 8,570.875** for B, and **849.875 output tokens versus 788.125**. Those more expensive usage categories explain the higher price-equivalent cost arithmetically. The measured local CPU lower bound rises from **5.3303 to 6.7276 seconds/run**; sampled RSS does not rise proportionally. Provider inference counts and the model's internal reasons for its command choices remain unobserved. These observations support retaining support as an explicit option, not automatic expansion.\n\n")
+for p in [root/'benchmarks/efficiency-assessment.md',root/'README.md',root/'PROGRESS.md']:
+ s=p.read_text()
+ if p.name=='efficiency-assessment.md':
+  anchor='## Prespecified gate and repeat consistency'; assert anchor in s; s=s.replace(anchor,paragraph+cause+anchor,1)
+ else:
+  anchor='The preceding [cost '+('study]' if p.name=='README.md' else 'assessment]'); assert anchor in s
+  s=s.replace(anchor,paragraph+anchor,1)
+ p.write_text(s)
+receipt={'source_only_focused_cost_change_percent':cost,'source_only_focused_time_change_percent':time,'source_only_focused_write_saving_scenarios_percent':[lo,hi],'statement_scope':'Point price-equivalent estimate and scenarios; not actual billing or a general simultaneous cost/latency gain.'}
+(root/'.local/efficiency-v1/final-findings.json').write_text(json.dumps(receipt,indent=2)+'\n')
+print(json.dumps(receipt))

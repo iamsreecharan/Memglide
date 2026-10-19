@@ -1,0 +1,41 @@
+diff --git a/form/ascii_count_field.py b/form/ascii_count_field.py
+index 0a0af31..ecf75c5 100644
+--- a/form/ascii_count_field.py
++++ b/form/ascii_count_field.py
+@@ -1,5 +1,8 @@
+ def parse_count(text):
+     """Read the integer field accepted by a legacy ASCII-only form protocol."""
+-    if not text or not text.isdigit():
++    if not text or any(char < "0" or char > "9" for char in text):
+         raise ValueError("ASCII digits required")
+-    return int(text)
++    value = 0
++    for char in text:
++        value = value * 10 + (ord(char) - ord("0"))
++    return value
+diff --git a/tests/test_ascii_count_field.py b/tests/test_ascii_count_field.py
+index 637a1fc..44df00e 100644
+--- a/tests/test_ascii_count_field.py
++++ b/tests/test_ascii_count_field.py
+@@ -17,3 +17,21 @@ class OrdinaryTests(unittest.TestCase):
+     def test_ordinary_4(self):
+         self.assertEqual(core.parse_count("123456789"),123456789)
+ 
++class RegressionTests(unittest.TestCase):
++    def test_rejects_non_ascii_digits_and_invalid_fields(self):
++        for text in ("", "١٢", "１２", "²", "1٢", "+1", "-1",
++                     " 1", "1 ", "1\n", "1\t", "1 2", "1.0", "abc"):
++            with self.subTest(text=text):
++                with self.assertRaises(ValueError):
++                    core.parse_count(text)
++
++    def test_large_integer_remains_exact(self):
++        self.assertEqual(core.parse_count("123456789012345678901234567890"),
++                         123456789012345678901234567890)
++
++    def test_leading_zeros(self):
++        self.assertEqual(core.parse_count("000000"), 0)
++        self.assertEqual(core.parse_count("00042"), 42)
++
++    def test_integer_beyond_string_conversion_limit(self):
++        self.assertEqual(core.parse_count("9" * 5000), 10 ** 5000 - 1)

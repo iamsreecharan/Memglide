@@ -1,0 +1,19 @@
+test_ordinary_0 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_bit_hamming_distance.OrdinaryTests.test_ordinary_4) ... ok
+test_arbitrarily_long_strings (test_bit_hamming_distance_regression.HammingDistanceRegressionTests.test_arbitrarily_long_strings) ... ok
+test_counts_differing_positions (test_bit_hamming_distance_regression.HammingDistanceRegressionTests.test_counts_differing_positions) ... ok
+test_identical_long_strings (test_bit_hamming_distance_regression.HammingDistanceRegressionTests.test_identical_long_strings) ... ok
+test_preserves_leading_zero_positions (test_bit_hamming_distance_regression.HammingDistanceRegressionTests.test_preserves_leading_zero_positions) ... ok
+test_ordinary_0 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_0) ... ok
+test_ordinary_1 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_1) ... ok
+test_ordinary_2 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_2) ... ok
+test_ordinary_3 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_3) ... ok
+test_ordinary_4 (test_jaccard_stable_selection.OrdinaryTests.test_ordinary_4) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK
