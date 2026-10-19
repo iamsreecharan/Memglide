@@ -1,0 +1,186 @@
+{
+  "corpus_version": "automatic-2.0.0",
+  "evaluation_only": "known_paths/focus_paths are evaluator labels used by baseline B and after preparation for offline scoring; never C selector input",
+  "tasks": [
+    {
+      "id": "blinker-bound-receiver-identity",
+      "repository": "blinker",
+      "language": "python",
+      "prompt": "Repeated access to the same bound receiver method gets different identity keys, breaking signal disconnect and deduplication. Make the receiver identifier stable across bound-method objects while distinguishing methods and receiver instances.",
+      "known_paths": [
+        "src/blinker/_utilities.py"
+      ],
+      "focus_paths": [
+        "src/blinker/_utilities.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "blinker-value-sender-identity",
+      "repository": "blinker",
+      "language": "python",
+      "prompt": "Equal string senders created as distinct objects no longer share signal identity. Restore value-based identifiers for strings and integers of any length, while keeping ordinary mutable sender objects distinguished by identity.",
+      "known_paths": [
+        "src/blinker/_utilities.py"
+      ],
+      "focus_paths": [
+        "src/blinker/_utilities.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "blinker-bound-weak-references",
+      "repository": "blinker",
+      "language": "python",
+      "prompt": "Weakly connected bound receivers disappear even while their owning instance remains alive. Keep a usable weak reference to bound methods without retaining the owner, and preserve the cleanup callback when the owner is collected.",
+      "known_paths": [
+        "src/blinker/_utilities.py"
+      ],
+      "focus_paths": [
+        "src/blinker/_utilities.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "cachetools-keyword-order",
+      "repository": "cachetools",
+      "language": "python",
+      "prompt": "Memoization misses when callers reorder otherwise identical keyword arguments. Cache-key construction must ignore keyword insertion order while preserving positional argument order and the separation between positional and keyword arguments.",
+      "known_paths": [
+        "src/cachetools/keys.py"
+      ],
+      "focus_paths": [
+        "src/cachetools/keys.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "cachetools-positional-type-tags",
+      "repository": "cachetools",
+      "language": "python",
+      "prompt": "Typed memoization conflates equal-valued positional arguments of different types. Include type distinctions for every positional argument, including booleans and mixed multi-argument calls, without losing keyword type distinctions or order-insensitive keyword handling.",
+      "known_paths": [
+        "src/cachetools/keys.py"
+      ],
+      "focus_paths": [
+        "src/cachetools/keys.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "cachetools-method-receiver-exclusion",
+      "repository": "cachetools",
+      "language": "python",
+      "prompt": "Typed method-cache keys incorrectly include the receiver. Exclude the instance entirely, even for unhashable receivers and receivers of different classes; retain type distinctions for the actual method arguments.",
+      "known_paths": [
+        "src/cachetools/keys.py"
+      ],
+      "focus_paths": [
+        "src/cachetools/keys.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "defu-array-precedence",
+      "repository": "defu",
+      "language": "typescript",
+      "prompt": "Merging default configurations reverses array precedence. User-provided array entries must precede default entries at every nesting depth and across multiple layers, without modifying any input arrays or objects.",
+      "known_paths": [
+        "src/defu.ts"
+      ],
+      "focus_paths": [
+        "src/defu.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "defu-nullish-fallback",
+      "repository": "defu",
+      "language": "typescript",
+      "prompt": "Explicit null values incorrectly erase configuration defaults. Treat null and undefined as missing at every nesting level, while preserving intentional false, zero and empty-string overrides and keeping input configurations unchanged.",
+      "known_paths": [
+        "src/defu.ts"
+      ],
+      "focus_paths": [
+        "src/defu.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "defu-class-instance-boundaries",
+      "repository": "defu",
+      "language": "typescript",
+      "prompt": "Configuration merging now recursively traverses class instances as though they were plain objects. Preserve class instances as atomic values, continue merging ordinary and null-prototype mappings, and keep iterable objects excluded from plain-object handling.",
+      "known_paths": [
+        "src/_utils.ts"
+      ],
+      "focus_paths": [
+        "src/_utils.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "hookable-nested-hook-names",
+      "repository": "hookable",
+      "language": "typescript",
+      "prompt": "Nested hook configurations no longer register under their documented colon-separated names. Flatten every nesting level consistently, preserve callback identity, and ensure public hook registration and invocation use the same flattened names.",
+      "known_paths": [
+        "src/utils.ts"
+      ],
+      "focus_paths": [
+        "src/utils.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "hookable-serial-awaiting",
+      "repository": "hookable",
+      "language": "typescript",
+      "prompt": "Serial hook composition starts asynchronous callbacks concurrently. Await each callback before starting the next and stop on rejection, preserving callback order and correct behavior for empty task lists.",
+      "known_paths": [
+        "src/utils.ts"
+      ],
+      "focus_paths": [
+        "src/utils.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    },
+    {
+      "id": "hookable-observer-snapshots",
+      "repository": "hookable",
+      "language": "typescript",
+      "prompt": "Removing an observer during notification skips another observer already scheduled for that event. Deliver each notification from a stable callback-list snapshot, pass through the original event object, and apply removals only to later notifications.",
+      "known_paths": [
+        "src/utils.ts"
+      ],
+      "focus_paths": [
+        "src/utils.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; no claim of full upstream-suite execution",
+      "corpus_version": "automatic-2.0.0"
+    }
+  ]
+}

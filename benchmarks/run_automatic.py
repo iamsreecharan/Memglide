@@ -300,6 +300,7 @@ def prepare(
         project_id=setup["project_id"],
         db_path=artifacts / "memglide.db",
         enabled=True,
+        selection_policy="v1",
         max_context_bytes=12_000,
         max_added_tokens=4_000,
         context_format="compact-prefix",

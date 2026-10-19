@@ -212,6 +212,7 @@ def prepare_task_prompt(
     max_added_tokens: int = 4_000,
     provided_sources: dict[str, str] | None = None,
     task_query: str | None = None,
+    selection_policy: str = "v2",
 ) -> dict[str, Any]:
     """Discover from a task with no supplied paths, or return the exact original.
 
@@ -223,6 +224,8 @@ def prepare_task_prompt(
     bodies actually present, together with their paths, in this very prompt.
     A wrapper may supply ``task_query`` to separate the actual task from its
     workflow text; it must be an exact, bounded substring of the delivered prompt.
+    ``selection_policy='v1'`` reproduces the original metadata-coverage policy.
+    V2 uses bounded verified lexical evidence; neither policy establishes savings.
     """
     from memglide.integrations.preload import prepare_prompt
 
@@ -242,6 +245,8 @@ def prepare_task_prompt(
         raise ValueError("enabled must be a boolean")
     if not isinstance(mode, str) or mode not in {"auto", "off", "preload"}:
         raise ValueError("mode must be auto, off, or preload")
+    if not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2"}:
+        raise ValueError("selection_policy must be v1 or v2")
     if type(max_added_tokens) is not int or not 1 <= max_added_tokens <= MAX_ADDED_TOKENS:
         raise ValueError(f"max_added_tokens must be between 1 and {MAX_ADDED_TOKENS}")
     if provided_sources is not None and (
@@ -268,7 +273,7 @@ def prepare_task_prompt(
     query = prompt if task_query is None else task_query
     receipt: dict[str, Any] = {
         "version": 1,
-        "policy_version": "deterministic-source-v1",
+        "policy_version": "deterministic-source-" + selection_policy,
         "decision": "SKIP",
         "reason": "disabled",
         "selected_paths": [],
@@ -375,32 +380,51 @@ def prepare_task_prompt(
         if not terms or len(terms) > 64 or any(len(term) > 128 for term in terms):
             return finish("insufficient_task_evidence")
         ranked = []
-        for item in candidates:
-            evidence = set(
-                tokens(" ".join(str(item.get(key, "")) for key in ("path", "name", "signature")))
+        evidence_guard: dict[str, Any] | None = None
+        if selection_policy == "v1":
+            for item in candidates:
+                evidence = set(
+                    tokens(" ".join(str(item.get(key, "")) for key in ("path", "name", "signature")))
+                )
+                evidence.update(item.get("ranking_evidence_terms", ()))
+                explicit = explicit_path(query, item["path"]) or explicit_identifier(
+                    query,
+                    item.get("name", ""),
+                    item.get("qualified_name") or item.get("name", ""),
+                )
+                matched = sorted(terms & evidence)
+                ranked.append(
+                    {
+                        "path": item["path"],
+                        "score": item["score"],
+                        "reason": item["reason"],
+                        "evidence_terms": matched,
+                        "explicit_anchor": explicit,
+                    }
+                )
+        elif candidates:
+            from memglide.integrations.source_evidence import (
+                EvidenceDeclined,
+                rank_verified_sources,
             )
-            evidence.update(item.get("ranking_evidence_terms", ()))
-            explicit = explicit_path(query, item["path"]) or explicit_identifier(
-                query,
-                item.get("name", ""),
-                item.get("qualified_name") or item.get("name", ""),
+
+            evidence_selection = _selection(
+                database, project_id, tuple(item["path"] for item in candidates)
             )
-            matched = sorted(terms & evidence)
-            ranked.append(
-                {
-                    "path": item["path"],
-                    "score": item["score"],
-                    "reason": item["reason"],
-                    "evidence_terms": matched,
-                    "explicit_anchor": explicit,
-                }
-            )
+            if evidence_selection != initial_selection:
+                return finish("policy_changed")
+            try:
+                candidates, ranked, evidence_guard = rank_verified_sources(
+                    reader, project_id, query, candidates, terms, evidence_selection
+                )
+            except EvidenceDeclined as exc:
+                return finish(str(exc))
         receipt["ranked_candidates"] = ranked[:12]
         receipt["omitted_candidate_files"] = max(0, len(candidates) - 12)
         if not ranked:
             return finish("no_production_match")
         top = ranked[0]
-        if not top["explicit_anchor"] and (
+        if selection_policy == "v1" and not top["explicit_anchor"] and (
             len(top["evidence_terms"]) < 2
             or len(top["evidence_terms"]) / len(terms) < 0.30
         ):
@@ -429,8 +453,18 @@ def prepare_task_prompt(
             return finish("dependency_bundle_limit")
         # A close second independent module is ambiguity, not confidence.
         independent = [item for item in ranked[1:] if item["path"] not in helpers]
-        if independent and independent[0]["score"] >= top["score"] * 0.82:
-            return finish("ambiguous_candidates")
+        if selection_policy == "v1":
+            if independent and independent[0]["score"] >= top["score"] * 0.82:
+                return finish("ambiguous_candidates")
+        elif evidence_guard is not None:
+            from memglide.integrations.source_evidence import ambiguous_evidence
+
+            top_evidence = evidence_guard["evidence"][top["path"]]
+            other_evidence = [evidence_guard["evidence"][item["path"]] for item in independent]
+            if ambiguous_evidence(top_evidence, other_evidence):
+                return finish("ambiguous_candidates")
+            if not top_evidence["sufficient"]:
+                return finish("weak_lexical_evidence")
         paths = sorted({anchor["path"], *helpers})
         versions = {}
         for path in paths:
@@ -493,6 +527,18 @@ def prepare_task_prompt(
             _, digest = read_source(selection["root"], path, selection["max_size"])
             if digest != versions[path]:
                 return finish("ranking_source_changed")
+        if evidence_guard is not None:
+            # A losing candidate can change the choice without an index write.
+            # Revalidate every inspected body and policy before releasing source.
+            evidence_paths = evidence_guard["paths"]
+            if _selection(database, project_id, evidence_paths) != evidence_guard["selection"]:
+                return finish("policy_changed")
+            if _eligible(evidence_guard["selection"], evidence_paths) != evidence_guard["policy"]:
+                return finish("policy_changed")
+            for path, digest in evidence_guard["versions"].items():
+                _, observed = read_source(selection["root"], path, selection["max_size"])
+                if observed != digest:
+                    return finish("ranking_source_changed")
         if not deliver:
             return finish("source_already_provided")
         if any(item["sha256"] != versions[item["path"]] for item in response["files"]):

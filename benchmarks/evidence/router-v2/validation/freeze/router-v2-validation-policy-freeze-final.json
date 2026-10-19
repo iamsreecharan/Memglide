@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-10-19T16:39:24.535748+00:00",
+  "status": "final implementation and protocol frozen before first held-out selection probe",
+  "files": {
+    "src/memglide/core/query.py": "fd52ce9baaf673ac00ecbcdbf7bd434eefa7ca57025092642b6e2a6cfe1f28e9",
+    "src/memglide/integrations/auto_preload.py": "6f263cbd9f5435281f1eeb9f3d79b1e310487be8d5cb7b2f2afce2b233900711",
+    "src/memglide/integrations/source_evidence.py": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc",
+    "src/memglide/integrations/syntax_identifiers.py": "989d3083f9f620bc34435051d2bdfd8611d9d0b6593376ecaeda7e1341830d2f",
+    "src/memglide/integrations/codex_preload.py": "e75062593d103e6cbf2d332043f9f47a1877d263ee577706e00f855e52a45608",
+    "benchmarks/run_automatic_v2.py": "cd31516f8e5349fb3725523301ade3fecc70dee184a480f035a029c60bd68c34",
+    "benchmarks/automatic-v2-protocol.md": "92d5302481f1747823e34f2b503a8d74d8fc2c89974267155d68eef1df474034",
+    "benchmarks/analyze_router_v2.py": "66e39c286741d9e9f3172c566af0ba7e494aa9b2c0e657f44b12ddd13c2aff53",
+    "benchmarks/profile_router_v2.py": "4f443a40121664b9e10f7aac3f6392543b58a50f0a4c437a32bb50694db74212"
+  },
+  "earlier_record": ".local/router-v2-validation/policy-freeze.json",
+  "corpus_author_freeze": ".local/automatic-v2-corpus-author-freeze.json",
+  "selection_queries_executed_on_fresh_corpus": 0,
+  "model_requests_this_revision": 0
+}

@@ -18,6 +18,11 @@ _STOP_WORDS = frozenset(
     "you your find fix implement please ensure function functions file files handled".split()
 )
 _UNCHANGED_PLURALS = frozenset({"news", "series", "species"})
+# Fixed-width boundaries avoid repeatedly scanning suffixes of a long acronym
+# when a source-controlled identifier consists entirely of uppercase letters.
+_IDENTIFIER_BOUNDARIES = re.compile(
+    r"(?<=[A-Z])(?=[A-Z][a-z])|(?<=[a-z0-9])(?=[A-Z])"
+)
 
 
 def _singular(word: str) -> str:
@@ -50,8 +55,7 @@ def tokens(text: str, *, normalize: bool = True, remove_stopwords: bool = True) 
     """
     if normalize:
         text = re.sub(r"\b([A-Z]{2,})s\b", r"\1", text)
-    text = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", text)
-    text = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", text)
+    text = _IDENTIFIER_BOUNDARIES.sub(" ", text)
     words = re.findall(r"[^\W_]+", text.casefold())
     result = []
     for word in words:

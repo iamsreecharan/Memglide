@@ -265,6 +265,7 @@ def _validated_automatic_preparation(
     *,
     max_context_bytes: int,
     max_added_tokens: int,
+    selection_policy: str | None = None,
 ) -> tuple[str, dict[str, Any]]:
     """Validate local selection evidence before reporting or forwarding source.
 
@@ -277,6 +278,10 @@ def _validated_automatic_preparation(
     if not isinstance(value, dict) or not isinstance(value.get("automatic_selection"), dict):
         raise ValueError("automatic preparation returned invalid selection metadata")
     receipt = value["automatic_selection"]
+    if selection_policy is not None and (
+        not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2"}
+    ):
+        raise ValueError("automatic preparation received an unrecognized selection policy")
     fields = {
         "version", "policy_version", "decision", "reason", "selected_paths", "source_versions",
         "ranked_candidates", "estimated_added_tokens", "token_estimate_method",
@@ -319,7 +324,8 @@ def _validated_automatic_preparation(
     if (
         type(receipt["version"]) is not int
         or receipt["version"] != 1
-        or receipt["policy_version"] != "deterministic-source-v1"
+        or not isinstance(receipt["policy_version"], str)
+        or receipt["policy_version"] not in {"deterministic-source-v1", "deterministic-source-v2"}
         or not isinstance(receipt["decision"], str)
         or receipt["decision"] not in {"SKIP", "FOCUSED_SOURCE", "FULL_SOURCE"}
         or not isinstance(receipt["reason"], str)
@@ -447,6 +453,13 @@ def _validated_automatic_preparation(
                 or len(source["content"].splitlines()) != metadata["end_line"]
             ):
                 raise ValueError("automatic preparation source does not match complete-file metadata")
+    # Preserve source-integrity diagnostics before checking the requested policy.
+    # Both checks must pass before any report is written or native exec occurs.
+    if (
+        selection_policy is not None
+        and receipt["policy_version"] != "deterministic-source-" + selection_policy
+    ):
+        raise ValueError("automatic preparation returned invalid decision metadata")
     report["automatic_selection"] = receipt
     return prepared, report
 
@@ -464,6 +477,12 @@ def _parser() -> argparse.ArgumentParser:
         "--discover",
         action="store_true",
         help="opt in to bounded local task-to-source discovery without supplied target paths",
+    )
+    parser.add_argument(
+        "--selection-policy",
+        choices=("v1", "v2"),
+        default=None,
+        help="local --discover policy; default v2, v1 preserves the initial policy",
     )
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
     parser.add_argument(
@@ -504,6 +523,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if options.discover and (options.focus or options.support):
             raise ValueError("--discover cannot be combined with --focus or --support")
+        if options.selection_policy is not None and not options.discover:
+            raise ValueError("--selection-policy requires --discover")
         prompt = options.prompt
         if prompt is None or prompt == "-":
             if sys.stdin.isatty():
@@ -532,6 +553,7 @@ def main(argv: list[str] | None = None) -> int:
                 max_context_bytes=options.max_context_bytes,
                 context_format=options.context_format,
                 max_added_tokens=options.max_added_tokens,
+                selection_policy=options.selection_policy or "v2",
             )
             prepared, metadata = _validated_automatic_preparation(
                 preparation,
@@ -539,6 +561,7 @@ def main(argv: list[str] | None = None) -> int:
                 options.context_format,
                 max_context_bytes=options.max_context_bytes,
                 max_added_tokens=options.max_added_tokens,
+                selection_policy=options.selection_policy or "v2",
             )
         else:
             from memglide.integrations.preload import prepare_prompt
