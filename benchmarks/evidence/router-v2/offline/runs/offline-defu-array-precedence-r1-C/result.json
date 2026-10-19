@@ -1,0 +1,118 @@
+{
+  "run_id": "offline-defu-array-precedence-r1-C",
+  "task_id": "defu-array-precedence",
+  "repository": "defu",
+  "language": "typescript",
+  "configuration": "C",
+  "repeat": 1,
+  "order": 2,
+  "setup": {
+    "project_id": "102d613eb58a4b17883fba9b687bb647",
+    "wall_seconds": 0.4905482159956591,
+    "cpu_seconds": 0.14496513,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "context_preparation": {
+    "mode": "passthrough",
+    "reason": "ambiguous_candidates",
+    "context_format": "compact-prefix",
+    "prompt_layout": "unchanged",
+    "task_prompt_sha256": "7b34ce6f902ef2ec1e3969df441ad43670720a8ec2804d091cd62a45456f4117",
+    "prepared_prompt_sha256": "7b34ce6f902ef2ec1e3969df441ad43670720a8ec2804d091cd62a45456f4117",
+    "files": [],
+    "context_bytes": 0,
+    "preparation_wall_seconds": 0.3949314740020782,
+    "preparation_cpu_seconds": 0.12741679400000006,
+    "automatic_selection": {
+      "version": 1,
+      "policy_version": "deterministic-source-v2",
+      "decision": "SKIP",
+      "reason": "ambiguous_candidates",
+      "selected_paths": [],
+      "source_versions": {},
+      "ranked_candidates": [
+        {
+          "path": "src/types.ts",
+          "score": 20.121372,
+          "reason": "Verified lexical evidence: 4 code-like identifier term(s), 5 path/declaration term(s), 5 whole-source term(s); 5 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "any",
+            "array",
+            "default",
+            "input",
+            "object"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/defu.ts",
+          "score": 12.368759,
+          "reason": "Verified lexical evidence: 3 code-like identifier term(s), 3 path/declaration term(s), 4 whole-source term(s); 4 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "any",
+            "array",
+            "default",
+            "object"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "lib/defu.cjs",
+          "score": 5.317379,
+          "reason": "Verified lexical evidence: 2 code-like identifier term(s), 0 path/declaration term(s), 2 whole-source term(s); 2 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "array",
+            "default"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/_utils.ts",
+          "score": 4.109576,
+          "reason": "Verified lexical evidence: 1 code-like identifier term(s), 1 path/declaration term(s), 1 whole-source term(s); 1 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "object"
+          ],
+          "explicit_anchor": false
+        }
+      ],
+      "estimated_added_tokens": 0,
+      "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+      "discovery_wall_seconds": 0.3949314740020782,
+      "discovery_cpu_seconds": 0.12741679400000006,
+      "index_refresh_wall_seconds": 0.13149546801287215,
+      "retrieval_wall_seconds": 0.2593081119994167,
+      "source_preparation_wall_seconds": 0.0,
+      "auxiliary_model_calls": 0,
+      "provided_source_paths": [],
+      "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+      "candidate_files_considered": 4,
+      "omitted_candidate_files": 0,
+      "dependency_paths_considered": 0,
+      "unresolved_dependency_count": 0,
+      "candidate_generation_limit_reached": false,
+      "index_refreshed": true
+    }
+  },
+  "treatment_fidelity": {
+    "valid": true,
+    "mode": "passthrough",
+    "complete_source_files": 0
+  },
+  "selected_paths": [],
+  "expected_paths_evaluator_only": [
+    "src/defu.ts"
+  ],
+  "declared_scope_recall_proxy": 0.0,
+  "declared_scope_complete_proxy": false,
+  "selected_files_outside_author_scope": [],
+  "cold_setup_and_preparation_seconds": 0.8859381699876394,
+  "cold_setup_and_preparation_parent_cpu_seconds": 0.272832144,
+  "observed_waited_prep_child_cpu_seconds": 0.5618430000000001,
+  "preparation_child_cpu_scope": "OS RUSAGE_CHILDREN user+system CPU difference around synchronous repository approval/index and context preparation only; includes waited Git/parser workers, excludes still-running/unwaited children and later treatment audit, native execution and external grading. Separate from parent CPU and sampled native child CPU; no preparation peak RSS attribution.",
+  "prompt_sha256": "7b34ce6f902ef2ec1e3969df441ad43670720a8ec2804d091cd62a45456f4117",
+  "native_model_calls": 0,
+  "native_coding_success": null,
+  "model_input_tokens": null,
+  "actual_billed_cost_usd": null
+}

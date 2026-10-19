@@ -80,7 +80,7 @@ def test_cli_passes_versioned_policy_to_one_preparation_and_native_exec(
 ):
     import memglide.integrations.auto_preload as automatic
 
-    expected = policy or "v2"
+    expected = policy or "v1"
     values: list[dict[str, Any]] = []
 
     def prepare(prompt: str, **kwargs: Any) -> dict[str, Any]:
@@ -112,7 +112,7 @@ def test_cli_passes_versioned_policy_to_one_preparation_and_native_exec(
 
 @pytest.mark.parametrize("policy", [None, "v1", "v2"])
 def test_fake_native_bypass_observes_selected_policy_and_exact_task(automatic_native, policy):
-    expected = policy or "v2"
+    expected = policy or "v1"
     options = [] if policy is None else ["--selection-policy", policy]
     task = "Keep $HOME and `literal` exactly; λ"
     result = automatic_launch(

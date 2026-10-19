@@ -1,0 +1,1 @@
+This is the initial local assessment generator, retained exactly. Its absolute repository root and raw artifact paths must be adapted when reproducing elsewhere. Later descriptive additions (independent audits, repeat summaries and repository-correlation caveat) are preserved in the final report JSON/Markdown and raw audit receipts. It never dispatches a model.

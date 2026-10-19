@@ -6,16 +6,23 @@ repository-local term frequencies. It does not predict model savings, infer hidd
 agent context or automatically add memory. Existing explicit source preparation
 and normal MCP/API workflows remain available.
 
+The [fresh v2 assessment](../benchmarks/router-v2-assessment.md) failed technical
+eligibility: zero complete declared target scopes in 24 observations, with more
+local overhead than known-path source preparation. No native comparison ran.
+V2 is an explicit experiment, not the discovery default or a proven improvement.
+
 ```sh
 uv run memglide-codex --discover --selection-policy v2 --project PROJECT_ID \
   --preparation-report /private/preparation.json \
   'Correct rounding of fractional invoice subtotals.' -- --json
 ```
 
-`--discover` is required for `--selection-policy`; its default is v2. Python callers
+`--discover` is required for `--selection-policy`; its default remains v1. Python callers
 use `prepare_task_prompt(..., enabled=True, selection_policy="v2")`. The overall
-API remains disabled by default. `selection_policy="v1"` and the matching launcher
-flag reproduce the previous automatic policy. The historical runner explicitly
+API remains disabled by default. V2 requires the explicit argument above: its
+fresh offline evaluation failed eligibility and it has not been promoted.
+`selection_policy="v1"` and the matching launcher flag preserve the previous
+automatic policy. The historical runner explicitly
 pins v1; previous reports, tasks and original revisions remain preserved.
 
 ## What the gate checks

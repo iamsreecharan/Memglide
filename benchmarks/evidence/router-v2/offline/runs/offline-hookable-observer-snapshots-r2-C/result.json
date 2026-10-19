@@ -1,0 +1,117 @@
+{
+  "run_id": "offline-hookable-observer-snapshots-r2-C",
+  "task_id": "hookable-observer-snapshots",
+  "repository": "hookable",
+  "language": "typescript",
+  "configuration": "C",
+  "repeat": 2,
+  "order": 43,
+  "setup": {
+    "project_id": "0fcf850c74214f3cbc54e4d81d81dbfb",
+    "wall_seconds": 1.7736499279999407,
+    "cpu_seconds": 0.41508722000000375,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "context_preparation": {
+    "mode": "passthrough",
+    "reason": "source_preparation_context_budget_exceeded",
+    "context_format": "compact-prefix",
+    "prompt_layout": "unchanged",
+    "task_prompt_sha256": "6b3f86b2e05f30ec21a363b00466e86794d2c5cac08c618ef3de18b9995e482b",
+    "prepared_prompt_sha256": "6b3f86b2e05f30ec21a363b00466e86794d2c5cac08c618ef3de18b9995e482b",
+    "files": [],
+    "context_bytes": 0,
+    "preparation_wall_seconds": 1.1673943799978588,
+    "preparation_cpu_seconds": 0.5704978159999996,
+    "automatic_selection": {
+      "version": 1,
+      "policy_version": "deterministic-source-v2",
+      "decision": "SKIP",
+      "reason": "source_preparation_context_budget_exceeded",
+      "selected_paths": [],
+      "source_versions": {},
+      "ranked_candidates": [
+        {
+          "path": "src/hookable.ts",
+          "score": 26.644829,
+          "reason": "Verified lexical evidence: 5 code-like identifier term(s), 3 path/declaration term(s), 5 whole-source term(s); 5 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "callback",
+            "each",
+            "event",
+            "object",
+            "original"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/utils.ts",
+          "score": 11.78964,
+          "reason": "Verified lexical evidence: 2 code-like identifier term(s), 2 path/declaration term(s), 3 whole-source term(s); 2 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "callback",
+            "each"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/types.ts",
+          "score": 11.108909,
+          "reason": "Verified lexical evidence: 2 code-like identifier term(s), 2 path/declaration term(s), 2 whole-source term(s); 2 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "callback",
+            "only"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/debugger.ts",
+          "score": 9.97012,
+          "reason": "Verified lexical evidence: 2 code-like identifier term(s), 1 path/declaration term(s), 3 whole-source term(s); 2 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "each",
+            "event"
+          ],
+          "explicit_anchor": false
+        }
+      ],
+      "estimated_added_tokens": 0,
+      "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+      "discovery_wall_seconds": 1.1673943799978588,
+      "discovery_cpu_seconds": 0.5704978159999996,
+      "index_refresh_wall_seconds": 0.4473162259964738,
+      "retrieval_wall_seconds": 0.6527999449899653,
+      "source_preparation_wall_seconds": 0.029369494004640728,
+      "auxiliary_model_calls": 0,
+      "provided_source_paths": [],
+      "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+      "candidate_files_considered": 4,
+      "omitted_candidate_files": 0,
+      "dependency_paths_considered": 2,
+      "unresolved_dependency_count": 38,
+      "candidate_generation_limit_reached": false,
+      "index_refreshed": true
+    }
+  },
+  "treatment_fidelity": {
+    "valid": true,
+    "mode": "passthrough",
+    "complete_source_files": 0
+  },
+  "selected_paths": [],
+  "expected_paths_evaluator_only": [
+    "src/utils.ts"
+  ],
+  "declared_scope_recall_proxy": 0.0,
+  "declared_scope_complete_proxy": false,
+  "selected_files_outside_author_scope": [],
+  "cold_setup_and_preparation_seconds": 2.9428986109996913,
+  "cold_setup_and_preparation_parent_cpu_seconds": 0.9874357870000026,
+  "observed_waited_prep_child_cpu_seconds": 1.7253380000000007,
+  "preparation_child_cpu_scope": "OS RUSAGE_CHILDREN user+system CPU difference around synchronous repository approval/index and context preparation only; includes waited Git/parser workers, excludes still-running/unwaited children and later treatment audit, native execution and external grading. Separate from parent CPU and sampled native child CPU; no preparation peak RSS attribution.",
+  "prompt_sha256": "6b3f86b2e05f30ec21a363b00466e86794d2c5cac08c618ef3de18b9995e482b",
+  "native_model_calls": 0,
+  "native_coding_success": null,
+  "model_input_tokens": null,
+  "actual_billed_cost_usd": null
+}

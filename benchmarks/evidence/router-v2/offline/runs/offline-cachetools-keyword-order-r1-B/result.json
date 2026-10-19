@@ -1,0 +1,57 @@
+{
+  "run_id": "offline-cachetools-keyword-order-r1-B",
+  "task_id": "cachetools-keyword-order",
+  "repository": "cachetools",
+  "language": "python",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 25,
+  "setup": {
+    "project_id": "bc51d95dc5e5402282db6729075c1f1c",
+    "wall_seconds": 1.3624269739957526,
+    "cpu_seconds": 1.200518262000001,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "context_preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "task_prompt_sha256": "5d0d195d8ca522009e6d934d4ac60d4c062c81832b91930b10b3581c9fe7d934",
+    "prepared_prompt_sha256": "f5ca4be7be40f3f7c561748b4947a85aabd98e157e5438abb4a5cde53f34980c",
+    "files": [
+      {
+        "path": "src/cachetools/keys.py",
+        "sha256": "b113a47b1ef85b1227dd47db4677ddac7577ca901ab1935819a1ccfe5fb7789c",
+        "start_line": 1,
+        "end_line": 66
+      }
+    ],
+    "context_bytes": 2253,
+    "preparation_wall_seconds": 0.043440887005999684,
+    "preparation_cpu_seconds": 0.04294254200000047
+  },
+  "treatment_fidelity": {
+    "valid": true,
+    "mode": "preloaded",
+    "complete_source_files": 1
+  },
+  "selected_paths": [
+    "src/cachetools/keys.py"
+  ],
+  "expected_paths_evaluator_only": [
+    "src/cachetools/keys.py"
+  ],
+  "declared_scope_recall_proxy": 1.0,
+  "declared_scope_complete_proxy": true,
+  "selected_files_outside_author_scope": [],
+  "cold_setup_and_preparation_seconds": 1.4072534709994216,
+  "cold_setup_and_preparation_parent_cpu_seconds": 1.2448176479999997,
+  "observed_waited_prep_child_cpu_seconds": 0.05879799999999946,
+  "preparation_child_cpu_scope": "OS RUSAGE_CHILDREN user+system CPU difference around synchronous repository approval/index and context preparation only; includes waited Git/parser workers, excludes still-running/unwaited children and later treatment audit, native execution and external grading. Separate from parent CPU and sampled native child CPU; no preparation peak RSS attribution.",
+  "prompt_sha256": "f5ca4be7be40f3f7c561748b4947a85aabd98e157e5438abb4a5cde53f34980c",
+  "native_model_calls": 0,
+  "native_coding_success": null,
+  "model_input_tokens": null,
+  "actual_billed_cost_usd": null
+}

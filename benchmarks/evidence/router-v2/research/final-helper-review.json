@@ -1,0 +1,71 @@
+{
+  "kind": "Independent small test-owned helper review, not held-out benchmark or coding-model experiment",
+  "source_sha256": {
+    "src/memglide/integrations/source_evidence.py": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc",
+    "src/memglide/integrations/syntax_identifiers.py": "ca9d47a5c51641e79d2d3241d9058cad69279b6c4f83ea55e914cc9569f94aad",
+    "src/memglide/integrations/auto_preload.py": "6f263cbd9f5435281f1eeb9f3d79b1e310487be8d5cb7b2f2afce2b233900711"
+  },
+  "new_heldout_read": false,
+  "model_requests": 0,
+  "cases": [
+    {
+      "case": "regex_after_if",
+      "expected": [
+        "ready",
+        "test",
+        "value"
+      ],
+      "observed": [
+        "ready",
+        "test",
+        "value"
+      ],
+      "passed": true,
+      "wall_seconds": 0.17768465299741365
+    },
+    {
+      "case": "regex_after_typeof",
+      "expected": [],
+      "observed": [],
+      "passed": true,
+      "wall_seconds": 0.30777637400024105
+    },
+    {
+      "case": "template_expression",
+      "expected": [
+        "expiry",
+        "member"
+      ],
+      "observed": [
+        "expiry",
+        "member"
+      ],
+      "passed": true,
+      "wall_seconds": 0.12866826000390574
+    },
+    {
+      "case": "jsx_text_and_expression",
+      "expected": [
+        "expiry",
+        "member"
+      ],
+      "observed": [
+        "expiry",
+        "member"
+      ],
+      "passed": true,
+      "wall_seconds": 0.10583272299845703
+    },
+    {
+      "case": "simulated_python311_ERRORTOKEN",
+      "passed": true,
+      "reason": "source_lexical_evidence_unavailable"
+    },
+    {
+      "case": "malformed_worker_input_source_declines",
+      "passed": true,
+      "reason": "source_native_worker_unavailable"
+    }
+  ],
+  "passed": true
+}

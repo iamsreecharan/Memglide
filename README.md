@@ -71,7 +71,7 @@ settings and MCP registrations are preserved. See the [architecture and research
 limits](docs/daily-architecture.md) and [matched experiment protocol](benchmarks/daily-protocol.md);
 preparation alone does not establish a token, speed or cost benefit.
 
-An experimental [automatic source router](docs/automatic-source.md) accepts a
+An experimental [automatic source router](docs/task-aware-router.md) accepts a
 natural-language task without target paths:
 
 ```sh
@@ -89,12 +89,25 @@ source-selection coverage from unmeasured coding-agent efficiency. Conservative
 [Python excerpts](docs/source-excerpts.md) are a separate experiment, excluded
 from normal source delivery and the initial formal treatment.
 
-The first [held-out offline assessment](benchmarks/automatic-assessment.md) is
+The original v1 [held-out offline assessment](benchmarks/automatic-assessment.md) is
 negative: automatic preparation delivered source on **0/12 tasks**, compared with
 **9/12** for known-path preparation, and added local overhead. It remains opt-in
-and unpromoted. [1,907 automated cases passed](benchmarks/automatic-validation.md);
-new model-token, whole-task cost and latency gains remain unmeasured. The proposed
-paid comparison has not run.
+and unpromoted. [1,907 automated cases passed](benchmarks/automatic-validation.md)
+at that revision; its proposed paid comparison was not run. The
+[initial v1 policy guide](docs/automatic-source.md) remains available.
+
+The newer [task-aware v2 assessment](benchmarks/router-v2-assessment.md) is also
+negative: 72 fresh offline preparations covered 12 tasks with two repeats.
+Known-path B delivered the target source in 24/24 observations; automatic v2
+delivered it in 0/24 and had 72.54% longer mean local preparation than B.
+Its two preloads contained a type-only file instead of the runtime target.
+The fixed eligibility gate failed, so all 72 planned native assignments remain
+unrun. Discovery preserves its v1 default; v2 requires explicit
+`--selection-policy v2` and is not promoted. Neither automatic policy has proven
+cost or speed benefits over Codex. Complete known-path delivery and optional
+memory remain available. [Final verification](benchmarks/router-v2-final-validation.md)
+records 2,040 distinct Python cases across completed runs, 24 frontend cases,
+three browser cases and 14 separate installed-wheel smoke checks passing.
 
 ## Local efficiency and warm-memory evaluation
 

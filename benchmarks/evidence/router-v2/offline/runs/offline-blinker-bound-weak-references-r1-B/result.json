@@ -1,0 +1,57 @@
+{
+  "run_id": "offline-blinker-bound-weak-references-r1-B",
+  "task_id": "blinker-bound-weak-references",
+  "repository": "blinker",
+  "language": "python",
+  "configuration": "B",
+  "repeat": 1,
+  "order": 16,
+  "setup": {
+    "project_id": "425bd52e2cee487ab3d67acf0cff8f75",
+    "wall_seconds": 0.6612822680035606,
+    "cpu_seconds": 0.34530001200000005,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "context_preparation": {
+    "mode": "preloaded",
+    "reason": "explicit_focus",
+    "context_format": "compact-prefix",
+    "prompt_layout": "source_prefix",
+    "task_prompt_sha256": "b9c2a90eff31878a0e2484ad5f70bca596d66c85b81bbf9556bce8be4be254a7",
+    "prepared_prompt_sha256": "a7cd86828a2b71500887eef448571327ca427523115894c1ce715e352fb0e49f",
+    "files": [
+      {
+        "path": "src/blinker/_utilities.py",
+        "sha256": "c5d8cfcd0d1baee40e43552d240ab4c8b535dea3cd9ee899bcfbe7a7998c0a7d",
+        "start_line": 1,
+        "end_line": 64
+      }
+    ],
+    "context_bytes": 1893,
+    "preparation_wall_seconds": 0.018917471999884583,
+    "preparation_cpu_seconds": 0.018894358999999916
+  },
+  "treatment_fidelity": {
+    "valid": true,
+    "mode": "preloaded",
+    "complete_source_files": 1
+  },
+  "selected_paths": [
+    "src/blinker/_utilities.py"
+  ],
+  "expected_paths_evaluator_only": [
+    "src/blinker/_utilities.py"
+  ],
+  "declared_scope_recall_proxy": 1.0,
+  "declared_scope_complete_proxy": true,
+  "selected_files_outside_author_scope": [],
+  "cold_setup_and_preparation_seconds": 0.6802737360121682,
+  "cold_setup_and_preparation_parent_cpu_seconds": 0.36426180499999994,
+  "observed_waited_prep_child_cpu_seconds": 0.20403799999999972,
+  "preparation_child_cpu_scope": "OS RUSAGE_CHILDREN user+system CPU difference around synchronous repository approval/index and context preparation only; includes waited Git/parser workers, excludes still-running/unwaited children and later treatment audit, native execution and external grading. Separate from parent CPU and sampled native child CPU; no preparation peak RSS attribution.",
+  "prompt_sha256": "a7cd86828a2b71500887eef448571327ca427523115894c1ce715e352fb0e49f",
+  "native_model_calls": 0,
+  "native_coding_success": null,
+  "model_input_tokens": null,
+  "actual_billed_cost_usd": null
+}

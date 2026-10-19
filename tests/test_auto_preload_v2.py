@@ -42,7 +42,16 @@ def shipping(tmp_path):
 
 def request(shipping, prompt=TASK, **kwargs):
     _, db, project_id = shipping
+    kwargs.setdefault("selection_policy", "v2")
     return prepare_task_prompt(prompt, db_path=db.path, project_id=project_id, enabled=True, **kwargs)
+
+
+def test_default_remains_original_policy_until_independent_evaluation_supports_v2(shipping):
+    _, db, project_id = shipping
+    result = prepare_task_prompt(TASK, db_path=db.path, project_id=project_id, enabled=True)
+    assert result["automatic_selection"]["policy_version"] == "deterministic-source-v1"
+    assert result["mode"] == "passthrough"
+    assert result["reason"] == "weak_lexical_evidence"
 
 
 def test_v2_uses_observed_repository_evidence_not_acceptance_word_denominator(shipping):

@@ -1,4 +1,44 @@
-# Memglide V1 verification record
+# Memglide verification record
+
+## Task-aware router v2: fresh negative evaluation
+
+The [task-aware source router](docs/task-aware-router.md) adds bounded verified
+identifier evidence, project-local frequency signals and an isolated trusted
+Tree-sitter worker without auxiliary model calls. The
+[fresh assessment](benchmarks/router-v2-assessment.md) preserves all 72 offline
+observations: 12 new tasks, four complete upstream snapshots, two balanced repeats.
+Known-path B delivered the declared target in 24/24 observations, v2 C in 0/24,
+and original automatic v1 in 0/24. Both v2 preloads supplied a type-only file
+instead of the required runtime implementation. C's mean cold preparation was
+2.099 s versus B's 1.216 s (+72.54%) and v1's 1.358 s. These local component
+measurements are not whole coding-task latency.
+
+The preregistered offline eligibility gate failed. The user had authorized the
+72-assignment native comparison under the disclosed $18.59 API-equivalent
+planning allowance; **zero requests were dispatched**, and every planned
+assignment remains explicitly unrun. No new correctness, model-token or cost
+benefit is established. Historical native studies below remain separate.
+
+The frozen study revision is `1dc88123a1705bd40cc5815dd6f5964185600844`.
+After rejection, the final application preserves the original v1 discovery
+default; v2 requires explicit selection. No v2 evidence policy was retuned or
+rerun on the exposed tasks. Both policies remain opt-in, complete source and
+safety checks remain enforced, and warm memory stays explicit. The full independent
+audit passed within its recorded scope; unresolved runtime/type ranking,
+signature-comment contamination and generic phase-budget diagnostics are recorded
+as limitations and next experiments, not claimed fixes.
+
+[Final verification](benchmarks/router-v2-final-validation.md) records the frozen
+2,033-case full Python pass, a later 43-case runner pass (six new identities),
+and 324 affected cases passing after the default rollback (one additional
+identity): **2,040 distinct Python cases across runs**. Frontend 24/24, browser
+3/3, Ruff, mypy and 14 separate final clean-wheel CLI/API/SPA/MCP/parser checks
+passed. Original failed development attempts and one non-reproduced frontend
+initial-load timing failure remain archived; protected tests/timeouts were not
+weakened. The fixed-width shared identifier normalizer resolves a separate
+source-controlled resource defect, covered by a 500,000-character bounded test.
+
+## Historical initial automatic v1 revision
 
 The new [automatic-source assessment](benchmarks/automatic-assessment.md) records
 an opt-in path-free source router, deterministic context gate, complete-source

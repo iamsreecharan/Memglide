@@ -482,7 +482,7 @@ def _parser() -> argparse.ArgumentParser:
         "--selection-policy",
         choices=("v1", "v2"),
         default=None,
-        help="local --discover policy; default v2, v1 preserves the initial policy",
+        help="local --discover policy; default v1, v2 is an explicit experiment",
     )
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
     parser.add_argument(
@@ -553,7 +553,7 @@ def main(argv: list[str] | None = None) -> int:
                 max_context_bytes=options.max_context_bytes,
                 context_format=options.context_format,
                 max_added_tokens=options.max_added_tokens,
-                selection_policy=options.selection_policy or "v2",
+                selection_policy=options.selection_policy or "v1",
             )
             prepared, metadata = _validated_automatic_preparation(
                 preparation,
@@ -561,7 +561,7 @@ def main(argv: list[str] | None = None) -> int:
                 options.context_format,
                 max_context_bytes=options.max_context_bytes,
                 max_added_tokens=options.max_added_tokens,
-                selection_policy=options.selection_policy or "v2",
+                selection_policy=options.selection_policy or "v1",
             )
         else:
             from memglide.integrations.preload import prepare_prompt

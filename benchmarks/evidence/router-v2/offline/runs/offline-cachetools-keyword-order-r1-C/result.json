@@ -1,0 +1,169 @@
+{
+  "run_id": "offline-cachetools-keyword-order-r1-C",
+  "task_id": "cachetools-keyword-order",
+  "repository": "cachetools",
+  "language": "python",
+  "configuration": "C",
+  "repeat": 1,
+  "order": 27,
+  "setup": {
+    "project_id": "0f1c3fe7a32a4e06954b2cf70f32a122",
+    "wall_seconds": 0.9195938100019703,
+    "cpu_seconds": 0.8135471680000013,
+    "scope": "Cold production project approval and initial index; no Service or watcher"
+  },
+  "context_preparation": {
+    "mode": "passthrough",
+    "reason": "ambiguous_candidates",
+    "context_format": "compact-prefix",
+    "prompt_layout": "unchanged",
+    "task_prompt_sha256": "5d0d195d8ca522009e6d934d4ac60d4c062c81832b91930b10b3581c9fe7d934",
+    "prepared_prompt_sha256": "5d0d195d8ca522009e6d934d4ac60d4c062c81832b91930b10b3581c9fe7d934",
+    "files": [],
+    "context_bytes": 0,
+    "preparation_wall_seconds": 0.5159960409946507,
+    "preparation_cpu_seconds": 0.48017251699999974,
+    "automatic_selection": {
+      "version": 1,
+      "policy_version": "deterministic-source-v2",
+      "decision": "SKIP",
+      "reason": "ambiguous_candidates",
+      "selected_paths": [],
+      "source_versions": {},
+      "ranked_candidates": [
+        {
+          "path": "src/cachetools/__init__.py",
+          "score": 18.727347,
+          "reason": "Verified lexical evidence: 4 code-like identifier term(s), 4 path/declaration term(s), 5 whole-source term(s); 5 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "cache",
+            "key",
+            "miss",
+            "must",
+            "order"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/__init__.pyi",
+          "score": 14.240127,
+          "reason": "Verified lexical evidence: 3 code-like identifier term(s), 4 path/declaration term(s), 5 whole-source term(s); 5 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "cache",
+            "ignore",
+            "key",
+            "miss",
+            "must"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/_cachedmethod.py",
+          "score": 10.709556,
+          "reason": "Verified lexical evidence: 3 code-like identifier term(s), 2 path/declaration term(s), 4 whole-source term(s); 3 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "cache",
+            "key",
+            "miss"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/_cached.py",
+          "score": 10.557824,
+          "reason": "Verified lexical evidence: 3 code-like identifier term(s), 2 path/declaration term(s), 3 whole-source term(s); 3 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "cache",
+            "key",
+            "miss"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/func.py",
+          "score": 7.158041,
+          "reason": "Verified lexical evidence: 2 code-like identifier term(s), 2 path/declaration term(s), 3 whole-source term(s); 3 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "cache",
+            "ignore",
+            "key"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/keys.py",
+          "score": 4.281709,
+          "reason": "Verified lexical evidence: 1 code-like identifier term(s), 1 path/declaration term(s), 4 whole-source term(s); 1 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "key"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/_descriptor.py",
+          "score": 3.250476,
+          "reason": "Verified lexical evidence: 1 code-like identifier term(s), 1 path/declaration term(s), 3 whole-source term(s); 1 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "cache"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/func.pyi",
+          "score": 2.915722,
+          "reason": "Verified lexical evidence: 1 code-like identifier term(s), 1 path/declaration term(s), 1 whole-source term(s); 1 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "cache"
+          ],
+          "explicit_anchor": false
+        },
+        {
+          "path": "src/cachetools/keys.pyi",
+          "score": 1.225364,
+          "reason": "Verified lexical evidence: 0 code-like identifier term(s), 1 path/declaration term(s), 0 whole-source term(s); 1 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+          "evidence_terms": [
+            "key"
+          ],
+          "explicit_anchor": false
+        }
+      ],
+      "estimated_added_tokens": 0,
+      "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+      "discovery_wall_seconds": 0.5159960409946507,
+      "discovery_cpu_seconds": 0.48017251699999974,
+      "index_refresh_wall_seconds": 0.2077327970037004,
+      "retrieval_wall_seconds": 0.29914756600919645,
+      "source_preparation_wall_seconds": 0.0,
+      "auxiliary_model_calls": 0,
+      "provided_source_paths": [],
+      "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+      "candidate_files_considered": 9,
+      "omitted_candidate_files": 0,
+      "dependency_paths_considered": 2,
+      "unresolved_dependency_count": 195,
+      "candidate_generation_limit_reached": false,
+      "index_refreshed": true
+    }
+  },
+  "treatment_fidelity": {
+    "valid": true,
+    "mode": "passthrough",
+    "complete_source_files": 0
+  },
+  "selected_paths": [],
+  "expected_paths_evaluator_only": [
+    "src/cachetools/keys.py"
+  ],
+  "declared_scope_recall_proxy": 0.0,
+  "declared_scope_complete_proxy": false,
+  "selected_files_outside_author_scope": [],
+  "cold_setup_and_preparation_seconds": 1.435722253008862,
+  "cold_setup_and_preparation_parent_cpu_seconds": 1.2938452500000022,
+  "observed_waited_prep_child_cpu_seconds": 0.0693059999999992,
+  "preparation_child_cpu_scope": "OS RUSAGE_CHILDREN user+system CPU difference around synchronous repository approval/index and context preparation only; includes waited Git/parser workers, excludes still-running/unwaited children and later treatment audit, native execution and external grading. Separate from parent CPU and sampled native child CPU; no preparation peak RSS attribution.",
+  "prompt_sha256": "5d0d195d8ca522009e6d934d4ac60d4c062c81832b91930b10b3581c9fe7d934",
+  "native_model_calls": 0,
+  "native_coding_success": null,
+  "model_input_tokens": null,
+  "actual_billed_cost_usd": null
+}

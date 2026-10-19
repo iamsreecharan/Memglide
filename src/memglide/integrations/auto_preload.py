@@ -212,7 +212,7 @@ def prepare_task_prompt(
     max_added_tokens: int = 4_000,
     provided_sources: dict[str, str] | None = None,
     task_query: str | None = None,
-    selection_policy: str = "v2",
+    selection_policy: str = "v1",
 ) -> dict[str, Any]:
     """Discover from a task with no supplied paths, or return the exact original.
 
@@ -224,8 +224,9 @@ def prepare_task_prompt(
     bodies actually present, together with their paths, in this very prompt.
     A wrapper may supply ``task_query`` to separate the actual task from its
     workflow text; it must be an exact, bounded substring of the delivered prompt.
-    ``selection_policy='v1'`` reproduces the original metadata-coverage policy.
-    V2 uses bounded verified lexical evidence; neither policy establishes savings.
+    ``selection_policy='v1'`` preserves the original metadata-coverage default.
+    Experimental v2 requires explicit selection after failing its fresh offline
+    eligibility gate. Neither policy establishes savings.
     """
     from memglide.integrations.preload import prepare_prompt
 

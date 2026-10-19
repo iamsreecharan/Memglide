@@ -1,0 +1,11 @@
+{
+  "name": "re2-readme-md",
+  "url": "https://raw.githubusercontent.com/google/re2/main/README.md",
+  "fetched_at_utc": "2026-10-19T15:57:21.811067+00:00",
+  "status": 200,
+  "final_url": "https://raw.githubusercontent.com/google/re2/main/README.md",
+  "content_type": "text/plain; charset=utf-8",
+  "bytes": 11420,
+  "sha256": "53b525040a3d69727f9244c3021a54d283d00a09ec955c24dc54c490fda86fa6",
+  "local_path": ".local/router-v2-research/re2-readme-md.txt"
+}

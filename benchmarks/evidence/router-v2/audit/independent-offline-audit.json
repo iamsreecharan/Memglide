@@ -1,0 +1,323 @@
+{
+  "version": "independent-router-v2-offline-audit-1",
+  "created_at_utc": "2026-10-19T16:51:29.015244+00:00",
+  "status": "pass_with_disclosed_post_study_default_rollback_and_scope_limits",
+  "report_sha256": "f2c1d72ff89290887945479d4ee83c7cffb946506d717bcc54797a1750e902ca",
+  "preregistration_sha256": "d98f998bc5d162f832654477f3198724f3654bc0a3ca3052515b81cc3dec3a06",
+  "frozen_git_head": "1dc88123a1705bd40cc5815dd6f5964185600844",
+  "source_version_checks": {
+    "manifest_files_checked": 384,
+    "current_files_matching": 382,
+    "post_study_default_rollback_files": [
+      "src/memglide/integrations/auto_preload.py",
+      "src/memglide/integrations/codex_preload.py"
+    ],
+    "rollback_original_git_versions_match_frozen_hashes": true,
+    "installed_wrapper_and_platform_compiler_and_node_hashes_verified_in_prior_readonly_audit": true,
+    "timing_basis": "Root reports completed offline exit and read_plan validation via administrative no-native report before changing defaults; git diff contains only API/CLI v1 default/help/docstring rollback. Offline runner itself did not store an after-source guard."
+  },
+  "observation_checks": {
+    "planned": 72,
+    "observed": 72,
+    "unique_run_ids": 72,
+    "immutable_result_rows_match": true,
+    "plan_identity_and_order_match": true,
+    "all_72_original_and_prepared_prompt_hashes_reconstructed": true,
+    "all_delivered_complete_source_hashes_ranges_and_added_bytes_match_canonical_git": true,
+    "all_72_neutral_git_pointers_and_baseline_heads_checked": true,
+    "all_six_orders_occurrences": {
+      "CBV1": 4,
+      "V1BC": 4,
+      "BCV1": 4,
+      "V1CB": 4,
+      "BV1C": 4,
+      "CV1B": 4
+    },
+    "second_repeat_reverses_each_task": true,
+    "native_model_requests": 0
+  },
+  "technical_eligibility_recomputed": {
+    "passed": false,
+    "C_preloaded_unique_tasks_both_repeats": 1,
+    "unique_tasks": 12,
+    "required_preload_fraction": 0.5,
+    "observed_preload_fraction": 0.08333333333333333,
+    "B_preparable_unique_tasks_both_repeats": 12,
+    "C_complete_scope_on_B_preparable_both_repeats": 0,
+    "required_complete_scope_fraction": 0.75,
+    "observed_complete_scope_fraction": 0
+  },
+  "arm_summary_recomputed": {
+    "B": {
+      "observations": 24,
+      "preloads": 24,
+      "complete_declared_scope": 24,
+      "reasons": {
+        "explicit_focus": 24
+      },
+      "wall_seconds": {
+        "mean": 1.2163366821259842,
+        "median": 0.8724068095107214,
+        "total": 29.19208037102362,
+        "repeat_means": {
+          "1": 0.7956573312500647,
+          "2": 1.6370160330019037
+        }
+      },
+      "parent_cpu_seconds": {
+        "mean": 0.7209201373333329,
+        "median": 0.4092003524999992,
+        "total": 17.302083295999992,
+        "repeat_means": {
+          "1": 0.4860408182499996,
+          "2": 0.9557994564166664
+        }
+      },
+      "observed_waited_prep_child_cpu_seconds": {
+        "mean": 0.3406204583333333,
+        "median": 0.25408799999999987,
+        "total": 8.174890999999999,
+        "repeat_means": {
+          "1": 0.22228225000000018,
+          "2": 0.45895866666666646
+        }
+      }
+    },
+    "C": {
+      "observations": 24,
+      "preloads": 2,
+      "complete_declared_scope": 0,
+      "reasons": {
+        "ambiguous_candidates": 10,
+        "source_preparation_context_budget_exceeded": 4,
+        "source_preparation_source_unavailable": 6,
+        "automatic_verified_source": 2,
+        "discovery_unavailable": 2
+      },
+      "wall_seconds": {
+        "mean": 2.0986104794592393,
+        "median": 1.4524995345054776,
+        "total": 50.36665150702174,
+        "repeat_means": {
+          "1": 1.46999330700055,
+          "2": 2.7272276519179286
+        }
+      },
+      "parent_cpu_seconds": {
+        "mean": 1.1934508308333336,
+        "median": 0.778006628,
+        "total": 28.642819940000006,
+        "repeat_means": {
+          "1": 0.9240241002500004,
+          "2": 1.4628775614166667
+        }
+      },
+      "observed_waited_prep_child_cpu_seconds": {
+        "mean": 0.7592631666666672,
+        "median": 0.42975500000000033,
+        "total": 18.222316000000014,
+        "repeat_means": {
+          "1": 0.4508415833333334,
+          "2": 1.0676847500000008
+        }
+      }
+    },
+    "V1": {
+      "observations": 24,
+      "preloads": 0,
+      "complete_declared_scope": 0,
+      "reasons": {
+        "weak_lexical_evidence": 22,
+        "ambiguous_candidates": 2
+      },
+      "wall_seconds": {
+        "mean": 1.3576288677486446,
+        "median": 1.0433583604972227,
+        "total": 32.58309282596747,
+        "repeat_means": {
+          "1": 0.8911076314131302,
+          "2": 1.8241501040841588
+        }
+      },
+      "parent_cpu_seconds": {
+        "mean": 0.8182455883333338,
+        "median": 0.5857872515000011,
+        "total": 19.637894120000013,
+        "repeat_means": {
+          "1": 0.5691017856666665,
+          "2": 1.0673893910000014
+        }
+      },
+      "observed_waited_prep_child_cpu_seconds": {
+        "mean": 0.419434583333333,
+        "median": 0.3550669999999998,
+        "total": 10.066429999999993,
+        "repeat_means": {
+          "1": 0.24412933333333306,
+          "2": 0.594739833333333
+        }
+      }
+    }
+  },
+  "paired_measurements_independently_recomputed": {
+    "cold_setup_and_preparation_seconds": {
+      "C_vs_B": {
+        "paired_observations": 24,
+        "task_clusters": 12,
+        "mean_difference": 0.8822737973332551,
+        "median_difference": 0.5283123580011306,
+        "task_cluster_mean_95_percentile_interval": [
+          0.3340718759567001,
+          1.4157355125001534
+        ],
+        "task_cluster_median_95_percentile_interval": [
+          0.320140181996976,
+          0.7572722579934634
+        ]
+      },
+      "C_vs_V1": {
+        "paired_observations": 24,
+        "task_clusters": 12,
+        "mean_difference": 0.7409816117105947,
+        "median_difference": 0.3872594404965639,
+        "task_cluster_mean_95_percentile_interval": [
+          0.40351550287838717,
+          1.1418212670420569
+        ],
+        "task_cluster_median_95_percentile_interval": [
+          0.1726684364984976,
+          0.6972460605102242
+        ]
+      }
+    },
+    "cold_setup_and_preparation_parent_cpu_seconds": {
+      "C_vs_B": {
+        "paired_observations": 24,
+        "task_clusters": 12,
+        "mean_difference": 0.47253069350000054,
+        "median_difference": 0.24925417699999874,
+        "task_cluster_mean_95_percentile_interval": [
+          0.07326047587500013,
+          0.850168042833334
+        ],
+        "task_cluster_median_95_percentile_interval": [
+          0.15379748300000173,
+          0.3896319490000002
+        ]
+      },
+      "C_vs_V1": {
+        "paired_observations": 24,
+        "task_clusters": 12,
+        "mean_difference": 0.37520524249999965,
+        "median_difference": 0.10087948450000095,
+        "task_cluster_mean_95_percentile_interval": [
+          0.15410350104166812,
+          0.6333635187916674
+        ],
+        "task_cluster_median_95_percentile_interval": [
+          0.07463297099999977,
+          0.21700516500000044
+        ]
+      }
+    },
+    "observed_waited_prep_child_cpu_seconds": {
+      "C_vs_B": {
+        "paired_observations": 24,
+        "task_clusters": 12,
+        "mean_difference": 0.41864270833333384,
+        "median_difference": 0.23816599999999977,
+        "task_cluster_mean_95_percentile_interval": [
+          0.16689283333333418,
+          0.6787588333333339
+        ],
+        "task_cluster_median_95_percentile_interval": [
+          0.050361999999999796,
+          0.4345524999999997
+        ]
+      },
+      "C_vs_V1": {
+        "paired_observations": 24,
+        "task_clusters": 12,
+        "mean_difference": 0.33982858333333416,
+        "median_difference": 0.16242350000000044,
+        "task_cluster_mean_95_percentile_interval": [
+          0.11548595833333353,
+          0.6021057500000008
+        ],
+        "task_cluster_median_95_percentile_interval": [
+          0.03850200000000026,
+          0.34668800000000033
+        ]
+      }
+    }
+  },
+  "posthoc_candidate_scope_diagnostic": {
+    "interpretation": "Evaluator target-file presence in ranked candidates only; not successful delivery, semantic completeness or a promotion criterion. Not used for tuning.",
+    "top_k": {
+      "1": {
+        "observations": 4,
+        "unique_tasks": 2,
+        "denominator": 24
+      },
+      "3": {
+        "observations": 18,
+        "unique_tasks": 9,
+        "denominator": 24
+      },
+      "12": {
+        "observations": 24,
+        "unique_tasks": 12,
+        "denominator": 24
+      }
+    }
+  },
+  "defu_nullish_scope_audit": {
+    "declared_runtime_target": "src/defu.ts",
+    "delivered_in_both_C_repeats": [
+      "src/types.ts"
+    ],
+    "delivered_type_file_sha256": "4dc8c0f4fbf8580f192da5cf757cd402fec12cdb8570da0a9316e13fe89a6ef4",
+    "finding": "The defect removes the null branch from runtime _defu; types.ts contains erased type aliases/declarations. Author target scope is valid. Type information can express intended semantics but does not deliver the broken runtime implementation.",
+    "baseline_behavior_groups": {
+      "tests": 2,
+      "pass": 0,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "reference_behavior_groups": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "partial_behavior_groups": {
+      "tests": 2,
+      "pass": 1,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  },
+  "corpus_control_checks": {
+    "tasks": 12,
+    "baseline_failed": 12,
+    "reference_passed": 12,
+    "partial_failed": 12,
+    "all_36_expected_group_counts_met": true,
+    "all_36_protected_tree_and_git_intact": true,
+    "scope": "External focused control groups plus TS compilation, not upstream full suites."
+  },
+  "caveats": [
+    "No paid/native coding assignment ran; coding success, model tokens, actual billing, model cost per success and end-to-end native task benefits remain unmeasured.",
+    "Source reconstruction verifies delivered complete snapshots and exact passthrough; it does not prove semantic dependency completeness or independently reconstruct every nonselected candidate body version.",
+    "The offline runner had no built-in after-source guard. Original measured source remains available at frozen commit 1dc88123a1705bd40cc5815dd6f5964185600844; current API/CLI defaults intentionally rolled back after failed-gate reporting.",
+    "Repeat-two mean preparation time rose in every arm; host/OS caches and load were uncontrolled. Paired local observations and small task-cluster bootstrap are descriptive, not broad performance guarantees.",
+    "Twelve tasks come from four repositories; within-repository task correlation is not captured by task-only bootstrap.",
+    "Two C tasks changed fallback reason between repeats to discovery_unavailable despite identical displayed rankings; broad exception telemetry prevents identifying the exact resource/operational cause.",
+    "C delivers complete current source in two cases, but required runtime targets in zero. Smaller added context mostly reflects abstention and is not a token-saving result.",
+    "Candidate top-12 coverage is a post-hoc diagnostic only and must not retroactively replace the failed preregistered delivery gate."
+  ],
+  "no_selector_rerun_or_model_calls_by_this_audit": true
+}
