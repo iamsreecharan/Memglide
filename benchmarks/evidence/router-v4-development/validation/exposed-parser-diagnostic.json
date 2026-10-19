@@ -1,0 +1,68 @@
+{
+  "diagnostic": {
+    "error_nodes": [
+      {
+        "end_byte": 2688,
+        "end_column_0based": 25,
+        "end_line_1based": 106,
+        "excerpt_utf8": "\\undefined",
+        "missing": false,
+        "start_byte": 2678,
+        "start_column_0based": 15,
+        "start_line_1based": 106,
+        "type": "ERROR"
+      },
+      {
+        "end_byte": 2680,
+        "end_column_0based": 17,
+        "end_line_1based": 106,
+        "excerpt_utf8": "\\u",
+        "missing": false,
+        "start_byte": 2678,
+        "start_column_0based": 15,
+        "start_line_1based": 106,
+        "type": "ERROR"
+      },
+      {
+        "end_byte": 11117,
+        "end_column_0based": 40,
+        "end_line_1based": 404,
+        "excerpt_utf8": "\\unc-path",
+        "missing": false,
+        "start_byte": 11108,
+        "start_column_0based": 31,
+        "start_line_1based": 404,
+        "type": "ERROR"
+      },
+      {
+        "end_byte": 11110,
+        "end_column_0based": 33,
+        "end_line_1based": 404,
+        "excerpt_utf8": "\\u",
+        "missing": false,
+        "start_byte": 11108,
+        "start_column_0based": 31,
+        "start_line_1based": 404,
+        "type": "ERROR"
+      }
+    ],
+    "has_error": true,
+    "visited_nodes": 3150
+  },
+  "limits": {
+    "native_parse_timeout_micros": 200000,
+    "parent_timeout_seconds": 2,
+    "reported_error_nodes": 20,
+    "source_bytes": 100000,
+    "traversed_nodes": 100000
+  },
+  "model_calls": 0,
+  "scope": "New separate post-hoc native grammar diagnostic on exposed v3 source, not original benchmark telemetry or a discovery rerun.",
+  "selection_calls": 0,
+  "source_bytes": 14009,
+  "source_executed": false,
+  "source_path": "benchmarks/automatic-v3-fixtures/r04/test/index.spec.ts",
+  "source_sha256": "d6866560f3cf277841f014e85fd08cfaf671f51c24fbf5013943fda34ae07e2d",
+  "tree_sitter_typescript_version": "0.23.2",
+  "tree_sitter_version": "0.25.2"
+}

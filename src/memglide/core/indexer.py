@@ -921,6 +921,7 @@ class Indexer:
         refresh: bool,
         metadata_only: bool,
         distinct_files: bool = False,
+        file_scope: tuple[str, ...] | None = None,
     ) -> list[dict[str, Any]]:
         self.db.project(project_id)
         if not query.strip():
@@ -932,6 +933,20 @@ class Indexer:
         if refresh:
             self.reindex(project_id)
         project = self.db.project(project_id)
+        if file_scope is not None and (
+            not isinstance(file_scope, tuple) or len(file_scope) > MAX_INDEXED_FILES
+            or any(not isinstance(path, str) or not path or len(path) > 4096 for path in file_scope)
+            or len(set(file_scope)) != len(file_scope)
+        ):
+            raise DomainError("Invalid private search scope")
+        if file_scope == ():
+            return []
+
+        def scope(column: str) -> tuple[str, tuple[str, ...]]:
+            if file_scope is None:
+                return "", ()
+            return " AND " + column + " IN (" + ",".join("?" for _ in file_scope) + ")", file_scope
+
         weights = self.db.settings().get(
             "retrieval_weights",
             {
@@ -996,9 +1011,11 @@ class Indexer:
             reasons.append("secondary source role for the requested task")
             return score * factor
 
+        symbol_scope, scope_params = scope("s.path")
         rows = self.db.rows(
-            "SELECT s.*,f.hash,f.language,f.structural FROM symbols s JOIN files f ON f.id=s.file_id WHERE s.project_id=? ORDER BY s.path,s.start_line,s.id",
-            (project_id,),
+            "SELECT s.*,f.hash,f.language,f.structural FROM symbols s JOIN files f ON f.id=s.file_id WHERE s.project_id=?"
+            + symbol_scope + " ORDER BY s.path,s.start_line,s.id",
+            (project_id, *scope_params),
         )
         for row in rows:
             score = 0.0
@@ -1031,9 +1048,11 @@ class Indexer:
         if re.search(r"\b(call(?:s|ers)?|depend(?:s|ents|encies)?)\b", query.lower()):
             matched_ids = set(requested_scores)
             if matched_ids:
+                graph_scope, graph_params = scope("source_file")
                 graph = self.db.rows(
-                    "SELECT * FROM dependencies WHERE project_id=? AND resolved=1 ORDER BY source_file,id",
-                    (project_id,),
+                    "SELECT * FROM dependencies WHERE project_id=? AND resolved=1"
+                    + graph_scope + " ORDER BY source_file,id",
+                    (project_id, *graph_params),
                 )
                 caller_ids = {
                     edge["source_symbol"]
@@ -1059,13 +1078,17 @@ class Indexer:
             parts = [expressions[word] for word in ranked_terms[:MAX_FTS_RANK_TERMS]]
             for offset in range(0, len(parts), FTS_QUERY_BATCH_SIZE):
                 fts = " OR ".join(parts[offset : offset + FTS_QUERY_BATCH_SIZE])
+                fts_scope, fts_params = scope("path")
                 for row in self.db.rows(
-                    "SELECT path,bm25(file_search,0.0,3.0,2.0,1.0) AS rank FROM file_search WHERE file_search MATCH ? AND project_id=? ORDER BY rank,path LIMIT 100",
-                    (fts, project_id),
+                    "SELECT path,bm25(file_search,0.0,3.0,2.0,1.0) AS rank FROM file_search WHERE file_search MATCH ? AND project_id=?"
+                    + fts_scope + " ORDER BY rank,path LIMIT 100",
+                    (fts, project_id, *fts_params),
                 ):
                     fts_rows[row["path"]] = fts_rows.get(row["path"], 0) - row["rank"]
+        file_clause, file_params = scope("path")
         for row in self.db.rows(
-            "SELECT * FROM files WHERE project_id=? ORDER BY path", (project_id,)
+            "SELECT * FROM files WHERE project_id=?" + file_clause + " ORDER BY path",
+            (project_id, *file_params),
         ):
             score = 0.0
             reasons = []

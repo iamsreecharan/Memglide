@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "native_login_status": "Logged in using ChatGPT",
+  "observed_blocker": "HTTP CONNECT403 from inherited network proxy",
+  "native_preflight_sha256": "de14ec9b1e6863e626901cf038738a4ef1a9b4f346326b3cb24572557999857d",
+  "preflight_native_invocations": 1,
+  "complete_model_turns_observed": 0,
+  "actual_model_calls": null,
+  "model_usage": null,
+  "actual_billed_charges": null,
+  "required_network_hosts": [
+    "chatgpt.com",
+    "auth.openai.com",
+    "developers.openai.com"
+  ],
+  "saved_network_draft": {
+    "status": "saved",
+    "requires_publish": true,
+    "applied": false
+  },
+  "preserved_existing_custom_hosts": [],
+  "preset_domains_preserved": true,
+  "retries_after_blocker": 0,
+  "rule": "Do not retry native execution until a meaningful observed network/auth state change; keep planned coding assignments unrun, not failed or zero cost.",
+  "refresh_host_scope": "Pinned Codex0.159.2 official ordinary ChatGPT OAuth refresh endpoint; current credential mode/expiry not inspected"
+}

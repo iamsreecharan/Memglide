@@ -1,0 +1,18 @@
+[
+  {
+    "case": "ungranted",
+    "parent_terminated": true,
+    "child_state_after_parent_death": "Z",
+    "fake_target_dispatched": false,
+    "model_calls": 0,
+    "pass": true
+  },
+  {
+    "case": "granted",
+    "parent_terminated": true,
+    "child_state_after_parent_death": "Z",
+    "fake_target_dispatched": true,
+    "model_calls": 0,
+    "pass": true
+  }
+]

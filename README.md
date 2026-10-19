@@ -83,6 +83,10 @@ settings and MCP registrations are preserved. See the [architecture and research
 limits](docs/daily-architecture.md) and [matched experiment protocol](benchmarks/daily-protocol.md);
 preparation alone does not establish a token, speed or cost benefit.
 
+The opt-in [bounded v4 router](docs/bounded-source-routing.md) adds production-scoped
+discovery and a conservative current-source screen. Its new held-out and native
+comparison are pending; development checks do not establish savings over Codex.
+
 An experimental [automatic source router](docs/task-aware-router.md) accepts a
 natural-language task without target paths:
 

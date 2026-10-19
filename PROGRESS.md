@@ -1,5 +1,43 @@
 # Memglide verification record
 
+## V4 development checkpoint: fresh comparisons pending
+
+The five original misses now have an individual
+[diagnosis](benchmarks/router-v4-diagnosis.md). The opt-in
+[bounded router](docs/bounded-source-routing.md) addresses stage boundaries using
+production-scoped retrieval, narrowly verified nonproduction parse exceptions
+and a current-source necessary-condition screen. Possible unsupported competitors,
+ambiguity and budget failures still decline. Known-path source delivery, earlier
+policies/defaults and explicit memory remain intact. All original v3 reports,
+tasks, source snapshots and raw results are unchanged.
+
+Development and independent security reviews passed; fixes include the reviewers'
+Unicode/boundary counterexamples. The new offline and native runners have separate
+protocols, frozen-source/fixture checks, independent grading interfaces and strict
+failure/usage accounting. Their fake-native tests do not invoke a model.
+
+The completed checkout passed **2,341 tests on Python 3.12** and separately
+**2,341 on Python 3.11**, with no failures or skips. Frontend unit tests passed
+24/24, production browser tests 3/3 and clean installed-wheel/API/MCP/CLI checks
+21/21. These overlapping versions and different verification surfaces are not
+pooled. Ruff, mypy, frontend/wheel builds and frozen installation also passed.
+The [setup checkpoint](benchmarks/router-v4-checkpoint.md) preserves their raw
+receipts and review findings; these are development checks, not coding-agent
+performance results.
+
+The actual access check found a logged-in CLI but failed with proxy **HTTP CONNECT
+403** and no completed turn. Usage, charge and improvement over Codex are unknown.
+The saved network draft allows `chatgpt.com`, `auth.openai.com` and
+`developers.openai.com`; publication is required to activate it. No proxy or TLS
+verification was bypassed. Setup must finish before the platform permits publishing,
+so this checkpoint precedes independent fresh-corpus authoring and live trials.
+
+After publication, recheck runtime/CLI access, retain the original failed preflight,
+verify/create both policy seals, author the independent held-out cohorts, run the
+offline comparison and then the matched coding study if selection improves. The
+planned 96 offline preparations and at most 72 coding assignments have **not** been
+performed. Keep v4 opt-in and preserve all outcomes; no new savings claim is made.
+
 ## Runtime-aware v3: more observed source coverage, still experimental
 
 The [runtime-aware policy](docs/runtime-aware-routing.md) adds clean syntactic

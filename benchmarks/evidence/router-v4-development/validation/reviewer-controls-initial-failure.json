@@ -1,0 +1,1 @@
+{"cause":"Reviewer-owned temporary fixture was missing git init; add_project requires a Git repository", "production_defect": false, "original_control_failed_before_delivery_checks": true}

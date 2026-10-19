@@ -1,0 +1,86 @@
+{
+  "all_node_controls_expected": true,
+  "node_version": "v24.19.0",
+  "rows": [
+    {
+      "name": "tagged_raw_path",
+      "node_check_returncode": 0,
+      "node_control_passed": true,
+      "node_expected_acceptance": true,
+      "node_stderr": "",
+      "pinned_tree_sitter_diagnostic": {
+        "error_nodes": [
+          {
+            "end_byte": 35,
+            "end_column_0based": 35,
+            "end_line_1based": 1,
+            "excerpt_utf8": "\\undefined",
+            "missing": false,
+            "start_byte": 25,
+            "start_column_0based": 25,
+            "start_line_1based": 1,
+            "type": "ERROR"
+          },
+          {
+            "end_byte": 27,
+            "end_column_0based": 27,
+            "end_line_1based": 1,
+            "excerpt_utf8": "\\u",
+            "missing": false,
+            "start_byte": 25,
+            "start_column_0based": 25,
+            "start_line_1based": 1,
+            "type": "ERROR"
+          }
+        ],
+        "has_error": true,
+        "visited_nodes": 13
+      },
+      "pinned_tree_sitter_returncode": 0,
+      "sha256": "a92e91299a67870976e94cca8106d7fb510c100aceed3be2d81f137b1762a8f9",
+      "source": "const path = String.raw`.\\undefined`;",
+      "source_executed": false
+    },
+    {
+      "name": "ordinary_template_invalid_escape",
+      "node_check_returncode": 1,
+      "node_control_passed": true,
+      "node_expected_acceptance": false,
+      "node_stderr": "[stdin]:1\nconst path = `.\\undefined`;\n               ^^^^^^\n\nSyntaxError: Invalid Unicode escape sequence\n    at wrapSafe (node:internal/modules/cjs/loader:1804:18)\n    at checkSyntax (node:internal/main/check_syntax:76:3)\n    at node:internal/main/check_syntax:45:5\n    at Socket.<anonymous> (node:internal/process/execution:205:5)\n    at Socket.emit (node:events:521:24)\n    at endReadableNT (node:internal/streams/readable:1736:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\n\nNode.js v24.19.0\n",
+      "pinned_tree_sitter_diagnostic": {
+        "error_nodes": [
+          {
+            "end_byte": 25,
+            "end_column_0based": 25,
+            "end_line_1based": 1,
+            "excerpt_utf8": "\\undefined",
+            "missing": false,
+            "start_byte": 15,
+            "start_column_0based": 15,
+            "start_line_1based": 1,
+            "type": "ERROR"
+          },
+          {
+            "end_byte": 17,
+            "end_column_0based": 17,
+            "end_line_1based": 1,
+            "excerpt_utf8": "\\u",
+            "missing": false,
+            "start_byte": 15,
+            "start_column_0based": 15,
+            "start_line_1based": 1,
+            "type": "ERROR"
+          }
+        ],
+        "has_error": true,
+        "visited_nodes": 9
+      },
+      "pinned_tree_sitter_returncode": 0,
+      "sha256": "1154037dbed3fef3446d22a21ed453ab70a059cf8e5eba44372a32a793d42916",
+      "source": "const path = `.\\undefined`;",
+      "source_executed": false
+    }
+  ],
+  "scope": "Separate reviewer-owned minimal syntax controls, not original benchmark observations or production-source execution. Node --check compiles syntax only; Tree-sitter parses data only.",
+  "selector_or_model_calls": 0
+}

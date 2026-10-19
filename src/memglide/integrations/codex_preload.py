@@ -279,7 +279,7 @@ def _validated_automatic_preparation(
         raise ValueError("automatic preparation returned invalid selection metadata")
     receipt = value["automatic_selection"]
     if selection_policy is not None and (
-        not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2", "v3"}
+        not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2", "v3", "v4"}
     ):
         raise ValueError("automatic preparation received an unrecognized selection policy")
     fields = {
@@ -291,6 +291,8 @@ def _validated_automatic_preparation(
         "candidate_files_considered", "omitted_candidate_files", "dependency_paths_considered",
         "index_refreshed", "unresolved_dependency_count", "candidate_generation_limit_reached",
     }
+    if receipt.get("policy_version") == "deterministic-source-v4":
+        fields.add("coarse_selection")
     if set(receipt) != fields:
         raise ValueError("automatic preparation returned invalid selection fields")
 
@@ -307,6 +309,71 @@ def _validated_automatic_preparation(
             and ".." not in PurePosixPath(path).parts
             and 1 <= len(PurePosixPath(path).parts) <= MAX_PATH_COMPONENTS
         )
+
+    if receipt["policy_version"] == "deterministic-source-v4":
+        coarse = receipt["coarse_selection"]
+        coarse_fields = {
+            "version", "scope", "supported_production_files", "unsupported_production_files",
+            "coarse_files_checked", "coarse_bytes", "potential_supported_files",
+            "weak_supported_files", "potential_unsupported_files", "weak_unsupported_files",
+            "nonproduction_parse_errors_accepted", "coarse_wall_seconds", "scope_complete",
+            "frontier", "frontier_omitted",
+        }
+        if not isinstance(coarse, dict) or set(coarse) != coarse_fields:
+            raise ValueError("automatic preparation returned invalid coarse selection fields")
+        bounds = {
+            "supported_production_files": 20_000, "unsupported_production_files": 20_000,
+            "coarse_files_checked": 100, "coarse_bytes": 2_097_152,
+            "potential_supported_files": 100, "weak_supported_files": 100,
+            "potential_unsupported_files": 100, "weak_unsupported_files": 100,
+            "nonproduction_parse_errors_accepted": 100, "frontier_omitted": 100,
+        }
+        duration = coarse["coarse_wall_seconds"]
+        frontier = coarse["frontier"]
+        if (
+            type(coarse["version"]) is not int or coarse["version"] != 1
+            or coarse["scope"] != "supported-production-lexical-upper-bound-v1"
+            or type(coarse["scope_complete"]) is not bool
+            or any(type(coarse[key]) is not int or not 0 <= coarse[key] <= bound
+                   for key, bound in bounds.items())
+            or type(duration) not in (int, float) or not math.isfinite(duration) or duration < 0
+            or not isinstance(frontier, list) or len(frontier) > 4
+        ):
+            raise ValueError("automatic preparation returned invalid coarse selection metadata")
+        classifications = {"potential_supported", "potential_unsupported", "lexically_impossible"}
+        reasons = {"possible_explicit_anchor", "two_term_upper_bound", "insufficient_upper_bound"}
+        for item in frontier:
+            if (
+                not isinstance(item, dict)
+                or set(item) != {"path", "sha256", "classification", "reason"}
+                or not valid_path(item["path"])
+                or not isinstance(item["sha256"], str) or len(item["sha256"]) != 64
+                or any(char not in "0123456789abcdef" for char in item["sha256"])
+                or not isinstance(item["classification"], str)
+                or item["classification"] not in classifications
+                or not isinstance(item["reason"], str) or item["reason"] not in reasons
+            ):
+                raise ValueError("automatic preparation returned invalid coarse frontier")
+        classified = sum(coarse[key] for key in (
+            "potential_supported_files", "weak_supported_files",
+            "potential_unsupported_files", "weak_unsupported_files",
+        ))
+        if (
+            classified != coarse["coarse_files_checked"]
+            or coarse["coarse_files_checked"] + coarse["nonproduction_parse_errors_accepted"] > 100
+            or coarse["frontier_omitted"] + len(frontier) != coarse["coarse_files_checked"]
+            or len({item["path"] for item in frontier}) != len(frontier)
+            or coarse["potential_supported_files"] + coarse["weak_supported_files"]
+            > coarse["supported_production_files"]
+            or coarse["potential_unsupported_files"] + coarse["weak_unsupported_files"]
+            > coarse["unsupported_production_files"]
+            or (value.get("mode") == "preloaded" and (
+                not coarse["scope_complete"] or not 1 <= coarse["potential_supported_files"] <= 24
+                or coarse["potential_unsupported_files"]
+                or receipt["candidate_files_considered"] != coarse["potential_supported_files"]
+            ))
+        ):
+            raise ValueError("automatic preparation returned inconsistent coarse selection counts")
 
     selected = receipt["selected_paths"]
     provided = receipt["provided_source_paths"]
@@ -327,6 +394,7 @@ def _validated_automatic_preparation(
         or not isinstance(receipt["policy_version"], str)
         or receipt["policy_version"] not in {
             "deterministic-source-v1", "deterministic-source-v2", "deterministic-source-v3",
+            "deterministic-source-v4",
         }
         or not isinstance(receipt["decision"], str)
         or receipt["decision"] not in {"SKIP", "FOCUSED_SOURCE", "FULL_SOURCE"}
@@ -482,9 +550,9 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--selection-policy",
-        choices=("v1", "v2", "v3"),
+        choices=("v1", "v2", "v3", "v4"),
         default=None,
-        help="local --discover policy; default v1, v2/v3 are explicit experiments",
+        help="local --discover policy; default v1, v2/v3/v4 are explicit experiments",
     )
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
     parser.add_argument(

@@ -247,8 +247,8 @@ def prepare_task_prompt(
         raise ValueError("enabled must be a boolean")
     if not isinstance(mode, str) or mode not in {"auto", "off", "preload"}:
         raise ValueError("mode must be auto, off, or preload")
-    if not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2", "v3"}:
-        raise ValueError("selection_policy must be v1, v2 or v3")
+    if not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2", "v3", "v4"}:
+        raise ValueError("selection_policy must be v1, v2, v3 or v4")
     if type(max_added_tokens) is not int or not 1 <= max_added_tokens <= MAX_ADDED_TOKENS:
         raise ValueError(f"max_added_tokens must be between 1 and {MAX_ADDED_TOKENS}")
     if provided_sources is not None and (
@@ -298,6 +298,10 @@ def prepare_task_prompt(
         "candidate_generation_limit_reached": False,
         "index_refreshed": False,
     }
+    if selection_policy == "v4":
+        from memglide.integrations.bounded_router import empty_diagnostics
+
+        receipt["coarse_selection"] = empty_diagnostics()
     phase = "preflight"
     phase_started = started
 
@@ -354,7 +358,16 @@ def prepare_task_prompt(
         receipt["index_refresh_wall_seconds"] = time.perf_counter() - refreshed_at
         receipt["index_refreshed"] = True
         phase = "verification"
-        if stats.get("partial") or stats.get("errors"):
+        parse_guard: dict[str, str] = {}
+        if selection_policy == "v4":
+            from memglide.integrations.bounded_router import parse_error_guard
+            from memglide.integrations.source_evidence import EvidenceDeclined
+
+            try:
+                parse_guard = parse_error_guard(_ReadIndex(database), project_id, stats)
+            except EvidenceDeclined as exc:
+                return finish(str(exc))
+        elif stats.get("partial") or stats.get("errors"):
             return finish("incomplete_index")
         if _selection(database, project_id, ()) != initial_selection:
             return finish("policy_changed")
@@ -363,15 +376,44 @@ def prepare_task_prompt(
         reader = _ReadIndex(database)
         project_version = reader.project(project_id)
         ranking_settings = reader.settings()
-        candidates = Indexer(reader)._search(  # type: ignore[arg-type]
-            project_id,
-            query,
-            _MAX_CANDIDATES,
-            refresh=False,
-            metadata_only=True,
-            distinct_files=True,
-        )
-        receipt["candidate_generation_limit_reached"] = len(candidates) == _MAX_CANDIDATES
+        coarse_guard: dict[str, Any] | None = None
+        if selection_policy == "v4":
+            from memglide.integrations.bounded_router import discover_scoped_candidates
+            from memglide.integrations.source_evidence import EvidenceDeclined
+
+            scoped_terms = {
+                term for term in tokens(search_focus(query)) if term not in _GENERIC and len(term) > 2
+            }
+            if not scoped_terms or len(scoped_terms) > 64 or any(len(term) > 128 for term in scoped_terms):
+                return finish("insufficient_task_evidence")
+            try:
+                candidates, coarse_guard, saturated = discover_scoped_candidates(
+                    reader, project_id, query, scoped_terms, initial_selection, parse_guard,
+                    receipt["coarse_selection"],
+                )
+            except EvidenceDeclined as exc:
+                return finish(str(exc))
+            receipt["candidate_generation_limit_reached"] = saturated
+            # Current-body screening has its own bounded phase. Its work must
+            # not spend a later SQL reader's two-second cumulative deadline.
+            # Revalidate the captured index/policy before starting that phase.
+            reader = _ReadIndex(database)
+            if reader.settings() != ranking_settings:
+                return finish("ranking_policy_changed")
+            current_project = reader.project(project_id)
+            if any(current_project.get(key) != project_version.get(key)
+                   for key in ("path", "indexed_at", "index_stats")):
+                return finish("index_changed")
+        else:
+            candidates = Indexer(reader)._search(  # type: ignore[arg-type]
+                project_id,
+                query,
+                _MAX_CANDIDATES,
+                refresh=False,
+                metadata_only=True,
+                distinct_files=True,
+            )
+            receipt["candidate_generation_limit_reached"] = len(candidates) == _MAX_CANDIDATES
         if receipt["candidate_generation_limit_reached"]:
             return finish("candidate_limit_reached")
         candidates = [item for item in candidates if _production(item["path"])]
@@ -413,7 +455,7 @@ def prepare_task_prompt(
             if evidence_selection != initial_selection:
                 return finish("policy_changed")
             try:
-                if selection_policy == "v3":
+                if selection_policy in {"v3", "v4"}:
                     from memglide.integrations.runtime_evidence import rank_runtime_sources
 
                     candidates, ranked, evidence_guard = rank_runtime_sources(
@@ -427,6 +469,21 @@ def prepare_task_prompt(
                     )
             except EvidenceDeclined as exc:
                 return finish(str(exc))
+        if selection_policy == "v4" and evidence_guard is not None and coarse_guard is not None:
+            if evidence_guard["selection"] != coarse_guard["selection"]:
+                return finish("policy_changed")
+            combined_policy = dict(coarse_guard["policy"])
+            if any(key in combined_policy and combined_policy[key] != value
+                   for key, value in evidence_guard["policy"].items()):
+                return finish("policy_changed")
+            combined_policy.update(evidence_guard["policy"])
+            if any(path in coarse_guard["versions"] and coarse_guard["versions"][path] != digest
+                   for path, digest in evidence_guard["versions"].items()):
+                return finish("ranking_source_changed")
+            evidence_guard = {**evidence_guard,
+                              "policy": combined_policy,
+                              "versions": {**coarse_guard["versions"], **evidence_guard["versions"]},
+                              "paths": tuple(sorted(set(coarse_guard["paths"]) | set(evidence_guard["paths"])))}
         receipt["ranked_candidates"] = ranked[:12]
         receipt["omitted_candidate_files"] = max(0, len(candidates) - 12)
         if not ranked:
@@ -438,7 +495,7 @@ def prepare_task_prompt(
         ):
             return finish("weak_lexical_evidence")
         anchor = candidates[0]
-        if selection_policy == "v3":
+        if selection_policy in {"v3", "v4"}:
             # Syntax inspection has its own isolated worker deadline. Its idle
             # wall time must not consume a later SQL phase's two-second budget.
             # Each reader still enforces cumulative VM/row/byte/time bounds;
@@ -481,7 +538,7 @@ def prepare_task_prompt(
         elif evidence_guard is not None:
             top_evidence = evidence_guard["evidence"][top["path"]]
             other_evidence = [evidence_guard["evidence"][item["path"]] for item in independent]
-            if selection_policy == "v3":
+            if selection_policy in {"v3", "v4"}:
                 from memglide.integrations.runtime_evidence import ambiguous_runtime_evidence
 
                 ambiguous = ambiguous_runtime_evidence(top_evidence, other_evidence)
@@ -583,7 +640,7 @@ def prepare_task_prompt(
     except _Unavailable as exc:
         return finish(str(exc))
     except sqlite3.Error as exc:
-        if selection_policy == "v3":
+        if selection_policy in {"v3", "v4"}:
             code = getattr(exc, "sqlite_errorcode", None)
             primary = code & 0xFF if isinstance(code, int) else None
             kind = (

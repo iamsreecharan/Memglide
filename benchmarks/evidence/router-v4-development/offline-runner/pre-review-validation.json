@@ -1,0 +1,30 @@
+{
+  "status": "pre-review validation complete",
+  "pytest_initial": {
+    "passed": 27,
+    "seconds": 0.26,
+    "xml": ".local/router-v4-runner/initial-tests.xml"
+  },
+  "pytest_latest": {
+    "passed": 28,
+    "seconds": 0.27,
+    "xml": ".local/router-v4-runner/pre-review-tests.xml"
+  },
+  "initial_static_attempt": {
+    "ruff": "pass",
+    "mypy_errors": 11,
+    "followup_mypy_errors": 1,
+    "cause": "typing annotations/narrowing only; fixed before formal freeze/corpus"
+  },
+  "latest_static": {
+    "ruff": "pass",
+    "mypy": "pass"
+  },
+  "model_calls": 0,
+  "corpus_selected_or_inspected": false,
+  "hashes": {
+    "benchmarks/run_automatic_v4.py": "7b197e07f3865a704f331b537688bbcc439648a94165c70e3c916216a164d40c",
+    "benchmarks/automatic-v4-protocol.md": "cdfbe20c6ff05c73c09800ccdceb95328a00ebe14e4b4df32406008d1ee80a80",
+    "tests/test_benchmark_automatic_v4.py": "a54066375bc63bf37d50afd8dc909f6d6da67d66a5247e505aae8d925e8eddbb"
+  }
+}
