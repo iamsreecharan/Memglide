@@ -49,7 +49,7 @@ def _object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return result
 
 
-def _decode(text: str) -> Any:
+def _decode(text: Any) -> Any:
     return json.loads(text, object_pairs_hook=_object)
 
 

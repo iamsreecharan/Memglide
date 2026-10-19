@@ -9,12 +9,39 @@ import subprocess
 import time
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import TypedDict
 
 from memglide.core import indexer as indexing
 from memglide.service import Service
 
 
-def run(output: Path, files: int, repeats: int) -> dict:
+class _SearchRun(TypedDict):
+    case: str
+    policy: str
+    repeat: int
+    order_within_pair: int
+    query_characters: int
+    wall_seconds: float
+    process_cpu_seconds: float
+    returned_paths: list[str]
+    returned_count: int
+
+
+class _SearchReport(TypedDict):
+    created_at: str
+    scope: str
+    files: int
+    source_bytes: int
+    document_sha256: str
+    terms_per_document: int
+    build_seconds: float
+    source_sha256: str
+    repeats: int
+    runs: list[_SearchRun]
+    conditions: str
+
+
+def run(output: Path, files: int, repeats: int) -> _SearchReport:
     if output.exists():
         raise ValueError("Use a new output directory to retain all measurements")
     output.mkdir(parents=True)
@@ -58,7 +85,7 @@ def run(output: Path, files: int, repeats: int) -> dict:
             "long_absent": " ".join(f"z{number:04d}" for number in range(650)),
             "long_common": source.strip(),
         }
-        report = {
+        report: _SearchReport = {
             "created_at": datetime.now(UTC).isoformat(),
             "scope": "Paired FTS ranking/source-serialization stress check on manually populated fixture index; no symbols, repository rescan, source parsing, model requests or cost measurements. Not an end-to-end indexing benchmark.",
             "files": files,
@@ -82,7 +109,7 @@ def run(output: Path, files: int, repeats: int) -> dict:
                     indexing.MAX_FTS_RANK_TERMS = 10000 if policy == "all_terms" else 32
                     started, cpu_started = time.perf_counter(), time.process_time()
                     hits = service.indexer.search(project["id"], query, limit=20, refresh=False)
-                    row = {
+                    row: _SearchRun = {
                         "case": case,
                         "policy": policy,
                         "repeat": repetition,

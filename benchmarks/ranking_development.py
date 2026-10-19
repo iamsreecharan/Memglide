@@ -11,6 +11,7 @@ import json
 import statistics
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any, Callable, Protocol, cast
 
 from benchmarks.compare_components import capture_provenance
 from benchmarks.corpus import task_definitions
@@ -18,6 +19,10 @@ from benchmarks.probe import _make_seed, coverage_proxy
 from benchmarks.refinement_eval import frozen_indexer
 from benchmarks.retrieval_experiment import ranking_metrics, unique_paths
 from memglide.service import Service
+
+
+class _MutableSearch(Protocol):
+    search: Callable[..., list[dict[str, Any]]]
 
 
 def run(output: Path) -> dict:
@@ -47,7 +52,7 @@ def run(output: Path) -> dict:
                     def fixed_search(*_args, **kwargs):
                         return hits[: kwargs.get("limit", 20)]
 
-                    service.indexer.search = fixed_search
+                    cast(_MutableSearch, service.indexer).search = fixed_search
                     session = service.memory.start_session(project["id"], task["prompt"])
                     try:
                         context = service.context.get_context(
@@ -81,7 +86,7 @@ def run(output: Path) -> dict:
                         (output / "runs.json").write_text(json.dumps(rows, indent=2) + "\n")
                     finally:
                         service.memory.end_session(session["id"])
-                        service.indexer.search = original
+                        cast(_MutableSearch, service.indexer).search = original
         finally:
             service.close()
     after = capture_provenance()

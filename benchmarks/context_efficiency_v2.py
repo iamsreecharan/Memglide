@@ -20,8 +20,9 @@ import subprocess
 import sys
 import time
 from collections import Counter
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Any
+from typing import Any, NotRequired, Protocol, TypedDict, cast
 
 from benchmarks.corpus import build_repository
 
@@ -44,6 +45,23 @@ SOURCES = {
     "indexer": "src/memglide/core/indexer.py",
     "memory": "src/memglide/memory/engine.py",
 }
+
+
+class _TimingReport(TypedDict):
+    phase: str
+    protocol: dict[str, object]
+    protocol_sha256: str
+    fixture: dict[str, dict[str, str]]
+    owned_source_sha256: dict[str, str]
+    frozen_source_sha256: dict[str, str]
+    runs: list[dict[str, Any]]
+    profile_error: NotRequired[str]
+    profile_function_calls: NotRequired[dict[str, int]]
+
+
+class _ProfileStats(Protocol):
+    @property
+    def stats(self) -> Mapping[tuple[str, int, str], tuple[int, int, float, float, object]]: ...
 
 
 def digest(path: Path) -> str:
@@ -90,7 +108,10 @@ def compare_pairs(before: list[dict[str, Any]], after: list[dict[str, Any]]) -> 
             and isinstance(new.get("result"), dict)
         )
         equivalent = bool(
-            comparable and normalized_response(old["result"]) == normalized_response(new["result"])
+            comparable
+            and old is not None
+            and new is not None
+            and normalized_response(old["result"]) == normalized_response(new["result"])
         )
         pairs.append({"pair_id": pair_id, "comparable": comparable, "equivalent": equivalent})
     return {
@@ -159,7 +180,8 @@ def paired_run(output: Path, baseline: str, repeats: int = 3) -> dict[str, Any]:
     }
     protocol_hash = hashlib.sha256(json.dumps(protocol, sort_keys=True).encode()).hexdigest()
     after_indexer = load_module("perf_after_indexer", candidate / "indexer.py")
-    engines, reports = {}, {}
+    engines = {}
+    reports: dict[str, _TimingReport] = {}
     for arm in ("before", "after"):
         paths = (
             {key: frozen / f"{key}.py" for key in ("context", "database", "indexer")}
@@ -224,7 +246,8 @@ def paired_run(output: Path, baseline: str, repeats: int = 3) -> dict[str, Any]:
             profiler.runcall(engine.get_context, session, TASK, 2, 8000)
         except Exception as exc:
             reports[arm]["profile_error"] = f"{type(exc).__name__}: {exc}"
-        stats = pstats.Stats(profiler)
+        # CPython exposes this documented mapping; its typeshed stub omits it.
+        stats = cast(_ProfileStats, pstats.Stats(profiler))
         reports[arm]["profile_function_calls"] = {
             name: sum(data[1] for (_, _, function), data in stats.stats.items() if function == name)
             for name in ("read_source", "_source_item", "rows", "get_symbol", "_get_symbol")

@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-18T21:53:40.722817+00:00",
+  "purpose": "Research recommendations for reducing Memglide cost regressions without weakening current source correctness or trust boundaries.",
+  "installed_codex_source_commit": "ff6aec96948b70d94983af2641a6b67c94faeff5",
+  "installed_codex_version": "0.159.2",
+  "measurement_claims": {
+    "new_model_requests": 0,
+    "actual_billing_usd": null,
+    "new_ab_results": null,
+    "research_is_not_performance_proof": true
+  },
+  "historical_context": {
+    "cost_ab_report": "codex-cost-ab.json",
+    "scope": "Ten paired bare-Codex/compact-Memglide tasks, eight source-prepared and two identical caller-context controls. Research does not rewrite or combine prior results.",
+    "retrieval_point_estimate_regression_percent_approx": 4.4,
+    "overall_lower_estimate_caused_by_controls": true
+  },
+  "pricing_reference": {
+    "file": "cost-pricing.json",
+    "sha256": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+    "kind": "Previously verified API Standard list-price-equivalent; actual subscription bills unknown.",
+    "usd_per_million": {
+      "ordinary_input": 2,
+      "cached_input": 0.1,
+      "cache_write_input": 2.5,
+      "output": 10
+    },
+    "qualification": "Exact model gpt-6.1-sol; short-context Standard scenario only. Rates/account tariff, long context, writes and failed usage still require applicable verification."
+  },
+  "sources": [
+    {
+      "id": "anthropic-context",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "retrieved_at_utc": "2026-10-18T21:49:05.125921+00:00",
+      "http_status": 200,
+      "final_url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "body_bytes": 165122,
+      "body_sha256": "44ac15c4175c7a60f9f02f5bf0fd39e7337439f01651228cee138bcbfea110c6",
+      "reading_scope": "Full main engineering article, Context engineering vs. prompt engineering through conclusion/acknowledgements (readable lines10\u201378); navigation/footer excluded.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "anthropic-tools",
+      "url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "retrieved_at_utc": "2026-10-18T21:49:05.370883+00:00",
+      "http_status": 200,
+      "final_url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "body_bytes": 197554,
+      "body_sha256": "cf8723d5882f4ff3bb1e80c5f78abe154c74ccc047f1318d4aae67f12816935f",
+      "reading_scope": "Full main engineering article, introduction through acknowledgements/footnote (readable lines10\u2013122); navigation/footer excluded.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-api-common",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/common.rs",
+      "retrieved_at_utc": "2026-10-18T21:50:55.248171+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/codex-api/src/common.rs",
+      "body_bytes": 14017,
+      "body_sha256": "1b01d4b2d7784c67e302b38d5b44aaa5ff733d8b575fb776cc4e2902ccb3a14c",
+      "reading_scope": "Complete ResponsesApiRequest declaration lines279\u2013304 and request-to-WebSocket mapping/declaration lines307\u2013358. Remaining source not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-app-protocol-v2",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/app-server-protocol/src/protocol/v2.rs",
+      "retrieved_at_utc": "2026-10-18T21:51:33.285284+00:00",
+      "http_status": 404,
+      "error_type": "HTTPError",
+      "reading_scope": "Unavailable (HTTP error); not read.",
+      "local_source_retained_ignored": false
+    },
+    {
+      "id": "codex-client",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client.rs",
+      "retrieved_at_utc": "2026-10-18T21:49:05.677848+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/client.rs",
+      "body_bytes": 118699,
+      "body_sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c",
+      "reading_scope": "Complete prompt_cache_key/responses_session_id functions lines575\u2013597; request construction lines976\u20131005; searches for cache controls. Large file not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-compact-remote",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact_remote.rs",
+      "retrieved_at_utc": "2026-10-18T21:49:05.557199+00:00",
+      "http_status": 404,
+      "error_type": "HTTPError",
+      "error_body_bytes": 14,
+      "error_body_sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "reading_scope": "Unavailable (HTTP error); not read.",
+      "local_source_retained_ignored": false
+    },
+    {
+      "id": "codex-compact",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact.rs",
+      "retrieved_at_utc": "2026-10-18T21:49:05.522795+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/compact.rs",
+      "body_bytes": 30403,
+      "body_sha256": "715756709185c29499c328617a7907a7fc8ede9e89fe55b4dbddfe9c15e22080",
+      "reading_scope": "Selected history replacement lines333\u2013400 and complete build_compacted_history/build_compacted_history_with_limit beginning lines649\u2013715. Large source not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-core",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/codex.rs",
+      "retrieved_at_utc": "2026-10-18T21:51:32.252228+00:00",
+      "http_status": 404,
+      "error_type": "HTTPError",
+      "reading_scope": "Unavailable (HTTP error); not read.",
+      "local_source_retained_ignored": false
+    },
+    {
+      "id": "codex-events",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/exec_events.rs",
+      "retrieved_at_utc": "2026-10-18T21:50:54.677503+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/exec_events.rs",
+      "body_bytes": 10713,
+      "body_sha256": "dafa872d7e86a099e56e28a329dcb9c03db90ed768c3b88cca8c91d46dc1d0e5",
+      "reading_scope": "Complete ThreadEvent and ThreadItemDetails enums and Usage struct lines1\u2013157; remaining payload types not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-exec-cli",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/cli.rs",
+      "retrieved_at_utc": "2026-10-18T21:49:05.442299+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/cli.rs",
+      "body_bytes": 9863,
+      "body_sha256": "6abb86feb8fac2a192b34a617634527d0747b6d7fa09ee4827c0dc95abbe2f75",
+      "reading_scope": "Complete Cli definition lines1\u201386, Command/Fork/Resume definitions lines150\u2013250. Remaining review/options helpers not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-exec-lib",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/lib.rs",
+      "retrieved_at_utc": "2026-10-18T21:49:05.372477+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/lib.rs",
+      "body_bytes": 86172,
+      "body_sha256": "48be5b8d89283f1fe338682d634ea3e73847ef1eb7c7626ca801002980527de1",
+      "reading_scope": "Selected new/resume input construction lines890\u2013917 and953\u2013969; native thread resume lifecycle lines993\u20131024. Large file was not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-jsonl",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
+      "retrieved_at_utc": "2026-10-18T21:50:54.963465+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
+      "body_bytes": 27168,
+      "body_sha256": "bc296541b385f9b4ca2c28cc638e25a8d6b1332b2cd67f5a03eaa97a3d612b19",
+      "reading_scope": "Complete usage_from_last_total function lines118\u2013128; map_item_with_id variants lines149\u2013325; collect_thread_events lines419\u2013604. Large tests/remainder not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-protocol-models",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/models.rs",
+      "retrieved_at_utc": "2026-10-18T21:50:55.535690+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/models.rs",
+      "body_bytes": 159721,
+      "body_sha256": "916a595e136f4d7e32ce259f50678ffe818af2ea6a92f54d8628f57bfd4d43e7",
+      "reading_scope": "Downloaded for schema availability only; not read or used as substantive evidence.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "codex-protocol",
+      "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/protocol.rs",
+      "retrieved_at_utc": "2026-10-18T21:51:32.515415+00:00",
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/protocol.rs",
+      "body_bytes": 234299,
+      "body_sha256": "d3d3d384da91b2824c10091de4331a2bc26ec5474887ed0aef1e3f3c4ae110f4",
+      "reading_scope": "Complete TokenUsageInfo declaration/new_or_append/append_last_usage and fill_to_context_window lines2275\u20132337. Large source not read in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "openai-conversation-state",
+      "url": "https://developers.openai.com/api/docs/guides/conversation-state",
+      "retrieved_at_utc": "2026-10-18T21:49:05.123938+00:00",
+      "http_status": 200,
+      "final_url": "https://developers.openai.com/api/docs/guides/conversation-state",
+      "body_bytes": 715469,
+      "body_sha256": "24241ed9602358a679525aed11e501049447999852084c14118d9346b228806d",
+      "reading_scope": "Selected sections on conversations/previous_response_id, billing of earlier input, context limits and compaction. Large API examples were not reviewed in full.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "openai-cost-optimization",
+      "url": "https://developers.openai.com/api/docs/guides/cost-optimization",
+      "retrieved_at_utc": "2026-10-18T21:49:05.121649+00:00",
+      "http_status": 200,
+      "final_url": "https://developers.openai.com/api/docs/guides/cost-optimization",
+      "body_bytes": 367669,
+      "body_sha256": "ffa82b3944d55c9f9da92f9d17e67d578fceb6c72f7d41118b55e8e8ca921738",
+      "reading_scope": "Full short main article (readable text lines800\u2013819), excluding navigation/footer.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "openai-latency",
+      "url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+      "retrieved_at_utc": "2026-10-18T21:49:05.119775+00:00",
+      "http_status": 200,
+      "final_url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+      "body_bytes": 490457,
+      "body_sha256": "7119faa0183f12628dd457c89225ec4a5ac5dc5ffdb4323a3be283a15a97e2d6",
+      "reading_scope": "Complete seven-principle section (readable text lines800\u2013875), not the later worked customer-service example.",
+      "local_source_retained_ignored": true
+    },
+    {
+      "id": "openai-prompt-caching",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "retrieved_at_utc": "2026-10-18T21:49:05.118012+00:00",
+      "http_status": 200,
+      "final_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "body_bytes": 776034,
+      "body_sha256": "645a1f1b6f1e5380c558a0fe5ecb9e6cf86e7da418c735072e6ef36a2f577f8b",
+      "reading_scope": "Selected main sections: rendered prefix/settings, GPT-5.6+ implicit/explicit boundary rules, lifetime/routing, comparison table, history/tool preservation, cost accounting, message-extension and compaction pitfalls. Long API examples were not reviewed in full.",
+      "local_source_retained_ignored": true
+    }
+  ],
+  "claims": [
+    {
+      "id": "ER01",
+      "status": "verified_primary_documentation",
+      "claim": "GPT-5.6+ implicit cache lookup includes eligible message endings, not arbitrary common substrings inside an extended/changed message. Keeping a source text prefix in one changing task message alone does not establish a reusable source cache boundary.",
+      "sources": [
+        "openai-prompt-caching"
+      ]
+    },
+    {
+      "id": "ER02",
+      "status": "verified_primary_documentation",
+      "claim": "GPT-5.6+ cache routing is automatic; optional prompt_cache_key provides separate accounting. This API guidance does not disclose actual ChatGPT-authenticated Codex routing.",
+      "sources": [
+        "openai-prompt-caching",
+        "codex-client"
+      ]
+    },
+    {
+      "id": "ER03",
+      "status": "verified_selected_native_source",
+      "claim": "Installed Codex0.159.2 exec root/resume input construction accepts one prompt string and creates one UserInput::Text, with optional images. No structured arbitrary input-message or explicit breakpoint CLI surface was found in the inspected definitions/request schema.",
+      "sources": [
+        "codex-exec-cli",
+        "codex-exec-lib",
+        "codex-api-common"
+      ]
+    },
+    {
+      "id": "ER04",
+      "status": "verified_primary_documentation",
+      "claim": "Maintaining a conversation/session does not guarantee cache hits; previous input remains billable in chained API responses. Native resume should preserve actual prior message boundaries, but cost needs full-sequence measurement.",
+      "sources": [
+        "openai-prompt-caching",
+        "openai-conversation-state",
+        "codex-exec-lib"
+      ]
+    },
+    {
+      "id": "ER05",
+      "status": "verified_selected_native_source",
+      "claim": "Native compaction can replace history and truncate/discard older user content. Native exec JSONL has no dedicated compaction item/event and maps unsupported item types to None; a thread/hash receipt alone cannot establish that earlier full source remains visible.",
+      "sources": [
+        "codex-compact",
+        "codex-events",
+        "codex-jsonl"
+      ]
+    },
+    {
+      "id": "ER06",
+      "status": "verified_selected_native_source_with_evaluation_caveat",
+      "claim": "Native exec usage_from_last_total copies ThreadTokenUsage.total fields. Protocol TokenUsageInfo appends last usage into cumulative totals and includes reset/fill behavior. Multi-turn cost evaluators must verify cumulative accounting and avoid summing resumed cumulative totals blindly. Exact resume persistence/reset semantics were not fully traced.",
+      "sources": [
+        "codex-jsonl",
+        "codex-protocol"
+      ]
+    },
+    {
+      "id": "ER07",
+      "status": "verified_primary_engineering_guidance",
+      "claim": "Use high-signal bounded context, lightweight identifiers and just-in-time/hybrid retrieval; consolidate frequently chained operations and measure tool errors, calls, tokens, runtime and held-out outcomes. Guidance is not proof of Memglide-specific gains.",
+      "sources": [
+        "anthropic-context",
+        "anthropic-tools",
+        "openai-latency",
+        "openai-cost-optimization"
+      ]
+    },
+    {
+      "id": "ER08",
+      "status": "engineering_hypothesis",
+      "claim": "An explicit bounded validation recipe or approved validation/config sources may remove redundant test-discovery work after source reads are already avoided. It must be measured as an optional product feature, with an equal-recipe control for attribution; no repository-derived command is automatically executed.",
+      "sources": [
+        "anthropic-tools",
+        "openai-latency"
+      ]
+    }
+  ],
+  "recommended_architecture": [
+    {
+      "id": "retain-safe-preparation",
+      "priority": 1,
+      "decision": "Preserve exact bypass, no auxiliary model/MCP call, current full-source secure reads, source/policy/approval rechecks and canonical compact format.",
+      "proof_required": "Unit/security/freshness/complete-source and exact task-byte checks; full regression/integration suites."
+    },
+    {
+      "id": "validation-recipe",
+      "priority": 2,
+      "decision": "Offer a bounded, explicit caller-provided validation recipe and/or explicitly focused complete validation/config sources. Treat repository data as untrusted, do not import/evaluate/expand or execute it during preparation.",
+      "proof_required": "Boundary/size/type/path/injection tests; first inspect traces for a real discovery cost; fresh matched native benchmark plus optional equal-recipe ablation."
+    },
+    {
+      "id": "native-related-session",
+      "priority": 3,
+      "decision": "Document supported explicit same-thread resume for related tasks. Keep omission caller-controlled unless actual retained source and compaction state can be verified through a supported native interface.",
+      "proof_required": "Matched independent task histories, complete current-source rechecks, final cumulative usage/delta validation, complete sequence cost and success, compaction/stale-source probes."
+    },
+    {
+      "id": "conservative-routing",
+      "priority": 4,
+      "decision": "Use only explicit local hints for automatic source selection; do not tune a universal byte threshold or semantic classifier on the eight observed retrieval cases. Preserve native discovery when evidence is insufficient.",
+      "proof_required": "Fresh relevant/missing-context corpus, false-skip and retrieval-completeness grading, cheap decision-path CPU/wall measurements."
+    },
+    {
+      "id": "lazy-context-for-large-repos",
+      "priority": 5,
+      "decision": "Keep a few consolidated bounded source/retrieval operations for larger ambiguous tasks; return complete relevant bodies plus explicit omissions, with current source validation. Avoid eager whole-project preload.",
+      "proof_required": "Larger unfamiliar held-out repositories, dependency coverage and freshness probes, native MCP invocation verification where MCP is the treatment, lifecycle resource and cost accounting."
+    }
+  ],
+  "rejected_or_deferred": [
+    {
+      "mechanism": "Spoofed cache keys/session IDs or unsupported breakpoint flags",
+      "reason": "The native CLI does not expose the required controls in the inspected surface; identity spoofing is not a validated optimization and invalidates fair comparisons."
+    },
+    {
+      "mechanism": "Automatic omit-unchanged source based only on a thread ID and hash receipt",
+      "reason": "Same source bytes do not prove presence after native compaction/truncation; receipt-only omission can compromise completeness."
+    },
+    {
+      "mechanism": "Move untrusted source into trusted developer/system instructions",
+      "reason": "Changes instruction authority to manufacture caching boundaries and weakens source trust boundaries."
+    },
+    {
+      "mechanism": "LLM classifier/embedding/summarization pass on every ordinary task",
+      "reason": "Adds model/services and local overhead; no measured benefit pays for it on current small-task workload."
+    },
+    {
+      "mechanism": "Arbitrary token padding, default prewarming or speculative duplicate model calls",
+      "reason": "Adds billed work/cache writes and can distort experiments; all lifecycle costs would need separate evidence."
+    },
+    {
+      "mechanism": "Switch benchmark to smaller model, lower reasoning, Flex or Batch to claim a retrieval improvement",
+      "reason": "Changes quality/latency/tariff settings and no longer isolates the architecture under matched settings."
+    },
+    {
+      "mechanism": "Skip source, ignore-policy or approval checks; use mtime-only caching",
+      "reason": "Can expose excluded/stale source and compromise existing security and freshness results."
+    }
+  ],
+  "access": {
+    "tls_verification": true,
+    "inherited_proxy_preserved": true,
+    "network_policy_changed": false,
+    "credentials_read": false,
+    "anthropic_access_note": "These two primary articles now returned HTTP200. Earlier preserved research failures remain historical facts; no blocked-host or TLS bypass was used.",
+    "skill_note": "Cloud runtime skill read returned unavailable; available cloud environment status reported restricted policy and connected current runtime."
+  },
+  "limitations": [
+    "This is an engineering literature/source review, not a proof of a universal best architecture.",
+    "No original scientific papers or competitor full implementations were newly reviewed; primary engineering guides and selected native functions were reviewed with explicit scope.",
+    "Native API schema support does not establish the server behavior or tariff of ChatGPT-authenticated Codex.",
+    "The exact actual server prefix, cache boundary hit, per-inference count and billed charge remain unobserved.",
+    "No held-out task gold patches or graders were inspected or used to choose architecture during this research.",
+    "Failed URLs and unread downloaded artifacts remain in the ledger."
+  ],
+  "native_version_check": {
+    "command": [
+      "codex",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "codex-cli 0.159.2\n",
+    "checked_at_utc": "2026-10-18T21:54:02.322917+00:00",
+    "model_requests": 0
+  }
+}

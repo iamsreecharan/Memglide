@@ -18,11 +18,31 @@ the source paths you already know are relevant:
 
 ```sh
 memglide-codex --db /absolute/path/memglide.db --project PROJECT_ID \
-  --focus src/calculation.py --focus tests/test_calculation.py \
+  --focus src/calculation.py \
   --preparation-report /absolute/path/preparation.json \
   "Fix the rounding behavior and update its regression coverage." \
   -- --model YOUR_MODEL --json --output-schema /absolute/path/schema.json
 ```
+
+When the relevant existing tests or configuration are already known, optionally
+include their complete files with `--support`:
+
+```sh
+memglide-codex --db /absolute/path/memglide.db --project PROJECT_ID \
+  --focus src/calculation.py --support tests/test_calculation.py \
+  "Fix rounding, update regression coverage, and run python -m pytest tests/test_calculation.py." \
+  -- --model YOUR_MODEL --json
+```
+
+Up to eight focus and four support paths are accepted. Support files must pass
+the same approval, indexing, current ignore-policy, secure-read and source-hash
+checks as focus files. They share the existing total context cap; an unavailable
+or oversized support file discards the entire addition. Support never discovers
+tests, selects or executes a test command, or replaces the focus requirement.
+Keep the intended validation in the ordinary task; native Codex decides which
+commands to run. Source-only remains the default. The support option is an
+experiment to reduce subsequent investigation, not an established saving. See
+the [efficiency architecture](efficiency-architecture.md).
 
 The equivalent module invocation is
 `python -I -m memglide.integrations.codex_preload`. All native `codex exec`
@@ -49,13 +69,15 @@ The existing ordinary-task benchmark runner explicitly selects `legacy`, so its
 completed 80-run report is historical evidence for that layout, not a measurement
 of the new default.
 
-Putting stable source before a changed task can preserve more common prompt
-bytes when the same files are reused. It also removes avoidable envelope text.
-Neither proves a provider cache hit or a token/cost saving: native Codex owns
-its request construction and session cache affinity, and distinct sessions can
-receive different cache results despite identical task bytes. See the
-[cache refinement research](../benchmarks/cache-refinement-research.md) for the
-pinned client implementation and the limitations of the observed diagnosis.
+Putting stable source before a changed task preserves common prompt bytes and
+removes avoidable envelope text. It does not establish a cache boundary: both
+remain inside one changing native user message. The newer provider guide
+describes eligible message-ending breakpoints, while the inspected installed
+Codex CLI exposes no arbitrary multiple-message or explicit-breakpoint input.
+Native request construction and backend state remain outside this wrapper's
+control. See the [efficiency research](../benchmarks/efficiency-research.md) for
+the current scoped findings and the [earlier cache research](../benchmarks/cache-refinement-research.md)
+for the preserved diagnosis. Neither layout proves a token or cost saving.
 
 Omit the positional prompt, or use `-`, to read its UTF-8 text from stdin. With a
 positional prompt, that argument is the entire task input; additional piped stdin
@@ -90,6 +112,9 @@ time and CPU time, actual executable/argv, and delivered stdin hash/byte count.
 Compact-prefix reports also record `context_format="compact-prefix"` and
 `prompt_layout="source_prefix"` (or `unchanged` for a bypass), using report
 version 2. Legacy forwarding reports retain their version 1 shape.
+Explicit `--support` requests use version 3 in either format and record separate
+private `focus_paths` and `support_paths`, including for a bypass. Leaving support
+empty preserves the existing source-only prompt bytes and report shape.
 It does not duplicate source text or capture authentication/configuration
 values. `native_exec_boundary_monotonic_seconds` is sampled before the report
 write and exec handoff, so a runner's derived native interval also includes
@@ -128,3 +153,7 @@ Use `--context-supplied` only when the existing context actually contains the
 needed evidence; it is an explicit assertion, not a freshness check. Changed or
 missing files still need normal reads or a fresh approved bundle. Resuming keeps
 native session handling intact, but does not guarantee cache hits or lower cost.
+
+Resumed-session cost accounting needs separately verified cumulative or per-turn
+usage. The estimator rejects resumed or multi-turn traces whose usage scope is
+not verified; summing possibly cumulative totals can double-count cost.

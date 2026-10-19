@@ -10,7 +10,7 @@ import statistics
 import subprocess
 import time
 from pathlib import Path
-from typing import Any
+from typing import Any, TypedDict
 
 from memglide.core.indexer import Indexer
 from memglide.integrations.preload import _EXPLANATION, TASK_SEPARATOR, prepare_prompt
@@ -35,7 +35,40 @@ def summary(values: list[float]) -> dict[str, float]:
     }
 
 
-def run(output: Path, repeats: int) -> dict[str, Any]:
+class _PreparationRun(TypedDict):
+    case: str
+    repeat: int
+    format: str
+    context_bytes: int
+    wall_seconds: float
+    cpu_seconds: float
+
+
+class _PreparationComparison(TypedDict):
+    case: str
+    format: str
+    samples: int
+    added_context_bytes: int
+    raw_source_bytes: int
+    same_source_different_task_common_prefix_bytes: int
+    wall_seconds: dict[str, float]
+    cpu_seconds: dict[str, float]
+
+
+class _PreparationReport(TypedDict):
+    version: int
+    scope: str
+    cold_approval_index_wall_seconds: float
+    source_hashes: dict[str, str]
+    database_unchanged: bool
+    rows: list[_PreparationRun]
+    comparisons: list[_PreparationComparison]
+    provider_cached_tokens: None
+    provider_uncached_tokens: None
+    actual_cost_usd: None
+
+
+def run(output: Path, repeats: int) -> _PreparationReport:
     output.mkdir(parents=True, exist_ok=False)
     repository = output / "fixture"
     repository.mkdir()
@@ -51,7 +84,7 @@ def run(output: Path, repeats: int) -> dict[str, Any]:
     project = Indexer(Database(database)).add_project(str(repository))
     setup = time.perf_counter() - started
     before = hashlib.sha256(database.read_bytes()).hexdigest()
-    rows: list[dict[str, Any]] = []
+    rows: list[_PreparationRun] = []
     stable: dict[tuple[str, str], dict[str, Any]] = {}
     cases = {"single": ["calc.py"], "two_sources": ["format.ts", "calc.py"]}
     randomizer = random.Random(20261018)
@@ -92,7 +125,7 @@ def run(output: Path, repeats: int) -> dict[str, Any]:
                     }
                 )
                 stable[case, context_format] = value
-    comparisons = []
+    comparisons: list[_PreparationComparison] = []
     for case, paths in cases.items():
         for context_format in ("legacy", "compact-prefix"):
             left = prepare_prompt(
@@ -128,7 +161,7 @@ def run(output: Path, repeats: int) -> dict[str, Any]:
                 }
             )
     assert hashlib.sha256(database.read_bytes()).hexdigest() == before
-    report = {
+    report: _PreparationReport = {
         "version": 1,
         "scope": "Local preparation component only; complete source bytes, native forwarded prompt prefix bytes and already imported API time. No Codex/model calls, measured model tokens, actual cache hits, billing or end-to-end speed claims.",
         "cold_approval_index_wall_seconds": setup,

@@ -16,6 +16,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any
 
 MAX_FOCUS_PATHS = 8
+MAX_SUPPORT_PATHS = 4
 MAX_PATH_COMPONENTS = 32
 MAX_CONTEXT_BYTES = 256_000
 MAX_IGNORE_BYTES = 64_000
@@ -191,6 +192,7 @@ def prepare_prompt(
     project_id: str | None = None,
     db_path: str | Path | None = None,
     focus_paths: list[str] | tuple[str, ...] = (),
+    support_paths: list[str] | tuple[str, ...] = (),
     context_supplied: bool = False,
     mode: str = "auto",
     max_context_bytes: int = 12_000,
@@ -204,6 +206,9 @@ def prepare_prompt(
     The byte cap includes the entire added explanation and JSON, not the task.
     ``compact-prefix`` places a stable, canonical source envelope before the task
     and keeps hashes/ranges in private metadata. ``legacy`` preserves older bytes.
+    Explicit ``support_paths`` can include up to four additional approved files,
+    such as relevant tests. The entire requested bundle succeeds or is discarded;
+    support files never trigger discovery and do not replace the focus requirement.
     Invalid argument types or bounds raise ValueError without loading services.
     """
     wall_start = time.perf_counter()
@@ -218,21 +223,26 @@ def prepare_prompt(
         raise ValueError("context_supplied must be a boolean")
     if type(max_context_bytes) is not int or not 1 <= max_context_bytes <= MAX_CONTEXT_BYTES:
         raise ValueError(f"max_context_bytes must be between 1 and {MAX_CONTEXT_BYTES}")
-    if not isinstance(focus_paths, (list, tuple)) or len(focus_paths) > MAX_FOCUS_PATHS:
-        raise ValueError(f"focus_paths must contain at most {MAX_FOCUS_PATHS} paths")
-    if any(
-        not isinstance(path, str)
-        or not path
-        or len(path) > 4096
-        or "\x00" in path
-        or "\\" in path
-        or PurePosixPath(path).is_absolute()
-        or PurePosixPath(path).as_posix() != path
-        or ".." in PurePosixPath(path).parts
-        or not 1 <= len(PurePosixPath(path).parts) <= MAX_PATH_COMPONENTS
-        for path in focus_paths
+    for label, requested, maximum in (
+        ("focus", focus_paths, MAX_FOCUS_PATHS),
+        ("support", support_paths, MAX_SUPPORT_PATHS),
     ):
-        raise ValueError("focus paths must be bounded canonical relative source paths")
+        if not isinstance(requested, (list, tuple)) or len(requested) > maximum:
+            raise ValueError(f"{label}_paths must contain at most {maximum} paths")
+        if any(
+            not isinstance(path, str)
+            or not path
+            or len(path) > 4096
+            or "\x00" in path
+            or "\\" in path
+            or any(0xD800 <= ord(character) <= 0xDFFF for character in path)
+            or PurePosixPath(path).is_absolute()
+            or PurePosixPath(path).as_posix() != path
+            or ".." in PurePosixPath(path).parts
+            or not 1 <= len(PurePosixPath(path).parts) <= MAX_PATH_COMPONENTS
+            for path in requested
+        ):
+            raise ValueError(f"{label} paths must be bounded canonical relative source paths")
     if project_id is not None and (
         not isinstance(project_id, str) or not project_id.strip() or len(project_id) > 256
     ):
@@ -241,12 +251,17 @@ def prepare_prompt(
         raise ValueError("db_path must be a path")
     original_data = prompt.encode("utf-8")
     original_hash = hashlib.sha256(original_data).hexdigest()
+    focus = tuple(dict.fromkeys(focus_paths))
+    support = tuple(path for path in dict.fromkeys(support_paths) if path not in focus)
+    if context_format == "compact-prefix":
+        focus = tuple(sorted(focus))
+        support = tuple(sorted(support))
 
     def result(
         reason: str, prepared: str = prompt, files: list[dict[str, Any]] | None = None
     ) -> dict[str, Any]:
         prepared_data = original_data if prepared is prompt else prepared.encode("utf-8")
-        return {
+        response: dict[str, Any] = {
             "prompt": prepared,
             "mode": "preloaded" if files is not None else "passthrough",
             "reason": reason,
@@ -267,6 +282,10 @@ def prepare_prompt(
             "preparation_wall_seconds": time.perf_counter() - wall_start,
             "preparation_cpu_seconds": time.process_time() - cpu_start,
         }
+        if support_paths:
+            response["focus_paths"] = list(focus)
+            response["support_paths"] = list(support)
+        return response
 
     if mode == "off":
         return result("disabled")
@@ -281,7 +300,7 @@ def prepare_prompt(
     from memglide.security.paths import read_source
     from memglide.storage.database import DomainError
 
-    paths = tuple(dict.fromkeys(focus_paths))
+    paths = focus + support
     if context_format == "compact-prefix":
         paths = tuple(sorted(paths))
     try:

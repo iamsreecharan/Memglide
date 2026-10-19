@@ -67,20 +67,20 @@ def test_cache_writes_replace_ordinary_input_and_are_not_additive(pricing):
     assert result["possible_write_price_lower_usd"] == result["possible_write_price_upper_usd"]
 
 
-def test_multiple_distinct_completed_turns_are_summed(pricing):
-    parsed = cost.parse_native_usage(stream(usage(), usage(cache_write_input_tokens=30)))
-    assert parsed["coverage_complete"] is True
-    assert parsed["completed_turns"] == 2
-    assert parsed["usage"] == usage(
-        input_tokens=200,
-        cached_input_tokens=80,
-        cache_write_input_tokens=30,
-        output_tokens=20,
-        reasoning_output_tokens=10,
+def test_multiple_thread_cumulative_totals_are_not_double_charged(pricing):
+    final = usage(
+        input_tokens=180,
+        cached_input_tokens=70,
+        cache_write_input_tokens=20,
+        output_tokens=18,
+        reasoning_output_tokens=7,
     )
-    assert cost.price_usage(parsed, pricing)[
-        "native_reported_price_equivalent_usd"
-    ] == pytest.approx(0.000463)
+    parsed = cost.parse_native_usage(stream(usage(), final))
+    assert parsed["coverage_complete"] is False
+    assert parsed["completed_turns"] == 2
+    assert parsed["observed_completed_turn_usage"] == final
+    assert parsed["usage"] == dict.fromkeys(cost.USAGE_KEYS)
+    assert cost.price_usage(parsed, pricing)["native_reported_price_equivalent_usd"] is None
 
 
 @pytest.mark.parametrize(
@@ -187,6 +187,7 @@ def raw_row(tmp_path, identifier, *, arm="A", success=True, task="task", data=No
         "repeat": 1,
         "configuration": arm,
         "artifacts": str(artifacts),
+        "native_command": ["/installed/codex", "exec", "--ephemeral", "-"],
         "attempted": True,
         "status": "completed" if success else "failed",
         "language": "python",
@@ -207,6 +208,38 @@ def report(rows):
         },
         "runs": rows,
     }
+
+
+@pytest.mark.parametrize(
+    "command",
+    [
+        None,
+        [],
+        ["codex", "exec", "resume", "thread", "-"],
+        ["codex", "exec", "-"],
+        ["codex", "exec", "--ephemeral", "resume", "thread", "-"],
+    ],
+)
+def test_resumed_or_unproven_thread_usage_never_becomes_incremental_cost(
+    tmp_path, pricing, command
+):
+    row = raw_row(tmp_path, "resumed")
+    row["native_command"] = command
+    assessment = cost.assess(report([row]), pricing)
+    assert assessment["runs"][0]["cost"]["native_reported_price_equivalent_usd"] is None
+    assert (
+        assessment["configurations"]["A"]["cost_per_successful_task_usd"][
+            "native_reported_price_equivalent_usd"
+        ]
+        is None
+    )
+
+
+def test_unknown_outcome_cannot_price_a_complete_but_unsealed_stream(tmp_path, pricing):
+    row = raw_row(tmp_path, "unknown", success=False)
+    row["execution_outcome_unknown"] = True
+    assessment = cost.assess(report([row]), pricing)
+    assert assessment["runs"][0]["cost"]["native_reported_price_equivalent_usd"] is None
 
 
 def test_failed_attempts_count_in_numerator_and_successful_assignments_once(tmp_path, pricing):

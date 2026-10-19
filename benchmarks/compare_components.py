@@ -175,14 +175,15 @@ def _identity(result: dict[str, Any], artifact_base: Path) -> tuple[dict[str, An
 def _metric(result: dict[str, Any] | None, path: tuple[str, ...]) -> float | int | None:
     if result is None:
         return None
+    value: Any
     if path[0] == "_derived":
-        call = next(
+        call: dict[str, Any] = next(
             (item for item in result.get("mcp_calls", []) if item.get("name") == "get_context"),
             {},
         )
         value = call.get("wall_seconds")
     else:
-        value: Any = result
+        value = result
         for key in path:
             value = value.get(key) if isinstance(value, dict) else None
     if isinstance(value, bool):
@@ -239,7 +240,8 @@ def compare_reports(
     if old_measurement and new_measurement and old_measurement != new_measurement:
         errors.append("measurement_source_files_changed")
     task_ids = sorted(before.keys() | after.keys())
-    pairs, regressions = [], []
+    pairs: list[dict[str, Any]] = []
+    regressions: list[dict[str, Any]] = []
     for task_id in task_ids:
         old, new = before.get(task_id), after.get(task_id)
         reasons = []
@@ -279,7 +281,13 @@ def compare_reports(
                 entry = {"task_id": task_id, "metric": name, **measurements[name]}
                 regressions.append(entry)
                 pair_regressions.append(name)
-        if not reasons and old.get("status") == "passed" and new.get("status") != "passed":
+        if (
+            not reasons
+            and old is not None
+            and new is not None
+            and old.get("status") == "passed"
+            and new.get("status") != "passed"
+        ):
             entry = {
                 "task_id": task_id,
                 "metric": "component_status",

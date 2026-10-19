@@ -20,7 +20,7 @@ import threading
 import time
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, TypedDict
 
 from benchmarks.telemetry import parse_codex_jsonl
 
@@ -66,7 +66,7 @@ def host_metadata() -> dict[str, Any]:
             )
         except (OSError, subprocess.SubprocessError):
             versions[name] = None
-    limits = {}
+    limits: dict[str, str | None] = {}
     for name in ("cpu.max", "memory.max", "memory.swap.max", "pids.max"):
         path = Path("/sys/fs/cgroup") / name
         try:
@@ -108,7 +108,7 @@ def make_plan(tasks: list[dict[str, Any]], repeats: int, seed: int) -> list[dict
     tasks = list(tasks)
     generator.shuffle(tasks)
     first_arm = {task["id"]: generator.choice(("A", "B")) for task in tasks}
-    plan = []
+    plan: list[dict[str, Any]] = []
     for repetition in range(1, repeats + 1):
         for task in tasks:
             first = first_arm[task["id"]]
@@ -208,6 +208,14 @@ def codex_command(
     return command + ["-"]
 
 
+class _ProcessRecord(TypedDict):
+    ppid: int
+    cpu: float
+    start: int
+    rss: int
+    entry: Path
+
+
 class ProcessSampler:
     """Linux /proc sample of local child CPU and simultaneous RSS, not inference.
 
@@ -233,7 +241,7 @@ class ProcessSampler:
             self.thread.start()
 
     def _sample(self) -> None:
-        records = {}
+        records: dict[int, _ProcessRecord] = {}
         ticks = os.sysconf("SC_CLK_TCK")
         pagesize = os.sysconf("SC_PAGE_SIZE")
         for entry in Path("/proc").iterdir():

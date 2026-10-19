@@ -17,7 +17,7 @@ import subprocess
 import time
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from benchmarks.corpus import PYTHON_SOURCES, TYPESCRIPT_SOURCES, build_repository, task_definitions
 from benchmarks.refinement_eval import body_evidence
@@ -262,12 +262,12 @@ def freshness_check(
         checked = (
             adapter.verify(old["retrieval_id"])
             if adapter is not None
-            else service.context.get_passport(session, old["retrieval_id"])
+            else service.context.get_passport(cast(str, session), old["retrieval_id"])
         )
         refreshed = (
             adapter.fetch(target, budget=budget)
             if adapter is not None
-            else service.context.get_context(session, target, level=2, budget=budget)
+            else service.context.get_context(cast(str, session), target, level=2, budget=budget)
         )
         fresh_hashes = independent_hashes(root, refreshed)
         new_target_hash = sha256(path) if path.exists() else None
@@ -372,7 +372,7 @@ def body_preservation(rows: list[dict[str, Any]], profile: str) -> dict[str, Any
         old = baseline.get((row["task_id"], row["repeat"]))
         comparable = bool(old and old["status"] == row["status"] == "ok")
         missing = []
-        if comparable:
+        if comparable and old is not None:
             candidate = bodies(row)
             missing = [
                 {"path": path, "symbol": symbol}

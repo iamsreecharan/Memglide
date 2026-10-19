@@ -255,6 +255,121 @@ def test_large_prompt_uses_regular_stdin_and_never_process_arguments(native):
     assert json.loads(native["report"].read_text())["native_stdin"]["bytes"] > 256_000
 
 
+@pytest.mark.parametrize("context_format", ["legacy", "compact-prefix"])
+@pytest.mark.parametrize("missing_support", [False, True])
+def test_support_bundle_reaches_one_native_exec_or_falls_back_whole(
+    native, tmp_path, context_format, missing_support
+):
+    repository = native["repository"]
+    sources = {
+        "totals.py": "def total(items):\n    return sum(items)\n",
+        "tests/test_totals.py": "from totals import total\nassert total([2, 3]) == 5\n",
+    }
+    database = tmp_path / "bundle-state.db"
+    db = Database(database)
+    db.execute(
+        "INSERT INTO projects(id,path,name,created_at) VALUES(?,?,?,?)",
+        ("approved", str(repository), "approved", time.time()),
+    )
+    for ordinal, (path, content) in enumerate(sources.items()):
+        target = repository / path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content)
+        if missing_support and path.startswith("tests/"):
+            continue
+        db.execute(
+            "INSERT INTO files VALUES(?,?,?,?,?,?,?,?,?,?)",
+            (
+                f"file-{ordinal}",
+                "approved",
+                path,
+                hashlib.sha256(content.encode()).hexdigest(),
+                "python",
+                len(content),
+                target.stat().st_mtime,
+                0,
+                None,
+                time.time(),
+            ),
+        )
+    prompt = "Fix totals and add a regression; λ\r\nkeep task bytes.\r"
+    result = launch(
+        native,
+        [
+            "--context-format",
+            context_format,
+            "--project",
+            "approved",
+            "--db",
+            str(database),
+            "--focus",
+            "totals.py",
+            "--support",
+            "tests/test_totals.py",
+            "--support",
+            "totals.py",
+            "--preparation-report",
+            str(native["report"]),
+            prompt,
+            "--",
+            "--json",
+        ],
+    )
+    assert result.returncode == 17, result.stderr
+    records = native["capture"].read_text().splitlines()
+    assert len(records) == 1
+    observed = json.loads(records[0])
+    report = json.loads(native["report"].read_text())
+    prepared = report["preparation"]
+    assert report["version"] == 3
+    assert prepared["focus_paths"] == ["totals.py"]
+    assert prepared["support_paths"] == ["tests/test_totals.py"]
+    assert report["native_stdin"]["sha256"] == observed["stdin_sha256"]
+    assert "assert total" not in native["report"].read_text()
+    if missing_support:
+        assert observed["stdin"] == prompt
+        assert prepared["mode"] == "passthrough" and prepared["files"] == []
+        assert prepared["reason"] == "source_not_indexed"
+    else:
+        assert prepared["mode"] == "preloaded"
+        assert {row["path"] for row in prepared["files"]} == set(sources)
+        if context_format == "compact-prefix":
+            from memglide.integrations.preload import TASK_SEPARATOR
+
+            assert observed["stdin"].endswith(TASK_SEPARATOR + prompt)
+            envelope = json.loads(observed["stdin"].removesuffix(TASK_SEPARATOR + prompt))
+        else:
+            assert observed["stdin"].startswith(prompt)
+            envelope = json.loads(
+                observed["stdin"][observed["stdin"].index('{"memglide_sources"') :]
+            )
+        assert {item["path"]: item["content"] for item in envelope["memglide_sources"]} == sources
+
+
+@pytest.mark.parametrize("mutation", ["focus", "support", "missing", "unexpected_file"])
+def test_private_support_classification_cannot_disagree_with_requested_files(mutation):
+    value, _ = compact_preparation("Task")
+    value.update(focus_paths=["a.py"], support_paths=["z.py"])
+    if mutation == "focus":
+        value["focus_paths"] = ["z.py"]
+    elif mutation == "support":
+        value["support_paths"] = []
+    elif mutation == "missing":
+        del value["support_paths"]
+    else:
+        value["focus_paths"] = ["a.py", "other.py"]
+    with pytest.raises(ValueError):
+        codex_preload._validated_preparation(
+            value, "Task", "compact-prefix", focus_paths=["a.py"], support_paths=["z.py"]
+        )
+
+
+def test_complete_snapshot_cannot_include_unrequested_files():
+    value, _ = compact_preparation("Task")
+    with pytest.raises(ValueError, match="complete requested file set"):
+        codex_preload._validated_preparation(value, "Task", "compact-prefix", focus_paths=["a.py"])
+
+
 def test_explicit_installed_binary_and_safe_fallback_are_reported(native, tmp_path):
     result = launch(
         native,

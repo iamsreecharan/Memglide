@@ -13,7 +13,7 @@ import re
 import shlex
 from collections import Counter
 from pathlib import Path, PurePosixPath
-from typing import Any
+from typing import Any, cast
 
 USAGE_KEYS = ("input_tokens", "cached_input_tokens", "output_tokens")
 READ_METHOD = (
@@ -279,7 +279,7 @@ def parse_codex_jsonl(source: str | Path) -> dict[str, Any]:
             isinstance(value, int) and not isinstance(value, bool) and value >= 0
             for value in values
         ):
-            usage[key] = sum(values)
+            usage[key] = sum(cast(list[int], values))
         else:
             usage[key] = None
             missing_usage[key] = (

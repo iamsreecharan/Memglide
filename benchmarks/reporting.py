@@ -8,7 +8,7 @@ import statistics
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeGuard
 
 CONFIGURATIONS = ("A", "B")
 NON_ATTEMPTS = {"not_run", "unrun", "blocked", "skipped", "prerequisite_blocked"}
@@ -41,7 +41,7 @@ METRIC_NAMES = (
 )
 
 
-def _number(value: Any) -> bool:
+def _number(value: Any) -> TypeGuard[int | float]:
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
 
 

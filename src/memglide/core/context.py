@@ -370,7 +370,22 @@ class ContextEngine:
         self, session_id: str, query: str, task: str, intent: str | None = None
     ) -> list[dict[str, Any]]:
         terms = self._words(query + " " + task)
-        memories = self.memory.recall_memory(session_id)
+        overlaps: dict[str, int] = {}
+
+        def eligible(memory: dict[str, Any]) -> bool:
+            # Relevance depends only on submitted claim text/category. Exclude
+            # impossible matches before hashing their sources, while retaining
+            # every candidate whose live freshness can affect ranking/top-ten.
+            overlap = len(terms & self._words(memory["content"])) if terms else 0
+            overlaps[memory["id"]] = overlap
+            return (
+                not terms
+                or overlap > 0
+                or intent == "prior_attempts"
+                and memory["category"] in {"failed_attempt", "error", "verified_fix"}
+            )
+
+        memories = self.memory._recall_context_candidates(session_id, eligible)
         ranked = []
         for memory in memories:
             history_match = intent == "prior_attempts" and memory["category"] in {
@@ -381,7 +396,7 @@ class ContextEngine:
             # A stale claim never becomes evidence merely because it matches a query.
             if memory["stale"] and not history_match:
                 continue
-            overlap = len(terms & self._words(memory["content"]))
+            overlap = overlaps[memory["id"]]
             if not overlap and terms and not history_match:
                 continue
             weight = (
@@ -987,9 +1002,11 @@ class ContextEngine:
                 f"Budget is too small for retrieval metadata; use at least {response['estimated_tokens']} estimated tokens"
             )
         self._build_passport(response, dependencies, tests, missing, include_graph=True)
-        self.memory.touch(session_id)
         created = time.time()
-        with self.db.connect() as conn:
+        # Keep lifecycle validation, evidence history, event, and activity refresh
+        # under one write lock. A separate touch followed by an INSERT allowed
+        # an end/expiry to slip between them and still publish new evidence.
+        with self.memory._active_write(session_id) as (conn, _, record_event):
             conn.execute(
                 "INSERT INTO retrievals VALUES(?,?,?,?,?,?,?,?,?)",
                 (
@@ -1012,17 +1029,15 @@ class ContextEngine:
                     json.dumps(response["passport"], ensure_ascii=False),
                 ),
             )
-        self.db.event(
-            project_id,
-            session_id,
-            "context_retrieved",
-            {
-                "retrieval_id": response["retrieval_id"],
-                "level": level,
-                "estimated_tokens": response["estimated_tokens"],
-                "files": len(response["passport"]["selected_files"]),
-            },
-        )
+            record_event(
+                "context_retrieved",
+                {
+                    "retrieval_id": response["retrieval_id"],
+                    "level": level,
+                    "estimated_tokens": response["estimated_tokens"],
+                    "files": len(response["passport"]["selected_files"]),
+                },
+            )
         return response
 
     def expand_context(

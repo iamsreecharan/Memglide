@@ -566,7 +566,13 @@ class Indexer:
 
     @staticmethod
     def _invalidate(conn: Any, project_id: str, paths: set[str]) -> None:
+        affected_memories: dict[str, set[str]] = {}
         for path in paths:
+            for row in conn.execute(
+                "SELECT ms.memory_id FROM memory_sources ms JOIN memories m ON m.id=ms.memory_id JOIN sessions s ON s.id=m.session_id WHERE s.project_id=? AND ms.path=?",
+                (project_id, path),
+            ):
+                affected_memories.setdefault(row["memory_id"], set()).add(path)
             conn.execute(
                 "UPDATE memories SET stale=1 WHERE id IN (SELECT ms.memory_id FROM memory_sources ms JOIN memories m ON m.id=ms.memory_id JOIN sessions s ON s.id=m.session_id WHERE s.project_id=? AND ms.path=?)",
                 (project_id, path),
@@ -576,15 +582,30 @@ class Indexer:
             (project_id,),
         ):
             data = json.loads(row["data"])
-            encoded = json.dumps(data)
-            affected = [p for p in paths if p in encoded]
+            # A path mentioned in a query, warning, dependency, or another
+            # filename is not selected source evidence. Compare the exact
+            # references, including retained legacy passport representations.
+            referenced = {
+                file if isinstance(file, str) else file["path"]
+                for file in data.get("selected_files", [])
+            }
+            referenced.update(data.get("verified_source_hashes", {}))
+            referenced.update(symbol["path"] for symbol in data.get("selected_symbols", []))
+            for memory_id in data.get("selected_memory_ids", []):
+                referenced.update(affected_memories.get(memory_id, set()))
+            affected = sorted(paths & referenced)
             if affected:
                 data["status"] = "Stale"
                 data["source_freshness"] = "Stale"
                 data["stale_files"] = sorted(set(data.get("stale_files", [])) | set(affected))
-                data["missing_context"] = list(data.get("missing_context", [])) + [
-                    f"Source changed: {p}" for p in affected
-                ]
+                data["missing_context"] = list(
+                    dict.fromkeys(
+                        [
+                            *data.get("missing_context", []),
+                            *(f"Source changed: {p}" for p in affected),
+                        ]
+                    )
+                )
                 conn.execute(
                     "UPDATE passports SET data=? WHERE retrieval_id=?",
                     (json.dumps(data), row["retrieval_id"]),

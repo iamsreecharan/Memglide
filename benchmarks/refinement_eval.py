@@ -18,12 +18,17 @@ import time
 import types
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, Protocol, cast
 
 from benchmarks.compare_components import capture_provenance
 from benchmarks.refinement_corpus import MANIFEST_SHA256, ROOT, load_manifest, write_repository
 from benchmarks.retrieval_experiment import init_git, write_json
 from memglide.service import Service
+
+
+class _MutableSearch(Protocol):
+    search: Callable[..., list[dict[str, Any]]]
+
 
 STRATEGIES = ("refined", "previous", "legacy")
 FROZEN_REVISIONS = {
@@ -222,9 +227,12 @@ def evaluate_query(
     original_search = service.indexer.search
     session = None
     try:
-        search = {"refined": original_search, "legacy": legacy_search, "previous": previous_search}[
-            strategy
-        ]
+        search = cast(
+            Callable[..., list[dict[str, Any]]],
+            {"refined": original_search, "legacy": legacy_search, "previous": previous_search}[
+                strategy
+            ],
+        )
         started, cpu_started = time.perf_counter(), time.process_time()
         candidates = search(project_id, query["prompt"], limit=100, refresh=False)
         row["search_wall_seconds"] = time.perf_counter() - started
@@ -255,7 +263,7 @@ def evaluate_query(
         ) -> list[dict[str, Any]]:
             return copy.deepcopy(candidates[:limit])
 
-        service.indexer.search = fixed_search
+        cast(_MutableSearch, service.indexer).search = fixed_search
         started, cpu_started = time.perf_counter(), time.process_time()
         context = service.context.get_context(session["id"], query["prompt"], level=2, budget=8000)
         row["context_wall_seconds"] = time.perf_counter() - started
@@ -269,7 +277,7 @@ def evaluate_query(
     except Exception as exc:
         row["errors"].append(type(exc).__name__ + ": " + str(exc))
     finally:
-        service.indexer.search = original_search
+        cast(_MutableSearch, service.indexer).search = original_search
         if session:
             try:
                 service.memory.end_session(session["id"])

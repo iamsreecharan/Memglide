@@ -110,7 +110,7 @@ def create_repositories(
 def make_plan(tasks: list[dict[str, Any]], seed: int) -> list[dict[str, Any]]:
     """Shuffle tasks once; alternate paired order for exact balance on twenty tasks."""
     original = common.make_plan(tasks, 1, seed)
-    plan = []
+    plan: list[dict[str, Any]] = []
     for index in range(0, len(original), 2):
         first = "A" if index // 2 % 2 == 0 else "B"
         for arm in (first, "B" if first == "A" else "A"):

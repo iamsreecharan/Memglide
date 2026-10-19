@@ -16,7 +16,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeGuard
 
 BASE_KEYS = ("input_tokens", "cached_input_tokens", "output_tokens")
 EXTRA_KEYS = ("cache_write_input_tokens", "reasoning_output_tokens")
@@ -29,11 +29,11 @@ def digest(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
 
 
-def _count(value: Any) -> bool:
+def _count(value: Any) -> TypeGuard[int]:
     return type(value) is int and value >= 0
 
 
-def _number(value: Any) -> bool:
+def _number(value: Any) -> TypeGuard[int | float]:
     return type(value) in (int, float) and math.isfinite(value)
 
 
@@ -51,8 +51,9 @@ def parse_native_usage(content: str) -> dict[str, Any]:
 
     A failed or unfinished turn can incur unreported usage. Its whole-attempt
     cost remains unknown, while already completed turns remain visible. Multiple
-    explicitly started/completed turns are summed; duplicate completion events
-    cannot silently double the bill. Optional missing fields remain unknown.
+    native completed-turn counters are thread-cumulative. Multiple totals cannot
+    establish fresh per-attempt spend without a verified baseline/reset history,
+    so they remain unknown rather than being summed. Optional fields stay unknown.
     """
     errors: list[str] = []
     events = []
@@ -96,7 +97,7 @@ def parse_native_usage(content: str) -> dict[str, Any]:
                 errors.append("Completed turn omitted its usage object")
                 completed.append(dict.fromkeys(USAGE_KEYS))
                 continue
-            row = {key: usage.get(key) for key in USAGE_KEYS}
+            row: dict[str, Any] = {key: usage.get(key) for key in USAGE_KEYS}
             for key in BASE_KEYS:
                 if not _count(row[key]):
                     errors.append(f"Completed turn has invalid {key}")
@@ -133,10 +134,10 @@ def parse_native_usage(content: str) -> dict[str, Any]:
         errors.append("Stream lacks a completed terminal turn")
     if not completed:
         errors.append("No completed turn usage")
+    if len(completed) > 1:
+        errors.append("Multiple thread-cumulative totals require verified baseline accounting")
     observed = {
-        key: sum(row[key] for row in completed)
-        if completed and all(_count(row[key]) for row in completed)
-        else None
+        key: completed[-1][key] if completed and _count(completed[-1][key]) else None
         for key in USAGE_KEYS
     }
     complete = not errors
@@ -196,7 +197,7 @@ def _price(usage: dict[str, int], writes: int, rates: dict[str, Decimal]) -> flo
 
 def price_usage(parsed: dict[str, Any], pricing: dict[str, Any]) -> dict[str, Any]:
     rates = validate_pricing(pricing)
-    result = {
+    result: dict[str, Any] = {
         "actual_billed_cost_usd": None,
         "native_reported_price_equivalent_usd": None,
         "possible_write_price_lower_usd": None,
@@ -360,6 +361,22 @@ def assess(
                 "errors": ["Native events artifact is not valid UTF-8"],
                 "usage": dict.fromkeys(USAGE_KEYS),
             }
+        command = raw.get("native_command")
+        fresh = (
+            isinstance(command, list)
+            and len(command) > 1
+            and command[1] == "exec"
+            and "--ephemeral" in command
+            and "resume" not in command[2:]
+            and raw.get("execution_outcome_unknown") is not True
+        )
+        if not fresh:
+            parsed["coverage_complete"] = False
+            parsed["errors"].append(
+                "Fresh ephemeral native execution is not established; resumed cumulative usage "
+                "cannot be charged as this attempt's incremental cost"
+            )
+            parsed["usage"] = dict.fromkeys(USAGE_KEYS)
         primary_usage = raw.get("telemetry", {}).get("usage", {})
         reconciliation = all(
             parsed["usage"].get(key) == primary_usage.get(key) for key in BASE_KEYS
@@ -407,7 +424,9 @@ def assess(
     configurations = {
         arm: aggregate([row for row in rows if row["configuration"] == arm]) for arm in ("A", "B")
     }
-    pair_index = defaultdict(lambda: defaultdict(list))
+    pair_index: defaultdict[tuple[str, int], defaultdict[str, list[dict[str, Any]]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
     for row in rows:
         pair_index[(row["task_id"], row["repeat"])][row["configuration"]].append(row)
     pairs = []
@@ -443,11 +462,11 @@ def assess(
         ),
         "scope": "Independent worst-case write attribution in the two arms; not a confidence interval",
     }
-    strata = {}
+    strata: dict[str, dict[str, dict[str, Any]]] = {}
     for field in ("selection_stratum", "task_kind", "language"):
         strata[field] = {}
         for stratum in sorted({str(row.get(field)) for row in rows}):
-            arms = {
+            stratum_arms = {
                 arm: aggregate(
                     [
                         row
@@ -458,12 +477,12 @@ def assess(
                 for arm in ("A", "B")
             }
             strata[field][stratum] = {
-                "configurations": arms,
+                "configurations": stratum_arms,
                 "native_reported_cost_per_success_saving_percent": _saving(
-                    arms["A"]["cost_per_successful_task_usd"][
+                    stratum_arms["A"]["cost_per_successful_task_usd"][
                         "native_reported_price_equivalent_usd"
                     ],
-                    arms["B"]["cost_per_successful_task_usd"][
+                    stratum_arms["B"]["cost_per_successful_task_usd"][
                         "native_reported_price_equivalent_usd"
                     ],
                 ),
@@ -500,6 +519,7 @@ def assess(
             "Ten fresh tasks, one balanced trial per arm, synthetic small repositories, and uncontrolled backend/OS caches limit generalization; the range is not statistical uncertainty.",
             "Local CPU/RSS/time overhead is reported but has no attributable dollar rate and is not included as fabricated spending. Peak RSS totals have no physical interpretation.",
             "Requested default service tier is frozen; realized provider tier/routing and actual per-request model calls are unavailable from this stream.",
+            "This estimator requires fresh ephemeral native executions. Resumed or multiple-turn cumulative counters require separate verified baseline/delta accounting and are not summed as incremental spend.",
         ],
     }
 

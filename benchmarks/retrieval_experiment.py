@@ -19,11 +19,16 @@ import types
 from collections import defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, Protocol, cast
 
 from benchmarks.corpus import build_repository, task_definitions
 from memglide.core.query import term_variants, tokens
 from memglide.service import Service
+
+
+class _MutableSearch(Protocol):
+    search: Callable[..., list[dict[str, Any]]]
+
 
 ROOT = Path(__file__).resolve().parents[1]
 HOLDOUT_PATH = ROOT / "benchmarks/retrieval_holdout.json"
@@ -265,7 +270,7 @@ def evaluate_query(
         ) -> list[dict[str, Any]]:
             return copy.deepcopy(candidates[:limit])
 
-        service.indexer.search = chosen_search
+        cast(_MutableSearch, service.indexer).search = chosen_search
         context_started = time.perf_counter()
         context = service.context.get_context(session["id"], query["prompt"], level=2, budget=8000)
         result["context_wall_seconds"] = time.perf_counter() - context_started
@@ -285,7 +290,7 @@ def evaluate_query(
     except Exception as exc:
         result["errors"].append(type(exc).__name__ + ": " + str(exc))
     finally:
-        service.indexer.search = original_search
+        cast(_MutableSearch, service.indexer).search = original_search
         if session:
             service.memory.end_session(session["id"])
     result["total_wall_seconds"] = time.perf_counter() - started

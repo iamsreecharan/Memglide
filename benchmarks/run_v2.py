@@ -20,7 +20,7 @@ import time
 import uuid
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any, Callable, Iterator
 
 from benchmarks import run as legacy
 from benchmarks.compare_components import capture_provenance
@@ -147,7 +147,7 @@ def required_operations(require_verification: bool = False) -> list[str]:
 def load_tasks(path: Path, corpus: str = "v2") -> list[dict[str, Any]]:
     tasks = legacy.load_tasks(path)
     for task in tasks:
-        repository = task.get("repository")
+        repository: Any = task.get("repository")
         if corpus == "v2" and REPOSITORIES.get(repository) != task["language"]:
             raise ValueError(f"Unknown or language-mismatched repository: {repository!r}")
         if not isinstance(task.get("prompt"), str) or not task["prompt"].strip():
@@ -270,10 +270,15 @@ def create_repositories(
     existing: dict[str, dict[str, str]] | None = None,
     persist: Any = None,
 ) -> dict[str, dict[str, str]]:
+    build_repository: Callable[[str, Path], None]
     if corpus == "legacy":
-        from benchmarks.corpus import build_repository
+        from benchmarks.corpus import build_repository as build_legacy_repository
+
+        build_repository = build_legacy_repository
     else:
-        from benchmarks.corpus_v2 import build_repository
+        from benchmarks.corpus_v2 import build_repository as build_v2_repository
+
+        build_repository = build_v2_repository
 
     repositories = dict(existing or {})
     for repository_id in sorted({task["repository"] for task in tasks}):

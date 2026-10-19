@@ -16,7 +16,7 @@ import statistics
 from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeGuard, cast
 
 from benchmarks.compare_components import ROOT, compare_reports
 
@@ -59,7 +59,7 @@ RETRIEVAL_METRICS = (
 )
 
 
-def number(value: Any) -> bool:
+def number(value: Any) -> TypeGuard[int | float]:
     return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
 
 
@@ -81,14 +81,16 @@ def distribution(values: list[Any]) -> dict[str, Any]:
 def _component_metrics(result: dict[str, Any]) -> dict[str, Any]:
     retrieval = result.get("natural_prompt_retrieval") or {}
     calls = result.get("mcp_calls") or []
-    first_natural = next((call for call in calls if call.get("name") == "get_context"), {})
+    first_natural: dict[str, Any] = next(
+        (call for call in calls if call.get("name") == "get_context"), {}
+    )
     returned = retrieval.get("returned_files")
     expected = retrieval.get("expected_target_files")
     valid_paths = isinstance(returned, list) and all(isinstance(path, str) for path in returned)
     valid_expected = isinstance(expected, list) and all(isinstance(path, str) for path in expected)
-    selected = set(returned) if valid_paths else None
+    selected = set(cast(list[str], returned)) if valid_paths else None
     precision = (
-        len(selected.intersection(expected)) / len(selected)
+        len(selected.intersection(cast(list[str], expected))) / len(selected)
         if selected and valid_expected
         else None
     )
@@ -163,7 +165,7 @@ def component_comparison(
             for result in report.get("results", [])
         ]
     indexes = {arm: {row["task_id"]: row for row in values} for arm, values in rows.items()}
-    pairs = []
+    pairs: list[dict[str, Any]] = []
     for pair in comparison["paired_results"]:
         old = indexes["baseline"].get(pair["task_id"], {}).get("metrics", {})
         new = indexes["candidate"].get(pair["task_id"], {}).get("metrics", {})
@@ -329,7 +331,7 @@ def timing_comparison(baseline: dict[str, Any], candidate: dict[str, Any]) -> di
                 shared_errors.append(f"{arm} duplicate pair_id: {key}")
             else:
                 indexes[arm][key] = row
-    pairs = []
+    pairs: list[dict[str, Any]] = []
     for key in sorted(indexes["baseline"].keys() | indexes["candidate"].keys()):
         old, new = indexes["baseline"].get(key), indexes["candidate"].get(key)
         errors = list(shared_errors)
@@ -703,7 +705,7 @@ def main(argv: list[str] | None = None) -> int:
     paths = [arguments.output_prefix.with_suffix(suffix) for suffix in (".json", ".md")]
     if any(path.exists() for path in paths):
         parser.error("Output already exists; choose a new prefix to preserve earlier evidence")
-    loaded = {
+    loaded: dict[str, Any] = {
         key: json.loads(path.read_text(encoding="utf-8")) if path is not None else None
         for key, path in supplied.items()
     }

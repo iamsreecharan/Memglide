@@ -41,7 +41,7 @@ Returning unchanged text still costs local argument parsing, hashing and Python 
 
 ## The scoped path
 
-The caller provides an existing project ID, database selector and canonical relative paths. At most eight focus paths are accepted. Duplicates are removed; compact-prefix format sorts paths canonically, while legacy format retains the caller's order. A path may contain at most 32 components. The default **12,000-byte cap covers the entire added notice/explanation, JSON and separator**, including escaping, rather than only raw file contents. The original task is not charged against that addition cap. The caller can configure the cap up to the implementation's bounded maximum of 256,000 bytes.
+The caller provides an existing project ID, database selector and canonical relative paths. At most eight focus paths and four optional support paths are accepted. Support may contain known existing tests or configuration; it cannot trigger preparation without focus. Duplicates are removed, including support paths already in focus; compact-prefix format sorts the combined paths canonically, while legacy format retains focus followed by support order. A path may contain at most 32 components. The default **12,000-byte cap covers the entire added notice/explanation, JSON and separator**, including escaping, rather than only raw file contents. Focus and support share this cap and succeed or fall back together. The original task is not charged against that addition cap. The caller can configure the cap up to the implementation's bounded maximum of 256,000 bytes.
 
 Preparation performs narrowly selected read-only SQLite lookups for the approved project, relevant settings and the requested indexed files. It does not migrate or repair state. SQLite row/value, VM-step and query-time guards limit corrupt or unexpectedly expensive state. These guards are not a promise of a hard end-to-end wall-clock deadline under arbitrary filesystem conditions.
 
@@ -67,9 +67,9 @@ The launcher defaults to `--context-format compact-prefix`: canonical JSON conta
 
 `--context-format legacy` preserves the original task-first append layout, longer explanation and model-visible hash/range fields. For compatibility, the direct Python `prepare_prompt` API defaults to `legacy`; callers explicitly opt into `context_format="compact-prefix"`. The existing `run_daily.py` benchmark runner explicitly requests legacy. Its original 80-run report and evidence remain unchanged.
 
-The new layout removes avoidable repeated metadata and puts reusable source before changed task text. Equivalent focus sets produce the same sorted source prefix when current file bytes match. This increases common *bytes* in an offline same-source/different-task comparison; it is not a model-token count or a measured provider cache hit. No stale source cache, padding, auxiliary model decision or session-ID override is introduced.
+The new layout removes avoidable repeated metadata and puts reusable source before changed task text. Equivalent selected sets produce the same sorted source prefix when current file bytes match. This increases common *bytes* in an offline same-source/different-task comparison; it is not a model-token count or a measured provider cache hit. Both source and task occupy one changing native user message. The newer provider guide describes eligible message-ending cache breakpoints, and the inspected CLI has no arbitrary multiple-message or explicit-breakpoint prompt interface. Common leading text alone does not establish that reusable endpoint. No stale source cache, padding, auxiliary model decision or session-ID override is introduced.
 
-Native Codex's pinned client derives its default prompt cache key from session metadata, with internal override/parent-thread branches, and its authors explicitly associate ChatGPT cache affinity with the Responses session header. Memglide's source prefix does not control those native keys, preceding system/tool material, retention, routing or backend cache state. Fresh sessions therefore cannot be assumed to share a cache merely because supplied source matches. The [cache refinement research](../benchmarks/cache-refinement-research.md) distinguishes the inspected code, the observed repeat-to-repeat variability and the proposed layout improvement.
+Native Codex's pinned client derives its default prompt cache key from session metadata, with internal override/parent-thread branches, and its authors explicitly associate ChatGPT cache affinity with the Responses session header. The newer provider guide describes automatic routing for GPT-5.6 and later; the native code does not establish actual backend routing or miss causes. Memglide's source prefix does not control preceding system/tool material, retention, routing or backend cache state. Fresh sessions therefore cannot be assumed to share a cache merely because supplied source matches. The [efficiency research](../benchmarks/efficiency-research.md) updates the scoped mechanism review; the [cache refinement research](../benchmarks/cache-refinement-research.md) preserves the earlier observations.
 
 Stable formatting avoids gratuitous timestamps, random IDs and debug graphs in model-visible material, but the bundle still consumes input and can be carried into subsequent requests. It pays for itself only when it avoids enough ordinary discovery or redundant context without harming task completion. Actual native input, cached input, output and full preparation-plus-execution time must decide that outcome.
 
@@ -82,11 +82,14 @@ memglide --db /path/to/local-state.db project add /path/to/repository
 cd /path/to/repository
 memglide-codex --project PROJECT_ID --db /path/to/local-state.db \
   --focus src/totals.py --focus src/currency.py \
+  --support tests/test_totals.py \
   --preparation-report /path/to/private-preparation.json \
   -- --json < /path/to/task.txt
 ```
 
 Native execution options go after `--`; the task is read from stdin when the positional task is omitted. Use the same native model/settings you would use without the wrapper. `--mode off` forwards the task without source access. `--context-supplied` also skips preparation when the caller already provided the needed evidence. A missing or unsafe focus preserves ordinary discovery; do not repeatedly request a broader bundle just to manufacture a retrieval event.
+
+The optional support path receives the same complete-source security and freshness checks as focus. Preparation neither discovers tests nor executes their code. Put the intended test command in the original task, where native Codex can decide how to validate the change. Source-only remains the default until an independent comparison justifies promotion. Empty support preserves the old prompt bytes and report shape; explicitly requesting support uses report version 3 with private focus/support lists, including on a bypass. See the [efficiency architecture](efficiency-architecture.md) for the current implementation and measurement gate.
 
 ## How the ten references affected the design
 

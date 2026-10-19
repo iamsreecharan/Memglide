@@ -79,7 +79,8 @@ def task_prompt(task: dict[str, Any]) -> str:
 def load_tasks(path: Path) -> list[dict[str, Any]]:
     tasks = legacy.load_tasks(path)
     for task in tasks:
-        if REPOSITORIES.get(task.get("repository")) != task["language"]:
+        repository: Any = task.get("repository")
+        if REPOSITORIES.get(repository) != task["language"]:
             raise ValueError("Unknown or language-mismatched ordinary-task repository")
         if not isinstance(task.get("prompt"), str) or not task["prompt"].strip():
             raise ValueError("Each task requires a nonempty prompt")
@@ -978,7 +979,8 @@ def build_report(
         if row["configuration"] in arms:
             duplicate_keys.add(key)
         arms[row["configuration"]] = row
-    pairs, excluded = [], []
+    pairs: list[dict[str, Any]] = []
+    excluded: list[dict[str, Any]] = []
     for key, arms in sorted(index.items()):
         reasons = []
         if metadata.get("source_unchanged_during_experiment") is False or metadata.get(

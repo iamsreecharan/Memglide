@@ -102,7 +102,12 @@ def _validate_compact_prefix(prepared: str, prompt: str, files: list[dict[str, A
 
 
 def _validated_preparation(
-    value: Any, prompt: str, context_format: str = "legacy"
+    value: Any,
+    prompt: str,
+    context_format: str = "legacy",
+    *,
+    focus_paths: list[str] | None = None,
+    support_paths: list[str] | None = None,
 ) -> tuple[str, dict[str, Any]]:
     """Reject a malformed preparer result before launching or reporting success."""
     if not isinstance(value, dict):
@@ -172,6 +177,24 @@ def _validated_preparation(
             {"path": path, "sha256": digest, "start_line": first, "end_line": last}
         )
         seen_paths.add(path)
+    requested_focus = list(dict.fromkeys(focus_paths or []))
+    requested_support = [
+        path for path in dict.fromkeys(support_paths or []) if path not in requested_focus
+    ]
+    if context_format == "compact-prefix":
+        requested_focus.sort()
+        requested_support.sort()
+    if support_paths:
+        if (
+            value.get("focus_paths") != requested_focus
+            or value.get("support_paths") != requested_support
+        ):
+            raise ValueError("preparation returned invalid focus/support classifications")
+    elif "focus_paths" in value or "support_paths" in value:
+        raise ValueError("preparation returned unrequested support classifications")
+    if mode == "preloaded" and focus_paths is not None:
+        if seen_paths != set(requested_focus + requested_support):
+            raise ValueError("preparation did not deliver the complete requested file set")
     if mode == "preloaded" and context_format == "compact-prefix":
         _validate_compact_prefix(prepared, prompt, metadata_files)
     report: dict[str, Any] = {
@@ -185,6 +208,9 @@ def _validated_preparation(
     if context_format != "legacy":
         report["context_format"] = context_format
         report["prompt_layout"] = expected_layout
+    if support_paths:
+        report["focus_paths"] = requested_focus
+        report["support_paths"] = requested_support
     for key in ("preparation_wall_seconds", "preparation_cpu_seconds"):
         duration = value.get(key)
         if (
@@ -242,6 +268,12 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--project", help="existing approved Memglide project ID")
     parser.add_argument("--db", type=Path, help="existing Memglide database path")
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
+    parser.add_argument(
+        "--support",
+        action="append",
+        default=[],
+        help="optional relative indexed support file, such as the task's existing tests",
+    )
     parser.add_argument("--context-supplied", action="store_true", help="skip source preparation")
     parser.add_argument("--mode", choices=("auto", "off", "preload"), default="auto")
     parser.add_argument(
@@ -288,12 +320,19 @@ def main(argv: list[str] | None = None) -> int:
             project_id=options.project,
             db_path=options.db,
             focus_paths=options.focus,
+            support_paths=options.support,
             context_supplied=options.context_supplied,
             mode=options.mode,
             max_context_bytes=options.max_context_bytes,
             context_format=options.context_format,
         )
-        prepared, metadata = _validated_preparation(preparation, prompt, options.context_format)
+        prepared, metadata = _validated_preparation(
+            preparation,
+            prompt,
+            options.context_format,
+            focus_paths=options.focus,
+            support_paths=options.support,
+        )
         command = [executable, "exec", *native_options, "--", "-"]
         prepared_bytes = prepared.encode("utf-8")
         # A regular file cannot deadlock on a full pipe buffer, and passing '-'
@@ -306,7 +345,11 @@ def main(argv: list[str] | None = None) -> int:
                 _write_report(
                     options.preparation_report,
                     {
-                        "version": 1 if options.context_format == "legacy" else 2,
+                        "version": 3
+                        if options.support
+                        else 1
+                        if options.context_format == "legacy"
+                        else 2,
                         "preparation": metadata,
                         "executable": executable,
                         "exec_argv": command,

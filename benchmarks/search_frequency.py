@@ -13,9 +13,43 @@ import statistics
 import time
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any, Callable, Literal, Protocol, TypedDict, cast
 
 from benchmarks.compare_components import capture_provenance
 from memglide.service import Service
+
+
+class _ReturnedCandidate(TypedDict):
+    path: str
+    symbol: str | None
+    score: float
+    reason: str
+    hash: str
+
+
+class _FrequencyRun(TypedDict):
+    case: str
+    repeat: int
+    policy: str
+    order_within_pair: int
+    wall_seconds: float
+    process_cpu_seconds: float
+    returned_candidates: list[_ReturnedCandidate]
+
+
+class _MetricSummary(TypedDict):
+    n: int
+    mean: float
+    median: float
+    min: float
+    max: float
+
+
+_TimingMetric = Literal["wall_seconds", "process_cpu_seconds"]
+
+
+class _MutableFrequencies(Protocol):
+    _document_frequencies: Callable[[Any, str, dict[str, str]], dict[str, int]]
 
 
 def run(fixture: Path, output: Path) -> None:
@@ -27,7 +61,7 @@ def run(fixture: Path, output: Path) -> None:
     service = Service(fixture / "state/memglide.db")
     original = service.indexer._document_frequencies
 
-    def prior(conn, project_id, expressions):
+    def prior(conn: Any, project_id: str, expressions: dict[str, str]) -> dict[str, int]:
         return {
             word: conn.execute(
                 "SELECT count(*) FROM file_search WHERE file_search MATCH ? AND project_id=?",
@@ -36,13 +70,16 @@ def run(fixture: Path, output: Path) -> None:
             for word, expression in expressions.items()
         }
 
-    report = {
-        "created_at": datetime.now(UTC).isoformat(),
+    created_at = datetime.now(UTC).isoformat()
+    source_before = capture_provenance()
+    runs: list[_FrequencyRun] = []
+    report: dict[str, object] = {
+        "created_at": created_at,
         "scope": "Paired exact document-frequency implementations on the same manually populated 20,000-file/78 MB index. Both rank at most 32 informative FTS terms. This is a local search stress check, not a coding model benchmark or indexing measurement.",
-        "source_before": capture_provenance(),
+        "source_before": source_before,
         "fixture_report_sha256": hashlib.sha256((fixture / "report.json").read_bytes()).hexdigest(),
         "conditions": "Same process, DB, source bytes, query, refresh=False and limit=20. Shared unflushed OS/SQLite caches; alternate order in repeat 2. Process CPU only; no model, cost, remote resource or exact filesystem-read telemetry. Prior implementation uses the retained project_id-payload COUNT query; optimized uses exact vocabulary or row-ID membership.",
-        "runs": [],
+        "runs": runs,
     }
     try:
         project = service.indexer.list_projects()[0]
@@ -59,12 +96,12 @@ def run(fixture: Path, output: Path) -> None:
             )
             for case, query in queries.items():
                 for position, policy in enumerate(order, 1):
-                    service.indexer._document_frequencies = (
+                    cast(_MutableFrequencies, service.indexer)._document_frequencies = (
                         prior if policy == "prior_payload_count" else original
                     )
                     start, cpu = time.perf_counter(), time.process_time()
                     hits = service.indexer.search(project["id"], query, limit=20, refresh=False)
-                    row = {
+                    row: _FrequencyRun = {
                         "case": case,
                         "repeat": repetition,
                         "policy": policy,
@@ -82,26 +119,26 @@ def run(fixture: Path, output: Path) -> None:
                             for h in hits
                         ],
                     }
-                    report["runs"].append(row)
+                    runs.append(row)
                     output.write_text(json.dumps(report, indent=2) + "\n")
                     print(
                         json.dumps({k: v for k, v in row.items() if k != "returned_candidates"}),
                         flush=True,
                     )
-        report["source_after"] = capture_provenance()
+        source_after = capture_provenance()
+        report["source_after"] = source_after
         report["source_unchanged"] = (
-            report["source_before"]["source_tree_sha256"]
-            == report["source_after"]["source_tree_sha256"]
+            source_before["source_tree_sha256"] == source_after["source_tree_sha256"]
         )
         report["all_pairs_identical"] = all(
             next(
                 r
-                for r in report["runs"]
+                for r in runs
                 if r["case"] == case and r["repeat"] == rep and r["policy"] == "prior_payload_count"
             )["returned_candidates"]
             == next(
                 r
-                for r in report["runs"]
+                for r in runs
                 if r["case"] == case
                 and r["repeat"] == rep
                 and r["policy"] == "optimized_exact_count"
@@ -109,14 +146,15 @@ def run(fixture: Path, output: Path) -> None:
             for case in queries
             for rep in (1, 2)
         )
-        report["summary"] = {
+        timing_metrics: tuple[_TimingMetric, ...] = ("wall_seconds", "process_cpu_seconds")
+        summary: dict[str, dict[str, dict[str, _MetricSummary]]] = {
             case: {
                 policy: {
                     metric: {
                         "n": len(
                             values := [
                                 r[metric]
-                                for r in report["runs"]
+                                for r in runs
                                 if r["case"] == case and r["policy"] == policy
                             ]
                         ),
@@ -125,12 +163,13 @@ def run(fixture: Path, output: Path) -> None:
                         "min": min(values),
                         "max": max(values),
                     }
-                    for metric in ("wall_seconds", "process_cpu_seconds")
+                    for metric in timing_metrics
                 }
                 for policy in ("prior_payload_count", "optimized_exact_count")
             }
             for case in queries
         }
+        report["summary"] = summary
         output.write_text(json.dumps(report, indent=2) + "\n")
         lines = [
             "# Exact document-frequency performance check",
@@ -142,7 +181,7 @@ def run(fixture: Path, output: Path) -> None:
             "| Query | Prior mean / median seconds | Optimized mean / median seconds |",
             "|---|---:|---:|",
         ]
-        for case, policies in report["summary"].items():
+        for case, policies in summary.items():
             a, b = (
                 policies[p]["wall_seconds"]
                 for p in ("prior_payload_count", "optimized_exact_count")
@@ -158,7 +197,7 @@ def run(fixture: Path, output: Path) -> None:
         ]
         output.with_suffix(".md").write_text("\n".join(lines) + "\n")
     finally:
-        service.indexer._document_frequencies = original
+        cast(_MutableFrequencies, service.indexer)._document_frequencies = original
         service.close()
 
 

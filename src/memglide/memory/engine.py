@@ -334,6 +334,27 @@ class MemoryEngine:
         memory = self._get_memory(session_id, memory_id)
         return self._memory_view(memory, session["project_id"])
 
+    def _recall_context_candidates(
+        self, session_id: str, include: Callable[[dict[str, Any]], bool]
+    ) -> list[dict[str, Any]]:
+        """Validate fresh evidence only for claims eligible for context selection.
+
+        The predicate examines stored claim metadata, never cached source state.
+        Every eligible claim still uses the ordinary live freshness checks; the
+        public recall operation retains its independent query/category behavior.
+        """
+        session = self.status(session_id)
+        memories = self.db.rows(
+            "SELECT * FROM memories WHERE session_id=? ORDER BY updated_at DESC,id", (session_id,)
+        )
+        result = [
+            self._memory_view(memory, session["project_id"])
+            for memory in memories
+            if include(memory)
+        ]
+        self.touch(session_id)
+        return result
+
     def recall_memory(
         self, session_id: str, query: str = "", category: str | None = None
     ) -> list[dict[str, Any]]:

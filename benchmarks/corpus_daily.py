@@ -1073,6 +1073,7 @@ def _test_execution_integrity(command: dict[str, Any], language: str, stage: str
     counts = command["counts"]
     total = counts.get("tests")
     count_valid = type(total) is int and (total == 2 if stage == "behavior" else total >= 5)
+    required: tuple[str, ...]
     if language == "typescript":
         required = ("tests", "pass", "fail", "cancelled", "skipped")
         clean = (
