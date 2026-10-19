@@ -225,8 +225,9 @@ def prepare_task_prompt(
     A wrapper may supply ``task_query`` to separate the actual task from its
     workflow text; it must be an exact, bounded substring of the delivered prompt.
     ``selection_policy='v1'`` preserves the original metadata-coverage default.
-    Experimental v2 requires explicit selection after failing its fresh offline
-    eligibility gate. Neither policy establishes savings.
+    Experimental v2 and runtime-aware v3 require explicit selection. Earlier
+    policies and the known-path preparer remain available; no policy establishes
+    coding-agent savings merely by selecting source.
     """
     from memglide.integrations.preload import prepare_prompt
 
@@ -246,8 +247,8 @@ def prepare_task_prompt(
         raise ValueError("enabled must be a boolean")
     if not isinstance(mode, str) or mode not in {"auto", "off", "preload"}:
         raise ValueError("mode must be auto, off, or preload")
-    if not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2"}:
-        raise ValueError("selection_policy must be v1 or v2")
+    if not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2", "v3"}:
+        raise ValueError("selection_policy must be v1, v2 or v3")
     if type(max_added_tokens) is not int or not 1 <= max_added_tokens <= MAX_ADDED_TOKENS:
         raise ValueError(f"max_added_tokens must be between 1 and {MAX_ADDED_TOKENS}")
     if provided_sources is not None and (
@@ -404,10 +405,7 @@ def prepare_task_prompt(
                     }
                 )
         elif candidates:
-            from memglide.integrations.source_evidence import (
-                EvidenceDeclined,
-                rank_verified_sources,
-            )
+            from memglide.integrations.source_evidence import EvidenceDeclined
 
             evidence_selection = _selection(
                 database, project_id, tuple(item["path"] for item in candidates)
@@ -415,9 +413,18 @@ def prepare_task_prompt(
             if evidence_selection != initial_selection:
                 return finish("policy_changed")
             try:
-                candidates, ranked, evidence_guard = rank_verified_sources(
-                    reader, project_id, query, candidates, terms, evidence_selection
-                )
+                if selection_policy == "v3":
+                    from memglide.integrations.runtime_evidence import rank_runtime_sources
+
+                    candidates, ranked, evidence_guard = rank_runtime_sources(
+                        reader, project_id, query, candidates, terms, evidence_selection
+                    )
+                else:
+                    from memglide.integrations.source_evidence import rank_verified_sources
+
+                    candidates, ranked, evidence_guard = rank_verified_sources(
+                        reader, project_id, query, candidates, terms, evidence_selection
+                    )
             except EvidenceDeclined as exc:
                 return finish(str(exc))
         receipt["ranked_candidates"] = ranked[:12]
@@ -431,6 +438,20 @@ def prepare_task_prompt(
         ):
             return finish("weak_lexical_evidence")
         anchor = candidates[0]
+        if selection_policy == "v3":
+            # Syntax inspection has its own isolated worker deadline. Its idle
+            # wall time must not consume a later SQL phase's two-second budget.
+            # Each reader still enforces cumulative VM/row/byte/time bounds;
+            # source, policy and index identity are independently revalidated.
+            reader = _ReadIndex(database)
+            if reader.settings() != ranking_settings:
+                return finish("ranking_policy_changed")
+            current_project = reader.project(project_id)
+            if any(
+                current_project.get(key) != project_version.get(key)
+                for key in ("path", "indexed_at", "index_stats")
+            ):
+                return finish("index_changed")
         edges = reader.rows(
             "SELECT * FROM dependencies WHERE project_id=? AND source_file=? "
             "ORDER BY target_file,id LIMIT 1001",
@@ -458,11 +479,17 @@ def prepare_task_prompt(
             if independent and independent[0]["score"] >= top["score"] * 0.82:
                 return finish("ambiguous_candidates")
         elif evidence_guard is not None:
-            from memglide.integrations.source_evidence import ambiguous_evidence
-
             top_evidence = evidence_guard["evidence"][top["path"]]
             other_evidence = [evidence_guard["evidence"][item["path"]] for item in independent]
-            if ambiguous_evidence(top_evidence, other_evidence):
+            if selection_policy == "v3":
+                from memglide.integrations.runtime_evidence import ambiguous_runtime_evidence
+
+                ambiguous = ambiguous_runtime_evidence(top_evidence, other_evidence)
+            else:
+                from memglide.integrations.source_evidence import ambiguous_evidence
+
+                ambiguous = ambiguous_evidence(top_evidence, other_evidence)
+            if ambiguous:
                 return finish("ambiguous_candidates")
             if not top_evidence["sufficient"]:
                 return finish("weak_lexical_evidence")
@@ -555,5 +582,17 @@ def prepare_task_prompt(
         return finish(str(exc))
     except _Unavailable as exc:
         return finish(str(exc))
-    except (DomainError, sqlite3.Error, OSError, RuntimeError, ValueError, TypeError, RecursionError):
+    except sqlite3.Error as exc:
+        if selection_policy == "v3":
+            code = getattr(exc, "sqlite_errorcode", None)
+            primary = code & 0xFF if isinstance(code, int) else None
+            kind = (
+                "query_budget" if primary == sqlite3.SQLITE_INTERRUPT else
+                "database_locked" if primary in {sqlite3.SQLITE_BUSY, sqlite3.SQLITE_LOCKED} else
+                "database_unavailable"
+            )
+            # Safe, bounded categories only; never publish SQL, paths or exception text.
+            return finish(phase + "_" + kind)
+        return finish("discovery_unavailable")
+    except (DomainError, OSError, RuntimeError, ValueError, TypeError, RecursionError):
         return finish("discovery_unavailable")

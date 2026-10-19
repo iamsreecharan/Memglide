@@ -218,7 +218,7 @@ def test_v2_js_comments_strings_and_named_identifiers_are_separate_channels(ship
 
 
 def test_explicit_policy_validation_is_cheap_and_strict(tmp_path):
-    for policy in (None, True, "v3", ""):
+    for policy in (None, True, "v99", ""):
         with pytest.raises(ValueError, match="selection_policy"):
             prepare_task_prompt("Repair shipping tariff", selection_policy=policy, db_path=tmp_path / "absent.db")
     assert not (tmp_path / "absent.db").exists()

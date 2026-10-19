@@ -26,7 +26,7 @@ def test_validator_accepts_recognized_matching_selection_policy(policy):
     assert report["automatic_selection"]["auxiliary_model_calls"] == 0
 
 
-@pytest.mark.parametrize("version", ["deterministic-source-v3", "v2", None, 2, [], {}])
+@pytest.mark.parametrize("version", ["deterministic-source-v99", "v2", None, 2, [], {}])
 def test_validator_rejects_unrecognized_receipt_policy(version):
     value = automatic_preparation("Task")
     value["automatic_selection"]["policy_version"] = version
@@ -36,7 +36,7 @@ def test_validator_rejects_unrecognized_receipt_policy(version):
         )
 
 
-@pytest.mark.parametrize("policy", ["v3", 2, [], {}])
+@pytest.mark.parametrize("policy", ["v99", 2, [], {}])
 def test_validator_rejects_unrecognized_requested_policy(policy):
     with pytest.raises(ValueError, match="unrecognized selection policy"):
         codex_preload._validated_automatic_preparation(
@@ -67,7 +67,7 @@ def test_policy_flag_requires_explicit_discovery(automatic_native, policy):
 
 def test_unknown_policy_flag_cannot_launch_native(automatic_native):
     result = automatic_launch(
-        automatic_native, ["--discover", "--selection-policy", "v3", "Task"],
+        automatic_native, ["--discover", "--selection-policy", "v99", "Task"],
     )
     assert result.returncode == 2 and "invalid choice" in result.stderr
     assert not automatic_native["capture"].exists()

@@ -279,7 +279,7 @@ def _validated_automatic_preparation(
         raise ValueError("automatic preparation returned invalid selection metadata")
     receipt = value["automatic_selection"]
     if selection_policy is not None and (
-        not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2"}
+        not isinstance(selection_policy, str) or selection_policy not in {"v1", "v2", "v3"}
     ):
         raise ValueError("automatic preparation received an unrecognized selection policy")
     fields = {
@@ -325,7 +325,9 @@ def _validated_automatic_preparation(
         type(receipt["version"]) is not int
         or receipt["version"] != 1
         or not isinstance(receipt["policy_version"], str)
-        or receipt["policy_version"] not in {"deterministic-source-v1", "deterministic-source-v2"}
+        or receipt["policy_version"] not in {
+            "deterministic-source-v1", "deterministic-source-v2", "deterministic-source-v3",
+        }
         or not isinstance(receipt["decision"], str)
         or receipt["decision"] not in {"SKIP", "FOCUSED_SOURCE", "FULL_SOURCE"}
         or not isinstance(receipt["reason"], str)
@@ -480,9 +482,9 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--selection-policy",
-        choices=("v1", "v2"),
+        choices=("v1", "v2", "v3"),
         default=None,
-        help="local --discover policy; default v1, v2 is an explicit experiment",
+        help="local --discover policy; default v1, v2/v3 are explicit experiments",
     )
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
     parser.add_argument(
