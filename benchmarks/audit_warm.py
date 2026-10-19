@@ -173,7 +173,14 @@ class Auditor:
         self.root = root
         self.checks: list[dict[str, Any]] = []
         self.costs: dict[str, Decimal | None] = {}
-        self.quotes: Counter[str] = Counter()
+        self.quotes: Counter[str] = Counter(
+            {
+                "redundant_source_reference_instances": 0,
+                "additional_source_reference_instances": 0,
+                "delivered_quote_bytes": 0,
+            }
+        )
+        self.raw_observations: list[dict[str, Any]] = []
 
     def check(self, name: str, valid: bool | None, run: str | None = None) -> None:
         self.checks.append(
@@ -333,10 +340,44 @@ class Auditor:
             len(line) > 8_000_000 for line in content.splitlines()
         ):
             raise ValueError("Native event stream exceeds audit bounds")
-        parsed = parse_native_usage(content)
+        raw_parsed = parse_native_usage(content)
+        interrupted = (
+            row.get("execution_outcome_unknown") is True or row.get("status") == "interrupted"
+        )
+        parsed = raw_parsed
+        if interrupted:
+            # A terminal-looking raw stream cannot attest the interrupted wrapper's
+            # exit, complete attempt interval or independent task completion.
+            parsed = {**raw_parsed, "coverage_complete": False, "usage": dict.fromkeys(KEYS)}
+            self.raw_observations.append(
+                {
+                    "run_id": identifier,
+                    "raw_stream_coverage_complete": raw_parsed["coverage_complete"],
+                    "observed_completed_turn_usage": raw_parsed["observed_completed_turn_usage"],
+                    "scope": "Raw event observation only; complete attempt usage/cost and completion remain unknown",
+                }
+            )
+            self.check(
+                "interrupted_cost_not_invented",
+                all(
+                    priced.get("cost", {}).get(key) is None
+                    for key in (
+                        "native_reported_price_equivalent_usd",
+                        "possible_write_price_lower_usd",
+                        "possible_write_price_upper_usd",
+                    )
+                ),
+                identifier,
+            )
         self.check(
             "fresh_native_usage_reconciled",
             all(row.get("metrics", {}).get(k) == parsed["usage"].get(k) for k in KEYS[:3]),
+            identifier,
+        )
+        self.check(
+            "raw_observed_usage_preserved",
+            priced.get("native_usage", {}).get("observed_completed_turn_usage")
+            == raw_parsed["observed_completed_turn_usage"],
             identifier,
         )
         self.check(
@@ -393,11 +434,44 @@ class Auditor:
             identifier,
         )
         prompt = self.root.read(directory / "prompt.txt", 4_000_000)
+        prompt_sha = row.get("actual_model_prompt_sha256")
         self.check(
             "actual_prompt_hash",
-            digest(prompt) == row.get("actual_model_prompt_sha256"),
+            None if interrupted and prompt_sha is None else digest(prompt) == prompt_sha,
             identifier,
         )
+        command = self.root.json(directory / "command.json", 1_000_000)
+        self.check(
+            "actual_native_command_preserved",
+            command == row["native_command"] if row.get("native_command") is not None else None,
+            identifier,
+        )
+        self.check(
+            "fresh_native_command_artifact",
+            isinstance(command, list)
+            and len(command) < 128
+            and all(isinstance(a, str) and len(a) < 4096 for a in command)
+            and command[1:2] == ["exec"]
+            and all(
+                flag in command
+                for flag in (
+                    "--json",
+                    "--ephemeral",
+                    "--ignore-user-config",
+                    "--output-schema",
+                    "mcp_servers={}",
+                )
+            )
+            and "resume" not in command,
+            identifier,
+        )
+        if interrupted:
+            preparation = self.root.json(directory / "preparation.json", 4_000_000)
+            self.check(
+                "observed_interrupted_stdin_matches_preparation",
+                digest(prompt) == preparation.get("fidelity", {}).get("actual_model_prompt_sha256"),
+                identifier,
+            )
         if row.get("native_execution_validity", {}).get("valid"):
             final = self.root.json(directory / "final.json", 1_000_000)
             actual_finals = []
@@ -799,7 +873,7 @@ def audit(report_path: Path, artifact_root: Path) -> dict[str, Any]:
     )
     counts = Counter(x["outcome"] for x in auditor.checks)
     return {
-        "audit_version": "warm-offline-1",
+        "audit_version": "warm-offline-2",
         "passed": not counts["fail"],
         "complete": full_shape
         and all(row.get("attempted") for row in rows)
@@ -820,10 +894,12 @@ def audit(report_path: Path, artifact_root: Path) -> dict[str, Any]:
             "scope": "Offline descriptive diagnosis only; exact path+hash overlap with supplied source. Byte counts are not tokens. Never a treatment, grading, tuning or promotion signal.",
         },
         "checks": auditor.checks,
+        "interrupted_raw_observations": auditor.raw_observations,
         "limitations": [
             "API price equivalents are not billing; reported cache-write zero is not upstream proof.",
             "Exact quotations establish textual support, not semantic truth or proof the model inspected a file.",
             "Unknown usage and unrun assignments remain unavailable. Partial/pilot coverage cannot establish a full-study result.",
+            "An interrupted attempt can contain a terminal-looking event stream. Raw observed counters are preserved separately; missing durable exit/projection does not become complete attempt usage, cost or success.",
         ],
     }
 

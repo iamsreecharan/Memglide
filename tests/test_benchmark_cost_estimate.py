@@ -390,3 +390,53 @@ def test_cli_preserves_input_and_refuses_to_overwrite_either_output(tmp_path, pr
     with pytest.raises(FileExistsError):
         cost.main()
     assert not prefix.with_suffix(".json").exists()
+
+
+def test_interrupted_terminal_looking_stream_retains_observations_without_pricing_attempt(
+    tmp_path, pricing
+):
+    observed = usage(
+        input_tokens=51217,
+        cached_input_tokens=45824,
+        output_tokens=717,
+        cache_write_input_tokens=0,
+        reasoning_output_tokens=20,
+    )
+    row = raw_row(tmp_path, "interrupted-native-complete-looking", success=False, data=observed)
+    row.update(status="interrupted", execution_outcome_unknown=True)
+    row["grader"] = {"success": None, "reason": "Interrupted before durable independent grade"}
+    row["telemetry"] = {
+        "usage": dict.fromkeys(cost.BASE_KEYS),
+        "usage_coverage_complete": False,
+        "observed_completed_turn_usage": {key: observed[key] for key in cost.BASE_KEYS},
+    }
+    row["metrics"] = {"end_to_end_wall_seconds": None, "process_tree_peak_rss_bytes": None}
+    original = copy.deepcopy(row)
+    path = Path(row["artifacts"]) / "events.jsonl"
+    native_bytes = path.read_bytes()
+    # Raw terminal framing alone looks priceable, but does not establish a sealed
+    # launcher outcome, exit status, independent grade or whole-attempt exposure.
+    raw_parsed = cost.parse_native_usage(native_bytes.decode())
+    assert raw_parsed["coverage_complete"] is True
+    assert cost.price_usage(raw_parsed, pricing)[
+        "native_reported_price_equivalent_usd"
+    ] == pytest.approx(0.0225384)
+    completed = raw_row(tmp_path, "durably-completed", task="different-task")
+    assessment = cost.assess(report([completed, row]), pricing)
+    interrupted = assessment["runs"][1]
+    assert interrupted["status"] == "interrupted" and interrupted["success"] is False
+    assert interrupted["native_usage"]["coverage_complete"] is False
+    assert interrupted["native_usage"]["usage"] == dict.fromkeys(cost.USAGE_KEYS)
+    assert interrupted["native_usage"]["observed_completed_turn_usage"] == observed
+    assert interrupted["primary_usage_reconciled"] is True
+    assert interrupted["cost"]["native_reported_price_equivalent_usd"] is None
+    assert interrupted["cost"]["possible_write_price_lower_usd"] is None
+    assert interrupted["cost"]["possible_write_price_upper_usd"] is None
+    a = assessment["configurations"]["A"]
+    assert a["attempts"] == 2 and a["successful_assignments"] == 1
+    assert a["cost_statistics"]["native_reported_price_equivalent_usd"][
+        "known_total"
+    ] == pytest.approx(0.000224)
+    assert a["cost_statistics"]["native_reported_price_equivalent_usd"]["total"] is None
+    assert a["cost_per_successful_task_usd"]["native_reported_price_equivalent_usd"] is None
+    assert row == original and path.read_bytes() == native_bytes

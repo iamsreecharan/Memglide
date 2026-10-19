@@ -8,8 +8,21 @@ and their write/storage tradeoffs are distinct from the prior native studies
 below. The complete Python run passed **1,626 tests**, with two additional recovery
 cases passing separately (**1,628 distinct Python cases**), plus **24 frontend**
 and **three Chromium** cases. Installed CLI/API/SPA/default-and-agent MCP checks
-pass. The new bounded warm-memory native comparison is pending; earlier native percentages do not automatically apply to this
-new source. Same-session warm memory is distinct from new/ended Memglide sessions.
+pass. After fresh device authorization succeeded, the [warm study](benchmarks/warm-80-analysis.md)
+completed **80 passing assignments** and stopped at the user's request. One
+already-started 81st original was interrupted and retained; 135 remain unrun.
+The descriptive matched first 72 runs (eight sequences, 24 tasks, one repeat)
+show source-only B 9.05% lower in API-price-equivalent cost and 6.89% lower in mean
+instrumented time than A. Warm C is 12.35% costlier and 3.40% slower than B.
+Actual billing is unavailable and memory remains optional. The final offline
+audit passes 2,595 checks, with 18 unavailable and incomplete coverage; the
+initial seven interrupted-accounting audit flags and original report bytes are
+preserved. The original report was already conservatively correct; only the
+post-study auditor needed an interruption-aware fix. An additional cost-accounting
+regression passes within its 58-case suite; application and native runtime code
+remain unchanged from the pre-study freeze. Earlier native percentages below
+belong to their own cohorts. Same-session warm memory is distinct from new/ended
+Memglide sessions.
 
 
 The latest [efficiency report](benchmarks/efficiency-assessment.md) preserves **120 native assignments in two separately frozen studies**. The original 60 remain strict protected-test failures; a fresh explicit-contract confirmation records A 20/20, B 20/20, C 20/20. The [validation](benchmarks/efficiency-validation.md) records **1,443 verified automated cases** and unchanged application source. In the confirmation's focused tasks, C versus bare Codex has 2.41% lower estimated cost per success and 12.63% higher mean full time. The frozen promotion gate is **False**; support stays explicit and optional. API-price equivalents are estimates, actual charges are unavailable, and the report includes every failed attempt's spend. [Download the complete evidence](benchmarks/memglide-efficiency-report.zip).

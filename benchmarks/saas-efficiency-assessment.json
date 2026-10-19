@@ -5,7 +5,7 @@
   "scope": "New local component changes and optional SaaS architecture recommendation; not hosted readiness or a new native coding A/B outcome",
   "source_state": {
     "baseline_git_ref": "6de6f150aaa90fba14e49439723a8139c03217eb",
-    "candidate_status": "Engineering checks passed; native warm study pending",
+    "candidate_status": "Engineering checks passed; native study user-stopped after 80 completed strict successes, one extra already-started interrupted original retained",
     "changed_application_paths": [
       "src/memglide/core/indexer.py",
       "src/memglide/core/watcher.py",
@@ -485,7 +485,7 @@
     "model_requests_by_these_local_component_probes": 0,
     "measured_new_native_token_benefit": null,
     "measured_new_native_billed_savings": null,
-    "warm_study_status": "Integration, corpus, runner and full application regression passed; native study pending",
+    "warm_study_status": "User-stopped after80completedstrictsuccesses;81stattemptinterruptedretained;135unrun",
     "initial_memory_scope": "Related native sessions sharing the same still-active Memglide session; not durable reuse after Memglide session end/expiry",
     "requirements": [
       "Explicit opt-in memory selection and source freshness",
@@ -493,11 +493,37 @@
       "Fresh matched tasks and controls; identical model/settings and comparable cache conditions",
       "Independent grading and complete run retention"
     ],
-    "status": "validated_integration_and_corpus_pending_native_study",
+    "status": "partial_user_stopped",
     "memory_adapter": "src/memglide/integrations/memory_preload.py",
     "prerequisite_report": "benchmarks/warm-memory-prerequisite.json",
     "protocol": "benchmarks/warm-protocol.md",
-    "planned_original_assignments": 216
+    "planned_original_assignments": 216,
+    "attempted_original_assignments": 81,
+    "unrun_assignments": 135,
+    "report": "benchmarks/warm-80-analysis.json",
+    "raw_report": "benchmarks/codex-warm-v2-ab.json",
+    "integrity_audit": "benchmarks/warm-v2-final-integrity-audit.json",
+    "frozen_commit": "58ba0545187dbfb5270df246109bb81295718063",
+    "cost_per_successful_task_usd": null,
+    "cost_per_successful_sequence_usd": null,
+    "completed_original_assignments": 80,
+    "matched_first72_descriptive": {
+      "runs_per_arm": 24,
+      "sequences_per_arm": 8,
+      "unique_tasks": 24,
+      "repeats": 1,
+      "source_only_B_vs_A_price_equivalent_change_percent": -9.054726812133351,
+      "source_only_B_vs_A_mean_instrumented_time_change_percent": -6.891883784975827,
+      "warm_C_vs_B_price_equivalent_change_percent": 12.34550638743952,
+      "warm_C_vs_B_mean_instrumented_time_change_percent": 3.3963901073956304
+    },
+    "actual_billed_cost_usd": null,
+    "campaign_C_cost_per_success_usd": null,
+    "source_runtime_unchanged": true,
+    "promotion_justified": false,
+    "prior_authentication_blocked_cohort": "benchmarks/warm-study-assessment.json",
+    "durably_completed_native_assignments": 80,
+    "observed_completed_turns_including_interrupted": 81
   },
   "validation": {
     "status": "passed_recorded_scope",
@@ -585,7 +611,7 @@
   },
   "remaining_product_work": [
     "Attributable per-request model/cache-write/billing telemetry",
-    "Fresh native warm-task evaluation; memory adapter first prerequisite",
+    "Future held-out matched warm evaluation if requested; current user-stopped study is partial and retained, no further native runs authorized now",
     "Durable cross-Memglide-session memory requires separate lifecycle/product design",
     "Larger unfamiliar repositories and realistic long investigation histories",
     "Explicit project-event retention, visible quotas and versioned pagination",
@@ -600,5 +626,6 @@
     "Treating virtual scheduler duration as live latency",
     "Treating SQLite VM instructions as tokens or milliseconds",
     "Treating prior native outcomes as outcomes on the changed source"
-  ]
+  ],
+  "updated_at_utc": "2026-10-19T06:30:34.802392+00:00"
 }

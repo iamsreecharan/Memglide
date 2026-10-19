@@ -85,8 +85,15 @@ The optional [memory preparation API](docs/memory-preload.md) supplies explicitl
 selected, current source-backed findings from one still-active Memglide session
 to a fresh agent process. It does not transfer memory into a new Memglide session
 or restore ended/expired sessions. Source-only launcher defaults are unchanged.
-The related-task native comparison is being prepared separately; no warm-memory
-benefit is established yet.
+The [warm-memory study](benchmarks/warm-80-analysis.md) stopped at the user's
+request after **80 completed assignments, all passing**; an already-started 81st
+was interrupted and retained. On the descriptive matched first 72 runs, source-only
+B had 9.05% lower API-price-equivalent cost and 6.89% lower mean instrumented time
+than A. Warm C was 12.35% costlier and 3.40% slower than B. This is a partial,
+one-repeat study; actual billed savings remain unknown. The [final audit](benchmarks/warm-v2-final-integrity-audit.md)
+passed with incomplete coverage. [Download v2 evidence](benchmarks/memglide-warm-v2-evidence.zip).
+The [earlier authentication failure](benchmarks/warm-study-assessment.md) remains
+preserved separately.
 
 ## Verify and develop
 

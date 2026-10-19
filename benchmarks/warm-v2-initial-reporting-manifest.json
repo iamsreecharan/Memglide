@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "preserved_at": "2026-10-19T06:26:34.768712+00:00",
+  "reason": "Retain original post-stop report and initial audit before correcting interrupted-attempt audit interpretation. The original report already conservatively marks interrupted usage/cost unknown; all seven initial audit flags concern its interrupted row. No native requests or original attempt changes.",
+  "files": [
+    {
+      "source": ".local/warm-v2/report.json",
+      "preserved_copy": "benchmarks/warm-v2-initial-report.json",
+      "sha256": "a8e6f340b5e083a118192f3e34d750a832948b05b8b6ce2b564d08dde3618045",
+      "bytes": 2966782
+    },
+    {
+      "source": ".local/warm-v2/report.md",
+      "preserved_copy": "benchmarks/warm-v2-initial-report.md",
+      "sha256": "7be8dd011fd54c630f9e54223843a4c3fa3b0683c75c3155049d28a92d5e9bca",
+      "bytes": 31558
+    },
+    {
+      "source": "benchmarks/warm-v2-integrity-audit.json",
+      "preserved_copy": "benchmarks/warm-v2-initial-integrity-audit.json",
+      "sha256": "305d5485f2013a32fd8ceebf934176e076f3d64b9b3ab03d887d72709147c399",
+      "bytes": 302127
+    },
+    {
+      "source": "benchmarks/warm-v2-integrity-audit.md",
+      "preserved_copy": "benchmarks/warm-v2-initial-integrity-audit.md",
+      "sha256": "b47133dea456c43909621d5498e741a37f433a87a6e005fcd55839a3509c7f27",
+      "bytes": 2590
+    }
+  ]
+}

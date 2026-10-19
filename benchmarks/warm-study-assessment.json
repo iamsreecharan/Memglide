@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-19T05:40:35.737826+00:00",
+  "outcome": "blocked_by_native_authentication_before_any_completed_model_turn",
+  "frozen_commit": "58ba0545187dbfb5270df246109bb81295718063",
+  "application_source_tree_sha256": "d9f6134754776f04624e91fe0d35430896a0ae8134fbfc0cb7dc287bfb9431f7",
+  "source_unchanged_during_experiment": true,
+  "design": {
+    "sequences": 12,
+    "related_tasks_per_sequence": 3,
+    "languages": [
+      "python",
+      "typescript"
+    ],
+    "arms": [
+      "A: bare native tools",
+      "B: focused current source, no memory",
+      "C: same source plus actual prior source quotations"
+    ],
+    "repeats": 2,
+    "planned_original_assignments": 216,
+    "configured_mcp_servers_per_arm": 0,
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "low",
+    "corpus_scope": "Small purpose-built repositories; not large production repositories",
+    "cache_scope": "Provider and OS caches uncontrolled; balanced planned order",
+    "memory_scope": "Fresh native Codex processes sharing one still-active Memglide session; no reuse across new/ended/expired Memglide sessions"
+  },
+  "observations": {
+    "attempted_originals": 1,
+    "native_execution_failures": 1,
+    "unrun_assignments": 215,
+    "completed_native_turns": 0,
+    "strict_task_successes": 0,
+    "complete_sequences": 0,
+    "warm_stages_attempted": 0,
+    "captured_memory_quotations": 0,
+    "native_total_input_tokens": null,
+    "native_cached_input_tokens": null,
+    "native_output_tokens": null,
+    "provider_model_calls": null,
+    "actual_billed_cost_usd": null,
+    "api_price_equivalent_total_usd": null,
+    "cost_per_successful_task_usd": null,
+    "cost_per_successful_sequence_usd": null,
+    "relative_cost_or_latency_benefit": null,
+    "failure": {
+      "run_id": "warm-ts-warm-paths-s1-r1-C",
+      "exit_code": 1,
+      "timed_out": false,
+      "native_seconds": 2.0216733499983093,
+      "instrumented_full_seconds": 2.493797863004147,
+      "message": "Your access token could not be refreshed because you have since logged out or signed in to another account. Please sign in again.",
+      "interpretation": "Infrastructure/authentication failure; no model solution exists to evaluate. External held-out tests ran against unchanged intentionally buggy baseline."
+    }
+  },
+  "audit": {
+    "passed": true,
+    "complete": false,
+    "passed_checks": 367,
+    "unavailable_checks": 25,
+    "report": "benchmarks/warm-integrity-audit.json",
+    "note": "Integrity pass verifies retention/accounting; it does not establish efficacy or full coverage."
+  },
+  "capability_prerequisite": {
+    "real_checks_passed": 9,
+    "same_active_memglide_session_across_processes": true,
+    "new_memglide_session_inherits_memory": false,
+    "ended_or_expired_memory_reused": false,
+    "preparation_renews_ttl": false,
+    "source_change_invalidates_quote": true,
+    "report": "benchmarks/warm-memory-prerequisite.json"
+  },
+  "secondary_authentication_diagnosis": {
+    "device_login_exit_code": 1,
+    "device_login_result": "Error sending request for https://auth.openai.com/api/accounts/deviceauth/usercode",
+    "proxy_probe": "URLError: Tunnel connection failed: 403 Forbidden",
+    "credentials_read_or_copied": false,
+    "saved_network_draft_added_domain": "auth.openai.com",
+    "existing_custom_domains_preserved": 10,
+    "draft_save_confirmed": true,
+    "requires_publish": true,
+    "configuration_application_status": "Unconfirmed; metadata state unknown. After the initial 403, a later actual device-login request succeeded.",
+    "later_device_login_status": "Awaiting user authorization; no model authorization established",
+    "reauthenticated": false
+  },
+  "decision": {
+    "promote_warm_memory_to_default": false,
+    "reason": "No completed native comparison; benefits unknown",
+    "source_only_default_unchanged": true,
+    "local_efficiency_evidence": "benchmarks/saas-efficiency-assessment.json"
+  },
+  "recovery": [
+    "If the saved network change remains pending, review/save it in environment settings and publish it. Actual device-login initiation now succeeds; network configuration activation remains unconfirmed.",
+    "In this environment run codex login --device-auth and finish sign-in without sharing credentials in chat.",
+    "Use a new output directory for a new full original cohort. Preserve warm-v1, including its failed original and all 215 unrun rows. --resume never reissues a failed original.",
+    "Repeat the frozen matched study with independent grading and audit; report missing usage as unavailable, and include failed-attempt cost where usage exists."
+  ],
+  "raw_reports": {
+    "codex-warm-ab.json": {
+      "path": "benchmarks/codex-warm-ab.json",
+      "sha256": "d789402887d599ca8ddf548a3bd24fd87b30edb19052889a5decf4122929e176"
+    },
+    "codex-warm-ab.md": {
+      "path": "benchmarks/codex-warm-ab.md",
+      "sha256": "6e56dd88b158cb4717a7713c5d7ebc2c05030720be5d6f8e6b14a9218eb43fce"
+    }
+  },
+  "interpretation_notes": [
+    "Raw report stage-one parity flags are false because matched prompts were not both observed, not because a measured B/C mismatch occurred.",
+    "Raw not_prepared counts refer to unrun assignments, not observed memory fallback failures.",
+    "Raw C 0/1 strict successes includes the preserved authentication failure; it is not an estimate of model coding ability.",
+    "Raw unavailable cost totals remain null, not zero. No warm comparison mean/median or token/cost saving can be calculated.",
+    "All native arms configure zero MCP servers; the study evaluates production Python preload APIs. Real MCP functionality passed separate installed-package tests."
+  ]
+}
