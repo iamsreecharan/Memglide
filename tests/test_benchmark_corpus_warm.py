@@ -24,7 +24,13 @@ def test_manifest_fresh_balanced_and_complete():
     old_ids = set()
     for path in (Path(__file__).parents[1] / "benchmarks").glob("tasks*.json"):
         if path.name != "tasks_warm.json":
-            old_ids.update(t["id"] for t in json.loads(path.read_text()).get("tasks", []))
+            historical = json.loads(path.read_text())
+            # Both manifest schemas are supported; inspect every task rather
+            # than omitting list-based corpora from the freshness check.
+            historical_tasks = (
+                historical if isinstance(historical, list) else historical.get("tasks", [])
+            )
+            old_ids.update(t["id"] for t in historical_tasks)
     assert not old_ids.intersection(t["id"] for t in tasks)
     for task in tasks:
         assert task["focus_paths"] == task["target_files"]

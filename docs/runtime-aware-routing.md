@@ -73,3 +73,25 @@ within its recorded platform and load. It does not prove remote tenant
 isolation, hosted authentication/TLS, operational service targets, disk-failure
 recovery, exhaustive adversarial safety or consistently cheaper coding tasks.
 Those require their own implementation and measured deployment evidence.
+
+## Recorded outcome
+
+The [fresh assessment](../benchmarks/router-v3-assessment.md) retains all 96
+original offline preparations and independent source-fidelity checks. Both
+repeats found the declared source on three of eight positive tasks with v3,
+versus two with v2 and all eight with known paths. All four normative bypass
+controls passed. This is one additional task, not reliable general discovery.
+
+Mean positive-task preparation was 151.590 ms for v3 versus 141.669 ms for v2;
+fresh setup plus preparation was 448.815 versus 443.831 ms. The known-path path
+remains the practical choice when paths are known. V3's six delivered prompts
+exactly matched B, so no new model-token saving follows from their formatting.
+No native coding, model usage or billing comparison was run. The report keeps
+misses, resource declines, shared-task dependence and initial development errors.
+
+The local release checks passed 2,188 Python tests on each of Python 3.12 and
+3.11 in separate full runs, 24 frontend cases, three production browser cases
+and 20 installed-package checks, including real process interruption/recovery.
+Versions, targeted reruns and verification surfaces are not pooled into one
+success rate. All initial receipts, including a post-study manifest-validator
+compatibility failure and its test-only repair, remain in the assessment.

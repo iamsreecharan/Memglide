@@ -1,5 +1,66 @@
 # Memglide verification record
 
+## Runtime-aware v3: more observed source coverage, still experimental
+
+The [runtime-aware policy](docs/runtime-aware-routing.md) adds clean syntactic
+implementation/declaration channels and bounded isolated Python/TypeScript
+inspection, without an auxiliary model. It preserves the established known-path
+preparer byte for byte, all complete-source guards, v1/v2 compatibility and
+explicit memory. New phase-specific database failure categories and a separately
+bounded post-parser SQL phase avoid misreporting exhausted work as discovery.
+Primary-source [research](benchmarks/router-v3-research.md) and independent
+pre-freeze security/runner reviews record the rationale and resource limits.
+
+Code, protocol and runner were frozen at
+`b653d6b46d98d8c90f89131c520791df4b396452` before selecting the fresh corpus.
+The [assessment](benchmarks/router-v3-assessment.md) preserves all **96 original
+offline preparations** across four pinned upstream snapshots, eight positive
+scope tasks, four normative bypass controls and two repeats. All 96 source/
+passthrough fidelity checks passed, with zero errors, replacements or unrun
+assignments and unchanged seals. Known-path B delivered all eight positive
+scopes; v1 delivered none, v2 two, and v3 three, consistently in both repeats.
+All four bypass controls passed in both repeats in every arm; these do not
+offset positive misses. Six separate synthetic freshness/safety controls passed.
+
+This is one additional complete task for v3 over v2, with **five of eight still
+missed**. Its positive-task mean local preparation was **151.590 ms**, versus
+**141.669 ms** for v2 and **5.203 ms** for known paths. Including fresh approval/
+index setup, the corresponding means were 448.815, 443.831 and 306.490 ms.
+Those component costs exclude human path discovery and native coding work.
+All six v3 preloads exactly matched their B prompts. Lower average added context
+mostly reflects misses and is not a token saving. No model requests or coding
+graders ran, and no new Codex speed, cost or billing benefit is established.
+V3 stays explicit; compatibility defaults and optional memory remain unchanged.
+
+Post-hoc stored diagnostics identify a nonproduction test-file parser error
+blocking a whole project, generation/evidence caps, and unsupported shell
+candidates. These guarded declines remain in the results; caps were not raised
+or corpus files removed to improve observed outcomes. The eight positive tasks
+share seven target bundles and only four repositories, including two related
+unjs projects. Task-bootstrap intervals do not capture that full dependence.
+The retained tar-export subset is verified against upstream archives; complete
+tracked Git-tree coverage was not independently enumerated.
+
+The complete Python suite passed **2,188 cases on Python 3.12** and separately
+**2,188 on Python 3.11**, with no failures or skips. The earlier targeted Python
+3.11 runs passed 191 and 148 cases; overlapping versions/reruns are not pooled.
+Frontend **24/24**, production Chromium
+**3/3**, clean installed-wheel checks **20/20**, Ruff, mypy and builds passed.
+Real process tests cover killed index transactions and recovery, concurrent
+service instances, changed/deleted/ignored source after reopening, and bounded
+FIFO rejection. Installed tests exercise actual default/agent MCP restarts,
+current-source API reads, browser protection and a controlled native handoff.
+Initial failed development attempts and an omitted-header smoke-client error
+remain archived. A post-study compatibility check also exposed an older test's
+object-only manifest reader; it now checks list-based task manifests too, with
+all freshness assertions retained and frozen implementation/corpus unchanged.
+The API correctly rejected the headerless request; no protection or source-
+integrity assertion was weakened. Pinned CI repeats local verification;
+its remote execution is distinct from these observed local passes.
+
+This supports a tested local application within the recorded platform/load,
+not hosted-service readiness or production-grade general automatic discovery.
+
 ## Known-path source-only refinement: preserved context, mixed timing
 
 The historical source-only preparer was already present byte for byte; no

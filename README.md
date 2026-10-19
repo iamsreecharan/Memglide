@@ -121,6 +121,13 @@ memory remain available. [Final verification](benchmarks/router-v2-final-validat
 records 2,040 distinct Python cases across completed runs, 24 frontend cases,
 three browser cases and 14 separate installed-wheel smoke checks passing.
 
+An explicit [runtime-aware v3 policy](docs/runtime-aware-routing.md) separates
+current implementation evidence from type declarations, annotations and prose.
+Use `--discover --selection-policy v3` to try it; known-path delivery, earlier
+policies and explicit memory remain available. The [fresh assessment](benchmarks/router-v3-assessment.md)
+reports source selection and local overhead separately from coding success and
+model cost. V3 is experimental and does not change the discovery default.
+
 ## Local efficiency and warm-memory evaluation
 
 The [latest local-efficiency assessment](benchmarks/saas-efficiency-assessment.md)

@@ -44,6 +44,8 @@ jobs:
         working-directory: frontend
       - run: printf '%s\n' "$PWD/frontend/node_modules/.bin" >> "$GITHUB_PATH"
       - run: uv sync --frozen --python ${{ matrix.python }}
+      # Exercise native registration/configuration smoke tests without login or inference.
+      - run: npm install --global @openai/codex@0.159.2
       - run: uv run --frozen ruff check .
       - run: uv run --frozen mypy src
       - run: uv run --frozen pytest --junitxml=.local/python-results.xml
@@ -52,6 +54,7 @@ jobs:
         with:
           name: python-${{ matrix.python }}
           path: .local/python-results.xml
+          include-hidden-files: true
           if-no-files-found: warn
 
   dashboard:

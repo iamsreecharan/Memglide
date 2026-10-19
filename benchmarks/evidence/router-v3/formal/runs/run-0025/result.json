@@ -1,0 +1,70 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 19775488,
+    "preparation_cpu_seconds": 2.647000000000066e-05,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 2.6560000151221175e-05,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 20529152,
+    "setup_cpu_seconds": 0.05202835099999999,
+    "setup_plus_preparation_wall_seconds": 0.14474232100019435,
+    "setup_waited_child_cpu_seconds": 0.070856
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 1.954700000000864e-05,
+      "preparation_wall_seconds": 1.9357000155650894e-05,
+      "prepared_prompt_sha256": "f36f19ef71cc6a00d0756be049201c10e73be48af4c4635ed58fb59e5ab971a7",
+      "prompt": "The behavior is wrong; make the implementation better.",
+      "prompt_layout": "unchanged",
+      "reason": "disabled",
+      "task_prompt_sha256": "f36f19ef71cc6a00d0756be049201c10e73be48af4c4635ed58fb59e5ab971a7"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 19775488,
+      "self_peak_rss_bytes": 20529152,
+      "waited_child_cpu_seconds": 0.070856
+    },
+    "setup": {
+      "cpu_seconds": 0.05202835099999999,
+      "waited_child_cpu_seconds": 0.070856,
+      "wall_seconds": 0.14471576100004313
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 2.647000000000066e-05,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 2.6560000151221175e-05
+    }
+  },
+  "ordinal": 25,
+  "process_wall_seconds": 0.2643109620000814,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": null,
+    "declared_scope_complete": null,
+    "expected_bypass": true,
+    "extra_paths": [],
+    "kind": "abstention_control",
+    "missing_paths": []
+  },
+  "task_id": "t09",
+  "worker_completed": true
+}

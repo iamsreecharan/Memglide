@@ -1,0 +1,157 @@
+{
+  "arm": "V2",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 24207360,
+    "preparation_cpu_seconds": 0.16397154399999997,
+    "preparation_waited_child_cpu_seconds": 0.00978,
+    "preparation_wall_seconds": 0.17575584499991237,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 24469504,
+    "setup_cpu_seconds": 0.19519962399999996,
+    "setup_plus_preparation_wall_seconds": 0.40977995999992345,
+    "setup_waited_child_cpu_seconds": 0.013551
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "automatic_selection": {
+        "auxiliary_model_calls": 0,
+        "candidate_files_considered": 6,
+        "candidate_generation_limit_reached": false,
+        "decision": "SKIP",
+        "dependency_paths_considered": 0,
+        "discovery_cpu_seconds": 0.163938352,
+        "discovery_wall_seconds": 0.17572127000016735,
+        "estimated_added_tokens": 0,
+        "index_refresh_wall_seconds": 0.12345450299994809,
+        "index_refreshed": true,
+        "omitted_candidate_files": 0,
+        "policy_version": "deterministic-source-v2",
+        "provided_source_paths": [],
+        "ranked_candidates": [
+          {
+            "evidence_terms": [
+              "item",
+              "iterable",
+              "list",
+              "natural"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/lists.py",
+            "reason": "Verified lexical evidence: 4 code-like identifier term(s), 4 path/declaration term(s), 6 whole-source term(s); 4 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+            "score": 35.320045
+          },
+          {
+            "evidence_terms": [
+              "iterable",
+              "list",
+              "text"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/time.py",
+            "reason": "Verified lexical evidence: 3 code-like identifier term(s), 1 path/declaration term(s), 7 whole-source term(s); 3 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+            "score": 17.308235
+          },
+          {
+            "evidence_terms": [
+              "list",
+              "natural",
+              "separator"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/__init__.py",
+            "reason": "Verified lexical evidence: 3 code-like identifier term(s), 0 path/declaration term(s), 3 whole-source term(s); 3 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+            "score": 16.38308
+          },
+          {
+            "evidence_terms": [
+              "separator"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/i18n.py",
+            "reason": "Verified lexical evidence: 1 code-like identifier term(s), 1 path/declaration term(s), 5 whole-source term(s); 1 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+            "score": 10.091269
+          },
+          {
+            "evidence_terms": [
+              "separator"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/number.py",
+            "reason": "Verified lexical evidence: 1 code-like identifier term(s), 0 path/declaration term(s), 6 whole-source term(s); 1 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+            "score": 7.346006
+          },
+          {
+            "evidence_terms": [],
+            "explicit_anchor": false,
+            "path": "src/humanize/filesize.py",
+            "reason": "Verified lexical evidence: 0 code-like identifier term(s), 0 path/declaration term(s), 1 whole-source term(s); 0 repository/candidate-informative term(s). Channel agreement is heuristic; unmet requirements and semantic completeness are unknown.",
+            "score": 0.108756
+          }
+        ],
+        "reason": "ambiguous_candidates",
+        "retrieval_wall_seconds": 0.049713385999893944,
+        "selected_paths": [],
+        "source_preparation_wall_seconds": 0.0,
+        "source_versions": {},
+        "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+        "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+        "unresolved_dependency_count": 7,
+        "version": 1
+      },
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.163938352,
+      "preparation_wall_seconds": 0.17572127000016735,
+      "prepared_prompt_sha256": "86730fc35eff8a3a14605e9ad64691a34cee4ec1501847fa483275999f013035",
+      "prompt": "Natural-language lists should handle empty, singleton, two-item and longer iterables with consistent separators. Review conversion of each item to text so one-shot generators are consumed only once.",
+      "prompt_layout": "unchanged",
+      "reason": "ambiguous_candidates",
+      "task_prompt_sha256": "86730fc35eff8a3a14605e9ad64691a34cee4ec1501847fa483275999f013035"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 24207360,
+      "self_peak_rss_bytes": 24469504,
+      "waited_child_cpu_seconds": 0.023331
+    },
+    "setup": {
+      "cpu_seconds": 0.19519962399999996,
+      "waited_child_cpu_seconds": 0.013551,
+      "wall_seconds": 0.23402411500001108
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.16397154399999997,
+      "waited_child_cpu_seconds": 0.00978,
+      "wall_seconds": 0.17575584499991237
+    }
+  },
+  "ordinal": 83,
+  "process_wall_seconds": 0.5651038670000617,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "src/humanize/lists.py"
+    ]
+  },
+  "task_id": "t02",
+  "worker_completed": true
+}

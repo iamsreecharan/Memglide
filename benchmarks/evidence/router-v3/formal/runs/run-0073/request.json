@@ -1,0 +1,10 @@
+{
+  "arm": "C",
+  "prompt": "The behavior is wrong; make the implementation better.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v3-offline/worktrees/work-0073"
+}

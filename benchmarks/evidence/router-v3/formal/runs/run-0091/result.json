@@ -1,0 +1,97 @@
+{
+  "arm": "C",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 30728192,
+    "preparation_cpu_seconds": 0.21922036199999995,
+    "preparation_waited_child_cpu_seconds": 0.012410999999999998,
+    "preparation_wall_seconds": 0.23382888800006185,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 30728192,
+    "setup_cpu_seconds": 0.42256431099999997,
+    "setup_plus_preparation_wall_seconds": 0.698646890000191,
+    "setup_waited_child_cpu_seconds": 0.013876
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "automatic_selection": {
+        "auxiliary_model_calls": 0,
+        "candidate_files_considered": 0,
+        "candidate_generation_limit_reached": true,
+        "decision": "SKIP",
+        "dependency_paths_considered": 0,
+        "discovery_cpu_seconds": 0.21916394699999997,
+        "discovery_wall_seconds": 0.23376985799995964,
+        "estimated_added_tokens": 0,
+        "index_refresh_wall_seconds": 0.17483561099993494,
+        "index_refreshed": true,
+        "omitted_candidate_files": 0,
+        "policy_version": "deterministic-source-v3",
+        "provided_source_paths": [],
+        "ranked_candidates": [],
+        "reason": "candidate_limit_reached",
+        "retrieval_wall_seconds": 0.05606379100004233,
+        "selected_paths": [],
+        "source_preparation_wall_seconds": 0.0,
+        "source_versions": {},
+        "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+        "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+        "unresolved_dependency_count": 0,
+        "version": 1
+      },
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.21916394699999997,
+      "preparation_wall_seconds": 0.23376985799995964,
+      "prepared_prompt_sha256": "864d4f502cb5cc22f9477589bb845fd8a21a7428bca66f0f5c7558bdb2d59919",
+      "prompt": "Review checkbox task-item rewriting: lowercase and uppercase x should mark checked state, the marker should be removed from the first text block, and nested task items should still be rewritten without changing ordinary list items.",
+      "prompt_layout": "unchanged",
+      "reason": "candidate_limit_reached",
+      "task_prompt_sha256": "864d4f502cb5cc22f9477589bb845fd8a21a7428bca66f0f5c7558bdb2d59919"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 30728192,
+      "self_peak_rss_bytes": 30728192,
+      "waited_child_cpu_seconds": 0.026286999999999998
+    },
+    "setup": {
+      "cpu_seconds": 0.42256431099999997,
+      "waited_child_cpu_seconds": 0.013876,
+      "wall_seconds": 0.4648180020001291
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.21922036199999995,
+      "waited_child_cpu_seconds": 0.012410999999999998,
+      "wall_seconds": 0.23382888800006185
+    }
+  },
+  "ordinal": 91,
+  "process_wall_seconds": 0.8154552810001405,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "src/mistune/plugins/task_lists.py"
+    ]
+  },
+  "task_id": "t04",
+  "worker_completed": true
+}

@@ -1,0 +1,103 @@
+{
+  "authoring_scope": "Independent source-selection/investigation tasks; no asserted upstream bugs, mutations, reference fixes, hidden tests, selectors or model execution. Targets remain separate from public tasks.",
+  "declared_abstention_controls": 4,
+  "model_requests": 0,
+  "policy_freeze_commit": "b653d6b46d98d8c90f89131c520791df4b396452",
+  "policy_freeze_sha256": "9af8660bd26a9f043c188460ecd1c825f98c1df72061c0e8c0e42df1e0595f9a",
+  "positive_budget_checks": [
+    {
+      "canonical_context_bytes": 9096,
+      "required_paths": [
+        "src/humanize/filesize.py",
+        "src/humanize/i18n.py"
+      ],
+      "required_source_sha256": {
+        "src/humanize/filesize.py": "8b7f3068b8ee85e3f8e03380debff698891656d2211b404f9ba42b06e9096e40",
+        "src/humanize/i18n.py": "6de81719bcb5c30df5474607ca124262cbcc1ff2fea25293f31fcc5b8e0ec08c"
+      },
+      "task_id": "t01",
+      "within_fixed_12000_bytes": true
+    },
+    {
+      "canonical_context_bytes": 1272,
+      "required_paths": [
+        "src/humanize/lists.py"
+      ],
+      "required_source_sha256": {
+        "src/humanize/lists.py": "622534ad0d9e026280ec627f363ebe8c4be0dbe6345561b570187f5c3be726a1"
+      },
+      "task_id": "t02",
+      "within_fixed_12000_bytes": true
+    },
+    {
+      "canonical_context_bytes": 2428,
+      "required_paths": [
+        "src/mistune/plugins/task_lists.py"
+      ],
+      "required_source_sha256": {
+        "src/mistune/plugins/task_lists.py": "7400f6db8494d044f6a23443bea70fc126b729a109dd1acc9ffb4807aebe758f"
+      },
+      "task_id": "t04",
+      "within_fixed_12000_bytes": true
+    },
+    {
+      "canonical_context_bytes": 3300,
+      "required_paths": [
+        "src/mistune/plugins/math.py"
+      ],
+      "required_source_sha256": {
+        "src/mistune/plugins/math.py": "f66e8c48bb81823af4b7b04743e0d85211a238210c3d4fd8e87669b1ebcd6568"
+      },
+      "task_id": "t05",
+      "within_fixed_12000_bytes": true
+    },
+    {
+      "canonical_context_bytes": 2834,
+      "required_paths": [
+        "src/index.ts"
+      ],
+      "required_source_sha256": {
+        "src/index.ts": "ca1d205da646d405d33a65ffa6e95097f277961e853098cdcb583d69ec02e9a1"
+      },
+      "task_id": "t07",
+      "within_fixed_12000_bytes": true
+    },
+    {
+      "canonical_context_bytes": 2834,
+      "required_paths": [
+        "src/index.ts"
+      ],
+      "required_source_sha256": {
+        "src/index.ts": "ca1d205da646d405d33a65ffa6e95097f277961e853098cdcb583d69ec02e9a1"
+      },
+      "task_id": "t08",
+      "within_fixed_12000_bytes": true
+    },
+    {
+      "canonical_context_bytes": 4472,
+      "required_paths": [
+        "src/utils.ts"
+      ],
+      "required_source_sha256": {
+        "src/utils.ts": "61363d9fb58e3ccd3722a3f802f69608f167e01fe1042e624b9fff8a4a5bef46"
+      },
+      "task_id": "t10",
+      "within_fixed_12000_bytes": true
+    },
+    {
+      "canonical_context_bytes": 739,
+      "required_paths": [
+        "src/_internal.ts"
+      ],
+      "required_source_sha256": {
+        "src/_internal.ts": "48e4af9f176e4960d039e5d56fadcf5f7c9a4234589a5241b103d006ff5b99ab"
+      },
+      "task_id": "t11",
+      "within_fixed_12000_bytes": true
+    }
+  ],
+  "positives": 8,
+  "selection_query_calls": 0,
+  "shared_target_notice": "t07/t08 share src/index.ts; tasks are not disjoint source contexts. Task-cluster intervals remain small-corpus descriptive and do not model repository-level dependence.",
+  "tasks": 12
+}

@@ -1,0 +1,70 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 29229056,
+    "preparation_cpu_seconds": 3.255000000002006e-05,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 3.263100006734021e-05,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 28336128,
+    "setup_cpu_seconds": 0.159164242,
+    "setup_plus_preparation_wall_seconds": 0.35010815000009643,
+    "setup_waited_child_cpu_seconds": 0.16380299999999998
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 2.6068999999989684e-05,
+      "preparation_wall_seconds": 2.5999000172305387e-05,
+      "prepared_prompt_sha256": "2521bbb23dc16770c2174030cbf0454582553aa2beb4f7934f95486b9db8f3c1",
+      "prompt": "Implement an HTTP/2 server connection pool with TLS certificate rotation and request retries.",
+      "prompt_layout": "unchanged",
+      "reason": "disabled",
+      "task_prompt_sha256": "2521bbb23dc16770c2174030cbf0454582553aa2beb4f7934f95486b9db8f3c1"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 29229056,
+      "self_peak_rss_bytes": 28336128,
+      "waited_child_cpu_seconds": 0.16380299999999998
+    },
+    "setup": {
+      "cpu_seconds": 0.159164242,
+      "waited_child_cpu_seconds": 0.16380299999999998,
+      "wall_seconds": 0.3500755190000291
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 3.255000000002006e-05,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 3.263100006734021e-05
+    }
+  },
+  "ordinal": 51,
+  "process_wall_seconds": 0.46519304100002046,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": null,
+    "declared_scope_complete": null,
+    "expected_bypass": true,
+    "extra_paths": [],
+    "kind": "abstention_control",
+    "missing_paths": []
+  },
+  "task_id": "t12",
+  "worker_completed": true
+}

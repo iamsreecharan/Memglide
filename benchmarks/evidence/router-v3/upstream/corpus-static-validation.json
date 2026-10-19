@@ -1,0 +1,12 @@
+{
+  "automatic_or_known_path_preparer_calls": 0,
+  "grading_sha256": "ca45dbd3c9aaf435e534070bd10060cb6d4c5b92cac0801dfb61f12efe3bbbb3",
+  "model_requests": 0,
+  "policy_freeze_matches": true,
+  "provenance_sha256": "27a48b2ddcfa059bca69213fcd2f504ab9a19ab17e00adbdbee6ff98bd390220",
+  "public_private_schema_valid": true,
+  "python_files_syntax_checked": 80,
+  "python_syntax_issues_preserved": [],
+  "tasks_sha256": "cd6f16b51c8ab48274f7066dbba7844231ef52c4bb5ffc0b485a88ab0063fba0",
+  "upstream_provenance_retained_bytes_licenses_valid": true
+}

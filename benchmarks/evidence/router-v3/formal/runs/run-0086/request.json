@@ -1,0 +1,10 @@
+{
+  "arm": "C",
+  "prompt": "Review strict JSON parsing so malformed inputs and prototype-pollution keys are rejected, while permissive parsing retains its fallback behavior. Trace strict-option propagation and dangerous-key handling in the maintained implementation.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v3-offline/worktrees/work-0086"
+}

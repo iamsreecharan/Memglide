@@ -1,0 +1,383 @@
+{
+  "cohort_report_sha256": "e1e9ba4c55ab7c30ac1f847f92d98dd1fef085f69ed046f140fdef3a4a414c25",
+  "findings": [
+    {
+      "observed_cause": "Stored index errors report Tree-sitter syntax errors in test/index.spec.ts. The whole-project stats.errors guard returns incomplete_index before candidate generation. This is a nonproduction test path under the frozen production-path predicate. No claim is made that the upstream test is invalid TypeScript; parser diagnostics have no stored error-node location.",
+      "tasks": [
+        "t10",
+        "t11"
+      ]
+    },
+    {
+      "observed_cause": "Receipt records candidate_generation_limit_reached=true. Static code declines when metadata search returns exactly100 before filtering production paths. Exact100 candidate paths are not preserved, so no nonproduction share is inferred.",
+      "tasks": [
+        "t04"
+      ]
+    },
+    {
+      "observed_cause": "Receipt records38 production candidates; shared evidence validator cap is24. Guard declines before source attestation. Individual candidate paths are not preserved.",
+      "tasks": [
+        "t05"
+      ]
+    },
+    {
+      "observed_cause": "Receipt records6 production candidates and runtime_language_unavailable. Static guard requires every candidate suffix to be in the8 supported Python/JS/TS suffixes. The only indexed production-suffix paths outside that set are scripts/update-translations.sh and scripts/generate-translation-binaries.sh (.sh, indexed text). At least one must have entered the unrecorded batch for this guard; exact offending candidate membership/order is not observed and no ranking reconstruction is performed.",
+      "tasks": [
+        "t01"
+      ]
+    }
+  ],
+  "frozen_head": "b653d6b46d98d8c90f89131c520791df4b396452",
+  "known_path_preparer_matches_frozen": true,
+  "known_path_preparer_sha256": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+  "limits": {
+    "candidate_generation_cap": 100,
+    "evidence_file_cap": 24,
+    "runtime_supported_suffixes": [
+      ".cjs",
+      ".js",
+      ".jsx",
+      ".mjs",
+      ".py",
+      ".pyi",
+      ".ts",
+      ".tsx"
+    ]
+  },
+  "observations": [
+    {
+      "candidate_files_considered": 0,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0018/state/state.db",
+      "index_stats": {
+        "errors": [
+          {
+            "error": "Tree-sitter found syntax errors; partial structural results require inspection",
+            "path": "test/index.spec.ts"
+          }
+        ],
+        "file_count": 25,
+        "ignored": 1,
+        "languages": {
+          "text": 13,
+          "typescript": 12
+        },
+        "partial": false,
+        "symbol_count": 68
+      },
+      "indexed_parse_errors": [
+        {
+          "language": "typescript",
+          "parse_error": "Tree-sitter found syntax errors; partial structural results require inspection",
+          "path": "test/index.spec.ts",
+          "sha256": "d6866560f3cf277841f014e85fd08cfaf671f51c24fbf5013943fda34ae07e2d",
+          "static_production_path": false
+        }
+      ],
+      "indexed_static_production_file_count": 8,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 18,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "incomplete_index",
+      "repeat": 1,
+      "task_id": "t11"
+    },
+    {
+      "candidate_files_considered": 0,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0021/state/state.db",
+      "index_stats": {
+        "errors": [
+          {
+            "error": "Tree-sitter found syntax errors; partial structural results require inspection",
+            "path": "test/index.spec.ts"
+          }
+        ],
+        "file_count": 25,
+        "ignored": 1,
+        "languages": {
+          "text": 13,
+          "typescript": 12
+        },
+        "partial": false,
+        "symbol_count": 68
+      },
+      "indexed_parse_errors": [
+        {
+          "language": "typescript",
+          "parse_error": "Tree-sitter found syntax errors; partial structural results require inspection",
+          "path": "test/index.spec.ts",
+          "sha256": "d6866560f3cf277841f014e85fd08cfaf671f51c24fbf5013943fda34ae07e2d",
+          "static_production_path": false
+        }
+      ],
+      "indexed_static_production_file_count": 8,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 21,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "incomplete_index",
+      "repeat": 1,
+      "task_id": "t10"
+    },
+    {
+      "candidate_files_considered": 6,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0029/state/state.db",
+      "index_stats": {
+        "errors": [],
+        "file_count": 89,
+        "ignored": 1,
+        "languages": {
+          "python": 13,
+          "text": 76
+        },
+        "partial": false,
+        "symbol_count": 113
+      },
+      "indexed_parse_errors": [],
+      "indexed_static_production_file_count": 8,
+      "indexed_unsupported_production_paths": [
+        {
+          "hash": "ca44ef5e2068eb6bac31187ff236f66eb49a4204b886d788856d7548256e7167",
+          "language": "text",
+          "parse_error": null,
+          "path": "scripts/generate-translation-binaries.sh",
+          "size": 204,
+          "structural": 0
+        },
+        {
+          "hash": "2a8c2cdbd4465761c9d5a6e14c6c777da59eba1643f6e9ad74cceda1cf4cb9a4",
+          "language": "text",
+          "parse_error": null,
+          "path": "scripts/update-translations.sh",
+          "size": 538,
+          "structural": 0
+        }
+      ],
+      "ordinal": 29,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "runtime_language_unavailable",
+      "repeat": 1,
+      "task_id": "t01"
+    },
+    {
+      "candidate_files_considered": 0,
+      "candidate_generation_limit_reached": true,
+      "database_artifact": ".local/router-v3-offline/runs/run-0042/state/state.db",
+      "index_stats": {
+        "errors": [],
+        "file_count": 148,
+        "ignored": 1,
+        "languages": {
+          "python": 67,
+          "text": 81
+        },
+        "partial": false,
+        "symbol_count": 770
+      },
+      "indexed_parse_errors": [],
+      "indexed_static_production_file_count": 40,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 42,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "candidate_limit_reached",
+      "repeat": 1,
+      "task_id": "t04"
+    },
+    {
+      "candidate_files_considered": 38,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0046/state/state.db",
+      "index_stats": {
+        "errors": [],
+        "file_count": 148,
+        "ignored": 1,
+        "languages": {
+          "python": 67,
+          "text": 81
+        },
+        "partial": false,
+        "symbol_count": 770
+      },
+      "indexed_parse_errors": [],
+      "indexed_static_production_file_count": 40,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 46,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "evidence_candidate_limit",
+      "repeat": 1,
+      "task_id": "t05"
+    },
+    {
+      "candidate_files_considered": 0,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0067/state/state.db",
+      "index_stats": {
+        "errors": [
+          {
+            "error": "Tree-sitter found syntax errors; partial structural results require inspection",
+            "path": "test/index.spec.ts"
+          }
+        ],
+        "file_count": 25,
+        "ignored": 1,
+        "languages": {
+          "text": 13,
+          "typescript": 12
+        },
+        "partial": false,
+        "symbol_count": 68
+      },
+      "indexed_parse_errors": [
+        {
+          "language": "typescript",
+          "parse_error": "Tree-sitter found syntax errors; partial structural results require inspection",
+          "path": "test/index.spec.ts",
+          "sha256": "d6866560f3cf277841f014e85fd08cfaf671f51c24fbf5013943fda34ae07e2d",
+          "static_production_path": false
+        }
+      ],
+      "indexed_static_production_file_count": 8,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 67,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "incomplete_index",
+      "repeat": 2,
+      "task_id": "t11"
+    },
+    {
+      "candidate_files_considered": 0,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0072/state/state.db",
+      "index_stats": {
+        "errors": [
+          {
+            "error": "Tree-sitter found syntax errors; partial structural results require inspection",
+            "path": "test/index.spec.ts"
+          }
+        ],
+        "file_count": 25,
+        "ignored": 1,
+        "languages": {
+          "text": 13,
+          "typescript": 12
+        },
+        "partial": false,
+        "symbol_count": 68
+      },
+      "indexed_parse_errors": [
+        {
+          "language": "typescript",
+          "parse_error": "Tree-sitter found syntax errors; partial structural results require inspection",
+          "path": "test/index.spec.ts",
+          "sha256": "d6866560f3cf277841f014e85fd08cfaf671f51c24fbf5013943fda34ae07e2d",
+          "static_production_path": false
+        }
+      ],
+      "indexed_static_production_file_count": 8,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 72,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "incomplete_index",
+      "repeat": 2,
+      "task_id": "t10"
+    },
+    {
+      "candidate_files_considered": 6,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0080/state/state.db",
+      "index_stats": {
+        "errors": [],
+        "file_count": 89,
+        "ignored": 1,
+        "languages": {
+          "python": 13,
+          "text": 76
+        },
+        "partial": false,
+        "symbol_count": 113
+      },
+      "indexed_parse_errors": [],
+      "indexed_static_production_file_count": 8,
+      "indexed_unsupported_production_paths": [
+        {
+          "hash": "ca44ef5e2068eb6bac31187ff236f66eb49a4204b886d788856d7548256e7167",
+          "language": "text",
+          "parse_error": null,
+          "path": "scripts/generate-translation-binaries.sh",
+          "size": 204,
+          "structural": 0
+        },
+        {
+          "hash": "2a8c2cdbd4465761c9d5a6e14c6c777da59eba1643f6e9ad74cceda1cf4cb9a4",
+          "language": "text",
+          "parse_error": null,
+          "path": "scripts/update-translations.sh",
+          "size": 538,
+          "structural": 0
+        }
+      ],
+      "ordinal": 80,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "runtime_language_unavailable",
+      "repeat": 2,
+      "task_id": "t01"
+    },
+    {
+      "candidate_files_considered": 0,
+      "candidate_generation_limit_reached": true,
+      "database_artifact": ".local/router-v3-offline/runs/run-0091/state/state.db",
+      "index_stats": {
+        "errors": [],
+        "file_count": 148,
+        "ignored": 1,
+        "languages": {
+          "python": 67,
+          "text": 81
+        },
+        "partial": false,
+        "symbol_count": 770
+      },
+      "indexed_parse_errors": [],
+      "indexed_static_production_file_count": 40,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 91,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "candidate_limit_reached",
+      "repeat": 2,
+      "task_id": "t04"
+    },
+    {
+      "candidate_files_considered": 38,
+      "candidate_generation_limit_reached": false,
+      "database_artifact": ".local/router-v3-offline/runs/run-0095/state/state.db",
+      "index_stats": {
+        "errors": [],
+        "file_count": 148,
+        "ignored": 1,
+        "languages": {
+          "python": 67,
+          "text": 81
+        },
+        "partial": false,
+        "symbol_count": 770
+      },
+      "indexed_parse_errors": [],
+      "indexed_static_production_file_count": 40,
+      "indexed_unsupported_production_paths": [],
+      "ordinal": 95,
+      "ranked_candidate_metadata_recorded": [],
+      "reason": "evidence_candidate_limit",
+      "repeat": 2,
+      "task_id": "t05"
+    }
+  ],
+  "scope": "Read-only post-hoc stored outcomes/index metadata/static code. No selectors, searches, parsing workers, models or reruns.",
+  "selector_or_model_calls": 0,
+  "static_source_sha256": {
+    "src/memglide/integrations/auto_preload.py": "4cd84f4440eff6ed5b5d25459fb4464529f5e912ddf430c2e7b0161eb2013876",
+    "src/memglide/integrations/runtime_evidence.py": "72b40da257093187ee02b0d543e4b19abb623aa74c2d6ee4e69147e3d886fe35",
+    "src/memglide/integrations/runtime_syntax.py": "3cf852ccf834dcf0f2fec95a80a4a1f4b5fd46a2038dc1cb3f89f17dc9d5ce27",
+    "src/memglide/integrations/source_evidence.py": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc"
+  }
+}

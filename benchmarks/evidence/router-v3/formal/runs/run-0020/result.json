@@ -1,0 +1,97 @@
+{
+  "arm": "V1",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 29229056,
+    "preparation_cpu_seconds": 0.046914417000000014,
+    "preparation_waited_child_cpu_seconds": 0.01300900000000002,
+    "preparation_wall_seconds": 0.061781720999988465,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 28033024,
+    "setup_cpu_seconds": 0.152488335,
+    "setup_plus_preparation_wall_seconds": 0.4069095979998565,
+    "setup_waited_child_cpu_seconds": 0.16589099999999998
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "automatic_selection": {
+        "auxiliary_model_calls": 0,
+        "candidate_files_considered": 0,
+        "candidate_generation_limit_reached": false,
+        "decision": "SKIP",
+        "dependency_paths_considered": 0,
+        "discovery_cpu_seconds": 0.04688682599999999,
+        "discovery_wall_seconds": 0.06175268699985281,
+        "estimated_added_tokens": 0,
+        "index_refresh_wall_seconds": 0.05949993700005507,
+        "index_refreshed": true,
+        "omitted_candidate_files": 0,
+        "policy_version": "deterministic-source-v1",
+        "provided_source_paths": [],
+        "ranked_candidates": [],
+        "reason": "incomplete_index",
+        "retrieval_wall_seconds": 0.0,
+        "selected_paths": [],
+        "source_preparation_wall_seconds": 0.0,
+        "source_versions": {},
+        "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+        "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+        "unresolved_dependency_count": 0,
+        "version": 1
+      },
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.04688682599999999,
+      "preparation_wall_seconds": 0.06175268699985281,
+      "prepared_prompt_sha256": "5d5dc1f70b50265a3a5af2f9b509bc5ab31df4bca8a87cd19c453e5cdafe82bf",
+      "prompt": "Review Windows separator and drive-letter normalization. Convert backslashes to slashes and uppercase a lowercase drive only for absolute drive paths, while preserving empty input and relative drive forms.",
+      "prompt_layout": "unchanged",
+      "reason": "incomplete_index",
+      "task_prompt_sha256": "5d5dc1f70b50265a3a5af2f9b509bc5ab31df4bca8a87cd19c453e5cdafe82bf"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 29229056,
+      "self_peak_rss_bytes": 28033024,
+      "waited_child_cpu_seconds": 0.1789
+    },
+    "setup": {
+      "cpu_seconds": 0.152488335,
+      "waited_child_cpu_seconds": 0.16589099999999998,
+      "wall_seconds": 0.345127876999868
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.046914417000000014,
+      "waited_child_cpu_seconds": 0.01300900000000002,
+      "wall_seconds": 0.061781720999988465
+    }
+  },
+  "ordinal": 20,
+  "process_wall_seconds": 0.5151569930001187,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "src/_internal.ts"
+    ]
+  },
+  "task_id": "t11",
+  "worker_completed": true
+}

@@ -1,0 +1,149 @@
+{
+  "arm": "V1",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 24236032,
+    "preparation_cpu_seconds": 0.125114773,
+    "preparation_waited_child_cpu_seconds": 0.011058,
+    "preparation_wall_seconds": 0.1374242490001052,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 24498176,
+    "setup_cpu_seconds": 0.18892310699999998,
+    "setup_plus_preparation_wall_seconds": 0.36041970199994466,
+    "setup_waited_child_cpu_seconds": 0.01263
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "automatic_selection": {
+        "auxiliary_model_calls": 0,
+        "candidate_files_considered": 6,
+        "candidate_generation_limit_reached": false,
+        "decision": "SKIP",
+        "dependency_paths_considered": 0,
+        "discovery_cpu_seconds": 0.125090227,
+        "discovery_wall_seconds": 0.13739824100002807,
+        "estimated_added_tokens": 0,
+        "index_refresh_wall_seconds": 0.11964416199998595,
+        "index_refreshed": true,
+        "omitted_candidate_files": 0,
+        "policy_version": "deterministic-source-v1",
+        "provided_source_paths": [],
+        "ranked_candidates": [
+          {
+            "evidence_terms": [
+              "item",
+              "iterable",
+              "list",
+              "natural"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/lists.py",
+            "reason": "matching path terms; full-text BM25 match",
+            "score": 50.1932
+          },
+          {
+            "evidence_terms": [],
+            "explicit_anchor": false,
+            "path": "src/humanize/__init__.py",
+            "reason": "full-text BM25 match",
+            "score": 47.9553
+          },
+          {
+            "evidence_terms": [
+              "iterable"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/time.py",
+            "reason": "full-text BM25 match",
+            "score": 47.817
+          },
+          {
+            "evidence_terms": [],
+            "explicit_anchor": false,
+            "path": "src/humanize/number.py",
+            "reason": "full-text BM25 match",
+            "score": 46.8805
+          },
+          {
+            "evidence_terms": [
+              "separator"
+            ],
+            "explicit_anchor": false,
+            "path": "src/humanize/i18n.py",
+            "reason": "full-text BM25 match",
+            "score": 46.4413
+          },
+          {
+            "evidence_terms": [],
+            "explicit_anchor": false,
+            "path": "src/humanize/filesize.py",
+            "reason": "full-text BM25 match",
+            "score": 38.5043
+          }
+        ],
+        "reason": "weak_lexical_evidence",
+        "retrieval_wall_seconds": 0.014993877000051725,
+        "selected_paths": [],
+        "source_preparation_wall_seconds": 0.0,
+        "source_versions": {},
+        "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+        "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+        "unresolved_dependency_count": 0,
+        "version": 1
+      },
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.125090227,
+      "preparation_wall_seconds": 0.13739824100002807,
+      "prepared_prompt_sha256": "86730fc35eff8a3a14605e9ad64691a34cee4ec1501847fa483275999f013035",
+      "prompt": "Natural-language lists should handle empty, singleton, two-item and longer iterables with consistent separators. Review conversion of each item to text so one-shot generators are consumed only once.",
+      "prompt_layout": "unchanged",
+      "reason": "weak_lexical_evidence",
+      "task_prompt_sha256": "86730fc35eff8a3a14605e9ad64691a34cee4ec1501847fa483275999f013035"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 24236032,
+      "self_peak_rss_bytes": 24498176,
+      "waited_child_cpu_seconds": 0.023688
+    },
+    "setup": {
+      "cpu_seconds": 0.18892310699999998,
+      "waited_child_cpu_seconds": 0.01263,
+      "wall_seconds": 0.22299545299983947
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.125114773,
+      "waited_child_cpu_seconds": 0.011058,
+      "wall_seconds": 0.1374242490001052
+    }
+  },
+  "ordinal": 35,
+  "process_wall_seconds": 0.46505440100008855,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "src/humanize/lists.py"
+    ]
+  },
+  "task_id": "t02",
+  "worker_completed": true
+}

@@ -1,0 +1,532 @@
+{
+  "all_checks_passed": true,
+  "corpus_input_sha256": {
+    "benchmarks/automatic-v3-grading.json": "ca45dbd3c9aaf435e534070bd10060cb6d4c5b92cac0801dfb61f12efe3bbbb3",
+    "benchmarks/automatic-v3-provenance.json": "27a48b2ddcfa059bca69213fcd2f504ab9a19ab17e00adbdbee6ff98bd390220",
+    "benchmarks/tasks_automatic_v3.json": "cd6f16b51c8ab48274f7066dbba7844231ef52c4bb5ffc0b485a88ab0063fba0"
+  },
+  "created_at_utc": "2026-10-19T19:37:32.765484+00:00",
+  "errors": [],
+  "files_outside_four_indexed_roots": [
+    ".ruff.toml",
+    ".ruff_cache/CACHEDIR.TAG",
+    ".ruff_cache/.gitignore"
+  ],
+  "frozen_source_checks": [
+    {
+      "equal": true,
+      "expected_sha256": "330b32da41d330c2a4122d84ac083b1620c96301c2f9738827cdf99e850bd2c7",
+      "observed_sha256": "330b32da41d330c2a4122d84ac083b1620c96301c2f9738827cdf99e850bd2c7",
+      "path": "benchmarks/automatic-v3-protocol.md"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "51a81176cf253c6afe19dbc676a80fac113a3df623e37ae9e8a70550244cb907",
+      "observed_sha256": "51a81176cf253c6afe19dbc676a80fac113a3df623e37ae9e8a70550244cb907",
+      "path": "benchmarks/run_automatic_v3.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "c5d46bc089b317425a273002e596ee910211a5407ebd3a23ea5be75e350589b0",
+      "observed_sha256": "c5d46bc089b317425a273002e596ee910211a5407ebd3a23ea5be75e350589b0",
+      "path": "pyproject.toml"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "observed_sha256": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "path": "src/memglide/__init__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "observed_sha256": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "path": "src/memglide/__main__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "src/memglide/api/__init__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+      "observed_sha256": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+      "path": "src/memglide/api/app.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+      "observed_sha256": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+      "path": "src/memglide/cli.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "src/memglide/core/__init__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+      "observed_sha256": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+      "path": "src/memglide/core/agent_context.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+      "observed_sha256": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+      "path": "src/memglide/core/context.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "b1c24ba632df8fa56f478df729c72a775efc160170421fdf1b8834727172726b",
+      "observed_sha256": "b1c24ba632df8fa56f478df729c72a775efc160170421fdf1b8834727172726b",
+      "path": "src/memglide/core/indexer.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "observed_sha256": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "path": "src/memglide/core/parsing.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "fd52ce9baaf673ac00ecbcdbf7bd434eefa7ca57025092642b6e2a6cfe1f28e9",
+      "observed_sha256": "fd52ce9baaf673ac00ecbcdbf7bd434eefa7ca57025092642b6e2a6cfe1f28e9",
+      "path": "src/memglide/core/query.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "4a06c71b08789e8ca49a4b984c8aeeac2178a4b52bbe7122c011f7aecfbb52eb",
+      "observed_sha256": "4a06c71b08789e8ca49a4b984c8aeeac2178a4b52bbe7122c011f7aecfbb52eb",
+      "path": "src/memglide/core/watcher.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "src/memglide/integrations/__init__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "4cd84f4440eff6ed5b5d25459fb4464529f5e912ddf430c2e7b0161eb2013876",
+      "observed_sha256": "4cd84f4440eff6ed5b5d25459fb4464529f5e912ddf430c2e7b0161eb2013876",
+      "path": "src/memglide/integrations/auto_preload.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+      "observed_sha256": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+      "path": "src/memglide/integrations/codex.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "c80299b4df55ba89c011bf530583e6453d3597f224805d77725f25451164fc2a",
+      "observed_sha256": "c80299b4df55ba89c011bf530583e6453d3597f224805d77725f25451164fc2a",
+      "path": "src/memglide/integrations/codex_preload.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+      "observed_sha256": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+      "path": "src/memglide/integrations/mcp_server.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+      "observed_sha256": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+      "path": "src/memglide/integrations/memory_preload.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+      "observed_sha256": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+      "path": "src/memglide/integrations/preload.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "72b40da257093187ee02b0d543e4b19abb623aa74c2d6ee4e69147e3d886fe35",
+      "observed_sha256": "72b40da257093187ee02b0d543e4b19abb623aa74c2d6ee4e69147e3d886fe35",
+      "path": "src/memglide/integrations/runtime_evidence.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "3cf852ccf834dcf0f2fec95a80a4a1f4b5fd46a2038dc1cb3f89f17dc9d5ce27",
+      "observed_sha256": "3cf852ccf834dcf0f2fec95a80a4a1f4b5fd46a2038dc1cb3f89f17dc9d5ce27",
+      "path": "src/memglide/integrations/runtime_syntax.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc",
+      "observed_sha256": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc",
+      "path": "src/memglide/integrations/source_evidence.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "4cd5481ebf43a204993396edae03343c0297db199c3e825d2263948ad0b23497",
+      "observed_sha256": "4cd5481ebf43a204993396edae03343c0297db199c3e825d2263948ad0b23497",
+      "path": "src/memglide/integrations/source_excerpts.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "989d3083f9f620bc34435051d2bdfd8611d9d0b6593376ecaeda7e1341830d2f",
+      "observed_sha256": "989d3083f9f620bc34435051d2bdfd8611d9d0b6593376ecaeda7e1341830d2f",
+      "path": "src/memglide/integrations/syntax_identifiers.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "src/memglide/memory/__init__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+      "observed_sha256": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+      "path": "src/memglide/memory/engine.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "src/memglide/security/__init__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "observed_sha256": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "path": "src/memglide/security/paths.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "518f1d0a7d57027ae31d585807ab76aec3a0ec021509b146c89ce75819fe6a58",
+      "observed_sha256": "518f1d0a7d57027ae31d585807ab76aec3a0ec021509b146c89ce75819fe6a58",
+      "path": "src/memglide/service.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "src/memglide/storage/__init__.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "403820dcaeadf0b1d67cb0691ce1c922eda34cbc7252b3e8cb7cc7607d2c703d",
+      "observed_sha256": "403820dcaeadf0b1d67cb0691ce1c922eda34cbc7252b3e8cb7cc7607d2c703d",
+      "path": "src/memglide/storage/database.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "eb07e77f2f2e68ef2cb89dcde36b1e95b05cca99ae2d378e768d110b4c8bcd9d",
+      "observed_sha256": "eb07e77f2f2e68ef2cb89dcde36b1e95b05cca99ae2d378e768d110b4c8bcd9d",
+      "path": "tests/test_benchmark_automatic_v3.py"
+    },
+    {
+      "equal": true,
+      "expected_sha256": "89bcc0d7a1c76ece1b91aaaa39ab108f819d1268d8d27bc60890abad124306f0",
+      "observed_sha256": "89bcc0d7a1c76ece1b91aaaa39ab108f819d1268d8d27bc60890abad124306f0",
+      "path": "uv.lock"
+    }
+  ],
+  "head": "b653d6b46d98d8c90f89131c520791df4b396452",
+  "leakage_review": "Public prompts contain no target paths/basenames, reference fixes, hidden tests or grading outcomes. All indexed files independently match pinned upstream archive bytes. Automatic worker input is only arm/public prompt/neutral ordinal worktree/fixed settings; private scope is consulted after return. B alone receives required paths. There are no mutations or hidden coding graders in this source-inclusion evaluation.",
+  "limitations": [
+    "Four modest pinned GitHub export snapshots, not independently enumerated complete Git trees or large-repository evidence.",
+    "Prompts were authored after inspecting source to ask about existing behavior, not asserted bugs or independent coding task completion.",
+    "Four safe-bypass labels are normative policy expectations for underspecified or absent subsystem requests, not proof no relevant future implementation could exist.",
+    "t07/t08 share maintained src/index.ts; a CommonJS mirror can also contain relevant behavior. Strict required-scope misses can therefore include alternate-source usefulness and must report extras, not call every extra irrelevant.",
+    "Two repository pairs share organization/ecosystem; task-cluster intervals preserve repeats but do not model repository/source/organization dependence. Eight positives across four repos cannot establish broad generalization.",
+    "Untracked lint metadata outside r01-r04 does not enter indexed snapshots, but generic fixture-root hash includes it; do not mutate lint caches during the frozen cohort.",
+    "Static eligibility review is not an actual source-preparer/selection run or a race test. No new model token, cost, correctness or billing result follows."
+  ],
+  "policy_freeze_sha256": "9af8660bd26a9f043c188460ecd1c825f98c1df72061c0e8c0e42df1e0595f9a",
+  "repository_audits": {
+    "r01": {
+      "archive_sha256": "308d19354da35a459bf57a24ea8fa17a6ce7356962a15339a7bda103821733d3",
+      "commit": "785e5dcc0d0308ad0dff3f6cc0faa7085ad0375b",
+      "licenses": [
+        "LICENCE"
+      ],
+      "non_upstream_indexed_files": [],
+      "nonregular_archive_entries": [],
+      "retained_bytes": 404063,
+      "retained_files": 89,
+      "scope": "All pinned tar-export regular files verified byte-for-byte; full upstream tracked Git tree not independently enumerated.",
+      "tar_missing_from_retained": [],
+      "tar_regular_files": 89,
+      "upstream": "https://github.com/python-humanize/humanize"
+    },
+    "r02": {
+      "archive_sha256": "8626af58f2a4ddaf0f4f3f2d701799480f1002f8a6c4678dc89ecd63bddc9acd",
+      "commit": "4bbaa04c391d650a2e1219781c9a9acd60571cce",
+      "licenses": [
+        "LICENSE"
+      ],
+      "non_upstream_indexed_files": [],
+      "nonregular_archive_entries": [],
+      "retained_bytes": 881478,
+      "retained_files": 148,
+      "scope": "All pinned tar-export regular files verified byte-for-byte; full upstream tracked Git tree not independently enumerated.",
+      "tar_missing_from_retained": [],
+      "tar_regular_files": 148,
+      "upstream": "https://github.com/lepture/mistune"
+    },
+    "r03": {
+      "archive_sha256": "5a132e2159f1d85a848d0d97acbe1b7f7686607d489ab60c15d358302acc1769",
+      "commit": "541b6f9aeada9fc30de9c5a7e086dbfc1c6fcdc7",
+      "licenses": [
+        "LICENSE"
+      ],
+      "non_upstream_indexed_files": [],
+      "nonregular_archive_entries": [],
+      "retained_bytes": 191104,
+      "retained_files": 20,
+      "scope": "All pinned tar-export regular files verified byte-for-byte; full upstream tracked Git tree not independently enumerated.",
+      "tar_missing_from_retained": [],
+      "tar_regular_files": 20,
+      "upstream": "https://github.com/unjs/destr"
+    },
+    "r04": {
+      "archive_sha256": "35e374b0c8449e3fdc70c3aeaf474ee5c1bb0d03a9a44d70f900bf55f2fc1209",
+      "commit": "bc7477a01f0bd60ada017add8142c9f9d69ccdc5",
+      "licenses": [
+        "LICENSE"
+      ],
+      "non_upstream_indexed_files": [],
+      "nonregular_archive_entries": [],
+      "retained_bytes": 261011,
+      "retained_files": 25,
+      "scope": "All pinned tar-export regular files verified byte-for-byte; full upstream tracked Git tree not independently enumerated.",
+      "tar_missing_from_retained": [],
+      "tar_regular_files": 25,
+      "upstream": "https://github.com/unjs/pathe"
+    }
+  },
+  "schedule": {
+    "assignments": 96,
+    "each_same_task_pairwise_precedence_reversed_in_repeat2": true,
+    "position_counts": {
+      "B": {
+        "1": 6,
+        "2": 6,
+        "3": 6,
+        "4": 6
+      },
+      "C": {
+        "1": 5,
+        "2": 7,
+        "3": 7,
+        "4": 5
+      },
+      "V1": {
+        "1": 7,
+        "2": 5,
+        "3": 5,
+        "4": 7
+      },
+      "V2": {
+        "1": 6,
+        "2": 6,
+        "3": 6,
+        "4": 6
+      }
+    },
+    "repeats": 2,
+    "seed": 20261031
+  },
+  "scope": "Independent read-only static corpus/archive/source-policy/runner review after pre-corpus policy freeze; no selector/preparer/index/model/upstream code execution.",
+  "scope_review": "Every positive declared module contains relevant requested behavior and fits complete-source budget. Eight positives have seven distinct required-path bundles; t07/t08 share the same maintained parser module. t01 additionally declares direct translation helper; remaining scopes are minimal author proxies, not complete dependency claims.",
+  "task_audits": [
+    {
+      "complete_target_context_bytes": 9096,
+      "control_rationale": null,
+      "id": "t01",
+      "kind": "positive",
+      "language": "python",
+      "repository": "r01",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 2874,
+          "path": "src/humanize/filesize.py",
+          "sha256": "8b7f3068b8ee85e3f8e03380debff698891656d2211b404f9ba42b06e9096e40"
+        },
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 5443,
+          "path": "src/humanize/i18n.py",
+          "sha256": "6de81719bcb5c30df5474607ca124262cbcc1ff2fea25293f31fcc5b8e0ec08c"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": 1272,
+      "control_rationale": null,
+      "id": "t02",
+      "kind": "positive",
+      "language": "python",
+      "repository": "r01",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 1015,
+          "path": "src/humanize/lists.py",
+          "sha256": "622534ad0d9e026280ec627f363ebe8c4be0dbe6345561b570187f5c3be726a1"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": null,
+      "control_rationale": "Deliberately underspecified: no behavior, API, input or expected output identifies a source target. Safe bypass is the declared policy expectation, not proof that no file could matter.",
+      "id": "t03",
+      "kind": "abstention_control",
+      "language": "python",
+      "repository": "r01",
+      "target_details": []
+    },
+    {
+      "complete_target_context_bytes": 2428,
+      "control_rationale": null,
+      "id": "t04",
+      "kind": "positive",
+      "language": "python",
+      "repository": "r02",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 2086,
+          "path": "src/mistune/plugins/task_lists.py",
+          "sha256": "7400f6db8494d044f6a23443bea70fc126b729a109dd1acc9ffb4807aebe758f"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": 3300,
+      "control_rationale": null,
+      "id": "t05",
+      "kind": "positive",
+      "language": "python",
+      "repository": "r02",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 2872,
+          "path": "src/mistune/plugins/math.py",
+          "sha256": "f66e8c48bb81823af4b7b04743e0d85211a238210c3d4fd8e87669b1ebcd6568"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": null,
+      "control_rationale": "No PostgreSQL transaction or connection-pool subsystem exists in this retained Markdown-parser source. The requested new subsystem lacks an established target; declared safe bypass is a normative control, not a semantic impossibility claim.",
+      "id": "t06",
+      "kind": "abstention_control",
+      "language": "python",
+      "repository": "r02",
+      "target_details": []
+    },
+    {
+      "complete_target_context_bytes": 2834,
+      "control_rationale": null,
+      "id": "t07",
+      "kind": "positive",
+      "language": "typescript",
+      "repository": "r03",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 2475,
+          "path": "src/index.ts",
+          "sha256": "ca1d205da646d405d33a65ffa6e95097f277961e853098cdcb583d69ec02e9a1"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": 2834,
+      "control_rationale": null,
+      "id": "t08",
+      "kind": "positive",
+      "language": "typescript",
+      "repository": "r03",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 2475,
+          "path": "src/index.ts",
+          "sha256": "ca1d205da646d405d33a65ffa6e95097f277961e853098cdcb583d69ec02e9a1"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": null,
+      "control_rationale": "Deliberately underspecified: no input, output, parser option or concrete requirement establishes a confident source target. Exact bypass is the declared control expectation.",
+      "id": "t09",
+      "kind": "abstention_control",
+      "language": "typescript",
+      "repository": "r03",
+      "target_details": []
+    },
+    {
+      "complete_target_context_bytes": 4472,
+      "control_rationale": null,
+      "id": "t10",
+      "kind": "positive",
+      "language": "typescript",
+      "repository": "r04",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 4136,
+          "path": "src/utils.ts",
+          "sha256": "61363d9fb58e3ccd3722a3f802f69608f167e01fe1042e624b9fff8a4a5bef46"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": 739,
+      "control_rationale": null,
+      "id": "t11",
+      "kind": "positive",
+      "language": "typescript",
+      "repository": "r04",
+      "target_details": [
+        {
+          "ancestor_policy_files": [
+            ".gitignore"
+          ],
+          "bytes": 519,
+          "path": "src/_internal.ts",
+          "sha256": "48e4af9f176e4960d039e5d56fadcf5f7c9a4234589a5241b103d006ff5b99ab"
+        }
+      ]
+    },
+    {
+      "complete_target_context_bytes": null,
+      "control_rationale": "This retained path-manipulation library has no HTTP server, TLS rotation or connection-pool implementation. A new subsystem has no established target; safe bypass is the declared normative expectation, not proof of no potentially useful surrounding code.",
+      "id": "t12",
+      "kind": "abstention_control",
+      "language": "typescript",
+      "repository": "r04",
+      "target_details": []
+    }
+  ],
+  "version": 1
+}

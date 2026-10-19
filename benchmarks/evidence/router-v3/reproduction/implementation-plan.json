@@ -1,0 +1,17 @@
+{
+  "baseline_commit": "f4a6e449f02f81e4b15db2cdc204ccd5d496268a",
+  "scope": "Opt-in deterministic runtime/type-aware source router; existing source-only, v1/v2 and memory defaults preserved",
+  "phases": [
+    "bounded current executable/declaration evidence",
+    "honest typed resource diagnostics",
+    "freeze before fresh unfamiliar corpus",
+    "96 offline preparation workers, no native model requests",
+    "complete regression and installed artifact transport/resilience checks"
+  ],
+  "models": "No auxiliary inference; model pricing, whole-task benefits and billing unmeasured unless native usage is actually obtained",
+  "environment": {
+    "python": "3.12.14",
+    "cpu_limit": "400000 100000",
+    "memory_limit": "34359738368"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "review": "Independent read-only generic runner review",
+  "all_checks_passed": true,
+  "files": {
+    "benchmarks/run_automatic_v3.py": "51a81176cf253c6afe19dbc676a80fac113a3df623e37ae9e8a70550244cb907",
+    "benchmarks/automatic-v3-protocol.md": "330b32da41d330c2a4122d84ac083b1620c96301c2f9738827cdf99e850bd2c7",
+    "tests/test_benchmark_automatic_v3.py": "eb07e77f2f2e68ef2cb89dcde36b1e95b05cca99ae2d378e768d110b4c8bcd9d"
+  },
+  "scope": [
+    "oracle separation",
+    "canonical complete-source fidelity",
+    "failed-run accounting",
+    "runtime/source/provenance/plan seals",
+    "process-group cleanup",
+    "no model dispatcher"
+  ],
+  "reviewer_did_not_execute_tests_models_or_corpus": true
+}

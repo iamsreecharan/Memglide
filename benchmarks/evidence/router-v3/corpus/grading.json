@@ -1,0 +1,79 @@
+{
+  "t01": {
+    "kind": "positive",
+    "rationale": "The maintained size formatter selects/promotes suffixes and imports runtime translation helpers. Both complete modules are declared; this is a bounded author scope, not global semantic completeness.",
+    "required_paths": [
+      "src/humanize/filesize.py",
+      "src/humanize/i18n.py"
+    ]
+  },
+  "t02": {
+    "kind": "positive",
+    "rationale": "The complete list-formatting implementation contains iterable materialization and separator handling; its other imports are guarded type-only declarations.",
+    "required_paths": [
+      "src/humanize/lists.py"
+    ]
+  },
+  "t03": {
+    "kind": "abstention_control",
+    "rationale": "Deliberately underspecified: no behavior, API, input or expected output identifies a source target. Safe bypass is the declared policy expectation, not proof that no file could matter.",
+    "required_paths": []
+  },
+  "t04": {
+    "kind": "positive",
+    "rationale": "The complete plugin owns checked-marker detection, recursive token rewriting and checkbox rendering. Referenced runtime parser/state contracts are outside this bounded target proxy.",
+    "required_paths": [
+      "src/mistune/plugins/task_lists.py"
+    ]
+  },
+  "t05": {
+    "kind": "positive",
+    "rationale": "The complete mathematics plugin owns delimiter patterns, match groups, inline/display tokens and quote/list registration. No claim is made that renderer or parser dependencies are globally complete.",
+    "required_paths": [
+      "src/mistune/plugins/math.py"
+    ]
+  },
+  "t06": {
+    "kind": "abstention_control",
+    "rationale": "No PostgreSQL transaction or connection-pool subsystem exists in this retained Markdown-parser source. The requested new subsystem lacks an established target; declared safe bypass is a normative control, not a semantic impossibility claim.",
+    "required_paths": []
+  },
+  "t07": {
+    "kind": "positive",
+    "rationale": "The maintained TypeScript implementation contains strict parsing, dangerous-key transformation and the strict wrapper. The shipped CommonJS mirror can also contain relevant behavior; it is reported as extra context rather than substituted for the declared maintained-source target.",
+    "required_paths": [
+      "src/index.ts"
+    ]
+  },
+  "t08": {
+    "kind": "positive",
+    "rationale": "A second distinct source-investigation task intentionally shares the same maintained parser module. Report shared-source/task dependence; this is not an independent repository or disjoint target.",
+    "required_paths": [
+      "src/index.ts"
+    ]
+  },
+  "t09": {
+    "kind": "abstention_control",
+    "rationale": "Deliberately underspecified: no input, output, parser option or concrete requirement establishes a confident source target. Exact bypass is the declared control expectation.",
+    "required_paths": []
+  },
+  "t10": {
+    "kind": "positive",
+    "rationale": "The complete utility module owns filename extraction and separator handling. It also contains unrelated alias helpers; required-path inclusion is a source-scope proxy rather than symbol-level relevance.",
+    "required_paths": [
+      "src/utils.ts"
+    ]
+  },
+  "t11": {
+    "kind": "positive",
+    "rationale": "The complete shared Windows-path helper owns separator replacement and the drive-prefix condition. Its callers are not automatically part of this minimal author-declared scope.",
+    "required_paths": [
+      "src/_internal.ts"
+    ]
+  },
+  "t12": {
+    "kind": "abstention_control",
+    "rationale": "This retained path-manipulation library has no HTTP server, TLS rotation or connection-pool implementation. A new subsystem has no established target; safe bypass is the declared normative expectation, not proof of no potentially useful surrounding code.",
+    "required_paths": []
+  }
+}

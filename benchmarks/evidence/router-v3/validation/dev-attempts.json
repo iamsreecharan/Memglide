@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "scope": "development-only synthetic fixtures; no exposed/fresh benchmark corpus reads or model calls",
+  "raw_stdout_available": false,
+  "raw_stdout_note": "Initial commands printed to tool history only; exact recoverable outcomes below are summaries, not fabricated raw logs.",
+  "attempts": [
+    {
+      "command": "uv run pytest -q tests/test_runtime_evidence.py",
+      "passed": 21,
+      "failed": 0,
+      "seconds": 0.6
+    },
+    {
+      "command": "uv run pytest -q tests/test_runtime_evidence.py tests/test_auto_preload_v3.py",
+      "passed": 43,
+      "failed": 6,
+      "seconds": 4.22,
+      "causes": [
+        "one current symbol casefold collision (ParcelWeight versus parcelWeight) created conflicting explicit anchors; fixed by case-sensitive actual symbol names",
+        "four development hook errors patched nonexistent auto_preload.prepare_prompt; changed to preload.prepare_prompt",
+        "one syntax expectation was too specific: secure reindex declined earlier with incomplete_index; accepted safe earlier fallback as well"
+      ]
+    },
+    {
+      "command": "uv run pytest -q tests/test_runtime_evidence.py tests/test_auto_preload_v3.py",
+      "passed": 48,
+      "failed": 3,
+      "seconds": 4.93,
+      "causes": [
+        "three development race hooks also mutated policy/files during initial mode=off base preparation, before discovery; fixed fixture hook to change only after actual source preparation"
+      ]
+    },
+    {
+      "command": "uv run pytest -q tests/test_runtime_evidence.py tests/test_auto_preload_v3.py",
+      "passed": 51,
+      "failed": 0,
+      "seconds": 5.12
+    }
+  ],
+  "other_development_check_failures": [
+    {
+      "command": "uv run mypy src/memglide/integrations/runtime_evidence.py src/memglide/integrations/runtime_syntax.py",
+      "errors": 1,
+      "reason": "inferred rank-receipt object values prevented unary score sort typing; added explicit list/dict annotations",
+      "final": "Success: no issues found in 2 source files"
+    }
+  ],
+  "review_changes_before_freeze": [
+    "Annotation-only AnnAssign targets belong to syntactic declaration evidence",
+    "Type-only and TYPE_CHECKING definitions cannot retain phantom explicit runtime units",
+    "Bare tsc/mypy/pyright validation instructions do not select type intent; require typing/error grammar",
+    "Case-sensitive current source identifiers distinguish ParcelWeight declaration from parcelWeight implementation"
+  ]
+}

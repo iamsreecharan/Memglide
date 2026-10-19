@@ -1,0 +1,98 @@
+{
+  "arm": "C",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 24240128,
+    "preparation_cpu_seconds": 0.129349749,
+    "preparation_waited_child_cpu_seconds": 0.010632999999999998,
+    "preparation_wall_seconds": 0.1413531430000603,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 24502272,
+    "setup_cpu_seconds": 0.18697027900000002,
+    "setup_plus_preparation_wall_seconds": 0.3657109739999669,
+    "setup_waited_child_cpu_seconds": 0.012587
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "automatic_selection": {
+        "auxiliary_model_calls": 0,
+        "candidate_files_considered": 6,
+        "candidate_generation_limit_reached": false,
+        "decision": "SKIP",
+        "dependency_paths_considered": 0,
+        "discovery_cpu_seconds": 0.129319772,
+        "discovery_wall_seconds": 0.14132196499986094,
+        "estimated_added_tokens": 0,
+        "index_refresh_wall_seconds": 0.1212765440000112,
+        "index_refreshed": true,
+        "omitted_candidate_files": 0,
+        "policy_version": "deterministic-source-v3",
+        "provided_source_paths": [],
+        "ranked_candidates": [],
+        "reason": "runtime_language_unavailable",
+        "retrieval_wall_seconds": 0.017378295999833426,
+        "selected_paths": [],
+        "source_preparation_wall_seconds": 0.0,
+        "source_versions": {},
+        "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+        "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+        "unresolved_dependency_count": 0,
+        "version": 1
+      },
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.129319772,
+      "preparation_wall_seconds": 0.14132196499986094,
+      "prepared_prompt_sha256": "98185e8edec28c4ff461167003cbe95d36398257661f2b23b19bea5acebc0d41",
+      "prompt": "Review human-readable byte-size formatting at rounding boundaries: a mantissa rounded to the unit base should advance the suffix when a larger unit exists. Preserve negative values, binary units and compact GNU-style output.",
+      "prompt_layout": "unchanged",
+      "reason": "runtime_language_unavailable",
+      "task_prompt_sha256": "98185e8edec28c4ff461167003cbe95d36398257661f2b23b19bea5acebc0d41"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 24240128,
+      "self_peak_rss_bytes": 24502272,
+      "waited_child_cpu_seconds": 0.023219999999999998
+    },
+    "setup": {
+      "cpu_seconds": 0.18697027900000002,
+      "waited_child_cpu_seconds": 0.012587,
+      "wall_seconds": 0.22435783099990658
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.129349749,
+      "waited_child_cpu_seconds": 0.010632999999999998,
+      "wall_seconds": 0.1413531430000603
+    }
+  },
+  "ordinal": 80,
+  "process_wall_seconds": 0.5148216430000048,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "src/humanize/filesize.py",
+      "src/humanize/i18n.py"
+    ]
+  },
+  "task_id": "t01",
+  "worker_completed": true
+}

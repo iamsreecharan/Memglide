@@ -1,0 +1,11 @@
+{
+  "arm": "B",
+  "known_paths": [],
+  "prompt": "Implement an HTTP/2 server connection pool with TLS certificate rotation and request retries.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v3-offline/worktrees/work-0051"
+}
