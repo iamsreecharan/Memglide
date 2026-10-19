@@ -1,0 +1,295 @@
+{
+  "issue_version": "workflow-contract-1",
+  "original_git_head": "93acf63e1583bd66239b22dc53c2aaf196e3a35a",
+  "application_source_tree_sha256": "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+  "primary_report_sha256": "a6586d655fc55b0abaecb3153cb62a1c30ff97e7d03ab279f52caebb47f28596",
+  "cost_assessment_sha256": "3ae65603a11f5a8ad83be14e178916c9147f8d854fa2a0dddf1ee5a0fc5a8b0c",
+  "native_assignments": 60,
+  "valid_native_and_treatment": 60,
+  "all_external_commands_zero": 60,
+  "strict_successes": 0,
+  "strict_failures": 60,
+  "failure_reason": "Protected existing test files changed; original prompts allowed adding regression tests while asking to preserve existing tests without making byte-level immutability explicit.",
+  "observed_protected_paths": {
+    "tests/negative_array_offset.test.mjs": 6,
+    "tests/test_ascii_count_field.py": 6,
+    "tests/circular_angle_difference.test.mjs": 6,
+    "tests/test_form_plus_decoding.py": 6,
+    "tests/test_net_flow_report.py": 6,
+    "tests/threshold_hysteresis.test.mjs": 6,
+    "tests/path_segment_roundtrip.test.mjs": 6,
+    "tests/test_query_latest_value.py": 6,
+    "tests/utf8_byte_length.test.mjs": 6,
+    "tests/test_discount_before_tax.py": 6
+  },
+  "preserved_original_costs": {
+    "A": {
+      "attempts": 20,
+      "successful_assignments": 0,
+      "native_reported_price_equivalent_usd": 0.6897428,
+      "cost_per_successful_task_usd": null
+    },
+    "B": {
+      "attempts": 20,
+      "successful_assignments": 0,
+      "native_reported_price_equivalent_usd": 0.6982164,
+      "cost_per_successful_task_usd": null
+    },
+    "C": {
+      "attempts": 20,
+      "successful_assignments": 0,
+      "native_reported_price_equivalent_usd": 0.63664,
+      "cost_per_successful_task_usd": null
+    }
+  },
+  "actual_billed_cost_usd": null,
+  "promotion_gate": {
+    "policy": {
+      "version": "workflow-promotion-1",
+      "candidate": "C",
+      "baselines": [
+        "A",
+        "B"
+      ],
+      "benefit_population": "explicit_focus; provided-context controls excluded",
+      "required_repeats": [
+        1,
+        2
+      ],
+      "correctness": "Every original candidate assignment succeeds with verified source/native fidelity",
+      "coverage": "Complete unique matched A/B/C triplets for every task and repeat; no missing or unknown cost",
+      "nonregression": "Focused cost per attempt and full execution time: candidate mean AND median <= each baseline overall AND in each repeat",
+      "consequence": "Failure or unknown evidence keeps support explicitly optional; no default promotion",
+      "interpretation": "Prespecified finite-corpus acceptance rule, not statistical proof or a production guarantee"
+    },
+    "passed": false,
+    "reasons": [
+      "Every original arm must complete successfully with valid source/native fidelity",
+      "Focused cost/full-time mean or median regresses or is unavailable overall or in a repeat"
+    ],
+    "checks": [
+      {
+        "baseline": "A",
+        "scope": "overall",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "mean",
+        "baseline_value": 0.03427795,
+        "candidate_value": 0.031091975,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "overall",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "median",
+        "baseline_value": 0.0332082,
+        "candidate_value": 0.0318074,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "overall",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "mean",
+        "baseline_value": 19.822469212751912,
+        "candidate_value": 18.694596057124272,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "overall",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "median",
+        "baseline_value": 19.550878439502412,
+        "candidate_value": 15.773304921498493,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_1",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "mean",
+        "baseline_value": 0.0373142,
+        "candidate_value": 0.03073735,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_1",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "median",
+        "baseline_value": 0.033796599999999996,
+        "candidate_value": 0.0313594,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_1",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "mean",
+        "baseline_value": 19.134726324625262,
+        "candidate_value": 17.406442611123566,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_1",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "median",
+        "baseline_value": 19.564450802001375,
+        "candidate_value": 15.773304921498493,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_2",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "mean",
+        "baseline_value": 0.0312417,
+        "candidate_value": 0.0314466,
+        "passed": false
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_2",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "median",
+        "baseline_value": 0.0332082,
+        "candidate_value": 0.0333538,
+        "passed": false
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_2",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "mean",
+        "baseline_value": 20.51021210087856,
+        "candidate_value": 19.982749503124978,
+        "passed": true
+      },
+      {
+        "baseline": "A",
+        "scope": "repeat_2",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "median",
+        "baseline_value": 19.538071233502706,
+        "candidate_value": 16.04001947299912,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "overall",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "mean",
+        "baseline_value": 0.0348201,
+        "candidate_value": 0.031091975,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "overall",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "median",
+        "baseline_value": 0.033993999999999996,
+        "candidate_value": 0.0318074,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "overall",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "mean",
+        "baseline_value": 18.6343776574372,
+        "candidate_value": 18.694596057124272,
+        "passed": false
+      },
+      {
+        "baseline": "B",
+        "scope": "overall",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "median",
+        "baseline_value": 18.190707326000847,
+        "candidate_value": 15.773304921498493,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_1",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "mean",
+        "baseline_value": 0.03794045,
+        "candidate_value": 0.03073735,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_1",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "median",
+        "baseline_value": 0.0344398,
+        "candidate_value": 0.0313594,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_1",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "mean",
+        "baseline_value": 18.299767552000958,
+        "candidate_value": 17.406442611123566,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_1",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "median",
+        "baseline_value": 18.797695686003863,
+        "candidate_value": 15.773304921498493,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_2",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "mean",
+        "baseline_value": 0.03169975,
+        "candidate_value": 0.0314466,
+        "passed": true
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_2",
+        "metric": "native_reported_price_equivalent_usd",
+        "statistic": "median",
+        "baseline_value": 0.0326576,
+        "candidate_value": 0.0333538,
+        "passed": false
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_2",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "mean",
+        "baseline_value": 18.96898776287344,
+        "candidate_value": 19.982749503124978,
+        "passed": false
+      },
+      {
+        "baseline": "B",
+        "scope": "repeat_2",
+        "metric": "end_to_end_wall_seconds",
+        "statistic": "median",
+        "baseline_value": 17.612772964497708,
+        "candidate_value": 16.04001947299912,
+        "passed": true
+      }
+    ],
+    "action": "Keep support explicitly optional; do not promote defaults",
+    "control_exclusion": "caller_context_supplied rows affect correctness/coverage, not benefit checks"
+  },
+  "repair": "Preserve all original60 failures unchanged; create versioned fresh-task confirmation with explicit byte-identical original tracked tests and new regression files only. Retain strict byte protection, model settings and promotion policy.",
+  "next_study_is_fresh_confirmation": true,
+  "no_post_hoc_primary_regrading": true,
+  "campaign_accounting": "Report each study separately and include both studies attempted spend in an additional campaign cost-per-success view. Do not pool the different task corpora as a controlled iteration improvement."
+}

@@ -1,0 +1,388 @@
+{
+  "corpus_version": "workflow-2.0.0",
+  "tasks": [
+    {
+      "id": "py-workflow2-codec-glob-literal-escape",
+      "language": "python",
+      "repository": "codec-python-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "codec-python-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair escape_glob(text) so a literal filename matches itself with fnmatch.fnmatchcase. Escape each original star as [*], question mark as [?], and opening square bracket as [[]. Preserve closing brackets, backslashes, Unicode and every other character. Escapes must be based on original characters, never reprocessed.\n\nThe complete source scope for this task is:\n- `codec/glob_literal_escape.py`\n\nRelevant existing tests are:\n- `tests/test_glob_literal_escape.py`\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "codec/glob_literal_escape.py"
+      ],
+      "support_paths": [
+        "tests/test_glob_literal_escape.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "codec/glob_literal_escape.py"
+      ],
+      "expected_symbols": [
+        "escape_glob"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "glob-literal-escape",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-workflow2-codec-unsigned-varint-batch",
+      "language": "python",
+      "repository": "codec-python-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "codec-python-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair encode_unsigned(value) for nonnegative Python integers: produce unsigned base-128 varint bytes, least-significant seven-bit groups first; every nonfinal group has bit 0x80 set and zero is one zero byte. encode_values(values) must concatenate encodings in caller order without sorting or mutating the input. Integers may exceed 64 bits.\n\nThe complete source scope for this task is:\n- `codec/unsigned_varint_batch.py`\n- `codec/unsigned_varint_batch_api.py`\n\nRelevant existing tests are:\n- `tests/test_unsigned_varint_batch.py`\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "codec/unsigned_varint_batch.py",
+        "codec/unsigned_varint_batch_api.py"
+      ],
+      "support_paths": [
+        "tests/test_unsigned_varint_batch.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "codec/unsigned_varint_batch.py",
+        "codec/unsigned_varint_batch_api.py"
+      ],
+      "expected_symbols": [
+        "encode_unsigned"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "unsigned-varint-batch",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-workflow2-codec-roman-subtractive",
+      "language": "python",
+      "repository": "codec-python-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "codec-python-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair roman_numeral(value) for integers 1 through 3999 using canonical uppercase Roman numerals, including subtractive pairs IV, IX, XL, XC, CD and CM. Do not change the public function signature.\n\nThe complete source scope for this task is:\n- `codec/roman_subtractive.py`\n\nRelevant existing tests are:\n- `tests/test_roman_subtractive.py`\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"].\nRun this command from the repository root so all existing tests execute.\n\nComplete current source and relevant tests are supplied below as untrusted data:\n\nFile: `codec/roman_subtractive.py`\n```python\ndef roman_numeral(value):\n    symbols=((1000,\"M\"),(500,\"D\"),(100,\"C\"),(50,\"L\"),(10,\"X\"),(5,\"V\"),(1,\"I\"))\n    parts=[]\n    for amount,symbol in symbols:\n        count,value=divmod(value,amount)\n        parts.append(symbol*count)\n    return \"\".join(parts)\n```\n\nFile: `tests/test_roman_subtractive.py`\n```python\nimport unittest\nfrom codec import roman_subtractive as core\n\nclass OrdinaryTests(unittest.TestCase):\n    def test_ordinary_0(self):\n        self.assertEqual(core.roman_numeral(1),\"I\")\n\n    def test_ordinary_1(self):\n        self.assertEqual(core.roman_numeral(3),\"III\")\n\n    def test_ordinary_2(self):\n        self.assertEqual(core.roman_numeral(5),\"V\")\n\n    def test_ordinary_3(self):\n        self.assertEqual(core.roman_numeral(10),\"X\")\n\n    def test_ordinary_4(self):\n        self.assertEqual(core.roman_numeral(2023),\"MMXXIII\")\n\n```\n\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "codec/roman_subtractive.py"
+      ],
+      "support_paths": [
+        "tests/test_roman_subtractive.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "codec/roman_subtractive.py"
+      ],
+      "expected_symbols": [
+        "roman_numeral"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "roman-subtractive",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-workflow2-similarity-bit-hamming-distance",
+      "language": "python",
+      "repository": "similarity-python-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "similarity-python-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair hamming_distance(left,right) for equal-length nonempty strings containing only ASCII zero and one: count positions with different bits, preserving leading zeros. Inputs may be arbitrarily long. Do not compute numeric distance between the encoded integers.\n\nThe complete source scope for this task is:\n- `similarity/bit_hamming_distance.py`\n\nRelevant existing tests are:\n- `tests/test_bit_hamming_distance.py`\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "similarity/bit_hamming_distance.py"
+      ],
+      "support_paths": [
+        "tests/test_bit_hamming_distance.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "similarity/bit_hamming_distance.py"
+      ],
+      "expected_symbols": [
+        "hamming_distance"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "bit-hamming-distance",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "py-workflow2-similarity-jaccard-stable-selection",
+      "language": "python",
+      "repository": "similarity-python-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "similarity-python-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair jaccard_score(left,right) for lists of hashable strings: intersection size divided by union size of DISTINCT values; two empty sets have score 1. most_similar(candidates,reference) returns the index of the candidate with largest score, choosing the earliest index on a tie, or None for no candidates. Do not mutate inputs.\n\nThe complete source scope for this task is:\n- `similarity/jaccard_stable_selection.py`\n- `similarity/jaccard_stable_selection_api.py`\n\nRelevant existing tests are:\n- `tests/test_jaccard_stable_selection.py`\n\nThe exact offline test command argv is: [\"python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests\", \"-v\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "similarity/jaccard_stable_selection.py",
+        "similarity/jaccard_stable_selection_api.py"
+      ],
+      "support_paths": [
+        "tests/test_jaccard_stable_selection.py"
+      ],
+      "test_argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "target_files": [
+        "similarity/jaccard_stable_selection.py",
+        "similarity/jaccard_stable_selection_api.py"
+      ],
+      "expected_symbols": [
+        "jaccard_score"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "jaccard-stable-selection",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": false
+      }
+    },
+    {
+      "id": "ts-workflow2-contracts-luhn-checksum",
+      "language": "typescript",
+      "repository": "contracts-typescript-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "contracts-typescript-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair luhnCheck(value): accept nonempty ASCII digit strings whose Luhn checksum is divisible by ten. Moving left from the rightmost digit, double every second digit and subtract nine if that doubled digit exceeds nine. Reject empty strings and any nondigit; preserve leading zeros. Do not parse the whole string as a number.\n\nThe complete source scope for this task is:\n- `src/luhn_checksum.ts`\n\nRelevant existing tests are:\n- `tests/luhn_checksum.test.mjs`\n\nThe exact offline test command argv is: [\"node\", \"--test\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/luhn_checksum.ts"
+      ],
+      "support_paths": [
+        "tests/luhn_checksum.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/luhn_checksum.ts"
+      ],
+      "expected_symbols": [
+        "luhnCheck"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "luhn-checksum",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-workflow2-contracts-natural-stable-sort",
+      "language": "typescript",
+      "repository": "contracts-typescript-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "contracts-typescript-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair compareNatural(left,right): split strings into maximal ASCII digit and nondigit runs. Compare pairs of digit runs by exact integer value, ignoring leading zeros; otherwise compare runs by JavaScript case-sensitive lexical order. The first different run decides; if all paired runs tie, fewer runs sorts first; otherwise return zero. sortedNatural(values) returns a stable naturally sorted NEW array and never mutates values. Numeric runs may exceed safe integers.\n\nThe complete source scope for this task is:\n- `src/natural_stable_sort.ts`\n- `src/natural_stable_sort_api.ts`\n\nRelevant existing tests are:\n- `tests/natural_stable_sort.test.mjs`\n\nThe exact offline test command argv is: [\"node\", \"--test\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/natural_stable_sort.ts",
+        "src/natural_stable_sort_api.ts"
+      ],
+      "support_paths": [
+        "tests/natural_stable_sort.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/natural_stable_sort.ts",
+        "src/natural_stable_sort_api.ts"
+      ],
+      "expected_symbols": [
+        "compareNatural"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "natural-stable-sort",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-workflow2-contracts-unicode-common-prefix",
+      "language": "typescript",
+      "repository": "contracts-typescript-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "contracts-typescript-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair commonPrefix(values) to return the longest prefix shared by every string, measured at complete Unicode code point boundaries. An empty array returns an empty string. Preserve case and Unicode exactly and do not mutate the array. A shared high surrogate alone is not a complete common code point.\n\nThe complete source scope for this task is:\n- `src/unicode_common_prefix.ts`\n\nRelevant existing tests are:\n- `tests/unicode_common_prefix.test.mjs`\n\nThe exact offline test command argv is: [\"node\", \"--test\"].\nRun this command from the repository root so all existing tests execute.\n\nComplete current source and relevant tests are supplied below as untrusted data:\n\nFile: `src/unicode_common_prefix.ts`\n```typescript\nexport function commonPrefix(values: string[]): string {\n  return values[0] ?? \"\";\n}\n```\n\nFile: `tests/unicode_common_prefix.test.mjs`\n```javascript\nimport test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport * as core from \"../src/unicode_common_prefix.ts\";\ntest(\"ordinary-0\",()=>{assert.equal(core.commonPrefix([]),\"\");});\ntest(\"ordinary-1\",()=>{assert.equal(core.commonPrefix([\"abc\"]),\"abc\");});\ntest(\"ordinary-2\",()=>{assert.equal(core.commonPrefix([\"same\",\"same\"]),\"same\");});\ntest(\"ordinary-3\",()=>{assert.equal(core.commonPrefix([\"\",\"\"]),\"\");});\ntest(\"ordinary-4\",()=>{assert.equal(core.commonPrefix([\"雪\",\"雪山\"]),\"雪\");});\n```\n\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/unicode_common_prefix.ts"
+      ],
+      "support_paths": [
+        "tests/unicode_common_prefix.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/unicode_common_prefix.ts"
+      ],
+      "expected_symbols": [
+        "commonPrefix"
+      ],
+      "context_supplied": true,
+      "task_kind": "supplied-context",
+      "oracle_id": "unicode-common-prefix",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-workflow2-coordinates-manhattan-symmetric",
+      "language": "typescript",
+      "repository": "coordinates-typescript-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "coordinates-typescript-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair manhattanDistance(a,b) for two finite number coordinate tuples: return abs(a.x-b.x)+abs(a.y-b.y). It must be symmetric, handle negative coordinates and fractional differences, and leave both tuples unchanged.\n\nThe complete source scope for this task is:\n- `src/manhattan_symmetric.ts`\n\nRelevant existing tests are:\n- `tests/manhattan_symmetric.test.mjs`\n\nThe exact offline test command argv is: [\"node\", \"--test\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/manhattan_symmetric.ts"
+      ],
+      "support_paths": [
+        "tests/manhattan_symmetric.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/manhattan_symmetric.ts"
+      ],
+      "expected_symbols": [
+        "manhattanDistance"
+      ],
+      "context_supplied": false,
+      "task_kind": "single-source",
+      "oracle_id": "manhattan-symmetric",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    },
+    {
+      "id": "ts-workflow2-coordinates-bounded-cardinal-neighbors",
+      "language": "typescript",
+      "repository": "coordinates-typescript-workflow-v2",
+      "starting_repository": {
+        "generator": "benchmarks.corpus_workflow_v2.build_repository",
+        "repository": "coordinates-typescript-workflow-v2",
+        "version": "workflow-2.0.0"
+      },
+      "prompt": "Repair gridNeighbors(x,y,width,height) for valid integer coordinates inside a positive rectangular grid. Return only in-bounds cardinal neighbors, in left, right, up, down order. reachableNeighbors accepts the same arguments plus blocked, a readonly Set of exact 'x,y' keys, and removes blocked neighbors while preserving order. Never mutate blocked.\n\nThe complete source scope for this task is:\n- `src/bounded_cardinal_neighbors.ts`\n- `src/bounded_cardinal_neighbors_api.ts`\n\nRelevant existing tests are:\n- `tests/bounded_cardinal_neighbors.test.mjs`\n\nThe exact offline test command argv is: [\"node\", \"--test\"].\nRun this command from the repository root so all existing tests execute.\n\nImplement the fix in production source. All existing tracked test files are READ-ONLY: keep their bytes identical. Add regression tests ONLY in NEW test files; never append to, rewrite, rename, or delete existing tests. Preserve public interfaces. Do not change dependencies, build configuration, benchmark machinery or grading files, or inspect files outside this repository. Finish with a brief description and tests run.",
+      "focus_paths": [
+        "src/bounded_cardinal_neighbors.ts",
+        "src/bounded_cardinal_neighbors_api.ts"
+      ],
+      "support_paths": [
+        "tests/bounded_cardinal_neighbors.test.mjs"
+      ],
+      "test_argv": [
+        "node",
+        "--test"
+      ],
+      "target_files": [
+        "src/bounded_cardinal_neighbors.ts",
+        "src/bounded_cardinal_neighbors_api.ts"
+      ],
+      "expected_symbols": [
+        "gridNeighbors"
+      ],
+      "context_supplied": false,
+      "task_kind": "integration",
+      "oracle_id": "bounded-cardinal-neighbors",
+      "checks": {
+        "held_out_behavior": true,
+        "protected_smoke": true,
+        "typescript_typecheck": true
+      }
+    }
+  ]
+}

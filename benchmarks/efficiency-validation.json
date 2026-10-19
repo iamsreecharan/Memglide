@@ -1,0 +1,233 @@
+{
+  "validation_version": "efficiency-validation-1",
+  "generated_at_utc": "2026-10-19T03:41:40.109251+00:00",
+  "frozen_git_head": "93acf63e1583bd66239b22dc53c2aaf196e3a35a",
+  "application_source_tree_sha256": "43032dcabab006ec346b77d2032da9b7016adfea2ff013cf414d25f67f61f176",
+  "final_suites": {
+    "python": {
+      "path": ".local/efficiency-v1/full-python.xml",
+      "sha256": "07bb1ce7767947bf1f94e5dbb5253eb9fa4ff095f92e2168f16b86f12be9be3a",
+      "tests": 1340,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frontend": {
+      "path": ".local/efficiency-v1/frontend.xml",
+      "sha256": "514a52a25db81f017f8be8e43e2fe7ff5feddc2f69045adf5231fe46357f5d92",
+      "tests": 24,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "chromium": {
+      "path": ".local/efficiency-v1/browser.xml",
+      "sha256": "d24adbeabfe4338c0c2af6d66931e2d3104a1558b87db66f0d50c748bb406993",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "distinct_final_test_cases": 1443,
+  "python_upstream_deprecation_warnings": 2,
+  "static_checks": {
+    "ruff": {
+      "path": ".local/efficiency-v1/ruff-check-final.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "result": "All checks passed!"
+    },
+    "format": {
+      "path": ".local/efficiency-v1/ruff-format-final.log",
+      "sha256": "67e4bf8f396fefa7f8830b9533fb5eb02129af09cf3d399e36ec9c6d6b248625",
+      "result": "116 files already formatted"
+    },
+    "combined_mypy": {
+      "path": ".local/efficiency-v1/mypy-combined-final.log",
+      "sha256": "8797c60315242ee16057cb107ea1ec62e2678d358c86bc2be797e23d87e87578",
+      "result": "Success: no issues found in 58 source files"
+    },
+    "whitespace": {
+      "path": ".local/efficiency-v1/diff-check-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": ""
+    }
+  },
+  "package": {
+    "receipt": ".local/efficiency-v1/package-validation.json",
+    "application_python_files": 24,
+    "frontend_assets": 19,
+    "archive_integrity_checks": 11851,
+    "preload_functional_checks": 12,
+    "support_mcp_functional_checks": 31,
+    "functional_checks_are_pytest_cases": false,
+    "actual_default_and_agent_mcp_passed": true,
+    "real_cli_api_spa_passed": true,
+    "model_requests": 0
+  },
+  "observed_fixed_defects": [
+    "Exact selected-source and memory-dependency invalidation replaces substring matches in unrelated passport text.",
+    "Retrieval, passport, lifecycle check, event and activity refresh publish atomically under the active-session gate.",
+    "Memory relevance prefilter avoids irrelevant live source reads while retaining all eligible freshness checks and ranking.",
+    "Optional complete caller-selected support uses existing secure bounded all-or-nothing preload; no automatic discovery, model selector or command execution.",
+    "Unverified cumulative/resumed native usage is rejected instead of charged as new incremental usage.",
+    "Unique pytest temporary directories prevent concurrent invocations deleting each other fixtures.",
+    "Live benchmark typing passes combined application/harness checking without suppressions."
+  ],
+  "local_memory_read_measurement": {
+    "scope": "Application secure read_source invocations; not OS file reads or model token/cost telemetry",
+    "saved_memories": 55,
+    "irrelevant_memories": 40,
+    "potentially_relevant_memories": 15,
+    "selected_count": 10,
+    "before_secure_source_read_invocations": 55,
+    "after_secure_source_read_invocations": 15,
+    "before_unique_paths": 12,
+    "after_unique_paths": 1,
+    "selected_projection_identical": true,
+    "selected_projection_sha256": "3dcdb3f03c8f28dc63b860798d5b03b35cc3531e430d29ad741b4f9744207cc6"
+  },
+  "synthetic_selection_equivalence": {
+    "fixtures": 1200,
+    "identical": 1200,
+    "freshness_views_precomputed": true,
+    "model_cost_or_speed_measurement": false,
+    "receipt": ".local/efficiency-v1/review-memory-independent.json"
+  },
+  "preserved_initial_test_failures": [
+    {
+      "path": ".local/efficiency-v1/corpus-tests.xml",
+      "sha256": "e77cf7fab3db6c1ee08ca78e210f7fdf9505e5f319ca9d6482e028855fab5275",
+      "tests": 32,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0,
+      "explanation": "Three shared-basetemp fixture deletions and one incomplete-test-coverage assertion; fixed isolation and strengthened the new grader."
+    },
+    {
+      "path": ".local/efficiency-v1/corpus-tests-final.xml",
+      "sha256": "d2b62bdf9eccefcb1865ac58a31a373efc540bb96777ec3351d77439c6b1bb51",
+      "tests": 36,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "explanation": "Two Node 24 reporter-shape assertions were corrected before freeze; full behavior checks retained."
+    },
+    {
+      "path": ".local/efficiency-v1/launcher.xml",
+      "sha256": "f05324794fd445b52888eab13205b60aebb94bca65be6e7e2a22cfebcd9a8e39",
+      "tests": 48,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "explanation": "New regression-test assertions were initially placed in the wrong test; corrected test placement."
+    },
+    {
+      "path": ".local/efficiency-v1/runner-tests-initial.xml",
+      "sha256": "b4c7c5d204cdd810ddce22422ba38cf4a287704f4a3b16a6b11a8a069118adfe",
+      "tests": 33,
+      "failures": 0,
+      "errors": 1,
+      "skipped": 0,
+      "explanation": "Concurrent shared-basetemp deletion removed a SQLite fixture; unique temporary directories fix the cause."
+    },
+    {
+      "path": ".local/efficiency-v1/independent-review-cost.xml",
+      "sha256": "1307d9d62f868e190cc6317d1380fda2d0519b9bbd393c4089482d4a858c645b",
+      "tests": 38,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "explanation": "Markdown omitted the actual third configuration label; renderer fixed and all-arm unknown-cost gate strengthened."
+    }
+  ],
+  "preserved_expected_old_method_negative_control": {
+    "path": ".local/efficiency-v1/review-old-methods-regressions.xml",
+    "sha256": "91a263f68d8d43c5119a64100e4259c5a34634e0b1dd25beb41079dcead81177",
+    "tests": 23,
+    "failures": 13,
+    "errors": 0,
+    "skipped": 0,
+    "purpose": "Intentionally loaded baseline448f705 methods; 13 failures show defects covered by current passing regressions. Not a shipping implementation run."
+  },
+  "passing_new_method_control": {
+    "path": ".local/efficiency-v1/review-final-regressions.xml",
+    "sha256": "f7c34c436965a954de26cf0f38fb27766f9827b7bb825b4f3d985d893befb55a",
+    "tests": 23,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "interrupted_pre_freeze_full_run": {
+    "path": ".local/efficiency-v1/full-python-pre-freeze-interrupted.xml",
+    "sha256": "1dfc4dbeed40db923e8fc3c0952ded0af783c87ca45543666e482e76511a440c",
+    "tests": 90,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "completed": false,
+    "reason": "Stopped to collect the final strengthened workflow accounting tests; final1340 suite completed afterwards."
+  },
+  "other_preserved_failures": [
+    "Earlier combined type checks and their exact before/after source receipts are retained. Final58-module check passes.",
+    "First installed support smoke requested unsupported category finding; correct server rejection retained. Fresh supported observation fixture passed."
+  ],
+  "historical_artifacts_unchanged": 11501,
+  "baseline_preserved_git_head": "448f70555698b56f2f7b257a84628106846fb55e",
+  "model_benchmark_scope": "Separate fresh60-assignment study. These engineering checks do not establish native token, model latency or money savings.",
+  "limitations": [
+    "No feature can be guaranteed universally cheaper or faster by these finite tests.",
+    "The1200 synthetic cases share the real tokenizer and precomputed freshness views; the actual55-to15 secure-read fixture is measured separately.",
+    "Package integrity and functional checks are not added to distinct test-case totals.",
+    "Overlapping focused reruns are supplementary; counted only once in the final full test suites."
+  ],
+  "supplemental_final_suites": {
+    "confirmation_corpus": {
+      "path": ".local/efficiency-v1/corpus-v2-tests-final.xml",
+      "sha256": "9f96d9511ddc9e7e106517a1916e28433d552179207ce77f10cbc8893d4ca788",
+      "tests": 41,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "confirmation_runner": {
+      "path": ".local/efficiency-v1/runner-v2-sealed.xml",
+      "sha256": "ff041fc48cee65198c8f1c8f37ffd7b388961fd2a7cf5a0547deed97a2691ee5",
+      "tests": 35,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "suite_execution_scope": "Initial full1340 Python plus24frontend/3browser tests, followed by76 new versioned-corpus/runner tests. App source unchanged. An enlarged full1416-Python-case rerun is not claimed; all1416 current cases collect cleanly.",
+  "confirmation_static_checks": {
+    "combined_mypy_modules": 60,
+    "ruff_formatted_files": 120,
+    "current_python_cases_collect_cleanly": 1416,
+    "logs": [
+      ".local/efficiency-v1/confirmation-mypy.log",
+      ".local/efficiency-v1/confirmation-ruff.log",
+      ".local/efficiency-v1/confirmation-format.log",
+      ".local/efficiency-v1/confirmation-collection.log"
+    ]
+  },
+  "confirmation_preserved_initial_failures": {
+    "corpus": {
+      "junit": ".local/efficiency-v1/corpus-v2-tests.xml",
+      "tests": 41,
+      "failures": 2,
+      "cause": "One hidden JavaScript oracle accidentally contained a TypeScript tuple annotation. Removed before any native confirmation request; final41tests and all baseline/reference/half-fix controls pass."
+    },
+    "runner": {
+      "cause": "First new protection regression fixture used a .git directory instead of the actual production worktree .git file. Corrected to a real worktree; original fixture failure retained and final35tests pass."
+    }
+  },
+  "native_experiment_contract_issue": {
+    "path": "benchmarks/workflow-contract-issue.json",
+    "original_attempts": 60,
+    "strict_successes": 0,
+    "strict_failures_preserved": 60,
+    "external_commands_all_zero": 60,
+    "repair": "Fresh ten-task confirmation with explicit byte-identical original tests and new regression files only; strict grader and promotion policy unchanged."
+  }
+}
