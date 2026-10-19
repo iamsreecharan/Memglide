@@ -1,0 +1,26 @@
+[
+  {
+    "id": "c01",
+    "repository": "r01",
+    "language": "python",
+    "prompt": "Write one concise release-note sentence using only this supplied change description: the tool now displays elapsed milliseconds when an operation finishes. Do not add repository-specific claims, inspect source, or change code."
+  },
+  {
+    "id": "c02",
+    "repository": "r02",
+    "language": "python",
+    "prompt": "Explain the difference between preserving insertion order and sorting values in two sentences, using a hypothetical collection of three numbers. This is a general programming explanation; no repository-specific analysis or code change is requested."
+  },
+  {
+    "id": "c03",
+    "repository": "r04",
+    "language": "typescript",
+    "prompt": "Rewrite this message in a clear and friendly tone: \"Invalid request. Try again.\" Return just the revised sentence. Use only the supplied text; no source inspection or code changes are needed."
+  },
+  {
+    "id": "c04",
+    "repository": "r06",
+    "language": "typescript",
+    "prompt": "A report lists three durations of 250 milliseconds, 750 milliseconds, and 2 seconds. What is their total in seconds? Show a single arithmetic expression. This calculation uses only the supplied numbers and requires no repository work."
+  }
+]

@@ -1,0 +1,235 @@
+{
+  "r01": {
+    "repository_url": "https://github.com/mahmoud/boltons",
+    "commit": "4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+    "archive_url": "https://codeload.github.com/mahmoud/boltons/tar.gz/4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+    "archive_sha256": "f8d60b13dd49531d85a4e74736cdac4a46998f8480e6a37d6c2d8ce9c18a5951",
+    "license_paths": [
+      "LICENSE"
+    ],
+    "tracked_tree_status": "partial",
+    "exclusions": [
+      "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+    ],
+    "retained_file_sha256": {
+      "LICENSE": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3",
+      "README.md": "125d653ce15f442d8cafb2b43b4ddc01f443807a4a782e035528cfd75c4388f9",
+      "boltons/__init__.py": "ba0f4ee941c9a000b66251d4a39263a8ed009c2a3e0b77b8665c8aeff7ebe730",
+      "boltons/cacheutils.py": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad",
+      "boltons/debugutils.py": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283",
+      "boltons/deprutils.py": "d8f2c0fdce9d8276466127f093771e1a0a8844bcd1bd92e6880f30d2782e0151",
+      "boltons/dictutils.py": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656",
+      "boltons/easterutils.py": "1bfc6e9e05606689ab4087b00585c183ff4fcc4eb4a423f9be153a0be6818d40",
+      "boltons/ecoutils.py": "ce3663d4e772fe871c17dcd0847717f8a610616a6b0141106564bedc5ab8a3b6",
+      "boltons/excutils.py": "6a2eddd26f46dbdceeda125bd20379d52ffc98a941fe867e3434d17b93119957",
+      "boltons/fileutils.py": "0c2025cf1e649eabd511a84303b491c19ea59cdcac2f958f9a90b7e39e0a8b0e",
+      "boltons/formatutils.py": "15c7963d5c97b11ec7a419e9e4aec7c20ca765bcf701306510c9c57c7eaeb1a4",
+      "boltons/funcutils.py": "f290815c9dbe5c4d73ade849935dfb2814411a89aeff89c7afef60c7b3aaba72",
+      "boltons/gcutils.py": "e82a32093560c14bb8298532681a3338d2ec6f48d20ccf2f1a4496dd67a17f97",
+      "boltons/ioutils.py": "e4e73aaeb038bc240f687e8390c60f471a6b5b673a534c54cb9c9af101b995d2",
+      "boltons/iterutils.py": "7fb67f49dc1d895051549b523c2e21161e3c1f4e21590fa7fd09039386d08510",
+      "boltons/jsonutils.py": "46b92387597863e6a12d489a370220d03c2d70ebc795121f000d2b724b0fb50a",
+      "boltons/listutils.py": "5f45432e942b04040d3cc917f08a7a9fee7fc5339768591fa946ae0298ca882d",
+      "boltons/mathutils.py": "c4f32563bb0a9281d5b7a3770c661e5a3ae3c6c3ae2644f5ff0a608edce2d5e6",
+      "boltons/mboxutils.py": "426b5211f7b3ce6ee9d1c80d794b56d9544435865b48a016d1955cd0a1e0320d",
+      "boltons/namedutils.py": "0f5a4a0e196c7d918762928bfd9157c29d411a9d827ae7f45a53c43328887224",
+      "boltons/pathutils.py": "667a4bb46ed79f66af83b07fac419f3f91576c2e7ed404e11f28cd68b4645fbd",
+      "boltons/queueutils.py": "a60f04f5f27803429c7a79f3f51f9b286cba3bd997f122161f252c66ca0499bb",
+      "boltons/setutils.py": "d385936effa655abbd6bae772c08089e6c9ac8b266eff13105f4386fe1a58b43",
+      "boltons/socketutils.py": "b2d5da2d58dd3d05c14153a83f36da928fe6285a4a44850c2eab9877c1959adc",
+      "boltons/statsutils.py": "0c4d05a17b14244a880e5047c1823d1e1e522e6c5ee76c6b47f54d8bde791e68",
+      "boltons/strutils.py": "c5ecb7efd3b2e86f92545c18d8d72193f45a1bd1d0edaf3da65868aa0e8bcdda",
+      "boltons/tableutils.py": "0f01e27d91ab37d322db529f3e08873feefcea822fdbf760262093b3e01524ff",
+      "boltons/tbutils.py": "7cd7fb1b7ce1873c37ee3053bb59d8166b671cf667013bd27e2fdbc52ab03e29",
+      "boltons/timeutils.py": "27f8f2999b698a3e6064f24b1ff312ef86358592a503ad2c0c5b4fd265ff430c",
+      "boltons/typeutils.py": "4da2b26d71386ee9010dfb52104e461ecba486ba5544a8cf50d9e26cd34e9c09",
+      "boltons/urlutils.py": "0de5f96e627483f3de1dce10fc4e5f8d913a36c800166842cd55970d4ddd0812",
+      "pyproject.toml": "23d689cf1d468c6af6442869eb7483402aaea8b3cabdbfb2d7aa9df3a293aa04",
+      "setup.cfg": "4024bbca7672ce6a9cebfee0e4cd4017582ca0787dc1f603e859cd9c861147ac"
+    },
+    "retained_regular_file_count": 34,
+    "archive_regular_file_count": 113,
+    "excluded_archive_regular_file_count": 79,
+    "license_file_sha256": {
+      "LICENSE": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3"
+    },
+    "archive_prefix": "boltons-4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+    "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+    "archive_artifact": ".local/router-v4/author-pairs/python-pair/archives/r01.tar.gz"
+  },
+  "r02": {
+    "repository_url": "https://github.com/rspeer/ordered-set",
+    "commit": "9dfc91c27c0c56df2536036bec4a5b3f717ef2ba",
+    "archive_url": "https://codeload.github.com/rspeer/ordered-set/tar.gz/9dfc91c27c0c56df2536036bec4a5b3f717ef2ba",
+    "archive_sha256": "6171fd84397d7030114dd069d749ecced3cdc9abd41a587d2f41de573d9edfa6",
+    "license_paths": [
+      "MIT-LICENSE"
+    ],
+    "tracked_tree_status": "partial",
+    "exclusions": [
+      "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+    ],
+    "retained_file_sha256": {
+      "MIT-LICENSE": "0cf8f55f36dc1306b3fe89bf29e29a0c742f279f038d149244319e593ab16ca4",
+      "README.md": "00e872b24819851e48eab4326a633ec441807a9fcbbe814dba280634f6c7f173",
+      "ordered_set/__init__.py": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d",
+      "ordered_set/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pyproject.toml": "6ae4514d20de3f81aa4ca513b38cac165af0cd6c876f021159a3c51e457358bb",
+      "setup.py": "9d2e313b2c672c53673e49330f7b2a27c4f88c8071f192605bab932ee9b72047"
+    },
+    "retained_regular_file_count": 6,
+    "archive_regular_file_count": 15,
+    "excluded_archive_regular_file_count": 9,
+    "license_file_sha256": {
+      "MIT-LICENSE": "0cf8f55f36dc1306b3fe89bf29e29a0c742f279f038d149244319e593ab16ca4"
+    },
+    "archive_prefix": "ordered-set-9dfc91c27c0c56df2536036bec4a5b3f717ef2ba",
+    "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+    "archive_artifact": ".local/router-v4/author-pairs/python-pair/archives/r02.tar.gz"
+  },
+  "r03": {
+    "repository_url": "https://github.com/more-itertools/more-itertools",
+    "commit": "4aeb4338ae1407d8da9723e86da99efeb446f719",
+    "archive_url": "https://codeload.github.com/more-itertools/more-itertools/tar.gz/4aeb4338ae1407d8da9723e86da99efeb446f719",
+    "archive_sha256": "169458c629e233a182d8c3ce0002996becd84d9e42d294c786c05be8c715e3d1",
+    "license_paths": [
+      "LICENSE"
+    ],
+    "license_identifier": "MIT",
+    "tracked_tree_status": "partial",
+    "exclusions": [
+      "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+    ],
+    "retained_file_sha256": {
+      "LICENSE": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+      "README.rst": "6a5dad4de3ffc03544d72a70cc876e15565b250231557b566f967965d4dd1c5f",
+      "more_itertools/__init__.py": "e7988a22d707340f59eb4cc01a4a534994fdcfb8420c01f768b42fd5e9caeccc",
+      "more_itertools/more.py": "1bdc5f323ea18906436a42268b942d5b4d15ac8b3ff17c1211a59fb192fa068e",
+      "more_itertools/more.pyi": "e4952b7a6230e27bee49265fd9af08ae8353946e2d5a78ce60c55d2f5efe5514",
+      "more_itertools/recipes.py": "468ab191bbb5fd62e8603d741e6983acdfa9d697d0ff9252b0c56ffdd24ca9bc",
+      "more_itertools/recipes.pyi": "2dd48ac5ef0b502f989bd2e13923c402994244ee50a4187e2f0d59c348bf2583",
+      "pyproject.toml": "a2b3a175ee00820cd2d387a6521d80af5eccfe4d96dc057f9ba4d3cd76ddba87"
+    },
+    "retained_regular_file_count": 8,
+    "archive_regular_file_count": 39,
+    "excluded_archive_regular_file_count": 31,
+    "license_file_sha256": {
+      "LICENSE": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46"
+    },
+    "archive_prefix": "more-itertools-4aeb4338ae1407d8da9723e86da99efeb446f719",
+    "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+    "archive_artifact": ".local/router-v4/author-pairs/root-pair/archives/r03.tar.gz"
+  },
+  "r04": {
+    "repository_url": "https://github.com/basarat/typescript-collections",
+    "commit": "309bb1b6955b403b212309531607b8d17df152e5",
+    "archive_url": "https://codeload.github.com/basarat/typescript-collections/tar.gz/309bb1b6955b403b212309531607b8d17df152e5",
+    "archive_sha256": "dec2a22e830198356f04386190376ecb85893e657f1018104fe4e0ff473835b8",
+    "license_paths": [
+      "LICENSE"
+    ],
+    "license_identifier": "MIT",
+    "tracked_tree_status": "partial",
+    "exclusions": [
+      "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+    ],
+    "retained_file_sha256": {
+      "LICENSE": "9de040587128bd3f50f89fd637c16dc47490546a02474c7c08e41d66418e481e",
+      "README.md": "ad309d6f643b71b4f91e9de9b8f93a53aff2c0ad1aa151e684ea9e6bc1dbcdd7",
+      "package.json": "36843cf512f23c733b6102cb219d5f4e77a4d1403aa733b0729e3169b174cb12",
+      "src/lib/BSTree.ts": "276704b52e0204cb140d4521dafab7943d2c8028c07f63add5d7b77b2ea096fb",
+      "src/lib/BSTreeKV.ts": "9805c51622b29901b1b7afc5eaf9ca84fbc1683b336dd349f0112bed7e525fad",
+      "src/lib/Bag.ts": "0172c3a7d081a5908e56bb61e67ae55dcbe292432e89ef486423247ad2b87e15",
+      "src/lib/Dictionary.ts": "dee29f057989769d605904f011dc289a802a158693c1d3249b89809af8b930b1",
+      "src/lib/FactoryDictionary.ts": "2c573094c56c86210a2980852d3cffed2c2ce5a5eb9e794b5f36030ec08bc9ac",
+      "src/lib/Heap.ts": "517213e786e234ddcc3b53ba4cb1b5f3ad23eac1ac6c171d601d110509f210c5",
+      "src/lib/LinkedDictionary.ts": "74fc83972e133b4a41b02e23396e9961ade0f9689ca287d00d16882de7a17c72",
+      "src/lib/LinkedList.ts": "67317855811fad66dade74d9114fc568642db017c44a3a36dff518d2ec0a1f53",
+      "src/lib/MultiDictionary.ts": "643746dc363eb406f53b49d74d79bf85a0b3cb0087c3c865bef36e0824f0f6f5",
+      "src/lib/MultiRootTree.ts": "58a3b9de82625023752b5c465543856ccc5aa19afd73926c066a114b5399f5c8",
+      "src/lib/PriorityQueue.ts": "62bcf790e323014f457300bd06b190d477241ac62af611820951b98fef3cd777",
+      "src/lib/Queue.ts": "d648a4f053e27f189b55a1ae92415dd7f389de868baedc128dc6817ffd4d6976",
+      "src/lib/Set.ts": "ffb999deb7ef76ba0d657d6fc60abce8b8adadf50b2ee587a509e71bb6d4817a",
+      "src/lib/Stack.ts": "4810c97ae2d14afbcdd4a7f21c7f4139b912b857bc46c040f35f3415e854807a",
+      "src/lib/arrays.ts": "d88eae90799b8c848a5bca86436e12cc9514720380995219e3417387b41ef8ec",
+      "src/lib/index.ts": "18f6c342ec3007caa01991bde554c8c8eeac262d0ac71b93301fea9e06efe372",
+      "src/lib/util.ts": "43c64ca479bc26962cc19c4983bb0c7da97aeffe5222306472bf3ad436128983",
+      "tsconfig.json": "f0b662d9f52ac8af2e57c37f1eefbbb0003ed17cab64ce145f1cbf7219b56932"
+    },
+    "retained_regular_file_count": 21,
+    "archive_regular_file_count": 63,
+    "excluded_archive_regular_file_count": 42,
+    "license_file_sha256": {
+      "LICENSE": "9de040587128bd3f50f89fd637c16dc47490546a02474c7c08e41d66418e481e"
+    },
+    "archive_prefix": "typescript-collections-309bb1b6955b403b212309531607b8d17df152e5",
+    "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+    "archive_artifact": ".local/router-v4/author-pairs/ts-pair/archives/r04.tar.gz"
+  },
+  "r05": {
+    "repository_url": "https://github.com/supermacro/neverthrow",
+    "commit": "5ef3a018bda74fb960e44b68fc3672635ee8037d",
+    "archive_url": "https://codeload.github.com/supermacro/neverthrow/tar.gz/5ef3a018bda74fb960e44b68fc3672635ee8037d",
+    "archive_sha256": "f8d29bd273b7071869c157cb614e6e717ab5625d32254eee13e7788f1c76bddd",
+    "license_paths": [
+      "LICENSE"
+    ],
+    "license_identifier": "MIT",
+    "tracked_tree_status": "partial",
+    "exclusions": [
+      "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+    ],
+    "retained_file_sha256": {
+      "LICENSE": "3f4f7f9d7c4a9965aeef4a9c95de38f73ecbab96bed68d320a224a74dfcaa973",
+      "README.md": "b37f72e1b72d3ae9a3df65d24fcf93aa28dcad305a065056f06d89934b3168a9",
+      "package.json": "77482a0d2edde0bd1c4a9347f0adf64d8bb24c0b074a9e7e3d93269f138d3417",
+      "src/_internals/error.ts": "6ba5f5f40879bf596be420db35a95b9a492cda3f91d504f5ee66f722f18425ce",
+      "src/_internals/utils.ts": "0eff2c3154f48fe22278939f8c179ee22b40596e8df9bb3ccfa4f9c9b3b79723",
+      "src/index.ts": "57b296e55fbe34b699ee4bcb98e0c86726b06f835522ba7c379f41ed4e102324",
+      "src/result-async.ts": "84e72684262b2b125b28dba1277231baddfb53e1196716f0618db4fbb278ad1c",
+      "src/result.ts": "8bebd3ca02e67482d16d10ad69bc3a23f72d6f2a2a04cb6fb120e3f6732d5754",
+      "tsconfig.json": "f2b83ab65e0567111fc6f0a78221e6440cd6fb1d4c693fb305f3594c3e6f63a9"
+    },
+    "retained_regular_file_count": 9,
+    "archive_regular_file_count": 26,
+    "excluded_archive_regular_file_count": 17,
+    "license_file_sha256": {
+      "LICENSE": "3f4f7f9d7c4a9965aeef4a9c95de38f73ecbab96bed68d320a224a74dfcaa973"
+    },
+    "archive_prefix": "neverthrow-5ef3a018bda74fb960e44b68fc3672635ee8037d",
+    "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+    "archive_artifact": ".local/router-v4/author-pairs/ts-pair/archives/r05.tar.gz"
+  },
+  "r06": {
+    "repository_url": "https://github.com/w8r/avl",
+    "commit": "e9209ab6664b0c472c2a732be21d5c6701434933",
+    "archive_url": "https://codeload.github.com/w8r/avl/tar.gz/e9209ab6664b0c472c2a732be21d5c6701434933",
+    "archive_sha256": "71c9d0711f9fb05bc485cb06a5ca77dd6779ab4318081f0fb48bb315851cb62e",
+    "license_paths": [
+      "LICENSE"
+    ],
+    "license_identifier": "MIT",
+    "tracked_tree_status": "partial",
+    "exclusions": [
+      "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+    ],
+    "retained_file_sha256": {
+      "LICENSE": "498c0717759d83010a03b27f4de843b94a0936eb2d22adcb08000b5ef337194e",
+      "README.md": "33ee2caf5d569c9e31cf79b69a91d4bf40c66449bc6bb453156a405c7c9e20c0",
+      "package.json": "9ce2d0872a1e38712e780232f00eec25203e1a8eb5d048827b03a2fce9d26627",
+      "src/index.ts": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd",
+      "src/types.ts": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77",
+      "src/utils.ts": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40",
+      "tsconfig.json": "de13d876428e52248a7609f919ba8bd7bbdc8df1fc38a014ad086c9991b92205"
+    },
+    "retained_regular_file_count": 7,
+    "archive_regular_file_count": 27,
+    "excluded_archive_regular_file_count": 20,
+    "license_file_sha256": {
+      "LICENSE": "498c0717759d83010a03b27f4de843b94a0936eb2d22adcb08000b5ef337194e"
+    },
+    "archive_prefix": "avl-e9209ab6664b0c472c2a732be21d5c6701434933",
+    "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+    "archive_artifact": ".local/router-v4/author-pairs/root-pair/archives/r06.tar.gz"
+  }
+}

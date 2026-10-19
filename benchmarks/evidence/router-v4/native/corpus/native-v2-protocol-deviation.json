@@ -1,0 +1,27 @@
+{
+  "reason": "Frozen native validate_tasks treated slash-separated prose as an apparent source path before any native plan or model assignment.",
+  "original_package_preserved": true,
+  "original_seal_sha256": "21b98dd2bbb6ebe095156b2bbfaaed7887a8c2fe102ecf96524c3c11982ad191",
+  "change": [
+    {
+      "task_id": "n06",
+      "old_text": "key/reverse/nonempty",
+      "new_text": "key, reverse, and nonempty",
+      "original_prompt": "Fix sort_together so empty sorted data preserves the number of input columns: two empty input columns should produce two empty tuples, and a nonempty column paired with an empty column under the default non-strict mode should do the same. An empty outer iterable should still produce an empty list. Support an outer iterable that can be consumed only once, retain strict mismatch errors, and preserve existing key/reverse/nonempty sorting behavior. Make the code change; acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies.",
+      "repaired_prompt": "Fix sort_together so empty sorted data preserves the number of input columns: two empty input columns should produce two empty tuples, and a nonempty column paired with an empty column under the default non-strict mode should do the same. An empty outer iterable should still produce an empty list. Support an outer iterable that can be consumed only once, retain strict mismatch errors, and preserve existing key, reverse, and nonempty sorting behavior. Make the code change; acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies."
+    }
+  ],
+  "timing": "After the offline cohort; before any native plan or dispatch.",
+  "semantics": "Task behavior, target labels, source paths, policies, runners, and grader semantics unchanged. Only equivalent punctuation/conjunction wording was repaired.",
+  "claim_limit": "The v2 native prompts are not an untouched pre-offline prompt-byte freeze. The independent task author received no selector outcomes. Native grading isolation and coverage audit limits remain.",
+  "validation": {
+    "validate_tasks": "passed",
+    "validate_grader_bindings": "passed",
+    "validate_control_receipts": "passed",
+    "rerun_admission_controls": 24,
+    "native_plan_or_model_calls_by_author": 0,
+    "grader_and_reference_file_bytes_equal_to_original": true,
+    "original_75_file_authority_and_all_original_seals_unchanged": true
+  },
+  "reused_integrity_receipt": "The unchanged original six integrity controls are preserved as historical evidence; only the requested 24 baseline/reference controls were rerun for v2."
+}

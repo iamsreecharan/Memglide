@@ -1,0 +1,73 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "positive",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 29622272,
+    "preparation_cpu_seconds": 0.001590572999999984,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 0.0015904360000149609,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 30015488,
+    "setup_cpu_seconds": 0.19353997,
+    "setup_plus_preparation_wall_seconds": 0.24321765299998788,
+    "setup_waited_child_cpu_seconds": 0.017092999999999997
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.0015777880000000244,
+      "preparation_wall_seconds": 0.0015764260000423747,
+      "prepared_prompt_sha256": "e133989514c3a0b40e260122124d4bd801f3b2e8f1419f079892e9625b033b61",
+      "prompt": "Extend padded so n=0 is valid when next_multiple is false: it should return all original items without padding, including an empty result for empty input. Keep n=0 invalid when next_multiple is true, keep negative n invalid, and preserve existing positive-n and infinite-padding behavior. Update the public behavior and its documentation.",
+      "prompt_layout": "unchanged",
+      "reason": "source_unavailable",
+      "task_prompt_sha256": "e133989514c3a0b40e260122124d4bd801f3b2e8f1419f079892e9625b033b61"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 29622272,
+      "self_peak_rss_bytes": 30015488,
+      "waited_child_cpu_seconds": 0.017092999999999997
+    },
+    "setup": {
+      "cpu_seconds": 0.19353997,
+      "waited_child_cpu_seconds": 0.017092999999999997,
+      "wall_seconds": 0.24162721699997292
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.001590572999999984,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 0.0015904360000149609
+    }
+  },
+  "ordinal": 13,
+  "process_wall_seconds": 0.3686174029999165,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "more_itertools/more.py"
+    ]
+  },
+  "task_id": "t05",
+  "worker_completed": true
+}

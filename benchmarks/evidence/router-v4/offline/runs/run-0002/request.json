@@ -1,0 +1,13 @@
+{
+  "arm": "B",
+  "known_paths": [
+    "ordered_set/__init__.py"
+  ],
+  "prompt": "Extend OrderedSet.index with optional start and stop bounds for scalar lookups, using Python sequence slice normalization including negative bounds and clipping. Return the absolute position if the member lies within the normalized half-open interval; otherwise raise ValueError, including for an absent scalar member when bounds are supplied. Preserve the existing unbounded scalar lookup and fancy lookup behavior, and keep get_loc and get_indexer consistent with the same API. Strings and tuples must remain atomic scalar keys.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0002"
+}

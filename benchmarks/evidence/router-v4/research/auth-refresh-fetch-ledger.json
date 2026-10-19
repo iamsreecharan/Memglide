@@ -1,0 +1,32 @@
+[
+  {
+    "bytes": 723,
+    "content_type": "text/plain; charset=utf-8",
+    "etag": "\"5091204d7ed5b80948a9bfe40c9a281b26678748b88402e01a13a7fa48edf97a\"",
+    "fetched_at_utc": "2026-10-19T20:16:53.324005+00:00",
+    "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/login/src/auth/mod.rs",
+    "maximum_bytes": 2097152,
+    "name": "codex-login-auth-module",
+    "sha256": "5d72ae39f74e2ed944b13bab4dbaab03d5e0ae1a5ec908d14cf4513606fe7b83",
+    "snapshot": "codex-login-auth-module.txt",
+    "status": 200,
+    "success": true,
+    "transport": "Inherited HTTPS proxy and CA trust; default TLS verification; no auth/policy changes.",
+    "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/login/src/auth/mod.rs"
+  },
+  {
+    "bytes": 14,
+    "content_type": "text/plain; charset=utf-8",
+    "etag": null,
+    "fetched_at_utc": "2026-10-19T20:16:53.324820+00:00",
+    "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/login/src/auth/refresh.rs",
+    "maximum_bytes": 2097152,
+    "name": "codex-login-auth-refresh",
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "snapshot": "codex-login-auth-refresh.txt",
+    "status": 404,
+    "success": false,
+    "transport": "Inherited HTTPS proxy and CA trust; default TLS verification; no auth/policy changes.",
+    "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/login/src/auth/refresh.rs"
+  }
+]

@@ -1,6 +1,49 @@
 # Memglide verification record
 
-## V4 development checkpoint: fresh comparisons pending
+## Fresh v4 evaluation: selection gate failed
+
+The [fresh assessment](benchmarks/router-v4-assessment.md) preserves all **96
+offline observations** on six previously unused upstream subsets. Twelve
+positive tasks and four separate easy abstention controls were fixed after the
+code/runners froze, with two repeats in B known-path, V3 and C v4 arms. All
+96 source/passthrough integrity checks passed without worker/evaluator errors;
+that includes only six full-source deliveries and 90 unchanged-task fallbacks.
+
+Known paths delivered three of twelve positive scopes in both repeats (**6/24**);
+v3 and v4 delivered none (**0/24** each). All arms passed their eight normative
+control observations. V4 mean preparation was **257.803 ms**, versus **172.571 ms**
+for v3 and **2.364 ms** for known paths. Cold approval/index plus preparation was
+453.412, 366.014 and 192.466 ms respectively. These are local components, not
+coding-task times. Nine declared whole-source envelopes exceed the frozen
+12,000-byte cap; the three feasible bundles also missed automatic selection.
+Post-study parser/ranking diagnoses remain separate from the original outcomes.
+
+The improvement condition failed. No native coding assignment ran, and no new
+model tokens, strict coding success, cost per success or saving over Codex is
+measured. V4 remains opt-in; prior policies, known-path preparation and optional
+memory are unchanged. All 799 original v3 evidence entries and the 43 sealed
+source/helper/test/lock files were rehashed unchanged after the study. Any new
+candidate must use separate development cases and fresh held-out tasks.
+
+The domain configuration is now published. This attached worker still uses the
+older enforced policy; both separately retained 45-second CLI access checks
+failed at proxy **HTTP CONNECT 403**, with zero completed turns and unknown usage
+and charges. [Start a new cloud task](docs/cloud-benchmark-access.md) to verify
+the published policy. Restoring access alone does not qualify v4 for coding runs.
+
+The prospective native graders passed 24 independent baseline/reference replays,
+but their coverage and isolation review is incomplete; those controls do not
+prove comprehensive or tamper-proof correctness. A proposed additional security
+check was rejected by automatic review and remains unrun. These limits and a
+separately versioned native-manifest formatting correction are recorded in the
+assessment. Source-selection outcomes were not shared with task authors.
+
+After corpus integration, the existing 57 harness cases, Ruff and mypy passed.
+Those cases overlap the full 2,341-case suites below and are not added to their
+distinct totals. No application, frozen runner, protocol or protected test was
+retuned after the held-out study.
+
+## Historical v4 development checkpoint: before fresh comparisons
 
 The five original misses now have an individual
 [diagnosis](benchmarks/router-v4-diagnosis.md). The opt-in

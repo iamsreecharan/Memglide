@@ -1,0 +1,66 @@
+{
+  "after_sha256": "4cf24ab3ef4094fba7d00963a72109d3279ca00342a2812bcae4c11e2d425efe",
+  "automatic_review_rejected_control": {
+    "stated_reason": "possible cybersecurity risk",
+    "status": "UNRUN",
+    "tested_exploit_claimed": false
+  },
+  "before_sha256": "f77fd21a56fe3daa3621f957d9809b241371d13469d3d29dd963424fd2681ff8",
+  "blocked_native_snapshot": {
+    "actual_billed_charges": null,
+    "attempted": 0,
+    "coding_success_rate": null,
+    "cost_per_success": null,
+    "formal_dispatch_eligible": false,
+    "model_usage": null,
+    "planned": 72,
+    "unrun": 72
+  },
+  "changes": [
+    "Archive v1/v2 public specs and outer SHA manifests while withholding original/v2 private authorities and oracle bodies.",
+    "Bind v2 amendment to original seal, public specs, exact punctuation diff, protocol-deviation receipt and final audit/admission SHA values.",
+    "Publish only explicit per-control outcome/count/hash projections; retain exact standard-control originals locally by default.",
+    "Hash mixed private compiler/Python/checkpoint reviews without publishing their bodies.",
+    "Archive final audit/admission/reproducer and native plan-only/blocked-snapshot command, receipt and verification files.",
+    "Label the actual all72-UNRUN native report as a report-only blocked-plan snapshot; no model responses, coding-success or cost claims.",
+    "Disclose six native grade-coverage/isolation/provenance limits and the proposed synthetic tampering check rejected by automatic review and therefore UNRUN.",
+    "Disclose n06 punctuation repair after offline evaluation and before native planning; do not claim an untouched pre-offline native prompt-byte freeze."
+  ],
+  "diff_sha256": "1b2c26de708d3ba131769aa41f46ec20a5a40accacb71657a358582e60bd4549",
+  "execution": {
+    "collector_executed": false,
+    "formal_outputs_created": false,
+    "model_or_native_requests": 0,
+    "production_or_frozen_artifacts_modified": false,
+    "selector_or_parser_invocations": 0
+  },
+  "inputs_sha256": {
+    ".local/router-v4-native-blocked/report.json": "27ece09f886a01cb54ef1272ef274f6f86bc38c082f08eaff35971d653e21f17",
+    ".local/router-v4-native-plan/plan.json": "08ad6d65711e8e08488667e44b2eec580a0cc4969fb0c12d2020a49eb3ce8405",
+    ".local/router-v4/native-admission-final.json": "8618a589e61d5bb465c48d840ca3aebdd0ccb573937e74b3d1ca467bba251369",
+    ".local/router-v4/native-corpus-freeze-v2.json": "41007f644ce2b171bccadf1d9eb43e27c0bd89570148f1643f2922522ea0c1b8",
+    ".local/router-v4/native-corpus-review/audit.json": "1529e919afbecbd8bd14ec7c3737bac218dba4d7dbcf0abef5553a9a590848da",
+    ".local/router-v4/native-tasks-v2.json": "dd2766edd2d4471b013705388903d43548509b003db4e0018110e693cc20b0f6"
+  },
+  "privacy": {
+    "native_authority_v1_or_v2_bodies_read_by_reviewer": false,
+    "private_raw_control_bodies_published": false,
+    "private_reference_bodies_read_or_published": false,
+    "public_audit_and_admission_metadata_only_confirmed_by_root": true,
+    "release_native_oracles_default": false
+  },
+  "recommended_invocation": "python .local/router-v4/build_report.py --native-report .local/router-v4-native-blocked/report.json --native-freeze .local/router-v4/native-policy-freeze.json",
+  "reviewed_at_utc": "2026-10-19T21:13:56.715740+00:00",
+  "schema_version": 1,
+  "scope": "Ignored collector preparation; no collection or benchmark execution",
+  "standard_replay_scope": {
+    "author_v2": 24,
+    "comprehensive_adversarial_grading_proven": false,
+    "counts_not_pooled_as_coding_tasks": true,
+    "historical_six_integrity_controls_rerun_for_v2": false,
+    "independent_v1": 24,
+    "independent_v2": 24
+  },
+  "status": "READY_FOR_ROOT_EXECUTION_ACK",
+  "syntax_check": "AST parse only; no collector module import or main execution"
+}

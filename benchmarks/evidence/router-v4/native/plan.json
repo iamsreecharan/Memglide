@@ -1,0 +1,726 @@
+{
+  "tasks": [
+    {
+      "id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "prompt": "Add a strict keyword option, defaulting to False, to chunked_iter and its chunked convenience API. When strict=True, emit complete chunks normally but raise ValueError upon encountering a nonempty incomplete final chunk. Empty input and exact multiples should succeed. Explicit fill and strict=True are incompatible and must raise ValueError, even if fill is None. Preserve normal list, string, and bytes chunk types, existing default behavior, and laziness: a count-limited chunked call must not inspect a later tail beyond the requested complete chunks."
+    },
+    {
+      "id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "prompt": "Add an optional keyword mtime argument to gzip_bytes so callers can choose the gzip header modification timestamp. Keep mtime=None as the current wall-clock behavior, support mtime=0 for reproducible output, and honor an explicitly supplied positive integer timestamp. Preserve the existing compression level argument and produce gzip data that decompresses to the original bytes, including empty input. Document the new argument."
+    },
+    {
+      "id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "prompt": "Fix OrderedSet.pop so removing an item by a nonfinal positive or negative index keeps all remaining index lookups correct. Subsequent membership, fancy index queries, add, discard, and another pop must agree with the remaining sequence. Preserve the returned element, relative order, default removal of the last element, support for objects implementing the integer index protocol, KeyError for an empty set, and IndexError for an invalid index without mutating the set."
+    },
+    {
+      "id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "prompt": "Make OrderedSet.symmetric_difference_update accept an arbitrary finite iterable, including a generator that can be consumed only once. Treat repeated values in the incoming iterable with set semantics: each new value appears at most once. Preserve the original order of surviving receiver values, then append previously absent values in their first encounter order. An update with the receiver itself should clear it, the method should return None, and all index lookups must remain consistent. Preserve existing behavior for normal distinct iterable inputs."
+    },
+    {
+      "id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "prompt": "Tighten constrained_batches so a negative size returned by get_len raises ValueError instead of letting an item reduce a batch's accumulated size. Reject a negative size even when strict is false, and do not yield a batch containing that item. Preserve zero-size items, max_count, normal size-limited grouping, and the existing handling of oversized positive items. Make the code change; the acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies."
+    },
+    {
+      "id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "prompt": "Fix sort_together so empty sorted data preserves the number of input columns: two empty input columns should produce two empty tuples, and a nonempty column paired with an empty column under the default non-strict mode should do the same. An empty outer iterable should still produce an empty list. Support an outer iterable that can be consumed only once, retain strict mismatch errors, and preserve existing key, reverse, and nonempty sorting behavior. Make the code change; acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies."
+    },
+    {
+      "id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "prompt": "Require Bag.add and Bag.remove copy counts to be positive safe integers. Zero, negatives, fractions, NaN, either infinity, and integers outside the safe range must return false before changing any state. Keep the default count of one, existing undefined-element rejection, valid duplicate counting, custom key conversion, and removal that clamps at the available count."
+    },
+    {
+      "id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "prompt": "Add drain(maxItems?: number): T[] to Queue. It must remove and return the oldest items in FIFO order, with an omitted or undefined limit draining everything. An explicit limit must be a nonnegative safe integer; otherwise throw RangeError before changing the queue, including when empty. Zero returns an empty array, limits beyond the current size drain everything, and retained items must preserve their order and object identity. Preserve existing enqueue, add, peek, dequeue, and size behavior."
+    },
+    {
+      "id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "prompt": "Make the synchronous Result.fromThrowable wrapper preserve its dynamic call receiver when invoking the wrapped function. Calling the wrapper as a method, with call, or with apply must let the original function use that receiver. Keep argument forwarding, Ok wrapping, thrown-value conversion with the optional error mapper, and the exported fromThrowable alias working. Each invocation must use its own receiver rather than capturing one when the wrapper is created."
+    },
+    {
+      "id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "prompt": "Make ResultAsync.fromPromise and its exported fromPromise alias accept arbitrary thenables using standard native Promise assimilation semantics. In particular, a then-only object need not provide catch or return a native Promise from then. Fulfillment should become Ok; rejection, a throwing then getter, or a throw before settlement should become Err via the mapper exactly once. Honor first settlement when a thenable calls both callbacks or throws after resolving, assimilate nested thenables, and preserve native Promise handling."
+    },
+    {
+      "id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "prompt": "Extend AVLTree.at to support negative integer indexes counted from the end of comparator order: -1 selects the last node and -size selects the first. An index outside the tree, a fractional index, or a non-finite index must return null. Preserve nonnegative indexing, node identity, duplicate-key nodes, comparator order, and the tree contents. Make the code change; acceptance checks are external and unavailable during coding. You may run local Node checks without installing dependencies."
+    },
+    {
+      "id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "prompt": "Update AVLTree.range callback stopping semantics: a callback that returns false must stop traversal immediately, just as returning true already does. A callback returning undefined must continue. Preserve inclusive comparator-based bounds, callback receiver binding, traversal order, an empty range, and returning the tree for chaining. Make the code change; acceptance checks are external and unavailable during coding. You may run local Node checks without installing dependencies."
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "coding-0001",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 1
+    },
+    {
+      "run_id": "coding-0002",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 2
+    },
+    {
+      "run_id": "coding-0003",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 3
+    },
+    {
+      "run_id": "coding-0004",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 4
+    },
+    {
+      "run_id": "coding-0005",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 5
+    },
+    {
+      "run_id": "coding-0006",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 6
+    },
+    {
+      "run_id": "coding-0007",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 7
+    },
+    {
+      "run_id": "coding-0008",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 8
+    },
+    {
+      "run_id": "coding-0009",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 9
+    },
+    {
+      "run_id": "coding-0010",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 10
+    },
+    {
+      "run_id": "coding-0011",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 11
+    },
+    {
+      "run_id": "coding-0012",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 12
+    },
+    {
+      "run_id": "coding-0013",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 13
+    },
+    {
+      "run_id": "coding-0014",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 14
+    },
+    {
+      "run_id": "coding-0015",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 15
+    },
+    {
+      "run_id": "coding-0016",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 16
+    },
+    {
+      "run_id": "coding-0017",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 17
+    },
+    {
+      "run_id": "coding-0018",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 18
+    },
+    {
+      "run_id": "coding-0019",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 19
+    },
+    {
+      "run_id": "coding-0020",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 20
+    },
+    {
+      "run_id": "coding-0021",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 21
+    },
+    {
+      "run_id": "coding-0022",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 22
+    },
+    {
+      "run_id": "coding-0023",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 23
+    },
+    {
+      "run_id": "coding-0024",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 24
+    },
+    {
+      "run_id": "coding-0025",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 25
+    },
+    {
+      "run_id": "coding-0026",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 26
+    },
+    {
+      "run_id": "coding-0027",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 27
+    },
+    {
+      "run_id": "coding-0028",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 28
+    },
+    {
+      "run_id": "coding-0029",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 29
+    },
+    {
+      "run_id": "coding-0030",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 30
+    },
+    {
+      "run_id": "coding-0031",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 31
+    },
+    {
+      "run_id": "coding-0032",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 32
+    },
+    {
+      "run_id": "coding-0033",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 33
+    },
+    {
+      "run_id": "coding-0034",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 34
+    },
+    {
+      "run_id": "coding-0035",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 35
+    },
+    {
+      "run_id": "coding-0036",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 36
+    },
+    {
+      "run_id": "coding-0037",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 37
+    },
+    {
+      "run_id": "coding-0038",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 38
+    },
+    {
+      "run_id": "coding-0039",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 39
+    },
+    {
+      "run_id": "coding-0040",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 40
+    },
+    {
+      "run_id": "coding-0041",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 41
+    },
+    {
+      "run_id": "coding-0042",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 42
+    },
+    {
+      "run_id": "coding-0043",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 43
+    },
+    {
+      "run_id": "coding-0044",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 44
+    },
+    {
+      "run_id": "coding-0045",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 45
+    },
+    {
+      "run_id": "coding-0046",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 46
+    },
+    {
+      "run_id": "coding-0047",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 47
+    },
+    {
+      "run_id": "coding-0048",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 48
+    },
+    {
+      "run_id": "coding-0049",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 49
+    },
+    {
+      "run_id": "coding-0050",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 50
+    },
+    {
+      "run_id": "coding-0051",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 51
+    },
+    {
+      "run_id": "coding-0052",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 52
+    },
+    {
+      "run_id": "coding-0053",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 53
+    },
+    {
+      "run_id": "coding-0054",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 54
+    },
+    {
+      "run_id": "coding-0055",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 55
+    },
+    {
+      "run_id": "coding-0056",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 56
+    },
+    {
+      "run_id": "coding-0057",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 57
+    },
+    {
+      "run_id": "coding-0058",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 58
+    },
+    {
+      "run_id": "coding-0059",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 59
+    },
+    {
+      "run_id": "coding-0060",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 60
+    },
+    {
+      "run_id": "coding-0061",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 61
+    },
+    {
+      "run_id": "coding-0062",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 62
+    },
+    {
+      "run_id": "coding-0063",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 63
+    },
+    {
+      "run_id": "coding-0064",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 64
+    },
+    {
+      "run_id": "coding-0065",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 65
+    },
+    {
+      "run_id": "coding-0066",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 66
+    },
+    {
+      "run_id": "coding-0067",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 67
+    },
+    {
+      "run_id": "coding-0068",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 68
+    },
+    {
+      "run_id": "coding-0069",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 69
+    },
+    {
+      "run_id": "coding-0070",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 70
+    },
+    {
+      "run_id": "coding-0071",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 71
+    },
+    {
+      "run_id": "coding-0072",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 72
+    }
+  ]
+}

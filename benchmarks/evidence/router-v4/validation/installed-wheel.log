@@ -1,0 +1,5 @@
+Using Python 3.12.14 environment at: .local/router-v4/installed-env
+Resolved 1 package in 1ms
+Prepared 1 package in 6ms
+Installed 1 package in 3ms
+ + memglide==0.1.0 (from file:///workspace/Memglide/.local/router-v4/dist/memglide-0.1.0-py3-none-any.whl)

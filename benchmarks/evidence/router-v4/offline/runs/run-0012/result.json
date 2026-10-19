@@ -1,0 +1,73 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "positive",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 25251840,
+    "preparation_cpu_seconds": 0.00149758099999997,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 0.0014974389999906634,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 29720576,
+    "setup_cpu_seconds": 0.363633227,
+    "setup_plus_preparation_wall_seconds": 0.40243185999997877,
+    "setup_waited_child_cpu_seconds": 0.01576
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.0014859369999999927,
+      "preparation_wall_seconds": 0.0014846650000208683,
+      "prepared_prompt_sha256": "5c6f863960db6227bdc0f691076c962817aef37ea06af9145a296fd4fae3c72d",
+      "prompt": "Extend parse_int_list to handle signed integers and inclusive ranges with signed endpoints when using the default separators. A negative singleton must stay a singleton; ranges whose endpoints are negative or cross zero must expand in ascending order even when endpoints are reversed. Keep sorted output, duplicate preservation, surrounding whitespace handling, empty input behavior, and existing custom-separator behavior. Reject malformed range tokens instead of silently treating more than two endpoints as a valid range.",
+      "prompt_layout": "unchanged",
+      "reason": "source_unavailable",
+      "task_prompt_sha256": "5c6f863960db6227bdc0f691076c962817aef37ea06af9145a296fd4fae3c72d"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 25251840,
+      "self_peak_rss_bytes": 29720576,
+      "waited_child_cpu_seconds": 0.01576
+    },
+    "setup": {
+      "cpu_seconds": 0.363633227,
+      "waited_child_cpu_seconds": 0.01576,
+      "wall_seconds": 0.4009344209999881
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.00149758099999997,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 0.0014974389999906634
+    }
+  },
+  "ordinal": 12,
+  "process_wall_seconds": 0.5652473379999492,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "boltons/strutils.py"
+    ]
+  },
+  "task_id": "t01",
+  "worker_completed": true
+}

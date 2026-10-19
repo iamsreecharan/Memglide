@@ -1,0 +1,13 @@
+[
+  "/workspace/Memglide/.venv/bin/python",
+  "-I",
+  "/workspace/Memglide/.local/router-v4/record_blocked_native_plan.py",
+  "--plan",
+  "/workspace/Memglide/.local/router-v4-native-plan",
+  "--preflight",
+  "/workspace/Memglide/.local/router-v4/native-admission-final.json",
+  "--policy-freeze",
+  "/workspace/Memglide/.local/router-v4/native-policy-freeze.json",
+  "--output",
+  "/workspace/Memglide/.local/router-v4-native-blocked"
+]

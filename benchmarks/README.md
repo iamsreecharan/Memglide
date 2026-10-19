@@ -6,6 +6,14 @@ tests establish a coding benefit.
 
 ## Read the evidence
 
+- [router-v4-assessment.md](router-v4-assessment.md) / [JSON](router-v4-assessment.json):
+  the latest fresh source-selection study, with all 96 observations and the failed
+  v4 improvement gate. This is an offline B/V3/C comparison, not an actual Codex
+  coding or cost comparison. Its source-only native A/B/C study remains unrun;
+  no new saving is established. Use its specific frozen protocols and access
+  instructions rather than the older MCP experiment below. The
+  [replay guide](router-v4-reproduce.md) explains the recorded commit/runtime and
+  private-grader limits.
 - `improvements.md` / `improvements.json`: current retrieval fixes, online
   research, tested strategies, exact memory-version acknowledgements, latest
   verification totals and retained performance/ranking regressions.

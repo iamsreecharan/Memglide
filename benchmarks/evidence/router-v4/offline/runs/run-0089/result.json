@@ -1,0 +1,71 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "abstention_control",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 19546112,
+    "preparation_cpu_seconds": 7.803700000000302e-05,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 7.806400003573799e-05,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 20791296,
+    "setup_cpu_seconds": 0.054800032,
+    "setup_plus_preparation_wall_seconds": 0.18150188500010245,
+    "setup_waited_child_cpu_seconds": 0.10852599999999998
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 2.544300000001387e-05,
+      "preparation_wall_seconds": 6.96019999395503e-05,
+      "prepared_prompt_sha256": "32485b1fa6641e2ee6695e075f1c9821ad55541da427ff64b5b64cd80be97fff",
+      "prompt": "Rewrite this message in a clear and friendly tone: \"Invalid request. Try again.\" Return just the revised sentence. Use only the supplied text; no source inspection or code changes are needed.",
+      "prompt_layout": "unchanged",
+      "reason": "disabled",
+      "task_prompt_sha256": "32485b1fa6641e2ee6695e075f1c9821ad55541da427ff64b5b64cd80be97fff"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 19546112,
+      "self_peak_rss_bytes": 20791296,
+      "waited_child_cpu_seconds": 0.10852599999999998
+    },
+    "setup": {
+      "cpu_seconds": 0.054800032,
+      "waited_child_cpu_seconds": 0.10852599999999998,
+      "wall_seconds": 0.1814238210000667
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 7.803700000000302e-05,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 7.806400003573799e-05
+    }
+  },
+  "ordinal": 89,
+  "process_wall_seconds": 0.31502669699989383,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": null,
+    "declared_scope_complete": null,
+    "expected_bypass": true,
+    "extra_paths": [],
+    "kind": "abstention_control",
+    "missing_paths": []
+  },
+  "task_id": "c03",
+  "worker_completed": true
+}

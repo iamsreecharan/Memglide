@@ -84,8 +84,12 @@ limits](docs/daily-architecture.md) and [matched experiment protocol](benchmarks
 preparation alone does not establish a token, speed or cost benefit.
 
 The opt-in [bounded v4 router](docs/bounded-source-routing.md) adds production-scoped
-discovery and a conservative current-source screen. Its new held-out and native
-comparison are pending; development checks do not establish savings over Codex.
+discovery and a conservative current-source screen. Its [fresh held-out assessment](benchmarks/router-v4-assessment.md)
+found no inclusion improvement: v4 and v3 delivered zero of twelve positive
+scopes, while known paths delivered three, consistently over two repeats. V4
+added local preparation overhead and remains experimental; no new Codex savings
+are established. See [cloud benchmark access](docs/cloud-benchmark-access.md) to
+open a worker using the published network configuration.
 
 An experimental [automatic source router](docs/task-aware-router.md) accepts a
 natural-language task without target paths:

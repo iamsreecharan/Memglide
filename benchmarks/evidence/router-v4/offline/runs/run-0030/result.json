@@ -1,0 +1,71 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "abstention_control",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 19660800,
+    "preparation_cpu_seconds": 3.0248999999982207e-05,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 3.0327999979817832e-05,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 20168704,
+    "setup_cpu_seconds": 0.031451072,
+    "setup_plus_preparation_wall_seconds": 0.08376905299996906,
+    "setup_waited_child_cpu_seconds": 0.02141
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 2.336299999999847e-05,
+      "preparation_wall_seconds": 2.3256999952536717e-05,
+      "prepared_prompt_sha256": "aed2d37760afab75fddb670ad35d10ec4232f0fd00a99b35ed778594cbfa93c7",
+      "prompt": "Explain the difference between preserving insertion order and sorting values in two sentences, using a hypothetical collection of three numbers. This is a general programming explanation; no repository-specific analysis or code change is requested.",
+      "prompt_layout": "unchanged",
+      "reason": "disabled",
+      "task_prompt_sha256": "aed2d37760afab75fddb670ad35d10ec4232f0fd00a99b35ed778594cbfa93c7"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 19660800,
+      "self_peak_rss_bytes": 20168704,
+      "waited_child_cpu_seconds": 0.02141
+    },
+    "setup": {
+      "cpu_seconds": 0.031451072,
+      "waited_child_cpu_seconds": 0.02141,
+      "wall_seconds": 0.08373872499998924
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 3.0248999999982207e-05,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 3.0327999979817832e-05
+    }
+  },
+  "ordinal": 30,
+  "process_wall_seconds": 0.21613199099999747,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": null,
+    "declared_scope_complete": null,
+    "expected_bypass": true,
+    "extra_paths": [],
+    "kind": "abstention_control",
+    "missing_paths": []
+  },
+  "task_id": "c02",
+  "worker_completed": true
+}

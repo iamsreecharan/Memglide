@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "scope": "Synthetic development only; no prospective evaluation corpus reads or model calls",
+  "test_logs": [
+    {
+      "path": ".local/router-v4/owned-tests-final-frozen.log",
+      "sha256": "cab313ca28425c3aecd108bb7e9581895f9dd70622c44635fec864570c877910",
+      "outcome": "57 passed in 3.65s"
+    },
+    {
+      "path": ".local/router-v4/owned-tests-final-reviewed.log",
+      "sha256": "066ebff1e11b6324f903a9ae1d8fbb68a6cfee2b69c23b879bfdc13b85f7aa8c",
+      "outcome": "55 passed in 3.56s"
+    },
+    {
+      "path": ".local/router-v4/owned-tests-final.log",
+      "sha256": "b7b0afede19c9762653606558d756b44a21b1dddbf38edc484b9800b39edaacd",
+      "outcome": "44 passed in 2.93s"
+    },
+    {
+      "path": ".local/router-v4/owned-tests-initial.log",
+      "sha256": "65956ee47c3f316af4fb899bd7f9f7d9033fe45fe81f1c67334dd9494e851782",
+      "outcome": "37 passed in 2.70s"
+    },
+    {
+      "path": ".local/router-v4/owned-tests-postreview-numeric.log",
+      "sha256": "8f5d0b130c65f5b19290b5461c5a8d0544930f41e4858f32798a4de404b26341",
+      "outcome": "54 passed in 3.44s"
+    },
+    {
+      "path": ".local/router-v4/owned-tests-postreview.log",
+      "sha256": "d760e51efa6264c4d67b2613616b635edee3ecb893c5ee80864b6628907d6a5e",
+      "outcome": "50 passed in 3.37s"
+    },
+    {
+      "path": ".local/router-v4/owned-tests-second.log",
+      "sha256": "11d1389b485c7f052cda321bc124b457918169ef62ef5b86a99f6f301301d694",
+      "outcome": "42 passed in 2.92s"
+    },
+    {
+      "path": ".local/router-v4/owned-tests-third.log",
+      "sha256": "4d6fb4d5f9c1f6303baff5ea2671a89313cfd62992f136b8c0ac75dc02fb5b69",
+      "outcome": "42 passed in 2.98s"
+    }
+  ],
+  "final_test_log": ".local/router-v4/owned-tests-final-frozen.log",
+  "final_tests": {
+    "passed": 57,
+    "failed": 0,
+    "wall_seconds": 3.65
+  },
+  "lint_type_checks": {
+    "ruff": "All checks passed",
+    "mypy": "Success: no issues found in 3 source files"
+  },
+  "initial_check_failures": [
+    {
+      "check": "Ruff new tests",
+      "cause": "One unused pathlib.Path import in new development test; removed before final checks"
+    }
+  ],
+  "pre_freeze_review_counterexamples_resolved": [
+    "Core explicit foo may match after # or Unicode combining boundary inside longer XID run; union core-regex and XID query runs",
+    "Native numeric method names may match within longer dotted query tokens; conservative numeric-dot query/body escape hatch",
+    "Native empty quoted method name may be explicit; retain exact empty quoted literal",
+    "Test provenance fixtures initially used production docs.py, masking specific allowlist checks; moved controls to nonproduction docs/broken.py"
+  ],
+  "additional_generic_controls": [
+    "Unicode NFKC/XID identifiers, JS joiners and escaped names",
+    "Source and policy races for rejected/unsupported/parse-exception competitors",
+    "Bounded fresh reader across coarse-to-AST phase with identity rechecks",
+    "Partial/truncated/unknown/production parser failures stay fail-closed"
+  ],
+  "independent_review": ".local/router-v4/security-review.json",
+  "final_source_sha256": {
+    "src/memglide/integrations/bounded_router.py": "95f2f9cc044078828f0c3ec2a9d1c22eb943819ff999ca75d01b9998f5097acb",
+    "src/memglide/integrations/auto_preload.py": "fea98fde8b67dfb954ec447a7a83ae79129e43335557e5a69d7ad662afae2975",
+    "src/memglide/core/indexer.py": "9f76e10c9dc29b80a49973a38a656aaab15f6a6c34332a0a8acede1ee5dc3820",
+    "tests/test_bounded_router.py": "b18115789ca14c816834879507d18025af759ce80f2d71ac2bb729d8e51f3fce",
+    "tests/test_auto_preload_v4.py": "d686f12a1c7d79723c8ee22b0dd8e6ff4b1cb52ac95cd426ef10a0dfa00a0203"
+  }
+}

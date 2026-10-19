@@ -1,0 +1,163 @@
+{
+  "arm": "C",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "positive",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 19951616,
+    "preparation_cpu_seconds": 0.04158010099999998,
+    "preparation_waited_child_cpu_seconds": 0.10079600000000001,
+    "preparation_wall_seconds": 0.14397134800003641,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 20168704,
+    "setup_cpu_seconds": 0.027709361999999987,
+    "setup_plus_preparation_wall_seconds": 0.29216296700008115,
+    "setup_waited_child_cpu_seconds": 0.086711
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "automatic_selection": {
+        "auxiliary_model_calls": 0,
+        "candidate_files_considered": 3,
+        "candidate_generation_limit_reached": false,
+        "coarse_selection": {
+          "coarse_bytes": 19138,
+          "coarse_files_checked": 3,
+          "coarse_wall_seconds": 0.017843538000079207,
+          "frontier": [
+            {
+              "classification": "potential_supported",
+              "path": "src/index.ts",
+              "reason": "two_term_upper_bound",
+              "sha256": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd"
+            },
+            {
+              "classification": "potential_supported",
+              "path": "src/types.ts",
+              "reason": "two_term_upper_bound",
+              "sha256": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77"
+            },
+            {
+              "classification": "potential_supported",
+              "path": "src/utils.ts",
+              "reason": "two_term_upper_bound",
+              "sha256": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40"
+            }
+          ],
+          "frontier_omitted": 0,
+          "nonproduction_parse_errors_accepted": 0,
+          "potential_supported_files": 3,
+          "potential_unsupported_files": 0,
+          "scope": "supported-production-lexical-upper-bound-v1",
+          "scope_complete": true,
+          "supported_production_files": 3,
+          "unsupported_production_files": 0,
+          "version": 1,
+          "weak_supported_files": 0,
+          "weak_unsupported_files": 0
+        },
+        "decision": "SKIP",
+        "dependency_paths_considered": 1,
+        "discovery_cpu_seconds": 0.041543048,
+        "discovery_wall_seconds": 0.14393184499999734,
+        "estimated_added_tokens": 0,
+        "index_refresh_wall_seconds": 0.024672284000075706,
+        "index_refreshed": true,
+        "omitted_candidate_files": 0,
+        "policy_version": "deterministic-source-v4",
+        "provided_source_paths": [],
+        "ranked_candidates": [
+          {
+            "evidence_terms": [
+              "balanced",
+              "root"
+            ],
+            "explicit_anchor": true,
+            "path": "src/utils.ts",
+            "reason": "Verified runtime syntax unit: 2 body/role term(s), 2 clean header term(s); candidate-specificity weights. Comments, literals and indexed signatures cannot justify selection; syntax roles are heuristic, not execution or requirement completeness.",
+            "score": 10108.754687
+          },
+          {
+            "evidence_terms": [
+              "avl",
+              "root",
+              "tree"
+            ],
+            "explicit_anchor": true,
+            "path": "src/index.ts",
+            "reason": "Verified runtime syntax unit: 1 body/role term(s), 2 clean header term(s); candidate-specificity weights. Comments, literals and indexed signatures cannot justify selection; syntax roles are heuristic, not execution or requirement completeness.",
+            "score": 10107.442297
+          },
+          {
+            "evidence_terms": [],
+            "explicit_anchor": false,
+            "path": "src/types.ts",
+            "reason": "Verified runtime syntax unit: 0 body/role term(s), 0 clean header term(s); candidate-specificity weights. Comments, literals and indexed signatures cannot justify selection; syntax roles are heuristic, not execution or requirement completeness.",
+            "score": 0.0
+          }
+        ],
+        "reason": "ambiguous_candidates",
+        "retrieval_wall_seconds": 0.11548020300006101,
+        "selected_paths": [],
+        "source_preparation_wall_seconds": 0.0,
+        "source_versions": {},
+        "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+        "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+        "unresolved_dependency_count": 10,
+        "version": 1
+      },
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.041543048,
+      "preparation_wall_seconds": 0.14393184499999734,
+      "prepared_prompt_sha256": "71d57ad88c7ac1fa8410a56672bc307d9831ba44a6a0915d8cc2b5bb42d33615",
+      "prompt": "Optimize AVLTree.isBalanced so each node is examined only a constant number of times. It must still return true for an empty tree, accept balanced trees, and reject an imbalance anywhere below the root. Avoid repeatedly recomputing subtree heights while checking ancestors.",
+      "prompt_layout": "unchanged",
+      "reason": "ambiguous_candidates",
+      "task_prompt_sha256": "71d57ad88c7ac1fa8410a56672bc307d9831ba44a6a0915d8cc2b5bb42d33615"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 19951616,
+      "self_peak_rss_bytes": 20168704,
+      "waited_child_cpu_seconds": 0.187507
+    },
+    "setup": {
+      "cpu_seconds": 0.027709361999999987,
+      "waited_child_cpu_seconds": 0.086711,
+      "wall_seconds": 0.14819161900004474
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.04158010099999998,
+      "waited_child_cpu_seconds": 0.10079600000000001,
+      "wall_seconds": 0.14397134800003641
+    }
+  },
+  "ordinal": 26,
+  "process_wall_seconds": 0.4669665559999885,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "src/utils.ts"
+    ]
+  },
+  "task_id": "t12",
+  "worker_completed": true
+}

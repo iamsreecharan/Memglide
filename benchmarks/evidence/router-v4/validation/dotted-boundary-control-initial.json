@@ -1,0 +1,25 @@
+{
+  "reviewer_owned_synthetics": true,
+  "rows": [
+    {
+      "source": "class X { 1.0() { return 0; } }",
+      "query": "Fix foo.1.0 decimal formatting",
+      "v3_explicit": true,
+      "coarse": [
+        false,
+        "insufficient_upper_bound"
+      ]
+    },
+    {
+      "source": "class X { 1.0() { return 0; } }",
+      "query": "Fix #1.0 decimal formatting",
+      "v3_explicit": true,
+      "coarse": [
+        false,
+        "insufficient_upper_bound"
+      ]
+    }
+  ],
+  "model_calls": 0,
+  "corpus_reads": 0
+}

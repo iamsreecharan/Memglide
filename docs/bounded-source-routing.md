@@ -61,3 +61,13 @@ independent grading and all failed attempts in cost-per-success accounting.
 
 V4 remains opt-in. No default promotion, new model-cost improvement or hosted
 production-readiness claim follows from correct screening or passing local tests.
+
+The [fresh v4 assessment](../benchmarks/router-v4-assessment.md) records a failed
+selection gate: zero complete positive scopes in 24 v4 observations, equal to v3,
+versus six known-path observations. V4 added about 85 ms mean local preparation
+time relative to v3. Nine of twelve declared whole-source bundles exceed the
+frozen 12,000-byte envelope cap; the three feasible bundles also failed automatic
+delivery. These are source-inclusion and local-overhead findings, not measured
+coding success, full coding-task latency, tokens or model charges. Keep the
+original outcomes; any revised policy needs separate development cases and a new
+held-out corpus. The candidate did not qualify for the matched coding study.

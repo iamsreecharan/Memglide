@@ -1,0 +1,10 @@
+{
+  "arm": "V3",
+  "prompt": "Make safeTry close its generator when evaluation stops at a yielded Err, so generator finally blocks execute for both synchronous and asynchronous bodies. Preserve the yielded error result, do not resume normal body statements past it, and keep successful return handling intact. Await asynchronous cleanup before resolving the result; a cleanup exception should propagate.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0039"
+}
