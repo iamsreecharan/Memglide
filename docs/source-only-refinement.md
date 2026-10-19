@@ -69,3 +69,19 @@ does not itself remove model-visible tokens or establish additional model cost
 savings. The [component protocol](../benchmarks/source-only-refinement-protocol.md)
 compares the historical preparer and the refined implementation with separate
 first-call, warm-call, whole-worker and diagnostic measurements.
+
+## Measured outcome
+
+The [assessment](../benchmarks/source-only-refinement-assessment.md) preserves
+all 78 local workers and an independent reconstruction. Policy compilation
+halved in both policy fixtures while complete source, prompt bytes and current
+read checks stayed identical. Timing was mixed: every primary paired mean
+wall/own-CPU interval includes zero. Dense warm median preparation improved,
+but its mean worsened; median whole-worker peak RSS rose by 0.125 MiB. Large
+unexplained observations remain included. This confirms less duplicated work,
+not a reliable overall latency improvement or new model-cost savings.
+
+The full Python, frontend, production-browser and installed CLI/API/MCP checks
+passed. Next, replicate on realistic ignore layouts with separate phase
+diagnostics before claiming an end-to-end benefit. Automatic selection and
+warm memory remain optional experiments rather than part of this profile.

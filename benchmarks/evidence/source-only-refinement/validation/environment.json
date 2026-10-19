@@ -1,0 +1,10 @@
+{
+  "recorded_utc": "2026-10-19T17:50:20.350372+00:00",
+  "python": "3.12.14",
+  "system": "Linux",
+  "cgroup_limits": {
+    "/sys/fs/cgroup/cpu.max": "400000 100000",
+    "/sys/fs/cgroup/memory.max": "34359738368"
+  },
+  "scope": "Configured local execution limits, not measured model resources or actual CPU usage. Shared-host scheduling and caches remain uncontrolled."
+}

@@ -1,0 +1,173 @@
+{
+  "scope": "Synthetic development probe; current warm OS caches, no native agents or held-out tasks. Instrumented timers are inclusive and must not be added. Imports use fresh processes but uncontrolled OS caches.",
+  "model_requests": 0,
+  "cases": {
+    "no_ignore_one_source": {
+      "source_files": 1,
+      "policy_files": 0,
+      "policy_bytes": 0,
+      "instrumented_counts": {
+        "selection": 2,
+        "sqlite_connections": 2,
+        "sqlite_statements": 8,
+        "eligible": 2,
+        "safe_path": 16,
+        "source_secure_reads": 2
+      },
+      "instrumented_inclusive_seconds": {
+        "selection": 0.0033970629883697256,
+        "safe_path": 0.006922022963408381,
+        "eligible": 0.005591473993263207,
+        "source_secure_reads": 0.0019616159988800064
+      },
+      "uninstrumented_10_warm_api_wall_seconds": {
+        "values": [
+          0.008159254008205608,
+          0.017019816994434223,
+          0.012439304002327845,
+          0.010582816990790889,
+          0.00921611201192718,
+          0.008303474009153433,
+          0.01021586000570096,
+          0.01172852300805971,
+          0.011299787001917139,
+          0.008116652010357939
+        ],
+        "mean": 0.010708160004287492,
+        "median": 0.010399338498245925
+      },
+      "prepared_prompt_sha256": "f186ee99b9a536916a6eb531b7eb7ce63eaaa8f68fb1cf3b91c85f673ffbcc13",
+      "context_bytes": 230
+    },
+    "typical_nested_four_sources": {
+      "source_files": 4,
+      "policy_files": 3,
+      "policy_bytes": 97,
+      "instrumented_counts": {
+        "selection": 2,
+        "sqlite_connections": 2,
+        "sqlite_statements": 8,
+        "eligible": 2,
+        "safe_path": 48,
+        "policy_secure_reads": 6,
+        "ignore_compilations": 3,
+        "ignore_match_calls": 58,
+        "source_secure_reads": 8
+      },
+      "instrumented_inclusive_seconds": {
+        "selection": 0.002133968999260105,
+        "safe_path": 0.015602148065227084,
+        "policy_secure_reads": 0.005235080985585228,
+        "ignore_compilations": 0.0008515049994457513,
+        "ignore_match_calls": 0.0005670410027960315,
+        "eligible": 0.01463128300383687,
+        "source_secure_reads": 0.0071560459764441475
+      },
+      "uninstrumented_10_warm_api_wall_seconds": {
+        "values": [
+          0.033968036994338036,
+          0.030209081000066362,
+          0.03841290700074751,
+          0.031831916989176534,
+          0.027119657999719493,
+          0.026449982993653975,
+          0.02934646900394,
+          0.026327619998482987,
+          0.029793977999361232,
+          0.01998597900092136
+        ],
+        "mean": 0.02934456289804075,
+        "median": 0.029570223501650617
+      },
+      "prepared_prompt_sha256": "ef480bf0bd7abfd15b82906940334b7c287b934529f58e5897acc0248a7cef4d",
+      "context_bytes": 485
+    },
+    "dense_8k_four_sources": {
+      "source_files": 4,
+      "policy_files": 1,
+      "policy_bytes": 8192,
+      "instrumented_counts": {
+        "selection": 2,
+        "sqlite_connections": 2,
+        "sqlite_statements": 8,
+        "eligible": 2,
+        "safe_path": 40,
+        "policy_secure_reads": 2,
+        "ignore_compilations": 1,
+        "ignore_match_calls": 28,
+        "source_secure_reads": 8
+      },
+      "instrumented_inclusive_seconds": {
+        "selection": 0.0049909480003407225,
+        "safe_path": 0.022503825908643194,
+        "policy_secure_reads": 0.005941180002992041,
+        "ignore_compilations": 0.022432218000176363,
+        "ignore_match_calls": 0.004673279006965458,
+        "eligible": 0.049231946002691984,
+        "source_secure_reads": 0.009268038978916593
+      },
+      "uninstrumented_10_warm_api_wall_seconds": {
+        "values": [
+          0.07198925700504333,
+          0.06380916999478359,
+          0.05638551400625147,
+          0.06004927499452606,
+          0.07524388599267695,
+          0.1173817609960679,
+          0.08962608000729233,
+          0.0500489319965709,
+          0.07792798300215509,
+          0.07337000899133272
+        ],
+        "mean": 0.07358318669867003,
+        "median": 0.07267963299818803
+      },
+      "prepared_prompt_sha256": "ef480bf0bd7abfd15b82906940334b7c287b934529f58e5897acc0248a7cef4d",
+      "context_bytes": 485
+    }
+  },
+  "fresh_process_imports": {
+    "memglide.integrations.preload": [
+      {
+        "import_seconds": 0.017014933997415937,
+        "process_wall_seconds": 0.0700643619929906
+      },
+      {
+        "import_seconds": 0.03774421600974165,
+        "process_wall_seconds": 0.1577469649928389
+      },
+      {
+        "import_seconds": 0.053112592999241315,
+        "process_wall_seconds": 0.19152582599781454
+      }
+    ],
+    "memglide.integrations.codex_preload": [
+      {
+        "import_seconds": 0.041661337003461085,
+        "process_wall_seconds": 0.11572998900373932
+      },
+      {
+        "import_seconds": 0.040392214999883436,
+        "process_wall_seconds": 0.11747718800324947
+      },
+      {
+        "import_seconds": 0.03074855999147985,
+        "process_wall_seconds": 0.0777760000055423
+      }
+    ],
+    "memglide.security.paths": [
+      {
+        "import_seconds": 0.02745289000449702,
+        "process_wall_seconds": 0.08074669800407719
+      },
+      {
+        "import_seconds": 0.12092819801182486,
+        "process_wall_seconds": 0.23039385800075252
+      },
+      {
+        "import_seconds": 0.05391843200777657,
+        "process_wall_seconds": 0.13500421099888626
+      }
+    ]
+  }
+}

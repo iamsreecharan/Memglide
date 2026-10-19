@@ -46,6 +46,11 @@ automatic memory or discovery. Those 9–10% figures describe specific subsets;
 actual billing savings remain unproven. The guide explains native configuration
 and the new bounded local preparation refinement.
 
+The [refinement assessment](benchmarks/source-only-refinement-assessment.md)
+confirms half as many repeated policy compilations with identical source and
+freshness checks. Its local timing results are mixed: no reliable overall mean
+speedup or additional model-cost saving was demonstrated.
+
 With a working Codex CLI installation:
 
 ```sh

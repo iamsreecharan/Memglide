@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-19T18:01:34.621382+00:00",
+  "source_commit": "971c400e8dc1fe1f0ea8c5cf91c36fbf77d8a7d9",
+  "uv_sync_frozen": "passed",
+  "ruff_check": "passed",
+  "mypy": {
+    "passed": true,
+    "source_files": 30
+  },
+  "frontend_dependencies": "Reused valid pinned dependencies; no manifest/lock changes",
+  "frontend_production_build": "passed through Playwright webServer build",
+  "wheel_build": "passed",
+  "fresh_runtime_install": "passed with frozen runtime constraints",
+  "files": {
+    "src/memglide/integrations/preload.py": {
+      "sha256": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+      "bytes": 18256
+    },
+    "uv.lock": {
+      "sha256": "89bcc0d7a1c76ece1b91aaaa39ab108f819d1268d8d27bc60890abad124306f0",
+      "bytes": 231685
+    },
+    "frontend/package-lock.json": {
+      "sha256": "6faa2d2195d2af4c9c2c660b92578984ad81f9a45b98d3156c42bb603493b387",
+      "bytes": 105769
+    },
+    ".local/source-only-refinement/dist/memglide-0.1.0-py3-none-any.whl": {
+      "sha256": "10b2f86786dae9a9340a95207aa1c5d258fb85a0b02d6c7f920e4efc70bc382e",
+      "bytes": 248074
+    },
+    ".local/source-only-refinement/runtime-requirements.txt": {
+      "sha256": "f2cf4ab8878b46721e0d755c61bf2778c370a1d27471b84be47f84dad2324e51",
+      "bytes": 46150
+    }
+  },
+  "dependency_review": {
+    "package": "pathspec",
+    "version": "1.0.4",
+    "reviewed": "Installed pinned GitIgnoreSpec.from_lines and check_file; compilation derives from lines and base directories remain external",
+    "gitignore_py_sha256": "a0559f4a079e71a245482808d13c1d631cf48e5b90c73b607fe4fbefd3b120df"
+  },
+  "model_requests": 0
+}

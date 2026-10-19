@@ -1,0 +1,7 @@
+{
+  "arm": "baseline",
+  "fixture": "noignore",
+  "kind": "performance",
+  "repeat": 2,
+  "snapshot_sha256": "9ae8595b4b5f97993dcf177d78d090db5f1e0f6fdb8ce2e2da5e3d766d69afac"
+}

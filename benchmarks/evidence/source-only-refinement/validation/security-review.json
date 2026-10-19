@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "kind": "Independent security and compatibility review of request-local compiled-policy reuse",
+  "source_files": {
+    "src/memglide/integrations/preload.py": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+    "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38"
+  },
+  "observed_checks": [
+    {
+      "check": "prompt_and_source_identity_with_cache_forced_misses_control",
+      "format": "legacy",
+      "pass": true,
+      "cached_compile_count": 1,
+      "forced_miss_compile_count": 2,
+      "secure_read_counts_both": {
+        ".gitignore": 2,
+        "code.py": 2
+      },
+      "prepared_prompt_sha256": "3af9f6b4e4d3770eaede62dd627ef5449a1cbd9ba892eb6c44880607fc261935",
+      "limitation": "Forced-miss current-code control emulates uncached compilation semantics; this is not a historical whole-application performance benchmark."
+    },
+    {
+      "check": "prompt_and_source_identity_with_cache_forced_misses_control",
+      "format": "compact-prefix",
+      "pass": true,
+      "cached_compile_count": 1,
+      "forced_miss_compile_count": 2,
+      "secure_read_counts_both": {
+        ".gitignore": 2,
+        "code.py": 2
+      },
+      "prepared_prompt_sha256": "dd7eb8a8fa7f31db6bb47df64bfda2f1858f88aa417706bcd0a6ce1aeba7e996",
+      "limitation": "Forced-miss current-code control emulates uncached compilation semantics; this is not a historical whole-application performance benchmark."
+    },
+    {
+      "check": "same_length_policy_change_with_restored_mtime_rejects_previously_allowed_source",
+      "pass": true,
+      "reason": "source_excluded"
+    },
+    {
+      "check": "previously_absent_policy_replaced_by_symlink_is_rejected_without_external_read",
+      "pass": true,
+      "reason": "source_unavailable",
+      "external_policy_secure_reads": 0
+    },
+    {
+      "check": "final_approval_check_observes_revocation_during_source_preparation",
+      "pass": true,
+      "reason": "project_unavailable"
+    },
+    {
+      "check": "retained_utf8_content_and_entry_limits",
+      "pass": true,
+      "retained_content_bytes_at_byte_limit": 64000,
+      "retained_entries_at_entry_limit": 64,
+      "memory_scope": "Bounds retained policy text and entry count; compiled pattern objects and interpreter overhead are additional and unmeasured."
+    }
+  ],
+  "all_checks_passed": true,
+  "static_review": {
+    "cache_identity": "Exact freshly secured source string plus SHA-256 digest; empty specifications use an is-None miss test.",
+    "freshness": "Every source and policy secure read, hash, absence/symlink check, per-pass byte budget, policy match and final fresh approval/settings/index-membership query remains in place.",
+    "scope": "A new cache is created after initial project selection inside each prepare_prompt call. No cache or compiled object is returned in public results; default _eligible callers receive no shared cache.",
+    "limits": "At most 64 entries and 64000 UTF-8 bytes of retained source content; overflow is compiled without retention rather than skipped.",
+    "base_paths": "Compiled patterns are content-derived; ancestor base paths remain attached outside the shared specification in the existing rules traversal.",
+    "compatibility": "The patch changes no public preparation signature, source envelope, source fidelity fields, legacy/compact layout, fallback rules, model settings, memory or MCP integration."
+  },
+  "remaining_limits": [
+    "These synthetic checks are not a full application, installed-artifact or model benchmark.",
+    "No runtime RSS or compiled-object heap bound was measured; 64000 bytes describes retained source text only.",
+    "Performance benefit depends on actual ignore-policy compilation overhead and must be measured separately without concurrent tests."
+  ],
+  "application_edits_by_reviewer": 0,
+  "model_calls": 0,
+  "untrusted_repository_code_executed": false
+}

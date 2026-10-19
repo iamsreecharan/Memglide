@@ -1,5 +1,37 @@
 # Memglide verification record
 
+## Known-path source-only refinement: preserved context, mixed timing
+
+The historical source-only preparer was already present byte for byte; no
+whole-checkout rollback or model change was needed. The [focused profile](docs/source-only-refinement.md)
+documents the earlier model/settings and keeps discovery, supporting files and
+memory explicit. The new request-local cache reuses compiled ignore policies
+only after fresh secure reads confirm identical content. Both approval checks,
+source observations, policy budgets and normal complete-source prompts remain
+unchanged. Retention is bounded to 64 specifications and 64,000 UTF-8 policy
+bytes; compiled objects and bookkeeping allocate additional memory.
+
+The frozen [local assessment](benchmarks/source-only-refinement-assessment.md)
+retains all 78 original workers: 72 timing observations and six separate
+diagnostic workers. An independent read-only reconstruction verified 468 exact
+source/prompt observations, 24 fallbacks and all 18 statistical summaries.
+Typical policy compilation falls from six to three per call, dense from two
+to one, with identical fresh source/policy read counts. **No reliable overall
+mean-latency win was demonstrated**: every primary mean wall/own-CPU interval
+includes zero. Dense warm median preparation fell from 31.607 to 25.920 ms,
+while its mean rose from 32.834 to 36.163 ms. Dense whole-worker median peak
+RSS rose by 0.125 MiB. Large unexplained own-CPU/wall outliers remain included,
+including an apparent mean win in the unchanged no-ignore control. These are
+synthetic component measurements, not end-to-end coding-task results.
+
+The complete Python suite passed **2,081 cases**, frontend **24/24**, production
+Chromium **3/3**, and clean installed-wheel CLI/API/SPA/default-and-agent MCP
+checks **15/15**; lint, typing, build and independent security checks passed.
+Overlapping targeted reruns are retained without inflating the full-suite count.
+No model requests were dispatched. New token/cost benefits, actual billing and
+native-task correctness effects are unmeasured. The earlier 9–10% estimates
+remain separate historical evidence; neither automatic router was promoted.
+
 ## Task-aware router v2: fresh negative evaluation
 
 The [task-aware source router](docs/task-aware-router.md) adds bounded verified
