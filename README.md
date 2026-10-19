@@ -39,6 +39,13 @@ Sessions expire after 60 minutes of inactivity, capped at eight hours by default
 
 ## Connect Codex
 
+For the source-only configuration used in the earlier favorable cost estimates,
+follow the [focused source-only profile](docs/source-only-refinement.md): complete
+known source files, compact prefixes, `gpt-6.1-sol` at low reasoning and no
+automatic memory or discovery. Those 9–10% figures describe specific subsets;
+actual billing savings remain unproven. The guide explains native configuration
+and the new bounded local preparation refinement.
+
 With a working Codex CLI installation:
 
 ```sh
