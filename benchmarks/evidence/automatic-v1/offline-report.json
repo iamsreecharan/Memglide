@@ -1,0 +1,2167 @@
+{
+  "version": "automatic-1",
+  "kind": "Offline source-selection and full-source-fidelity probe; no coding model",
+  "rows": [
+    {
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "setup": {
+        "project_id": "a6cd597c8b724c3486a72841f55485a0",
+        "wall_seconds": 1.3115084599994589,
+        "cpu_seconds": 0.4855229620000001,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "0efa8224285abcd2ba9cc7f5ae2881b454594be3d247474075b08e296b7c138f",
+        "prepared_prompt_sha256": "36c53ae87bcf1bf6fa0d5ebde85340b4be3aa7f4e7cabb279b8b75376efd30f4",
+        "files": [
+          {
+            "path": "src/itsdangerous/encoding.py",
+            "sha256": "ce558e7065e729aad86f998f9b611918a0880bfece2db377462587ddf549b856",
+            "start_line": 1,
+            "end_line": 54
+          }
+        ],
+        "context_bytes": 1671,
+        "preparation_wall_seconds": 0.01566672899934929,
+        "preparation_cpu_seconds": 0.01566914499999994
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.327396818996931,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.501389742,
+      "prompt_sha256": "36c53ae87bcf1bf6fa0d5ebde85340b4be3aa7f4e7cabb279b8b75376efd30f4",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "setup": {
+        "project_id": "29ac3e13235c4978a30a0914d8222a26",
+        "wall_seconds": 1.5980164810025599,
+        "cpu_seconds": 1.2739130959999998,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "0efa8224285abcd2ba9cc7f5ae2881b454594be3d247474075b08e296b7c138f",
+        "prepared_prompt_sha256": "0efa8224285abcd2ba9cc7f5ae2881b454594be3d247474075b08e296b7c138f",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.6963308880003751,
+        "preparation_cpu_seconds": 0.5816932750000001,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/itsdangerous/url_safe.py",
+              "score": 49.2503,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "byte",
+                "safe",
+                "url"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/encoding.py",
+              "score": 48.8482,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "base64",
+                "byte",
+                "decode"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/serializer.py",
+              "score": 48.5716,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte",
+                "data",
+                "text"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/timed.py",
+              "score": 48.5254,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/exc.py",
+              "score": 47.9313,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "data",
+                "exception"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/signer.py",
+              "score": 47.6917,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/__init__.py",
+              "score": 46.9392,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": ".devcontainer/on-create-command.sh",
+              "score": 43.6171,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/_json.py",
+              "score": 36.3545,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte"
+              ],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.6963308880003751,
+          "discovery_cpu_seconds": 0.5816932750000001,
+          "index_refresh_wall_seconds": 0.5018752549949568,
+          "retrieval_wall_seconds": 0.15270012499968288,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 9,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 2.297736563006765,
+      "cold_setup_and_preparation_parent_cpu_seconds": 1.8587916830000002,
+      "prompt_sha256": "0efa8224285abcd2ba9cc7f5ae2881b454594be3d247474075b08e296b7c138f",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "setup": {
+        "project_id": "13c9938037d44bf08b0f5754fd68c127",
+        "wall_seconds": 1.2026308560016332,
+        "cpu_seconds": 0.8737605300000002,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "1c728c46babc53f5c0aff5ff7b556b4b188a69bb6df6893b4ed4981d390cca13",
+        "prepared_prompt_sha256": "43384420baac67f01b6156d059be527ecf90ee42da4e7e070bc36719c4039852",
+        "files": [
+          {
+            "path": "src/itsdangerous/encoding.py",
+            "sha256": "1110ddc18dd2173788655ae5ebb86e0892887d2276690f75bb5f1c5b44dbcc41",
+            "start_line": 1,
+            "end_line": 54
+          }
+        ],
+        "context_bytes": 1693,
+        "preparation_wall_seconds": 0.03651123600138817,
+        "preparation_cpu_seconds": 0.0365157009999999
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.2392176139983349,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.9103442139999998,
+      "prompt_sha256": "43384420baac67f01b6156d059be527ecf90ee42da4e7e070bc36719c4039852",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "setup": {
+        "project_id": "544386018df940fcb693d2f75255ae30",
+        "wall_seconds": 0.7330562559945974,
+        "cpu_seconds": 0.4711507770000001,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "1c728c46babc53f5c0aff5ff7b556b4b188a69bb6df6893b4ed4981d390cca13",
+        "prepared_prompt_sha256": "1c728c46babc53f5c0aff5ff7b556b4b188a69bb6df6893b4ed4981d390cca13",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.4281792659967323,
+        "preparation_cpu_seconds": 0.3144013880000003,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/itsdangerous/timed.py",
+              "score": 48.0664,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/signer.py",
+              "score": 47.7507,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/serializer.py",
+              "score": 47.6781,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/encoding.py",
+              "score": 47.1008,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "byte",
+                "encoding"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/exc.py",
+              "score": 45.946,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/_json.py",
+              "score": 45.1193,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte",
+                "compact"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/url_safe.py",
+              "score": 44.6005,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "byte"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": ".devcontainer/on-create-command.sh",
+              "score": 43.6171,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/__init__.py",
+              "score": 37.4917,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.4281792659967323,
+          "discovery_cpu_seconds": 0.3144013880000003,
+          "index_refresh_wall_seconds": 0.2916575919953175,
+          "retrieval_wall_seconds": 0.10859903000527993,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 9,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.1617380600000615,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.7860316369999998,
+      "prompt_sha256": "1c728c46babc53f5c0aff5ff7b556b4b188a69bb6df6893b4ed4981d390cca13",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "setup": {
+        "project_id": "1812dc1d9dbb4663a84d3d90477231aa",
+        "wall_seconds": 0.5124706440037698,
+        "cpu_seconds": 0.3018455169999994,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "76fb9e2891568546dc1a9c3d9b7a8ad4c6fe225ddc483a37d1e7a435d1f233da",
+        "prepared_prompt_sha256": "99a754062890c98b9ab56d80d2e186d1e95a0fd4d9b2bab3f6bf7cf794169018",
+        "files": [
+          {
+            "path": "src/itsdangerous/url_safe.py",
+            "sha256": "5c103267d97da6c3632b696868dbca51cb5175eb0c27012630b174106cd13212",
+            "start_line": 1,
+            "end_line": 83
+          }
+        ],
+        "context_bytes": 2795,
+        "preparation_wall_seconds": 0.021050311006547417,
+        "preparation_cpu_seconds": 0.021052500000000585
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/itsdangerous/url_safe.py"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/itsdangerous/url_safe.py"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.533689461000904,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.32294767700000016,
+      "prompt_sha256": "99a754062890c98b9ab56d80d2e186d1e95a0fd4d9b2bab3f6bf7cf794169018",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "setup": {
+        "project_id": "92f0c5b7fa0d470ba67bf33467653b3a",
+        "wall_seconds": 0.747161141000106,
+        "cpu_seconds": 0.5703063760000004,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "76fb9e2891568546dc1a9c3d9b7a8ad4c6fe225ddc483a37d1e7a435d1f233da",
+        "prepared_prompt_sha256": "76fb9e2891568546dc1a9c3d9b7a8ad4c6fe225ddc483a37d1e7a435d1f233da",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.43623335099982796,
+        "preparation_cpu_seconds": 0.33010592100000036,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/itsdangerous/url_safe.py",
+              "score": 48.9229,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "payload",
+                "safe",
+                "url"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/serializer.py",
+              "score": 47.7218,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "data",
+                "keep",
+                "payload"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/exc.py",
+              "score": 47.0774,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "data",
+                "payload",
+                "signed"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/signer.py",
+              "score": 46.7034,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "keep",
+                "signed",
+                "string"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/timed.py",
+              "score": 46.5524,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "signed"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": ".devcontainer/on-create-command.sh",
+              "score": 43.6171,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/encoding.py",
+              "score": 42.6708,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "string"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/__init__.py",
+              "score": 39.8768,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/itsdangerous/_json.py",
+              "score": 39.2914,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "payload"
+              ],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.43623335099982796,
+          "discovery_cpu_seconds": 0.33010592100000036,
+          "index_refresh_wall_seconds": 0.36281779399723746,
+          "retrieval_wall_seconds": 0.05349332599871559,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 9,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/itsdangerous/url_safe.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.1836271339998348,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.9006372819999999,
+      "prompt_sha256": "76fb9e2891568546dc1a9c3d9b7a8ad4c6fe225ddc483a37d1e7a435d1f233da",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "setup": {
+        "project_id": "6ac4fe1ba0f54cc19f3a6cb45dbb6703",
+        "wall_seconds": 0.5064587050001137,
+        "cpu_seconds": 0.3558252590000004,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "source_unavailable",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "1866e340b1c1b6ac72248300b2fdc8f2297ca440f2d81546734d34dfb867bbd3",
+        "prepared_prompt_sha256": "1866e340b1c1b6ac72248300b2fdc8f2297ca440f2d81546734d34dfb867bbd3",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.011257589001615997,
+        "preparation_cpu_seconds": 0.011259605000000228
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.5177628099991125,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.3671258219999993,
+      "prompt_sha256": "1866e340b1c1b6ac72248300b2fdc8f2297ca440f2d81546734d34dfb867bbd3",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "setup": {
+        "project_id": "74c8420760de437393d10413a532a6c3",
+        "wall_seconds": 0.5329467569972621,
+        "cpu_seconds": 0.34659754399999976,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "1866e340b1c1b6ac72248300b2fdc8f2297ca440f2d81546734d34dfb867bbd3",
+        "prepared_prompt_sha256": "1866e340b1c1b6ac72248300b2fdc8f2297ca440f2d81546734d34dfb867bbd3",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.24437377399590332,
+        "preparation_cpu_seconds": 0.18461430699999948,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/pyproject_hooks/_impl.py",
+              "score": 48.7249,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "api",
+                "backend",
+                "build",
+                "directory",
+                "name",
+                "path",
+                "read",
+                "tree"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/_in_process/_in_process.py",
+              "score": 47.8915,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "backend",
+                "build",
+                "directory",
+                "name",
+                "path",
+                "read"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "noxfile.py",
+              "score": 46.8143,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "doc"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/_in_process/__init__.py",
+              "score": 42.4206,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "path"
+              ],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.24437377399590332,
+          "discovery_cpu_seconds": 0.18461430699999948,
+          "index_refresh_wall_seconds": 0.19845362799969735,
+          "retrieval_wall_seconds": 0.03405523500259733,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 4,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.7776146260002861,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.5314997119999996,
+      "prompt_sha256": "1866e340b1c1b6ac72248300b2fdc8f2297ca440f2d81546734d34dfb867bbd3",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "setup": {
+        "project_id": "12f01e2e7ee34343a91b17ecf5c90524",
+        "wall_seconds": 0.39428963200043654,
+        "cpu_seconds": 0.29359417600000004,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "source_unavailable",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "388f6e33705589c21096704e28acc6fc3320b19b2265a4ddb294b00ef895734b",
+        "prepared_prompt_sha256": "388f6e33705589c21096704e28acc6fc3320b19b2265a4ddb294b00ef895734b",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.00425873399944976,
+        "preparation_cpu_seconds": 0.004260135999999193
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.39859406700270483,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.29789455600000014,
+      "prompt_sha256": "388f6e33705589c21096704e28acc6fc3320b19b2265a4ddb294b00ef895734b",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "setup": {
+        "project_id": "6f2d2f5cd0ca4ad585bac2a909763d32",
+        "wall_seconds": 0.3712375030008843,
+        "cpu_seconds": 0.25399743999999913,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "388f6e33705589c21096704e28acc6fc3320b19b2265a4ddb294b00ef895734b",
+        "prepared_prompt_sha256": "388f6e33705589c21096704e28acc6fc3320b19b2265a4ddb294b00ef895734b",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.25739455399889266,
+        "preparation_cpu_seconds": 0.21513612000000037,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/pyproject_hooks/_impl.py",
+              "score": 48.0738,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "api",
+                "backend",
+                "build",
+                "exception",
+                "read",
+                "runner"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "noxfile.py",
+              "score": 47.4327,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "doc"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/_in_process/_in_process.py",
+              "score": 46.1534,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "backend",
+                "build",
+                "exception",
+                "read"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/__init__.py",
+              "score": 45.2574,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/_in_process/__init__.py",
+              "score": 17.3809,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.25739455399889266,
+          "discovery_cpu_seconds": 0.21513612000000037,
+          "index_refresh_wall_seconds": 0.167914819001453,
+          "retrieval_wall_seconds": 0.07635655399644747,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 5,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.6294813949934905,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.4699752850000003,
+      "prompt_sha256": "388f6e33705589c21096704e28acc6fc3320b19b2265a4ddb294b00ef895734b",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "setup": {
+        "project_id": "9ff51c282c674598b01890524abf486f",
+        "wall_seconds": 0.3932279220025521,
+        "cpu_seconds": 0.2709306300000005,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "source_unavailable",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "faf38300ded11e09624bd36d528160e3e59fd4e2038b942904ed040e276fcf25",
+        "prepared_prompt_sha256": "faf38300ded11e09624bd36d528160e3e59fd4e2038b942904ed040e276fcf25",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.006489062994660344,
+        "preparation_cpu_seconds": 0.00649075599999982
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.399854144998244,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.2774708310000005,
+      "prompt_sha256": "faf38300ded11e09624bd36d528160e3e59fd4e2038b942904ed040e276fcf25",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "setup": {
+        "project_id": "b2638245503d4728b8013e77cbb211a0",
+        "wall_seconds": 0.6477250600000843,
+        "cpu_seconds": 0.4800562149999994,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "faf38300ded11e09624bd36d528160e3e59fd4e2038b942904ed040e276fcf25",
+        "prepared_prompt_sha256": "faf38300ded11e09624bd36d528160e3e59fd4e2038b942904ed040e276fcf25",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.40490275699994527,
+        "preparation_cpu_seconds": 0.3199229730000006,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/pyproject_hooks/_impl.py",
+              "score": 49.3224,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "api",
+                "build",
+                "call",
+                "directory",
+                "extra",
+                "hook",
+                "quiet",
+                "read",
+                "runner",
+                "subprocess"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/_in_process/_in_process.py",
+              "score": 48.9889,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "build",
+                "directory",
+                "hook",
+                "process",
+                "read"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/__init__.py",
+              "score": 48.6434,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "hook"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "noxfile.py",
+              "score": 47.5801,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "doc"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/pyproject_hooks/_in_process/__init__.py",
+              "score": 45.6247,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "hook",
+                "process"
+              ],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.40490275699994527,
+          "discovery_cpu_seconds": 0.3199229730000006,
+          "index_refresh_wall_seconds": 0.3000891390038305,
+          "retrieval_wall_seconds": 0.09246311699826038,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 5,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.0528396610025084,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.8001836149999999,
+      "prompt_sha256": "faf38300ded11e09624bd36d528160e3e59fd4e2038b942904ed040e276fcf25",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "setup": {
+        "project_id": "e580251dcd424ca3a7dbd06e264544fd",
+        "wall_seconds": 0.7710809540003538,
+        "cpu_seconds": 0.16976275200000046,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "75a6c516db2077d8fc8f468ec46c4a9d1f7c3b9a4c0a3842a8f6a9189c6343a8",
+        "prepared_prompt_sha256": "aa61eb40e8aef2bf90e49534aba68ab2f4ad44cc977b7ea02c94dded0339c3b9",
+        "files": [
+          {
+            "path": "src/index.ts",
+            "sha256": "26a6e8c6f1ab8b55eaeff017bf75480c6112c8512599fdc51a21906d6ccfa868",
+            "start_line": 1,
+            "end_line": 123
+          }
+        ],
+        "context_bytes": 4237,
+        "preparation_wall_seconds": 0.026591142996039707,
+        "preparation_cpu_seconds": 0.026561664999999124
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/index.ts"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/index.ts"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.7980880469986005,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.19673198099999922,
+      "prompt_sha256": "aa61eb40e8aef2bf90e49534aba68ab2f4ad44cc977b7ea02c94dded0339c3b9",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "setup": {
+        "project_id": "78d9fcb2976c48c38beafbb1307433b8",
+        "wall_seconds": 0.6926301509956829,
+        "cpu_seconds": 0.13617663800000024,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "75a6c516db2077d8fc8f468ec46c4a9d1f7c3b9a4c0a3842a8f6a9189c6343a8",
+        "prepared_prompt_sha256": "75a6c516db2077d8fc8f468ec46c4a9d1f7c3b9a4c0a3842a8f6a9189c6343a8",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.18403271400165977,
+        "preparation_cpu_seconds": 0.10045810600000138,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/index.ts",
+              "score": 46.99,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "event",
+                "handler",
+                "map",
+                "symbol",
+                "wildcard"
+              ],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.18403271400165977,
+          "discovery_cpu_seconds": 0.10045810600000138,
+          "index_refresh_wall_seconds": 0.13965166299749399,
+          "retrieval_wall_seconds": 0.033117629995103925,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 1,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/index.ts"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.8767254170015804,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.23669090799999992,
+      "prompt_sha256": "75a6c516db2077d8fc8f468ec46c4a9d1f7c3b9a4c0a3842a8f6a9189c6343a8",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "setup": {
+        "project_id": "a29a3a43e2e14fd8acc8e730d057ac42",
+        "wall_seconds": 0.6250471480016131,
+        "cpu_seconds": 0.1215148070000005,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "e42a85491cbfb7b8d82f85b1230ef9746c42e97c2a5d213eb1fcf364e5c0061e",
+        "prepared_prompt_sha256": "5fdd32017817b92f05124f7af082b354fa45293cd7944534b74e22aa7a7c2793",
+        "files": [
+          {
+            "path": "src/index.ts",
+            "sha256": "0bc29beffd239c76c9d85338fba44d7cbe80e37e4467b39a0f0a1bae05f8f0aa",
+            "start_line": 1,
+            "end_line": 123
+          }
+        ],
+        "context_bytes": 4228,
+        "preparation_wall_seconds": 0.015342279002652504,
+        "preparation_cpu_seconds": 0.015344030999999703
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/index.ts"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/index.ts"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.6404301820002729,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.13689523700000095,
+      "prompt_sha256": "5fdd32017817b92f05124f7af082b354fa45293cd7944534b74e22aa7a7c2793",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "setup": {
+        "project_id": "afe645c8013942b999db8ba159cffdf8",
+        "wall_seconds": 0.5019879499959643,
+        "cpu_seconds": 0.1235679429999994,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "e42a85491cbfb7b8d82f85b1230ef9746c42e97c2a5d213eb1fcf364e5c0061e",
+        "prepared_prompt_sha256": "e42a85491cbfb7b8d82f85b1230ef9746c42e97c2a5d213eb1fcf364e5c0061e",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.10702418300206773,
+        "preparation_cpu_seconds": 0.06716640999999868,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/index.ts",
+              "score": 46.4315,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "event",
+                "handler",
+                "wildcard"
+              ],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.10702418300206773,
+          "discovery_cpu_seconds": 0.06716640999999868,
+          "index_refresh_wall_seconds": 0.07866881199879572,
+          "retrieval_wall_seconds": 0.01922481800284004,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 1,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/index.ts"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.6092180199993891,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.19093580200000027,
+      "prompt_sha256": "e42a85491cbfb7b8d82f85b1230ef9746c42e97c2a5d213eb1fcf364e5c0061e",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "setup": {
+        "project_id": "48a78ba210074b13ba66b32194065cc9",
+        "wall_seconds": 0.4101263819975429,
+        "cpu_seconds": 0.08896475899999956,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "45776378a9e31cb6959cf3e6e5121cbb71ec47046b465f6e071648502322f121",
+        "prepared_prompt_sha256": "4a38364401d498bf687bd46e0a1165f74ba49adb186869e71bde6fd2dbca3b29",
+        "files": [
+          {
+            "path": "src/index.ts",
+            "sha256": "c6fe6dcd1b2a6374be0062220191c91ce7c22a97d68c5c142c74f873cf876c46",
+            "start_line": 1,
+            "end_line": 121
+          }
+        ],
+        "context_bytes": 4194,
+        "preparation_wall_seconds": 0.01826020700536901,
+        "preparation_cpu_seconds": 0.01826276599999943
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/index.ts"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/index.ts"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.4284274899982847,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.1072637020000009,
+      "prompt_sha256": "4a38364401d498bf687bd46e0a1165f74ba49adb186869e71bde6fd2dbca3b29",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "setup": {
+        "project_id": "ad1f40444328486bb98e39fd2aba0fa5",
+        "wall_seconds": 0.4259558850026224,
+        "cpu_seconds": 0.09083748499999977,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "45776378a9e31cb6959cf3e6e5121cbb71ec47046b465f6e071648502322f121",
+        "prepared_prompt_sha256": "45776378a9e31cb6959cf3e6e5121cbb71ec47046b465f6e071648502322f121",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.11575367999466835,
+        "preparation_cpu_seconds": 0.06572780700000003,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/index.ts",
+              "score": 47.2762,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "event",
+                "handler",
+                "list",
+                "wildcard"
+              ],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.11575367999466835,
+          "discovery_cpu_seconds": 0.06572780700000003,
+          "index_refresh_wall_seconds": 0.08687133100465871,
+          "retrieval_wall_seconds": 0.020054188003996387,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 1,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/index.ts"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.5417674399941461,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.15661798400000038,
+      "prompt_sha256": "45776378a9e31cb6959cf3e6e5121cbb71ec47046b465f6e071648502322f121",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "setup": {
+        "project_id": "83a48b0af09e404bba7075256a48d87c",
+        "wall_seconds": 0.8438956149984733,
+        "cpu_seconds": 0.4721700870000003,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "c3c796892bf3424cdf53044157d33231f11cc43897992be641b608379681a259",
+        "prepared_prompt_sha256": "1826b681a5cbc689437506415c91a866ea4e5db88a8a65d24440c45d882c7e84",
+        "files": [
+          {
+            "path": "src/query.ts",
+            "sha256": "83c7376370de76de6c45f786c2de01bc07c4de49b35b3ad53d00af19429539cf",
+            "start_line": 1,
+            "end_line": 138
+          }
+        ],
+        "context_bytes": 3675,
+        "preparation_wall_seconds": 0.012125640001613647,
+        "preparation_cpu_seconds": 0.012127571000000614
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/query.ts"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/query.ts"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.8560719919987605,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.48434259299999916,
+      "prompt_sha256": "1826b681a5cbc689437506415c91a866ea4e5db88a8a65d24440c45d882c7e84",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "setup": {
+        "project_id": "002ff4f714cc4ddca718ca57949eb240",
+        "wall_seconds": 0.8432148030042299,
+        "cpu_seconds": 0.4136305319999991,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "c3c796892bf3424cdf53044157d33231f11cc43897992be641b608379681a259",
+        "prepared_prompt_sha256": "c3c796892bf3424cdf53044157d33231f11cc43897992be641b608379681a259",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.45311962100095116,
+        "preparation_cpu_seconds": 0.4112281230000008,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/utils.ts",
+              "score": 49.0273,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "empty",
+                "key",
+                "query",
+                "string",
+                "url",
+                "without"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/query.ts",
+              "score": 48.8845,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "key",
+                "query",
+                "string"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/encoding.ts",
+              "score": 48.399,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "key",
+                "query",
+                "string"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/parse.ts",
+              "score": 46.7401,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "string",
+                "url"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/url.ts",
+              "score": 46.2097,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "encoded",
+                "string",
+                "url"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/punycode.ts",
+              "score": 38.916,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/index.ts",
+              "score": 28.4356,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.45311962100095116,
+          "discovery_cpu_seconds": 0.4112281230000008,
+          "index_refresh_wall_seconds": 0.40018474600219633,
+          "retrieval_wall_seconds": 0.0455640250002034,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 7,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/query.ts"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.2964195980021032,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.8249389449999995,
+      "prompt_sha256": "c3c796892bf3424cdf53044157d33231f11cc43897992be641b608379681a259",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "setup": {
+        "project_id": "084b47757336451591259c66e9a8f46a",
+        "wall_seconds": 0.8891890810045879,
+        "cpu_seconds": 0.4712900950000005,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "9ca32b21f806da833f6ca02f6efd6e70602757d9eb2b35093fcee55a10732bd4",
+        "prepared_prompt_sha256": "ee14faa33c62be886f2ac2bd3c62bd9ca45083ad77deff05bb15747b7fa30dd0",
+        "files": [
+          {
+            "path": "src/encoding.ts",
+            "sha256": "ae007c467f6a338dda5534e1ecb53a3422d58528f31233c8f41ab489028816ee",
+            "start_line": 1,
+            "end_line": 176
+          }
+        ],
+        "context_bytes": 4889,
+        "preparation_wall_seconds": 0.020961485999578144,
+        "preparation_cpu_seconds": 0.02096456099999955
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/encoding.ts"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/encoding.ts"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.9103425540015451,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.4924409670000003,
+      "prompt_sha256": "ee14faa33c62be886f2ac2bd3c62bd9ca45083ad77deff05bb15747b7fa30dd0",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "setup": {
+        "project_id": "4e0b826783244c2b8037e27ba0c24c59",
+        "wall_seconds": 0.7622900870046578,
+        "cpu_seconds": 0.38843426099999867,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "9ca32b21f806da833f6ca02f6efd6e70602757d9eb2b35093fcee55a10732bd4",
+        "prepared_prompt_sha256": "9ca32b21f806da833f6ca02f6efd6e70602757d9eb2b35093fcee55a10732bd4",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.3333684399985941,
+        "preparation_cpu_seconds": 0.27170845400000054,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/encoding.ts",
+              "score": 49.1071,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "decode",
+                "encoding",
+                "path",
+                "query"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/utils.ts",
+              "score": 49.0877,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "path",
+                "query",
+                "without"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/query.ts",
+              "score": 47.7238,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "query"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/url.ts",
+              "score": 46.9568,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/parse.ts",
+              "score": 46.6176,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "path"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/index.ts",
+              "score": 37.8733,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/punycode.ts",
+              "score": 37.605,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.3333684399985941,
+          "discovery_cpu_seconds": 0.27170845400000054,
+          "index_refresh_wall_seconds": 0.28273320400330704,
+          "retrieval_wall_seconds": 0.03247270800056867,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 7,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/encoding.ts"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.0969484710003599,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.661428849,
+      "prompt_sha256": "9ca32b21f806da833f6ca02f6efd6e70602757d9eb2b35093fcee55a10732bd4",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "setup": {
+        "project_id": "fdb9b90603fb4aa9a8243964438feaf0",
+        "wall_seconds": 0.6724254279979505,
+        "cpu_seconds": 0.3056375570000007,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "preloaded",
+        "reason": "explicit_focus",
+        "context_format": "compact-prefix",
+        "prompt_layout": "source_prefix",
+        "task_prompt_sha256": "ac408a51a95d7d3d75f915e4528fe8abc17285dbe510cc8a7954c199cafbe8bb",
+        "prepared_prompt_sha256": "db03db2927e3ba6b230bfe13f3d7c6008139fc9ce4b8700f32847cce5d336831",
+        "files": [
+          {
+            "path": "src/parse.ts",
+            "sha256": "b8f0df1778734c8b18a3e45afccba3e023528c6c9a9c42c6de1c591972bc78bd",
+            "start_line": 1,
+            "end_line": 229
+          }
+        ],
+        "context_bytes": 6505,
+        "preparation_wall_seconds": 0.011773571000958327,
+        "preparation_cpu_seconds": 0.011775850999999449
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "preloaded",
+        "complete_source_files": 1
+      },
+      "selected_paths": [
+        "src/parse.ts"
+      ],
+      "expected_paths_evaluator_only": [
+        "src/parse.ts"
+      ],
+      "declared_scope_recall_proxy": 1.0,
+      "declared_scope_complete_proxy": true,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 0.6842501749997609,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.317458942,
+      "prompt_sha256": "db03db2927e3ba6b230bfe13f3d7c6008139fc9ce4b8700f32847cce5d336831",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    },
+    {
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "setup": {
+        "project_id": "919619b6fa6a47539721df6025aa34c3",
+        "wall_seconds": 0.7231678879979881,
+        "cpu_seconds": 0.30312933100000095,
+        "scope": "Cold production project approval and initial index; no Service or watcher"
+      },
+      "context_preparation": {
+        "mode": "passthrough",
+        "reason": "weak_lexical_evidence",
+        "context_format": "compact-prefix",
+        "prompt_layout": "unchanged",
+        "task_prompt_sha256": "ac408a51a95d7d3d75f915e4528fe8abc17285dbe510cc8a7954c199cafbe8bb",
+        "prepared_prompt_sha256": "ac408a51a95d7d3d75f915e4528fe8abc17285dbe510cc8a7954c199cafbe8bb",
+        "files": [],
+        "context_bytes": 0,
+        "preparation_wall_seconds": 0.3282309729984263,
+        "preparation_cpu_seconds": 0.2860589859999987,
+        "automatic_selection": {
+          "version": 1,
+          "policy_version": "deterministic-source-v1",
+          "decision": "SKIP",
+          "reason": "weak_lexical_evidence",
+          "selected_paths": [],
+          "source_versions": {},
+          "ranked_candidates": [
+            {
+              "path": "src/utils.ts",
+              "score": 49.2178,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "empty",
+                "fragment",
+                "path",
+                "query",
+                "same",
+                "url",
+                "without"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/parse.ts",
+              "score": 47.682,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "path",
+                "pathname",
+                "url"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/query.ts",
+              "score": 46.2388,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "query"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/url.ts",
+              "score": 45.429,
+              "reason": "matching path terms; full-text BM25 match",
+              "evidence_terms": [
+                "url"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/encoding.ts",
+              "score": 39.1862,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [
+                "path",
+                "query"
+              ],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/punycode.ts",
+              "score": 37.605,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            },
+            {
+              "path": "src/index.ts",
+              "score": 28.4356,
+              "reason": "full-text BM25 match",
+              "evidence_terms": [],
+              "explicit_anchor": false
+            }
+          ],
+          "estimated_added_tokens": 0,
+          "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+          "discovery_wall_seconds": 0.3282309729984263,
+          "discovery_cpu_seconds": 0.2860589859999987,
+          "index_refresh_wall_seconds": 0.28322220200061565,
+          "retrieval_wall_seconds": 0.03596731199650094,
+          "source_preparation_wall_seconds": 0.0,
+          "auxiliary_model_calls": 0,
+          "provided_source_paths": [],
+          "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+          "candidate_files_considered": 7,
+          "omitted_candidate_files": 0,
+          "dependency_paths_considered": 0,
+          "unresolved_dependency_count": 0,
+          "candidate_generation_limit_reached": false,
+          "index_refreshed": true
+        }
+      },
+      "treatment_fidelity": {
+        "valid": true,
+        "mode": "passthrough",
+        "complete_source_files": 0
+      },
+      "selected_paths": [],
+      "expected_paths_evaluator_only": [
+        "src/parse.ts"
+      ],
+      "declared_scope_recall_proxy": 0.0,
+      "declared_scope_complete_proxy": false,
+      "selected_files_outside_author_scope": [],
+      "cold_setup_and_preparation_seconds": 1.0517317710036878,
+      "cold_setup_and_preparation_parent_cpu_seconds": 0.5892602399999998,
+      "prompt_sha256": "ac408a51a95d7d3d75f915e4528fe8abc17285dbe510cc8a7954c199cafbe8bb",
+      "native_model_calls": 0,
+      "native_coding_success": null,
+      "actual_billed_cost_usd": null,
+      "model_input_tokens": null
+    }
+  ],
+  "summary": {
+    "B": {
+      "tasks": 12,
+      "complete_declared_scope_count": 9,
+      "declared_scope_recall_proxy": {
+        "n": 12,
+        "missing": 0,
+        "mean": 0.75,
+        "median": 1.0,
+        "p95": 1.0,
+        "min": 0.0,
+        "max": 1.0,
+        "known_total": null,
+        "total": null
+      },
+      "cold_setup_and_preparation_seconds": {
+        "n": 12,
+        "missing": 0,
+        "mean": 0.7278437796661213,
+        "median": 0.6623401785000169,
+        "p95": 1.327396818996931,
+        "min": 0.39859406700270483,
+        "max": 1.327396818996931,
+        "known_total": 8.734125355993456,
+        "total": 8.734125355993456
+      },
+      "added_bytes": {
+        "n": 12,
+        "missing": 0,
+        "mean": 2823.9166666666665,
+        "median": 3235.0,
+        "p95": 6505,
+        "min": 0,
+        "max": 6505,
+        "known_total": 33887,
+        "total": 33887
+      },
+      "decisions": {
+        "preloaded": 9,
+        "passthrough": 3
+      }
+    },
+    "C": {
+      "tasks": 12,
+      "complete_declared_scope_count": 0,
+      "declared_scope_recall_proxy": {
+        "n": 12,
+        "missing": 0,
+        "mean": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "known_total": null,
+        "total": null
+      },
+      "cold_setup_and_preparation_seconds": {
+        "n": 12,
+        "missing": 0,
+        "mean": 1.0479873463336844,
+        "median": 1.052285716003098,
+        "p95": 2.297736563006765,
+        "min": 0.5417674399941461,
+        "max": 2.297736563006765,
+        "known_total": 12.575848156004213,
+        "total": 12.575848156004213
+      },
+      "added_bytes": {
+        "n": 12,
+        "missing": 0,
+        "mean": 0,
+        "median": 0.0,
+        "p95": 0,
+        "min": 0,
+        "max": 0,
+        "known_total": 0,
+        "total": 0
+      },
+      "decisions": {
+        "SKIP": 12
+      }
+    }
+  },
+  "model_requests": 0,
+  "strict_native_success_rate": null,
+  "estimated_model_cost_per_success": null,
+  "actual_billed_cost_usd": null,
+  "limitations": [
+    "Offline target coverage is an author-scope proxy, not semantic completeness or coding correctness.",
+    "No new native model usage, task success, token saving, latency benefit or billed saving exists until an explicitly approved formal execution.",
+    "The upstream repositories and intentionally injected defects are controlled workloads; size and source-snapshot coverage are disclosed, not described as representative production work.",
+    "Provider and operating-system caches cannot be equivalently reset; order balancing does not establish identical caching.",
+    "Native JSONL does not reveal actual billing, underlying inference-call counts, actual filesystem reads or provider CPU/memory.",
+    "Native-reported zero cache writes may be a parser default; possible-write sensitivity bounds are scenarios, not confidence intervals.",
+    "Budget approval is an estimated API-equivalent allowance, not a guaranteed spend ceiling; Codex exec exposes no hard total-turn token cap here.",
+    "All automatic-selection abstentions and failed or interrupted attempts remain in primary intent-to-treat results; originals are never retried."
+  ]
+}

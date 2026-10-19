@@ -1,0 +1,5 @@
+pytest
+flake8
+testpath
+setuptools>=30
+tomli >=1.1.0 ; python_version<'3.11'

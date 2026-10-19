@@ -258,6 +258,199 @@ def _write_report(destination: Path, report: dict[str, Any]) -> None:
                 pass
 
 
+def _validated_automatic_preparation(
+    value: Any,
+    prompt: str,
+    context_format: str,
+    *,
+    max_context_bytes: int,
+    max_added_tokens: int,
+) -> tuple[str, dict[str, Any]]:
+    """Validate local selection evidence before reporting or forwarding source.
+
+    The additional receipt is private observation, not model-visible context.
+    In particular, a selector cannot claim a path/hash without delivering exactly
+    that complete file through the ordinary source-preparation ABI.
+    """
+    from memglide.integrations.preload import MAX_FOCUS_PATHS, MAX_PATH_COMPONENTS
+
+    if not isinstance(value, dict) or not isinstance(value.get("automatic_selection"), dict):
+        raise ValueError("automatic preparation returned invalid selection metadata")
+    receipt = value["automatic_selection"]
+    fields = {
+        "version", "policy_version", "decision", "reason", "selected_paths", "source_versions",
+        "ranked_candidates", "estimated_added_tokens", "token_estimate_method",
+        "discovery_wall_seconds", "discovery_cpu_seconds", "index_refresh_wall_seconds",
+        "retrieval_wall_seconds", "source_preparation_wall_seconds", "auxiliary_model_calls",
+        "provided_source_paths", "static_dependency_coverage",
+        "candidate_files_considered", "omitted_candidate_files", "dependency_paths_considered",
+        "index_refreshed", "unresolved_dependency_count", "candidate_generation_limit_reached",
+    }
+    if set(receipt) != fields:
+        raise ValueError("automatic preparation returned invalid selection fields")
+
+    def valid_path(path: Any) -> bool:
+        return (
+            isinstance(path, str)
+            and bool(path)
+            and len(path) <= 4096
+            and "\x00" not in path
+            and "\\" not in path
+            and not any(0xD800 <= ord(character) <= 0xDFFF for character in path)
+            and not PurePosixPath(path).is_absolute()
+            and PurePosixPath(path).as_posix() == path
+            and ".." not in PurePosixPath(path).parts
+            and 1 <= len(PurePosixPath(path).parts) <= MAX_PATH_COMPONENTS
+        )
+
+    selected = receipt["selected_paths"]
+    provided = receipt["provided_source_paths"]
+    if any(
+        not isinstance(paths, list)
+        or len(paths) > MAX_FOCUS_PATHS
+        or any(not valid_path(path) for path in paths)
+        or len(set(paths)) != len(paths)
+        for paths in (selected, provided)
+    ):
+        raise ValueError("automatic preparation returned invalid source paths")
+    expected_method = (
+        "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage"
+    )
+    if (
+        type(receipt["version"]) is not int
+        or receipt["version"] != 1
+        or receipt["policy_version"] != "deterministic-source-v1"
+        or not isinstance(receipt["decision"], str)
+        or receipt["decision"] not in {"SKIP", "FOCUSED_SOURCE", "FULL_SOURCE"}
+        or not isinstance(receipt["reason"], str)
+        or not 1 <= len(receipt["reason"]) <= 2048
+        or receipt["reason"] != value.get("reason")
+        or receipt["token_estimate_method"] != expected_method
+        or type(receipt["auxiliary_model_calls"]) is not int
+        or receipt["auxiliary_model_calls"] != 0
+        or receipt["static_dependency_coverage"]
+        != "bounded direct resolved production targets; not global completeness"
+    ):
+        raise ValueError("automatic preparation returned invalid decision metadata")
+    for field in (
+        "discovery_wall_seconds", "discovery_cpu_seconds", "index_refresh_wall_seconds",
+        "retrieval_wall_seconds", "source_preparation_wall_seconds",
+    ):
+        duration = receipt[field]
+        if (
+            not isinstance(duration, (int, float))
+            or isinstance(duration, bool)
+            or not math.isfinite(duration)
+            or duration < 0
+        ):
+            raise ValueError("automatic preparation returned invalid timing metadata")
+    for field in (
+        "candidate_files_considered", "omitted_candidate_files", "dependency_paths_considered",
+        "unresolved_dependency_count",
+    ):
+        if type(receipt[field]) is not int or not 0 <= receipt[field] <= 20_000:
+            raise ValueError("automatic preparation returned invalid discovery counts")
+    if (
+        type(receipt["index_refreshed"]) is not bool
+        or type(receipt["candidate_generation_limit_reached"]) is not bool
+    ):
+        raise ValueError("automatic preparation returned invalid refresh metadata")
+    candidates = receipt["ranked_candidates"]
+    if not isinstance(candidates, list) or len(candidates) > 12:
+        raise ValueError("automatic preparation returned invalid ranking metadata")
+    for candidate in candidates:
+        if (
+            not isinstance(candidate, dict)
+            or set(candidate) != {"path", "score", "reason", "evidence_terms", "explicit_anchor"}
+            or not valid_path(candidate["path"])
+            or not isinstance(candidate["score"], (int, float))
+            or isinstance(candidate["score"], bool)
+            or not math.isfinite(candidate["score"])
+            or candidate["score"] < 0
+            or not isinstance(candidate["reason"], str)
+            or not 1 <= len(candidate["reason"]) <= 2048
+            or type(candidate["explicit_anchor"]) is not bool
+            or not isinstance(candidate["evidence_terms"], list)
+            or len(candidate["evidence_terms"]) > 64
+            or any(
+                not isinstance(term, str) or not 1 <= len(term) <= 128
+                for term in candidate["evidence_terms"]
+            )
+        ):
+            raise ValueError("automatic preparation returned invalid ranking metadata")
+    if len({candidate["path"] for candidate in candidates}) != len(candidates):
+        raise ValueError("automatic preparation returned duplicate ranking paths")
+    if (
+        receipt["candidate_files_considered"] < len(candidates)
+        or (
+            candidates
+            and receipt["omitted_candidate_files"]
+            != max(0, receipt["candidate_files_considered"] - len(candidates))
+        )
+        or provided  # The launcher has no caller-supplied source-body mapping.
+    ):
+        raise ValueError("automatic preparation returned inconsistent discovery metadata")
+    prepared, report = _validated_preparation(
+        value, prompt, context_format, focus_paths=selected
+    )
+    versions = receipt["source_versions"]
+    expected_versions = {item["path"]: item["sha256"] for item in report["files"]}
+    estimate = receipt["estimated_added_tokens"]
+    if (
+        not isinstance(versions, dict)
+        or versions != expected_versions
+        or selected != [item["path"] for item in report["files"]]
+        or type(estimate) is not int
+        or estimate != math.ceil(report["context_bytes"] / 3)
+        or estimate > max_added_tokens
+        or report["context_bytes"] > max_context_bytes
+        or (receipt["decision"] == "SKIP") != (report["mode"] == "passthrough")
+        or (receipt["decision"] == "SKIP" and (selected or versions or estimate))
+        or (
+            report["mode"] == "preloaded"
+            and (
+                not candidates
+                or not receipt["index_refreshed"]
+                or candidates[0]["path"] not in selected
+                or (receipt["decision"] == "FULL_SOURCE")
+                != (receipt["dependency_paths_considered"] > 0)
+            )
+        )
+    ):
+        raise ValueError("automatic preparation returned inconsistent source evidence or budget")
+    if report["mode"] == "preloaded" and context_format == "legacy":
+        from memglide.integrations.preload import _EXPLANATION
+
+        prefix = prompt + "\n\n" + _EXPLANATION
+        try:
+            envelope = json.loads(prepared.removeprefix(prefix))
+        except (json.JSONDecodeError, RecursionError) as exc:
+            raise ValueError("automatic preparation returned invalid source envelope") from exc
+        if not prepared.startswith(prefix) or not isinstance(envelope, dict):
+            raise ValueError("automatic preparation returned invalid source envelope")
+        if prepared != prefix + json.dumps(envelope, ensure_ascii=False, separators=(",", ":")):
+            raise ValueError("automatic preparation returned noncanonical source envelope")
+        sources = envelope.get("memglide_sources")
+        if (
+            set(envelope) != {"memglide_sources"}
+            or not isinstance(sources, list)
+            or len(sources) != len(report["files"])
+        ):
+            raise ValueError("automatic preparation returned invalid source envelope")
+        for source, metadata in zip(sources, report["files"], strict=True):
+            if (
+                not isinstance(source, dict)
+                or set(source) != {"path", "sha256", "start_line", "end_line", "content"}
+                or not isinstance(source["content"], str)
+                or any(source.get(key) != expected for key, expected in metadata.items())
+                or _hash(source["content"]) != metadata["sha256"]
+                or len(source["content"].splitlines()) != metadata["end_line"]
+            ):
+                raise ValueError("automatic preparation source does not match complete-file metadata")
+    report["automatic_selection"] = receipt
+    return prepared, report
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
@@ -267,6 +460,11 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--project", help="existing approved Memglide project ID")
     parser.add_argument("--db", type=Path, help="existing Memglide database path")
+    parser.add_argument(
+        "--discover",
+        action="store_true",
+        help="opt in to bounded local task-to-source discovery without supplied target paths",
+    )
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
     parser.add_argument(
         "--support",
@@ -284,6 +482,12 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--max-context-bytes", type=int, default=12_000)
     parser.add_argument(
+        "--max-added-tokens",
+        type=int,
+        default=4000,
+        help="planning estimate cap for --discover; not measured model token usage",
+    )
+    parser.add_argument(
         "--preparation-report", type=Path, help="write private JSON before native exec"
     )
     parser.add_argument("--codex-executable", type=Path, help="absolute installed Codex executable")
@@ -298,6 +502,8 @@ def main(argv: list[str] | None = None) -> int:
     options = _parser().parse_args(arguments[:separator])
     native_options = arguments[separator + 1 :] if separator < len(arguments) else []
     try:
+        if options.discover and (options.focus or options.support):
+            raise ValueError("--discover cannot be combined with --focus or --support")
         prompt = options.prompt
         if prompt is None or prompt == "-":
             if sys.stdin.isatty():
@@ -313,26 +519,48 @@ def main(argv: list[str] | None = None) -> int:
         executable = _find_codex(environment, Path.cwd(), options.codex_executable)
         # This dependency also imports only stdlib until scoped preparation is
         # requested. No SDK, Service, MCP, model classifier, or login is started.
-        from memglide.integrations.preload import prepare_prompt
+        if options.discover:
+            from memglide.integrations.auto_preload import prepare_task_prompt
 
-        preparation = prepare_prompt(
-            prompt,
-            project_id=options.project,
-            db_path=options.db,
-            focus_paths=options.focus,
-            support_paths=options.support,
-            context_supplied=options.context_supplied,
-            mode=options.mode,
-            max_context_bytes=options.max_context_bytes,
-            context_format=options.context_format,
-        )
-        prepared, metadata = _validated_preparation(
-            preparation,
-            prompt,
-            options.context_format,
-            focus_paths=options.focus,
-            support_paths=options.support,
-        )
+            preparation = prepare_task_prompt(
+                prompt,
+                project_id=options.project,
+                db_path=options.db,
+                enabled=True,
+                context_supplied=options.context_supplied,
+                mode=options.mode,
+                max_context_bytes=options.max_context_bytes,
+                context_format=options.context_format,
+                max_added_tokens=options.max_added_tokens,
+            )
+            prepared, metadata = _validated_automatic_preparation(
+                preparation,
+                prompt,
+                options.context_format,
+                max_context_bytes=options.max_context_bytes,
+                max_added_tokens=options.max_added_tokens,
+            )
+        else:
+            from memglide.integrations.preload import prepare_prompt
+
+            preparation = prepare_prompt(
+                prompt,
+                project_id=options.project,
+                db_path=options.db,
+                focus_paths=options.focus,
+                support_paths=options.support,
+                context_supplied=options.context_supplied,
+                mode=options.mode,
+                max_context_bytes=options.max_context_bytes,
+                context_format=options.context_format,
+            )
+            prepared, metadata = _validated_preparation(
+                preparation,
+                prompt,
+                options.context_format,
+                focus_paths=options.focus,
+                support_paths=options.support,
+            )
         command = [executable, "exec", *native_options, "--", "-"]
         prepared_bytes = prepared.encode("utf-8")
         # A regular file cannot deadlock on a full pipe buffer, and passing '-'
@@ -345,7 +573,9 @@ def main(argv: list[str] | None = None) -> int:
                 _write_report(
                     options.preparation_report,
                     {
-                        "version": 3
+                        "version": 4
+                        if options.discover
+                        else 3
                         if options.support
                         else 1
                         if options.context_format == "legacy"

@@ -1,0 +1,1207 @@
+{
+  "version": "automatic-1",
+  "created_at": "2026-10-19T07:29:38.788170+00:00",
+  "tasks": [
+    {
+      "id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "prompt": "Repair URL-safe base64 decoding: unpadded text and byte tokens must decode consistently for every valid encoded length. Preserve the existing byte result, padded-input compatibility and malformed-data exception behavior.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "focus_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "prompt": "Repair compact integer byte decoding. Values encoded in network byte order must survive a round trip, including zero, short encodings and the full unsigned 64-bit range. Preserve the existing integer API and overflow behavior.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "focus_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "prompt": "Repair URL-safe serialization of compressible payloads. Newly issued compressed tokens must retain the compression marker understood by the loader and round-trip strings as well as structured Unicode data. Keep ordinary small payloads and signed-token verification working.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/itsdangerous/url_safe.py"
+      ],
+      "focus_paths": [
+        "src/itsdangerous/url_safe.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "prompt": "Repair build-backend path containment validation. Relative backend paths may resolve inside the source tree, including the root, but must not escape into a sibling directory whose name shares the source directory prefix. Reject absolute paths as before and return normalized absolute paths for valid requests.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "focus_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "prompt": "Repair temporary build-backend runner overrides: after leaving an override scope, restore the exact prior runner even when the body raises. Nested scopes must restore their respective previous runners, and exceptions must continue to propagate unchanged.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "focus_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "prompt": "Repair subprocess environment isolation in both ordinary and quiet build-hook runners. Per-call extra environment variables must reach the child invocation without changing the parent process environment. Preserve inherited variables, working directory, failure checking and the quiet runner's output capture.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "focus_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "prompt": "Repair event-listener registration ordering. Multiple handlers for the same named event must run in registration order; wildcard listeners must preserve their own registration order and run after the named listeners. Keep the caller-provided event map and symbol event support.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/index.ts"
+      ],
+      "focus_paths": [
+        "src/index.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "prompt": "Repair removing an unregistered event handler: it must leave all registered handlers untouched. Cover both named events and wildcard handlers, while keeping removal of a registered handler and removal of all handlers working.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/index.ts"
+      ],
+      "focus_paths": [
+        "src/index.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "prompt": "Repair event emission when listeners unregister other listeners during delivery. Each named-event and wildcard handler list must be delivered from a stable snapshot for that emission; a removal should affect subsequent emissions without skipping a listener already present in the current snapshot.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/index.ts"
+      ],
+      "focus_paths": [
+        "src/index.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "prompt": "Repair parsing repeated URL query keys. Preserve every decoded value in encounter order, including empty values and plus-encoded spaces. Single values remain strings, and unsafe prototype-related keys must still be ignored.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/query.ts"
+      ],
+      "focus_paths": [
+        "src/query.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "prompt": "Repair query-value encoding so spaces use plus notation while literal plus signs remain percent-escaped. Mixed spaces, plus signs, Unicode and reserved delimiters must decode back to their original values without changing path-encoding behavior.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/encoding.ts"
+      ],
+      "focus_paths": [
+        "src/encoding.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "prompt": "Repair splitting URL paths into pathname, query and fragment. A fragment after a query must stay separate, and question marks inside a fragment belong to the fragment. Preserve empty parts and full URL parsing through the same helper.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/parse.ts"
+      ],
+      "focus_paths": [
+        "src/parse.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    }
+  ],
+  "assignments": [
+    {
+      "run_id": "auto-mitt-handler-append-order-r1-C",
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 1
+    },
+    {
+      "run_id": "auto-mitt-handler-append-order-r1-B",
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 2
+    },
+    {
+      "run_id": "auto-mitt-handler-append-order-r1-A",
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 3
+    },
+    {
+      "run_id": "auto-mitt-emission-snapshots-r1-B",
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 4
+    },
+    {
+      "run_id": "auto-mitt-emission-snapshots-r1-C",
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 5
+    },
+    {
+      "run_id": "auto-mitt-emission-snapshots-r1-A",
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 6
+    },
+    {
+      "run_id": "auto-ufo-path-fragment-boundaries-r1-A",
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 7
+    },
+    {
+      "run_id": "auto-ufo-path-fragment-boundaries-r1-C",
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 8
+    },
+    {
+      "run_id": "auto-ufo-path-fragment-boundaries-r1-B",
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 9
+    },
+    {
+      "run_id": "auto-itsdangerous-base64-padding-r1-B",
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 10
+    },
+    {
+      "run_id": "auto-itsdangerous-base64-padding-r1-A",
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 11
+    },
+    {
+      "run_id": "auto-itsdangerous-base64-padding-r1-C",
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 12
+    },
+    {
+      "run_id": "auto-ufo-query-plus-escaping-r1-C",
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 13
+    },
+    {
+      "run_id": "auto-ufo-query-plus-escaping-r1-A",
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 14
+    },
+    {
+      "run_id": "auto-ufo-query-plus-escaping-r1-B",
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 15
+    },
+    {
+      "run_id": "auto-itsdangerous-compressed-payloads-r1-A",
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 16
+    },
+    {
+      "run_id": "auto-itsdangerous-compressed-payloads-r1-B",
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 17
+    },
+    {
+      "run_id": "auto-itsdangerous-compressed-payloads-r1-C",
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 18
+    },
+    {
+      "run_id": "auto-pyproject-hooks-runner-restoration-r1-C",
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 19
+    },
+    {
+      "run_id": "auto-pyproject-hooks-runner-restoration-r1-B",
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 20
+    },
+    {
+      "run_id": "auto-pyproject-hooks-runner-restoration-r1-A",
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 21
+    },
+    {
+      "run_id": "auto-mitt-absent-handler-removal-r1-B",
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 22
+    },
+    {
+      "run_id": "auto-mitt-absent-handler-removal-r1-C",
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 23
+    },
+    {
+      "run_id": "auto-mitt-absent-handler-removal-r1-A",
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 24
+    },
+    {
+      "run_id": "auto-pyproject-hooks-path-containment-r1-A",
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 25
+    },
+    {
+      "run_id": "auto-pyproject-hooks-path-containment-r1-C",
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 26
+    },
+    {
+      "run_id": "auto-pyproject-hooks-path-containment-r1-B",
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 27
+    },
+    {
+      "run_id": "auto-itsdangerous-integer-decoding-r1-B",
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 28
+    },
+    {
+      "run_id": "auto-itsdangerous-integer-decoding-r1-A",
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 29
+    },
+    {
+      "run_id": "auto-itsdangerous-integer-decoding-r1-C",
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 30
+    },
+    {
+      "run_id": "auto-pyproject-hooks-environment-isolation-r1-C",
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 31
+    },
+    {
+      "run_id": "auto-pyproject-hooks-environment-isolation-r1-A",
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 32
+    },
+    {
+      "run_id": "auto-pyproject-hooks-environment-isolation-r1-B",
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 33
+    },
+    {
+      "run_id": "auto-ufo-duplicate-query-values-r1-A",
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 34
+    },
+    {
+      "run_id": "auto-ufo-duplicate-query-values-r1-B",
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 35
+    },
+    {
+      "run_id": "auto-ufo-duplicate-query-values-r1-C",
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 36
+    },
+    {
+      "run_id": "auto-mitt-handler-append-order-r2-A",
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 37
+    },
+    {
+      "run_id": "auto-mitt-handler-append-order-r2-B",
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 38
+    },
+    {
+      "run_id": "auto-mitt-handler-append-order-r2-C",
+      "task_id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 39
+    },
+    {
+      "run_id": "auto-mitt-emission-snapshots-r2-A",
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 40
+    },
+    {
+      "run_id": "auto-mitt-emission-snapshots-r2-C",
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 41
+    },
+    {
+      "run_id": "auto-mitt-emission-snapshots-r2-B",
+      "task_id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 42
+    },
+    {
+      "run_id": "auto-ufo-path-fragment-boundaries-r2-B",
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 43
+    },
+    {
+      "run_id": "auto-ufo-path-fragment-boundaries-r2-C",
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 44
+    },
+    {
+      "run_id": "auto-ufo-path-fragment-boundaries-r2-A",
+      "task_id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 45
+    },
+    {
+      "run_id": "auto-itsdangerous-base64-padding-r2-C",
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 46
+    },
+    {
+      "run_id": "auto-itsdangerous-base64-padding-r2-A",
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 47
+    },
+    {
+      "run_id": "auto-itsdangerous-base64-padding-r2-B",
+      "task_id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 48
+    },
+    {
+      "run_id": "auto-ufo-query-plus-escaping-r2-B",
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 49
+    },
+    {
+      "run_id": "auto-ufo-query-plus-escaping-r2-A",
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 50
+    },
+    {
+      "run_id": "auto-ufo-query-plus-escaping-r2-C",
+      "task_id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 51
+    },
+    {
+      "run_id": "auto-itsdangerous-compressed-payloads-r2-C",
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 52
+    },
+    {
+      "run_id": "auto-itsdangerous-compressed-payloads-r2-B",
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 53
+    },
+    {
+      "run_id": "auto-itsdangerous-compressed-payloads-r2-A",
+      "task_id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 54
+    },
+    {
+      "run_id": "auto-pyproject-hooks-runner-restoration-r2-A",
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 55
+    },
+    {
+      "run_id": "auto-pyproject-hooks-runner-restoration-r2-B",
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 56
+    },
+    {
+      "run_id": "auto-pyproject-hooks-runner-restoration-r2-C",
+      "task_id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 57
+    },
+    {
+      "run_id": "auto-mitt-absent-handler-removal-r2-A",
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 58
+    },
+    {
+      "run_id": "auto-mitt-absent-handler-removal-r2-C",
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 59
+    },
+    {
+      "run_id": "auto-mitt-absent-handler-removal-r2-B",
+      "task_id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 60
+    },
+    {
+      "run_id": "auto-pyproject-hooks-path-containment-r2-B",
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 61
+    },
+    {
+      "run_id": "auto-pyproject-hooks-path-containment-r2-C",
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 62
+    },
+    {
+      "run_id": "auto-pyproject-hooks-path-containment-r2-A",
+      "task_id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 63
+    },
+    {
+      "run_id": "auto-itsdangerous-integer-decoding-r2-C",
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 64
+    },
+    {
+      "run_id": "auto-itsdangerous-integer-decoding-r2-A",
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 65
+    },
+    {
+      "run_id": "auto-itsdangerous-integer-decoding-r2-B",
+      "task_id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 66
+    },
+    {
+      "run_id": "auto-pyproject-hooks-environment-isolation-r2-B",
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 67
+    },
+    {
+      "run_id": "auto-pyproject-hooks-environment-isolation-r2-A",
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 68
+    },
+    {
+      "run_id": "auto-pyproject-hooks-environment-isolation-r2-C",
+      "task_id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 69
+    },
+    {
+      "run_id": "auto-ufo-duplicate-query-values-r2-C",
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 70
+    },
+    {
+      "run_id": "auto-ufo-duplicate-query-values-r2-B",
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 71
+    },
+    {
+      "run_id": "auto-ufo-duplicate-query-values-r2-A",
+      "task_id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 72
+    }
+  ],
+  "repositories": {
+    "itsdangerous-base64-padding": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/itsdangerous-base64-padding",
+      "commit": "e88bf2b94df7b3d15c647eae8c2b734f7030c3fc",
+      "tree": "a506749c4b45509c21487c96453ac9048919e8ee"
+    },
+    "itsdangerous-integer-decoding": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/itsdangerous-integer-decoding",
+      "commit": "5d9069c97882078941ffe107339b1c057d1cf5e4",
+      "tree": "25f0dd8c7a8b181e7d5ec9a21283b99e4ecc3036"
+    },
+    "itsdangerous-compressed-payloads": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/itsdangerous-compressed-payloads",
+      "commit": "096f531532cfb5f68d623b74b727b3ea7b10b669",
+      "tree": "35beaa2af87a67a5dbf995e108eec73abdb02906"
+    },
+    "pyproject-hooks-path-containment": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/pyproject-hooks-path-containment",
+      "commit": "e229dc70388e3913e6703a777560e30935497bf9",
+      "tree": "4bbe34ba37065a634a1adeb45f612efe334c0228"
+    },
+    "pyproject-hooks-runner-restoration": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/pyproject-hooks-runner-restoration",
+      "commit": "168466571c13808caf808846481f12813400a284",
+      "tree": "5092d1311f646128f7c4bef1182d7085ac5edc97"
+    },
+    "pyproject-hooks-environment-isolation": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/pyproject-hooks-environment-isolation",
+      "commit": "f83b37b84dd67b8273b36a244cc23910b4340bed",
+      "tree": "7016969d3e2d3319a253733e49cb07310e22cd99"
+    },
+    "mitt-handler-append-order": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/mitt-handler-append-order",
+      "commit": "939795106ef285874ad28943440dedd7068b5bc2",
+      "tree": "63eeaa280c8feca0403c6449b535090d3c667dba"
+    },
+    "mitt-absent-handler-removal": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/mitt-absent-handler-removal",
+      "commit": "462e7bad0d949d99d1093557c63108d902248bc1",
+      "tree": "1f322282810fdedb4d67f99cacd58d33a73a9927"
+    },
+    "mitt-emission-snapshots": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/mitt-emission-snapshots",
+      "commit": "0fcbb4f0d42e333bb3b67b66cd389bbfa0ead6d4",
+      "tree": "e4d91e3b3109808f4d5f52579c8f9b109c984e59"
+    },
+    "ufo-duplicate-query-values": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/ufo-duplicate-query-values",
+      "commit": "6fac51f042759e3998c90f6ada043cb4ce030663",
+      "tree": "fbebd515ba37f225aad2ea65509e6a25bcdc06c7"
+    },
+    "ufo-query-plus-escaping": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/ufo-query-plus-escaping",
+      "commit": "e3d86d8c337bf804e27798b6a871bdd1405f203d",
+      "tree": "8eba2b23de77b3b5f7a0219ef3bba7532a18a9b7"
+    },
+    "ufo-path-fragment-boundaries": {
+      "path": "/workspace/Memglide/.local/automatic-plan-v1/repositories/ufo-path-fragment-boundaries",
+      "commit": "bca677dc82ba6e085a579d868c8efbd95c0dae70",
+      "tree": "6deaea5e78ad7c46b7e4a5f143f2e55d0b27dfb6"
+    }
+  },
+  "public_prompt_sha256": {
+    "itsdangerous-base64-padding": "0efa8224285abcd2ba9cc7f5ae2881b454594be3d247474075b08e296b7c138f",
+    "itsdangerous-integer-decoding": "1c728c46babc53f5c0aff5ff7b556b4b188a69bb6df6893b4ed4981d390cca13",
+    "itsdangerous-compressed-payloads": "76fb9e2891568546dc1a9c3d9b7a8ad4c6fe225ddc483a37d1e7a435d1f233da",
+    "pyproject-hooks-path-containment": "1866e340b1c1b6ac72248300b2fdc8f2297ca440f2d81546734d34dfb867bbd3",
+    "pyproject-hooks-runner-restoration": "388f6e33705589c21096704e28acc6fc3320b19b2265a4ddb294b00ef895734b",
+    "pyproject-hooks-environment-isolation": "faf38300ded11e09624bd36d528160e3e59fd4e2038b942904ed040e276fcf25",
+    "mitt-handler-append-order": "75a6c516db2077d8fc8f468ec46c4a9d1f7c3b9a4c0a3842a8f6a9189c6343a8",
+    "mitt-absent-handler-removal": "e42a85491cbfb7b8d82f85b1230ef9746c42e97c2a5d213eb1fcf364e5c0061e",
+    "mitt-emission-snapshots": "45776378a9e31cb6959cf3e6e5121cbb71ec47046b465f6e071648502322f121",
+    "ufo-duplicate-query-values": "c3c796892bf3424cdf53044157d33231f11cc43897992be641b608379681a259",
+    "ufo-query-plus-escaping": "9ca32b21f806da833f6ca02f6efd6e70602757d9eb2b35093fcee55a10732bd4",
+    "ufo-path-fragment-boundaries": "ac408a51a95d7d3d75f915e4528fe8abc17285dbe510cc8a7954c199cafbe8bb"
+  },
+  "settings": {
+    "model": "gpt-6.1-sol",
+    "effort": "low",
+    "service_tier": "default",
+    "repeats": 2,
+    "seed": 20261019,
+    "timeout_seconds": 180,
+    "context_max_bytes": 12000,
+    "automatic_max_added_tokens": 4000,
+    "experimental_excerpts": false,
+    "memory": false,
+    "mcp_servers": 0,
+    "selection_model_calls": 0,
+    "codex_version": "0.159.2"
+  },
+  "budget_estimate": {
+    "kind": "Planning estimate of API list-price equivalents, not a billed or guaranteed maximum",
+    "historical_completed_observations": 80,
+    "historical_possible_write_maximum_usd": 0.0860593,
+    "planning_multiplier": 3,
+    "planning_high_per_assignment_usd": 0.2581779,
+    "estimated_campaign_high_usd": 18.59,
+    "planned_assignments": 72,
+    "source": "benchmarks/warm-80-analysis.json; observed completed originals only",
+    "hard_cap_available": false,
+    "limitations": "Unfamiliar work can exceed historical spend; no hard total-turn token cap. Actual invoices remain unavailable."
+  },
+  "frozen_manifest": {
+    "git_head": "7206b8e7f76599d742d69a9a2e218b9bfb1f54ac",
+    "files": {
+      "benchmarks/__init__.py": "d1d84b94c47e424f962f3d13779545186e85176491fb23f6955fefde1567160e",
+      "benchmarks/audit_warm.py": "d6d4f63bc04b7a90acd59c28efcd2f4a96b8e26e1ae07692f931e53daaf2ce28",
+      "benchmarks/automatic-fixtures/itsdangerous/.devcontainer/devcontainer.json": "74f782d25a4e608c73d9a641abb3b9cdae30a758f4e9dee2f1a8baa3bd0a0cce",
+      "benchmarks/automatic-fixtures/itsdangerous/.devcontainer/on-create-command.sh": "fbed3ead63b6642602b47155713f4ff540f6daffd5d5018ad8d37c2916267ac2",
+      "benchmarks/automatic-fixtures/itsdangerous/.editorconfig": "f45c88dc00e3e9f273cc30b2f139ee880ef27a6a404ca4d2fd7f0e96f9ec0f9c",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/ISSUE_TEMPLATE/bug-report.md": "9402cd8b5222631aefe31b66e73ca54bc62baefe69dfb0512a9102efba3a5555",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/ISSUE_TEMPLATE/config.yml": "3936cb40ad3769b9521573765ba26d46789411b229d45aa35e8c4a769eceb9f6",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/ISSUE_TEMPLATE/feature-request.md": "e72c8240e8a5cb5ff5d8172d6587032f9991c4188f376a6779aaa9d9b4f1c9a9",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/pull_request_template.md": "f92d7fa6366d19dfed8f7b49e753c506c39bb17e23f0908da9dea408f0f07800",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/workflows/lock.yaml": "1539cb23c54fc10e2b49a3a69c9df9d30ecd768351e9f24193e2d32213f78618",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/workflows/pre-commit.yaml": "c007f2077f67a5f586b43da92803b84331b1577939e1260e3befd1853831ac91",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/workflows/publish.yaml": "727d2bb39a3dd7e11d1e1fe8d89e73af796b947ba319c44809c1314b3c9e2f49",
+      "benchmarks/automatic-fixtures/itsdangerous/.github/workflows/tests.yaml": "cef97289c959cc35c4275d3ce76d68209bb1c10551b51026de5b9a7a0c0c93ed",
+      "benchmarks/automatic-fixtures/itsdangerous/.gitignore": "a23e3badc7c5092fd3529fbe465c342a97a309ad2a2f74b5f795732d5b8169d8",
+      "benchmarks/automatic-fixtures/itsdangerous/.pre-commit-config.yaml": "eac004d54f2316594a56684148e2d70c348d3bdf8b905db6d02f33257b20bca6",
+      "benchmarks/automatic-fixtures/itsdangerous/.readthedocs.yaml": "86214302cbc2ec1e25b78876a17947b130c43e08185cae6c67f0c9eb1d9eb9c4",
+      "benchmarks/automatic-fixtures/itsdangerous/CHANGES.rst": "6e7ed66fdf99ad67ef149e56dae3f491d759c907238d440ceaa5c79e52dfb7e8",
+      "benchmarks/automatic-fixtures/itsdangerous/LICENSE.txt": "63af09891b6be8ad1a4252ed43af0f4efba7fc948e228367bed7f3c5ae0b09d7",
+      "benchmarks/automatic-fixtures/itsdangerous/README.md": "a3e791c4af02a2575518d650c01775f63fe152526b3798064ab64d244c1c6208",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/Makefile": "ffa975e0794eed8baca37b894e2cf2e689c354cd8ea5980dc2c80b18f96ac37b",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/_static/itsdangerous-icon.svg": "d944096257267de56af1c783c45969c7667cdff0b5b4e18fa79b6c8e6d8c5000",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/_static/itsdangerous-logo.svg": "29b34db4b52be13b0a94d6e858918c29c25444a76a669da48e6d3a56d07e5bc2",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/_static/itsdangerous-name.svg": "1bd19be0ac1d9b3b17919afa304affc1336e74ba7d0128bbb18e5658509dd20b",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/changes.rst": "94c7e3657f8795af8f66d20fb6208f83df46bce9cab9b82d2c16ad961a87f7e0",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/concepts.rst": "6d042175f626cbc4b4e23fcb8eba7f15727f387f7afcd20c2a32c3f7db14e095",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/conf.py": "0fc5fcd521cb848b626459adfdd9561cc4f6c6fef0a2252053f6f1d9a1000f78",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/encoding.rst": "6ba9be2255834de862aa33ad234ba65f47c52e459c7b0ae8deee60924c923ff2",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/exceptions.rst": "c6d9476f5d1f039a7e2524872073d1c19e98e5336b3d61b7235c00a91b13968b",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/index.rst": "8b46291c6f0e2d903c45bf1d8a3b387bc073c2789759a46acc52e967d59959e3",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/license.rst": "1e07e9c25f2618a040560b70e63f42259eab24e558d0f3532e6163d751cb4eea",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/make.bat": "89a52884548ce62dd8ea6f58710e767ce865c08d47faeb3c79e0cec8b6174e77",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/serializer.rst": "5bd1b914ee53d300abd18b3a9b7b0b81ff39d787c0ff8d8c8008500126a339e5",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/signer.rst": "37402951e0ddc75a8dd3019d9d1f9bbc2425f0bbf5b270838d1a9d9dcdf7366f",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/timed.rst": "6ec021e674528785b208a68c150022a07a2c36dedf5cbe0c1a50250cc7b34d6b",
+      "benchmarks/automatic-fixtures/itsdangerous/docs/url_safe.rst": "2cf2c8d47eab05cf8e19f703c49cf2764e0142aa2d094680d3057c02fee17dbf",
+      "benchmarks/automatic-fixtures/itsdangerous/pyproject.toml": "201c20759a79bd30b8fcb38ce5539ed1dc28ff2b39d4f9742a6a54d696033a79",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/__init__.py": "cd4e17bf6c055e1d4e6fb30c5d51406365ccb0d5e2bb0f65b446a9208996a9a0",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/_json.py": "c0f4069a07b6c99f77dbc107285ea069d19ec866022502b1b54fa22ca13a5270",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/encoding.py": "c304f3e6aff7ccb71a01dba793afef4a84adc06a9859edf4ed997f53ceda4453",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/exc.py": "46bddec68d0c44511c3d996dc1e7322b5e955756c4d8af7f175f9dfa58dc527e",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/serializer.py": "6d6f1687897c7e3ac6eeff5bfd6794df90e299feedcc6aae3faa0e53ffe925e8",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/signer.py": "60ed0257b341bc703a8f9e3d4441c91548d4a23c36a47ab0714a509d4ef23584",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/timed.py": "3afbf6050e8b73605931d1e516f374835456979e4319c098bfe5f284f120c6c5",
+      "benchmarks/automatic-fixtures/itsdangerous/src/itsdangerous/url_safe.py": "6b3e1ee5f5e2fefb3e61b5a3f186709f8c2254a7de0fef8610a453e547aee0fe",
+      "benchmarks/automatic-fixtures/itsdangerous/tests/test_itsdangerous/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "benchmarks/automatic-fixtures/itsdangerous/tests/test_itsdangerous/test_encoding.py": "af71dbee0825fc8ae947b6c789b05f2331afe60efae2aee5145727446385c3f0",
+      "benchmarks/automatic-fixtures/itsdangerous/tests/test_itsdangerous/test_serializer.py": "12a6583952e31a13edf870baf6517a8bf5403c7f072e08d7aaaccce64ab2c00a",
+      "benchmarks/automatic-fixtures/itsdangerous/tests/test_itsdangerous/test_signer.py": "219c2a399adc874f14534d1311e950c1e29b2c7d05d037770701b2af258b97a2",
+      "benchmarks/automatic-fixtures/itsdangerous/tests/test_itsdangerous/test_timed.py": "b75531b8901d48a6d7a5c4bbbb2342f02f6ef022185840121f7705c1e907979a",
+      "benchmarks/automatic-fixtures/itsdangerous/tests/test_itsdangerous/test_url_safe.py": "64d2afc9ab467f209549841f0d87125243d646e011c725818eda8e75ad4d830d",
+      "benchmarks/automatic-fixtures/itsdangerous/uv.lock": "a2660b9ebe70659cf94cc9b93adb9ca630b2af1fe358ea8ce0e480b127e297ec",
+      "benchmarks/automatic-fixtures/mitt/.editorconfig": "fb8101862d5fa12f273b79bc076f5ef81d13bc10771259a21966c854556f0d49",
+      "benchmarks/automatic-fixtures/mitt/.eslintrc": "826dd25e7c2ef027c8a970b2266de386a459bfbb766ea96856f6510d26077f1c",
+      "benchmarks/automatic-fixtures/mitt/.github/PULL_REQUEST_TEMPLATE.md": "12a98255c17ce7cefacb9bf7ae0913edf2887b9225aadc31ded16106818d3591",
+      "benchmarks/automatic-fixtures/mitt/.github/workflows/compressed-size.yml": "d701cd6ddbbfd3d2b2e1dd0e4ccc966f635f8a1bf628d9683f67705fbf1325d4",
+      "benchmarks/automatic-fixtures/mitt/.github/workflows/main.yml": "76acc915042c58603ac0ccccf10b1243b374caf7ada817ce399c8efc6edc18f1",
+      "benchmarks/automatic-fixtures/mitt/.gitignore": "ce170d58a649f6289283725e36d3f174ed2eb4012656b5cc1a3b517510d84887",
+      "benchmarks/automatic-fixtures/mitt/LICENSE": "1cab22f196264195a4caec8ca5630170fdde76ee8f43346e47021d087332d3b0",
+      "benchmarks/automatic-fixtures/mitt/README.md": "9b90f75f1ec4eba847115aa57b53cf46df90398e65e8ade7e3e51a3cc6c52664",
+      "benchmarks/automatic-fixtures/mitt/package.json": "99966ad2891dfe56614f039f5d03ada4bda6dba810952272ae57359abb527b91",
+      "benchmarks/automatic-fixtures/mitt/src/index.ts": "1536a2dd71d64785d811076beee6d970583ca555dd34ce839face641a200054b",
+      "benchmarks/automatic-fixtures/mitt/test/index_test.ts": "cc25b9f1d50cf07d0ae99141e592bfe0d1ca7e8a48332bf1870b31ba8e62c43b",
+      "benchmarks/automatic-fixtures/mitt/test/test-types-compilation.ts": "ea625d6ba9a8bd1b44ab24715bd84745db2a38efec69d3441c1774bd89c67bc8",
+      "benchmarks/automatic-fixtures/mitt/tsconfig.json": "2569f69082a5b5e094466fdb4b5db9c8294b00e9c6d659b8a5571c77c695c9ec",
+      "benchmarks/automatic-fixtures/provenance.json": "d44b9dc166fa8348c544392c2381c474560de3162cd798dc43d6b8d09a5683f9",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.bumpversion.cfg": "b3a77d82ac33ca4d50463bfe671a54b1d74b55a6ec238d75d5cfa27c73578914",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.git-blame-ignore-revs": "c439f16c75c408c70c02febcb1a348c34396297b442c8a709ad2dad527e72027",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.github/dependabot.yml": "026c15b1d0e87070673f124abd6fdf5fee945f3faad7d04f9092e2c8a53b5af6",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.github/workflows/ci.yml": "1b52e905db9c542df6cfa9071fd737708b78be044d337fa9f7620c1d60f17ace",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.github/workflows/publish-requirements.in": "492600aa1ccbbc2613261a239d60e9fd3fce681c50b97c4e79f9767c031d9a95",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.github/workflows/publish-requirements.txt": "451d60b06ce51e20acce09d8a27c6fecaeb7c537b358c3fb1c06b33b7feb5ce0",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.gitignore": "685c6ac15c50df5685f9213ca922500e566c38218fd1dad3be8ac07ae036cbc5",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.pre-commit-config.yaml": "39d973405573d14d568d996bf5ade69e5df7d0858a6f3d144e56e34e52495e14",
+      "benchmarks/automatic-fixtures/pyproject-hooks/.readthedocs.yml": "0e57a2358774cf54fd6524e23e5db06030b6795bcf7c7defec54c5cb26c43c9f",
+      "benchmarks/automatic-fixtures/pyproject-hooks/LICENSE": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+      "benchmarks/automatic-fixtures/pyproject-hooks/README.rst": "d297f465124330971cb38ef04ac94a267d4af49c4a1eab6f4553d9fdaddd6721",
+      "benchmarks/automatic-fixtures/pyproject-hooks/dev-requirements.txt": "92f21dd925c44cd617e5a15342891b5733a30c2e0b121d82f883cd7593cddb9a",
+      "benchmarks/automatic-fixtures/pyproject-hooks/docs/changelog.rst": "bf5ba030e5e9b6d6f03db8949ba2b02a8ae9a33de8fcde18a4af08698a73af38",
+      "benchmarks/automatic-fixtures/pyproject-hooks/docs/conf.py": "21a0c3ccfebbcc205e3f2c2957055ac6e394aff9b2ba3fb3f05744771443ce8f",
+      "benchmarks/automatic-fixtures/pyproject-hooks/docs/index.rst": "89545cca6506c7e383b2fff887ea72fb2d514778f668eff823417a951512b301",
+      "benchmarks/automatic-fixtures/pyproject-hooks/docs/pyproject_hooks.rst": "4c5052189a2838399b4c68ad5200d10553ec3a5ff9adc1ba9ed6ed5cdd52110b",
+      "benchmarks/automatic-fixtures/pyproject-hooks/docs/release-process.rst": "de19d84f4437ba3aa1b47809afd9b0a6e765672f80b77716d2e95982feaca197",
+      "benchmarks/automatic-fixtures/pyproject-hooks/docs/requirements.txt": "56a1949d7db3e20de51848045e34f99f8b423b4474dd2fa72221e8274398a42c",
+      "benchmarks/automatic-fixtures/pyproject-hooks/noxfile.py": "ec2fd64bcfc7935f6c098eab0e815634cd65c0a85e1b30c6ad86e06f75980fba",
+      "benchmarks/automatic-fixtures/pyproject-hooks/pyproject.toml": "6c55d5d18f77f18beafd755ab99900901064bf1c05b3d26fc427c42bbfeeda85",
+      "benchmarks/automatic-fixtures/pyproject-hooks/pytest.ini": "c72d06da5c5af7b91d58c2500d4e12297c0ae54a685bc62fe219663ac47a1afd",
+      "benchmarks/automatic-fixtures/pyproject-hooks/src/pyproject_hooks/__init__.py": "c89797a5c140ea7fc00c2d5e75e2d8e1127af43f5e04c56f610e6f506fede84f",
+      "benchmarks/automatic-fixtures/pyproject-hooks/src/pyproject_hooks/_impl.py": "4949c4c0dff363f15d508f79a45a27d96695e859cc78e5578e8731be42da6c73",
+      "benchmarks/automatic-fixtures/pyproject-hooks/src/pyproject_hooks/_in_process/__init__.py": "30934fa5f23170ef85821c6905bc641b5ac58907fa1ce51b5785399aad07167b",
+      "benchmarks/automatic-fixtures/pyproject-hooks/src/pyproject_hooks/_in_process/_in_process.py": "e74d67a39a68a301ddec69516ec217081ccb4d00673c41f3e56ac6ca5d11065f",
+      "benchmarks/automatic-fixtures/pyproject-hooks/src/pyproject_hooks/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/compat.py": "aa7f2fe92bb2b61920d34d898383b1093a51753ff95dd6b37ff243c04ccc2e3f",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/buildsys_pkgs/buildsys.py": "b5aec38a7546ea76dd4d58253ed4219b68c7827009a83979819b11162288de11",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/buildsys_pkgs/buildsys_minimal.py": "848d1e217ea222146d6ab97351880583ee5faf23fa976effc452bfd733befb9b",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/buildsys_pkgs/buildsys_minimal_editable.py": "89e246e1b836b7c555352c39dde32653d0b063eb8f41cb8c189efac1c91d4a19",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/buildsys_pkgs/buildsys_warnings.py": "c5fea999d9e39260a0a76e942d13dd0d0c4b4665e62a08536443590deacb0d5c",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/buildsys_pkgs/nested/buildsys.py": "d407f4278f71161173519fda56caabdd05b433870a3114d08159ad989a63b2e4",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/distribution_mismatch/backend/_pkg-0.0.1.dist-info/METADATA": "af3ea57958c39893f171bfecfee2b8aed550e48cc02c15e445b6c1f24ae6a0df",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/distribution_mismatch/backend/intree_backend.py": "94c5af0433b8c2ca0571bfe18b830529af8bdb1207a19764f59d05d5d313ad2c",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/distribution_mismatch/pyproject.toml": "da4198c5022d172593e0c4271377f4687bc06f3cdb5d6358f6d99710e0f87571",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/path-pollution/pyproject.toml": "4a017048064bf853e9f8ac4a774af07985c633c8bdd164a7ceb2438c350c2e54",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/path-pollution/setup.py": "50d266c4b6b978171531920470d19338808127cf8fd8c185666667cc341a67a5",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg-with-warnings/pyproject.toml": "0e3d294a962e5e33f689869001a7eec62b69d22c6a1deb687adf9f784e3cf84e",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg1/pkg1-0.5.dist-info/LICENSE": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg1/pkg1-0.5.dist-info/METADATA": "4557e24d1f5ef2c9cdd1933e86b8737e34e93004d1bbe955dd9a06b7fa6782d8",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg1/pkg1-0.5.dist-info/RECORD": "19c686ba76ec178afe8b9dba21a9b57b36d14cd6017a961a1321ca2ddb53fdc5",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg1/pkg1-0.5.dist-info/WHEEL": "f421f4d3b0177817dd5cc31b86f695ebdde392885c4b3be621a85e0ad5ce2ffa",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg1/pkg1.py": "2096b28e01c2c5c55bb3c29966da8a8963e9db157d8bcc3ce0cc14814e67f0fa",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg1/pyproject.toml": "01b34e9b9ff665c15ba5f55dbda81bdab01b1c442dad3c57bd702126ef67628b",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg2/pkg2-0.5.dist-info/LICENSE": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg2/pkg2-0.5.dist-info/METADATA": "e3343126a73846f9e57f963eb1e5e7471f20fb514afac8d3b92d00d4a3f46a39",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg2/pkg2-0.5.dist-info/RECORD": "5766d47f25bfc4e26f45bb6c0e53c832742964bdaad82a4ac8142fbd25ec5017",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg2/pkg2-0.5.dist-info/WHEEL": "8f12af35a0ca1c369ca5a2e2ebdfaf9cb2a4052ca7c01ce6312f36a62a6dd53d",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg2/pkg2.py": "2096b28e01c2c5c55bb3c29966da8a8963e9db157d8bcc3ce0cc14814e67f0fa",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg2/pyproject.toml": "c0ced6a259410072cc433c9c6ba548c78297888cc5fef1378fbaeba50cf8b491",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg3/pkg3-0.5.dist-info/LICENSE": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg3/pkg3-0.5.dist-info/METADATA": "8ac24f665f91a8c39daebaae2e28b508f0d94f8a9347cc2b2393993cae7887e7",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg3/pkg3-0.5.dist-info/RECORD": "626c43aa5c149565e94bb327cb240b94714c57e33033b8d1e9f13b10e85a369c",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg3/pkg3-0.5.dist-info/WHEEL": "8f12af35a0ca1c369ca5a2e2ebdfaf9cb2a4052ca7c01ce6312f36a62a6dd53d",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg3/pkg3.py": "2096b28e01c2c5c55bb3c29966da8a8963e9db157d8bcc3ce0cc14814e67f0fa",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg3/pyproject.toml": "8acc7dc3d4ed581b232928c3abd126779f9c0755f2628bb66e93e0b5db4f1d47",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_intree/backend/intree_backend.py": "e3903f2ef7dc8b723cbc80544cfc353fb784d1f6943e58ceea33584ded720665",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_intree/pyproject.toml": "da4198c5022d172593e0c4271377f4687bc06f3cdb5d6358f6d99710e0f87571",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_intree_metadata/backend/_test_bootstrap-0.0.1.dist-info/METADATA": "abfaa8bb019b21ac45c2df627a22bc6faf4b99be412a0083ad098966f9997a85",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_intree_metadata/backend/_test_bootstrap-0.0.1.dist-info/entry_points.txt": "245f486d6fe7d997d7451280b066d3db48d252623e8976c0097339a0208cb0b8",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_intree_metadata/backend/intree_backend.py": "83c38c65670b08bb39f78b66556870e606dee946b7f7f2b8f478e76b9370b3ea",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_intree_metadata/pyproject.toml": "da4198c5022d172593e0c4271377f4687bc06f3cdb5d6358f6d99710e0f87571",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_nested_intree/backend/intree_backend.py": "e3b13a3c0e60f5962e62a46da0c98563ffc71486a29a8fb47d96dbcb3fa66afd",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_nested_intree/backend/nested/intree_backend.py": "e3903f2ef7dc8b723cbc80544cfc353fb784d1f6943e58ceea33584ded720665",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/pkg_nested_intree/pyproject.toml": "1521e674bbb2aad64f4dc8151bb2fce3e4576c9a4757169808d5f9967f2b3bcc",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/setup-py/pyproject.toml": "4a017048064bf853e9f8ac4a774af07985c633c8bdd164a7ceb2438c350c2e54",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/samples/setup-py/setup.py": "0b2620b3f203fa13ade1509994e342e35181b73ccb33108d7abd5a56347c41f1",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/test_call_hooks.py": "d23d01582ec7e9871cc5170ae41b9f3166bc9ceb513cb9aa84b3fb2d8a10a57b",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/test_hook_fallbacks.py": "5546f364ec4c10fff912bb5de566ada6a8c84ca8ad730c5cbd638bd0459efa7e",
+      "benchmarks/automatic-fixtures/pyproject-hooks/tests/test_inplace_hooks.py": "c328e288779ee319ff789667c26052a95481200cff8b441afc7e6d58e61ca4c9",
+      "benchmarks/automatic-fixtures/ufo/.editorconfig": "b7e66239e90c0d75c06bc7042dbc8192106de56b6d83c444324c68020381f31d",
+      "benchmarks/automatic-fixtures/ufo/.github/banner.svg": "e40640bb1c74285d824b670ab8a6bcd775f0dfc3fd931ad4e4058a8a3f1399fa",
+      "benchmarks/automatic-fixtures/ufo/.github/workflows/autofix.yml": "5028801c4c4f90199154fcb3fe9ce649058f7e6bf0f38557f7518ca0dec6dc23",
+      "benchmarks/automatic-fixtures/ufo/.github/workflows/ci.yml": "9baa69ddfbaa500cac2b30ea3a9293b26095ced7369088e33caa7057631c63ae",
+      "benchmarks/automatic-fixtures/ufo/.gitignore": "d8ff5318157a0d309e319a8943e1d5743f6caff7c5e6adc08d812985a3ff659d",
+      "benchmarks/automatic-fixtures/ufo/.prettierrc": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "benchmarks/automatic-fixtures/ufo/CHANGELOG.md": "a5c27b379f36fac3572663ec65770e24a5110c5f2f795cec5ac08a16d846bf84",
+      "benchmarks/automatic-fixtures/ufo/LICENSE": "46231df5a7733c3f52f11b71f3df61813007745b62b09031acfb45fb42d75082",
+      "benchmarks/automatic-fixtures/ufo/README.md": "e1e73226d840b47332b904542d1066eae4b6f89839b6a455945b102baf65b4dc",
+      "benchmarks/automatic-fixtures/ufo/SECURITY.md": "37a94aa47ed4e8d0027dc65ff42ff515c37a1bddf15daaab4d87c93d62266ab6",
+      "benchmarks/automatic-fixtures/ufo/eslint.config.mjs": "b7cc14e83d2435e8bf7e868525827add678ceebc27eac141857bdf15f6cced43",
+      "benchmarks/automatic-fixtures/ufo/package.json": "4ef029b2bde70c3007f3520d3d4ba14b754e4e8c4defa8d58a8e53434ebdf028",
+      "benchmarks/automatic-fixtures/ufo/pnpm-lock.yaml": "330cbc5239289059a81a6e514c847207450c590e7f3e9ac29847657f5dd7f9b6",
+      "benchmarks/automatic-fixtures/ufo/renovate.json": "3d856e8cb2b6391882a8f299239a27b45c84620c1fdb79a7f7cadef833265f76",
+      "benchmarks/automatic-fixtures/ufo/src/encoding.ts": "8700a80814edd5ecfa19bc19d61b8ad0be0dfc60dfde5ddd86ab399fda5503dc",
+      "benchmarks/automatic-fixtures/ufo/src/index.ts": "42486fac22b82f8b6be79c8941e3b1827dde1a8103e9772f6ccddf2d7fdd50d3",
+      "benchmarks/automatic-fixtures/ufo/src/parse.ts": "c8b4224297787a599669cc7e41242113a927c1f5fd9b2d1c835440f247d716ea",
+      "benchmarks/automatic-fixtures/ufo/src/punycode.ts": "e389c56c10d46e33804ca595f0ece4adce3f4f16526c1f7556aeecdb53509c7b",
+      "benchmarks/automatic-fixtures/ufo/src/query.ts": "be4106f9d10b9ac90da3893c0046956375d7c67ff1430ddc8a77de899e19db49",
+      "benchmarks/automatic-fixtures/ufo/src/url.ts": "ddf9f468f1f1c169ea6fd6bc72b746c9fc4d928ee59bb08968f894452e64feca",
+      "benchmarks/automatic-fixtures/ufo/src/utils.ts": "bced262a057669ad04a2f4f6cb47439dbe3851f7c9db0f9b965ac7a004047933",
+      "benchmarks/automatic-fixtures/ufo/test/base.test.ts": "1711d7a71c2a51b8caf744f53cd23fc4620a62b6f62573981efce8d807ad4716",
+      "benchmarks/automatic-fixtures/ufo/test/double-slash.test.ts": "0d74a005885353f2f7c495e8038a547be8b23e4e17b23c7fac37e9d87ea7cd91",
+      "benchmarks/automatic-fixtures/ufo/test/encoding.test.ts": "4466ea91db001d790acd41601b0d9f8bed9398a3a0af6763315e8cef5769bb37",
+      "benchmarks/automatic-fixtures/ufo/test/fixture/README.md": "6e61a898b8a07074a0ce5b42fff358ce4527baf7720f0b5012d06c05f633ae59",
+      "benchmarks/automatic-fixtures/ufo/test/fixture/toascii.json": "b34ef529ba37f1d9e2d17f824036c3d72e69f8fbc400a8643108f5a6f13b3228",
+      "benchmarks/automatic-fixtures/ufo/test/fixture/urltestdata.json": "90f21981c78ba66b13d50ce10d4281a10e2a5f45cfff3dbe511c8cb18e6cd710",
+      "benchmarks/automatic-fixtures/ufo/test/is-same.test.ts": "d2521317f27eb5262027aad0e0d9c7bee60e78b88f10ae0cea8de13d9e1552fa",
+      "benchmarks/automatic-fixtures/ufo/test/join.test.ts": "e7ee8f97e478bffe238118341010a783a571f0407a4c4b3d277187d046ad843c",
+      "benchmarks/automatic-fixtures/ufo/test/normalize.test.ts": "435455abd729f4c1392ac560d32e4aed179af2c359019ddfba32073fcb6ff5a4",
+      "benchmarks/automatic-fixtures/ufo/test/parse.test.ts": "8f3f48909dea5c04524029acb07657b46451970ced70e40dab368c111577cb8b",
+      "benchmarks/automatic-fixtures/ufo/test/punycode.test.ts": "f235b4b0b5351026e677a3e9ca74898043098b18f2f9a828b37163d978b2fe5e",
+      "benchmarks/automatic-fixtures/ufo/test/query.test.ts": "11d753759a4f2613f3d1b76d49929e00bac84f548e4566ebca06d7766ba101a0",
+      "benchmarks/automatic-fixtures/ufo/test/resolve.test.ts": "c956a716ca301e1f6ac16114f5764387e433ba1a55aa5985e55d6a8666bab7a3",
+      "benchmarks/automatic-fixtures/ufo/test/trailing-slash.test.ts": "536c5d4ecd12afd0018d044abaf9acea22187c918ef4f588333555444ea1dc46",
+      "benchmarks/automatic-fixtures/ufo/test/types.test-d.ts": "5a78ae712f6bc87a38c31fb03d33ef3dc6f70e0291bc514e5f9e7915072aa3f2",
+      "benchmarks/automatic-fixtures/ufo/test/url.test.ts": "a0268089fbda2b524b2b1dc0bf1156aaad27f10d310560bb9203a6043ac671a7",
+      "benchmarks/automatic-fixtures/ufo/test/utilities.test.ts": "0d7f595f6caa7a76ca2acde2f272b1af2161cd97d3360a7e82b52ab6cc079500",
+      "benchmarks/automatic-fixtures/ufo/tsconfig.json": "51e23340e47b98a0cc4c48560e48f546d6f3c41235538317fb244145a22e6755",
+      "benchmarks/automatic-protocol.md": "fe8bcc63844cc8f607012f9908591d08191b5e5736f605b5179f74320cd8b86c",
+      "benchmarks/cache_preparation.py": "fe431a35ec0884f00a0cf62b5401da2f039e4449f78809d18299c0f9a487de79",
+      "benchmarks/compact_quality_evaluation.py": "8e2f8a476d6ede92da015a94d3e78e3e01b003045e81c9f4a98345f10d248fad",
+      "benchmarks/compare_components.py": "0496df9bcf9f5268048dbb9912f24aa373d329c06c73c6dff85cf836f75cfd37",
+      "benchmarks/context_audit_v2.py": "b09531bc97986d5d1d9d53bd95ee75e847116b38c3a1cff77b58b1dd66063c23",
+      "benchmarks/context_efficiency_v2.py": "2fd8e54798cfd4884a5a90be88726bf64677c2e66cfe51e68d2f1e4ad592c771",
+      "benchmarks/context_performance.py": "6dc7a7baa303b525ac6c71bdd9a13c5d5fdffd13230d7e58d2864e87f1228c5b",
+      "benchmarks/corpus.py": "691e5c1f0122c8c9be685e9949e2a64a1e544fcc36ab35a92461a2b44953197c",
+      "benchmarks/corpus_automatic.py": "c4cf745741e1a6083c30eafbc4181c122df402e50b76d949f7c64af27e4b8327",
+      "benchmarks/corpus_cache.py": "c121f61bdf8363f771c7edac2dfad06959de5db8b14651436113b7229467580c",
+      "benchmarks/corpus_cost.py": "50a4223815d28f5afef378ca10be208762fceb8d35674194a95b941ea6de95e7",
+      "benchmarks/corpus_daily.py": "d30b71dc53373f8307be3a37b8420c66b52df7597f49d86402f7734fc3446984",
+      "benchmarks/corpus_v2.py": "9f6976324ad19989a9ac68336648bc508baea542f697bef5dde15c0bf00ea5ba",
+      "benchmarks/corpus_warm.py": "fda2dabaf2c5e36b1243fc36c60414c357bb930ca7b88c67e91f0831e480dace",
+      "benchmarks/corpus_workflow.py": "ede082dfc6c576380d3ca4d8cefa4cfa1872a38e0ac7c144b5128b7f5f0d9491",
+      "benchmarks/corpus_workflow_v2.py": "3c54ceb9387e5b06d03d430bc348fbd7f91c5bb8eaefbba4c6621c8cedaa5959",
+      "benchmarks/cost-pricing.json": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+      "benchmarks/estimate_cost.py": "e7f1cf8a4c62bfb929a69bcee9d3498b9cf68393e229f2fb442f3f148578778e",
+      "benchmarks/live_context_analysis.py": "e9eef71cf8e666b27c1bfcaa3add5aa91c5d85904f16201f8d437e2cc478e246",
+      "benchmarks/package_warm_evidence.py": "873bd376426065e7ca163d3b483028778701ac526fa0c072193c11e34d524e87",
+      "benchmarks/probe.py": "54a1520c39b9385904328445a253e6d1831cecb043165612afba1bdb377701d0",
+      "benchmarks/ranking_development.py": "0f563ebbfbdb64316db2f9f3c00ba685b90f9bad7a367bb11f1edddb6d964d09",
+      "benchmarks/read_path_diagnostics.py": "eabce2a470d6a595f898f9d80fe17c34d4d9db3c44037428ba3b85b54d23cda7",
+      "benchmarks/refinement_corpus.py": "0c0237bd627b417eece59ff43f1b1ed3a16158e332e52d411fede88cedd7cbc2",
+      "benchmarks/refinement_eval.py": "86a6dbd7f5119955501c8f768a903ac703d067dba50f7196f203b1c8d0961ca1",
+      "benchmarks/refinement_reporting.py": "d1599b63269d56d36c4b0c219f83deba2fbe685ade694c7d793b2a7417c57a5a",
+      "benchmarks/reporting.py": "719fa45fca6f458ca9905d5f0c2567dbd5911cdfc56da04f2fbfb24acff32831",
+      "benchmarks/retrieval_experiment.py": "72b2552fd722810abb8a682a2bf3281308cacec691d41257ff78b979a5283687",
+      "benchmarks/run.py": "de12449d6e2382ffc6bd37ea4df67b17d85818dc8f8ffd7756c9122bfd934115",
+      "benchmarks/run_automatic.py": "0cd2333b03709f8ab56f2862fa78fa3b68ef3e9687b5c75d022cbb26f51d9c53",
+      "benchmarks/run_cache_formats.py": "6cc1b200b38601aff54f04114caefd3cbb905956dafa7fb912b2b5b118e63d3e",
+      "benchmarks/run_cost.py": "b42d3532ae504d930b221d9b1767c9cf9e0560c83eb62325a458624b48afdd9b",
+      "benchmarks/run_daily.py": "b9947926df3ba7130cec81264b7abb6a28c5c1dd30697235052b5d401d729521",
+      "benchmarks/run_v2.py": "4855a0eb8c286b0ab39fb495e05fa31e0f3d8e84c96a7798e4947d2543d41ed4",
+      "benchmarks/run_warm.py": "1f3ab47045cbcd38471ed83b48694b3fb66fcadc89242fdf5f5b7d15fb1b53db",
+      "benchmarks/run_workflow.py": "472fc995e05f4f83397cb283274df052199c722b5c3b961936a854424dd353c4",
+      "benchmarks/run_workflow_v2.py": "dd95f6f73d8db66cdb5b42834b9b6d4f30049545f936952d8012fff4e087bc0f",
+      "benchmarks/saas_database_efficiency.py": "fd468f585f2dc34d480754dd0cff2834134b60960d26b2d86311337cd37796a5",
+      "benchmarks/saas_graph_efficiency.py": "d469935124d19287ab92c4c1078918c692efa8007188b6d58c0b85f06204825c",
+      "benchmarks/saas_scheduler_efficiency.py": "fb6134948a1e43d095f7335bb76f66a5fe1f57a8fcf0615d8631a63f8c7ce4a1",
+      "benchmarks/search_frequency.py": "134f8b98634c5495f2c5c935d7e5d472f9ef2ef52d9376d20825f168a0d04cfc",
+      "benchmarks/search_scale.py": "471b4b307f6b0445fdaa3ccbeef0316d14c664cf9971ba8d3c7c4042a144c9f3",
+      "benchmarks/tasks_automatic.json": "624a500b65172cda253cb06f1fe10918d25263e6572b80052dafd485819ac30c",
+      "benchmarks/telemetry.py": "e10ade6b7ad728ee7517d9cda6ec6670fd5fe9be5010088775b085af53646191",
+      "benchmarks/verify_rank_equivalence.py": "4b2d407d1e402c449223bcfef11b70283ae3b995defdaee776cc9a5119ee1e92",
+      "benchmarks/warm-80-analysis.json": "92297f1b12de1e254b9ad3f045a3ab125f25fa3c9a802ac65b6ed90105f01982",
+      "benchmarks/workflow_cost.py": "c4e7d2175c7dd026919c48e52f58f5b26d85f29ae6702fab14e4a4c2a2d5d676",
+      "pyproject.toml": "2a975374007cff375909ebd8a372029dad2205e19325c1e3a9d3b39ef032be37",
+      "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+      "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+      "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+      "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+      "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+      "src/memglide/core/context.py": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+      "src/memglide/core/indexer.py": "b1c24ba632df8fa56f478df729c72a775efc160170421fdf1b8834727172726b",
+      "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+      "src/memglide/core/query.py": "1d3f015454fd096ced74f6239ada586ba77490738cf62697e676157fe843152c",
+      "src/memglide/core/watcher.py": "4a06c71b08789e8ca49a4b984c8aeeac2178a4b52bbe7122c011f7aecfbb52eb",
+      "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/integrations/auto_preload.py": "1866684d17c3c0467236769d1a54f996de85dd32bd9115bf3cb3366cff81a6a8",
+      "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+      "src/memglide/integrations/codex_preload.py": "7578673ca028535c39d4f3cd4a18714db6e21fc093177bc8d7f78e76dd2da65e",
+      "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+      "src/memglide/integrations/memory_preload.py": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+      "src/memglide/integrations/preload.py": "9ae8595b4b5f97993dcf177d78d090db5f1e0f6fdb8ce2e2da5e3d766d69afac",
+      "src/memglide/integrations/source_excerpts.py": "4cd5481ebf43a204993396edae03343c0297db199c3e825d2263948ad0b23497",
+      "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/memory/engine.py": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+      "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+      "src/memglide/service.py": "518f1d0a7d57027ae31d585807ab76aec3a0ec021509b146c89ce75819fe6a58",
+      "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/memglide/storage/database.py": "403820dcaeadf0b1d67cb0691ce1c922eda34cbc7252b3e8cb7cc7607d2c703d",
+      "uv.lock": "89bcc0d7a1c76ece1b91aaaa39ab108f819d1268d8d27bc60890abad124306f0"
+    }
+  },
+  "limitations": [
+    "Offline target coverage is an author-scope proxy, not semantic completeness or coding correctness.",
+    "No new native model usage, task success, token saving, latency benefit or billed saving exists until an explicitly approved formal execution.",
+    "The upstream repositories and intentionally injected defects are controlled workloads; size and source-snapshot coverage are disclosed, not described as representative production work.",
+    "Provider and operating-system caches cannot be equivalently reset; order balancing does not establish identical caching.",
+    "Native JSONL does not reveal actual billing, underlying inference-call counts, actual filesystem reads or provider CPU/memory.",
+    "Native-reported zero cache writes may be a parser default; possible-write sensitivity bounds are scenarios, not confidence intervals.",
+    "Budget approval is an estimated API-equivalent allowance, not a guaranteed spend ceiling; Codex exec exposes no hard total-turn token cap here.",
+    "All automatic-selection abstentions and failed or interrupted attempts remain in primary intent-to-treat results; originals are never retried."
+  ],
+  "native_execution_approved": false
+}

@@ -1,0 +1,186 @@
+{
+  "corpus_version": "automatic-1.0.0",
+  "evaluation_only": "known_paths/focus_paths are labels used only by baseline B and after preparation for offline grading; never C discovery input",
+  "tasks": [
+    {
+      "id": "itsdangerous-base64-padding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "prompt": "Repair URL-safe base64 decoding: unpadded text and byte tokens must decode consistently for every valid encoded length. Preserve the existing byte result, padded-input compatibility and malformed-data exception behavior.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "focus_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "itsdangerous-integer-decoding",
+      "repository": "itsdangerous",
+      "language": "python",
+      "prompt": "Repair compact integer byte decoding. Values encoded in network byte order must survive a round trip, including zero, short encodings and the full unsigned 64-bit range. Preserve the existing integer API and overflow behavior.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "focus_paths": [
+        "src/itsdangerous/encoding.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "itsdangerous-compressed-payloads",
+      "repository": "itsdangerous",
+      "language": "python",
+      "prompt": "Repair URL-safe serialization of compressible payloads. Newly issued compressed tokens must retain the compression marker understood by the loader and round-trip strings as well as structured Unicode data. Keep ordinary small payloads and signed-token verification working.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/itsdangerous/url_safe.py"
+      ],
+      "focus_paths": [
+        "src/itsdangerous/url_safe.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "pyproject-hooks-path-containment",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "prompt": "Repair build-backend path containment validation. Relative backend paths may resolve inside the source tree, including the root, but must not escape into a sibling directory whose name shares the source directory prefix. Reject absolute paths as before and return normalized absolute paths for valid requests.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "focus_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "pyproject-hooks-runner-restoration",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "prompt": "Repair temporary build-backend runner overrides: after leaving an override scope, restore the exact prior runner even when the body raises. Nested scopes must restore their respective previous runners, and exceptions must continue to propagate unchanged.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "focus_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "pyproject-hooks-environment-isolation",
+      "repository": "pyproject-hooks",
+      "language": "python",
+      "prompt": "Repair subprocess environment isolation in both ordinary and quiet build-hook runners. Per-call extra environment variables must reach the child invocation without changing the parent process environment. Preserve inherited variables, working directory, failure checking and the quiet runner's output capture.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "focus_paths": [
+        "src/pyproject_hooks/_impl.py"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "mitt-handler-append-order",
+      "repository": "mitt",
+      "language": "typescript",
+      "prompt": "Repair event-listener registration ordering. Multiple handlers for the same named event must run in registration order; wildcard listeners must preserve their own registration order and run after the named listeners. Keep the caller-provided event map and symbol event support.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/index.ts"
+      ],
+      "focus_paths": [
+        "src/index.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "mitt-absent-handler-removal",
+      "repository": "mitt",
+      "language": "typescript",
+      "prompt": "Repair removing an unregistered event handler: it must leave all registered handlers untouched. Cover both named events and wildcard handlers, while keeping removal of a registered handler and removal of all handlers working.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/index.ts"
+      ],
+      "focus_paths": [
+        "src/index.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "mitt-emission-snapshots",
+      "repository": "mitt",
+      "language": "typescript",
+      "prompt": "Repair event emission when listeners unregister other listeners during delivery. Each named-event and wildcard handler list must be delivered from a stable snapshot for that emission; a removal should affect subsequent emissions without skipping a listener already present in the current snapshot.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/index.ts"
+      ],
+      "focus_paths": [
+        "src/index.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "ufo-duplicate-query-values",
+      "repository": "ufo",
+      "language": "typescript",
+      "prompt": "Repair parsing repeated URL query keys. Preserve every decoded value in encounter order, including empty values and plus-encoded spaces. Single values remain strings, and unsafe prototype-related keys must still be ignored.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/query.ts"
+      ],
+      "focus_paths": [
+        "src/query.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "ufo-query-plus-escaping",
+      "repository": "ufo",
+      "language": "typescript",
+      "prompt": "Repair query-value encoding so spaces use plus notation while literal plus signs remain percent-escaped. Mixed spaces, plus signs, Unicode and reserved delimiters must decode back to their original values without changing path-encoding behavior.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/encoding.ts"
+      ],
+      "focus_paths": [
+        "src/encoding.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    },
+    {
+      "id": "ufo-path-fragment-boundaries",
+      "repository": "ufo",
+      "language": "typescript",
+      "prompt": "Repair splitting URL paths into pathname, query and fragment. A fragment after a query must stay separate, and question marks inside a fragment belong to the fragment. Preserve empty parts and full URL parsing through the same helper.\n\nInvestigate this repository and repair production code without new dependencies. Preserve public APIs. Existing tracked tests, docs, licenses and configuration are read-only; add regression tests in new test files only. Do not inspect files outside this repository or benchmark/grading machinery.",
+      "known_paths": [
+        "src/parse.ts"
+      ],
+      "focus_paths": [
+        "src/parse.ts"
+      ],
+      "defect_origin": "author-created mutation of pinned upstream production code",
+      "grading": "two external behavioral groups plus six external regression groups; upstream dependency-based suites not executed",
+      "corpus_version": "automatic-1.0.0"
+    }
+  ]
+}

@@ -1,5 +1,28 @@
 # Memglide V1 verification record
 
+The new [automatic-source assessment](benchmarks/automatic-assessment.md) records
+an opt-in path-free source router, deterministic context gate, complete-source
+deduplication, private versioned diagnostics and a separate disabled excerpt
+experiment. Existing explicit-path defaults and optional memory remain preserved;
+automatic memory injection stays disabled. [Research](benchmarks/auto-source-research.md)
+and [the A/B/C protocol](benchmarks/automatic-protocol.md) distinguish capability
+from efficacy. **1,880 Python, 24 frontend and three production Chromium cases
+passed (1,907 distinct cases)**, with lint/type/build and clean installed-wheel
+CLI/API/SPA/default-and-agent MCP checks. Initial failed validation attempts are
+retained in [the verification record](benchmarks/automatic-validation.md).
+
+The first frozen offline probe is **negative**: existing known-path B delivered
+the declared target source on 9/12 tasks; automatic C delivered 0/12 and declined
+all 12 for weak lexical evidence. Mean fresh-index setup plus preparation was
+0.728 s versus 1.048 s, respectively, in a fixed B-then-C descriptive pass. All
+nine full-source and 15 exact-passthrough fidelity checks passed. The existing
+ranker placed targets first on 8/12 and within four on 12/12, but the gate rejected
+every bundle. No threshold/source/task was changed after observation. Automatic
+promotion is rejected; new task correctness, model tokens, cost per success and
+billed savings are unmeasured. No new native model request was made. The future
+72-assignment plan is not approved and should be deferred until a revised policy
+passes a fresh offline cohort. Historical native studies below remain separate.
+
 The new [local-efficiency assessment](benchmarks/saas-efficiency-assessment.md)
 and [architecture](docs/product-efficiency-architecture.md) record this round's
 conditional graph refresh, released unchanged scan bodies, additive database

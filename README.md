@@ -71,6 +71,31 @@ settings and MCP registrations are preserved. See the [architecture and research
 limits](docs/daily-architecture.md) and [matched experiment protocol](benchmarks/daily-protocol.md);
 preparation alone does not establish a token, speed or cost benefit.
 
+An experimental [automatic source router](docs/automatic-source.md) accepts a
+natural-language task without target paths:
+
+```sh
+uv run memglide-codex --discover --project PROJECT_ID \
+  'Correct invoice subtotal rounding for fractional prices.' -- --json
+```
+
+It reuses local ranking and static dependencies, supplies bounded complete files,
+and returns the original task when evidence or safe delivery is insufficient.
+There is no auxiliary selection model call. The feature is opt-in; automatic
+warm-memory injection stays disabled. [Research](benchmarks/auto-source-research.md),
+the [implementation audit](benchmarks/automatic-implementation-plan.md) and the
+[approval-gated A/B/C protocol](benchmarks/automatic-protocol.md) distinguish
+source-selection coverage from unmeasured coding-agent efficiency. Conservative
+[Python excerpts](docs/source-excerpts.md) are a separate experiment, excluded
+from normal source delivery and the initial formal treatment.
+
+The first [held-out offline assessment](benchmarks/automatic-assessment.md) is
+negative: automatic preparation delivered source on **0/12 tasks**, compared with
+**9/12** for known-path preparation, and added local overhead. It remains opt-in
+and unpromoted. [1,907 automated cases passed](benchmarks/automatic-validation.md);
+new model-token, whole-task cost and latency gains remain unmeasured. The proposed
+paid comparison has not run.
+
 ## Local efficiency and warm-memory evaluation
 
 The [latest local-efficiency assessment](benchmarks/saas-efficiency-assessment.md)

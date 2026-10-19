@@ -920,6 +920,7 @@ class Indexer:
         *,
         refresh: bool,
         metadata_only: bool,
+        distinct_files: bool = False,
     ) -> list[dict[str, Any]]:
         self.db.project(project_id)
         if not query.strip():
@@ -1090,10 +1091,19 @@ class Indexer:
                 item[2]["id"],
             )
         )
+        file_evidence: dict[str, set[str]] = {}
+        if distinct_files:
+            # Group evidence without summing symbol scores: a large file must
+            # not rank higher merely because it declares more symbols. Retain
+            # independent lexical support if a file/BM25 row wins over a symbol.
+            for _, _, row in candidates:
+                value = " ".join(str(row.get(key, "")) for key in ("path", "name", "signature"))
+                file_evidence.setdefault(row["path"], set()).update(words & set(_tokens(value)))
         output = []
         returned: set[str] = set()
+        returned_paths: set[str] = set()
         for score, reason, row in candidates:
-            if row["id"] in returned:
+            if row["id"] in returned or (distinct_files and row["path"] in returned_paths):
                 continue
             candidate = (
                 self._context_candidate(row, score, reason)
@@ -1101,8 +1111,11 @@ class Indexer:
                 else self._candidate(project, row, score, reason, snippet_limit=1600)
             )
             if candidate:
+                if distinct_files:
+                    candidate["ranking_evidence_terms"] = sorted(file_evidence[row["path"]])
                 output.append(candidate)
                 returned.add(row["id"])
+                returned_paths.add(row["path"])
             if len(output) == limit:
                 break
         return output

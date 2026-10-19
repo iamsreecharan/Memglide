@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "installed_wheel_import": true,
+    "installed_automatic_complete_source_without_memory": true,
+    "installed_automatic_cli_help": true,
+    "installed_automatic_fake_native_handoff": true,
+    "installed_optional_memory_preparation": true,
+    "installed_default_mcp": true,
+    "installed_agent_mcp": true,
+    "installed_loopback_api_and_spa": true,
+    "installed_cli_doctor": true
+  },
+  "all_passed": true,
+  "model_requests": 0,
+  "installed_module": "/workspace/Memglide/.local/automatic-validation/installed-env/lib/python3.12/site-packages/memglide/__init__.py",
+  "automatic_preparation": {
+    "decision": "FOCUSED_SOURCE",
+    "selected_paths": [
+      "calc.py"
+    ],
+    "source_versions": {
+      "calc.py": "3251dbf18617cd67c47707cb9bd1611dbac212ff0ee9814a75b8ce1f34b85aad"
+    },
+    "context_bytes": 213,
+    "estimated_added_tokens": 71,
+    "estimate_is_measured_usage": false
+  }
+}

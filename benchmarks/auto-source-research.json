@@ -1,0 +1,284 @@
+{
+  "sources": [
+    {
+      "name": "aider-repomap-code",
+      "url": "https://raw.githubusercontent.com/Aider-AI/aider/main/aider/repomap.py",
+      "fetched_at_utc": "2026-10-19T06:56:34.412569+00:00",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "etag": "\"f9539a52a7341691bdf0c5224828ae326e5dc31928aed3a89bcb9c5e48805782\"",
+      "bytes": 27306,
+      "sha256": "a5d4befe70445114b9f62da47b0eeb2a5384f9e84a0c083c77a4b339caf61ecd",
+      "local_path": ".local/auto-source-research/aider-repomap-code.txt",
+      "reading_scope": "Selected get_ranked_tags and get_ranked_tags_map_uncached implementations: local definition/reference graph, personalization, frequency scaling, weighted PageRank, chat-file exclusion, token-budget binary search; other source not claimed read.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "aider-repomap-docs",
+      "url": "https://raw.githubusercontent.com/Aider-AI/aider/main/aider/website/docs/repomap.md",
+      "fetched_at_utc": "2026-10-19T06:56:34.414089+00:00",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "etag": "\"ccb101ff7348d28290ccddddbad1fa2fb62446e9c7a83d80e6bcc01dcad138f1\"",
+      "bytes": 3900,
+      "sha256": "ac41c8843d66c04bb5951155015118ef702f107417be62f280cb8955baf1eec8",
+      "local_path": ".local/auto-source-research/aider-repomap-docs.txt",
+      "reading_scope": "Full 3,900-byte document.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "aider-repomap-docs-alt",
+      "url": "https://raw.githubusercontent.com/Aider-AI/aider/main/website/docs/repomap.md",
+      "fetched_at_utc": "2026-10-19T06:56:34.415061+00:00",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "reading_scope": "Failed fetch; no substantive source content used.",
+      "used_substantively": false
+    },
+    {
+      "name": "repocoder-acl",
+      "url": "https://aclanthology.org/2023.emnlp-main.151/",
+      "fetched_at_utc": "2026-10-19T06:56:34.416632+00:00",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "etag": "\"b5bf-65e0864196f90\"",
+      "bytes": 46527,
+      "sha256": "69c51b8f32eb147de3b278362584d9d6d924fb0c59e3eb50bc0c6b2c0938ea76",
+      "local_path": ".local/auto-source-research/repocoder-acl.txt",
+      "reading_scope": "Paper identity/publication page used for provenance; substantive claims use PDF and official README.",
+      "used_substantively": false,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "repocoder-readme",
+      "url": "https://raw.githubusercontent.com/microsoft/CodeT/main/RepoCoder/README.md",
+      "fetched_at_utc": "2026-10-19T06:56:34.419305+00:00",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "etag": "\"fceae30fcecd484cb3c3f0c801f82b994e8156bdb16a126eee90c08af2f2e606\"",
+      "bytes": 6937,
+      "sha256": "d19d72d5407c3d7081a9f5393dca53503f3b8dc5a36be4ee0ec9d8ee4f34cd1b",
+      "local_path": ".local/auto-source-research/repocoder-readme.txt",
+      "reading_scope": "Full official README; sparse retrieval setup, iterative pipeline and released evaluation limitations.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "sqlite-fts5-aux",
+      "url": "https://raw.githubusercontent.com/sqlite/sqlite/master/ext/fts5/fts5_aux.c",
+      "fetched_at_utc": "2026-10-19T06:56:34.420285+00:00",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "etag": "\"d9c3e5fcf27e05592c501cda3000bca3eeb216377115ccfb2add33f99f4d3486\"",
+      "bytes": 28009,
+      "sha256": "6dca73048734b7f38d6965b65d95d72757300f48bf58c676dd547e3ceb1723c7",
+      "local_path": ".local/auto-source-research/sqlite-fts5-aux.txt",
+      "reading_scope": "Selected fts5Bm25GetData and fts5Bm25Function, lines approximately 615-775; no claim to review highlight/snippet functions.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "sqlite-fts5-doc",
+      "url": "https://raw.githubusercontent.com/sqlite/sqlite/master/doc/fts5.txt",
+      "fetched_at_utc": "2026-10-19T06:56:34.844315+00:00",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "reading_scope": "Failed fetch; no substantive source content used.",
+      "used_substantively": false
+    },
+    {
+      "name": "anthropic-tools",
+      "url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "fetched_at_utc": "2026-10-19T06:56:34.845910+00:00",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "etag": null,
+      "bytes": 197554,
+      "sha256": "cf8723d5882f4ff3bb1e80c5f78abe154c74ccc047f1318d4aae67f12816935f",
+      "local_path": ".local/auto-source-research/anthropic-tools.txt",
+      "reading_scope": "Full main article from title through Looking ahead and Acknowledgements; images not substantively interpreted.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "anthropic-context",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "fetched_at_utc": "2026-10-19T06:56:34.860386+00:00",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "etag": null,
+      "bytes": 165122,
+      "sha256": "44ac15c4175c7a60f9f02f5bf0fd39e7337439f01651228cee138bcbfea110c6",
+      "local_path": ".local/auto-source-research/anthropic-context.txt",
+      "reading_scope": "Selected main-text sections through context retrieval/agentic search and long-horizon approaches; context minimality, hybrid retrieval, JIT and tradeoffs. Footer/embedded images not substantive evidence.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "swe-agent-aci",
+      "url": "https://raw.githubusercontent.com/SWE-agent/SWE-agent/main/docs/background/aci.md",
+      "fetched_at_utc": "2026-10-19T06:56:34.881362+00:00",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "etag": "\"54c5b0fdce59fd054f08772898d77690607e097465ab7ce6f573085a0ff3f949\"",
+      "bytes": 1769,
+      "sha256": "da4bb0d50896036acc50f621d22c3b4b0cdf025e1e0801b6d17adbbe17c51c36",
+      "local_path": ".local/auto-source-research/swe-agent-aci.txt",
+      "reading_scope": "Full 1,769-byte official document.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "repocoder-paper",
+      "url": "https://aclanthology.org/2023.emnlp-main.151.pdf",
+      "fetched_at_utc": "2026-10-19T06:57:00.231942+00:00",
+      "status": 200,
+      "bytes": 3252400,
+      "sha256": "73468800045932b56a43eb61feead593a3b4e23fd681143f3670ec289f7fb5e2",
+      "local_path": ".local/auto-source-research/repocoder-paper.pdf",
+      "reading_scope": "Main text pp.2471-2479 including abstract, methodology, experiments, analysis, limitations; selected appendices B-D on dense comparison and unstable later iterations. References and appendix E commercial qualitative comparison not substantively reviewed.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "repoformer-readme",
+      "url": "https://raw.githubusercontent.com/amazon-science/Repoformer/main/README.md",
+      "fetched_at_utc": "2026-10-19T06:57:56.689693+00:00",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 7124,
+      "sha256": "adaccf44bb24a8188799ba3bb0a9f8a5bfa347a77fb901854d158f61a38919a2",
+      "local_path": ".local/auto-source-research/repoformer-readme.txt",
+      "reading_scope": "Full official README: self-supervised labels, trained selector, supported retrievers/evaluation.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "repoformer-paper",
+      "url": "https://arxiv.org/pdf/2403.10059",
+      "fetched_at_utc": "2026-10-19T06:57:57.091267+00:00",
+      "status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1107380,
+      "sha256": "241e16d793e3243c3bb6c34661af4104de797522f10b51ec4eba858d0b3c5a01",
+      "local_path": ".local/auto-source-research/repoformer-paper.pdf",
+      "reading_scope": "Selected abstract, introduction, sections 3.1-3.3 and 5.3-6, Appendix C trial-retrieval/trial-generation mechanisms and limitations; not claimed complete-paper review.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    },
+    {
+      "name": "selective-context-readme",
+      "url": "https://raw.githubusercontent.com/liyucheng09/Selective_Context/main/README.md",
+      "fetched_at_utc": "2026-10-19T06:57:57.596108+00:00",
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "reading_scope": "Failed fetch; no substantive source content used.",
+      "used_substantively": false
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+      "fetched_at_utc": "2026-10-19T07:15:56.558471+00:00",
+      "status": 200,
+      "final_url": "https://developers.openai.com/api/docs/guides/latency-optimization",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 490457,
+      "sha256": "8b0419270ef58348716b7b451cb80bba8b1efc86118b6c5d141a31f3d18bb0a9",
+      "local_path": ".local/auto-source-research/openai-latency-followup.html",
+      "name": "openai-latency-followup",
+      "reading_scope": "Selected full seven-principles introductory sections: Generate fewer tokens, Use fewer input tokens, Make fewer requests, Do not default to an LLM; no claim to review the complete example application or all linked guides.",
+      "used_substantively": true,
+      "download_hash_reverified": true
+    }
+  ],
+  "research_date_utc": "2026-10-19",
+  "model_requests": 0,
+  "network_policy_changed": false,
+  "tls_verification_disabled": false,
+  "credential_contents_inspected": false,
+  "claim_scope": "Source review motivates hypotheses and bounds. No native model experiment or efficiency/correctness claim for the proposed automatic adapter follows from these sources.",
+  "existing_memglide_capabilities": [
+    "project-local identifier/path/prose normalization",
+    "IDF-weighted lexical symbol/path scoring",
+    "FTS5 BM25",
+    "deterministic candidate reasons/ties",
+    "resolved caller graph retrieval",
+    "deduplication and bounded context packing in context service",
+    "approved indexed complete-file source-only preload with current ignore/source verification",
+    "cheap source-only passthrough when off or caller explicitly has context"
+  ],
+  "smallest_extension": "Opt-in bounded deterministic task-to-file discovery adapter over existing index metadata, followed by the existing complete-file secure preparer; keep existing explicit-path interface and default bytes unchanged.",
+  "research_hypotheses": [
+    "Candidate ranking should reuse existing lexical/symbol evidence rather than add a separate vector/model service by default.",
+    "File-level dedup and exclusion of source already actually present in the current prompt can remove redundant added bytes; historical hash receipts alone do not prove retained context.",
+    "Bounded resolved local dependency expansion can supply direct helper implementations but is not proof of complete dependency closure.",
+    "Early prequery bypasses may avoid discovery work; score-based postquery abstention avoids injection but still pays retrieval.",
+    "Use descriptive strong-evidence and ambiguity rules as opt-in heuristics, not calibrated probabilities or predicted actual savings.",
+    "Whole verified files are the initial treatment; symbol excerpts remain an explicit partial-evidence experiment, with strict subset/closure warnings."
+  ],
+  "rejected_for_default": [
+    "RepoCoder iterative extra model-generation loop: conflicts with no selection model calls and can add latency/unstable iterations.",
+    "Repoformer fine-tuned selector: assumes model training/control, unavailable in a same-Codex wrapper.",
+    "Always-injected whole-repository PageRank map: possible off-task hubs and extra tokens; no measured local advantage.",
+    "Blind source omission from previous-session hash receipts: native compaction/retained source is not observable.",
+    "Treating BM25 score or fixed gap as calibrated relevance/completeness probability.",
+    "Claiming globally best architecture or transferring upstream percentage gains to Memglide."
+  ],
+  "evidence_notes": [
+    "RepoCoder main experiment uses sparse Jaccard, and selected Appendix B reports dense UniXcoder comparable on its repository completion tasks; neither is a modern coding-agent benchmark.",
+    "RepoCoder limitations explicitly leave time efficiency outside scope and show later iterations can regress.",
+    "Repoformer Appendix C says score-based trial retrieval can retain performance with reduced injection, but no retrieval latency benefit when retrieval still runs.",
+    "Repoformer published speedups rely on a trained self-selective code LM and particular serving assumptions, not this adapter.",
+    "Aider map is an interface/selection example, not source fidelity or complete dependency proof.",
+    "SQLite BM25 returns negative scores, floors nonpositive IDF and saturates term frequency; lexical scores do not establish cross-channel calibration."
+  ],
+  "recommended_evaluation": [
+    "Separate development tasks from fresh held-out formal tasks and exclude hidden grader/reference fixes from indexed checkout.",
+    "Use identical source starts/settings, balanced order/repeats, isolated environments, preserved failures.",
+    "A bare native Codex; B existing known-path preload; C automatic discovery with natural-language task and no supplied paths.",
+    "Measure selector time/CPU/bytes and bypass reasons offline first; actual native usage/correctness/cost-per-success only in approved formal run.",
+    "Include no-match/ambiguous/oversized/stale/changed/deleted/ignored/sensitive/symlink controls plus multi-file helper dependency tasks.",
+    "Freeze source, corpus, grades, model/config and prices before formal results; require explicit budget approval before large paid run."
+  ],
+  "memory_router_followup": {
+    "decision": "Keep automatic warm-memory injection disabled; preserve existing explicit memory preparation. No automatic memory code added.",
+    "production_reviewed": [
+      "src/memglide/memory/engine.py: MemoryEngine.save_memory,_fingerprint,version,_memory_view,_recall_context_candidates,recall_memory",
+      "src/memglide/core/context.py: _select_memories,_build_passport,known_memory_versions content omission,_get_passport",
+      "src/memglide/integrations/memory_preload.py: bounded explicit current-session claim preparation",
+      "src/memglide/integrations/auto_preload.py: no memory selection or model calls"
+    ],
+    "locally_verifiable": [
+      "Session/project ownership and active lifecycle",
+      "Exact submitted claim version and whitespace-normalized exact deduplication",
+      "Cited source hashes match secure current source under current policy",
+      "Literal claim/quote duplication in actually delivered source bodies",
+      "Explicit caller acknowledgement of a claim version"
+    ],
+    "not_proven": [
+      "Semantic correctness or source entailment of a caller-saved rule",
+      "Semantic novelty merely because its words do not appear in selected source",
+      "Task usefulness, avoided investigation or positive cost/latency tradeoff",
+      "Current retained native context from an old receipt/thread ID",
+      "Complete file delivery from passport selected_files alone"
+    ],
+    "important_passport_scope": "ContextEngine._build_passport merges actual source-item hashes and selected memory source references into selected_files/verified_source_hashes. A passport path is not proof that a complete source body was delivered; inspect the actual delivered source envelope/items and ranges.",
+    "existing_ranker_scope": "Memory selection uses lexical overlap, freshness and caller category bonuses. verified_fix is a caller-supplied category, not a semantic verification result. Provenance is validated bounded free text, not executable proof.",
+    "latency_source_interpretation": "Official guidance separates input shortening, output generation and request roundtrips. Its numerical examples are general heuristics, not predictions or measurements for Memglide. A local source compiler should be evaluated on eliminated investigation and complete-task costs, not added bytes alone.",
+    "next_experiment": {
+      "first": "Offline shadow-only candidate audit: report proposed single rule, exact duplication, ownership/freshness, task lexical relationship, added bytes and selection cost without injecting. Include paraphrase duplicates, unrelated Current claims, misleading verified_fix labels, changed/ignored source, ended/expired sessions and passport-reference-only controls; independent semantic labels remain grader-only.",
+      "future_approval_required": true,
+      "proposed_pilot": "Four fresh related two-task sequences across at least two Python and two TypeScript repositories, source-only versus the same source policy plus at most one caller-verified finding, two repeats, balanced order: 32 original assignments. No rule may be chosen using hidden grading or future reference fixes; preserve all fallbacks and failed attempts.",
+      "cost_scope": "Include first-task production of findings, capture/verification, selection, extra input and full follow-up task cost; no extra selector LLM. Sessions must remain the same still-active Memglide sessions, not new/ended/expired ones.",
+      "historical_planning_only": {
+        "observations": 80,
+        "maximum_possible_write_price_equivalent_usd": 0.0860593,
+        "multiplier": 3,
+        "per_assignment_planning_high_usd": 0.2581779,
+        "32_assignment_planning_high_usd": 8.27,
+        "hard_cap": false,
+        "actual_billed_cost_usd": null,
+        "pricing_reverification_before_approval_required": true
+      },
+      "promotion": "No strict-correctness/security regression; compare whole-sequence and follow-up cost per strict success and paired mean/median times with uncertainty. Do not promote from literal novelty or offline relevance labels alone."
+    }
+  }
+}

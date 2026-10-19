@@ -1,0 +1,75 @@
+{
+  "kind": "Post-hoc diagnostic, not preregistered task success or policy retuning",
+  "target_rank_one_count": 8,
+  "target_in_top_four_count": 12,
+  "individual_target_ranks": [
+    {
+      "task_id": "itsdangerous-base64-padding",
+      "target_rank_in_recorded_candidates": 2
+    },
+    {
+      "task_id": "itsdangerous-integer-decoding",
+      "target_rank_in_recorded_candidates": 4
+    },
+    {
+      "task_id": "itsdangerous-compressed-payloads",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "pyproject-hooks-path-containment",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "pyproject-hooks-runner-restoration",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "pyproject-hooks-environment-isolation",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "mitt-handler-append-order",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "mitt-absent-handler-removal",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "mitt-emission-snapshots",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "ufo-duplicate-query-values",
+      "target_rank_in_recorded_candidates": 2
+    },
+    {
+      "task_id": "ufo-query-plus-escaping",
+      "target_rank_in_recorded_candidates": 1
+    },
+    {
+      "task_id": "ufo-path-fragment-boundaries",
+      "target_rank_in_recorded_candidates": 2
+    }
+  ],
+  "C_bypass_reasons": {
+    "weak_lexical_evidence": 12
+  },
+  "B_bypass_reasons": {
+    "source_unavailable": 3
+  },
+  "all_24_treatment_fidelity_checks_passed": true,
+  "source_preloads": 9,
+  "exact_passthroughs": 15,
+  "mean_parent_cpu_seconds": {
+    "B": 0.3676921886666667,
+    "C": 0.6672493285
+  },
+  "mean_refresh_seconds_C": 0.25784501541663,
+  "mean_retrieval_seconds_C": 0.058672339000016414,
+  "limits": [
+    "Private target labels consulted only after production selection.",
+    "Every C run stopped at the weak-evidence gate; later gates were not exercised by this cohort.",
+    "Fixed B-then-C offline order, one pass, warm OS caches; timings are descriptive."
+  ]
+}
