@@ -31,7 +31,7 @@ _PRODUCTION_SUFFIXES = frozenset(
 )
 _NONPRODUCTION_PARTS = frozenset(
     "test tests __tests__ spec specs fixture fixtures __fixtures__ docs documentation "
-    "examples example benchmarks benchmark vendor third_party generated".split()
+    "examples example demo demos benchmarks benchmark vendor third_party generated".split()
 )
 _GENERIC = frozenset(
     "improve optimize optimisation optimization performance faster efficient efficiency "
@@ -62,7 +62,7 @@ def _production(path: str) -> bool:
         and not source.name.casefold().endswith("_test.py")
         and ".test." not in source.name.casefold()
         and ".spec." not in source.name.casefold()
-        and source.name.casefold() not in {"conftest.py", "setup.py"}
+        and source.name.casefold() not in {"conftest.py", "setup.py", "test.py", "tests.py"}
     )
 
 
@@ -337,6 +337,17 @@ def prepare_task_prompt(
     lexical -= {"the", "and", "for", "with", "that", "this", "should", "when", "from"}
     if not lexical:
         return finish("insufficient_task_evidence")
+    # An ineligible v4 query cannot select source. Check its existing exact
+    # bounds before opening or refreshing the approved index.
+    scoped_terms: set[str] | None = None
+    if selection_policy == "v4":
+        from memglide.core.query import search_focus, tokens
+
+        scoped_terms = {
+            term for term in tokens(search_focus(query)) if term not in _GENERIC and len(term) > 2
+        }
+        if not scoped_terms or len(scoped_terms) > 64 or any(len(term) > 128 for term in scoped_terms):
+            return finish("insufficient_task_evidence")
     from memglide.core.indexer import Indexer
     from memglide.core.query import explicit_identifier, explicit_path, search_focus, tokens
     from memglide.integrations.preload import _eligible, _selection, _Unavailable
@@ -381,11 +392,7 @@ def prepare_task_prompt(
             from memglide.integrations.bounded_router import discover_scoped_candidates
             from memglide.integrations.source_evidence import EvidenceDeclined
 
-            scoped_terms = {
-                term for term in tokens(search_focus(query)) if term not in _GENERIC and len(term) > 2
-            }
-            if not scoped_terms or len(scoped_terms) > 64 or any(len(term) > 128 for term in scoped_terms):
-                return finish("insufficient_task_evidence")
+            assert scoped_terms is not None
             try:
                 candidates, coarse_guard, saturated = discover_scoped_candidates(
                     reader, project_id, query, scoped_terms, initial_selection, parse_guard,
@@ -418,7 +425,7 @@ def prepare_task_prompt(
             return finish("candidate_limit_reached")
         candidates = [item for item in candidates if _production(item["path"])]
         receipt["candidate_files_considered"] = len(candidates)
-        terms = {
+        terms = scoped_terms if scoped_terms is not None else {
             term for term in tokens(search_focus(query)) if term not in _GENERIC and len(term) > 2
         }
         if not terms or len(terms) > 64 or any(len(term) > 128 for term in terms):

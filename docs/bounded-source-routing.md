@@ -19,7 +19,10 @@ free to investigate and run tests; the router does not claim they avoided work.
 The extension addresses four independently diagnosed stage boundaries:
 
 - Supported production scope is applied before lexical/symbol/FTS output caps.
-  Normal public search and earlier policies retain their original scope.
+  Normal public search retains its original scope. Automatic policies share
+  canonical nonproduction classification, including `demo`/`demos` directories
+  and exact `test.py`/`tests.py` filenames. These exclusions do not apply to
+  similarly named production modules such as `src/demo.py` or `contest.py`.
 - Only exhaustive, known nonproduction parse diagnostics may be exempted from
   the global index-health guard. Their exact indexed/current hashes and ignore
   policies are checked. Relevant production errors, unknown/read/scan failures,

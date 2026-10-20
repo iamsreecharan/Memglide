@@ -554,6 +554,18 @@ def _parser() -> argparse.ArgumentParser:
         default=None,
         help="local --discover policy; default v1, v2/v3/v4 are explicit experiments",
     )
+    parser.add_argument(
+        "--workflow-policy", choices=("selected",),
+        help="opt in to the installed verified workflow preset with v4 discovery",
+    )
+    parser.add_argument(
+        "--public-check-receipt", type=Path,
+        help="receipt from an explicitly authorized public-command verification",
+    )
+    parser.add_argument(
+        "--public-check-sha256",
+        help="trusted receipt hash obtained from your explicit verification action",
+    )
     parser.add_argument("--focus", action="append", default=[], help="relative indexed source path")
     parser.add_argument(
         "--support",
@@ -595,6 +607,17 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError("--discover cannot be combined with --focus or --support")
         if options.selection_policy is not None and not options.discover:
             raise ValueError("--selection-policy requires --discover")
+        if options.workflow_policy is not None and (
+            not options.discover or options.selection_policy != "v4"
+            or options.context_format != "compact-prefix"
+            or options.project is None or options.db is None
+        ):
+            raise ValueError("--workflow-policy requires explicit --discover, --selection-policy v4, "
+                             "--context-format compact-prefix, --project and --db")
+        if (options.public_check_receipt is None) != (options.public_check_sha256 is None):
+            raise ValueError("--public-check-receipt and --public-check-sha256 must be paired")
+        if options.public_check_receipt is not None and options.workflow_policy is None:
+            raise ValueError("Public-check evidence requires --workflow-policy")
         prompt = options.prompt
         if prompt is None or prompt == "-":
             if sys.stdin.isatty():
@@ -654,6 +677,32 @@ def main(argv: list[str] | None = None) -> int:
                 focus_paths=options.focus,
                 support_paths=options.support,
             )
+        if options.workflow_policy is not None and preparation["mode"] == "preloaded":
+            from memglide.integrations.command_provider import load_verified_provider
+            from memglide.integrations.workflow_policy import selected_policy
+            from memglide.integrations.workflow_preload import (
+                augment_preparation,
+                validate_workflow_preparation,
+            )
+
+            config = selected_policy()
+            provider = None
+            if options.public_check_receipt is not None:
+                provider = load_verified_provider(
+                    options.public_check_receipt, options.public_check_sha256,
+                )
+            augmented = augment_preparation(
+                preparation, prompt, project_id=options.project, db_path=options.db,
+                config=config, provider=provider,
+                max_context_bytes=options.max_context_bytes,
+                max_added_tokens=options.max_added_tokens,
+            )
+            prepared, metadata = validate_workflow_preparation(
+                augmented, preparation, prompt, project_id=options.project, db_path=options.db,
+                config=config, provider=provider,
+                max_context_bytes=options.max_context_bytes,
+                max_added_tokens=options.max_added_tokens,
+            )
         command = [executable, "exec", *native_options, "--", "-"]
         prepared_bytes = prepared.encode("utf-8")
         # A regular file cannot deadlock on a full pipe buffer, and passing '-'
@@ -666,7 +715,9 @@ def main(argv: list[str] | None = None) -> int:
                 _write_report(
                     options.preparation_report,
                     {
-                        "version": 4
+                        "version": 5
+                        if options.workflow_policy is not None
+                        else 4
                         if options.discover
                         else 3
                         if options.support
