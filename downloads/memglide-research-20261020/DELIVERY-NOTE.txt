@@ -1,0 +1,7 @@
+The original chat links were absolute paths inside the managed cloud workspace.
+They did not register file attachments or publish URLs. The portable ZIP in
+this directory contains the same verified PDF bytes plus text/Markdown copies.
+The current toolset has no outbound attachment/file-service capability.
+A sandbox: URI has no verified mapping to this managed environment, so no
+working sandbox-download claim is made. No external upload or publication
+was performed to work around this limitation.
