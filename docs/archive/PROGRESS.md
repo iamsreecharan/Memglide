@@ -1,8 +1,12 @@
 # Memglide verification record
 
+> Archived from [the original progress log](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/PROGRESS.md).
+> Links are pinned to that pre-cleanup snapshot; historical prose and results
+> are unchanged. See [current documentation](../README.md) for setup and usage.
+
 ## Fresh v4 evaluation: selection gate failed
 
-The [fresh assessment](benchmarks/router-v4-assessment.md) preserves all **96
+The [fresh assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/router-v4-assessment.md) preserves all **96
 offline observations** on six previously unused upstream subsets. Twelve
 positive tasks and four separate easy abstention controls were fixed after the
 code/runners froze, with two repeats in B known-path, V3 and C v4 arms. All
@@ -28,7 +32,7 @@ candidate must use separate development cases and fresh held-out tasks.
 The domain configuration is now published. This attached worker still uses the
 older enforced policy; both separately retained 45-second CLI access checks
 failed at proxy **HTTP CONNECT 403**, with zero completed turns and unknown usage
-and charges. [Start a new cloud task](docs/cloud-benchmark-access.md) to verify
+and charges. [Start a new cloud task](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/docs/cloud-benchmark-access.md) to verify
 the published policy. Restoring access alone does not qualify v4 for coding runs.
 
 The prospective native graders passed 24 independent baseline/reference replays,
@@ -46,8 +50,8 @@ retuned after the held-out study.
 ## Historical v4 development checkpoint: before fresh comparisons
 
 The five original misses now have an individual
-[diagnosis](benchmarks/router-v4-diagnosis.md). The opt-in
-[bounded router](docs/bounded-source-routing.md) addresses stage boundaries using
+[diagnosis](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/router-v4-diagnosis.md). The opt-in
+[bounded router](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/docs/bounded-source-routing.md) addresses stage boundaries using
 production-scoped retrieval, narrowly verified nonproduction parse exceptions
 and a current-source necessary-condition screen. Possible unsupported competitors,
 ambiguity and budget failures still decline. Known-path source delivery, earlier
@@ -64,7 +68,7 @@ The completed checkout passed **2,341 tests on Python 3.12** and separately
 24/24, production browser tests 3/3 and clean installed-wheel/API/MCP/CLI checks
 21/21. These overlapping versions and different verification surfaces are not
 pooled. Ruff, mypy, frontend/wheel builds and frozen installation also passed.
-The [setup checkpoint](benchmarks/router-v4-checkpoint.md) preserves their raw
+The [setup checkpoint](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/router-v4-checkpoint.md) preserves their raw
 receipts and review findings; these are development checks, not coding-agent
 performance results.
 
@@ -83,18 +87,18 @@ performed. Keep v4 opt-in and preserve all outcomes; no new savings claim is mad
 
 ## Runtime-aware v3: more observed source coverage, still experimental
 
-The [runtime-aware policy](docs/runtime-aware-routing.md) adds clean syntactic
+The [runtime-aware policy](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/docs/runtime-aware-routing.md) adds clean syntactic
 implementation/declaration channels and bounded isolated Python/TypeScript
 inspection, without an auxiliary model. It preserves the established known-path
 preparer byte for byte, all complete-source guards, v1/v2 compatibility and
 explicit memory. New phase-specific database failure categories and a separately
 bounded post-parser SQL phase avoid misreporting exhausted work as discovery.
-Primary-source [research](benchmarks/router-v3-research.md) and independent
+Primary-source [research](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/router-v3-research.md) and independent
 pre-freeze security/runner reviews record the rationale and resource limits.
 
 Code, protocol and runner were frozen at
 `b653d6b46d98d8c90f89131c520791df4b396452` before selecting the fresh corpus.
-The [assessment](benchmarks/router-v3-assessment.md) preserves all **96 original
+The [assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/router-v3-assessment.md) preserves all **96 original
 offline preparations** across four pinned upstream snapshots, eight positive
 scope tasks, four normative bypass controls and two repeats. All 96 source/
 passthrough fidelity checks passed, with zero errors, replacements or unrun
@@ -145,7 +149,7 @@ not hosted-service readiness or production-grade general automatic discovery.
 ## Known-path source-only refinement: preserved context, mixed timing
 
 The historical source-only preparer was already present byte for byte; no
-whole-checkout rollback or model change was needed. The [focused profile](docs/source-only-refinement.md)
+whole-checkout rollback or model change was needed. The [focused profile](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/docs/source-only-refinement.md)
 documents the earlier model/settings and keeps discovery, supporting files and
 memory explicit. The new request-local cache reuses compiled ignore policies
 only after fresh secure reads confirm identical content. Both approval checks,
@@ -153,7 +157,7 @@ source observations, policy budgets and normal complete-source prompts remain
 unchanged. Retention is bounded to 64 specifications and 64,000 UTF-8 policy
 bytes; compiled objects and bookkeeping allocate additional memory.
 
-The frozen [local assessment](benchmarks/source-only-refinement-assessment.md)
+The frozen [local assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/source-only-refinement-assessment.md)
 retains all 78 original workers: 72 timing observations and six separate
 diagnostic workers. An independent read-only reconstruction verified 468 exact
 source/prompt observations, 24 fallbacks and all 18 statistical summaries.
@@ -176,10 +180,10 @@ remain separate historical evidence; neither automatic router was promoted.
 
 ## Task-aware router v2: fresh negative evaluation
 
-The [task-aware source router](docs/task-aware-router.md) adds bounded verified
+The [task-aware source router](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/docs/task-aware-router.md) adds bounded verified
 identifier evidence, project-local frequency signals and an isolated trusted
 Tree-sitter worker without auxiliary model calls. The
-[fresh assessment](benchmarks/router-v2-assessment.md) preserves all 72 offline
+[fresh assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/router-v2-assessment.md) preserves all 72 offline
 observations: 12 new tasks, four complete upstream snapshots, two balanced repeats.
 Known-path B delivered the declared target in 24/24 observations, v2 C in 0/24,
 and original automatic v1 in 0/24. Both v2 preloads supplied a type-only file
@@ -202,7 +206,7 @@ audit passed within its recorded scope; unresolved runtime/type ranking,
 signature-comment contamination and generic phase-budget diagnostics are recorded
 as limitations and next experiments, not claimed fixes.
 
-[Final verification](benchmarks/router-v2-final-validation.md) records the frozen
+[Final verification](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/router-v2-final-validation.md) records the frozen
 2,033-case full Python pass, a later 43-case runner pass (six new identities),
 and 324 affected cases passing after the default rollback (one additional
 identity): **2,040 distinct Python cases across runs**. Frontend 24/24, browser
@@ -214,16 +218,16 @@ source-controlled resource defect, covered by a 500,000-character bounded test.
 
 ## Historical initial automatic v1 revision
 
-The new [automatic-source assessment](benchmarks/automatic-assessment.md) records
+The new [automatic-source assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/automatic-assessment.md) records
 an opt-in path-free source router, deterministic context gate, complete-source
 deduplication, private versioned diagnostics and a separate disabled excerpt
 experiment. Existing explicit-path defaults and optional memory remain preserved;
-automatic memory injection stays disabled. [Research](benchmarks/auto-source-research.md)
-and [the A/B/C protocol](benchmarks/automatic-protocol.md) distinguish capability
+automatic memory injection stays disabled. [Research](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/auto-source-research.md)
+and [the A/B/C protocol](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/automatic-protocol.md) distinguish capability
 from efficacy. **1,880 Python, 24 frontend and three production Chromium cases
 passed (1,907 distinct cases)**, with lint/type/build and clean installed-wheel
 CLI/API/SPA/default-and-agent MCP checks. Initial failed validation attempts are
-retained in [the verification record](benchmarks/automatic-validation.md).
+retained in [the verification record](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/automatic-validation.md).
 
 The first frozen offline probe is **negative**: existing known-path B delivered
 the declared target source on 9/12 tasks; automatic C delivered 0/12 and declined
@@ -237,15 +241,15 @@ billed savings are unmeasured. No new native model request was made. The future
 72-assignment plan is not approved and should be deferred until a revised policy
 passes a fresh offline cohort. Historical native studies below remain separate.
 
-The new [local-efficiency assessment](benchmarks/saas-efficiency-assessment.md)
-and [architecture](docs/product-efficiency-architecture.md) record this round's
+The new [local-efficiency assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/saas-efficiency-assessment.md)
+and [architecture](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/docs/product-efficiency-architecture.md) record this round's
 conditional graph refresh, released unchanged scan bodies, additive database
 indexes and leaner watcher/dashboard bookkeeping. Local component measurements
 and their write/storage tradeoffs are distinct from the prior native studies
 below. The complete Python run passed **1,626 tests**, with two additional recovery
 cases passing separately (**1,628 distinct Python cases**), plus **24 frontend**
 and **three Chromium** cases. Installed CLI/API/SPA/default-and-agent MCP checks
-pass. After fresh device authorization succeeded, the [warm study](benchmarks/warm-80-analysis.md)
+pass. After fresh device authorization succeeded, the [warm study](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/warm-80-analysis.md)
 completed **80 passing assignments** and stopped at the user's request. One
 already-started 81st original was interrupted and retained; 135 remain unrun.
 The descriptive matched first 72 runs (eight sequences, 24 tasks, one repeat)
@@ -262,14 +266,14 @@ belong to their own cohorts. Same-session warm memory is distinct from new/ended
 Memglide sessions.
 
 
-The latest [efficiency report](benchmarks/efficiency-assessment.md) preserves **120 native assignments in two separately frozen studies**. The original 60 remain strict protected-test failures; a fresh explicit-contract confirmation records A 20/20, B 20/20, C 20/20. The [validation](benchmarks/efficiency-validation.md) records **1,443 verified automated cases** and unchanged application source. In the confirmation's focused tasks, C versus bare Codex has 2.41% lower estimated cost per success and 12.63% higher mean full time. The frozen promotion gate is **False**; support stays explicit and optional. API-price equivalents are estimates, actual charges are unavailable, and the report includes every failed attempt's spend. [Download the complete evidence](benchmarks/memglide-efficiency-report.zip).
+The latest [efficiency report](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/efficiency-assessment.md) preserves **120 native assignments in two separately frozen studies**. The original 60 remain strict protected-test failures; a fresh explicit-contract confirmation records A 20/20, B 20/20, C 20/20. The [validation](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/efficiency-validation.md) records **1,443 verified automated cases** and unchanged application source. In the confirmation's focused tasks, C versus bare Codex has 2.41% lower estimated cost per success and 12.63% higher mean full time. The frozen promotion gate is **False**; support stays explicit and optional. API-price equivalents are estimates, actual charges are unavailable, and the report includes every failed attempt's spend. [Download the complete evidence](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/memglide-efficiency-report.zip).
 
-Observed retrieval, lifecycle, invalidation and accounting defects are fixed within the recorded coverage. Source-only stays the default; complete caller-selected supporting tests remain optional. The original protection rule was retained, clarified before fresh tasks, and never weakened to change prior outcomes. The campaign [JSON](benchmarks/efficiency-assessment.json) includes every initial failure and all attempted estimated cost; cross-corpus efficacy and latency are not pooled.
+Observed retrieval, lifecycle, invalidation and accounting defects are fixed within the recorded coverage. Source-only stays the default; complete caller-selected supporting tests remain optional. The original protection rule was retained, clarified before fresh tasks, and never weakened to change prior outcomes. The campaign [JSON](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/efficiency-assessment.json) includes every initial failure and all attempted estimated cost; cross-corpus efficacy and latency are not pooled.
 
 Source-only B is the best focused-task point estimate in this confirmation: **10.19% lower estimated cost per successful task** than A, but **3.18% longer mean full time**. Its median time is also longer. This is not a joint cost-and-speed win. Under independent possible cache-write attribution, its focused saving range is **-3.54% to 22.49%**; these are scenarios, not confidence intervals or actual billing.
 
-The preceding [cost assessment](benchmarks/cost-assessment.md) and
-[20 original runs](benchmarks/codex-cost-ab.json) compare **bare Codex against
+The preceding [cost assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/cost-assessment.md) and
+[20 original runs](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-cost-ab.json) compare **bare Codex against
 current compact-prefix Memglide** on ten fresh tasks: five Python, five
 TypeScript, four small purpose-built repositories, one repeat, five A-first
 and five B-first pairs. Both configurations passed 10/10. Runtime, corpus,
@@ -277,7 +281,7 @@ official pricing and model/settings were frozen at `c7be678` before execution;
 the application source hash stayed unchanged. There were no formal failures,
 retries, interruptions, supplemental attempts or resumes.
 
-At the [verified official standard API rates](benchmarks/cost-pricing-research.md)
+At the [verified official standard API rates](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/cost-pricing-research.md)
 for `gpt-6.1-sol`, estimated model totals are **$0.392268 for Codex and $0.3833368
 for Memglide**, or **$0.0392268 and $0.03833368 per successful task**. This is
 2.28% lower overall, but it does **not** establish retrieval cost savings:
@@ -299,15 +303,15 @@ The independent run audit passed **4,307 assertions**, including native framing,
 exact frozen behavioral oracles, complete source delivery, protected tests,
 paired settings, log seals and all aggregate metrics. Independent Decimal
 arithmetic checks verify the separately derived price-equivalent assessment.
-[113 new benchmark/accounting tests passed](benchmarks/cost-validation.md),
+[113 new benchmark/accounting tests passed](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/cost-validation.md),
 with initial helper-test and broad imported-module typing failures preserved.
 The earlier 988 application/tooling cases passed at the same unchanged runtime
 source; a combined enlarged full-suite rerun is not claimed. The
-[downloadable report](benchmarks/memglide-cost-ab-report.zip) preserves pricing,
+[downloadable report](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/memglide-cost-ab-report.zip) preserves pricing,
 every formal run, validation history and independent audits.
 
-The earlier [cache-format assessment](benchmarks/cache-refinement-assessment.md)
-and [40 individual runs](benchmarks/codex-cache-formats.json) compare **legacy
+The earlier [cache-format assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/cache-refinement-assessment.md)
+and [40 individual runs](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-cache-formats.json) compare **legacy
 Memglide against compact-prefix Memglide**, using 20 fresh Python/TypeScript
 tasks and one counterbalanced repeat. Neither arm is bare Codex. Implementation
 was frozen at `94998bb`; source stayed unchanged throughout execution. Both
@@ -330,7 +334,7 @@ null; cache benefits and money savings are unproven. Different tasks and arm
 definitions prevent interpreting the earlier +27.1% and current +3.9% uncached
 figures as a controlled iteration gain.
 
-[988 distinct tests passed](benchmarks/cache-refinement-validation.md): 961
+[988 distinct tests passed](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/cache-refinement-validation.md): 961
 Python, 24 frontend and three production Chromium cases, plus static, packaging
 and installed-package checks. Before formal execution, recovery handling was
 fixed to preserve unknown index overhead as null, and read-command attribution
@@ -338,13 +342,13 @@ was corrected without changing historical usage, time or grading outcomes.
 The post-run independent audit passed 5,138 assertions. Its initial 40 failures
 were an auditor argument-order mismatch; the initial audit, corrected auditor
 and explanation are retained alongside all original evidence. The
-[research review](benchmarks/cache-refinement-research.md) distinguishes pinned
+[research review](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/cache-refinement-research.md) distinguishes pinned
 source inspections from inaccessible articles and papers. The
-[downloadable report bundle](benchmarks/memglide-cache-refinement-report.zip)
+[downloadable report bundle](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/memglide-cache-refinement-report.zip)
 preserves the new experiment and its limitations.
 
-The earlier [focused-launcher assessment](benchmarks/daily-ab-assessment.md) and
-[80 individual runs](benchmarks/codex-ab-daily.json) cover 20 fresh known-file
+The earlier [focused-launcher assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/daily-ab-assessment.md) and
+[80 individual runs](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-ab-daily.json) cover 20 fresh known-file
 utility tasks, ten Python and ten TypeScript, with two repeats per configuration.
 Implementation and protocol were frozen at `6f4b6f6` before formal execution;
 no development model pilot was run. Source stayed
@@ -361,7 +365,7 @@ input. Actual billing and cost per successful task remain null. These results
 do not establish a money saving, general production-repository benefit,
 cross-session memory benefit or equivalently reset provider caches.
 
-The [final validation](benchmarks/daily-validation.md) passed **817 distinct
+The [final validation](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/daily-validation.md) passed **817 distinct
 cases: 790 Python, 24 frontend and three production Chromium tests**, plus
 static/build/package/installed-wheel checks. Independent review fixed corrupt
 policy fallback, an early-exit grading loophole, completion denominators,
@@ -371,18 +375,18 @@ post-run independent audit passed 9,884 assertions and reconstructed prepared
 stdin from frozen source. Audit assertions and overlapping reruns are not added
 to the test total.
 
-The [architecture](docs/daily-architecture.md),
-[engineering research](benchmarks/daily-engineering-research.md) and
-[memory/repository research](benchmarks/daily-memory-research.md) distinguish
+The [architecture](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/docs/daily-architecture.md),
+[engineering research](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/daily-engineering-research.md) and
+[memory/repository research](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/daily-memory-research.md) distinguish
 read official alternate implementations from inaccessible original articles and
-full papers. The [report bundle](benchmarks/memglide-daily-ab-report.zip) preserves
+full papers. The [report bundle](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/memglide-daily-ab-report.zip) preserves
 the protocol, all formal attempts, validation and the research access logs.
 Earlier experiments below remain historical and used different treatments and
 corpora; their percentages are not a controlled comparison with this iteration.
 
-The earlier [optimized assessment](benchmarks/optimized-ab-assessment.md),
-[160 individual runs](benchmarks/codex-ab-optimized.json) and
-[live context audit](benchmarks/codex-optimized-context.md) cover 40 fresh tasks
+The earlier [optimized assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/optimized-ab-assessment.md),
+[160 individual runs](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-ab-optimized.json) and
+[live context audit](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-optimized-context.md) cover 40 fresh tasks
 across four purpose-built Python/TypeScript repositories, both configurations
 and two repeats. The frozen implementation is commit `62e07cc`; its source stayed
 unchanged throughout the 2026-10-17/18 UTC experiment. A and B each passed 80/80;
@@ -393,7 +397,7 @@ Uncached input rose 2.2%, output rose 5.3%, and sampled CPU/RSS also increased.
 This corpus establishes no success or efficiency advantage. Billed cost and cost
 per successful task remain unavailable, rather than estimated as actual charges.
 
-The [candidate validation record](benchmarks/optimization-validation-v2.md)
+The [candidate validation record](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/optimization-validation-v2.md)
 reports **623 distinct passing checks: 596 Python, 24 frontend and three production
 Chromium tests**, plus static/build/package/installed-wheel checks. Those totals
 include benchmark-tooling tests and do not add repeated executions or audit
@@ -401,18 +405,18 @@ assertions. The new opt-in two-tool agent profile removes its background watcher
 and mandatory final verification round trip. Metadata-only candidate selection,
 bounded request-local source snapshots and whole-source overlap promotion reduce
 repeated retrieval work while retaining source checks. The
-[component report](benchmarks/optimization-component-v2.md) retains timing
-regressions, and [quality evidence](benchmarks/compact-quality-v2.md) explains why
-smaller budgets were rejected. The [research record](benchmarks/optimization-research-v2.md)
+[component report](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/optimization-component-v2.md) retains timing
+regressions, and [quality evidence](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/compact-quality-v2.md) explains why
+smaller budgets were rejected. The [research record](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/optimization-research-v2.md)
 cites inspected sources and distinguishes findings from untested proposals.
-The [report bundle](benchmarks/memglide-ab-optimized-report.zip) contains raw
+The [report bundle](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/memglide-ab-optimized-report.zip) contains raw
 formal evidence, both unfavorable development pilots and the independent audit.
 
 The original V1 results below are historical. The earlier authenticated Codex
-comparison is in [benchmarks/live-ab-assessment.md](benchmarks/live-ab-assessment.md)
-and [its JSON analysis](benchmarks/live-ab-assessment.json), with
-[all 96 primary runs](benchmarks/codex-ab-authenticated.json) and
-[actual MCP context observations](benchmarks/codex-live-context.md).
+comparison is in [benchmarks/live-ab-assessment.md](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/live-ab-assessment.md)
+and [its JSON analysis](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/live-ab-assessment.json), with
+[all 96 primary runs](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-ab-authenticated.json) and
+[actual MCP context observations](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-live-context.md).
 A passed 48/48; B passed 47/48, with one exec-server interruption left ungraded.
 The separate successful retry does not replace that interruption. Across 47
 verified pairs B used 2.75 times the input tokens and took 46.5% longer including
@@ -420,19 +424,19 @@ fresh indexing. Billed cost and cost per successful task remain unavailable;
 this experiment does not establish a benefit. Original authentication failures
 and startup pilots remain preserved as historical evidence.
 
-The [final validation record](benchmarks/live-ab-final-validation.md) reports
+The [final validation record](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/live-ab-final-validation.md) reports
 418 distinct passing checks: 391 Python, 24 frontend and three production-browser
 tests. It also retains the initial six compiler-install race failures and their
 successful full rerun. Application source and bundled frontend assets stayed
 unchanged throughout the authenticated experiment and final verification.
 
 Earlier refinement results are in
-[benchmarks/refinements.md](benchmarks/refinements.md) and its
-[JSON evidence index](benchmarks/refinements.json). Earlier retrieval, memory-version
+[benchmarks/refinements.md](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/refinements.md) and its
+[JSON evidence index](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/refinements.json). Earlier retrieval, memory-version
 and MCP import-isolation fixes, the current verification totals, all strategy
 tradeoffs and earlier authentication-blocked Codex attempts are recorded in
-[benchmarks/improvements.md](benchmarks/improvements.md) and its
-[JSON evidence index](benchmarks/improvements.json). Original reports remain
+[benchmarks/improvements.md](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/improvements.md) and its
+[JSON evidence index](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/improvements.json). Original reports remain
 unchanged; component retrieval gains do not establish Codex savings.
 
 V1 is implemented and passes the local Linux acceptance workflow. All twelve implementation milestones are complete for the tested platform. Authenticated Codex execution is now verified by the comparison above. Native Windows/macOS execution remains unverified.
@@ -497,7 +501,7 @@ security/storage cases and all 14 tools through the real STDIO MCP client),
 15 frontend tests and two production Chromium workflows passed. No application
 fixes were required. Frozen installation, Ruff, mypy, TypeScript, Vite and package
 builds passed. Detailed commands and evidence are in
-[benchmarks/validation.md](benchmarks/validation.md).
+[benchmarks/validation.md](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/validation.md).
 
 The new benchmark has 24 maintenance tasks, split evenly between Python and
 TypeScript. Every task's baseline fails its held-out behavior check, and every
@@ -516,7 +520,7 @@ state with an authentication symlink resolved startup. The formal readiness
 request then reached the provider but failed with HTTP 401 and a token-refresh
 error requiring sign-in again. Therefore **none of the 96 coding runs executed**.
 Usage, cost per successful task and A/B benefits remain unknown. See
-[benchmarks/report.md](benchmarks/report.md) and its JSON companion; configured
+[benchmarks/report.md](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/report.md) and its JSON companion; configured
 MCP availability is not counted as actual Codex invocation.
 
 Independent component probes made 168 actual official-SDK MCP calls across 24
@@ -560,9 +564,9 @@ universal ranking/performance improvement is claimed.
 The latest Codex readiness request (17:10 UTC) still failed HTTP 401 because its
 authentication token cannot be refreshed. All 96 coding slots remain unrun,
 with unknown success rate, usage, cost and savings. See the detailed
-[improvement assessment](benchmarks/improvements.md), [JSON](benchmarks/improvements.json),
-[final verification](benchmarks/validation-improved.md), and
-[latest A/B report](benchmarks/codex-ab-improved.md). Original V1 reports remain
+[improvement assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/improvements.md), [JSON](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/improvements.json),
+[final verification](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/validation-improved.md), and
+[latest A/B report](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/codex-ab-improved.md). Original V1 reports remain
 unchanged. Valid environment Codex sign-in is required to complete that experiment.
 
 ## Lifecycle, retrieval and performance refinement (2026-10-17)
@@ -595,7 +599,7 @@ performance experiment is preserved as a separate source stage.
 
 The live Codex readiness request still returned HTTP 401. All 96 coding slots are
 unrun; model usage, task completion, billed cost and cost per successful task are
-unknown. See [assessment](benchmarks/refinements.md),
-[JSON index](benchmarks/refinements.json),
-[verification](benchmarks/validation-refined.md) and
-[detailed final results](benchmarks/refinement-final-results.md).
+unknown. See [assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/refinements.md),
+[JSON index](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/refinements.json),
+[verification](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/validation-refined.md) and
+[detailed final results](https://github.com/iamsreecharan/Memglide/blob/8acc8af78f4e2e2af292e31e2d138342e20651ce/benchmarks/refinement-final-results.md).
