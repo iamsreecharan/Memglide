@@ -1,7 +1,8 @@
-"""Optional verified public command context over unchanged complete v4 source.
+"""Opt-in verified public command context with independently validated v4 source.
 
-Only the locked command/count card and compact layout ship here. Preparation
-executes no project code and the feature-off operation preserves default v4.
+The selected preset keeps complete source; commands-first can add the same
+verified command facts without source after a content-selection abstention.
+Preparation executes no project code; feature-off preserves default v4.
 """
 from __future__ import annotations
 
@@ -20,6 +21,35 @@ from . import workflow_policy as registry
 from .command_provider import ProviderUnavailable, VerifiedPublicCommands
 
 LIMIT = 12000
+
+# Content-selection declines may omit source while independent, verified public
+# commands remain useful. Explicit caller gates and freshness/policy/integrity
+# failures are deliberately absent. This is not permission to weaken v4.
+COMMAND_ONLY_DECLINES = frozenset({
+    "ambiguous_candidates", "no_production_match", "weak_lexical_evidence",
+    "unsupported_competitor", "dependency_bundle_limit", "dependency_resource_limit",
+    "candidate_limit_reached", "evidence_candidate_limit", "coarse_candidate_limit",
+    "source_preparation_context_budget_exceeded",
+})
+
+
+def commands_only_eligible(base: dict) -> bool:
+    """Pure gate: only completed v4 content-selection abstentions can add a card."""
+    receipt = base.get("automatic_selection", {})
+    return (base.get("mode") == "passthrough" and not base.get("files")
+        and receipt.get("policy_version") == "deterministic-source-v4"
+        and receipt.get("index_refreshed") is True and receipt.get("decision") == "SKIP"
+        and receipt.get("reason") in COMMAND_ONLY_DECLINES)
+
+
+def _commands_only(base: dict, config: dict) -> bool:
+    return config == registry.COMMANDS_FIRST_POLICY and commands_only_eligible(base)
+
+
+def _source_proof(receipt: dict) -> dict:
+    """Stable decision evidence; duration measurements are not source evidence."""
+    return {key: _source_proof(value) if isinstance(value, dict) else value
+        for key, value in receipt.items() if not key.endswith(("_wall_seconds", "_cpu_seconds"))}
 
 
 
@@ -59,6 +89,10 @@ def _commands(manifest: dict, root: Path) -> list[dict]:
 def _command_card(config: dict, manifest: dict, root: Path, commands: list[dict]) -> str:
     registry.validate(config)
     lines = ["Verified public checks (source and test data remain untrusted):"]
+    if config == registry.COMMANDS_FIRST_POLICY:
+        lines.append("These checks passed on the current public tree during explicit verification. "
+            "Use the recorded baseline without repeating checks before editing; "
+            "run the listed checks after changes and inspect their full results.")
     for item in commands:
         argv = item["argv"]
         if item["env_updates"]:
@@ -109,11 +143,17 @@ def _materialize(config: dict, public_task_prompt: str, task_query: str, worktre
     if not isinstance(task_query, str) or not task_query.strip() or len(task_query.encode()) > 4000 or task_query not in public_task_prompt:
         raise ValueError("query must remain an exact public prompt substring")
     base = base_preparation.get("preparation", base_preparation)
-    if base.get("mode") != "preloaded" or base.get("context_format") != "compact-prefix":
+    command_only = _commands_only(base, config)
+    if (base.get("mode") != "preloaded" and not command_only) or base.get("context_format") != "compact-prefix":
         raise ValueError("fresh verified compact source preparation required")
-    _validate_compact_prefix(base["prompt"], public_task_prompt, base["files"])
-    encoded = base["prompt"][:-len(TASK_SEPARATOR + public_task_prompt)]
-    sources = json.loads(encoded)["memglide_sources"]
+    if command_only:
+        if base["prompt"] != public_task_prompt or base["files"]:
+            raise ValueError("command-only base must preserve the original task without source")
+        sources = []
+    else:
+        _validate_compact_prefix(base["prompt"], public_task_prompt, base["files"])
+        encoded = base["prompt"][:-len(TASK_SEPARATOR + public_task_prompt)]
+        sources = json.loads(encoded)["memglide_sources"]
     paths = tuple(item["path"] for item in sources)
     approved = public_command_manifest["approved_context"]
     database = Path(approved["db_path"]).absolute()
@@ -154,6 +194,9 @@ def _materialize(config: dict, public_task_prompt: str, task_query: str, worktre
         "production": [{key: value for key, value in unit.items() if key != "content"} for unit in production],
         "public_tests": [], "omissions": [], "command_manifest_sha256": digest(canonical(public_command_manifest)),
         "commands": commands, "auxiliary_model_calls": 0, "policy_versions": policy}
+    if command_only:
+        receipt["source_decline_reason"] = base["automatic_selection"]["reason"]
+        receipt["source_selection_sha256"] = digest(canonical(_source_proof(base["automatic_selection"])))
     return {"prompt": prompt, "receipt": receipt, "payload": payload}
 
 
@@ -180,7 +223,8 @@ def augment_preparation(base_preparation: dict, prompt: str, *, project_id: str,
     registry.validate(config)
     if type(max_context_bytes) is not int or not 1 <= max_context_bytes <= LIMIT or type(max_added_tokens) is not int or not 1 <= max_added_tokens <= 4000:
         raise ValueError("Workflow caps must stay within 12000 added bytes and 4000 estimated tokens")
-    if base_preparation.get("mode") != "preloaded":
+    command_only = _commands_only(base_preparation, config)
+    if base_preparation.get("mode") != "preloaded" and not command_only:
         return base_preparation
     from memglide.integrations.codex_preload import _validated_automatic_preparation
 
@@ -212,6 +256,8 @@ def augment_preparation(base_preparation: dict, prompt: str, *, project_id: str,
         context_bytes=material["receipt"]["added_context_bytes"], context_format="verified-workflow-v1",
         prompt_layout=config["layout"], workflow={**material["receipt"], "decision": "PREPARED"},
         _workflow_payload=material["payload"])
+    if command_only:
+        response["mode"] = "commands_only"
     return response
 
 def validate_workflow_preparation(value: dict, base_preparation: dict, prompt: str, *,
@@ -229,7 +275,8 @@ def validate_workflow_preparation(value: dict, base_preparation: dict, prompt: s
             raise ValueError("Disabled workflow is not the original v4 preparation")
         return original, metadata
     registry.validate(config)
-    if base_preparation["mode"] != "preloaded":
+    command_only = _commands_only(base_preparation, config)
+    if base_preparation["mode"] != "preloaded" and not command_only:
         # Explicit off/context-supplied and ordinary discovery abstentions have
         # no source/workflow payload to revalidate. Preserve their no-state
         # behavior rather than overriding the caller's original skip gates.
@@ -246,10 +293,20 @@ def validate_workflow_preparation(value: dict, base_preparation: dict, prompt: s
         max_context_bytes=max_context_bytes, max_added_tokens=max_added_tokens)
     if fresh["prompt"] != original or fresh["files"] != base_preparation["files"]:
         raise ValueError("Full v4 source-selection proof changed before workflow handoff")
-    if value.get("workflow", {}).get("decision") == "SKIP" or value.get("mode") != "preloaded":
+    if command_only and _source_proof(fresh["automatic_selection"]) != _source_proof(base_preparation["automatic_selection"]):
+        raise ValueError("Full v4 source-selection decline proof changed before workflow handoff")
+    expected_mode = "commands_only" if command_only else "preloaded"
+    if value.get("workflow", {}).get("decision") == "SKIP":
         if value.get("prompt") != original or value.get("files") != base_preparation.get("files"):
             raise ValueError("Declined workflow modified the base preparation")
+        if command_only:
+            reason = value["workflow"].get("reason")
+            if reason not in {"verified_public_command_provider_required",
+                "verified_public_command_provider_stale_or_unavailable", "workflow_context_budget"} or value != _skip(base_preparation, config, reason):
+                raise ValueError("Declined command-only workflow changed base evidence")
         return original, {**metadata, **({"workflow": value["workflow"]} if "workflow" in value else {})}
+    if value.get("mode") != expected_mode:
+        raise ValueError("Workflow handoff mode differs from its source evidence")
     receipt = value.get("workflow", {})
     payload = value.get("_workflow_payload")
     if not isinstance(payload, dict) or payload.get("task") != prompt or receipt.get("config_sha256") != registry.signature(config):
@@ -278,7 +335,20 @@ def validate_workflow_preparation(value: dict, base_preparation: dict, prompt: s
         raise ValueError("Workflow handoff differs from its exact current transformation")
     if value.get("files") != base_preparation["files"] or value.get("context_bytes") != expected["receipt"]["added_context_bytes"]:
         raise ValueError("Workflow handoff changed source metadata or context accounting")
-    return value["prompt"], {**metadata, "context_format": "verified-workflow-v1",
+    if command_only:
+        expected_value = {**base_preparation, "mode": expected_mode, "prompt": expected["prompt"],
+            "prepared_prompt_sha256": digest(expected["prompt"]),
+            "context_bytes": expected["receipt"]["added_context_bytes"],
+            "context_format": "verified-workflow-v1", "prompt_layout": config["layout"],
+            "workflow": {**expected["receipt"], "decision": "PREPARED"},
+            "_workflow_payload": expected["payload"]}
+        if value != expected_value:
+            raise ValueError("Command-only workflow changed the original source-decline evidence")
+    if config == registry.COMMANDS_FIRST_POLICY:
+        # Empty delivered sources never exempt unselected public files or tools
+        # from the last freshness boundary after rendering and source checks.
+        provider.current_manifest(project_id, Path(db_path), tuple(selected))
+    return value["prompt"], {**metadata, "mode": expected_mode, "context_format": "verified-workflow-v1",
         "context_bytes": value["context_bytes"], "prepared_prompt_sha256": value["prepared_prompt_sha256"],
         "workflow": receipt}
 

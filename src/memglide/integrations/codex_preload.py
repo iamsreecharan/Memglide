@@ -555,7 +555,7 @@ def _parser() -> argparse.ArgumentParser:
         help="local --discover policy; default v1, v2/v3/v4 are explicit experiments",
     )
     parser.add_argument(
-        "--workflow-policy", choices=("selected",),
+        "--workflow-policy", choices=("selected", "commands-first"),
         help="opt in to the installed verified workflow preset with v4 discovery",
     )
     parser.add_argument(
@@ -677,15 +677,21 @@ def main(argv: list[str] | None = None) -> int:
                 focus_paths=options.focus,
                 support_paths=options.support,
             )
-        if options.workflow_policy is not None and preparation["mode"] == "preloaded":
+        workflow_eligible = preparation["mode"] == "preloaded"
+        if (options.workflow_policy == "commands-first" and not workflow_eligible
+            and preparation.get("automatic_selection", {}).get("index_refreshed") is True):
+            from memglide.integrations.workflow_preload import commands_only_eligible
+
+            workflow_eligible = commands_only_eligible(preparation)
+        if options.workflow_policy is not None and workflow_eligible:
             from memglide.integrations.command_provider import load_verified_provider
-            from memglide.integrations.workflow_policy import selected_policy
+            from memglide.integrations.workflow_policy import commands_first_policy, selected_policy
             from memglide.integrations.workflow_preload import (
                 augment_preparation,
                 validate_workflow_preparation,
             )
 
-            config = selected_policy()
+            config = commands_first_policy() if options.workflow_policy == "commands-first" else selected_policy()
             provider = None
             if options.public_check_receipt is not None:
                 provider = load_verified_provider(
