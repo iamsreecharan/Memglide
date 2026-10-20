@@ -1,0 +1,17 @@
+Memglide research draft
+Author: Sree Charan Reddy Kailasam
+Email: srcharan014@gmail.com
+
+The PDF files contain the 13-page manuscript and 24-page supplement.
+Plain-text versions are included for reading without a PDF viewer.
+Markdown sources are included; figure/TeX source and the full evidence archive
+remain in the repository under research/paper and benchmarks/evidence.
+
+Final comparison: all three conditions passed 24/24 strict evaluations.
+The source-and-command workflow had 13.69% lower observed fixed-tariff cost
+than pass-through Codex. Prespecified tests did not confirm savings
+(Holm-adjusted p=0.1481), and no speed advantage was established.
+Actual billing was not observed. This remains a manuscript for author review.
+
+These are copies of the previously verified files. This package is local;
+creating it does not publish the work or register a chat attachment.
