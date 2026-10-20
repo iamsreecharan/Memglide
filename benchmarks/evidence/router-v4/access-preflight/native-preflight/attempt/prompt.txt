@@ -1,1 +1,0 @@
-Return exactly the schema-compliant result with ready true. Do not use tools or inspect files.

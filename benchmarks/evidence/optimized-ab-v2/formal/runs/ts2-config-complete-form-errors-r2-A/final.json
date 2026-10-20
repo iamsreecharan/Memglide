@@ -1,1 +1,0 @@
-{"summary":"Updated the domain validator and API adapter to return all applicable errors in email, password, confirmation, age order without coercion or mutation. Added regression coverage for both entry points. No commit created.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

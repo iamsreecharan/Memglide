@@ -1,1 +1,0 @@
-{"summary":"Fixed median to sort numerically without mutating input and average even-length middle values. Preserved rejection of empty and nonfinite inputs. Added regression coverage for negatives, fractions, and large finite values. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

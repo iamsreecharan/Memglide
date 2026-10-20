@@ -1,9 +1,0 @@
-{
-  "sequence": 43,
-  "previous_sha256": "a5357b2a50276983c7512e8b165bfd596ff60e3810e96282c16c9a3c16685e50",
-  "recorded_at": "2026-10-19T04:17:54.923248+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-v2-ts-workflow2-contracts-natural-stable-sort-r1-B",
-  "result_sha256": "9e5b08cda90eca05ec70cd73c0c40c3a25cc03e4b9e7cc38094638baa3274f75",
-  "sha256": "3cd389112adde6a131460b97aee9aa5605ddfab1a280b876442e494f3e59a801"
-}

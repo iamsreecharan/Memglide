@@ -1,9 +1,0 @@
-{
-  "sequence": 33,
-  "previous_sha256": "cbe8608be20386830998144f08c5a0b2f67b3d89cf99925ce0f97e268d7f6a1f",
-  "recorded_at": "2026-10-19T04:15:30.454340+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-v2-ts-workflow2-coordinates-bounded-cardinal-neighbors-r1-C",
-  "result_sha256": "c5dbf5a947a8daf52e087b2bf86f2b0d4525277b2c5d1319bf899e8fa0eda017",
-  "sha256": "3efba9b3d288fad6a7e4ccac478a4f7d4ed0b5d0ea66cb8f3a354492050c8158"
-}

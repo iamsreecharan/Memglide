@@ -1,1 +1,0 @@
-{"summary":"Fixed Basic credentials parsing to split on the first colon, preserving additional colons and empty passwords. Enforced ASCII case-insensitive scheme matching and added regression coverage for valid and invalid headers.","tests_run":["python -m unittest discover -s tests -v — all 7 tests passed."]}

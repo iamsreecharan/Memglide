@@ -1,9 +1,0 @@
-{
-  "sequence": 13,
-  "previous_sha256": "133bc9dc5ac5635175f57de0167703eb087e3393d677dab214f482d2e7e95982",
-  "recorded_at": "2026-10-18T16:35:24.561389+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "cost-ts-cost-geometry-edge-touch-r1-B",
-  "result_sha256": "94797b362d62d6b113a5542423189504ca6f2d4f88d078691d8f5cfe288108ae",
-  "sha256": "92d89c1f238c79f26efe8fe17e4a0616f02e4c04878970662bd9b522e1363535"
-}

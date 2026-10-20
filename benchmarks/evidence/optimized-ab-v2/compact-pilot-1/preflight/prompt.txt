@@ -1,1 +1,0 @@
-Return a brief readiness summary and an empty tests_run array. Do not edit files or invoke tools.

@@ -1,1 +1,0 @@
-{"summary":"Fixed JSON pointer lookup to preserve falsy values and reject missing array entries. Added regression coverage for strict parsing, own keys, array indices, and deep copies through both domain and public APIs. Existing smoke tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

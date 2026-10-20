@@ -1,1 +1,0 @@
-{"summary":"Fixed optimistic updates to require revision equality. Stale and future revisions raise ConflictError without changing storage. Added regression coverage for revision increments and body isolation. Existing tests preserved; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 4 tests passed","git diff --check — passed"]}

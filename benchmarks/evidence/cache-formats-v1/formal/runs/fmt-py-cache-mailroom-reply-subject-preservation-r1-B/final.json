@@ -1,1 +1,0 @@
-{"summary":"Fixed both functions to preserve ASCII case-insensitive 'Re:' prefixes exactly and retain all whitespace and capitalization. Empty input returns 'Re: '. Added regression tests; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 7 tests passed","git diff --check — passed"]}

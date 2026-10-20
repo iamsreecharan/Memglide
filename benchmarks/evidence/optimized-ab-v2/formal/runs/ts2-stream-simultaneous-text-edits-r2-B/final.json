@@ -1,1 +1,0 @@
-{"summary":"Fixed edits to use original UTF-16 offsets regardless of input order, preserving inputs and validating before application. Added regression coverage for the domain and API adapter. No commits made.","tests_run":["node --test tests/*.test.mjs — passed, including existing smoke tests and new regression tests","git diff --check — passed"]}

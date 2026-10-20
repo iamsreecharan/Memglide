@@ -1,9 +1,0 @@
-{
-  "sequence": 67,
-  "previous_sha256": "0eb3b156bd4ad1affbb91be4a0fed56136256d85b5c5306950af452f38ab9155",
-  "recorded_at": "2026-10-18T15:35:35.637602+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "fmt-ts-cache-forms-required-whitespace-r1-A",
-  "result_sha256": "f94a31c50313e85f23cd4925c78a850f3e15d1456de97efdeb2a5bfe7510a7cc",
-  "sha256": "f1cdfa9a452badb3b73911c64c677c40889df5876f304c91b1f918b9cb84a478"
-}

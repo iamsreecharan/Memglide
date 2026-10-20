@@ -19,3 +19,36 @@ dist/
 src/memglide/web/
 .runtime/
 .pytest_tmp/
+.memglide/
+
+# Generated studies and publication downloads live outside the source repository.
+/downloads/
+/research/*
+!/research/README.md
+/benchmarks/evidence/*
+!/benchmarks/evidence/README.md
+
+# Keep benchmark source, fixtures, protocols, and frozen runner inputs addable.
+/benchmarks/*.json
+/benchmarks/*.md
+/benchmarks/*.csv
+/benchmarks/*.txt
+/benchmarks/*.zip
+/benchmarks/*.pdf
+!/benchmarks/README.md
+!/benchmarks/*protocol*.md
+!/benchmarks/*protocol*.json
+!/benchmarks/tasks*.json
+!/benchmarks/automatic-v[34]-grading.json
+!/benchmarks/automatic-v[34]-provenance.json
+!/benchmarks/controls_automatic_v4.json
+!/benchmarks/cost-pricing.json
+!/benchmarks/refinement_holdout.json
+!/benchmarks/retrieval_holdout.json
+!/benchmarks/warm-80-analysis.json
+!/benchmarks/codex-workflow-ab.json
+!/benchmarks/codex-workflow-ab.md
+!/benchmarks/workflow-assessment.json
+!/benchmarks/workflow-assessment.md
+!/benchmarks/workflow-contract-issue.json
+!/benchmarks/workflow-contract-issue.md

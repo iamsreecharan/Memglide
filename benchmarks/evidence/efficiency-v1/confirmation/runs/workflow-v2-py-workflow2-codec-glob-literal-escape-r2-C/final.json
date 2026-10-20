@@ -1,1 +1,0 @@
-{"summary":"Fixed escape_glob to escape original characters once while preserving all other characters. Added regression tests; existing tests remain unchanged. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 17 tests passed","git diff --check — passed"]}

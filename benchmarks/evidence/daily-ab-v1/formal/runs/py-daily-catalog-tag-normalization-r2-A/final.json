@@ -1,1 +1,0 @@
-{"summary":"Fixed tag normalization to trim, discard blanks, Unicode-casefold, and deduplicate in first-appearance order. Preserved commas and input lists. Added regression coverage for card preservation and deeply detached exports. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

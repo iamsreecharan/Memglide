@@ -1,1 +1,0 @@
-{"summary":"Fixed POSIX storage-key containment by normalizing dot segments and requiring root equality or a slash-separated descendant. Absolute keys and sibling traversal are rejected. Added regression tests and preserved the service API and existing tests. No commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

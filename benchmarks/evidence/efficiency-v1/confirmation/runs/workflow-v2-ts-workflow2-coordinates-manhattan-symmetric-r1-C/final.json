@@ -1,1 +1,0 @@
-{"summary":"Fixed manhattanDistance to sum absolute coordinate differences. Added regression tests for symmetry, negative coordinates, fractional differences, and unchanged inputs. Existing tests remain unchanged; no commit created.","tests_run":["node --test — passed all 3 test files."]}

@@ -1,9 +1,0 @@
-{
-  "sequence": 89,
-  "previous_sha256": "edaa63622285fa1fb68c8c4f56b4cca0e57bca28a5140851c7c09d17c910c52f",
-  "recorded_at": "2026-10-19T03:55:30.956215+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-py-workflow-finance-net-flow-report-r2-A",
-  "result_sha256": "39595081385f515413e638556fb2c24af6df9f41265805c99cd130d9c85a8776",
-  "sha256": "205d2c475e81c7c09eeb887a1575693ad349c752a1c7676cf9628c59e8aabee2"
-}

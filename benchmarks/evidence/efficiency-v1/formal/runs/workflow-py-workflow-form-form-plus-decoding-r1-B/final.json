@@ -1,1 +1,0 @@
-{"summary":"Fixed decode_component to replace raw plus signs with spaces before percent-decoding, preserving encoded plus signs. Added regression tests for UTF-8, malformed escapes, and other characters.","tests_run":["python -m unittest discover -s tests -v — all 18 tests passed","git diff --check — passed"]}

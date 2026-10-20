@@ -1,1 +1,0 @@
-{"summary":"Updated domain matching and the public adapter to decode segments once, reject unsafe paths, require equal segment counts, and select the most literal route with stable ties. Added regression tests; preserved existing tests and made no commits.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

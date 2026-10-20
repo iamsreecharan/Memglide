@@ -1,1 +1,0 @@
-{"summary":"Fixed form encoding to replace every encoded space with '+', retain literal plus signs as '%2B', and encode both pair components without changing name capitalization. Added regression coverage; preserved existing tests and made no commit.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

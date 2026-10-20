@@ -1,9 +1,0 @@
-{
-  "sequence": 211,
-  "previous_sha256": "75f11af8944972a80ed4b6b906a5d11bba5eb33030ba8a5492adf4b8e0b89599",
-  "recorded_at": "2026-10-17T23:58:51.774007+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-stream-transactional-accumulator-r2-A",
-  "result_sha256": "1ebb204add369542398ddb4859dd3a2a5e3365fa5fd756bc8f3865227d5af10c",
-  "sha256": "93c62e66a6d1d2e338b2d0224475e22018c215df5bec2a9a1531700e6a448fd4"
-}

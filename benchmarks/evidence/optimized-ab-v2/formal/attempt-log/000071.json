@@ -1,9 +1,0 @@
-{
-  "sequence": 71,
-  "previous_sha256": "50db561915d9f66a058e4a3e0427c104ac603c224f24853ed7485ce54e998e46",
-  "recorded_at": "2026-10-17T23:23:39.175502+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-workflow-deep-settings-overlay-r1-B",
-  "result_sha256": "b29c5266739bdb9a213da322c931734962fe2f45cd73a9cb694433ca830dd090",
-  "sha256": "ca990b7a3d8fd0c839c9a60377f9fc60bf3cfa7f5f32f330570558bab5a54f3a"
-}

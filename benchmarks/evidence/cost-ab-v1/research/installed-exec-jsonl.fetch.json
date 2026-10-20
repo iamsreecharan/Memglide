@@ -1,8 +1,0 @@
-{
-  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
-  "retrieved_at_utc": "2026-10-18T16:26:37.417224+00:00",
-  "status": 200,
-  "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_with_jsonl_output.rs",
-  "bytes": 27168,
-  "sha256": "bc296541b385f9b4ca2c28cc638e25a8d6b1332b2cd67f5a03eaa97a3d612b19"
-}

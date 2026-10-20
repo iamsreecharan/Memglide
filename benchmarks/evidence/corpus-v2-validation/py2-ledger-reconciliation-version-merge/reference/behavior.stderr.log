@@ -1,7 +1,0 @@
-test_deep_copy_and_version_types (__main__.BehaviorTests.test_deep_copy_and_version_types) ... ok
-test_latest_first_tie_and_sorted (__main__.BehaviorTests.test_latest_first_tie_and_sorted) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.001s
-
-OK

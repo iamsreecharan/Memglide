@@ -1,1 +1,0 @@
-{"summary":"Fixed authorization to accept only exact resource:action or resource:* scopes. Preserved DocumentService’s API and existing tests, added focused regressions, and revalidated the Context Passport. No commit created.","tests_run":["node --test tests/*.test.mjs — passed smoke and authorization regression tests","git diff --check — passed"]}

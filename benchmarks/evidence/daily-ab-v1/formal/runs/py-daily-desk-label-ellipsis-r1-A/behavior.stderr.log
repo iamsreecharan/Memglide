@@ -1,7 +1,0 @@
-test_exact_width_and_small_limits (__main__.BehaviorTests.test_exact_width_and_small_limits) ... ok
-test_unicode_and_invalid_limits (__main__.BehaviorTests.test_unicode_and_invalid_limits) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.000s
-
-OK

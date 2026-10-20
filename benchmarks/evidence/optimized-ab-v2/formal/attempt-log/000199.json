@@ -1,9 +1,0 @@
-{
-  "sequence": 199,
-  "previous_sha256": "abc038c6787fd0e82d477de4e7ea60cbdd398d5796d4dcd101837e90499a6969",
-  "recorded_at": "2026-10-17T23:55:58.036728+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-config-specific-route-matching-r2-B",
-  "result_sha256": "2aeda50088075053b7256a68e23d4b52ee7d0a240735a863997eb8fd106cee73",
-  "sha256": "143983e4fb9afcc3679551f9a40786c768a48a400a9d1e23ef516c760e151735"
-}

@@ -1,1 +1,0 @@
-{"summary":"Fixed authorization to accept only exact resource:action or resource:* scopes, preserving DocumentService’s API. Added regression tests for empty scopes, partial matches, unrelated wildcards, and similar resource prefixes. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

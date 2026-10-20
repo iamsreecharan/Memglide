@@ -1,1 +1,0 @@
-{"summary":"Fixed strict feature flag parsing with whitespace and case normalization, null defaults, and ValueError for invalid inputs. Added regression coverage for DocumentService. Existing tests preserved; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 6 tests passed","git diff --check — passed"]}

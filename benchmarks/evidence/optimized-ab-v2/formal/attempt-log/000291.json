@@ -1,9 +1,0 @@
-{
-  "sequence": 291,
-  "previous_sha256": "17c15d59a5c76ab4f693125ec8a68dc4ec534efd490693e7406f6ffcec5b1ee0",
-  "recorded_at": "2026-10-18T00:19:45.454379+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-stream-half-open-window-join-r2-B",
-  "result_sha256": "cf6fd3c5c75025541b55e9232cf5cbbffa4ffdc8b10e58ce8117842f30dda1a6",
-  "sha256": "b253a5dfdf616f69bf23925cf8200c99733d1866a996a9483e11e4d6cd469ad3"
-}

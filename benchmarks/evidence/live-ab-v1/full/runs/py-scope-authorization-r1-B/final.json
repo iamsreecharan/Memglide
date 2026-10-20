@@ -1,1 +1,0 @@
-{"summary":"Fixed authorization to accept only exact resource:action or resource:* scopes. Preserved DocumentService’s API and existing tests; added focused regression coverage. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 4 tests passed","git diff --check — passed"]}

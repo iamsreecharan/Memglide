@@ -1,9 +1,0 @@
-{
-  "sequence": 21,
-  "previous_sha256": "5fa8042988e392483ce1647543ccbf699bee0b927bba8b82a780e5ab3103129b",
-  "recorded_at": "2026-10-18T02:34:04.467354+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py-daily-catalog-tag-normalization-r1-B",
-  "result_sha256": "4c58c7f24dd95a06731875346a098fda0c9cbcd448975399ce0183b06f494b5b",
-  "sha256": "0a22ae4447a853a8392abb8e34feadae196f65306e5ddb55bddf2b820aaab9b7"
-}

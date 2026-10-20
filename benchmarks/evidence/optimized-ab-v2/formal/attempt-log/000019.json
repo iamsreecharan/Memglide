@@ -1,9 +1,0 @@
-{
-  "sequence": 19,
-  "previous_sha256": "c9adfdbc6ae2cc9c0262e417560a884e271351872d5c18da91434fb997c6ae56",
-  "recorded_at": "2026-10-17T23:09:36.690522+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-workflow-utf8-batch-budget-r1-B",
-  "result_sha256": "a3e0ca510afff10910e3df62d725b555cd52a0d0e9769810812b11cc0a961f28",
-  "sha256": "6bd87dfd75bf509ddc49f29854f0d1b7178d2aa0231d2d7fd4d01799ce85c802"
-}

@@ -1,1 +1,0 @@
-{"summary":"Updated retry handling to catch only TemporaryError, preserving total attempt limits, first-success returns, unchanged final exceptions, and validation. Added focused regression tests; existing tests preserved. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 7 tests passed","git diff --check — passed"]}

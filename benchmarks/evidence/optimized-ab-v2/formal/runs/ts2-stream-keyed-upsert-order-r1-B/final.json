@@ -1,1 +1,0 @@
-{"summary":"Updated domain logic and API adapter to preserve first key order while the last row wins. Results are deep copies; special keys and falsy payloads are preserved without modifying input. Added regression tests. No commit made.","tests_run":["node --test tests/*.test.mjs — passed smoke and regression tests","git diff --check — passed"]}

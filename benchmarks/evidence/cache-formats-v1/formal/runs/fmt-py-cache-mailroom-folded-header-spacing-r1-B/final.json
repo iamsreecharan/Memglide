@@ -1,1 +1,0 @@
-{"summary":"Fixed unfold_header to insert one ASCII space before each stripped continuation while preserving other characters and leaving inputs unchanged. Added regression tests; existing validation remains intact.","tests_run":["python -m unittest discover -s tests -v — all 10 tests passed","git diff --check — passed"]}

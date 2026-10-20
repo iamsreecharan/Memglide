@@ -1,1 +1,0 @@
-{"summary":"Fixed isHexColor to accept only '#' followed by 3, 4, 6, or 8 ASCII hex digits, case-insensitively. Added regression coverage for invalid lengths, whitespace, line breaks, and nonhex input.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

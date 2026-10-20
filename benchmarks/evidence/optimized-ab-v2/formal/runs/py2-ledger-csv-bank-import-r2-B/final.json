@@ -1,1 +1,0 @@
-{"summary":"Updated domain parser and API to preserve CSV strings, support BOM and quoted multiline fields, validate columns and signed integer amounts, and consistently reject invalid input. Added regression tests; no commits made.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed","git diff --check — passed"]}

@@ -1,9 +1,0 @@
-{
-  "sequence": 223,
-  "previous_sha256": "9e86de04a453bed57530974fcb47cc0071da4cfad421c7215c3170bf2afed4d7",
-  "recorded_at": "2026-10-18T00:02:16.655066+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-ledger-weighted-allocation-r2-B",
-  "result_sha256": "77be86a7f792da3d88bac58d9668c41d1ab99e48cad7d8f0cfa58421df89a6f2",
-  "sha256": "1d028a3d96d3824d3010d0fea6469e59c823e027c6c0be14274b418f7cb9948d"
-}

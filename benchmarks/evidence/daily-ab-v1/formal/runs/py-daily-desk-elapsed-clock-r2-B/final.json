@@ -1,1 +1,0 @@
-{"summary":"Fixed format_elapsed to preserve hours beyond 24 while retaining H:MM:SS formatting and ValueError validation. Added regression tests; existing tests preserved. No commit made.","tests_run":["python -m unittest discover -s tests -v — all 7 tests passed","git diff --check — passed"]}

@@ -1,9 +1,0 @@
-{
-  "sequence": 17,
-  "previous_sha256": "3159f1933339f3a9e9ea209f72bbf138484c47e03e9e934811f9bed4036f36d2",
-  "recorded_at": "2026-10-18T16:36:11.769506+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "cost-py-cost-inventory-aggregate-stock-r1-A",
-  "result_sha256": "6e8b0ed0a99f3bd28b1cc9b77e22753c4b9de0103211367f4e78353eb5c3a64c",
-  "sha256": "4b82dcf8d48adcd4380e6c6631ada9063495bd0df531dfb00f411c589d4ea441"
-}

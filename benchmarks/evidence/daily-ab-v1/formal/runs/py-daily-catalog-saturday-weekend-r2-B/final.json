@@ -1,1 +1,0 @@
-{"summary":"Updated is_weekend to recognize Saturday (5) and Sunday (6), preserving integer-range validation. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 5 tests passed."]}

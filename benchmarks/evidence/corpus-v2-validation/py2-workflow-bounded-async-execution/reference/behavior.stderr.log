@@ -1,7 +1,0 @@
-test_bound_order_and_empty (__main__.BehaviorTests.test_bound_order_and_empty) ... ok
-test_error_cleanup_and_validation (__main__.BehaviorTests.test_error_cleanup_and_validation) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.011s
-
-OK

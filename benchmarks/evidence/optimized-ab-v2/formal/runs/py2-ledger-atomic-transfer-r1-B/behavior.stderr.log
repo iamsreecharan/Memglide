@@ -1,7 +1,0 @@
-test_failure_has_no_partial_write (__main__.BehaviorTests.test_failure_has_no_partial_write) ... ok
-test_snapshot_and_exact_drain (__main__.BehaviorTests.test_snapshot_and_exact_drain) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.001s
-
-OK

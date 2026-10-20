@@ -1,7 +1,0 @@
-Implement the requested change in this repository. Inspect the current source and run relevant tests. Preserve existing tests and Git metadata; do not commit. Do not access files outside this repository except installed development tools. The final structured response is only a summary, not a grading result.
-If memglide MCP tools are available, use list_projects, start_session and get_context before editing, inspect the source evidence you need, and revalidate the Context Passport after edits. Otherwise use ordinary source tools. Do not claim token or cost savings.
-
-Task:
-In this Python Atlas document-service repository, Fix the bounded document cache so it evicts the least recently used live key. A successful get must refresh recency without extending its TTL. Updating a key also makes it most recent, cache misses must not evict anything, and the capacity bound must hold. Preserve the existing API and expiration behavior.
-
-Implement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.

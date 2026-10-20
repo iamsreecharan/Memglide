@@ -1,9 +1,0 @@
-{
-  "sequence": 73,
-  "previous_sha256": "bc4cb18d348c6ad008b4cffec5f667ed76153fb257e8af2919caca15310eff47",
-  "recorded_at": "2026-10-18T02:43:21.777213+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py-daily-desk-calendar-month-shift-r1-A",
-  "result_sha256": "fbe4e6eaf5332e300a4b6697bb4c3b3d2b77b06afa3df88ca739d21dbaf40469",
-  "sha256": "93f6e9e21a7735462d264503a56bb57641a7077fc657b62b5aded44690cb7927"
-}

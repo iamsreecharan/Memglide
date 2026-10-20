@@ -1,1 +1,0 @@
-{"summary":"Fixed luhnCheck with right-to-left alternating doubling and subtraction of nine. Added regression coverage for checksum parity, leading zeros, long strings, and invalid input. Existing tests remain unchanged; no commit created.","tests_run":["node --test — passed all 4 test files."]}

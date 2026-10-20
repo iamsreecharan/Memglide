@@ -1,5 +1,0 @@
-Using Python 3.12.14 environment at: .local/cache-v2/installed-env
-Resolved 1 package in 8ms
-Prepared 1 package in 21ms
-Installed 1 package in 5ms
- + memglide==0.1.0 (from file:///workspace/Memglide/.local/cache-v2/dist/memglide-0.1.0-py3-none-any.whl)

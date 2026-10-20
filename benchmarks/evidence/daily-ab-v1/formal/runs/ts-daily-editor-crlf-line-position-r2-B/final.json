@@ -1,1 +1,0 @@
-{"summary":"Fixed lineColumn for CRLF, bare CR, and LF while preserving UTF-16 offset semantics and validation. Added regression tests for newline boundaries, surrogate pairs, and invalid offsets. No commits made.","tests_run":["node --test tests/*.test.mjs — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Applied edits using UTF-16 offsets into the original string, preserving inputs and validating all edits before application. Added regression coverage for both the domain function and API adapter. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests."]}

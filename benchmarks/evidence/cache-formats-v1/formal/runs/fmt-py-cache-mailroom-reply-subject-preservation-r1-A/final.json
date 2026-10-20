@@ -1,1 +1,0 @@
-{"summary":"Fixed both functions to preserve subjects starting with any ASCII capitalization of 'Re:' unchanged; otherwise prepend 'Re: '. Whitespace is preserved, including for empty input. Added regression tests; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 7 tests passed."]}

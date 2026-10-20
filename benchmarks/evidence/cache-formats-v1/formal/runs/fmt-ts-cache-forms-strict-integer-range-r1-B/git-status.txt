@@ -1,3 +1,0 @@
-M src/strict_integer_range.ts
- M src/strict_integer_range_api.ts
-?? tests/strict_integer_range.test.mjs

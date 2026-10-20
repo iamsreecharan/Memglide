@@ -1,7 +1,0 @@
-test_large_ascii_and_zero (__main__.BehaviorTests.test_large_ascii_and_zero) ... ok
-test_unicode_and_non_digit_rejection (__main__.BehaviorTests.test_unicode_and_non_digit_rejection) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.000s
-
-OK

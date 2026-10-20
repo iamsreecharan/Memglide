@@ -1,9 +1,0 @@
-{
-  "sequence": 9,
-  "previous_sha256": "eeaa11bbc6a274e552112c44cda02b6cdc57b4f514ee4ba3d28382aee25e4a1d",
-  "recorded_at": "2026-10-18T02:31:40.582005+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts-daily-inventory-chunk-without-empty-tail-r1-B",
-  "result_sha256": "5053a9a86a8b63e4013e9fa84478e8434006de73f8f7eac572c0e7e689464fdb",
-  "sha256": "1d667ef7bea5c0a7ea1c5714ed130037fa487a21fc0d0e90b697141add263c88"
-}

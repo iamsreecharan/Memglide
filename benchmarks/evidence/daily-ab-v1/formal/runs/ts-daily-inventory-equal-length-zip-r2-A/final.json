@@ -1,1 +1,0 @@
-{"summary":"Fixed zipEqual to reject unequal lengths and pairColumns to pass both complete arrays. Added regression coverage for mismatches, falsy values, empty inputs, and independent table containers. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

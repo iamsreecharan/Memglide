@@ -1,3 +1,0 @@
-warning: The cache directory `.cache/uv` is inside the build source directory `.` and may be included in distributions
-Building source distribution...
-Successfully built .local/cache-v2/dist/memglide-0.1.0.tar.gz

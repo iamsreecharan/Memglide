@@ -1,1 +1,0 @@
-{"summary":"Implemented recursive dictionary overlays, replacement of lists and scalars, literal null overrides, and deep-copy isolation. Added regression tests for the domain function and public API. Existing tests preserved; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Fixed roman_numeral to produce canonical uppercase Roman numerals with all six subtractive pairs. Added regression tests in a new file; existing tests remain unchanged. No commit made.","tests_run":["python -m unittest discover -s tests -v — all 17 tests passed","git diff --check — passed"]}

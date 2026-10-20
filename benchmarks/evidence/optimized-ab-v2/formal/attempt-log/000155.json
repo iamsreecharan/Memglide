@@ -1,9 +1,0 @@
-{
-  "sequence": 155,
-  "previous_sha256": "311c1fb3327f5aec968bc969c8dd0080582a234d941b89b3a25986580d0da889",
-  "recorded_at": "2026-10-17T23:44:19.118126+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-ledger-signed-tax-rounding-r1-B",
-  "result_sha256": "235e540e111c679f12c4b8b18e0b9bbf7df7425042219a94761323e83a9e9a2f",
-  "sha256": "8fa7ae11e67b1571d188e806953cfb84bcb0b37ff31cb43529483a3310c4ba6e"
-}

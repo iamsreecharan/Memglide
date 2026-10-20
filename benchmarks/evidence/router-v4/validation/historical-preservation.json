@@ -1,8 +1,0 @@
-{
-  "version": 1,
-  "reference_commit": "4758550be8366efa5a9f86735625e67ab71ed6a4",
-  "original_ledger_entries_verified": 799,
-  "original_reports_runner_protocol_tasks_grades_provenance_unchanged": true,
-  "ledger_sha256": "65fca7b0bb47307e7dbf2225fa42afa2d2f0aedd8dd1ac123e34ac5911c392b7",
-  "errors": []
-}

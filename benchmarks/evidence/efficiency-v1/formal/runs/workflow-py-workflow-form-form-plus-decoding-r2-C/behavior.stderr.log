@@ -1,7 +1,0 @@
-test_raw_plus_and_percent_order (__main__.BehaviorTests.test_raw_plus_and_percent_order) ... ok
-test_unicode_and_malformed (__main__.BehaviorTests.test_unicode_and_malformed) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.000s
-
-OK

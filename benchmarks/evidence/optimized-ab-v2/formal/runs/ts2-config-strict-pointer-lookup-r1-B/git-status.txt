@@ -1,2 +1,0 @@
-M src/strict_pointer_lookup.ts
-?? tests/strict_pointer_lookup.test.mjs

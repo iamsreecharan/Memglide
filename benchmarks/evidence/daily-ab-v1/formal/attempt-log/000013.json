@@ -1,9 +1,0 @@
-{
-  "sequence": 13,
-  "previous_sha256": "f78a0b1f7869f03c94721a62a36fa9c49225ebdbd0b1ff8682be39aaaf492b54",
-  "recorded_at": "2026-10-18T02:32:23.798506+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py-daily-catalog-strict-column-projection-r1-B",
-  "result_sha256": "9f6be14dc45dee3bc47dca578e51794fd42bd3535a6fb14fa8f8cc72f8d48138",
-  "sha256": "0bdd83a0d2753ada9c548bf951353d97206ba5cb33ddf1fbaa738c05ac831726"
-}

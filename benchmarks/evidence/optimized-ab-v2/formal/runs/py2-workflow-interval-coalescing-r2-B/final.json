@@ -1,1 +1,0 @@
-{"summary":"Fixed interval coalescing to retain the furthest endpoint across nested and chained overlaps. Added regression coverage for both domain and API contracts, including input preservation, fresh lists, empty intervals, and reversed bounds. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 12 tests passed","git diff --check — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Updated domain collection and API adapter to preserve lowercase keys, first appearance order, and all duplicate values, including Set-Cookie. Retained validation and added regression coverage for both entry points. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

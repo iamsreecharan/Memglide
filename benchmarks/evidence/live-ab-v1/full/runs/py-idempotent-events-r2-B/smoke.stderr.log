@@ -1,9 +1,0 @@
-test_first_event_wins_and_only_new_keys_receive_sequences (test_repository.EventRepositoryTests.test_first_event_wins_and_only_new_keys_receive_sequences) ... ok
-test_nested_payload_and_returned_events_are_isolated (test_repository.EventRepositoryTests.test_nested_payload_and_returned_events_are_isolated) ... ok
-test_document_lifecycle (test_smoke.SmokeTests.test_document_lifecycle) ... ok
-test_service_helpers (test_smoke.SmokeTests.test_service_helpers) ... ok
-
-----------------------------------------------------------------------
-Ran 4 tests in 0.001s
-
-OK

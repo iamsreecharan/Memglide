@@ -1,1 +1,0 @@
-{"summary":"Fixed Jaccard scoring to use distinct values and selection to retain the earliest tie. Added regression tests for duplicates, ties, empty inputs, and input preservation. Existing tests remain unchanged; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 15 tests passed","git diff --check — passed"]}

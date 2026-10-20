@@ -1,1 +1,0 @@
-{"summary":"Updated search to require every normalized query token. Added DocumentService regressions covering whole-token matching, case normalization, empty queries, ascending ID ties, and input immutability. Existing tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

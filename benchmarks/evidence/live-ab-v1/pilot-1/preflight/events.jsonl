@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"01a14bb4-8fef-71b0-9ce1-3d504c356672"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"{\"summary\":\"Ready to work in the isolated checkout, preserve public interfaces, and keep tests offline and deterministic. No files edited or tools invoked.\",\"tests_run\":[]}"}}
-{"type":"turn.completed","usage":{"input_tokens":10945,"cached_input_tokens":0,"cache_write_input_tokens":0,"output_tokens":43,"reasoning_output_tokens":0}}

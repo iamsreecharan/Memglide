@@ -1,7 +1,0 @@
-test_invalid_inputs_and_preservation (__main__.BehaviorTests.test_invalid_inputs_and_preservation) ... ok
-test_weight_denominator_and_no_public_rounding (__main__.BehaviorTests.test_weight_denominator_and_no_public_rounding) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.000s
-
-OK

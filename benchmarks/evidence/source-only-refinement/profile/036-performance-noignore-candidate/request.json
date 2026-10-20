@@ -1,7 +1,0 @@
-{
-  "arm": "candidate",
-  "fixture": "noignore",
-  "kind": "performance",
-  "repeat": 4,
-  "snapshot_sha256": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b"
-}

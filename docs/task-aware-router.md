@@ -6,7 +6,7 @@ repository-local term frequencies. It does not predict model savings, infer hidd
 agent context or automatically add memory. Existing explicit source preparation
 and normal MCP/API workflows remain available.
 
-The [fresh v2 assessment](../benchmarks/router-v2-assessment.md) failed technical
+The [fresh v2 assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/router-v2-assessment.md) failed technical
 eligibility: zero complete declared target scopes in 24 observations, with more
 local overhead than known-path source preparation. No native comparison ran.
 V2 is an explicit experiment, not the discovery default or a proven improvement.
@@ -86,7 +86,7 @@ a saved rule is true, absent from the supplied source, or useful to the task.
 Existing explicit memory features are preserved. Experimental excerpts remain a
 separate incomplete-file API, excluded from this source-routing treatment.
 
-[Research and security review](../benchmarks/router-v2-research.md) records the
+[Research and security review](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/router-v2-research.md) records the
 mechanisms, resolved defects and current pricing verification. The
 [fresh protocol](../benchmarks/automatic-v2-protocol.md) freezes independent tasks,
 grading and settings before offline B/C/V1 selection and any A/B/C model study.

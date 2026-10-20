@@ -1,7 +1,0 @@
-test_normalization_and_service (__main__.BehaviorTests.test_normalization_and_service) ... ok
-test_sibling_prefix_and_absolute_denied (__main__.BehaviorTests.test_sibling_prefix_and_absolute_denied) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.004s
-
-OK

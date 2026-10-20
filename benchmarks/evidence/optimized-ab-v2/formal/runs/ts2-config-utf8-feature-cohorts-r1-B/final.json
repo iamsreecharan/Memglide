@@ -1,1 +1,0 @@
-{"summary":"Implemented unsigned 32-bit FNV-1a hashing over UTF-8 bytes. Verified the public adapter shares the domain contract. Added regression coverage for Unicode, cohort boundaries, and invalid basis points. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests."]}

@@ -1,1 +1,0 @@
-{"summary":"Updated domain matching and the public adapter to decode segments exactly once, reject unsafe paths, and select the most literal match while preserving tie order. Added regression coverage for both interfaces. No commits made.","tests_run":["node --test tests/*.test.mjs — passed smoke and regression tests","git diff --check — passed"]}

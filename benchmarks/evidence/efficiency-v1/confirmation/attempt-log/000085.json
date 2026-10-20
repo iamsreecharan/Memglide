@@ -1,9 +1,0 @@
-{
-  "sequence": 85,
-  "previous_sha256": "9e6b1af6b6ac06716507bf644acccb0eac80a1c75a5499ab0f507b03e8576da2",
-  "recorded_at": "2026-10-19T04:25:11.356871+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-v2-py-workflow2-codec-glob-literal-escape-r2-C",
-  "result_sha256": "f5e1180aa363e82be12f984ea65fe2cbd6c3333a42ba45c33132fcd26462c6b3",
-  "sha256": "e4e61cb8bc5cf19cfd4ab2e96a7309db7bc74243c2ff9b31b035ba5a2a7af16f"
-}

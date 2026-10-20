@@ -1,7 +1,0 @@
-Implement the requested change in this repository. Inspect the current source and run relevant tests. Preserve existing tests and Git metadata; do not commit. Do not access files outside this repository except installed development tools. The final structured response is only a summary, not a grading result.
-If Memglide MCP tools are available, use fetch_context once with your task query before editing. Reuse complete returned source instead of reading it again unless additional evidence is needed. Use verify_context only if you are uncertain whether another process changed the source or need to validate older context before using it again. Your own edits make earlier context stale; a final verification is not required. Otherwise use ordinary source tools. Do not claim token or cost savings.
-
-Task:
-In this Python Atlas document-service repository, Fix cache expiration at the TTL boundary. A document cached at time 100 with TTL 10 must be unavailable at time 110 and afterwards, and expired entries must be removed. Before the deadline, return its value without changing its expiration; overwriting a key starts the new TTL. Verify the DocumentService cache path as well.
-
-Implement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.

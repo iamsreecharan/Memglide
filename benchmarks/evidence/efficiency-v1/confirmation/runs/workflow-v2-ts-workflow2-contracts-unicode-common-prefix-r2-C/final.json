@@ -1,1 +1,0 @@
-{"summary":"Fixed commonPrefix to compare complete Unicode code points, preserve exact text, and avoid array mutation. Added regression tests in a new file; existing tests remain unchanged. No commit created.","tests_run":["node --test — passed all 4 test files."]}

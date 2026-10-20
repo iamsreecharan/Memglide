@@ -1,1 +1,0 @@
-{"summary":"Fixed weighted_mean to divide by total weight and report_mean to preserve the float without rounding. Added regression coverage for fractional weights, invalid inputs, and unchanged sequences. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 12 tests passed","git diff --check — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Updated transpose to reject ragged rows with ValueError while preserving empty inputs, nonnumeric cells, fresh row lists, and input immutability. Added regression tests; no commits made.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Fixed join_lines newline validation and optional trailing separators. Updated export_notes to forward both options. Added regression tests; preserved existing tests and made no commit.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

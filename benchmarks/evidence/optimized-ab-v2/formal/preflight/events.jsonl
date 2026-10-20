@@ -1,4 +1,0 @@
-{"type":"thread.started","thread_id":"01a14c1c-4bd8-7552-a3f3-dda4a64d0e71"}
-{"type":"turn.started"}
-{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"{\"summary\":\"Ready to work in the isolated checkout, preserving public interfaces and existing smoke tests. No files changed or tools invoked.\",\"tests_run\":[]}"}}
-{"type":"turn.completed","usage":{"input_tokens":10963,"cached_input_tokens":0,"cache_write_input_tokens":0,"output_tokens":40,"reasoning_output_tokens":0}}

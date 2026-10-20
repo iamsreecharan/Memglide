@@ -1,1 +1,0 @@
-{"summary":"Updated the planner to stop at the first task exceeding the deadline. Added regression coverage for domain and API behavior, validation, overflow, and input preservation. Existing smoke tests preserved; no commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

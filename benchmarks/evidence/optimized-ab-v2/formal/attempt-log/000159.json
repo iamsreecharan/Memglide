@@ -1,9 +1,0 @@
-{
-  "sequence": 159,
-  "previous_sha256": "8eb1f6a4552f8bacfcf53a21bd18a3ed1fa18940f8afbbfb6a84f85b2f318c8f",
-  "recorded_at": "2026-10-17T23:45:12.053419+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-workflow-atomic-pointer-updates-r1-A",
-  "result_sha256": "972324dc1992d9e58efea6d48c219a1c421b9f6df702eac0f6eac23ef049682a",
-  "sha256": "dfda599297b1e8fbbc734ba7e135b7368f53122c7ba5149f049fd6732263ab9f"
-}

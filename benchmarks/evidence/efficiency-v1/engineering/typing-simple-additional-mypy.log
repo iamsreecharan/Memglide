@@ -1,4 +1,0 @@
-$ uv run mypy benchmarks/search_scale.py benchmarks/cache_preparation.py benchmarks/corpus_cost.py benchmarks/corpus_cache.py
-Success: no issues found in 4 source files
-
-exit_code=0

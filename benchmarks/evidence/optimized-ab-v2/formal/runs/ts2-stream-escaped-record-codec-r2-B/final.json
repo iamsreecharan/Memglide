@@ -1,1 +1,0 @@
-{"summary":"Implemented single-pass decoding with strict escape validation and preserved empty/trailing fields. Confirmed the API delegates correctly and added regression tests for both interfaces. No commits made.","tests_run":["node --test tests/*.test.mjs — passed, including existing smoke tests and new regression tests.","git diff --check — passed."]}

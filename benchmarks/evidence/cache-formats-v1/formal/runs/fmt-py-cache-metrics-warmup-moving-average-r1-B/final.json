@@ -1,1 +1,0 @@
-{"summary":"Fixed moving_average to divide by the actual warmup count. Added regression coverage for warmup, invalid inputs, empty input, and input preservation. Existing validation and interfaces are preserved; no commits made.","tests_run":["python -m unittest discover -s tests -v — all 11 tests passed."]}

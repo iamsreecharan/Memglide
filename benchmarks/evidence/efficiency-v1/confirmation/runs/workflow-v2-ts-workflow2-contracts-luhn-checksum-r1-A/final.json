@@ -1,1 +1,0 @@
-{"summary":"Fixed luhnCheck to apply alternating digit doubling and subtraction correctly while preserving leading zeros and rejecting nondigits. Added regression tests; existing tests remain unchanged. No commit created.","tests_run":["node --test — passed all 4 test files","git diff --check — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Fixed calendar-month shifting to clamp destination days and forward zero and negative deltas unchanged. Added regressions for validation, date output, batch ordering, metadata detachment, and unchanged inputs. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

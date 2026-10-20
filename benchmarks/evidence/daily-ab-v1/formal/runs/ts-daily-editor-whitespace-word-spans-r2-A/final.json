@@ -1,1 +1,0 @@
-{"summary":"Fixed wordSpans to return maximal non-whitespace runs with UTF-16 offsets. Updated wordsForSelection to retain every span, including single-character words. Added regression tests for punctuation, Unicode, emoji, whitespace, and empty input. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

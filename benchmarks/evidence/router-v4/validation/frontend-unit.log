@@ -1,5 +1,0 @@
-
-> memglide-dashboard@0.1.0 test
-> vitest --run --reporter=json --outputFile=../.local/router-v4/frontend-unit.json
-
-JSON report written to /workspace/Memglide/.local/router-v4/frontend-unit.json

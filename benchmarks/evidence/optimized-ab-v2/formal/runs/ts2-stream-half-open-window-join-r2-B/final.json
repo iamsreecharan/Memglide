@@ -1,1 +1,0 @@
-{"summary":"Implemented positive-length half-open overlaps with string result IDs, preserving pair order and inputs. Added regression coverage for domain and API behavior, including reversed intervals. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

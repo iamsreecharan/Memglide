@@ -1,1 +1,0 @@
-{"summary":"Fixed Jaccard scoring to use distinct values and selection to choose the earliest index on ties. Inputs remain unchanged. Added regression tests in a new file; existing tests are unchanged. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 15 tests passed","git diff --check — passed"]}

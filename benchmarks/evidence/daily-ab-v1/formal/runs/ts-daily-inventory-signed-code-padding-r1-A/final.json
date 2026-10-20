@@ -1,1 +1,0 @@
-{"summary":"Fixed zero padding after minus signs and preserved zero in labelCode. Added regression coverage for padding, safe integer boundaries, and invalid inputs. Existing tests preserved; no commit made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

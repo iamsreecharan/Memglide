@@ -1,1 +1,0 @@
-{"summary":"Fixed dedent_lines to remove only common ASCII-space indentation, preserve relative indentation, normalize blank lines, and leave input unchanged. Added regression tests; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

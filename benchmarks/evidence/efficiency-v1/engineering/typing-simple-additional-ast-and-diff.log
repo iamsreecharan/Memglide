@@ -1,6 +1,0 @@
-benchmarks/search_scale.py: executable AST unchanged after removing annotations and TypedDict declarations
-benchmarks/cache_preparation.py: executable AST unchanged after removing annotations and TypedDict declarations
-benchmarks/corpus_cost.py: executable AST unchanged after removing annotations and TypedDict declarations
-benchmarks/corpus_cache.py: executable AST unchanged after removing annotations and TypedDict declarations
-git diff --check: passed
-

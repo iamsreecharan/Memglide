@@ -1,1 +1,0 @@
-{"summary":"Implemented capped exponential backoff with strict input validation and prompt handling of enormous attempts. Added regression coverage for the domain and public API. Preserved existing tests and interfaces; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed","git diff --check — passed"]}

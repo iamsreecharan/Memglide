@@ -1,2 +1,0 @@
-M src/utf8_byte_length.ts
- M tests/utf8_byte_length.test.mjs

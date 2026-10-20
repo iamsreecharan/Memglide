@@ -1,1 +1,0 @@
-{"summary":"Implemented quote-aware .env parsing with strict escape and assignment validation. Added regression coverage for both domain and public API behavior. Preserved existing tests and interfaces; no commit created.","tests_run":["node --test tests/*.test.mjs — passed, including existing smoke tests and new regressions","git diff --check — passed"]}

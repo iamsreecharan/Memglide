@@ -1,2 +1,0 @@
-M src/semantic_version_precedence.ts
-?? tests/semantic_version_precedence.test.mjs

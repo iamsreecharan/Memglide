@@ -1,9 +1,0 @@
-{
-  "sequence": 43,
-  "previous_sha256": "bf377921bfba4b43c33e899fda5cc854a9bb06c9fe77a786daef8d5ed8e02e20",
-  "recorded_at": "2026-10-19T03:47:12.878223+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-ts-workflow-text-path-segment-roundtrip-r1-B",
-  "result_sha256": "126b3237a78ae54add3fae7091a54f41a3596c14c2551e6c6b5cf8ec968c934c",
-  "sha256": "e2a55021bc6b0cfb5b0a202e2b252922cae97f9d82296ca05d96e0928948a59c"
-}

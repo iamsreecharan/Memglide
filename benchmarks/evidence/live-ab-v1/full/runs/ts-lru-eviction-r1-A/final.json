@@ -1,1 +1,0 @@
-{"summary":"Fixed LRU eviction: successful reads refresh recency without extending TTL, updates remain most recent, and expired entries are reclaimed before live eviction. Added regression tests; preserved API and existing tests. No commit made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

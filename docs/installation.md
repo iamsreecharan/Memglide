@@ -46,7 +46,7 @@ uv run memglide project add "C:\Users\you\code\approved-repository"
 uv run memglide serve
 ```
 
-The default database is in `.memglide` under the current user's home directory unless `MEMGLIDE_HOME` is set. Windows ACLs determine filesystem access; POSIX mode bits are not equivalent to a Windows access-control policy. Native Windows commands are documented for portability; see `PROGRESS.md` for the platforms actually exercised in this checkout.
+The default database is in `.memglide` under the current user's home directory unless `MEMGLIDE_HOME` is set. Windows ACLs determine filesystem access; POSIX mode bits are not equivalent to a Windows access-control policy. Native Windows commands are documented for portability; see [historical verification log](archive/PROGRESS.md) for the platforms actually exercised in this checkout.
 
 ## Build and install a local wheel
 

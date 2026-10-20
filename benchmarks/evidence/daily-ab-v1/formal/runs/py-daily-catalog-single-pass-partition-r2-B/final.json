@@ -1,1 +1,0 @@
-{"summary":"Fixed partition to evaluate the predicate once per item in input order, preserving output order and the input list. Supports one-shot iterables and propagates exceptions unchanged. Added four regression tests; existing tests preserved. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

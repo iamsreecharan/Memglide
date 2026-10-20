@@ -52,7 +52,7 @@ retrieval phase; it does not establish global or semantic dependency completenes
 The launcher validates this receipt and the complete-source envelope before
 native handoff. Automatic warm-memory injection remains disabled.
 
-The original [v3 assessment](../benchmarks/router-v3-assessment.md), source
+The original [v3 assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/router-v3-assessment.md), source
 snapshots, tasks and outcomes are preserved. Development regressions and reviewer
 counterexamples are not fresh evaluation tasks. The new
 [offline protocol](../benchmarks/automatic-v4-protocol.md) freezes policy and
@@ -65,7 +65,7 @@ independent grading and all failed attempts in cost-per-success accounting.
 V4 remains opt-in. No default promotion, new model-cost improvement or hosted
 production-readiness claim follows from correct screening or passing local tests.
 
-The [fresh v4 assessment](../benchmarks/router-v4-assessment.md) records a failed
+The [fresh v4 assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/router-v4-assessment.md) records a failed
 selection gate: zero complete positive scopes in 24 v4 observations, equal to v3,
 versus six known-path observations. V4 added about 85 ms mean local preparation
 time relative to v3. Nine of twelve declared whole-source bundles exceed the
@@ -74,3 +74,7 @@ delivery. These are source-inclusion and local-overhead findings, not measured
 coding success, full coding-task latency, tokens or model charges. Keep the
 original outcomes; any revised policy needs separate development cases and a new
 held-out corpus. The candidate did not qualify for the matched coding study.
+
+These are the original v4 gate results. Later development and the installed
+command-context comparison are reported separately in the
+[research overview](../research/README.md); they do not replace this record.

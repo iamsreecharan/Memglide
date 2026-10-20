@@ -1,6 +1,0 @@
-{
-  "url": "https://developers.openai.com/codex/pricing",
-  "retrieved_at_utc": "2026-10-18T16:24:05.963259+00:00",
-  "error_type": "URLError",
-  "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
-}

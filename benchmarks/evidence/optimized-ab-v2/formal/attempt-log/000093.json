@@ -1,9 +1,0 @@
-{
-  "sequence": 93,
-  "previous_sha256": "577ce1d2aed62995a188e314a04d4017b2fea64abaf844ac6cb1041824dd7af2",
-  "recorded_at": "2026-10-17T23:29:11.490596+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-stream-fragmented-ndjson-r1-A",
-  "result_sha256": "c3d6c3d6cde31f89010e3c8d703fb646224aa8b8dbc75dfcb59413768d0dbb00",
-  "sha256": "23d34d85f29b4c341200efeeea725ac9cd12e9abaf0f223b188851c76c6bd179"
-}

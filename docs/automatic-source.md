@@ -119,7 +119,7 @@ construction. Provider usage, underlying inference calls, billed charges and
 actual file reads are not invented; supported native telemetry is evaluated
 separately when actually observed.
 
-[Research](../benchmarks/auto-source-research.md) explains the primary references
+[Research](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/auto-source-research.md) explains the primary references
 and limitations. [Protocol](../benchmarks/automatic-protocol.md) and runner define
 A bare Codex, B existing known-path source preload, and C automatic path-free
 preload with independent grading. Plan/offline modes make no model requests;

@@ -1,1 +1,0 @@
-{"summary":"Implemented atomic JSON-pointer replacements with existing-key validation and deep-copied values. Added regression coverage for both domain and public API behavior. Preserved existing tests; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 16 tests passed","git diff --check — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Fixed angleDifference to return the shortest signed rotation in [-180, 180), normalizing operands before subtraction to prevent overflow. Preserved fractions and nonfinite-input rejection; added regression tests.","tests_run":["node --test — passed","git diff --check — passed"]}

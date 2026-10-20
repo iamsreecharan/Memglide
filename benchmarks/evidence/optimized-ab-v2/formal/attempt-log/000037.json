@@ -1,9 +1,0 @@
-{
-  "sequence": 37,
-  "previous_sha256": "fd06901521bd5479c843f53e1e7025886d097316b717c777ffa7ac19c95c91f3",
-  "recorded_at": "2026-10-17T23:14:20.982853+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-stream-simultaneous-text-edits-r1-A",
-  "result_sha256": "5c3e4536f284031c91d6dd3e40d527ffb40335104e28098d811f88178b70e8e8",
-  "sha256": "2f06cb4acd9701d08f194f2abae49c2b15f9561c1dfeab76989d4a875c4fb607"
-}

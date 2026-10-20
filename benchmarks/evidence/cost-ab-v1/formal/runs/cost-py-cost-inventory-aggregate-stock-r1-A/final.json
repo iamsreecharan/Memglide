@@ -1,1 +1,0 @@
-{"summary":"Fixed aggregate_stock to sum repeated SKUs while preserving first-seen order. Added regression coverage for negative and zero quantities, unchanged inputs, and fresh dictionaries. Existing tests preserved; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 9 tests passed","git diff --check — passed"]}

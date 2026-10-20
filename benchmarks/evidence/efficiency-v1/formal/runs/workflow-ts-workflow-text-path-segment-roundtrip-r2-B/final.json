@@ -1,1 +1,0 @@
-{"summary":"Updated encodeSegment to use encodeURIComponent and buildPath to preserve empty segments and input order. Added regression tests for reserved characters and non-mutation. All existing tests remain intact.","tests_run":["node --test — passed all 3 test files."]}

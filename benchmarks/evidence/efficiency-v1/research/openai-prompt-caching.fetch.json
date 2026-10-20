@@ -1,9 +1,0 @@
-{
-  "id": "openai-prompt-caching",
-  "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
-  "retrieved_at_utc": "2026-10-18T21:49:05.118012+00:00",
-  "http_status": 200,
-  "final_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
-  "body_bytes": 776034,
-  "body_sha256": "645a1f1b6f1e5380c558a0fe5ecb9e6cf86e7da418c735072e6ef36a2f577f8b"
-}

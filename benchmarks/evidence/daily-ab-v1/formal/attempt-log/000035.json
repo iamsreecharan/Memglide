@@ -1,9 +1,0 @@
-{
-  "sequence": 35,
-  "previous_sha256": "84f8001c53e34b902abec5296ab92039f72e0827627ddbcc47cdd6be1c95066e",
-  "recorded_at": "2026-10-18T02:36:31.058764+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts-daily-inventory-signed-code-padding-r1-A",
-  "result_sha256": "afcf8c52dfad507208c25c48916de243b4ba7e84e44cc75341207feefa3e64ca",
-  "sha256": "4951ecc433a1a5f271ed36fa113c01f3e6756d09e935fc243a871e145167213c"
-}

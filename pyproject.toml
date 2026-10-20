@@ -47,4 +47,20 @@ check_untyped_defs = true
 artifacts = ["src/memglide/web/**"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "frontend", "scripts", "tests", "benchmarks", "examples", "docs", "*.md", "LICENSE", "uv.lock", "pyproject.toml", ".python-version", ".gitignore"]
+# Ship benchmark code and its inputs, not generated reports or evidence archives.
+# The retained historical reports are frozen inputs to the automatic/workflow runners.
+include = [
+  "/src", "/frontend", "/scripts", "/tests", "/examples", "/docs",
+  "/*.md", "/LICENSE", "/uv.lock", "/pyproject.toml", "/.python-version", "/.gitignore",
+  "/benchmarks/*.py", "/benchmarks/*.mjs", "/benchmarks/.ruff.toml",
+  "/benchmarks/README.md", "/benchmarks/*protocol*.md", "/benchmarks/*protocol*.json",
+  "/benchmarks/tasks*.json", "/benchmarks/automatic*-fixtures/**",
+  "/benchmarks/automatic-v[34]-grading.json", "/benchmarks/automatic-v[34]-provenance.json",
+  "/benchmarks/controls_automatic_v4.json", "/benchmarks/cost-pricing.json",
+  "/benchmarks/refinement_holdout.json", "/benchmarks/retrieval_holdout.json",
+  "/benchmarks/warm-80-analysis.json",
+  "/benchmarks/codex-workflow-ab.json", "/benchmarks/codex-workflow-ab.md",
+  "/benchmarks/workflow-assessment.json", "/benchmarks/workflow-assessment.md",
+  "/benchmarks/workflow-contract-issue.json", "/benchmarks/workflow-contract-issue.md",
+  "/benchmarks/evidence/README.md",
+]

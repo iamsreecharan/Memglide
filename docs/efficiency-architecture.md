@@ -4,8 +4,8 @@ The latest architecture changes target observed work left after source delivery:
 native Codex still inspected existing tests in all eight focused tasks of the
 previous cost comparison. Source delivery removed recognized production-source
 read commands, but did not establish cost savings. The
-[140-run trace diagnosis](../benchmarks/efficiency-diagnosis.md) preserves each
-cohort separately; the [research ledger](../benchmarks/efficiency-research.md)
+[140-run trace diagnosis](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/efficiency-diagnosis.md) preserves each
+cohort separately; the [research ledger](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/efficiency-research.md)
 records primary sources, exact reading scopes and uncertainty.
 
 The implementation keeps the cheap source-only path and adds explicit supporting

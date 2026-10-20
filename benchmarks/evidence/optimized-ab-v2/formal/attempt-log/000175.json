@@ -1,9 +1,0 @@
-{
-  "sequence": 175,
-  "previous_sha256": "a2b7ba866fd2563280f40c81a9a95441269de4a12b53bbba744ae1033fbb4f0d",
-  "recorded_at": "2026-10-17T23:49:36.459181+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-ledger-currency-netting-r2-A",
-  "result_sha256": "7401c0919d4910e9b4604b9186205b16b03a31529cb0bbeb883c0f2dd16c72fd",
-  "sha256": "aeaab3825dce5e4345a2208dfcd7fdd69c6516f4c6b3529788335de7956bec64"
-}

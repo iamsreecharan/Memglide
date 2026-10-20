@@ -1,5 +1,0 @@
-
-> memglide-dashboard@0.1.0 test
-> vitest --run --reporter=junit --outputFile=../.local/efficiency-v1/frontend.xml
-
-JUNIT report written to /workspace/Memglide/.local/efficiency-v1/frontend.xml

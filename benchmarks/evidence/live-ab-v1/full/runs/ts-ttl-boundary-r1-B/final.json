@@ -1,1 +1,0 @@
-{"summary":"Fixed TTLCache to remove entries when now >= expiration. Added deterministic regression tests for boundary expiration, unchanged read deadlines, overwrite TTLs, and DocumentService caching. Existing tests preserved; no commit made.","tests_run":["node --test tests/*.test.mjs — passed smoke and regression tests","git diff --check — passed"]}

@@ -75,7 +75,7 @@ passport may have current source hashes while omitting graph details. Retrieve
 full relationships with `get_dependencies`; a preview does not replace the
 complete static dependency record.
 
-Only protocol traffic goes to stdout in STDIO mode. Diagnostics use stderr. A server that merely starts is not an integration test: `tests/test_transports.py` uses an actual SDK client to discover tools and invoke all 14 tools. It also tests supported Codex registration commands in an isolated configuration directory. See `PROGRESS.md` for the exact validation observed in this checkout, including any Codex-specific limits.
+Only protocol traffic goes to stdout in STDIO mode. Diagnostics use stderr. A server that merely starts is not an integration test: `tests/test_transports.py` uses an actual SDK client to discover tools and invoke all 14 tools. It also tests supported Codex registration commands in an isolated configuration directory. See [historical verification log](archive/PROGRESS.md) for the exact validation observed in this checkout, including any Codex-specific limits.
 
 ## Optional repository agent guidance
 

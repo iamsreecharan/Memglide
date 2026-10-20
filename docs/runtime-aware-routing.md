@@ -51,7 +51,7 @@ limits: index scanning, Git and database waits have their own costs.
 
 ## What the checks can establish
 
-The [research](../benchmarks/router-v3-research.md) explains the mechanism and
+The [research](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/router-v3-research.md) explains the mechanism and
 its limits. The [frozen offline protocol](../benchmarks/automatic-v3-protocol.md)
 separates known-path delivery, original automatic policies and the new policy.
 Its public path-free tasks and private target scopes remain separate; no hidden
@@ -76,7 +76,7 @@ Those require their own implementation and measured deployment evidence.
 
 ## Recorded outcome
 
-The [fresh assessment](../benchmarks/router-v3-assessment.md) retains all 96
+The [fresh assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/router-v3-assessment.md) retains all 96
 original offline preparations and independent source-fidelity checks. Both
 repeats found the declared source on three of eight positive tasks with v3,
 versus two with v2 and all eight with known paths. All four normative bypass

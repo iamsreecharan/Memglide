@@ -1,9 +1,0 @@
-2026-10-19T20:47:48.849406Z ERROR codex_models_manager::manager: failed to refresh available models: Connection failed: error sending request
-2026-10-19T20:47:48.925265Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: URL error: Proxy connection failed: HTTP CONNECT failed with status 403, url: wss://chatgpt.com/backend-api/codex/responses
-2026-10-19T20:47:48.964866Z ERROR codex_models_manager::manager: failed to refresh available models: Connection failed: error sending request
-2026-10-19T20:47:48.974614Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: URL error: Proxy connection failed: HTTP CONNECT failed with status 403, url: wss://chatgpt.com/backend-api/codex/responses
-2026-10-19T20:47:49.179544Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: URL error: Proxy connection failed: HTTP CONNECT failed with status 403, url: wss://chatgpt.com/backend-api/codex/responses
-2026-10-19T20:47:49.596983Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: URL error: Proxy connection failed: HTTP CONNECT failed with status 403, url: wss://chatgpt.com/backend-api/codex/responses
-2026-10-19T20:47:50.371299Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: URL error: Proxy connection failed: HTTP CONNECT failed with status 403, url: wss://chatgpt.com/backend-api/codex/responses
-2026-10-19T20:47:51.996507Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: URL error: Proxy connection failed: HTTP CONNECT failed with status 403, url: wss://chatgpt.com/backend-api/codex/responses
-2026-10-19T20:47:55.287010Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: URL error: Proxy connection failed: HTTP CONNECT failed with status 403, url: wss://chatgpt.com/backend-api/codex/responses

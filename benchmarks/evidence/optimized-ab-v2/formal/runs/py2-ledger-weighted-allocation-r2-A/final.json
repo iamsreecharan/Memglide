@@ -1,1 +1,0 @@
-{"summary":"Implemented largest-remainder allocation with original-index tie breaking, exact integer arithmetic, input preservation, and validation. Added regression tests confirming domain and public API agreement. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 12 tests passed","git diff --check — passed"]}

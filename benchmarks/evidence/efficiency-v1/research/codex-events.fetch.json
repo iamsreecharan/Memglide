@@ -1,9 +1,0 @@
-{
-  "id": "codex-events",
-  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/exec_events.rs",
-  "retrieved_at_utc": "2026-10-18T21:50:54.677503+00:00",
-  "http_status": 200,
-  "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/exec_events.rs",
-  "body_bytes": 10713,
-  "body_sha256": "dafa872d7e86a099e56e28a329dcb9c03db90ed768c3b88cca8c91d46dc1d0e5"
-}

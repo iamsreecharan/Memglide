@@ -1,2 +1,0 @@
-def test_second(tmp_path):
- (tmp_path/'independent').write_text('present')

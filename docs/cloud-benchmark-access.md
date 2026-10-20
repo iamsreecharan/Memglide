@@ -11,7 +11,7 @@ usable authentication, and usage and charges remain unknown.
 
 Suggested message for the new task:
 
-> Read PROGRESS.md and benchmarks/router-v4-assessment.md. Verify that this worker
+> Read docs/archive/PROGRESS.md and the frozen router-v4 assessment linked from research/README.md. Verify that this worker
 > uses the published Memglide environment and that the three required domains are
 > present in its current enforced network policy. Check Codex login status without
 > reading or printing credential files. If the network prerequisites are active,

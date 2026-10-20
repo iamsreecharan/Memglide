@@ -1,1 +1,0 @@
-{"summary":"Fixed clamp to return max for values equal to or above max. Preserved validation and interior fractions; added regression coverage. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

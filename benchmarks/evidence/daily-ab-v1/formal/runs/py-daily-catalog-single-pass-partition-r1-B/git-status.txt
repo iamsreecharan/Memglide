@@ -1,2 +1,0 @@
-M catalog/single_pass_partition.py
-?? tests/test_single_pass_partition.py

@@ -1,9 +1,0 @@
-{
-  "sequence": 111,
-  "previous_sha256": "2dfd45d25746ccdc85b459ab58eeac72a9bc7910cf27087c319cf51e74fcf266",
-  "recorded_at": "2026-10-19T03:59:19.158291+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-ts-workflow-text-utf8-byte-length-r2-A",
-  "result_sha256": "ffbf4d8d38da4423d903782cbebd7fcab5ea38b3a6efa01116f6eba6cacbe196",
-  "sha256": "b350f1f725fc2cd8b44219f642a48d3b77ca78fed69edc473ae3cc17bd9c6fb2"
-}

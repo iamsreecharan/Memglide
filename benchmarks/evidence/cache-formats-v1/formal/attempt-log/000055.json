@@ -1,9 +1,0 @@
-{
-  "sequence": 55,
-  "previous_sha256": "f9d55df20942f413b6ea8ead2da4b2d259531a0da7a73f17ed2fb21119c8eaa0",
-  "recorded_at": "2026-10-18T15:32:40.419929+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "fmt-ts-cache-collections-signed-left-rotation-r1-B",
-  "result_sha256": "a65d0c34fa4c4348779de1349bd37cdeae5f47909a162f7dc3cc89e605ae3e48",
-  "sha256": "72b88222a24461733e989a6642a9228958024ebdebe41f0b821a911900b1f0f1"
-}

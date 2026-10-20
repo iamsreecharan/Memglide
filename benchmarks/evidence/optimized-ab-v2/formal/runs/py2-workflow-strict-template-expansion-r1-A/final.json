@@ -1,1 +1,0 @@
-{"summary":"Fixed domain and public API rendering to raise KeyError for missing names and preserve falsey values for str conversion. Added regression coverage for escaping, malformed placeholders, and nonrecursive replacements. Existing tests preserved; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

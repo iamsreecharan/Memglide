@@ -1,1 +1,0 @@
-{"summary":"Implemented atomic counter batches in the domain and API adapter, with safe-integer validation, nonnegative balances, detached snapshots, and own-key handling for '__proto__'. Added regression tests. No commit created.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

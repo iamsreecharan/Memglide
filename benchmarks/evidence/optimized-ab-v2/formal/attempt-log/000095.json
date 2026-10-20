@@ -1,9 +1,0 @@
-{
-  "sequence": 95,
-  "previous_sha256": "b0a4d39832f24b7d22eed9b4236da74ea59cf7feb5e1c0b750cb8b216a5087d2",
-  "recorded_at": "2026-10-17T23:29:35.815083+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-ledger-nested-redaction-r1-A",
-  "result_sha256": "3e9b40ca28350e082c166ae8dbf9b0a753fd4659b8e27e2008fb366c3c36fc67",
-  "sha256": "ce3bc2a18fe59d516cccc728cf997a577c69b94e7cc54d888a05bada2390237f"
-}

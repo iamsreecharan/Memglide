@@ -1,1 +1,0 @@
-{"summary":"Updated domain logic and API adapter to return runnable jobs by descending priority with stable ties, validate limits consistently, and deep-copy results without changing caller data. Added regression tests; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed, including existing smoke tests.","git diff --check — passed."]}

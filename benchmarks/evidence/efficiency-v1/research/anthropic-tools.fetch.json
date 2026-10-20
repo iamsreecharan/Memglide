@@ -1,9 +1,0 @@
-{
-  "id": "anthropic-tools",
-  "url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
-  "retrieved_at_utc": "2026-10-18T21:49:05.370883+00:00",
-  "http_status": 200,
-  "final_url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
-  "body_bytes": 197554,
-  "body_sha256": "cf8723d5882f4ff3bb1e80c5f78abe154c74ccc047f1318d4aae67f12816935f"
-}

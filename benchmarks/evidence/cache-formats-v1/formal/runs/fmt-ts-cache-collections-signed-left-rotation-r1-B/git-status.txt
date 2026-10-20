@@ -1,2 +1,0 @@
-M src/signed_left_rotation.ts
-?? tests/signed_left_rotation.test.mjs

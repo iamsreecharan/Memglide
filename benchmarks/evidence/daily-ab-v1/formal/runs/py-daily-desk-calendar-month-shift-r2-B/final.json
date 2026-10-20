@@ -1,1 +1,0 @@
-{"summary":"Fixed month-end clamping and unchanged forwarding of zero and negative deltas. Added regression coverage for validation, date output, batch order and IDs, and deeply detached metadata. Existing interfaces and tests preserved; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

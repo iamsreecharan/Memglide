@@ -1,7 +1,0 @@
-test_copies_root_and_bad_escape (__main__.BehaviorTests.test_copies_root_and_bad_escape) ... ok
-test_missing_leaf_and_atomicity (__main__.BehaviorTests.test_missing_leaf_and_atomicity) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.001s
-
-OK

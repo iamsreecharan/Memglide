@@ -1,7 +1,0 @@
-{
-  "id": "codex-core",
-  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/core/src/codex.rs",
-  "retrieved_at_utc": "2026-10-18T21:51:32.252228+00:00",
-  "http_status": 404,
-  "error_type": "HTTPError"
-}

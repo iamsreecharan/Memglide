@@ -1,1 +1,0 @@
-{"summary":"Updated sequential planning to stop at the first task exceeding the deadline. Preserved validation, overflow rejection, and inputs. Added regression coverage for both domain and public API behavior. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new regression tests","git diff --check — passed"]}

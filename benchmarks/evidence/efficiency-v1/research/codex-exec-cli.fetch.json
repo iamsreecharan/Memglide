@@ -1,9 +1,0 @@
-{
-  "id": "codex-exec-cli",
-  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/cli.rs",
-  "retrieved_at_utc": "2026-10-18T21:49:05.442299+00:00",
-  "http_status": 200,
-  "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/cli.rs",
-  "body_bytes": 9863,
-  "body_sha256": "6abb86feb8fac2a192b34a617634527d0747b6d7fa09ee4827c0dc95abbe2f75"
-}

@@ -1,1 +1,0 @@
-{"summary":"Implemented independent deep copies for decoded objects while preserving full size validation before allocation. Added regression coverage for both domain and public API behavior. Existing smoke tests preserved; no commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

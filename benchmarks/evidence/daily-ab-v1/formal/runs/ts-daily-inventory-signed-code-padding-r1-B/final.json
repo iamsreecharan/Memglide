@@ -1,1 +1,0 @@
-{"summary":"Fixed padCode to pad zeros after the minus sign without truncating longer values. Fixed labelCode to preserve zero. Added regression tests for padding, boundaries, and invalid inputs. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

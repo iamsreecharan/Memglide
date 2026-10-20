@@ -1,9 +1,0 @@
-{
-  "sequence": 137,
-  "previous_sha256": "35e47e759268d685988e59c8b04a4c1cc877ce92673fd3876594b2a36d4653ca",
-  "recorded_at": "2026-10-17T23:40:07.864450+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-config-quoted-env-values-r1-B",
-  "result_sha256": "e2110da72a572bdf387948d188c87a7828f0ded530cf004ce8ba2d6d8c2c330f",
-  "sha256": "81fce335be317c859ed48237c0b41de8d1f539fab45d982b220b1faa1c3c79e5"
-}

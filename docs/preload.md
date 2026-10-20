@@ -75,8 +75,8 @@ remain inside one changing native user message. The newer provider guide
 describes eligible message-ending breakpoints, while the inspected installed
 Codex CLI exposes no arbitrary multiple-message or explicit-breakpoint input.
 Native request construction and backend state remain outside this wrapper's
-control. See the [efficiency research](../benchmarks/efficiency-research.md) for
-the current scoped findings and the [earlier cache research](../benchmarks/cache-refinement-research.md)
+control. See the [efficiency research](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/efficiency-research.md) for
+the current scoped findings and the [earlier cache research](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/cache-refinement-research.md)
 for the preserved diagnosis. Neither layout proves a token or cost saving.
 
 Omit the positional prompt, or use `-`, to read its UTF-8 text from stdin. With a
@@ -134,7 +134,7 @@ Both formats securely read current source and recheck policy/source hashes;
 neither reuses stale file contents, pads requests to trigger caching, invents a
 cache parameter, changes session IDs or makes a model call to decide retrieval.
 The compact format is a versioned layout refinement. The
-[20-pair measured comparison](../benchmarks/cache-refinement-assessment.md)
+[20-pair measured comparison](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/cache-refinement-assessment.md)
 found lower full execution time but higher uncached input. The overall input
 decrease came from identical-prompt controls, so it does not establish a token
 or cache benefit from the layout. Cost savings remain unproven.

@@ -1,1 +1,0 @@
-{"summary":"Updated domain and public API redirect handling to enforce normalized HTTP(S) same-origin URLs, reject credentials, and preserve encoded paths, queries, and fragments. Added regression tests; no commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke tests and new redirect regression tests."]}

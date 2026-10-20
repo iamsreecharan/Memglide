@@ -1,1 +1,0 @@
-{"summary":"Updated percent_change to divide by abs(previous), preserving zero-baseline behavior and finite numeric input validation. Added regression tests for negative baselines, zero baselines, and invalid inputs. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed."]}

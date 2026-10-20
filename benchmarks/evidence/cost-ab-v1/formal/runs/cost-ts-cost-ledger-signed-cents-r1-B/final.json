@@ -1,1 +1,0 @@
-{"summary":"Fixed formatCents to always produce two fractional digits while preserving signs and safe-integer validation. Added regression coverage for zero, negative cents, safe-integer limits, and invalid inputs.","tests_run":["node --test tests/*.test.mjs — passed"]}

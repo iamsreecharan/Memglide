@@ -1,8 +1,0 @@
-{
-  "sequence": 1,
-  "previous_sha256": null,
-  "recorded_at": "2026-10-18T16:32:33.545965+00:00",
-  "event": "experiment.created",
-  "frozen_manifest_sha256": "1dc7176d0397bf1935199f16c5751a4f46f43d5532f8e741bdaa5e70df72188c",
-  "sha256": "581fee6337bf1b2534ef5efbe3705366006e011d327673c8b5631e38fa743487"
-}

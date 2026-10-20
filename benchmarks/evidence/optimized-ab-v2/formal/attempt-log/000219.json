@@ -1,9 +1,0 @@
-{
-  "sequence": 219,
-  "previous_sha256": "1ba16f7d8919d4059f077c31de4d2e5fdfbab093a405e649db0d8f99f0520615",
-  "recorded_at": "2026-10-18T00:01:08.911550+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-stream-decimal-money-parser-r2-A",
-  "result_sha256": "64a226fcf00012a9fd0cb7dc5f351e06439293c0538a4e79c67a781aee651295",
-  "sha256": "29ea985882093b98a3e45626ae7c94ff9bcbe367678bc83a4d37e1ee6f56a3ca"
-}

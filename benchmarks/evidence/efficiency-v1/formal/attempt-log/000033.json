@@ -1,9 +1,0 @@
-{
-  "sequence": 33,
-  "previous_sha256": "483f36715ffea8bee8a0115ae2bcf408b2958dac9529601b1e81a7281f2049a9",
-  "recorded_at": "2026-10-19T03:45:32.501003+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-ts-workflow-signals-threshold-hysteresis-r1-C",
-  "result_sha256": "8cecc8f7f66979fb9dbbd39703f060abaf78dc1b6805ccccc6870ee069a25e3e",
-  "sha256": "ca00073bb0d125130e04b49a916691cac83dc1042c8ee48196a8b0cc0439c791"
-}

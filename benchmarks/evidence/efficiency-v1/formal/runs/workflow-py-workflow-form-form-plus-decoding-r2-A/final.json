@@ -1,1 +1,0 @@
-{"summary":"Fixed decode_component to replace raw plus signs before percent-decoding, preserving encoded plus signs and urllib’s handling of invalid UTF-8 and malformed escapes. Added regression tests; no commit made.","tests_run":["python -m unittest discover -s tests -v — all 18 tests passed","git diff --check — passed"]}

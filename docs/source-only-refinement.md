@@ -43,8 +43,8 @@ and would discard later safety fixes.
 
 These are distinct small studies. Cache-write uncertainty can reverse the
 estimated ranking. Actual billed savings and general performance remain
-unproven. See the unchanged [warm analysis](../benchmarks/warm-80-analysis.md)
-and [confirmation](../benchmarks/efficiency-assessment.md).
+unproven. See the unchanged [warm analysis](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/warm-80-analysis.md)
+and [confirmation](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/efficiency-assessment.md).
 
 ## The narrow new change
 
@@ -72,7 +72,7 @@ first-call, warm-call, whole-worker and diagnostic measurements.
 
 ## Measured outcome
 
-The [assessment](../benchmarks/source-only-refinement-assessment.md) preserves
+The [assessment](https://github.com/iamsreecharan/Memglide/blob/8acc8af/benchmarks/source-only-refinement-assessment.md) preserves
 all 78 local workers and an independent reconstruction. Policy compilation
 halved in both policy fixtures while complete source, prompt bytes and current
 read checks stayed identical. Timing was mixed: every primary paired mean

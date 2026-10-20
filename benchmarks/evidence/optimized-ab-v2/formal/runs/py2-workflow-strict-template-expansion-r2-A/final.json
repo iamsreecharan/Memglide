@@ -1,1 +1,0 @@
-{"summary":"Updated domain rendering and the API adapter to raise KeyError for missing names and preserve values for str conversion. Added regression coverage for escaping, malformed syntax, and nonrecursive replacements. Existing tests preserved; no commit created.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

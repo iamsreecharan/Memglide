@@ -1,1 +1,0 @@
-{"summary":"Implemented UTC-based [start,end) selection, aware-datetime validation, reversed-bound rejection, stable chronological sorting, and deeply detached results. Regression tests cover both domain and public API behavior. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed","git diff --check — passed"]}

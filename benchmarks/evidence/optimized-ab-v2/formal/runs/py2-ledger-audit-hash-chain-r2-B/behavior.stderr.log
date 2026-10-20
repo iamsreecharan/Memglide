@@ -1,7 +1,0 @@
-test_canonical_chain_and_tampering (__main__.BehaviorTests.test_canonical_chain_and_tampering) ... ok
-test_empty_ordering_and_immutability (__main__.BehaviorTests.test_empty_ordering_and_immutability) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.001s
-
-OK

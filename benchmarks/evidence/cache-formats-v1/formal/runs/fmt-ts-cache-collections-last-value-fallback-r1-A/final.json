@@ -1,1 +1,0 @@
-{"summary":"Fixed lastOrDefault to return the final element, preserving undefined, null, false, zero, and empty strings. Added regression coverage for fallback behavior and unchanged inputs. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

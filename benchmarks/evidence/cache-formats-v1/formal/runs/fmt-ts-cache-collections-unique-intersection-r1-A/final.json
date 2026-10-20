@@ -1,1 +1,0 @@
-{"summary":"Updated intersection to return shared values once in first-left-appearance order using Set equality, without modifying inputs. Added regression coverage for duplicates, NaN, object identity, signed zero, and no matches.","tests_run":["node --test tests/*.test.mjs — passed"]}

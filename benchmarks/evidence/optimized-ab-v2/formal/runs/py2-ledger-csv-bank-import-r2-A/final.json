@@ -1,1 +1,0 @@
-{"summary":"Updated domain parsing and the API adapter to preserve complete strings, support BOM and quoted CSV, validate columns and integer amounts, and consistently raise ValueError for invalid input. Added regression tests; preserved existing tests and made no commit.","tests_run":["python -m unittest discover -s tests -v — all 15 tests passed","git diff --check — passed"]}

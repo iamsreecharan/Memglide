@@ -66,6 +66,7 @@ public-text tree and declared tools; it does not capture the entire dependency,
 binary-fixture, environment, or external-resource state. Preparation rechecks
 these local bindings and complete selected source without executing checks.
 
-Frozen evaluation timings describe the evaluation prototype. This installed
-path performs additional provider/freshness validation, so its preparation
-latency and end-to-end savings need separate measurement.
+The installed-system comparison measured this path, including fresh command
+verification and provider/freshness validation. Its observed cost difference
+did not establish reliable savings or a speed advantage; see the
+[research overview](../research/README.md) for the results and uncertainty.

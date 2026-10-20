@@ -1,1 +1,0 @@
-{"summary":"Fixed feature flag parsing to preserve booleans, normalize supported strings, use the default for None, and reject other values with ValueError. Added regression coverage for the parser and DocumentService. Existing tests preserved; no commits made.","tests_run":["python -m unittest discover -s tests -v — all 5 tests passed","git diff --check — passed"]}

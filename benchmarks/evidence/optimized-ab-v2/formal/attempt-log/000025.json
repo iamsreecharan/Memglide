@@ -1,9 +1,0 @@
-{
-  "sequence": 25,
-  "previous_sha256": "47b315ae471e3da768f0bfa9adfefc9131770f3a05d3a7c93962076548062b03",
-  "recorded_at": "2026-10-17T23:11:05.014657+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-config-complete-form-errors-r1-A",
-  "result_sha256": "08961b0f6c097764dccf9c5cc53ff882893fccfb2924d09dcb823a18e055a332",
-  "sha256": "8cfa899896f15dfc9d1fe8f82583e6d7790c474d42add3b30a33125df7fab09e"
-}

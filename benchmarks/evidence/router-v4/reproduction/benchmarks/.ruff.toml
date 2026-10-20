@@ -1,5 +1,0 @@
-extend = "../pyproject.toml"
-src = ["..", "../src"]
-
-# Keep upstream snapshots and archived evidence byte-for-byte intact.
-extend-exclude = ["evidence", "automatic-fixtures", "automatic-v2-fixtures", "automatic-v4-fixtures"]

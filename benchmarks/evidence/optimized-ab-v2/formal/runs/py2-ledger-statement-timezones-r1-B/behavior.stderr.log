@@ -1,7 +1,0 @@
-test_half_open_offsets_and_stability (__main__.BehaviorTests.test_half_open_offsets_and_stability) ... ok
-test_validation_and_detachment (__main__.BehaviorTests.test_validation_and_detachment) ... ok
-
-----------------------------------------------------------------------
-Ran 2 tests in 0.001s
-
-OK

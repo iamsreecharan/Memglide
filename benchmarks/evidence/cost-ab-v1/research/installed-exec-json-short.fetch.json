@@ -1,8 +1,0 @@
-{
-  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/exec/src/event_processor_json.rs",
-  "retrieved_at_utc": "2026-10-18T16:26:20.810670+00:00",
-  "status": 404,
-  "bytes": 14,
-  "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
-  "error_type": "HTTPError"
-}

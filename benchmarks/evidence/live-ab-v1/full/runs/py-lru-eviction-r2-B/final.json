@@ -1,1 +1,0 @@
-{"summary":"Fixed successful cache reads to refresh LRU recency without extending TTL. Preserved API and expiration behavior; added six regression tests. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

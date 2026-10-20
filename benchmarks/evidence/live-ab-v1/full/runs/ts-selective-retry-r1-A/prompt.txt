@@ -1,7 +1,0 @@
-Implement the requested change in this repository. Inspect the current source and run relevant tests. Preserve existing tests and Git metadata; do not commit. Do not access files outside this repository except installed development tools. The final structured response is only a summary, not a grading result.
-If memglide MCP tools are available, use list_projects, start_session and get_context before editing, inspect the source evidence you need, and revalidate the Context Passport after edits. Otherwise use ordinary source tools. Do not claim token or cost savings.
-
-Task:
-In this Typescript Atlas document-service repository, Fix retry classification: retry only TemporaryError, for at most the configured total number of attempts. Return the first successful result; rethrow the final temporary failure object unchanged. Other exceptions must escape on their first attempt. Preserve validation that at least one attempt is required.
-
-Implement the change in the production source. Use the existing offline smoke tests and add focused regression tests if useful. Do not inspect or modify benchmark machinery, grading files, or files outside this repository. Do not change the dependency or build configuration. Finish with a brief description and the tests you ran.

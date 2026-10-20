@@ -1,9 +1,0 @@
-{
-  "sequence": 43,
-  "previous_sha256": "eb999b8cf5ef39fff3c3ca550568ec634836ac2f8bd9f11488863fc7b0ce8711",
-  "recorded_at": "2026-10-17T23:15:53.118391+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-workflow-incremental-utf8-lines-r1-A",
-  "result_sha256": "d71283f4c0c8a201af3624e0f50163f939390a13ef5460945c51f3794e6afe74",
-  "sha256": "76df7ddc56d789ee40f0696dd19b698b6c15d0786808aa7bb6ee37bca8d998b5"
-}

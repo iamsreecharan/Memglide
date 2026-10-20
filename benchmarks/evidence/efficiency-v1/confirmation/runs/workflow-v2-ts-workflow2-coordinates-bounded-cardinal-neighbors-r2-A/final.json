@@ -1,1 +1,0 @@
-{"summary":"Fixed in-bounds cardinal neighbors in left, right, up, down order and exact-key blocked filtering without mutating blocked. Added regression tests; existing tests unchanged. No commit created.","tests_run":["node --test — passed all 3 test files","git diff --check — passed"]}

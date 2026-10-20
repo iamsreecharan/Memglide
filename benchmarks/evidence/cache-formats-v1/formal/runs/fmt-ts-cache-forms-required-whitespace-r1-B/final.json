@@ -1,1 +1,0 @@
-{"summary":"Updated isRequiredBlank to treat empty and whitespace-only strings as blank. Visible text, including '0', remains present; input is unchanged.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

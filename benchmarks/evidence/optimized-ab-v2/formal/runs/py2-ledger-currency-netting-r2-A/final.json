@@ -1,1 +1,0 @@
-{"summary":"Implemented currency netting with case normalization, strict validation, zero-total retention, sorted keys, and input preservation. Aligned API error behavior with the domain and added regression coverage. No commit made.","tests_run":["python -m unittest discover -s tests -v — all 13 tests passed, including existing smoke tests."]}

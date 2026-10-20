@@ -1,9 +1,0 @@
-{
-  "sequence": 33,
-  "previous_sha256": "b45d299520873b29ff026e012074ff9e16af309b28b4dabfdb707dbd7be4fae5",
-  "recorded_at": "2026-10-18T16:39:58.886433+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "cost-py-cost-inventory-reorder-inclusive-r1-A",
-  "result_sha256": "5d97e611490d5f17c41c1fff2e56858ec47ac354d9ba0760c00c95c9ad6c23c4",
-  "sha256": "e0c2941ec0a52362160701693d45e9cde46329ce9b0323a97cba770d719bda66"
-}

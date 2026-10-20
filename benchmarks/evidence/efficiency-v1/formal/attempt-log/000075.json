@@ -1,9 +1,0 @@
-{
-  "sequence": 75,
-  "previous_sha256": "ca6789604336f4c30deab7fac51ae97c781a3fdcf87f6b00e425b920b32d0ca0",
-  "recorded_at": "2026-10-19T03:52:38.645189+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-ts-workflow-signals-circular-angle-difference-r2-A",
-  "result_sha256": "37677ec7b41feed572d09b948f9358913bb2fdb5c67cf4970f02d17f81677ba7",
-  "sha256": "427e218c3befb687187e99746b8bfef73bc9f884cff7654f6274931e6a9abe47"
-}

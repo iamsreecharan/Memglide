@@ -1,9 +1,0 @@
-{
-  "sequence": 3,
-  "previous_sha256": "aedcbaba23654b30585eca97935ecf4ccf9fff38a3ef8bf6336516b58d5f95aa",
-  "recorded_at": "2026-10-18T02:30:32.544686+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py-daily-catalog-relative-indentation-r1-A",
-  "result_sha256": "509d5182a75e745111ff026489b741ab3e06744b787be940d665fb4558bed15b",
-  "sha256": "e1a7f9a0b53b72a59922e3951680e0000536442097c7e454a969350cacfac9ff"
-}

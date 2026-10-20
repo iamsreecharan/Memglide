@@ -1,9 +1,0 @@
-{
-  "id": "codex-protocol",
-  "url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/protocol.rs",
-  "retrieved_at_utc": "2026-10-18T21:51:32.515415+00:00",
-  "http_status": 200,
-  "final_url": "https://raw.githubusercontent.com/openai/codex/ff6aec96948b70d94983af2641a6b67c94faeff5/codex-rs/protocol/src/protocol.rs",
-  "body_bytes": 234299,
-  "body_sha256": "d3d3d384da91b2824c10091de4331a2bc26ec5474887ed0aef1e3f3c4ae110f4"
-}

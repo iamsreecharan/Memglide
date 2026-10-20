@@ -1,9 +1,0 @@
-{
-  "sequence": 129,
-  "previous_sha256": "37c1e2ab3672ac2fc639bdc49b48271139d8260886ee79141e3423a8ca8d679b",
-  "recorded_at": "2026-10-17T23:38:04.232322+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-config-utf8-feature-cohorts-r1-B",
-  "result_sha256": "b0e2e03f4699afdfa385f2a6f963624ebc859a8e08aafc8ebefbf832c33322be",
-  "sha256": "cdfd659f281ff2a397bbdb10b9f76f03fe79444434309a873fdd76f36ca49d8b"
-}

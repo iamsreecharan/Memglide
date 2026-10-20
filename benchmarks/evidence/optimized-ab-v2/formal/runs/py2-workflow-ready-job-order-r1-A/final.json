@@ -1,1 +1,0 @@
-{"summary":"Updated domain and API behavior to return runnable jobs by descending priority with stable ties, validate limits, and deeply detach results without changing caller data. Added regression tests; preserved existing tests. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 14 tests passed","git diff --check — passed"]}

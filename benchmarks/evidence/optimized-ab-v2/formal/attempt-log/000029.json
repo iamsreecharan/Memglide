@@ -1,9 +1,0 @@
-{
-  "sequence": 29,
-  "previous_sha256": "75d0df999c7e52da273d5c7646336bee3859c102ee2037742cebe636fb2b9c9e",
-  "recorded_at": "2026-10-17T23:12:15.150535+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-ledger-statement-timezones-r1-A",
-  "result_sha256": "2d00b980f48968c6c17b24592a0d6b2cd1bbd123c0f9707c8b8c8b5b36f20768",
-  "sha256": "473cd0f58d5f3beb22fd369bdd54231021eb7d99c16f2441cf88f1ad68f2fe84"
-}

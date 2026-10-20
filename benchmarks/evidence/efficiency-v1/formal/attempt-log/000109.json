@@ -1,9 +1,0 @@
-{
-  "sequence": 109,
-  "previous_sha256": "2536cd97edf6d2f753988071bb095d4f0d82390ea7d6963406cb1c7db7f5dee5",
-  "recorded_at": "2026-10-19T03:58:55.609739+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "workflow-py-workflow-form-query-latest-value-r2-A",
-  "result_sha256": "90d0340496cc451b12f76717474662e26ae1220953f85a74e79bf12ea95339ed",
-  "sha256": "91be42b52047465f94f392350c555256352cc95d9a8d8c55d9d022de42329ced"
-}

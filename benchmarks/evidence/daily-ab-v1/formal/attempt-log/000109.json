@@ -1,9 +1,0 @@
-{
-  "sequence": 109,
-  "previous_sha256": "8b7a91e02da904d63eae127f45ecf329366fe353ec0f34b1e755bde403b0b1d5",
-  "recorded_at": "2026-10-18T02:50:01.589156+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py-daily-desk-rectangular-transpose-r2-A",
-  "result_sha256": "57268dcc2986dc702ba3260dfdd2ce6b11090505e399b20c0cdee2ea4a9d8994",
-  "sha256": "0e29de697d6587a03d84a3c2a363dba4078771ec820f3d85d22cdb23c4d0ed1f"
-}

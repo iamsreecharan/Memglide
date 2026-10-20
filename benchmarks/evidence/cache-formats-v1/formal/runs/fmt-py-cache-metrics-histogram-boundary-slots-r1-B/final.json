@@ -1,1 +1,0 @@
-{"summary":"Fixed boundary-equal values to enter the right bin and preserved empty chart bins. Added regression coverage for validation, empty inputs, and unchanged input arrays. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 8 tests passed","git diff --check — passed"]}

@@ -1,9 +1,0 @@
-diff --git a/src/unicode_ascii_slugs.ts b/src/unicode_ascii_slugs.ts
-index bb7fb20..56c7d44 100644
---- a/src/unicode_ascii_slugs.ts
-+++ b/src/unicode_ascii_slugs.ts
-@@ -1,3 +1,3 @@
- export function slugify(value:string):string{
--  return value.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$(?![\s\S])/g,"");
-+  return value.normalize("NFKD").replace(/\p{M}+/gu,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
- }

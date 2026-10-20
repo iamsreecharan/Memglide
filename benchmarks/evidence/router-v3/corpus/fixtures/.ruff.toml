@@ -1,4 +1,0 @@
-# Archived upstream evaluation data, outside every indexed rXX repository.
-# Application, runner and test lint rules remain in the project pyproject.toml.
-exclude = ["*"]
-cache-dir = "../../.ruff_cache/automatic-v3-fixtures"

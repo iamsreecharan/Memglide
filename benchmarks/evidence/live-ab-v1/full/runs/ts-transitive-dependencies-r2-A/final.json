@@ -1,1 +1,0 @@
-{"summary":"Implemented iterative transitive dependency discovery with unique, ascending IDs. Handles cycles, self-edges, and missing entries, excludes the starting document, and preserves the caller’s graph and DocumentService integration. Added focused regression tests. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

@@ -1,9 +1,0 @@
-{
-  "sequence": 227,
-  "previous_sha256": "00e93ece5e484955cca5d3ad4dcc457ed4fab0f3243c9ae6eb0a688c40cdf008",
-  "recorded_at": "2026-10-18T00:03:21.070120+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "py2-ledger-csv-bank-import-r2-A",
-  "result_sha256": "a21efaa1f0acb9ea53e54b7cd0cb012b8d9c44faf3db7227f2d2875b91510282",
-  "sha256": "bf021c0285f6b08551b8f9d5879521033ca0e784d56035387ad942fff6d2d8eb"
-}

@@ -1,1 +1,0 @@
-{"summary":"Implemented first-write-wins event storage. Duplicates return isolated copies of the original event; only new keys receive consecutive sequences. Added regression tests for idempotency and mutation isolation. No commit created.","tests_run":["python -m unittest discover -s tests -v — all 4 tests passed","git diff --check — passed"]}

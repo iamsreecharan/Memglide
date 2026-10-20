@@ -1,1 +1,0 @@
-{"summary":"Fixed first-event-wins idempotency: duplicates return deep copies of the original event without changing payload or sequence. Added regression coverage for consecutive sequences and mutation isolation. Existing tests preserved; no commits made.","tests_run":["node --test tests/*.test.mjs — passed smoke and regression tests","git diff --check — passed"]}

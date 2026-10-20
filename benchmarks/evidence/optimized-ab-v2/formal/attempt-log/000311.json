@@ -1,9 +1,0 @@
-{
-  "sequence": 311,
-  "previous_sha256": "8009c1eeea48befd53404baa9f6224d8fe8acc3c8619e08adc4be5d008c09989",
-  "recorded_at": "2026-10-18T00:24:51.808193+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "ts2-stream-abort-aware-delay-plan-r2-B",
-  "result_sha256": "7056dad05f1365d6014d3356349ae8b9166067d459e486589774ed14637a87ca",
-  "sha256": "9a272235fef13117c0b0265af7bcfdcc69374f3fd59eec163ef515977a28fe2a"
-}

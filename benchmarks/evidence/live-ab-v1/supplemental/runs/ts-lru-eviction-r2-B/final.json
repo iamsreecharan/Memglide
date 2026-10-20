@@ -1,1 +1,0 @@
-{"summary":"Fixed LRU eviction: successful reads refresh recency without extending TTL, and expired entries are reclaimed before live-key eviction. Preserved the API and existing tests; added deterministic regression tests. Revalidated the Context Passport. No commit created.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

@@ -1,1 +1,0 @@
-{"summary":"Implemented unsigned FNV-1a hashing over UTF-8 bytes. Preserved basis-point validation and public interfaces. Added regression coverage for Unicode, thresholds, invalid rates, and adapter/domain agreement. No commits made.","tests_run":["node --test tests/*.test.mjs — passed existing smoke and new regression tests","git diff --check — passed"]}

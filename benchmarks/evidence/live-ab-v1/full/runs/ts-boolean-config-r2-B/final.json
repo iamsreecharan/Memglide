@@ -1,1 +1,0 @@
-{"summary":"Implemented strict feature flag parsing with boolean passthrough, normalized supported strings, nullish defaults, and rejection of all other values. Added regression coverage for parsing and DocumentService. Preserved existing tests; no commits made.","tests_run":["node --test tests/*.test.mjs — passed smoke and regression tests","git diff --check — passed"]}

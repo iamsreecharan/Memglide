@@ -1,1 +1,0 @@
-{"summary":"Implemented exact BigInt half-up rounding for prorated cents, preserving validation, full-period charges, and zero-day behavior. Added regression tests for rounding boundaries and large safe integers. No commits made.","tests_run":["node --test tests/*.test.mjs — passed","git diff --check — passed"]}

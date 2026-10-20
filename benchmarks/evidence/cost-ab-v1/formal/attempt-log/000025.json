@@ -1,9 +1,0 @@
-{
-  "sequence": 25,
-  "previous_sha256": "f0e5c9f029b3349acd06cae25d0c808a0a529ac3c9bc67c10571a8657ff903d7",
-  "recorded_at": "2026-10-18T16:38:09.379937+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "cost-ts-cost-geometry-normalized-bounds-r1-A",
-  "result_sha256": "3014312178dcf0cef91fbca036956ce12ee9b44255235e3d98b8b414f259d6a9",
-  "sha256": "479adf3248cc026e9b243dad974ea5b34384885b02db88d960eb380cdba9845c"
-}

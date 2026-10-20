@@ -1,9 +1,0 @@
-{
-  "sequence": 11,
-  "previous_sha256": "defe42edea42eeabf0f0a86c721ecc688a58e67deb924eb56d8ad48e3691d5ca",
-  "recorded_at": "2026-10-18T15:21:28.027812+00:00",
-  "event": "attempt.finished",
-  "attempt_id": "fmt-py-cache-metrics-fractional-sample-variance-r1-A",
-  "result_sha256": "8fef69a467e91e56f58db28dbceb36ffd060f608b9d94c3de4e335f028767a07",
-  "sha256": "30b38d8fa91617785348371c9feb8b51694a0523a49e056e288edcb2b873c82e"
-}

@@ -1,1 +1,0 @@
-{"summary":"Fixed search to require every normalized query token in the title or body. Added regressions covering DocumentService, whole-token matching, case normalization, empty queries, ID ordering, and input immutability. No commits made.","tests_run":["python -m unittest discover -s tests -v — all 5 tests passed","git diff --check — passed"]}
