@@ -1,0 +1,10 @@
+{
+  "arm": "V3",
+  "prompt": "Make AVLTree.load with presort enabled preserve the caller's key and value arrays. The constructed tree must still be sorted according to its comparator and retain the correct key/value associations, including duplicate keys. Keep bulk-loading into a nonempty tree rejected and keep the non-presorted behavior unchanged.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0044"
+}

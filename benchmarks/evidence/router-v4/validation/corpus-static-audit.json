@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-19T20:54:12.786408+00:00",
+  "spec_freeze_sha256": "a8d985ba502ecaf6c69d50083c2c8120c302cc92f98909080ccba5c088ffd9b7",
+  "fixture_files_verified": 85,
+  "upstream_bytes_and_licenses_verified": true,
+  "new_unrelated_urls_vs_tracked_history": true,
+  "public_task_shapes_verified": true,
+  "native_prompts_distinct_from_offline": true,
+  "scope_labels_existing_and_not_in_public_prompt": true,
+  "controls": "Four easy normative non-code tasks; these do not establish hard semantic abstention.",
+  "limitations": [
+    "Author-selected retained subsets; not whole upstream repositories.",
+    "Required source paths are inclusion proxies, not coding correctness or semantic completeness.",
+    "Native behavior graders still require independent audit and frozen control receipts."
+  ],
+  "repositories": [
+    {
+      "repository": "r01",
+      "repository_url": "https://github.com/mahmoud/boltons",
+      "commit": "4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+      "archive_sha256": "f8d60b13dd49531d85a4e74736cdac4a46998f8480e6a37d6c2d8ce9c18a5951",
+      "retained_files": 34,
+      "archive_regular_files": 113,
+      "excluded_regular_files": 79,
+      "retained_bytes": 625799,
+      "coverage": "partial",
+      "licenses_verified": [
+        "LICENSE"
+      ]
+    },
+    {
+      "repository": "r02",
+      "repository_url": "https://github.com/rspeer/ordered-set",
+      "commit": "9dfc91c27c0c56df2536036bec4a5b3f717ef2ba",
+      "archive_sha256": "6171fd84397d7030114dd069d749ecced3cdc9abd41a587d2f41de573d9edfa6",
+      "retained_files": 6,
+      "archive_regular_files": 15,
+      "excluded_regular_files": 9,
+      "retained_bytes": 24229,
+      "coverage": "partial",
+      "licenses_verified": [
+        "MIT-LICENSE"
+      ]
+    },
+    {
+      "repository": "r03",
+      "repository_url": "https://github.com/more-itertools/more-itertools",
+      "commit": "4aeb4338ae1407d8da9723e86da99efeb446f719",
+      "archive_sha256": "169458c629e233a182d8c3ce0002996becd84d9e42d294c786c05be8c715e3d1",
+      "retained_files": 8,
+      "archive_regular_files": 39,
+      "excluded_regular_files": 31,
+      "retained_bytes": 302180,
+      "coverage": "partial",
+      "licenses_verified": [
+        "LICENSE"
+      ]
+    },
+    {
+      "repository": "r04",
+      "repository_url": "https://github.com/basarat/typescript-collections",
+      "commit": "309bb1b6955b403b212309531607b8d17df152e5",
+      "archive_sha256": "dec2a22e830198356f04386190376ecb85893e657f1018104fe4e0ff473835b8",
+      "retained_files": 21,
+      "archive_regular_files": 63,
+      "excluded_regular_files": 42,
+      "retained_bytes": 120347,
+      "coverage": "partial",
+      "licenses_verified": [
+        "LICENSE"
+      ]
+    },
+    {
+      "repository": "r05",
+      "repository_url": "https://github.com/supermacro/neverthrow",
+      "commit": "5ef3a018bda74fb960e44b68fc3672635ee8037d",
+      "archive_sha256": "f8d29bd273b7071869c157cb614e6e717ab5625d32254eee13e7788f1c76bddd",
+      "retained_files": 9,
+      "archive_regular_files": 26,
+      "excluded_regular_files": 17,
+      "retained_bytes": 92073,
+      "coverage": "partial",
+      "licenses_verified": [
+        "LICENSE"
+      ]
+    },
+    {
+      "repository": "r06",
+      "repository_url": "https://github.com/w8r/avl",
+      "commit": "e9209ab6664b0c472c2a732be21d5c6701434933",
+      "archive_sha256": "71c9d0711f9fb05bc485cb06a5ca77dd6779ab4318081f0fb48bb315851cb62e",
+      "retained_files": 7,
+      "archive_regular_files": 27,
+      "excluded_regular_files": 20,
+      "retained_bytes": 28780,
+      "coverage": "partial",
+      "licenses_verified": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "selector_calls": 0,
+  "model_calls": 0,
+  "upstream_code_executions": 0
+}

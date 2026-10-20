@@ -1,0 +1,71 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "abstention_control",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 25276416,
+    "preparation_cpu_seconds": 3.3698999999942636e-05,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 3.376400002252922e-05,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 29761536,
+    "setup_cpu_seconds": 0.451145479,
+    "setup_plus_preparation_wall_seconds": 0.5136423290000494,
+    "setup_waited_child_cpu_seconds": 0.039972999999999995
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 2.621800000002228e-05,
+      "preparation_wall_seconds": 2.6174000026912836e-05,
+      "prepared_prompt_sha256": "b67fd0693946b72f6876375ed19cdeaba8ae196509b881a0474aead0c42342ad",
+      "prompt": "Write one concise release-note sentence using only this supplied change description: the tool now displays elapsed milliseconds when an operation finishes. Do not add repository-specific claims, inspect source, or change code.",
+      "prompt_layout": "unchanged",
+      "reason": "disabled",
+      "task_prompt_sha256": "b67fd0693946b72f6876375ed19cdeaba8ae196509b881a0474aead0c42342ad"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 25276416,
+      "self_peak_rss_bytes": 29761536,
+      "waited_child_cpu_seconds": 0.039972999999999995
+    },
+    "setup": {
+      "cpu_seconds": 0.451145479,
+      "waited_child_cpu_seconds": 0.039972999999999995,
+      "wall_seconds": 0.5136085650000268
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 3.3698999999942636e-05,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 3.376400002252922e-05
+    }
+  },
+  "ordinal": 52,
+  "process_wall_seconds": 0.667484623000064,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": null,
+    "declared_scope_complete": null,
+    "expected_bypass": true,
+    "extra_paths": [],
+    "kind": "abstention_control",
+    "missing_paths": []
+  },
+  "task_id": "c01",
+  "worker_completed": true
+}

@@ -1,0 +1,10 @@
+{
+  "arm": "V3",
+  "prompt": "Rewrite this message in a clear and friendly tone: \"Invalid request. Try again.\" Return just the revised sentence. Use only the supplied text; no source inspection or code changes are needed.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0042"
+}

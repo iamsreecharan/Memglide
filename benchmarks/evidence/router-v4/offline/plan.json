@@ -1,0 +1,1332 @@
+{
+  "assignments": [
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 1,
+      "repeat": 1,
+      "task_id": "t03"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 2,
+      "repeat": 1,
+      "task_id": "t03"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 3,
+      "repeat": 1,
+      "task_id": "t03"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 4,
+      "repeat": 1,
+      "task_id": "c01"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 5,
+      "repeat": 1,
+      "task_id": "c01"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 6,
+      "repeat": 1,
+      "task_id": "c01"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 7,
+      "repeat": 1,
+      "task_id": "t08"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 8,
+      "repeat": 1,
+      "task_id": "t08"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 9,
+      "repeat": 1,
+      "task_id": "t08"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 10,
+      "repeat": 1,
+      "task_id": "t01"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 11,
+      "repeat": 1,
+      "task_id": "t01"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 12,
+      "repeat": 1,
+      "task_id": "t01"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 13,
+      "repeat": 1,
+      "task_id": "t05"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 14,
+      "repeat": 1,
+      "task_id": "t05"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 15,
+      "repeat": 1,
+      "task_id": "t05"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 16,
+      "repeat": 1,
+      "task_id": "t06"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 17,
+      "repeat": 1,
+      "task_id": "t06"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 18,
+      "repeat": 1,
+      "task_id": "t06"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 19,
+      "repeat": 1,
+      "task_id": "t10"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 20,
+      "repeat": 1,
+      "task_id": "t10"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 21,
+      "repeat": 1,
+      "task_id": "t10"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 22,
+      "repeat": 1,
+      "task_id": "t04"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 23,
+      "repeat": 1,
+      "task_id": "t04"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 24,
+      "repeat": 1,
+      "task_id": "t04"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 25,
+      "repeat": 1,
+      "task_id": "t12"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 26,
+      "repeat": 1,
+      "task_id": "t12"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 27,
+      "repeat": 1,
+      "task_id": "t12"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 28,
+      "repeat": 1,
+      "task_id": "c02"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 29,
+      "repeat": 1,
+      "task_id": "c02"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 30,
+      "repeat": 1,
+      "task_id": "c02"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 31,
+      "repeat": 1,
+      "task_id": "c04"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 32,
+      "repeat": 1,
+      "task_id": "c04"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 33,
+      "repeat": 1,
+      "task_id": "c04"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 34,
+      "repeat": 1,
+      "task_id": "t02"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 35,
+      "repeat": 1,
+      "task_id": "t02"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 36,
+      "repeat": 1,
+      "task_id": "t02"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 37,
+      "repeat": 1,
+      "task_id": "t09"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 38,
+      "repeat": 1,
+      "task_id": "t09"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 39,
+      "repeat": 1,
+      "task_id": "t09"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 40,
+      "repeat": 1,
+      "task_id": "c03"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 41,
+      "repeat": 1,
+      "task_id": "c03"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 42,
+      "repeat": 1,
+      "task_id": "c03"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 43,
+      "repeat": 1,
+      "task_id": "t11"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 44,
+      "repeat": 1,
+      "task_id": "t11"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 45,
+      "repeat": 1,
+      "task_id": "t11"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 46,
+      "repeat": 1,
+      "task_id": "t07"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 47,
+      "repeat": 1,
+      "task_id": "t07"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 48,
+      "repeat": 1,
+      "task_id": "t07"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 49,
+      "repeat": 2,
+      "task_id": "t03"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 50,
+      "repeat": 2,
+      "task_id": "t03"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 51,
+      "repeat": 2,
+      "task_id": "t03"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 52,
+      "repeat": 2,
+      "task_id": "c01"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 53,
+      "repeat": 2,
+      "task_id": "c01"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 54,
+      "repeat": 2,
+      "task_id": "c01"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 55,
+      "repeat": 2,
+      "task_id": "t08"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 56,
+      "repeat": 2,
+      "task_id": "t08"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 57,
+      "repeat": 2,
+      "task_id": "t08"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 58,
+      "repeat": 2,
+      "task_id": "t01"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 59,
+      "repeat": 2,
+      "task_id": "t01"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 60,
+      "repeat": 2,
+      "task_id": "t01"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 61,
+      "repeat": 2,
+      "task_id": "t05"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 62,
+      "repeat": 2,
+      "task_id": "t05"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 63,
+      "repeat": 2,
+      "task_id": "t05"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 64,
+      "repeat": 2,
+      "task_id": "t06"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 65,
+      "repeat": 2,
+      "task_id": "t06"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 66,
+      "repeat": 2,
+      "task_id": "t06"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 67,
+      "repeat": 2,
+      "task_id": "t10"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 68,
+      "repeat": 2,
+      "task_id": "t10"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 69,
+      "repeat": 2,
+      "task_id": "t10"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 70,
+      "repeat": 2,
+      "task_id": "t04"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 71,
+      "repeat": 2,
+      "task_id": "t04"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 72,
+      "repeat": 2,
+      "task_id": "t04"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 73,
+      "repeat": 2,
+      "task_id": "t12"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 74,
+      "repeat": 2,
+      "task_id": "t12"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 75,
+      "repeat": 2,
+      "task_id": "t12"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 76,
+      "repeat": 2,
+      "task_id": "c02"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 77,
+      "repeat": 2,
+      "task_id": "c02"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 78,
+      "repeat": 2,
+      "task_id": "c02"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 79,
+      "repeat": 2,
+      "task_id": "c04"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 80,
+      "repeat": 2,
+      "task_id": "c04"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 81,
+      "repeat": 2,
+      "task_id": "c04"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 82,
+      "repeat": 2,
+      "task_id": "t02"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 83,
+      "repeat": 2,
+      "task_id": "t02"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 84,
+      "repeat": 2,
+      "task_id": "t02"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 85,
+      "repeat": 2,
+      "task_id": "t09"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 86,
+      "repeat": 2,
+      "task_id": "t09"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 87,
+      "repeat": 2,
+      "task_id": "t09"
+    },
+    {
+      "arm": "V3",
+      "kind": "abstention_control",
+      "ordinal": 88,
+      "repeat": 2,
+      "task_id": "c03"
+    },
+    {
+      "arm": "B",
+      "kind": "abstention_control",
+      "ordinal": 89,
+      "repeat": 2,
+      "task_id": "c03"
+    },
+    {
+      "arm": "C",
+      "kind": "abstention_control",
+      "ordinal": 90,
+      "repeat": 2,
+      "task_id": "c03"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 91,
+      "repeat": 2,
+      "task_id": "t11"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 92,
+      "repeat": 2,
+      "task_id": "t11"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 93,
+      "repeat": 2,
+      "task_id": "t11"
+    },
+    {
+      "arm": "C",
+      "kind": "positive",
+      "ordinal": 94,
+      "repeat": 2,
+      "task_id": "t07"
+    },
+    {
+      "arm": "B",
+      "kind": "positive",
+      "ordinal": 95,
+      "repeat": 2,
+      "task_id": "t07"
+    },
+    {
+      "arm": "V3",
+      "kind": "positive",
+      "ordinal": 96,
+      "repeat": 2,
+      "task_id": "t07"
+    }
+  ],
+  "controls": [
+    {
+      "id": "c01",
+      "language": "python",
+      "prompt": "Write one concise release-note sentence using only this supplied change description: the tool now displays elapsed milliseconds when an operation finishes. Do not add repository-specific claims, inspect source, or change code.",
+      "repository": "r01"
+    },
+    {
+      "id": "c02",
+      "language": "python",
+      "prompt": "Explain the difference between preserving insertion order and sorting values in two sentences, using a hypothetical collection of three numbers. This is a general programming explanation; no repository-specific analysis or code change is requested.",
+      "repository": "r02"
+    },
+    {
+      "id": "c03",
+      "language": "typescript",
+      "prompt": "Rewrite this message in a clear and friendly tone: \"Invalid request. Try again.\" Return just the revised sentence. Use only the supplied text; no source inspection or code changes are needed.",
+      "repository": "r04"
+    },
+    {
+      "id": "c04",
+      "language": "typescript",
+      "prompt": "A report lists three durations of 250 milliseconds, 750 milliseconds, and 2 seconds. What is their total in seconds? Show a single arithmetic expression. This calculation uses only the supplied numbers and requires no repository work.",
+      "repository": "r06"
+    }
+  ],
+  "fixture_hashes": {
+    "r01/LICENSE": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3",
+    "r01/README.md": "125d653ce15f442d8cafb2b43b4ddc01f443807a4a782e035528cfd75c4388f9",
+    "r01/boltons/__init__.py": "ba0f4ee941c9a000b66251d4a39263a8ed009c2a3e0b77b8665c8aeff7ebe730",
+    "r01/boltons/cacheutils.py": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad",
+    "r01/boltons/debugutils.py": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283",
+    "r01/boltons/deprutils.py": "d8f2c0fdce9d8276466127f093771e1a0a8844bcd1bd92e6880f30d2782e0151",
+    "r01/boltons/dictutils.py": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656",
+    "r01/boltons/easterutils.py": "1bfc6e9e05606689ab4087b00585c183ff4fcc4eb4a423f9be153a0be6818d40",
+    "r01/boltons/ecoutils.py": "ce3663d4e772fe871c17dcd0847717f8a610616a6b0141106564bedc5ab8a3b6",
+    "r01/boltons/excutils.py": "6a2eddd26f46dbdceeda125bd20379d52ffc98a941fe867e3434d17b93119957",
+    "r01/boltons/fileutils.py": "0c2025cf1e649eabd511a84303b491c19ea59cdcac2f958f9a90b7e39e0a8b0e",
+    "r01/boltons/formatutils.py": "15c7963d5c97b11ec7a419e9e4aec7c20ca765bcf701306510c9c57c7eaeb1a4",
+    "r01/boltons/funcutils.py": "f290815c9dbe5c4d73ade849935dfb2814411a89aeff89c7afef60c7b3aaba72",
+    "r01/boltons/gcutils.py": "e82a32093560c14bb8298532681a3338d2ec6f48d20ccf2f1a4496dd67a17f97",
+    "r01/boltons/ioutils.py": "e4e73aaeb038bc240f687e8390c60f471a6b5b673a534c54cb9c9af101b995d2",
+    "r01/boltons/iterutils.py": "7fb67f49dc1d895051549b523c2e21161e3c1f4e21590fa7fd09039386d08510",
+    "r01/boltons/jsonutils.py": "46b92387597863e6a12d489a370220d03c2d70ebc795121f000d2b724b0fb50a",
+    "r01/boltons/listutils.py": "5f45432e942b04040d3cc917f08a7a9fee7fc5339768591fa946ae0298ca882d",
+    "r01/boltons/mathutils.py": "c4f32563bb0a9281d5b7a3770c661e5a3ae3c6c3ae2644f5ff0a608edce2d5e6",
+    "r01/boltons/mboxutils.py": "426b5211f7b3ce6ee9d1c80d794b56d9544435865b48a016d1955cd0a1e0320d",
+    "r01/boltons/namedutils.py": "0f5a4a0e196c7d918762928bfd9157c29d411a9d827ae7f45a53c43328887224",
+    "r01/boltons/pathutils.py": "667a4bb46ed79f66af83b07fac419f3f91576c2e7ed404e11f28cd68b4645fbd",
+    "r01/boltons/queueutils.py": "a60f04f5f27803429c7a79f3f51f9b286cba3bd997f122161f252c66ca0499bb",
+    "r01/boltons/setutils.py": "d385936effa655abbd6bae772c08089e6c9ac8b266eff13105f4386fe1a58b43",
+    "r01/boltons/socketutils.py": "b2d5da2d58dd3d05c14153a83f36da928fe6285a4a44850c2eab9877c1959adc",
+    "r01/boltons/statsutils.py": "0c4d05a17b14244a880e5047c1823d1e1e522e6c5ee76c6b47f54d8bde791e68",
+    "r01/boltons/strutils.py": "c5ecb7efd3b2e86f92545c18d8d72193f45a1bd1d0edaf3da65868aa0e8bcdda",
+    "r01/boltons/tableutils.py": "0f01e27d91ab37d322db529f3e08873feefcea822fdbf760262093b3e01524ff",
+    "r01/boltons/tbutils.py": "7cd7fb1b7ce1873c37ee3053bb59d8166b671cf667013bd27e2fdbc52ab03e29",
+    "r01/boltons/timeutils.py": "27f8f2999b698a3e6064f24b1ff312ef86358592a503ad2c0c5b4fd265ff430c",
+    "r01/boltons/typeutils.py": "4da2b26d71386ee9010dfb52104e461ecba486ba5544a8cf50d9e26cd34e9c09",
+    "r01/boltons/urlutils.py": "0de5f96e627483f3de1dce10fc4e5f8d913a36c800166842cd55970d4ddd0812",
+    "r01/pyproject.toml": "23d689cf1d468c6af6442869eb7483402aaea8b3cabdbfb2d7aa9df3a293aa04",
+    "r01/setup.cfg": "4024bbca7672ce6a9cebfee0e4cd4017582ca0787dc1f603e859cd9c861147ac",
+    "r02/MIT-LICENSE": "0cf8f55f36dc1306b3fe89bf29e29a0c742f279f038d149244319e593ab16ca4",
+    "r02/README.md": "00e872b24819851e48eab4326a633ec441807a9fcbbe814dba280634f6c7f173",
+    "r02/ordered_set/__init__.py": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d",
+    "r02/ordered_set/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "r02/pyproject.toml": "6ae4514d20de3f81aa4ca513b38cac165af0cd6c876f021159a3c51e457358bb",
+    "r02/setup.py": "9d2e313b2c672c53673e49330f7b2a27c4f88c8071f192605bab932ee9b72047",
+    "r03/LICENSE": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+    "r03/README.rst": "6a5dad4de3ffc03544d72a70cc876e15565b250231557b566f967965d4dd1c5f",
+    "r03/more_itertools/__init__.py": "e7988a22d707340f59eb4cc01a4a534994fdcfb8420c01f768b42fd5e9caeccc",
+    "r03/more_itertools/more.py": "1bdc5f323ea18906436a42268b942d5b4d15ac8b3ff17c1211a59fb192fa068e",
+    "r03/more_itertools/more.pyi": "e4952b7a6230e27bee49265fd9af08ae8353946e2d5a78ce60c55d2f5efe5514",
+    "r03/more_itertools/recipes.py": "468ab191bbb5fd62e8603d741e6983acdfa9d697d0ff9252b0c56ffdd24ca9bc",
+    "r03/more_itertools/recipes.pyi": "2dd48ac5ef0b502f989bd2e13923c402994244ee50a4187e2f0d59c348bf2583",
+    "r03/pyproject.toml": "a2b3a175ee00820cd2d387a6521d80af5eccfe4d96dc057f9ba4d3cd76ddba87",
+    "r04/LICENSE": "9de040587128bd3f50f89fd637c16dc47490546a02474c7c08e41d66418e481e",
+    "r04/README.md": "ad309d6f643b71b4f91e9de9b8f93a53aff2c0ad1aa151e684ea9e6bc1dbcdd7",
+    "r04/package.json": "36843cf512f23c733b6102cb219d5f4e77a4d1403aa733b0729e3169b174cb12",
+    "r04/src/lib/BSTree.ts": "276704b52e0204cb140d4521dafab7943d2c8028c07f63add5d7b77b2ea096fb",
+    "r04/src/lib/BSTreeKV.ts": "9805c51622b29901b1b7afc5eaf9ca84fbc1683b336dd349f0112bed7e525fad",
+    "r04/src/lib/Bag.ts": "0172c3a7d081a5908e56bb61e67ae55dcbe292432e89ef486423247ad2b87e15",
+    "r04/src/lib/Dictionary.ts": "dee29f057989769d605904f011dc289a802a158693c1d3249b89809af8b930b1",
+    "r04/src/lib/FactoryDictionary.ts": "2c573094c56c86210a2980852d3cffed2c2ce5a5eb9e794b5f36030ec08bc9ac",
+    "r04/src/lib/Heap.ts": "517213e786e234ddcc3b53ba4cb1b5f3ad23eac1ac6c171d601d110509f210c5",
+    "r04/src/lib/LinkedDictionary.ts": "74fc83972e133b4a41b02e23396e9961ade0f9689ca287d00d16882de7a17c72",
+    "r04/src/lib/LinkedList.ts": "67317855811fad66dade74d9114fc568642db017c44a3a36dff518d2ec0a1f53",
+    "r04/src/lib/MultiDictionary.ts": "643746dc363eb406f53b49d74d79bf85a0b3cb0087c3c865bef36e0824f0f6f5",
+    "r04/src/lib/MultiRootTree.ts": "58a3b9de82625023752b5c465543856ccc5aa19afd73926c066a114b5399f5c8",
+    "r04/src/lib/PriorityQueue.ts": "62bcf790e323014f457300bd06b190d477241ac62af611820951b98fef3cd777",
+    "r04/src/lib/Queue.ts": "d648a4f053e27f189b55a1ae92415dd7f389de868baedc128dc6817ffd4d6976",
+    "r04/src/lib/Set.ts": "ffb999deb7ef76ba0d657d6fc60abce8b8adadf50b2ee587a509e71bb6d4817a",
+    "r04/src/lib/Stack.ts": "4810c97ae2d14afbcdd4a7f21c7f4139b912b857bc46c040f35f3415e854807a",
+    "r04/src/lib/arrays.ts": "d88eae90799b8c848a5bca86436e12cc9514720380995219e3417387b41ef8ec",
+    "r04/src/lib/index.ts": "18f6c342ec3007caa01991bde554c8c8eeac262d0ac71b93301fea9e06efe372",
+    "r04/src/lib/util.ts": "43c64ca479bc26962cc19c4983bb0c7da97aeffe5222306472bf3ad436128983",
+    "r04/tsconfig.json": "f0b662d9f52ac8af2e57c37f1eefbbb0003ed17cab64ce145f1cbf7219b56932",
+    "r05/LICENSE": "3f4f7f9d7c4a9965aeef4a9c95de38f73ecbab96bed68d320a224a74dfcaa973",
+    "r05/README.md": "b37f72e1b72d3ae9a3df65d24fcf93aa28dcad305a065056f06d89934b3168a9",
+    "r05/package.json": "77482a0d2edde0bd1c4a9347f0adf64d8bb24c0b074a9e7e3d93269f138d3417",
+    "r05/src/_internals/error.ts": "6ba5f5f40879bf596be420db35a95b9a492cda3f91d504f5ee66f722f18425ce",
+    "r05/src/_internals/utils.ts": "0eff2c3154f48fe22278939f8c179ee22b40596e8df9bb3ccfa4f9c9b3b79723",
+    "r05/src/index.ts": "57b296e55fbe34b699ee4bcb98e0c86726b06f835522ba7c379f41ed4e102324",
+    "r05/src/result-async.ts": "84e72684262b2b125b28dba1277231baddfb53e1196716f0618db4fbb278ad1c",
+    "r05/src/result.ts": "8bebd3ca02e67482d16d10ad69bc3a23f72d6f2a2a04cb6fb120e3f6732d5754",
+    "r05/tsconfig.json": "f2b83ab65e0567111fc6f0a78221e6440cd6fb1d4c693fb305f3594c3e6f63a9",
+    "r06/LICENSE": "498c0717759d83010a03b27f4de843b94a0936eb2d22adcb08000b5ef337194e",
+    "r06/README.md": "33ee2caf5d569c9e31cf79b69a91d4bf40c66449bc6bb453156a405c7c9e20c0",
+    "r06/package.json": "9ce2d0872a1e38712e780232f00eec25203e1a8eb5d048827b03a2fce9d26627",
+    "r06/src/index.ts": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd",
+    "r06/src/types.ts": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77",
+    "r06/src/utils.ts": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40",
+    "r06/tsconfig.json": "de13d876428e52248a7609f919ba8bd7bbdc8df1fc38a014ad086c9991b92205"
+  },
+  "fixtures": "/workspace/Memglide/benchmarks/automatic-v4-fixtures",
+  "grading": {
+    "c01": {
+      "kind": "abstention_control",
+      "rationale": "The complete task is answerable from supplied text or general knowledge; source retrieval cannot provide necessary evidence and no repository change is authorized.",
+      "required_paths": []
+    },
+    "c02": {
+      "kind": "abstention_control",
+      "rationale": "The complete task is answerable from supplied text or general knowledge; source retrieval cannot provide necessary evidence and no repository change is authorized.",
+      "required_paths": []
+    },
+    "c03": {
+      "kind": "abstention_control",
+      "rationale": "The complete task is answerable from supplied text or general knowledge; source retrieval cannot provide necessary evidence and no repository change is authorized.",
+      "required_paths": []
+    },
+    "c04": {
+      "kind": "abstention_control",
+      "rationale": "The complete task is answerable from supplied text or general knowledge; source retrieval cannot provide necessary evidence and no repository change is authorized.",
+      "required_paths": []
+    },
+    "t01": {
+      "kind": "positive",
+      "rationale": "Defines the integer-list parser and its delimiter handling; this is the production source scope for signed token parsing.",
+      "required_paths": [
+        "boltons/strutils.py"
+      ]
+    },
+    "t02": {
+      "kind": "positive",
+      "rationale": "Defines soft_sorted and its first, middle, and last partitions; this is the production scope for overlap ownership.",
+      "required_paths": [
+        "boltons/iterutils.py"
+      ]
+    },
+    "t03": {
+      "kind": "positive",
+      "rationale": "Defines OrderedSet.index, fancy lookup, and the two lookup aliases; these API definitions form the scalar bounds source scope.",
+      "required_paths": [
+        "ordered_set/__init__.py"
+      ]
+    },
+    "t04": {
+      "kind": "positive",
+      "rationale": "Defines intersection_update and the item-to-index rebuild helper; these definitions form the variadic mutation source scope.",
+      "required_paths": [
+        "ordered_set/__init__.py"
+      ]
+    },
+    "t05": {
+      "kind": "positive",
+      "rationale": "Padding boundary validation and mode dispatch are implemented in the defining routine.",
+      "required_paths": [
+        "more_itertools/more.py"
+      ]
+    },
+    "t06": {
+      "kind": "positive",
+      "rationale": "Separator emission and split-limit state live in the defining routine.",
+      "required_paths": [
+        "more_itertools/more.py"
+      ]
+    },
+    "t07": {
+      "kind": "positive",
+      "rationale": "swap is implemented here; numeric-index validation must precede every read or write.",
+      "required_paths": [
+        "src/lib/arrays.ts"
+      ]
+    },
+    "t08": {
+      "kind": "positive",
+      "rationale": "The mutable collection API and its membership-based union/difference operations are defined here.",
+      "required_paths": [
+        "src/lib/Set.ts"
+      ]
+    },
+    "t09": {
+      "kind": "positive",
+      "rationale": "safeTry advances its sync/async generator here and currently omits closing early-yielding iterators.",
+      "required_paths": [
+        "src/result.ts"
+      ]
+    },
+    "t10": {
+      "kind": "positive",
+      "rationale": "ResultAsync owns promise-backed unwrapOr and the new deferred fallback method belongs in that class.",
+      "required_paths": [
+        "src/result-async.ts"
+      ]
+    },
+    "t11": {
+      "kind": "positive",
+      "rationale": "Bulk loading chooses caller buffers and invokes the sorter; copying those buffers belongs at this API boundary.",
+      "required_paths": [
+        "src/index.ts"
+      ]
+    },
+    "t12": {
+      "kind": "positive",
+      "rationale": "Balance checking and recursive subtree-height calculation live together in the utility implementation.",
+      "required_paths": [
+        "src/utils.ts"
+      ]
+    }
+  },
+  "inputs": {
+    "controls": {
+      "path": "/workspace/Memglide/benchmarks/controls_automatic_v4.json",
+      "sha256": "e95e52df109e0bc027bcef7c11b4f2894f031a5882de346a9a365f9f9038adaf"
+    },
+    "grading": {
+      "path": "/workspace/Memglide/benchmarks/automatic-v4-grading.json",
+      "sha256": "18fc4e228618d02bba84c21bbdfbb1b393b60c73d12b2335f5c254045037f8ef"
+    },
+    "provenance": {
+      "path": "/workspace/Memglide/benchmarks/automatic-v4-provenance.json",
+      "sha256": "800cbc2f1e9452efa58216d46fba74f3d852bd2a1c1a8a6de32fa47115982b9a"
+    },
+    "tasks": {
+      "path": "/workspace/Memglide/benchmarks/tasks_automatic_v4.json",
+      "sha256": "519ed88c538665e379228d0a62a0b05bddb2bdd7fd0308a0d152dc6480e98434"
+    }
+  },
+  "pilot": false,
+  "plan_directory": "/workspace/Memglide/.local/router-v4-offline-plan",
+  "policy_freeze": {
+    "arms": [
+      "B",
+      "V3",
+      "C"
+    ],
+    "corpus_selected_or_inspected": false,
+    "dependencies": {
+      "pathspec": "1.0.4",
+      "tree-sitter": "0.25.2",
+      "tree-sitter-javascript": "0.25.0",
+      "tree-sitter-typescript": "0.23.2"
+    },
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "repeats": 2,
+    "scope": "offline source-scope proxies/fidelity/local overhead only; no coding correctness/model economics",
+    "seal": {
+      "files": {
+        "benchmarks/automatic-v4-protocol.md": "6efd6217f8f18a28fd7d6dbd4bc89f805b358ad398db375c2f85a6379ef29773",
+        "benchmarks/run_automatic_v3.py": "51a81176cf253c6afe19dbc676a80fac113a3df623e37ae9e8a70550244cb907",
+        "benchmarks/run_automatic_v4.py": "a93288de55ad04bcc86c8e2afb121cdd73867c36471b181786c5a1cdedd0a1fa",
+        "pyproject.toml": "c5d46bc089b317425a273002e596ee910211a5407ebd3a23ea5be75e350589b0",
+        "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+        "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+        "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+        "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+        "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+        "src/memglide/core/context.py": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+        "src/memglide/core/indexer.py": "9f76e10c9dc29b80a49973a38a656aaab15f6a6c34332a0a8acede1ee5dc3820",
+        "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+        "src/memglide/core/query.py": "fd52ce9baaf673ac00ecbcdbf7bd434eefa7ca57025092642b6e2a6cfe1f28e9",
+        "src/memglide/core/watcher.py": "4a06c71b08789e8ca49a4b984c8aeeac2178a4b52bbe7122c011f7aecfbb52eb",
+        "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/integrations/auto_preload.py": "fea98fde8b67dfb954ec447a7a83ae79129e43335557e5a69d7ad662afae2975",
+        "src/memglide/integrations/bounded_router.py": "95f2f9cc044078828f0c3ec2a9d1c22eb943819ff999ca75d01b9998f5097acb",
+        "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+        "src/memglide/integrations/codex_preload.py": "10dd39d532488bdd0a616ca3ab0e92e82900fc1468b87187c88dab6eb04fc5ca",
+        "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+        "src/memglide/integrations/memory_preload.py": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+        "src/memglide/integrations/preload.py": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+        "src/memglide/integrations/runtime_evidence.py": "72b40da257093187ee02b0d543e4b19abb623aa74c2d6ee4e69147e3d886fe35",
+        "src/memglide/integrations/runtime_syntax.py": "3cf852ccf834dcf0f2fec95a80a4a1f4b5fd46a2038dc1cb3f89f17dc9d5ce27",
+        "src/memglide/integrations/source_evidence.py": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc",
+        "src/memglide/integrations/source_excerpts.py": "4cd5481ebf43a204993396edae03343c0297db199c3e825d2263948ad0b23497",
+        "src/memglide/integrations/syntax_identifiers.py": "989d3083f9f620bc34435051d2bdfd8611d9d0b6593376ecaeda7e1341830d2f",
+        "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/memory/engine.py": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+        "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+        "src/memglide/service.py": "518f1d0a7d57027ae31d585807ab76aec3a0ec021509b146c89ce75819fe6a58",
+        "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/storage/database.py": "403820dcaeadf0b1d67cb0691ce1c922eda34cbc7252b3e8cb7cc7607d2c703d",
+        "tests/test_benchmark_automatic_v4.py": "7be66a1ca3d5886b9b080f97efab8a16d7d35cc2b2d6db77873c0cd38676943a",
+        "uv.lock": "89bcc0d7a1c76ece1b91aaaa39ab108f819d1268d8d27bc60890abad124306f0"
+      },
+      "head": "0b8e3586554a5002b6d49ded21d64b923a27a99c"
+    },
+    "seed": 20261107,
+    "settings": {
+      "context_format": "compact-prefix",
+      "max_added_tokens": 4000,
+      "max_context_bytes": 12000
+    },
+    "sqlite_version": "3.53.1",
+    "version": "automatic-4"
+  },
+  "positive_tasks": [
+    {
+      "id": "t01",
+      "language": "python",
+      "prompt": "Extend parse_int_list to handle signed integers and inclusive ranges with signed endpoints when using the default separators. A negative singleton must stay a singleton; ranges whose endpoints are negative or cross zero must expand in ascending order even when endpoints are reversed. Keep sorted output, duplicate preservation, surrounding whitespace handling, empty input behavior, and existing custom-separator behavior. Reject malformed range tokens instead of silently treating more than two endpoints as a valid range.",
+      "repository": "r01"
+    },
+    {
+      "id": "t02",
+      "language": "python",
+      "prompt": "Make soft_sorted resolve overlap between its first and last priorities without duplicating input elements. A key present in both priority lists should belong only to first. Preserve every input occurrence exactly once, the requested priority order, and stable ordering among equal priority keys. The key function should still control matching, and reverse should still affect only the ordinary middle portion. Keep the input iterable unchanged and continue accepting one-shot input iterators.",
+      "repository": "r01"
+    },
+    {
+      "id": "t03",
+      "language": "python",
+      "prompt": "Extend OrderedSet.index with optional start and stop bounds for scalar lookups, using Python sequence slice normalization including negative bounds and clipping. Return the absolute position if the member lies within the normalized half-open interval; otherwise raise ValueError, including for an absent scalar member when bounds are supplied. Preserve the existing unbounded scalar lookup and fancy lookup behavior, and keep get_loc and get_indexer consistent with the same API. Strings and tuples must remain atomic scalar keys.",
+      "repository": "r02"
+    },
+    {
+      "id": "t04",
+      "language": "python",
+      "prompt": "Let OrderedSet.intersection_update accept zero or more input iterables. With no arguments it should leave the set unchanged; with several arguments it should retain only members found in every input while preserving the receiver's order. Accept one-shot generators, handle an input that is the receiver itself, return None, and keep membership, positional access, and index lookup consistent after the update. Existing single-input behavior must remain compatible.",
+      "repository": "r02"
+    },
+    {
+      "id": "t05",
+      "language": "python",
+      "prompt": "Extend padded so n=0 is valid when next_multiple is false: it should return all original items without padding, including an empty result for empty input. Keep n=0 invalid when next_multiple is true, keep negative n invalid, and preserve existing positive-n and infinite-padding behavior. Update the public behavior and its documentation.",
+      "repository": "r03"
+    },
+    {
+      "id": "t06",
+      "language": "python",
+      "prompt": "Extend split_at with a keep_separator=\"left\" mode that appends each matching delimiter to the list immediately before it instead of yielding a separate one-item list. Keep the existing False and True modes unchanged, preserve maxsplit semantics, and handle leading, trailing, and consecutive delimiters consistently. Implement and document the new mode.",
+      "repository": "r03"
+    },
+    {
+      "id": "t07",
+      "language": "typescript",
+      "prompt": "Tighten the exported swap helper so it returns false for either index unless that index is a finite integer within the collection bounds. Rejected calls must leave the input, its length, and its own properties unchanged. Preserve successful swaps, including equal indexes and negative zero.",
+      "repository": "r04"
+    },
+    {
+      "id": "t08",
+      "language": "typescript",
+      "prompt": "Add symmetricDifference(otherSet) to the mutable Set API, returning void like its other mutating set operations. It must leave the receiver containing exactly the members present in one input but not both, preserve the other set, honor existing membership semantics, and clear the receiver when called with itself. Cover empty sets and custom key conversion.",
+      "repository": "r04"
+    },
+    {
+      "id": "t09",
+      "language": "typescript",
+      "prompt": "Make safeTry close its generator when evaluation stops at a yielded Err, so generator finally blocks execute for both synchronous and asynchronous bodies. Preserve the yielded error result, do not resume normal body statements past it, and keep successful return handling intact. Await asynchronous cleanup before resolving the result; a cleanup exception should propagate.",
+      "repository": "r05"
+    },
+    {
+      "id": "t10",
+      "language": "typescript",
+      "prompt": "Add unwrapOrElse(fallback) to ResultAsync. It should return a Promise of the Ok value without calling fallback, or call fallback exactly once with the Err value and return its value. The fallback may be synchronous or asynchronous, thrown errors or rejected promises must reject the returned Promise, and existing unwrapOr behavior must remain intact.",
+      "repository": "r05"
+    },
+    {
+      "id": "t11",
+      "language": "typescript",
+      "prompt": "Make AVLTree.load with presort enabled preserve the caller's key and value arrays. The constructed tree must still be sorted according to its comparator and retain the correct key/value associations, including duplicate keys. Keep bulk-loading into a nonempty tree rejected and keep the non-presorted behavior unchanged.",
+      "repository": "r06"
+    },
+    {
+      "id": "t12",
+      "language": "typescript",
+      "prompt": "Optimize AVLTree.isBalanced so each node is examined only a constant number of times. It must still return true for an empty tree, accept balanced trees, and reject an imbalance anywhere below the root. Avoid repeatedly recomputing subtree heights while checking ancestors.",
+      "repository": "r06"
+    }
+  ],
+  "provenance": {
+    "r01": {
+      "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+      "archive_artifact": ".local/router-v4/author-pairs/python-pair/archives/r01.tar.gz",
+      "archive_prefix": "boltons-4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+      "archive_regular_file_count": 113,
+      "archive_sha256": "f8d60b13dd49531d85a4e74736cdac4a46998f8480e6a37d6c2d8ce9c18a5951",
+      "archive_url": "https://codeload.github.com/mahmoud/boltons/tar.gz/4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+      "commit": "4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+      "excluded_archive_regular_file_count": 79,
+      "exclusions": [
+        "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+      ],
+      "license_file_sha256": {
+        "LICENSE": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3"
+      },
+      "license_paths": [
+        "LICENSE"
+      ],
+      "repository_url": "https://github.com/mahmoud/boltons",
+      "retained_file_sha256": {
+        "LICENSE": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3",
+        "README.md": "125d653ce15f442d8cafb2b43b4ddc01f443807a4a782e035528cfd75c4388f9",
+        "boltons/__init__.py": "ba0f4ee941c9a000b66251d4a39263a8ed009c2a3e0b77b8665c8aeff7ebe730",
+        "boltons/cacheutils.py": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad",
+        "boltons/debugutils.py": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283",
+        "boltons/deprutils.py": "d8f2c0fdce9d8276466127f093771e1a0a8844bcd1bd92e6880f30d2782e0151",
+        "boltons/dictutils.py": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656",
+        "boltons/easterutils.py": "1bfc6e9e05606689ab4087b00585c183ff4fcc4eb4a423f9be153a0be6818d40",
+        "boltons/ecoutils.py": "ce3663d4e772fe871c17dcd0847717f8a610616a6b0141106564bedc5ab8a3b6",
+        "boltons/excutils.py": "6a2eddd26f46dbdceeda125bd20379d52ffc98a941fe867e3434d17b93119957",
+        "boltons/fileutils.py": "0c2025cf1e649eabd511a84303b491c19ea59cdcac2f958f9a90b7e39e0a8b0e",
+        "boltons/formatutils.py": "15c7963d5c97b11ec7a419e9e4aec7c20ca765bcf701306510c9c57c7eaeb1a4",
+        "boltons/funcutils.py": "f290815c9dbe5c4d73ade849935dfb2814411a89aeff89c7afef60c7b3aaba72",
+        "boltons/gcutils.py": "e82a32093560c14bb8298532681a3338d2ec6f48d20ccf2f1a4496dd67a17f97",
+        "boltons/ioutils.py": "e4e73aaeb038bc240f687e8390c60f471a6b5b673a534c54cb9c9af101b995d2",
+        "boltons/iterutils.py": "7fb67f49dc1d895051549b523c2e21161e3c1f4e21590fa7fd09039386d08510",
+        "boltons/jsonutils.py": "46b92387597863e6a12d489a370220d03c2d70ebc795121f000d2b724b0fb50a",
+        "boltons/listutils.py": "5f45432e942b04040d3cc917f08a7a9fee7fc5339768591fa946ae0298ca882d",
+        "boltons/mathutils.py": "c4f32563bb0a9281d5b7a3770c661e5a3ae3c6c3ae2644f5ff0a608edce2d5e6",
+        "boltons/mboxutils.py": "426b5211f7b3ce6ee9d1c80d794b56d9544435865b48a016d1955cd0a1e0320d",
+        "boltons/namedutils.py": "0f5a4a0e196c7d918762928bfd9157c29d411a9d827ae7f45a53c43328887224",
+        "boltons/pathutils.py": "667a4bb46ed79f66af83b07fac419f3f91576c2e7ed404e11f28cd68b4645fbd",
+        "boltons/queueutils.py": "a60f04f5f27803429c7a79f3f51f9b286cba3bd997f122161f252c66ca0499bb",
+        "boltons/setutils.py": "d385936effa655abbd6bae772c08089e6c9ac8b266eff13105f4386fe1a58b43",
+        "boltons/socketutils.py": "b2d5da2d58dd3d05c14153a83f36da928fe6285a4a44850c2eab9877c1959adc",
+        "boltons/statsutils.py": "0c4d05a17b14244a880e5047c1823d1e1e522e6c5ee76c6b47f54d8bde791e68",
+        "boltons/strutils.py": "c5ecb7efd3b2e86f92545c18d8d72193f45a1bd1d0edaf3da65868aa0e8bcdda",
+        "boltons/tableutils.py": "0f01e27d91ab37d322db529f3e08873feefcea822fdbf760262093b3e01524ff",
+        "boltons/tbutils.py": "7cd7fb1b7ce1873c37ee3053bb59d8166b671cf667013bd27e2fdbc52ab03e29",
+        "boltons/timeutils.py": "27f8f2999b698a3e6064f24b1ff312ef86358592a503ad2c0c5b4fd265ff430c",
+        "boltons/typeutils.py": "4da2b26d71386ee9010dfb52104e461ecba486ba5544a8cf50d9e26cd34e9c09",
+        "boltons/urlutils.py": "0de5f96e627483f3de1dce10fc4e5f8d913a36c800166842cd55970d4ddd0812",
+        "pyproject.toml": "23d689cf1d468c6af6442869eb7483402aaea8b3cabdbfb2d7aa9df3a293aa04",
+        "setup.cfg": "4024bbca7672ce6a9cebfee0e4cd4017582ca0787dc1f603e859cd9c861147ac"
+      },
+      "retained_regular_file_count": 34,
+      "tracked_tree_status": "partial"
+    },
+    "r02": {
+      "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+      "archive_artifact": ".local/router-v4/author-pairs/python-pair/archives/r02.tar.gz",
+      "archive_prefix": "ordered-set-9dfc91c27c0c56df2536036bec4a5b3f717ef2ba",
+      "archive_regular_file_count": 15,
+      "archive_sha256": "6171fd84397d7030114dd069d749ecced3cdc9abd41a587d2f41de573d9edfa6",
+      "archive_url": "https://codeload.github.com/rspeer/ordered-set/tar.gz/9dfc91c27c0c56df2536036bec4a5b3f717ef2ba",
+      "commit": "9dfc91c27c0c56df2536036bec4a5b3f717ef2ba",
+      "excluded_archive_regular_file_count": 9,
+      "exclusions": [
+        "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+      ],
+      "license_file_sha256": {
+        "MIT-LICENSE": "0cf8f55f36dc1306b3fe89bf29e29a0c742f279f038d149244319e593ab16ca4"
+      },
+      "license_paths": [
+        "MIT-LICENSE"
+      ],
+      "repository_url": "https://github.com/rspeer/ordered-set",
+      "retained_file_sha256": {
+        "MIT-LICENSE": "0cf8f55f36dc1306b3fe89bf29e29a0c742f279f038d149244319e593ab16ca4",
+        "README.md": "00e872b24819851e48eab4326a633ec441807a9fcbbe814dba280634f6c7f173",
+        "ordered_set/__init__.py": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d",
+        "ordered_set/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "pyproject.toml": "6ae4514d20de3f81aa4ca513b38cac165af0cd6c876f021159a3c51e457358bb",
+        "setup.py": "9d2e313b2c672c53673e49330f7b2a27c4f88c8071f192605bab932ee9b72047"
+      },
+      "retained_regular_file_count": 6,
+      "tracked_tree_status": "partial"
+    },
+    "r03": {
+      "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+      "archive_artifact": ".local/router-v4/author-pairs/root-pair/archives/r03.tar.gz",
+      "archive_prefix": "more-itertools-4aeb4338ae1407d8da9723e86da99efeb446f719",
+      "archive_regular_file_count": 39,
+      "archive_sha256": "169458c629e233a182d8c3ce0002996becd84d9e42d294c786c05be8c715e3d1",
+      "archive_url": "https://codeload.github.com/more-itertools/more-itertools/tar.gz/4aeb4338ae1407d8da9723e86da99efeb446f719",
+      "commit": "4aeb4338ae1407d8da9723e86da99efeb446f719",
+      "excluded_archive_regular_file_count": 31,
+      "exclusions": [
+        "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+      ],
+      "license_file_sha256": {
+        "LICENSE": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46"
+      },
+      "license_identifier": "MIT",
+      "license_paths": [
+        "LICENSE"
+      ],
+      "repository_url": "https://github.com/more-itertools/more-itertools",
+      "retained_file_sha256": {
+        "LICENSE": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+        "README.rst": "6a5dad4de3ffc03544d72a70cc876e15565b250231557b566f967965d4dd1c5f",
+        "more_itertools/__init__.py": "e7988a22d707340f59eb4cc01a4a534994fdcfb8420c01f768b42fd5e9caeccc",
+        "more_itertools/more.py": "1bdc5f323ea18906436a42268b942d5b4d15ac8b3ff17c1211a59fb192fa068e",
+        "more_itertools/more.pyi": "e4952b7a6230e27bee49265fd9af08ae8353946e2d5a78ce60c55d2f5efe5514",
+        "more_itertools/recipes.py": "468ab191bbb5fd62e8603d741e6983acdfa9d697d0ff9252b0c56ffdd24ca9bc",
+        "more_itertools/recipes.pyi": "2dd48ac5ef0b502f989bd2e13923c402994244ee50a4187e2f0d59c348bf2583",
+        "pyproject.toml": "a2b3a175ee00820cd2d387a6521d80af5eccfe4d96dc057f9ba4d3cd76ddba87"
+      },
+      "retained_regular_file_count": 8,
+      "tracked_tree_status": "partial"
+    },
+    "r04": {
+      "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+      "archive_artifact": ".local/router-v4/author-pairs/ts-pair/archives/r04.tar.gz",
+      "archive_prefix": "typescript-collections-309bb1b6955b403b212309531607b8d17df152e5",
+      "archive_regular_file_count": 63,
+      "archive_sha256": "dec2a22e830198356f04386190376ecb85893e657f1018104fe4e0ff473835b8",
+      "archive_url": "https://codeload.github.com/basarat/typescript-collections/tar.gz/309bb1b6955b403b212309531607b8d17df152e5",
+      "commit": "309bb1b6955b403b212309531607b8d17df152e5",
+      "excluded_archive_regular_file_count": 42,
+      "exclusions": [
+        "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+      ],
+      "license_file_sha256": {
+        "LICENSE": "9de040587128bd3f50f89fd637c16dc47490546a02474c7c08e41d66418e481e"
+      },
+      "license_identifier": "MIT",
+      "license_paths": [
+        "LICENSE"
+      ],
+      "repository_url": "https://github.com/basarat/typescript-collections",
+      "retained_file_sha256": {
+        "LICENSE": "9de040587128bd3f50f89fd637c16dc47490546a02474c7c08e41d66418e481e",
+        "README.md": "ad309d6f643b71b4f91e9de9b8f93a53aff2c0ad1aa151e684ea9e6bc1dbcdd7",
+        "package.json": "36843cf512f23c733b6102cb219d5f4e77a4d1403aa733b0729e3169b174cb12",
+        "src/lib/BSTree.ts": "276704b52e0204cb140d4521dafab7943d2c8028c07f63add5d7b77b2ea096fb",
+        "src/lib/BSTreeKV.ts": "9805c51622b29901b1b7afc5eaf9ca84fbc1683b336dd349f0112bed7e525fad",
+        "src/lib/Bag.ts": "0172c3a7d081a5908e56bb61e67ae55dcbe292432e89ef486423247ad2b87e15",
+        "src/lib/Dictionary.ts": "dee29f057989769d605904f011dc289a802a158693c1d3249b89809af8b930b1",
+        "src/lib/FactoryDictionary.ts": "2c573094c56c86210a2980852d3cffed2c2ce5a5eb9e794b5f36030ec08bc9ac",
+        "src/lib/Heap.ts": "517213e786e234ddcc3b53ba4cb1b5f3ad23eac1ac6c171d601d110509f210c5",
+        "src/lib/LinkedDictionary.ts": "74fc83972e133b4a41b02e23396e9961ade0f9689ca287d00d16882de7a17c72",
+        "src/lib/LinkedList.ts": "67317855811fad66dade74d9114fc568642db017c44a3a36dff518d2ec0a1f53",
+        "src/lib/MultiDictionary.ts": "643746dc363eb406f53b49d74d79bf85a0b3cb0087c3c865bef36e0824f0f6f5",
+        "src/lib/MultiRootTree.ts": "58a3b9de82625023752b5c465543856ccc5aa19afd73926c066a114b5399f5c8",
+        "src/lib/PriorityQueue.ts": "62bcf790e323014f457300bd06b190d477241ac62af611820951b98fef3cd777",
+        "src/lib/Queue.ts": "d648a4f053e27f189b55a1ae92415dd7f389de868baedc128dc6817ffd4d6976",
+        "src/lib/Set.ts": "ffb999deb7ef76ba0d657d6fc60abce8b8adadf50b2ee587a509e71bb6d4817a",
+        "src/lib/Stack.ts": "4810c97ae2d14afbcdd4a7f21c7f4139b912b857bc46c040f35f3415e854807a",
+        "src/lib/arrays.ts": "d88eae90799b8c848a5bca86436e12cc9514720380995219e3417387b41ef8ec",
+        "src/lib/index.ts": "18f6c342ec3007caa01991bde554c8c8eeac262d0ac71b93301fea9e06efe372",
+        "src/lib/util.ts": "43c64ca479bc26962cc19c4983bb0c7da97aeffe5222306472bf3ad436128983",
+        "tsconfig.json": "f0b662d9f52ac8af2e57c37f1eefbbb0003ed17cab64ce145f1cbf7219b56932"
+      },
+      "retained_regular_file_count": 21,
+      "tracked_tree_status": "partial"
+    },
+    "r05": {
+      "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+      "archive_artifact": ".local/router-v4/author-pairs/ts-pair/archives/r05.tar.gz",
+      "archive_prefix": "neverthrow-5ef3a018bda74fb960e44b68fc3672635ee8037d",
+      "archive_regular_file_count": 26,
+      "archive_sha256": "f8d29bd273b7071869c157cb614e6e717ab5625d32254eee13e7788f1c76bddd",
+      "archive_url": "https://codeload.github.com/supermacro/neverthrow/tar.gz/5ef3a018bda74fb960e44b68fc3672635ee8037d",
+      "commit": "5ef3a018bda74fb960e44b68fc3672635ee8037d",
+      "excluded_archive_regular_file_count": 17,
+      "exclusions": [
+        "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+      ],
+      "license_file_sha256": {
+        "LICENSE": "3f4f7f9d7c4a9965aeef4a9c95de38f73ecbab96bed68d320a224a74dfcaa973"
+      },
+      "license_identifier": "MIT",
+      "license_paths": [
+        "LICENSE"
+      ],
+      "repository_url": "https://github.com/supermacro/neverthrow",
+      "retained_file_sha256": {
+        "LICENSE": "3f4f7f9d7c4a9965aeef4a9c95de38f73ecbab96bed68d320a224a74dfcaa973",
+        "README.md": "b37f72e1b72d3ae9a3df65d24fcf93aa28dcad305a065056f06d89934b3168a9",
+        "package.json": "77482a0d2edde0bd1c4a9347f0adf64d8bb24c0b074a9e7e3d93269f138d3417",
+        "src/_internals/error.ts": "6ba5f5f40879bf596be420db35a95b9a492cda3f91d504f5ee66f722f18425ce",
+        "src/_internals/utils.ts": "0eff2c3154f48fe22278939f8c179ee22b40596e8df9bb3ccfa4f9c9b3b79723",
+        "src/index.ts": "57b296e55fbe34b699ee4bcb98e0c86726b06f835522ba7c379f41ed4e102324",
+        "src/result-async.ts": "84e72684262b2b125b28dba1277231baddfb53e1196716f0618db4fbb278ad1c",
+        "src/result.ts": "8bebd3ca02e67482d16d10ad69bc3a23f72d6f2a2a04cb6fb120e3f6732d5754",
+        "tsconfig.json": "f2b83ab65e0567111fc6f0a78221e6440cd6fb1d4c693fb305f3594c3e6f63a9"
+      },
+      "retained_regular_file_count": 9,
+      "tracked_tree_status": "partial"
+    },
+    "r06": {
+      "acquired_after_policy_runner_commit": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+      "archive_artifact": ".local/router-v4/author-pairs/root-pair/archives/r06.tar.gz",
+      "archive_prefix": "avl-e9209ab6664b0c472c2a732be21d5c6701434933",
+      "archive_regular_file_count": 27,
+      "archive_sha256": "71c9d0711f9fb05bc485cb06a5ca77dd6779ab4318081f0fb48bb315851cb62e",
+      "archive_url": "https://codeload.github.com/w8r/avl/tar.gz/e9209ab6664b0c472c2a732be21d5c6701434933",
+      "commit": "e9209ab6664b0c472c2a732be21d5c6701434933",
+      "excluded_archive_regular_file_count": 20,
+      "exclusions": [
+        "All upstream files outside the exact retained_file_sha256 map were omitted; no upstream install, build, test, lifecycle, or workflow script was executed."
+      ],
+      "license_file_sha256": {
+        "LICENSE": "498c0717759d83010a03b27f4de843b94a0936eb2d22adcb08000b5ef337194e"
+      },
+      "license_identifier": "MIT",
+      "license_paths": [
+        "LICENSE"
+      ],
+      "repository_url": "https://github.com/w8r/avl",
+      "retained_file_sha256": {
+        "LICENSE": "498c0717759d83010a03b27f4de843b94a0936eb2d22adcb08000b5ef337194e",
+        "README.md": "33ee2caf5d569c9e31cf79b69a91d4bf40c66449bc6bb453156a405c7c9e20c0",
+        "package.json": "9ce2d0872a1e38712e780232f00eec25203e1a8eb5d048827b03a2fce9d26627",
+        "src/index.ts": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd",
+        "src/types.ts": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77",
+        "src/utils.ts": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40",
+        "tsconfig.json": "de13d876428e52248a7609f919ba8bd7bbdc8df1fc38a014ad086c9991b92205"
+      },
+      "retained_regular_file_count": 7,
+      "tracked_tree_status": "partial"
+    }
+  },
+  "repeats": 2,
+  "repositories": {
+    "r01": {
+      "commit": "5ff1cb28a076ca2d5d4f364e37298839ff9562c6",
+      "path": "/workspace/Memglide/.local/router-v4-offline-plan/repositories/repo-0001",
+      "tree": "e08f1b40580dea2d80d930ef98aa4a1bf63a693f"
+    },
+    "r02": {
+      "commit": "f2fae13cd052a36294ed5e462580744923ea5138",
+      "path": "/workspace/Memglide/.local/router-v4-offline-plan/repositories/repo-0002",
+      "tree": "70740c0fea34ea92e58941668de6374975a78bd9"
+    },
+    "r03": {
+      "commit": "d9f9c315ef5dab00188c7802b6a75403d229efc9",
+      "path": "/workspace/Memglide/.local/router-v4-offline-plan/repositories/repo-0003",
+      "tree": "6f368b280b92066b2644fdb055f7d69ffda72fde"
+    },
+    "r04": {
+      "commit": "90c4f76c071601c6f92467002040b3b2e6e6a42d",
+      "path": "/workspace/Memglide/.local/router-v4-offline-plan/repositories/repo-0004",
+      "tree": "d7dfb42ae352b6f61cef6094ed89c63dd5af8c14"
+    },
+    "r05": {
+      "commit": "095a2e1393da1dac591e07e7b2eda53e72a5c7e2",
+      "path": "/workspace/Memglide/.local/router-v4-offline-plan/repositories/repo-0005",
+      "tree": "c4bd2fb161ed6bf502f444dc23c7470536721d59"
+    },
+    "r06": {
+      "commit": "f13edb7b3e939959c2672c842f1164bc446e11d7",
+      "path": "/workspace/Memglide/.local/router-v4-offline-plan/repositories/repo-0006",
+      "tree": "1e919ed40a4de60be1d933f89b942990a0411237"
+    }
+  },
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "version": "automatic-4"
+}

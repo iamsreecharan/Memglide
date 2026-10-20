@@ -1,0 +1,303 @@
+{
+  "baseline_expected_failures": 12,
+  "controls": 24,
+  "executed": true,
+  "original_path": ".local/router-v4/native-corpus-review-v2/external-controls/control-summary.json",
+  "original_sha256": "b9ae4ad22192ad3d40a7f0470ff4b0b2dd0592e0c3e01b46529df8930121a8f2",
+  "publication": "Allowlisted outcome/count/hash projection; exact original remains local",
+  "reference_passes": 12,
+  "results": {
+    "n01": {
+      "baseline_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 14,
+        "executed": true,
+        "fixture_hashes_digest": "8f203b34c27eeb03e5d005ea4010e51c70cace9de7cf73ac364e8bd0b3ec1d1b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "dc5baa72a4725aa6bfa3bb549166ee99b23e5aba79759a85f34af84ee5c79348"
+      },
+      "reference_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 14,
+        "executed": true,
+        "fixture_hashes_digest": "8f203b34c27eeb03e5d005ea4010e51c70cace9de7cf73ac364e8bd0b3ec1d1b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "dc5baa72a4725aa6bfa3bb549166ee99b23e5aba79759a85f34af84ee5c79348"
+      }
+    },
+    "n02": {
+      "baseline_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 9,
+        "executed": true,
+        "fixture_hashes_digest": "8f203b34c27eeb03e5d005ea4010e51c70cace9de7cf73ac364e8bd0b3ec1d1b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "e0bbe961511dd036acd68f0b9ed66639922ae9ea124d81fca4fc47e88e31eb9c"
+      },
+      "reference_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 9,
+        "executed": true,
+        "fixture_hashes_digest": "8f203b34c27eeb03e5d005ea4010e51c70cace9de7cf73ac364e8bd0b3ec1d1b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "e0bbe961511dd036acd68f0b9ed66639922ae9ea124d81fca4fc47e88e31eb9c"
+      }
+    },
+    "n03": {
+      "baseline_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 17,
+        "executed": true,
+        "fixture_hashes_digest": "ddae2aed66432aecc00e80ad3fab48702404a9724e6683392dc82d6bccec5a3b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "6a7470cb8351bd169237a2303717c7ea7aa56b45701e065f8dfc9deee9881d48"
+      },
+      "reference_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 17,
+        "executed": true,
+        "fixture_hashes_digest": "ddae2aed66432aecc00e80ad3fab48702404a9724e6683392dc82d6bccec5a3b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "6a7470cb8351bd169237a2303717c7ea7aa56b45701e065f8dfc9deee9881d48"
+      }
+    },
+    "n04": {
+      "baseline_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 11,
+        "executed": true,
+        "fixture_hashes_digest": "ddae2aed66432aecc00e80ad3fab48702404a9724e6683392dc82d6bccec5a3b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "701573b9c1b065cfe711d75ace5ebdf2e851fb54d367879d08ef25dae75b1e15"
+      },
+      "reference_result": {
+        "backend_script_sha256": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "checks": 11,
+        "executed": true,
+        "fixture_hashes_digest": "ddae2aed66432aecc00e80ad3fab48702404a9724e6683392dc82d6bccec5a3b",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "701573b9c1b065cfe711d75ace5ebdf2e851fb54d367879d08ef25dae75b1e15"
+      }
+    },
+    "n05": {
+      "baseline_result": {
+        "backend_script_sha256": "7870d697962b0687ddcea9b13c5b879ab4f1eb984a62b34aa85ed218217cd1a3",
+        "checks": 14,
+        "executed": true,
+        "fixture_hashes_digest": "390648a1898905805e8e791559022d572dc285b526996d52628018d4540289ab",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "ecd17de09a60a69e2940ea19b6d2575ccf8dfb025e026c156d9f676720aa6843"
+      },
+      "reference_result": {
+        "backend_script_sha256": "7870d697962b0687ddcea9b13c5b879ab4f1eb984a62b34aa85ed218217cd1a3",
+        "checks": 14,
+        "executed": true,
+        "fixture_hashes_digest": "390648a1898905805e8e791559022d572dc285b526996d52628018d4540289ab",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "ecd17de09a60a69e2940ea19b6d2575ccf8dfb025e026c156d9f676720aa6843"
+      }
+    },
+    "n06": {
+      "baseline_result": {
+        "backend_script_sha256": "7870d697962b0687ddcea9b13c5b879ab4f1eb984a62b34aa85ed218217cd1a3",
+        "checks": 14,
+        "executed": true,
+        "fixture_hashes_digest": "390648a1898905805e8e791559022d572dc285b526996d52628018d4540289ab",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "af497e228713c359548ba4db20501241554e19406121bf13b28c5b2c81f8c2d3"
+      },
+      "reference_result": {
+        "backend_script_sha256": "7870d697962b0687ddcea9b13c5b879ab4f1eb984a62b34aa85ed218217cd1a3",
+        "checks": 14,
+        "executed": true,
+        "fixture_hashes_digest": "390648a1898905805e8e791559022d572dc285b526996d52628018d4540289ab",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "af497e228713c359548ba4db20501241554e19406121bf13b28c5b2c81f8c2d3"
+      }
+    },
+    "n07": {
+      "baseline_result": {
+        "backend_script_sha256": "16fdbe9078d710b8a7ba8b3f20c4b68ad8508d5cb63fda2dff81c2b390171bba",
+        "checks": 3,
+        "executed": true,
+        "fixture_hashes_digest": "6877b9fde5b7462445c114043d7bc11644812e5a6c17f636eb36a7c6a10f3b5d",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "15aa4c901afa9521804322f29af24d8ea46342303f8bacffb0708454256745f2"
+      },
+      "reference_result": {
+        "backend_script_sha256": "16fdbe9078d710b8a7ba8b3f20c4b68ad8508d5cb63fda2dff81c2b390171bba",
+        "checks": 50,
+        "executed": true,
+        "fixture_hashes_digest": "6877b9fde5b7462445c114043d7bc11644812e5a6c17f636eb36a7c6a10f3b5d",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "15aa4c901afa9521804322f29af24d8ea46342303f8bacffb0708454256745f2"
+      }
+    },
+    "n08": {
+      "baseline_result": {
+        "backend_script_sha256": "4846b483090b76a9a165eba59a271b688cde14a8c0b45cc3afb7d72de2157b0c",
+        "checks": 3,
+        "executed": true,
+        "fixture_hashes_digest": "6877b9fde5b7462445c114043d7bc11644812e5a6c17f636eb36a7c6a10f3b5d",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "4365d41b5de55392109cac0b17c78fdc7caff2a87b9f97ae021010751aaeb263"
+      },
+      "reference_result": {
+        "backend_script_sha256": "4846b483090b76a9a165eba59a271b688cde14a8c0b45cc3afb7d72de2157b0c",
+        "checks": 74,
+        "executed": true,
+        "fixture_hashes_digest": "6877b9fde5b7462445c114043d7bc11644812e5a6c17f636eb36a7c6a10f3b5d",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "4365d41b5de55392109cac0b17c78fdc7caff2a87b9f97ae021010751aaeb263"
+      }
+    },
+    "n09": {
+      "baseline_result": {
+        "backend_script_sha256": "f718f2a45f499f68fd2d25deaccccd9d785ca8d7d0ed6f16f0b1d81c055c2661",
+        "checks": 3,
+        "executed": true,
+        "fixture_hashes_digest": "0c57dd7ed342a0847e084dd509587c7708960c0ca79b441c5d278c4a64b1ff41",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "ad0905abae70f8a098c4cc468309893f65fe6fd5f1dc402864692925f1360f63"
+      },
+      "reference_result": {
+        "backend_script_sha256": "f718f2a45f499f68fd2d25deaccccd9d785ca8d7d0ed6f16f0b1d81c055c2661",
+        "checks": 18,
+        "executed": true,
+        "fixture_hashes_digest": "0c57dd7ed342a0847e084dd509587c7708960c0ca79b441c5d278c4a64b1ff41",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "ad0905abae70f8a098c4cc468309893f65fe6fd5f1dc402864692925f1360f63"
+      }
+    },
+    "n10": {
+      "baseline_result": {
+        "backend_script_sha256": "e12a4c7f52684b69530a6f9881e3e04d0f974ecd9d46b65478b7bdb50d639bcd",
+        "checks": 3,
+        "executed": true,
+        "fixture_hashes_digest": "0c57dd7ed342a0847e084dd509587c7708960c0ca79b441c5d278c4a64b1ff41",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "e3e5d007a8ccbd7d5d588e92d337a5d569c5d9c61f6ef6cfdce9f6efe3809ee3"
+      },
+      "reference_result": {
+        "backend_script_sha256": "e12a4c7f52684b69530a6f9881e3e04d0f974ecd9d46b65478b7bdb50d639bcd",
+        "checks": 22,
+        "executed": true,
+        "fixture_hashes_digest": "0c57dd7ed342a0847e084dd509587c7708960c0ca79b441c5d278c4a64b1ff41",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "e3e5d007a8ccbd7d5d588e92d337a5d569c5d9c61f6ef6cfdce9f6efe3809ee3"
+      }
+    },
+    "n11": {
+      "baseline_result": {
+        "backend_script_sha256": "d071377fd8d749cf47882a1d59432b0c4a38a61767eccd573e6da5bb3b80f637",
+        "checks": 886,
+        "executed": true,
+        "fixture_hashes_digest": "3e2a016c9db8a5ffc13a1bc38f6d0b1fbe02903c30023efe8a08383623e5ede5",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "be5af349e26c00a85ddae214d58a8d42d362a5f6c5dcb3143655550766fd3cdb"
+      },
+      "reference_result": {
+        "backend_script_sha256": "d071377fd8d749cf47882a1d59432b0c4a38a61767eccd573e6da5bb3b80f637",
+        "checks": 886,
+        "executed": true,
+        "fixture_hashes_digest": "3e2a016c9db8a5ffc13a1bc38f6d0b1fbe02903c30023efe8a08383623e5ede5",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "be5af349e26c00a85ddae214d58a8d42d362a5f6c5dcb3143655550766fd3cdb"
+      }
+    },
+    "n12": {
+      "baseline_result": {
+        "backend_script_sha256": "df0c8d300c3ea8ad7f02b36646cdcd16ef317dc61c1543755c12a5e4adaba266",
+        "checks": 44,
+        "executed": true,
+        "fixture_hashes_digest": "3e2a016c9db8a5ffc13a1bc38f6d0b1fbe02903c30023efe8a08383623e5ede5",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 1,
+        "source_and_git_unchanged_by_grader": true,
+        "success": false,
+        "task_digest": "450b65fcec04616e0b858c8dfb255dfa6f2d0f48f69e053b8a6d06ebb5e4d3bf"
+      },
+      "reference_result": {
+        "backend_script_sha256": "df0c8d300c3ea8ad7f02b36646cdcd16ef317dc61c1543755c12a5e4adaba266",
+        "checks": 44,
+        "executed": true,
+        "fixture_hashes_digest": "3e2a016c9db8a5ffc13a1bc38f6d0b1fbe02903c30023efe8a08383623e5ede5",
+        "grader_script_sha256": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "returncode": 0,
+        "source_and_git_unchanged_by_grader": true,
+        "success": true,
+        "task_digest": "450b65fcec04616e0b858c8dfb255dfa6f2d0f48f69e053b8a6d06ebb5e4d3bf"
+      }
+    }
+  },
+  "schema_version": 1,
+  "scope": "Standard replay only; not an adversarial grader-isolation check",
+  "success": true,
+  "tasks": 12
+}

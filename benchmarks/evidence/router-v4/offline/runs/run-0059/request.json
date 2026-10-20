@@ -1,0 +1,10 @@
+{
+  "arm": "C",
+  "prompt": "Extend parse_int_list to handle signed integers and inclusive ranges with signed endpoints when using the default separators. A negative singleton must stay a singleton; ranges whose endpoints are negative or cross zero must expand in ascending order even when endpoints are reversed. Keep sorted output, duplicate preservation, surrounding whitespace handling, empty input behavior, and existing custom-separator behavior. Reject malformed range tokens instead of silently treating more than two endpoints as a valid range.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0059"
+}

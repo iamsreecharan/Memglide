@@ -1,0 +1,933 @@
+{
+  "version": 1,
+  "kind": "post-study diagnostics, not replacement formal outcomes",
+  "original_report_sha256": "7e9850cc8e45580c274b1e6dedf7e49ae8efa7c0cd7c720d86ea4949e3632744",
+  "formal_report_unchanged": true,
+  "positive_reason_counts": {
+    "B": {
+      "source_unavailable": 16,
+      "explicit_focus": 6,
+      "context_budget_exceeded": 2
+    },
+    "V3": {
+      "source_preparation_source_unavailable": 10,
+      "ambiguous_candidates": 4,
+      "evidence_candidate_limit": 4,
+      "runtime_syntax_unavailable": 4,
+      "source_preparation_context_budget_exceeded": 2
+    },
+    "C": {
+      "source_preparation_source_unavailable": 10,
+      "ambiguous_candidates": 4,
+      "evidence_candidate_limit": 4,
+      "runtime_syntax_unavailable": 4,
+      "source_preparation_context_budget_exceeded": 2
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "t01",
+      "repository": "r01",
+      "declared_sources": [
+        {
+          "path": "boltons/strutils.py",
+          "raw_bytes": 47294
+        }
+      ],
+      "single_declared_bundle_json_bytes": 49347,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "evidence_candidate_limit",
+          "evidence_candidate_limit"
+        ],
+        "C": [
+          "evidence_candidate_limit",
+          "evidence_candidate_limit"
+        ]
+      },
+      "observed_ranked_paths_C": [],
+      "observed_coarse_C": {
+        "coarse_bytes": 612412,
+        "coarse_files_checked": 27,
+        "coarse_wall_seconds": 0.33460637600001064,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "boltons/cacheutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "boltons/debugutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "boltons/dictutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "boltons/ecoutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "ce3663d4e772fe871c17dcd0847717f8a610616a6b0141106564bedc5ab8a3b6"
+          }
+        ],
+        "frontier_omitted": 23,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 27,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 30,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 0
+    },
+    {
+      "task_id": "t02",
+      "repository": "r01",
+      "declared_sources": [
+        {
+          "path": "boltons/iterutils.py",
+          "raw_bytes": 59341
+        }
+      ],
+      "single_declared_bundle_json_bytes": 61483,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "evidence_candidate_limit",
+          "evidence_candidate_limit"
+        ],
+        "C": [
+          "evidence_candidate_limit",
+          "evidence_candidate_limit"
+        ]
+      },
+      "observed_ranked_paths_C": [],
+      "observed_coarse_C": {
+        "coarse_bytes": 614890,
+        "coarse_files_checked": 28,
+        "coarse_wall_seconds": 0.32344890699994266,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "boltons/cacheutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "boltons/debugutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "boltons/deprutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "d8f2c0fdce9d8276466127f093771e1a0a8844bcd1bd92e6880f30d2782e0151"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "boltons/dictutils.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656"
+          }
+        ],
+        "frontier_omitted": 24,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 28,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 30,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 0
+    },
+    {
+      "task_id": "t03",
+      "repository": "r02",
+      "declared_sources": [
+        {
+          "path": "ordered_set/__init__.py",
+          "raw_bytes": 17127
+        }
+      ],
+      "single_declared_bundle_json_bytes": 18034,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ],
+        "C": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "ordered_set/__init__.py"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 17127,
+        "coarse_files_checked": 1,
+        "coarse_wall_seconds": 0.015739861000042765,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "ordered_set/__init__.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d"
+          }
+        ],
+        "frontier_omitted": 0,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 1,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 1,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 1
+    },
+    {
+      "task_id": "t04",
+      "repository": "r02",
+      "declared_sources": [
+        {
+          "path": "ordered_set/__init__.py",
+          "raw_bytes": 17127
+        }
+      ],
+      "single_declared_bundle_json_bytes": 18034,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ],
+        "C": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "ordered_set/__init__.py"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 17127,
+        "coarse_files_checked": 1,
+        "coarse_wall_seconds": 0.016079590999993343,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "ordered_set/__init__.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d"
+          }
+        ],
+        "frontier_omitted": 0,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 1,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 1,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 1
+    },
+    {
+      "task_id": "t05",
+      "repository": "r03",
+      "declared_sources": [
+        {
+          "path": "more_itertools/more.py",
+          "raw_bytes": 175454
+        }
+      ],
+      "single_declared_bundle_json_bytes": 182118,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "runtime_syntax_unavailable",
+          "runtime_syntax_unavailable"
+        ],
+        "C": [
+          "runtime_syntax_unavailable",
+          "runtime_syntax_unavailable"
+        ]
+      },
+      "observed_ranked_paths_C": [],
+      "observed_coarse_C": {
+        "coarse_bytes": 257708,
+        "coarse_files_checked": 4,
+        "coarse_wall_seconds": 0.15435035400003017,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/more.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "1bdc5f323ea18906436a42268b942d5b4d15ac8b3ff17c1211a59fb192fa068e"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/more.pyi",
+            "reason": "two_term_upper_bound",
+            "sha256": "e4952b7a6230e27bee49265fd9af08ae8353946e2d5a78ce60c55d2f5efe5514"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/recipes.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "468ab191bbb5fd62e8603d741e6983acdfa9d697d0ff9252b0c56ffdd24ca9bc"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/recipes.pyi",
+            "reason": "two_term_upper_bound",
+            "sha256": "2dd48ac5ef0b502f989bd2e13923c402994244ee50a4187e2f0d59c348bf2583"
+          }
+        ],
+        "frontier_omitted": 0,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 4,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 5,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 4
+    },
+    {
+      "task_id": "t06",
+      "repository": "r03",
+      "declared_sources": [
+        {
+          "path": "more_itertools/more.py",
+          "raw_bytes": 175454
+        }
+      ],
+      "single_declared_bundle_json_bytes": 182118,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "runtime_syntax_unavailable",
+          "runtime_syntax_unavailable"
+        ],
+        "C": [
+          "runtime_syntax_unavailable",
+          "runtime_syntax_unavailable"
+        ]
+      },
+      "observed_ranked_paths_C": [],
+      "observed_coarse_C": {
+        "coarse_bytes": 257708,
+        "coarse_files_checked": 4,
+        "coarse_wall_seconds": 0.15268699700004618,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/more.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "1bdc5f323ea18906436a42268b942d5b4d15ac8b3ff17c1211a59fb192fa068e"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/more.pyi",
+            "reason": "two_term_upper_bound",
+            "sha256": "e4952b7a6230e27bee49265fd9af08ae8353946e2d5a78ce60c55d2f5efe5514"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/recipes.py",
+            "reason": "two_term_upper_bound",
+            "sha256": "468ab191bbb5fd62e8603d741e6983acdfa9d697d0ff9252b0c56ffdd24ca9bc"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "more_itertools/recipes.pyi",
+            "reason": "two_term_upper_bound",
+            "sha256": "2dd48ac5ef0b502f989bd2e13923c402994244ee50a4187e2f0d59c348bf2583"
+          }
+        ],
+        "frontier_omitted": 0,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 4,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 5,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 4
+    },
+    {
+      "task_id": "t07",
+      "repository": "r04",
+      "declared_sources": [
+        {
+          "path": "src/lib/arrays.ts",
+          "raw_bytes": 6107
+        }
+      ],
+      "single_declared_bundle_json_bytes": 6453,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": true,
+      "observed_reasons": {
+        "B": [
+          "explicit_focus",
+          "explicit_focus"
+        ],
+        "V3": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ],
+        "C": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "src/lib/MultiRootTree.ts",
+        "src/lib/util.ts",
+        "src/lib/Heap.ts",
+        "src/lib/arrays.ts",
+        "src/lib/LinkedList.ts",
+        "src/lib/MultiDictionary.ts",
+        "src/lib/Queue.ts",
+        "src/lib/Stack.ts",
+        "src/lib/BSTreeKV.ts",
+        "src/lib/Bag.ts",
+        "src/lib/Dictionary.ts",
+        "src/lib/LinkedDictionary.ts"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 110117,
+        "coarse_files_checked": 17,
+        "coarse_wall_seconds": 0.07439562900003693,
+        "frontier": [
+          {
+            "classification": "lexically_impossible",
+            "path": "src/lib/BSTree.ts",
+            "reason": "insufficient_upper_bound",
+            "sha256": "276704b52e0204cb140d4521dafab7943d2c8028c07f63add5d7b77b2ea096fb"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/lib/BSTreeKV.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "9805c51622b29901b1b7afc5eaf9ca84fbc1683b336dd349f0112bed7e525fad"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/lib/Bag.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "0172c3a7d081a5908e56bb61e67ae55dcbe292432e89ef486423247ad2b87e15"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/lib/Dictionary.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "dee29f057989769d605904f011dc289a802a158693c1d3249b89809af8b930b1"
+          }
+        ],
+        "frontier_omitted": 13,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 14,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 17,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 3,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 14
+    },
+    {
+      "task_id": "t08",
+      "repository": "r04",
+      "declared_sources": [
+        {
+          "path": "src/lib/Set.ts",
+          "raw_bytes": 5509
+        }
+      ],
+      "single_declared_bundle_json_bytes": 5875,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": true,
+      "observed_reasons": {
+        "B": [
+          "explicit_focus",
+          "explicit_focus"
+        ],
+        "V3": [
+          "ambiguous_candidates",
+          "ambiguous_candidates"
+        ],
+        "C": [
+          "ambiguous_candidates",
+          "ambiguous_candidates"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "src/lib/Set.ts",
+        "src/lib/LinkedDictionary.ts",
+        "src/lib/FactoryDictionary.ts",
+        "src/lib/MultiDictionary.ts",
+        "src/lib/Dictionary.ts",
+        "src/lib/MultiRootTree.ts",
+        "src/lib/LinkedList.ts",
+        "src/lib/Bag.ts",
+        "src/lib/PriorityQueue.ts",
+        "src/lib/Queue.ts",
+        "src/lib/Stack.ts",
+        "src/lib/BSTreeKV.ts"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 110117,
+        "coarse_files_checked": 17,
+        "coarse_wall_seconds": 0.07757630599996901,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "src/lib/BSTree.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "276704b52e0204cb140d4521dafab7943d2c8028c07f63add5d7b77b2ea096fb"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/lib/BSTreeKV.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "9805c51622b29901b1b7afc5eaf9ca84fbc1683b336dd349f0112bed7e525fad"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/lib/Bag.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "0172c3a7d081a5908e56bb61e67ae55dcbe292432e89ef486423247ad2b87e15"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/lib/Dictionary.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "dee29f057989769d605904f011dc289a802a158693c1d3249b89809af8b930b1"
+          }
+        ],
+        "frontier_omitted": 13,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 15,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 17,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 2,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 15
+    },
+    {
+      "task_id": "t09",
+      "repository": "r05",
+      "declared_sources": [
+        {
+          "path": "src/result.ts",
+          "raw_bytes": 21754
+        }
+      ],
+      "single_declared_bundle_json_bytes": 22658,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ],
+        "C": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "src/result.ts",
+        "src/index.ts",
+        "src/result-async.ts",
+        "src/_internals/utils.ts"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 37497,
+        "coarse_files_checked": 5,
+        "coarse_wall_seconds": 0.04154578899999706,
+        "frontier": [
+          {
+            "classification": "lexically_impossible",
+            "path": "src/_internals/error.ts",
+            "reason": "insufficient_upper_bound",
+            "sha256": "6ba5f5f40879bf596be420db35a95b9a492cda3f91d504f5ee66f722f18425ce"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/_internals/utils.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "0eff2c3154f48fe22278939f8c179ee22b40596e8df9bb3ccfa4f9c9b3b79723"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/index.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "57b296e55fbe34b699ee4bcb98e0c86726b06f835522ba7c379f41ed4e102324"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/result-async.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "84e72684262b2b125b28dba1277231baddfb53e1196716f0618db4fbb278ad1c"
+          }
+        ],
+        "frontier_omitted": 1,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 4,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 5,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 1,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 4
+    },
+    {
+      "task_id": "t10",
+      "repository": "r05",
+      "declared_sources": [
+        {
+          "path": "src/result-async.ts",
+          "raw_bytes": 11540
+        }
+      ],
+      "single_declared_bundle_json_bytes": 12059,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "context_budget_exceeded",
+          "context_budget_exceeded"
+        ],
+        "V3": [
+          "source_preparation_context_budget_exceeded",
+          "source_preparation_context_budget_exceeded"
+        ],
+        "C": [
+          "source_preparation_context_budget_exceeded",
+          "source_preparation_context_budget_exceeded"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "src/result-async.ts",
+        "src/result.ts",
+        "src/index.ts",
+        "src/_internals/utils.ts"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 37497,
+        "coarse_files_checked": 5,
+        "coarse_wall_seconds": 0.03854288299999098,
+        "frontier": [
+          {
+            "classification": "lexically_impossible",
+            "path": "src/_internals/error.ts",
+            "reason": "insufficient_upper_bound",
+            "sha256": "6ba5f5f40879bf596be420db35a95b9a492cda3f91d504f5ee66f722f18425ce"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/_internals/utils.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "0eff2c3154f48fe22278939f8c179ee22b40596e8df9bb3ccfa4f9c9b3b79723"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/index.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "57b296e55fbe34b699ee4bcb98e0c86726b06f835522ba7c379f41ed4e102324"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/result-async.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "84e72684262b2b125b28dba1277231baddfb53e1196716f0618db4fbb278ad1c"
+          }
+        ],
+        "frontier_omitted": 1,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 4,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 5,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 1,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 4
+    },
+    {
+      "task_id": "t11",
+      "repository": "r06",
+      "declared_sources": [
+        {
+          "path": "src/index.ts",
+          "raw_bytes": 15602
+        }
+      ],
+      "single_declared_bundle_json_bytes": 16467,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": false,
+      "observed_reasons": {
+        "B": [
+          "source_unavailable",
+          "source_unavailable"
+        ],
+        "V3": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ],
+        "C": [
+          "source_preparation_source_unavailable",
+          "source_preparation_source_unavailable"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "src/index.ts",
+        "src/utils.ts",
+        "src/types.ts"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 19138,
+        "coarse_files_checked": 3,
+        "coarse_wall_seconds": 0.017966833000059523,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "src/index.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/types.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/utils.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40"
+          }
+        ],
+        "frontier_omitted": 0,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 3,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 3,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 3
+    },
+    {
+      "task_id": "t12",
+      "repository": "r06",
+      "declared_sources": [
+        {
+          "path": "src/utils.ts",
+          "raw_bytes": 3015
+        }
+      ],
+      "single_declared_bundle_json_bytes": 3323,
+      "context_cap_bytes": 12000,
+      "declared_bundle_fits_cap": true,
+      "observed_reasons": {
+        "B": [
+          "explicit_focus",
+          "explicit_focus"
+        ],
+        "V3": [
+          "ambiguous_candidates",
+          "ambiguous_candidates"
+        ],
+        "C": [
+          "ambiguous_candidates",
+          "ambiguous_candidates"
+        ]
+      },
+      "observed_ranked_paths_C": [
+        "src/utils.ts",
+        "src/index.ts",
+        "src/types.ts"
+      ],
+      "observed_coarse_C": {
+        "coarse_bytes": 19138,
+        "coarse_files_checked": 3,
+        "coarse_wall_seconds": 0.017843538000079207,
+        "frontier": [
+          {
+            "classification": "potential_supported",
+            "path": "src/index.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/types.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77"
+          },
+          {
+            "classification": "potential_supported",
+            "path": "src/utils.ts",
+            "reason": "two_term_upper_bound",
+            "sha256": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40"
+          }
+        ],
+        "frontier_omitted": 0,
+        "nonproduction_parse_errors_accepted": 0,
+        "potential_supported_files": 3,
+        "potential_unsupported_files": 0,
+        "scope": "supported-production-lexical-upper-bound-v1",
+        "scope_complete": true,
+        "supported_production_files": 3,
+        "unsupported_production_files": 0,
+        "version": 1,
+        "weak_supported_files": 0,
+        "weak_unsupported_files": 0
+      },
+      "observed_candidate_files_C": 3
+    }
+  ],
+  "parser_posthoc": [
+    {
+      "path": "more_itertools/more.py",
+      "definition_nodes": 225,
+      "runtime_and_declaration_units_required": 452,
+      "frozen_max_units": 256,
+      "returncode": 1,
+      "unit_limit_error": true,
+      "label": "New post-study single-file diagnostic with terms/query padded; original private worker stderr was not retained. Source was parsed, never imported or executed."
+    },
+    {
+      "path": "more_itertools/more.pyi",
+      "definition_nodes": 243,
+      "runtime_and_declaration_units_required": 488,
+      "frozen_max_units": 256,
+      "returncode": 1,
+      "unit_limit_error": true,
+      "label": "New post-study single-file diagnostic with terms/query padded; original private worker stderr was not retained. Source was parsed, never imported or executed."
+    },
+    {
+      "path": "more_itertools/recipes.py",
+      "definition_nodes": 70,
+      "runtime_and_declaration_units_required": 142,
+      "frozen_max_units": 256,
+      "returncode": 0,
+      "unit_limit_error": false,
+      "label": "New post-study single-file diagnostic with terms/query padded; original private worker stderr was not retained. Source was parsed, never imported or executed."
+    },
+    {
+      "path": "more_itertools/recipes.pyi",
+      "definition_nodes": 64,
+      "runtime_and_declaration_units_required": 130,
+      "frozen_max_units": 256,
+      "returncode": 0,
+      "unit_limit_error": false,
+      "label": "New post-study single-file diagnostic with terms/query padded; original private worker stderr was not retained. Source was parsed, never imported or executed."
+    }
+  ],
+  "gate": {
+    "passed": false,
+    "reason": "C positive complete-scope inclusion0/24 equals V3 and is below B6/24; C adds local preparation overhead. No native coding assignments justified by the preregistered improvement condition."
+  },
+  "future_hypotheses_not_implemented": [
+    "Reject an impossible full-file budget before expensive ranking; preserve normal agent fallback.",
+    "Replace coarse all-query-word screening with bounded hierarchical symbol ownership, separately validated on fresh development cases.",
+    "Stream query-relevant syntax summaries under explicit complete-competitor bounds rather than failing on every large symbol table.",
+    "Investigate independently bounded symbol/dependency bundles as a distinct experimental delivery contract, never silently truncate whole files."
+  ],
+  "model_requests": 0,
+  "coding_correctness": null,
+  "measured_model_savings": null,
+  "actual_billing": null
+}

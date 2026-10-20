@@ -1,0 +1,10 @@
+{
+  "arm": "V3",
+  "prompt": "Extend padded so n=0 is valid when next_multiple is false: it should return all original items without padding, including an empty result for empty input. Keep n=0 invalid when next_multiple is true, keep negative n invalid, and preserve existing positive-n and infinite-padding behavior. Update the public behavior and its documentation.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0062"
+}

@@ -1,0 +1,130 @@
+{
+  "arm": "C",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "abstention_control",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 20484096,
+    "preparation_cpu_seconds": 0.034745259,
+    "preparation_waited_child_cpu_seconds": 0.06813,
+    "preparation_wall_seconds": 0.10415073800004393,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 20484096,
+    "setup_cpu_seconds": 0.029205600000000012,
+    "setup_plus_preparation_wall_seconds": 0.1660458370000697,
+    "setup_waited_child_cpu_seconds": 0.013770999999999999
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "automatic_selection": {
+        "auxiliary_model_calls": 0,
+        "candidate_files_considered": 1,
+        "candidate_generation_limit_reached": false,
+        "coarse_selection": {
+          "coarse_bytes": 17127,
+          "coarse_files_checked": 1,
+          "coarse_wall_seconds": 0.01451497899995502,
+          "frontier": [
+            {
+              "classification": "potential_supported",
+              "path": "ordered_set/__init__.py",
+              "reason": "two_term_upper_bound",
+              "sha256": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d"
+            }
+          ],
+          "frontier_omitted": 0,
+          "nonproduction_parse_errors_accepted": 0,
+          "potential_supported_files": 1,
+          "potential_unsupported_files": 0,
+          "scope": "supported-production-lexical-upper-bound-v1",
+          "scope_complete": true,
+          "supported_production_files": 1,
+          "unsupported_production_files": 0,
+          "version": 1,
+          "weak_supported_files": 0,
+          "weak_unsupported_files": 0
+        },
+        "decision": "SKIP",
+        "dependency_paths_considered": 0,
+        "discovery_cpu_seconds": 0.034714037,
+        "discovery_wall_seconds": 0.10411781300001621,
+        "estimated_added_tokens": 0,
+        "index_refresh_wall_seconds": 0.020071216000019376,
+        "index_refreshed": true,
+        "omitted_candidate_files": 0,
+        "policy_version": "deterministic-source-v4",
+        "provided_source_paths": [],
+        "ranked_candidates": [
+          {
+            "evidence_terms": [
+              "difference"
+            ],
+            "explicit_anchor": false,
+            "path": "ordered_set/__init__.py",
+            "reason": "Verified runtime syntax unit: 1 body/role term(s), 1 clean header term(s); candidate-specificity weights. Comments, literals and indexed signatures cannot justify selection; syntax roles are heuristic, not execution or requirement completeness.",
+            "score": 3.639023
+          }
+        ],
+        "reason": "weak_lexical_evidence",
+        "retrieval_wall_seconds": 0.08066008699995564,
+        "selected_paths": [],
+        "source_preparation_wall_seconds": 0.0,
+        "source_versions": {},
+        "static_dependency_coverage": "bounded direct resolved production targets; not global completeness",
+        "token_estimate_method": "ceil(UTF-8 added context bytes / 3); planning proxy, not measured usage",
+        "unresolved_dependency_count": 81,
+        "version": 1
+      },
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.034714037,
+      "preparation_wall_seconds": 0.10411781300001621,
+      "prepared_prompt_sha256": "aed2d37760afab75fddb670ad35d10ec4232f0fd00a99b35ed778594cbfa93c7",
+      "prompt": "Explain the difference between preserving insertion order and sorting values in two sentences, using a hypothetical collection of three numbers. This is a general programming explanation; no repository-specific analysis or code change is requested.",
+      "prompt_layout": "unchanged",
+      "reason": "weak_lexical_evidence",
+      "task_prompt_sha256": "aed2d37760afab75fddb670ad35d10ec4232f0fd00a99b35ed778594cbfa93c7"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 20484096,
+      "self_peak_rss_bytes": 20484096,
+      "waited_child_cpu_seconds": 0.081901
+    },
+    "setup": {
+      "cpu_seconds": 0.029205600000000012,
+      "waited_child_cpu_seconds": 0.013770999999999999,
+      "wall_seconds": 0.061895099000025766
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.034745259,
+      "waited_child_cpu_seconds": 0.06813,
+      "wall_seconds": 0.10415073800004393
+    }
+  },
+  "ordinal": 78,
+  "process_wall_seconds": 0.31464644599998337,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": null,
+    "declared_scope_complete": null,
+    "expected_bypass": true,
+    "extra_paths": [],
+    "kind": "abstention_control",
+    "missing_paths": []
+  },
+  "task_id": "c02",
+  "worker_completed": true
+}

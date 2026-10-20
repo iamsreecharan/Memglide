@@ -1,0 +1,159 @@
+{
+  "kind": "separate_native_access_check",
+  "result": {
+    "exit_code": -15,
+    "timed_out": true,
+    "wall_time_seconds": 45.01635118300004,
+    "process_started_monotonic_seconds": 367.108924937,
+    "process_finished_monotonic_seconds": 412.12527612,
+    "overhead": {
+      "process_tree_peak_rss_bytes": 80830464,
+      "cpu_seconds": 1.0,
+      "memglide_peak_rss_bytes": null,
+      "memglide_cpu_seconds": null,
+      "observed_processes": 1,
+      "observed_memglide_processes": 0,
+      "samples": 886,
+      "sampling_interval_seconds": 0.05,
+      "scope": "Local Codex process tree only; remote model CPU and memory unavailable",
+      "method": "/proc sampling; CPU observed lower bound, RSS shared pages can be counted multiple times; short-lived processes may be missed"
+    },
+    "telemetry": {
+      "source": "codex exec --json; turn.completed usage and item lifecycle events",
+      "event_count": 10,
+      "parse_errors": [],
+      "completed_turns": 0,
+      "failed_turns": 0,
+      "stream_terminal": false,
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null
+      },
+      "usage_unavailable_reasons": {
+        "input_tokens": "Total usage unavailable: event stream is empty, truncated, contains unparsed lines, or includes a failed turn whose usage may be unreported",
+        "cached_input_tokens": "Total usage unavailable: event stream is empty, truncated, contains unparsed lines, or includes a failed turn whose usage may be unreported",
+        "output_tokens": "Total usage unavailable: event stream is empty, truncated, contains unparsed lines, or includes a failed turn whose usage may be unreported"
+      },
+      "observed_completed_turn_usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "output_tokens": null
+      },
+      "usage_coverage_complete": false,
+      "usage_scope": "Complete parsed stream only; partial observed turn usage is stored separately",
+      "model_calls": null,
+      "model_calls_unavailable_reason": "Codex exec JSONL exposes completed turns, not underlying provider/API model calls",
+      "actual_cost_usd": null,
+      "actual_cost_unavailable_reason": "Codex exec JSONL does not emit provider invoiced cost",
+      "mcp_call_count": 0,
+      "mcp_calls": [],
+      "mcp_counts_complete": false,
+      "mcp_count_scope": "Observed unique invocation items; total only for complete parsed streams, otherwise a lower bound",
+      "memglide_mcp_call_count": 0,
+      "memglide_successful_get_context_count": 0,
+      "memglide_successful_fetch_context_count": 0,
+      "memglide_successful_verify_context_count": 0,
+      "memglide_get_context_success_unknown_count": 0,
+      "command_count": 0,
+      "commands": [],
+      "repeated_file_reads": null,
+      "repeated_file_reads_unavailable_reason": "Codex JSONL does not expose a filesystem I/O trace; command text cannot establish actual reads",
+      "observed_file_read_commands": 0,
+      "observed_repeated_read_commands": 0,
+      "observed_read_command_paths": [],
+      "repeated_read_command_paths": {},
+      "file_reads_complete": false,
+      "file_read_method": "Heuristic command-intent proxy from successful command_execution items containing literal cat, sed -n, head, tail, or rg commands with explicit file-like paths. Shell expansion, scripts, directory searches, MCP reads, and internal reads are excluded. A repeated command names a path recognized in an earlier command. Unquoted shell newlines are command separators; quoted newlines stay argument data and are excluded as paths. This is not an I/O trace, an actual read count, or a guaranteed lower bound on filesystem reads.",
+      "errors": [
+        {
+          "type": "error",
+          "message": "Reconnecting... 2/5 (stream disconnected before completion: URL error: Proxy connection failed: HTTP CONNECT failed with status 403)"
+        },
+        {
+          "type": "error",
+          "message": "Reconnecting... 3/5 (stream disconnected before completion: URL error: Proxy connection failed: HTTP CONNECT failed with status 403)"
+        },
+        {
+          "type": "error",
+          "message": "Reconnecting... 4/5 (stream disconnected before completion: URL error: Proxy connection failed: HTTP CONNECT failed with status 403)"
+        },
+        {
+          "type": "error",
+          "message": "Reconnecting... 5/5 (stream disconnected before completion: URL error: Proxy connection failed: HTTP CONNECT failed with status 403)"
+        },
+        {
+          "type": "error",
+          "message": "Reconnecting... waiting for network (Connection failed: error sending request)"
+        },
+        {
+          "type": "error",
+          "message": "Reconnecting... waiting for network (Connection failed: error sending request)"
+        },
+        {
+          "type": "error",
+          "message": "Reconnecting... waiting for network (Connection failed: error sending request)"
+        }
+      ]
+    },
+    "event_stream_framing": {
+      "valid": true,
+      "reasons": [],
+      "prefix_types": [
+        "thread.started",
+        "turn.started"
+      ]
+    }
+  },
+  "usage": {
+    "coverage_complete": false,
+    "errors": [
+      "Native stream emitted an error event",
+      "Native stream emitted an error event",
+      "Native stream emitted an error event",
+      "Native stream emitted an error event",
+      "Native stream emitted an error event",
+      "Native stream emitted an error event",
+      "Native stream emitted an error event",
+      "Stream lacks a completed terminal turn",
+      "No completed turn usage"
+    ],
+    "event_count": 10,
+    "completed_turns": 0,
+    "failed_turns": 0,
+    "completed_turn_usage": [],
+    "observed_completed_turn_usage": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "output_tokens": null,
+      "cache_write_input_tokens": null,
+      "reasoning_output_tokens": null
+    },
+    "usage": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "output_tokens": null,
+      "cache_write_input_tokens": null,
+      "reasoning_output_tokens": null
+    },
+    "cache_write_reporting": "Native-reported values; CLI/provider decoding may default omitted upstream cache writes to zero. A reported zero does not prove the provider supplied zero."
+  },
+  "historical_tariff_estimate": {
+    "actual_billed_cost_usd": null,
+    "native_reported_price_equivalent_usd": null,
+    "possible_write_price_lower_usd": null,
+    "possible_write_price_upper_usd": null,
+    "native_reported_components_usd": {
+      "uncached_input": null,
+      "cached_input": null,
+      "cache_write_input": null,
+      "output": null
+    },
+    "reason": "Whole-attempt usage is incomplete; unknown spend is not zero",
+    "cache_write_assumption": "Point uses native-reported cache writes. Sensitivity permits every noncached input token to be a cache write, because upstream-omitted writes may decode as zero."
+  },
+  "tariff_scope": "Oct18 historical provenance; no fresh verification yet",
+  "final": null,
+  "ready": false,
+  "actual_billed_charges": null
+}

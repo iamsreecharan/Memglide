@@ -1,0 +1,102 @@
+{
+  "all_checks_passed": true,
+  "blocking_findings": [],
+  "checks": [
+    {
+      "evidence": "V3 helper bytes checked before importing; exact SHA is embedded in v4 and included in policy seal. Referenced runtime helpers use standard libraries and recorded package/runtime identities, not v3 corpus/protocol reads.",
+      "name": "pinned_helper_closure",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Seal includes application Python, new runner/tests/protocol, immutable v3 helper, pyproject/lock, HEAD, settings, arms, seed/repeats and Python/SQLite/grammar metadata; verify_freeze checks them before/after.",
+      "name": "pre_corpus_freeze",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Public positives/controls, private scope grades, provenance, retained byte hashes and assignments are bound to plan. Initial exact plan bytes/hash retained; later plan or source drift invalidates comparison.",
+      "name": "corpus_and_plan_binding",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "12 positives with6 Python/6 TypeScript,4 controls, at least6 distinct canonical upstream roots; B/V3/C x2 repeats gives72positive+24control=96workers. Reversed orders balance per-task precedence; actual positions/pair precedence and strata retained.",
+      "name": "counts_and_balance",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Automatic request exact-key allowlist admits arm/public prompt/neutral worktree/fixed settings only. B alone gets paths; target IDs, grades, hidden native fixes/tests are not forwarded. Private scopes consulted after workers return.",
+      "name": "oracle_separation",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "New v4-local Git wrapper clears inherited Git overrides, ignores system/global config/attrs, disables templates/hooks/fsmonitor/signing/conversions. Highest-priority info attributes disable source filters/text/EOL/ident/encoding. Canonical blob hashes/path set must equal retained provenance; neutral mapping checked before workers.",
+      "name": "git_byte_preservation_and_trust",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Pinned verifier reconstructs canonical Git blobs and enforces exact full content/hash/whole-file ranges, duplicate-free canonical JSON envelope, task suffix and byte budget. Passthrough must preserve exact original text with no attached files.",
+      "name": "source_delivery",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Every attempted row/raw output remains; positive scope/control counts require valid worker and fidelity. Failed/unrun/duplicate assignments, observed metric coverage and failed lifetime remain explicit; no all-SKIP positive credit.",
+      "name": "failure_accounting",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Each worker owns a session. Timeout/interruption and every exit attempt descendant cleanup; cleanup uncertainty invalidates and halts. Interrupt writes partial report with unrun denominator.",
+      "name": "cleanup",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Setup/preparation/import/startup/cleanup timing scopes distinguished; own and waited-child CPU/RSS not conflated. Primary repository-cluster bootstrap keeps task/repeat pairs, exposes missing pairs/per-task effects, and labels small unadjusted intervals exploratory.",
+      "name": "resource_and_statistical_scope",
+      "status": "satisfied_by_code_review"
+    },
+    {
+      "evidence": "Source-scope proxy and normative control labels are distinct from coding correctness/semantic completeness. Known paths are oracle; all model/cost/billing/native-success metrics null, default promotion false.",
+      "name": "claim_limits",
+      "status": "satisfied_by_code_review"
+    }
+  ],
+  "created_at_utc": "2026-10-19T20:18:30.311454+00:00",
+  "initial_findings_and_resolution": [
+    {
+      "finding": "Inherited Git configuration and upstream attributes could invoke filters or transform retained bytes, while canonical trees were only self-consistent.",
+      "resolution": "Added new v4-local hardened Git/environment/attributes setup and exact canonical blob/path-set comparison plus neutral mapping checks. Old v3 helper and historical outcomes unchanged."
+    },
+    {
+      "finding": "Protocol promised actual pair precedence but initial summary exposed positions/strata only.",
+      "resolution": "Added actual positive/control pair-precedence counts including missing pairs."
+    }
+  ],
+  "limits": [
+    "This is a generic code review, not actual corpus/provenance independence or task quality attestation. Independent author/reviewer must verify previously unused unrelated roots and realistic held-out requests after freeze.",
+    "Fidelity does not prove complete semantic dependencies, coding correctness, avoided work, cost savings or hosted operational readiness.",
+    "90second worker timeout and post-exit output check are not hard total-study CPU/RSS/disk limits. OS caches/load remain uncontrolled.",
+    "Distinct canonical upstream URLs do not by themselves prove fork/family independence. Small repository-cluster intervals and multiple comparisons remain limited."
+  ],
+  "owner_reported_validation_not_independently_executed": {
+    "focused_tests_passed": 30,
+    "mypy": "passed",
+    "not_added_to_any_suite_total": true,
+    "note": "Owner confirmed the exact reviewed final files were tested after the final upstream URL normalization; reviewer did not execute these checks.",
+    "receipts": [
+      ".local/router-v4-runner/final-tests.xml",
+      ".local/router-v4-runner/final-tests.log",
+      ".local/router-v4-runner/final-ruff.log",
+      ".local/router-v4-runner/final-mypy.log"
+    ],
+    "reported_seconds": 0.28,
+    "reviewer_test_runs": 0,
+    "ruff": "passed"
+  },
+  "review_clearance": true,
+  "reviewed_sha256": {
+    "benchmarks/automatic-v4-protocol.md": "6efd6217f8f18a28fd7d6dbd4bc89f805b358ad398db375c2f85a6379ef29773",
+    "benchmarks/run_automatic_v3.py": "51a81176cf253c6afe19dbc676a80fac113a3df623e37ae9e8a70550244cb907",
+    "benchmarks/run_automatic_v4.py": "a93288de55ad04bcc86c8e2afb121cdd73867c36471b181786c5a1cdedd0a1fa",
+    "tests/test_benchmark_automatic_v4.py": "7be66a1ca3d5886b9b080f97efab8a16d7d35cc2b2d6db77873c0cd38676943a"
+  },
+  "scope": "Independent read-only pre-corpus review of the generic offline-v4 runner, protocol, tests and pinned v3 helper closure. No application/selector/native/model calls or test executions; no prospective corpus selected, authored or read by reviewer.",
+  "version": 1
+}

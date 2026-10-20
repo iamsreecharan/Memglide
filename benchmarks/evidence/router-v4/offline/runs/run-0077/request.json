@@ -1,0 +1,10 @@
+{
+  "arm": "V3",
+  "prompt": "Explain the difference between preserving insertion order and sorting values in two sentences, using a hypothetical collection of three numbers. This is a general programming explanation; no repository-specific analysis or code change is requested.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0077"
+}

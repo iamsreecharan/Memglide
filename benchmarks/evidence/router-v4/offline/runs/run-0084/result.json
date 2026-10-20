@@ -1,0 +1,73 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "positive",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 25284608,
+    "preparation_cpu_seconds": 0.0014572849999999749,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 0.0014570450000519486,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 29728768,
+    "setup_cpu_seconds": 0.357729239,
+    "setup_plus_preparation_wall_seconds": 0.39654056200004106,
+    "setup_waited_child_cpu_seconds": 0.0166
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.0014447459999999968,
+      "preparation_wall_seconds": 0.0014433690000714705,
+      "prepared_prompt_sha256": "da0760d0483d73c33d948d75d030109be0df29680f992ded174e940a02cdd42d",
+      "prompt": "Make soft_sorted resolve overlap between its first and last priorities without duplicating input elements. A key present in both priority lists should belong only to first. Preserve every input occurrence exactly once, the requested priority order, and stable ordering among equal priority keys. The key function should still control matching, and reverse should still affect only the ordinary middle portion. Keep the input iterable unchanged and continue accepting one-shot input iterators.",
+      "prompt_layout": "unchanged",
+      "reason": "source_unavailable",
+      "task_prompt_sha256": "da0760d0483d73c33d948d75d030109be0df29680f992ded174e940a02cdd42d"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 25284608,
+      "self_peak_rss_bytes": 29728768,
+      "waited_child_cpu_seconds": 0.0166
+    },
+    "setup": {
+      "cpu_seconds": 0.357729239,
+      "waited_child_cpu_seconds": 0.0166,
+      "wall_seconds": 0.3950835169999891
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.0014572849999999749,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 0.0014570450000519486
+    }
+  },
+  "ordinal": 84,
+  "process_wall_seconds": 0.5654362659998924,
+  "repeat": 2,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "boltons/iterutils.py"
+    ]
+  },
+  "task_id": "t02",
+  "worker_completed": true
+}

@@ -1,0 +1,10 @@
+{
+  "arm": "V3",
+  "prompt": "Let OrderedSet.intersection_update accept zero or more input iterables. With no arguments it should leave the set unchanged; with several arguments it should retain only members found in every input while preserving the receiver's order. Accept one-shot generators, handle an input that is the receiver itself, return None, and keep membership, positional access, and index lookup consistent after the update. Existing single-input behavior must remain compatible.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0022"
+}

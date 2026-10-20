@@ -1,0 +1,11 @@
+--- native-tasks.json
++++ native-tasks-v2.json
+@@ -33,7 +33,7 @@
+     "id": "n06",
+     "repository": "r03",
+     "language": "python",
+-    "prompt": "Fix sort_together so empty sorted data preserves the number of input columns: two empty input columns should produce two empty tuples, and a nonempty column paired with an empty column under the default non-strict mode should do the same. An empty outer iterable should still produce an empty list. Support an outer iterable that can be consumed only once, retain strict mismatch errors, and preserve existing key/reverse/nonempty sorting behavior. Make the code change; acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies."
++    "prompt": "Fix sort_together so empty sorted data preserves the number of input columns: two empty input columns should produce two empty tuples, and a nonempty column paired with an empty column under the default non-strict mode should do the same. An empty outer iterable should still produce an empty list. Support an outer iterable that can be consumed only once, retain strict mismatch errors, and preserve existing key, reverse, and nonempty sorting behavior. Make the code change; acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies."
+   },
+   {
+     "id": "n07",

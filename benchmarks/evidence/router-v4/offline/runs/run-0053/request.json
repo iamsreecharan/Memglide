@@ -1,0 +1,10 @@
+{
+  "arm": "C",
+  "prompt": "Write one concise release-note sentence using only this supplied change description: the tool now displays elapsed milliseconds when an operation finishes. Do not add repository-specific claims, inspect source, or change code.",
+  "settings": {
+    "context_format": "compact-prefix",
+    "max_added_tokens": 4000,
+    "max_context_bytes": 12000
+  },
+  "worktree": "/workspace/Memglide/.local/router-v4-offline/worktrees/work-0053"
+}

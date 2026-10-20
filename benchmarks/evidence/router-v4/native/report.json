@@ -1,0 +1,3504 @@
+{
+  "version": "router-coding-1",
+  "configuration_labels": {
+    "A": "Bare native Codex",
+    "B": "Oracle-known-path source-only",
+    "C": "Automatic v4 source-only"
+  },
+  "metadata": {
+    "version": "router-coding-1",
+    "started_at": "2026-10-19T21:11:15.368934+00:00",
+    "frozen_manifest": {
+      "git_head": "0b8e3586554a5002b6d49ded21d64b923a27a99c",
+      "files": {
+        "/workspace/Memglide/src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+        "/workspace/Memglide/src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+        "/workspace/Memglide/src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+        "/workspace/Memglide/src/memglide/service.py": "518f1d0a7d57027ae31d585807ab76aec3a0ec021509b146c89ce75819fe6a58",
+        "/workspace/Memglide/src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/Memglide/src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+        "/workspace/Memglide/src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/Memglide/src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+        "/workspace/Memglide/src/memglide/core/context.py": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+        "/workspace/Memglide/src/memglide/core/indexer.py": "9f76e10c9dc29b80a49973a38a656aaab15f6a6c34332a0a8acede1ee5dc3820",
+        "/workspace/Memglide/src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+        "/workspace/Memglide/src/memglide/core/query.py": "fd52ce9baaf673ac00ecbcdbf7bd434eefa7ca57025092642b6e2a6cfe1f28e9",
+        "/workspace/Memglide/src/memglide/core/watcher.py": "4a06c71b08789e8ca49a4b984c8aeeac2178a4b52bbe7122c011f7aecfbb52eb",
+        "/workspace/Memglide/src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/Memglide/src/memglide/integrations/auto_preload.py": "fea98fde8b67dfb954ec447a7a83ae79129e43335557e5a69d7ad662afae2975",
+        "/workspace/Memglide/src/memglide/integrations/bounded_router.py": "95f2f9cc044078828f0c3ec2a9d1c22eb943819ff999ca75d01b9998f5097acb",
+        "/workspace/Memglide/src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+        "/workspace/Memglide/src/memglide/integrations/codex_preload.py": "10dd39d532488bdd0a616ca3ab0e92e82900fc1468b87187c88dab6eb04fc5ca",
+        "/workspace/Memglide/src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+        "/workspace/Memglide/src/memglide/integrations/memory_preload.py": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+        "/workspace/Memglide/src/memglide/integrations/preload.py": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+        "/workspace/Memglide/src/memglide/integrations/runtime_evidence.py": "72b40da257093187ee02b0d543e4b19abb623aa74c2d6ee4e69147e3d886fe35",
+        "/workspace/Memglide/src/memglide/integrations/runtime_syntax.py": "3cf852ccf834dcf0f2fec95a80a4a1f4b5fd46a2038dc1cb3f89f17dc9d5ce27",
+        "/workspace/Memglide/src/memglide/integrations/source_evidence.py": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc",
+        "/workspace/Memglide/src/memglide/integrations/source_excerpts.py": "4cd5481ebf43a204993396edae03343c0297db199c3e825d2263948ad0b23497",
+        "/workspace/Memglide/src/memglide/integrations/syntax_identifiers.py": "989d3083f9f620bc34435051d2bdfd8611d9d0b6593376ecaeda7e1341830d2f",
+        "/workspace/Memglide/src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/Memglide/src/memglide/memory/engine.py": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+        "/workspace/Memglide/src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/Memglide/src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+        "/workspace/Memglide/src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/workspace/Memglide/src/memglide/storage/database.py": "403820dcaeadf0b1d67cb0691ce1c922eda34cbc7252b3e8cb7cc7607d2c703d",
+        "/workspace/Memglide/benchmarks/run_router_coding.py": "ccc745471e5328bd974a3abc43803bf3a0aa35e7b1363bd1bf34e2db02d8ff64",
+        "/workspace/Memglide/benchmarks/router-coding-protocol.md": "6f6b29041912b4d9d69daf26f5e7e3ef36e9d317e4447a66bbd45c6f6c5d5d34",
+        "/workspace/Memglide/tests/test_benchmark_router_coding.py": "d67a26d1a507330f8278b6d5b0f32e7f96947166a6ba72d050c1313d3767078f",
+        "/workspace/Memglide/pyproject.toml": "c5d46bc089b317425a273002e596ee910211a5407ebd3a23ea5be75e350589b0",
+        "/workspace/Memglide/uv.lock": "89bcc0d7a1c76ece1b91aaaa39ab108f819d1268d8d27bc60890abad124306f0",
+        "/workspace/Memglide/benchmarks/run.py": "de12449d6e2382ffc6bd37ea4df67b17d85818dc8f8ffd7756c9122bfd934115",
+        "/workspace/Memglide/benchmarks/run_daily.py": "b9947926df3ba7130cec81264b7abb6a28c5c1dd30697235052b5d401d729521",
+        "/workspace/Memglide/benchmarks/run_v2.py": "4855a0eb8c286b0ab39fb495e05fa31e0f3d8e84c96a7798e4947d2543d41ed4",
+        "/workspace/Memglide/benchmarks/run_automatic_v3.py": "51a81176cf253c6afe19dbc676a80fac113a3df623e37ae9e8a70550244cb907",
+        "/workspace/Memglide/benchmarks/run_automatic_v4.py": "a93288de55ad04bcc86c8e2afb121cdd73867c36471b181786c5a1cdedd0a1fa",
+        "/workspace/Memglide/benchmarks/run_cost.py": "b42d3532ae504d930b221d9b1767c9cf9e0560c83eb62325a458624b48afdd9b",
+        "/workspace/Memglide/benchmarks/estimate_cost.py": "e7f1cf8a4c62bfb929a69bcee9d3498b9cf68393e229f2fb442f3f148578778e",
+        "/workspace/Memglide/benchmarks/telemetry.py": "e10ade6b7ad728ee7517d9cda6ec6670fd5fe9be5010088775b085af53646191",
+        "/workspace/Memglide/benchmarks/compare_components.py": "0496df9bcf9f5268048dbb9912f24aa373d329c06c73c6dff85cf836f75cfd37",
+        "/workspace/Memglide/benchmarks/reporting.py": "719fa45fca6f458ca9905d5f0c2567dbd5911cdfc56da04f2fbfb24acff32831",
+        "/workspace/Memglide/benchmarks/run_cache_formats.py": "6cc1b200b38601aff54f04114caefd3cbb905956dafa7fb912b2b5b118e63d3e",
+        "/workspace/Memglide/benchmarks/__init__.py": "d1d84b94c47e424f962f3d13779545186e85176491fb23f6955fefde1567160e",
+        "/workspace/Memglide/.local/router-v4/native-tasks-v2.json": "dd2766edd2d4471b013705388903d43548509b003db4e0018110e693cc20b0f6",
+        "/workspace/Memglide/.local/router-v4/native-authority-v2/grading.json": "ec9302a042e1081010df666dd2751514c684d9531cd40c39ace9c3d34e80f6e8",
+        "/workspace/Memglide/benchmarks/automatic-v4-provenance.json": "800cbc2f1e9452efa58216d46fba74f3d852bd2a1c1a8a6de32fa47115982b9a",
+        "/workspace/Memglide/benchmarks/cost-pricing.json": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+        "/opt/codex/bin/codex": "1748767b230ebfc3d4ab7e4e254920d0c0ad9691fd8c11f190e7d44511a4a92e",
+        "/workspace/Memglide/.local/router-v4/native-policy-freeze.json": "67e2e942a4d8afc9bf60fd11cc38f1ad8e29db0c17f80fa0ae486f4359b888b1"
+      },
+      "fixtures": {
+        "r01/LICENSE": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3",
+        "r01/README.md": "125d653ce15f442d8cafb2b43b4ddc01f443807a4a782e035528cfd75c4388f9",
+        "r01/boltons/__init__.py": "ba0f4ee941c9a000b66251d4a39263a8ed009c2a3e0b77b8665c8aeff7ebe730",
+        "r01/boltons/cacheutils.py": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad",
+        "r01/boltons/debugutils.py": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283",
+        "r01/boltons/deprutils.py": "d8f2c0fdce9d8276466127f093771e1a0a8844bcd1bd92e6880f30d2782e0151",
+        "r01/boltons/dictutils.py": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656",
+        "r01/boltons/easterutils.py": "1bfc6e9e05606689ab4087b00585c183ff4fcc4eb4a423f9be153a0be6818d40",
+        "r01/boltons/ecoutils.py": "ce3663d4e772fe871c17dcd0847717f8a610616a6b0141106564bedc5ab8a3b6",
+        "r01/boltons/excutils.py": "6a2eddd26f46dbdceeda125bd20379d52ffc98a941fe867e3434d17b93119957",
+        "r01/boltons/fileutils.py": "0c2025cf1e649eabd511a84303b491c19ea59cdcac2f958f9a90b7e39e0a8b0e",
+        "r01/boltons/formatutils.py": "15c7963d5c97b11ec7a419e9e4aec7c20ca765bcf701306510c9c57c7eaeb1a4",
+        "r01/boltons/funcutils.py": "f290815c9dbe5c4d73ade849935dfb2814411a89aeff89c7afef60c7b3aaba72",
+        "r01/boltons/gcutils.py": "e82a32093560c14bb8298532681a3338d2ec6f48d20ccf2f1a4496dd67a17f97",
+        "r01/boltons/ioutils.py": "e4e73aaeb038bc240f687e8390c60f471a6b5b673a534c54cb9c9af101b995d2",
+        "r01/boltons/iterutils.py": "7fb67f49dc1d895051549b523c2e21161e3c1f4e21590fa7fd09039386d08510",
+        "r01/boltons/jsonutils.py": "46b92387597863e6a12d489a370220d03c2d70ebc795121f000d2b724b0fb50a",
+        "r01/boltons/listutils.py": "5f45432e942b04040d3cc917f08a7a9fee7fc5339768591fa946ae0298ca882d",
+        "r01/boltons/mathutils.py": "c4f32563bb0a9281d5b7a3770c661e5a3ae3c6c3ae2644f5ff0a608edce2d5e6",
+        "r01/boltons/mboxutils.py": "426b5211f7b3ce6ee9d1c80d794b56d9544435865b48a016d1955cd0a1e0320d",
+        "r01/boltons/namedutils.py": "0f5a4a0e196c7d918762928bfd9157c29d411a9d827ae7f45a53c43328887224",
+        "r01/boltons/pathutils.py": "667a4bb46ed79f66af83b07fac419f3f91576c2e7ed404e11f28cd68b4645fbd",
+        "r01/boltons/queueutils.py": "a60f04f5f27803429c7a79f3f51f9b286cba3bd997f122161f252c66ca0499bb",
+        "r01/boltons/setutils.py": "d385936effa655abbd6bae772c08089e6c9ac8b266eff13105f4386fe1a58b43",
+        "r01/boltons/socketutils.py": "b2d5da2d58dd3d05c14153a83f36da928fe6285a4a44850c2eab9877c1959adc",
+        "r01/boltons/statsutils.py": "0c4d05a17b14244a880e5047c1823d1e1e522e6c5ee76c6b47f54d8bde791e68",
+        "r01/boltons/strutils.py": "c5ecb7efd3b2e86f92545c18d8d72193f45a1bd1d0edaf3da65868aa0e8bcdda",
+        "r01/boltons/tableutils.py": "0f01e27d91ab37d322db529f3e08873feefcea822fdbf760262093b3e01524ff",
+        "r01/boltons/tbutils.py": "7cd7fb1b7ce1873c37ee3053bb59d8166b671cf667013bd27e2fdbc52ab03e29",
+        "r01/boltons/timeutils.py": "27f8f2999b698a3e6064f24b1ff312ef86358592a503ad2c0c5b4fd265ff430c",
+        "r01/boltons/typeutils.py": "4da2b26d71386ee9010dfb52104e461ecba486ba5544a8cf50d9e26cd34e9c09",
+        "r01/boltons/urlutils.py": "0de5f96e627483f3de1dce10fc4e5f8d913a36c800166842cd55970d4ddd0812",
+        "r01/pyproject.toml": "23d689cf1d468c6af6442869eb7483402aaea8b3cabdbfb2d7aa9df3a293aa04",
+        "r01/setup.cfg": "4024bbca7672ce6a9cebfee0e4cd4017582ca0787dc1f603e859cd9c861147ac",
+        "r02/MIT-LICENSE": "0cf8f55f36dc1306b3fe89bf29e29a0c742f279f038d149244319e593ab16ca4",
+        "r02/README.md": "00e872b24819851e48eab4326a633ec441807a9fcbbe814dba280634f6c7f173",
+        "r02/ordered_set/__init__.py": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d",
+        "r02/ordered_set/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "r02/pyproject.toml": "6ae4514d20de3f81aa4ca513b38cac165af0cd6c876f021159a3c51e457358bb",
+        "r02/setup.py": "9d2e313b2c672c53673e49330f7b2a27c4f88c8071f192605bab932ee9b72047",
+        "r03/LICENSE": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+        "r03/README.rst": "6a5dad4de3ffc03544d72a70cc876e15565b250231557b566f967965d4dd1c5f",
+        "r03/more_itertools/__init__.py": "e7988a22d707340f59eb4cc01a4a534994fdcfb8420c01f768b42fd5e9caeccc",
+        "r03/more_itertools/more.py": "1bdc5f323ea18906436a42268b942d5b4d15ac8b3ff17c1211a59fb192fa068e",
+        "r03/more_itertools/more.pyi": "e4952b7a6230e27bee49265fd9af08ae8353946e2d5a78ce60c55d2f5efe5514",
+        "r03/more_itertools/recipes.py": "468ab191bbb5fd62e8603d741e6983acdfa9d697d0ff9252b0c56ffdd24ca9bc",
+        "r03/more_itertools/recipes.pyi": "2dd48ac5ef0b502f989bd2e13923c402994244ee50a4187e2f0d59c348bf2583",
+        "r03/pyproject.toml": "a2b3a175ee00820cd2d387a6521d80af5eccfe4d96dc057f9ba4d3cd76ddba87",
+        "r04/LICENSE": "9de040587128bd3f50f89fd637c16dc47490546a02474c7c08e41d66418e481e",
+        "r04/README.md": "ad309d6f643b71b4f91e9de9b8f93a53aff2c0ad1aa151e684ea9e6bc1dbcdd7",
+        "r04/package.json": "36843cf512f23c733b6102cb219d5f4e77a4d1403aa733b0729e3169b174cb12",
+        "r04/src/lib/BSTree.ts": "276704b52e0204cb140d4521dafab7943d2c8028c07f63add5d7b77b2ea096fb",
+        "r04/src/lib/BSTreeKV.ts": "9805c51622b29901b1b7afc5eaf9ca84fbc1683b336dd349f0112bed7e525fad",
+        "r04/src/lib/Bag.ts": "0172c3a7d081a5908e56bb61e67ae55dcbe292432e89ef486423247ad2b87e15",
+        "r04/src/lib/Dictionary.ts": "dee29f057989769d605904f011dc289a802a158693c1d3249b89809af8b930b1",
+        "r04/src/lib/FactoryDictionary.ts": "2c573094c56c86210a2980852d3cffed2c2ce5a5eb9e794b5f36030ec08bc9ac",
+        "r04/src/lib/Heap.ts": "517213e786e234ddcc3b53ba4cb1b5f3ad23eac1ac6c171d601d110509f210c5",
+        "r04/src/lib/LinkedDictionary.ts": "74fc83972e133b4a41b02e23396e9961ade0f9689ca287d00d16882de7a17c72",
+        "r04/src/lib/LinkedList.ts": "67317855811fad66dade74d9114fc568642db017c44a3a36dff518d2ec0a1f53",
+        "r04/src/lib/MultiDictionary.ts": "643746dc363eb406f53b49d74d79bf85a0b3cb0087c3c865bef36e0824f0f6f5",
+        "r04/src/lib/MultiRootTree.ts": "58a3b9de82625023752b5c465543856ccc5aa19afd73926c066a114b5399f5c8",
+        "r04/src/lib/PriorityQueue.ts": "62bcf790e323014f457300bd06b190d477241ac62af611820951b98fef3cd777",
+        "r04/src/lib/Queue.ts": "d648a4f053e27f189b55a1ae92415dd7f389de868baedc128dc6817ffd4d6976",
+        "r04/src/lib/Set.ts": "ffb999deb7ef76ba0d657d6fc60abce8b8adadf50b2ee587a509e71bb6d4817a",
+        "r04/src/lib/Stack.ts": "4810c97ae2d14afbcdd4a7f21c7f4139b912b857bc46c040f35f3415e854807a",
+        "r04/src/lib/arrays.ts": "d88eae90799b8c848a5bca86436e12cc9514720380995219e3417387b41ef8ec",
+        "r04/src/lib/index.ts": "18f6c342ec3007caa01991bde554c8c8eeac262d0ac71b93301fea9e06efe372",
+        "r04/src/lib/util.ts": "43c64ca479bc26962cc19c4983bb0c7da97aeffe5222306472bf3ad436128983",
+        "r04/tsconfig.json": "f0b662d9f52ac8af2e57c37f1eefbbb0003ed17cab64ce145f1cbf7219b56932",
+        "r05/LICENSE": "3f4f7f9d7c4a9965aeef4a9c95de38f73ecbab96bed68d320a224a74dfcaa973",
+        "r05/README.md": "b37f72e1b72d3ae9a3df65d24fcf93aa28dcad305a065056f06d89934b3168a9",
+        "r05/package.json": "77482a0d2edde0bd1c4a9347f0adf64d8bb24c0b074a9e7e3d93269f138d3417",
+        "r05/src/_internals/error.ts": "6ba5f5f40879bf596be420db35a95b9a492cda3f91d504f5ee66f722f18425ce",
+        "r05/src/_internals/utils.ts": "0eff2c3154f48fe22278939f8c179ee22b40596e8df9bb3ccfa4f9c9b3b79723",
+        "r05/src/index.ts": "57b296e55fbe34b699ee4bcb98e0c86726b06f835522ba7c379f41ed4e102324",
+        "r05/src/result-async.ts": "84e72684262b2b125b28dba1277231baddfb53e1196716f0618db4fbb278ad1c",
+        "r05/src/result.ts": "8bebd3ca02e67482d16d10ad69bc3a23f72d6f2a2a04cb6fb120e3f6732d5754",
+        "r05/tsconfig.json": "f2b83ab65e0567111fc6f0a78221e6440cd6fb1d4c693fb305f3594c3e6f63a9",
+        "r06/LICENSE": "498c0717759d83010a03b27f4de843b94a0936eb2d22adcb08000b5ef337194e",
+        "r06/README.md": "33ee2caf5d569c9e31cf79b69a91d4bf40c66449bc6bb453156a405c7c9e20c0",
+        "r06/package.json": "9ce2d0872a1e38712e780232f00eec25203e1a8eb5d048827b03a2fce9d26627",
+        "r06/src/index.ts": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd",
+        "r06/src/types.ts": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77",
+        "r06/src/utils.ts": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40",
+        "r06/tsconfig.json": "de13d876428e52248a7609f919ba8bd7bbdc8df1fc38a014ad086c9991b92205"
+      },
+      "grader_files": {
+        "README.md": "eb29066c2925145c3645ae60bcff304eb5e1e592be7d011a5892c1eeecf1ac5b",
+        "graders/dispatch.py": "326fcfc05b841c8fa512ae8a51788c9a2565189ef36e5a898c7a72a518468750",
+        "graders/n07.cjs": "16fdbe9078d710b8a7ba8b3f20c4b68ad8508d5cb63fda2dff81c2b390171bba",
+        "graders/n08.cjs": "4846b483090b76a9a165eba59a271b688cde14a8c0b45cc3afb7d72de2157b0c",
+        "graders/n09.cjs": "f718f2a45f499f68fd2d25deaccccd9d785ca8d7d0ed6f16f0b1d81c055c2661",
+        "graders/n10.cjs": "e12a4c7f52684b69530a6f9881e3e04d0f974ecd9d46b65478b7bdb50d639bcd",
+        "graders/n11.cjs": "d071377fd8d749cf47882a1d59432b0c4a38a61767eccd573e6da5bb3b80f637",
+        "graders/n12.cjs": "df0c8d300c3ea8ad7f02b36646cdcd16ef317dc61c1543755c12a5e4adaba266",
+        "graders/py_more_behavior.py": "7870d697962b0687ddcea9b13c5b879ab4f1eb984a62b34aa85ed218217cd1a3",
+        "graders/python_pair_behavior.py": "5c410f8a652f02245e95a9799de55dd946564e039bb1d7bd68c1c1ec447fd5cf",
+        "grading.json": "ec9302a042e1081010df666dd2751514c684d9531cd40c39ace9c3d34e80f6e8",
+        "private/native-controls.json": "df06d3185c9bba30624feb1d8e621f76881991279069012eab8bb5ee5734ade1",
+        "receipts/control-summary.json": "b9ae4ad22192ad3d40a7f0470ff4b0b2dd0592e0c3e01b46529df8930121a8f2",
+        "receipts/harness-integrity-controls.json": "c43c2a6306625e74bb85cdfd22f55f21df584fdd3c76648adbeaedff4e195a33",
+        "receipts/n01-baseline.json": "484d9b833439943293ac9add11d91625187dded885ecf2e911d01e73bb5a9028",
+        "receipts/n01-reference.json": "261f3cfbf491feaef15b1bcceebae8ee23c4072b5ceae7bc5120f3d115162c0b",
+        "receipts/n02-baseline.json": "d7e8e52d97dc03387d8eb10a0a90151ddf925586ccbdb1739ab6cbc853a3affe",
+        "receipts/n02-reference.json": "d108f089a5ad54f0668aa17adf67410bd3c37ad97c05c8ad2092b4d0cb2b6c7e",
+        "receipts/n03-baseline.json": "39e48203ebde1edf57244befebe68d31f8840bc4b3333a35b7935866d2fb6d9b",
+        "receipts/n03-reference.json": "64242df96191388ec8b92ef8dd470779a96697262af70497099601ddd94daced",
+        "receipts/n04-baseline.json": "b441aa57c10de655528c2d6da5809d2046a71849a821842b6e7664d628fe9fa0",
+        "receipts/n04-reference.json": "5f6177c9bfb99aae3dd39960bbc6d3bac79c1895a0025074df0f37996ded3bf3",
+        "receipts/n05-baseline.json": "e6db3aca4e736c1d076b68dd01542b5a643a80cbc62dd39f213f8490e2538afa",
+        "receipts/n05-reference.json": "c1b7e8a424600a25971972d17d694d120565a55c686f4a47beef7bf602b1f642",
+        "receipts/n06-baseline.json": "9b5a15eedb37222dacafbce48f9c70ca129b57b12e2152d96cc8b7be99cae957",
+        "receipts/n06-reference.json": "60ad1cb793ad9bb7d5bccba87a8c1a1244b4b4cb20fc9c2cb7f0e893952cce03",
+        "receipts/n07-baseline.json": "d9959e4cca860c5c229694fadd0a92b7bb8d16cc9d66d7a4576da809f112635b",
+        "receipts/n07-reference.json": "2b72b98a18be2ace7412685887aede6f89a3cc24bc25bafd3117cca12203e25e",
+        "receipts/n08-baseline.json": "65c2b48b77fd4803072a29770f9feb5ae03fbf0ef4e283a63b1aa2d9fbba50df",
+        "receipts/n08-reference.json": "580aa985f6658d537cb5b7a5b167e0b73ea75ebbce57e505888482c3e24bbabf",
+        "receipts/n09-baseline.json": "65e57e2e876f3a915240c3d149c07d12cb660a3fe1c0420d4a9c5e16e9bfc746",
+        "receipts/n09-reference.json": "ff28edd2c7db65085f35aa2134436eb71c2c7e05cb536f6ca69bf94968ce8e03",
+        "receipts/n10-baseline.json": "b3fc7a5d4f5dcd86ca4fcedf8e006c5b7fbc66d40af605dfbb341c846df6326e",
+        "receipts/n10-reference.json": "d764d087810e02355292166eb8ccca2db11a4c94083c69c30fba64c43000a2f8",
+        "receipts/n11-baseline.json": "75d425b04e3e9bdfffddd76990fcae7ac012b9754ff1d0bc30bef7c7b08204ea",
+        "receipts/n11-reference.json": "3b3adb4084ea57e12e38a8aaeb6159b1a40158aa4b2eda385efc6ebe3d2cfdd5",
+        "receipts/n12-baseline.json": "7d1790f5b33bb7da8c2816423c0f285ca530344a77c509a1c51e33d0e5991d15",
+        "receipts/n12-reference.json": "36a0e27e60b993dd0623244654ce7a463c82a0e2a0205b58ef9e6c19a22344ad",
+        "refs/n01.patch": "1803ad1e7fded2d91f125a13abe60771885f82467c82384abaf2a0d013922b67",
+        "refs/n02.patch": "7ca3c72726e9ed150ad43455a639bf8b61787014495a08dfbd03e8836a5e2911",
+        "refs/n03.patch": "77cddfef8114b7d814f2668b6be6b1abc2a837b2453558593e0ea2f9abf575db",
+        "refs/n04.patch": "52a37c1d82e44003273b98ecece0eaf2c16c5f3f31b2d12939dafa9d3bc58d88",
+        "refs/n05.patch": "c9f9366daa11643f6ffd4be57297154b93fa0b540f8f9f19940c73f3e9d0e383",
+        "refs/n06.patch": "1a0249da7c057253084ee64380264d1428460ca5ff15fdfab0a8092c9e88e39a",
+        "refs/n07.patch": "edffa995b205a90077f3dd39c079daec8b6d22732b75c2b5725b6afd055951e6",
+        "refs/n08.patch": "2abd2c0e3a041f2135937e4b9f902ef57afd571ed49d79c84c8184c2a51b1a80",
+        "refs/n09.patch": "73e41ab1b0ca22a42159625b585f7f327003fd3e2fc9a625bd5a0a62139c3223",
+        "refs/n10.patch": "eea3672626b3c652476a16a58cda0e172a8b47ea440e77392380e44c0a0aebd9",
+        "refs/n11.patch": "d4ecd72d15df680659ef782f1415bfc513f0df90d35e5015a792108a33b18868",
+        "refs/n12.patch": "36298b723823e53e5435a959e418e08240195795948b4b7c80e8a2c4607eb511",
+        "validate_controls.py": "ce69e683df972ce7ce7d308176ed0ef14017a2d317c8f5877b8ad256fe016115",
+        "vendor/TYPESCRIPT-LICENSE.txt": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+        "vendor/TYPESCRIPT-THIRD-PARTY-NOTICES.txt": "1af3c68039c57e539422da82a4faada506ce6d0ea6f90e0b699d02dbcdb7a90c",
+        "vendor/compiler-chunks.json": "cf64c9a906d5c213aa57375988e2f9bc8050c660c60d9b1118bcb7a53a956c4b",
+        "vendor/compiler-loader.cjs": "9780166a995921cd7f36defc21419d883ced0ce7ca0e3620ea0b04adadfa6c4a",
+        "vendor/compiler-provenance.json": "b33b8170cbb6de398f309a89b97797fabef1845aedc14b04a6bb4511861891fc",
+        "vendor/typescript-000.chunk": "c968b2076944c689087498dfcbf148557f63e3cad8e10e8313430ad2d5edc170",
+        "vendor/typescript-001.chunk": "202802006c30c73f5a06f18ef2dac6d0037d2466263752b4e10904780c119e61",
+        "vendor/typescript-002.chunk": "29eee180be155140a8869f9da5df5499ab706a84aa190e35e067900dc7b4a0ec",
+        "vendor/typescript-003.chunk": "e9b03d9551c3724e3cc683a9a88c9b77a2fa0e7ac741f7236141761c4dff4aaa",
+        "vendor/typescript-004.chunk": "25977c73a8b6f3bb5a5475c0a664d61942cce1ef822fd4d5b1cd6f0ead2c8b6e",
+        "vendor/typescript-005.chunk": "ea491ab34fe71e1679065e93136e9b1518626d00edf1991e5e25bc9f3f2447bc",
+        "vendor/typescript-006.chunk": "9d123314c51213c49001676e29e939d5b5e514c0e22faabbd55abe49ed68a39b",
+        "vendor/typescript-007.chunk": "ba1bc36e111aea455df952696a5566a760db6e68b9a5f04e579645eca484b123",
+        "vendor/typescript-008.chunk": "9370f459987083528bbba5542b0dbe0afd73a5513ae72c9b8d4d6f97e367b9ac",
+        "vendor/typescript-009.chunk": "0938d66ed9ac7dce0d4a01675999a9205233932112a259269ef61933d6cf18f2",
+        "vendor/typescript-010.chunk": "dc64eb88d214c6fb5ec2f4e216270b25cb62e3313799867b73340257677d033f",
+        "vendor/typescript-011.chunk": "28a18546eca34d9b566377c82d05c0718597a1445d82c05d40a033974257d1c8",
+        "vendor/typescript-012.chunk": "fe1390b63df3a7d1db77adafe6b70a168c0c361463d0eac0750539acf1e4a027",
+        "vendor/typescript-013.chunk": "673ae3e83159d1fd48a8bcb68f0a7c5cf2d9f15fb0d70201e721a729a55d908d",
+        "vendor/typescript-014.chunk": "941efb63cfea022e05a9307d18f67c16d1d398f7bd579f45f3169af9154a7049",
+        "vendor/typescript-015.chunk": "9e204d484bd80daf56959da679cfe5ea662524fac4c47b5469b7986999019400",
+        "vendor/typescript-016.chunk": "ef6580d4c51b7e85eca924961dffb46808f473ddc235744af57a04c2e45843c9",
+        "vendor/typescript-017.chunk": "a87dbb1d46a2d390e82e31f47f6c2faec29714953b75fb0381e6283151f3602b",
+        "vendor/typescript-018.chunk": "c0bd4b0bc5247c018236ef3efdd7882db36a9ea486248593f7166f34c46b80b8"
+      },
+      "settings": {
+        "model": "gpt-6.1-sol",
+        "effort": "low",
+        "requested_service_tier": "default",
+        "codex_version": "codex-cli 0.159.2",
+        "codex_executable": "/opt/codex/bin/codex",
+        "codex_binary_sha256": "1748767b230ebfc3d4ab7e4e254920d0c0ad9691fd8c11f190e7d44511a4a92e",
+        "codex_home_binding_directory": null,
+        "repeats": 2,
+        "seed": 20261019,
+        "timeout": 180.0,
+        "max_attempts": 72,
+        "max_estimated_usd": 20.0,
+        "attempt_reserve_usd": 0.25,
+        "max_wall_seconds": 18000.0,
+        "source_settings": {
+          "context_format": "compact-prefix",
+          "max_context_bytes": 12000,
+          "max_added_tokens": 4000
+        }
+      },
+      "runtime_identity": {
+        "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+        "sqlite_version": "3.53.1",
+        "dependencies": {
+          "pathspec": "1.0.4",
+          "tree-sitter": "0.25.2",
+          "tree-sitter-javascript": "0.25.0",
+          "tree-sitter-typescript": "0.23.2"
+        },
+        "python_executable_sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+        "node": {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "sha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+          "version": "v24.19.0"
+        },
+        "git": {
+          "path": "/usr/local/bin/git",
+          "sha256": "9dae295c1a4ffae4ee772e6205fcf22b26e1bfeeb5ee98f278b5139bda7ca22f",
+          "version": "git version 2.52.0"
+        },
+        "typescript_compiler": {
+          "path": "/workspace/Memglide/frontend/node_modules/typescript/bin/tsc",
+          "sha256": "2219f428a7e55aaf1f7ad85b9b0f0cf5078aeb76ccc9a7c6036c92d48f492ffd",
+          "package_sha256": "3722b30210616a13a3213ded11575ba6b2dbab10c32a5ef67afca8513e27017e"
+        },
+        "typescript_execution_files": {
+          "/workspace/Memglide/frontend/node_modules/typescript/lib/getExePath.js": "96c10fd3a18e165d7323de8e314ac8d755ad96811f9fbc304a5b3ba4e05285cc",
+          "/workspace/Memglide/frontend/node_modules/typescript/lib/tsc.js": "cbdfbf11c26ed00dfc073155e316a42d6d6d8a387be61006b82fa9aa93ac572e",
+          "/workspace/Memglide/frontend/node_modules/typescript/lib/version.cjs": "b0a2b4a3976dad0f31325bd18eeee8e7d2a1ed674d3e486b1ad5c501207960a9",
+          "/workspace/Memglide/frontend/node_modules/@typescript/typescript-linux-x64/lib/tsc": "4f2de678286401759b3fb4475bafe35b8f32b4b3a07d92642bbf37eadc9b34a4",
+          "/workspace/Memglide/frontend/node_modules/@typescript/typescript-linux-x64/package.json": "d229521d1ab1d09e60eeb887c8be8e9454a1ea184fe801dcbfa276da3c569cf7"
+        }
+      },
+      "common_task_prompt_sha256": {
+        "n01": "a4d04f1999f03af11dbc1f8b46813da29ef5b5640ddf486441ad3d7692b03e74",
+        "n02": "0297453cdc5f06e94a98f5384cfcaa5040437d7b73f3dff4f9ec00ae98bdc7f5",
+        "n03": "3b1b0dd55176ef4b9290cbc7d8a3a6ccea5a57ca1ee682c2a7802159746d4379",
+        "n04": "c2a593159b1c574c84bdb466cde968af423c71a3a5092058aea22ad7aa1c940e",
+        "n05": "cc62a90815b93fb558e4ffab57b93a9bae33bf657916ae029332d2f319872931",
+        "n06": "4b5ffc9dc58109b557d764991e69ef1b028d8453d5a0c41db1f73219c4bc24bf",
+        "n07": "01a4f76e61904cb217effdfd058dc62232741bfd08e0534289fe428ea9f7f84a",
+        "n08": "c50005757a67151cd2601691f1b31dcbd8eda8fcf390dda169b144e6d4d5b835",
+        "n09": "286d73804c4d7b13b1ca5f24fdc8c89ff448cc2361f1ef206c9a01a31f25c86a",
+        "n10": "a32da078ddc170238ec4b9f536cc5824a3a2df8a4b8ee645aac2e5691980be40",
+        "n11": "20fbbf6114f363db1be04639040d0043070224984c3215df20c8dbe284278ca7",
+        "n12": "b762d9e4ffdd0bf9524bbd72f5cc737f54d1670ff7c57980fb53239748ef6027"
+      }
+    },
+    "repeats": 2,
+    "repositories": {
+      "r01": {
+        "path": "/workspace/Memglide/.local/router-v4-native-plan/repositories/repo-0001",
+        "commit": "9d73b0c3814a504a6cf4f389e2b5dedd5a55bd0d",
+        "tree": "e08f1b40580dea2d80d930ef98aa4a1bf63a693f",
+        "retained_file_sha256": {
+          "LICENSE": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3",
+          "README.md": "125d653ce15f442d8cafb2b43b4ddc01f443807a4a782e035528cfd75c4388f9",
+          "boltons/__init__.py": "ba0f4ee941c9a000b66251d4a39263a8ed009c2a3e0b77b8665c8aeff7ebe730",
+          "boltons/cacheutils.py": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad",
+          "boltons/debugutils.py": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283",
+          "boltons/deprutils.py": "d8f2c0fdce9d8276466127f093771e1a0a8844bcd1bd92e6880f30d2782e0151",
+          "boltons/dictutils.py": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656",
+          "boltons/easterutils.py": "1bfc6e9e05606689ab4087b00585c183ff4fcc4eb4a423f9be153a0be6818d40",
+          "boltons/ecoutils.py": "ce3663d4e772fe871c17dcd0847717f8a610616a6b0141106564bedc5ab8a3b6",
+          "boltons/excutils.py": "6a2eddd26f46dbdceeda125bd20379d52ffc98a941fe867e3434d17b93119957",
+          "boltons/fileutils.py": "0c2025cf1e649eabd511a84303b491c19ea59cdcac2f958f9a90b7e39e0a8b0e",
+          "boltons/formatutils.py": "15c7963d5c97b11ec7a419e9e4aec7c20ca765bcf701306510c9c57c7eaeb1a4",
+          "boltons/funcutils.py": "f290815c9dbe5c4d73ade849935dfb2814411a89aeff89c7afef60c7b3aaba72",
+          "boltons/gcutils.py": "e82a32093560c14bb8298532681a3338d2ec6f48d20ccf2f1a4496dd67a17f97",
+          "boltons/ioutils.py": "e4e73aaeb038bc240f687e8390c60f471a6b5b673a534c54cb9c9af101b995d2",
+          "boltons/iterutils.py": "7fb67f49dc1d895051549b523c2e21161e3c1f4e21590fa7fd09039386d08510",
+          "boltons/jsonutils.py": "46b92387597863e6a12d489a370220d03c2d70ebc795121f000d2b724b0fb50a",
+          "boltons/listutils.py": "5f45432e942b04040d3cc917f08a7a9fee7fc5339768591fa946ae0298ca882d",
+          "boltons/mathutils.py": "c4f32563bb0a9281d5b7a3770c661e5a3ae3c6c3ae2644f5ff0a608edce2d5e6",
+          "boltons/mboxutils.py": "426b5211f7b3ce6ee9d1c80d794b56d9544435865b48a016d1955cd0a1e0320d",
+          "boltons/namedutils.py": "0f5a4a0e196c7d918762928bfd9157c29d411a9d827ae7f45a53c43328887224",
+          "boltons/pathutils.py": "667a4bb46ed79f66af83b07fac419f3f91576c2e7ed404e11f28cd68b4645fbd",
+          "boltons/queueutils.py": "a60f04f5f27803429c7a79f3f51f9b286cba3bd997f122161f252c66ca0499bb",
+          "boltons/setutils.py": "d385936effa655abbd6bae772c08089e6c9ac8b266eff13105f4386fe1a58b43",
+          "boltons/socketutils.py": "b2d5da2d58dd3d05c14153a83f36da928fe6285a4a44850c2eab9877c1959adc",
+          "boltons/statsutils.py": "0c4d05a17b14244a880e5047c1823d1e1e522e6c5ee76c6b47f54d8bde791e68",
+          "boltons/strutils.py": "c5ecb7efd3b2e86f92545c18d8d72193f45a1bd1d0edaf3da65868aa0e8bcdda",
+          "boltons/tableutils.py": "0f01e27d91ab37d322db529f3e08873feefcea822fdbf760262093b3e01524ff",
+          "boltons/tbutils.py": "7cd7fb1b7ce1873c37ee3053bb59d8166b671cf667013bd27e2fdbc52ab03e29",
+          "boltons/timeutils.py": "27f8f2999b698a3e6064f24b1ff312ef86358592a503ad2c0c5b4fd265ff430c",
+          "boltons/typeutils.py": "4da2b26d71386ee9010dfb52104e461ecba486ba5544a8cf50d9e26cd34e9c09",
+          "boltons/urlutils.py": "0de5f96e627483f3de1dce10fc4e5f8d913a36c800166842cd55970d4ddd0812",
+          "pyproject.toml": "23d689cf1d468c6af6442869eb7483402aaea8b3cabdbfb2d7aa9df3a293aa04",
+          "setup.cfg": "4024bbca7672ce6a9cebfee0e4cd4017582ca0787dc1f603e859cd9c861147ac"
+        }
+      },
+      "r02": {
+        "path": "/workspace/Memglide/.local/router-v4-native-plan/repositories/repo-0002",
+        "commit": "bf8a8690c1249cfaa49153c707074f8873cc8b9a",
+        "tree": "70740c0fea34ea92e58941668de6374975a78bd9",
+        "retained_file_sha256": {
+          "MIT-LICENSE": "0cf8f55f36dc1306b3fe89bf29e29a0c742f279f038d149244319e593ab16ca4",
+          "README.md": "00e872b24819851e48eab4326a633ec441807a9fcbbe814dba280634f6c7f173",
+          "ordered_set/__init__.py": "f4cd061fb3f53043a0f95439bcfbe455c136f8df3de5041e6227873313f90d7d",
+          "ordered_set/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pyproject.toml": "6ae4514d20de3f81aa4ca513b38cac165af0cd6c876f021159a3c51e457358bb",
+          "setup.py": "9d2e313b2c672c53673e49330f7b2a27c4f88c8071f192605bab932ee9b72047"
+        }
+      },
+      "r03": {
+        "path": "/workspace/Memglide/.local/router-v4-native-plan/repositories/repo-0003",
+        "commit": "1eb1fe3f5746714db7259863d379c02aa69292bf",
+        "tree": "6f368b280b92066b2644fdb055f7d69ffda72fde",
+        "retained_file_sha256": {
+          "LICENSE": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+          "README.rst": "6a5dad4de3ffc03544d72a70cc876e15565b250231557b566f967965d4dd1c5f",
+          "more_itertools/__init__.py": "e7988a22d707340f59eb4cc01a4a534994fdcfb8420c01f768b42fd5e9caeccc",
+          "more_itertools/more.py": "1bdc5f323ea18906436a42268b942d5b4d15ac8b3ff17c1211a59fb192fa068e",
+          "more_itertools/more.pyi": "e4952b7a6230e27bee49265fd9af08ae8353946e2d5a78ce60c55d2f5efe5514",
+          "more_itertools/recipes.py": "468ab191bbb5fd62e8603d741e6983acdfa9d697d0ff9252b0c56ffdd24ca9bc",
+          "more_itertools/recipes.pyi": "2dd48ac5ef0b502f989bd2e13923c402994244ee50a4187e2f0d59c348bf2583",
+          "pyproject.toml": "a2b3a175ee00820cd2d387a6521d80af5eccfe4d96dc057f9ba4d3cd76ddba87"
+        }
+      },
+      "r04": {
+        "path": "/workspace/Memglide/.local/router-v4-native-plan/repositories/repo-0004",
+        "commit": "fc800d00fe0260097a2498ec272f15479fb8f81d",
+        "tree": "d7dfb42ae352b6f61cef6094ed89c63dd5af8c14",
+        "retained_file_sha256": {
+          "LICENSE": "9de040587128bd3f50f89fd637c16dc47490546a02474c7c08e41d66418e481e",
+          "README.md": "ad309d6f643b71b4f91e9de9b8f93a53aff2c0ad1aa151e684ea9e6bc1dbcdd7",
+          "package.json": "36843cf512f23c733b6102cb219d5f4e77a4d1403aa733b0729e3169b174cb12",
+          "src/lib/BSTree.ts": "276704b52e0204cb140d4521dafab7943d2c8028c07f63add5d7b77b2ea096fb",
+          "src/lib/BSTreeKV.ts": "9805c51622b29901b1b7afc5eaf9ca84fbc1683b336dd349f0112bed7e525fad",
+          "src/lib/Bag.ts": "0172c3a7d081a5908e56bb61e67ae55dcbe292432e89ef486423247ad2b87e15",
+          "src/lib/Dictionary.ts": "dee29f057989769d605904f011dc289a802a158693c1d3249b89809af8b930b1",
+          "src/lib/FactoryDictionary.ts": "2c573094c56c86210a2980852d3cffed2c2ce5a5eb9e794b5f36030ec08bc9ac",
+          "src/lib/Heap.ts": "517213e786e234ddcc3b53ba4cb1b5f3ad23eac1ac6c171d601d110509f210c5",
+          "src/lib/LinkedDictionary.ts": "74fc83972e133b4a41b02e23396e9961ade0f9689ca287d00d16882de7a17c72",
+          "src/lib/LinkedList.ts": "67317855811fad66dade74d9114fc568642db017c44a3a36dff518d2ec0a1f53",
+          "src/lib/MultiDictionary.ts": "643746dc363eb406f53b49d74d79bf85a0b3cb0087c3c865bef36e0824f0f6f5",
+          "src/lib/MultiRootTree.ts": "58a3b9de82625023752b5c465543856ccc5aa19afd73926c066a114b5399f5c8",
+          "src/lib/PriorityQueue.ts": "62bcf790e323014f457300bd06b190d477241ac62af611820951b98fef3cd777",
+          "src/lib/Queue.ts": "d648a4f053e27f189b55a1ae92415dd7f389de868baedc128dc6817ffd4d6976",
+          "src/lib/Set.ts": "ffb999deb7ef76ba0d657d6fc60abce8b8adadf50b2ee587a509e71bb6d4817a",
+          "src/lib/Stack.ts": "4810c97ae2d14afbcdd4a7f21c7f4139b912b857bc46c040f35f3415e854807a",
+          "src/lib/arrays.ts": "d88eae90799b8c848a5bca86436e12cc9514720380995219e3417387b41ef8ec",
+          "src/lib/index.ts": "18f6c342ec3007caa01991bde554c8c8eeac262d0ac71b93301fea9e06efe372",
+          "src/lib/util.ts": "43c64ca479bc26962cc19c4983bb0c7da97aeffe5222306472bf3ad436128983",
+          "tsconfig.json": "f0b662d9f52ac8af2e57c37f1eefbbb0003ed17cab64ce145f1cbf7219b56932"
+        }
+      },
+      "r05": {
+        "path": "/workspace/Memglide/.local/router-v4-native-plan/repositories/repo-0005",
+        "commit": "7b9ec5fa2676a67178c9895101753fda7cdea10b",
+        "tree": "c4bd2fb161ed6bf502f444dc23c7470536721d59",
+        "retained_file_sha256": {
+          "LICENSE": "3f4f7f9d7c4a9965aeef4a9c95de38f73ecbab96bed68d320a224a74dfcaa973",
+          "README.md": "b37f72e1b72d3ae9a3df65d24fcf93aa28dcad305a065056f06d89934b3168a9",
+          "package.json": "77482a0d2edde0bd1c4a9347f0adf64d8bb24c0b074a9e7e3d93269f138d3417",
+          "src/_internals/error.ts": "6ba5f5f40879bf596be420db35a95b9a492cda3f91d504f5ee66f722f18425ce",
+          "src/_internals/utils.ts": "0eff2c3154f48fe22278939f8c179ee22b40596e8df9bb3ccfa4f9c9b3b79723",
+          "src/index.ts": "57b296e55fbe34b699ee4bcb98e0c86726b06f835522ba7c379f41ed4e102324",
+          "src/result-async.ts": "84e72684262b2b125b28dba1277231baddfb53e1196716f0618db4fbb278ad1c",
+          "src/result.ts": "8bebd3ca02e67482d16d10ad69bc3a23f72d6f2a2a04cb6fb120e3f6732d5754",
+          "tsconfig.json": "f2b83ab65e0567111fc6f0a78221e6440cd6fb1d4c693fb305f3594c3e6f63a9"
+        }
+      },
+      "r06": {
+        "path": "/workspace/Memglide/.local/router-v4-native-plan/repositories/repo-0006",
+        "commit": "6b3134979266b3b4e003ef11f02fb703223d6ae6",
+        "tree": "1e919ed40a4de60be1d933f89b942990a0411237",
+        "retained_file_sha256": {
+          "LICENSE": "498c0717759d83010a03b27f4de843b94a0936eb2d22adcb08000b5ef337194e",
+          "README.md": "33ee2caf5d569c9e31cf79b69a91d4bf40c66449bc6bb453156a405c7c9e20c0",
+          "package.json": "9ce2d0872a1e38712e780232f00eec25203e1a8eb5d048827b03a2fce9d26627",
+          "src/index.ts": "b4032405e14878691afc6642c241548b558b2c7f16dba733c0370037991efebd",
+          "src/types.ts": "47dfa5591bd099802141aa4bb81b272d0a9268c0db3c91738a6a23cbee28ea77",
+          "src/utils.ts": "6ac882e41f77a48a13fa97ee7c107a8ddb1f92789f11f9974acea7db3c790d40",
+          "tsconfig.json": "de13d876428e52248a7609f919ba8bd7bbdc8df1fc38a014ad086c9991b92205"
+        }
+      }
+    },
+    "resume_count": 0,
+    "pilot": false,
+    "planned_assignments": 72,
+    "native_preflight_accounted_separately": true,
+    "native_pre_corpus_freeze_verified": true,
+    "finished_at": "2026-10-19T21:12:28.954537+00:00",
+    "stop_reason": "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution.",
+    "preflight_receipt": {
+      "actual_billed_charges": null,
+      "attached_runtime": {
+        "connectivity": "connected",
+        "custom_allowed_hosts": [],
+        "effective_required_host_presence": {
+          "auth.openai.com": false,
+          "chatgpt.com": false,
+          "developers.openai.com": false
+        },
+        "environment_id": "ccarenv_b64_Y2NhcmVudl83OGY5MjFmYzQxODA4MTkxODU1MzJhY2EwZDYyM2U1MQ",
+        "meaning": "Current runtime metadata still identifies the original source version and enforced policy; connected/running is not backend/model readiness.",
+        "network_mode": "restricted",
+        "network_state": "enforced",
+        "observations_current": true,
+        "observed_phase": "running",
+        "observed_spec_revision": "1",
+        "observed_via": "cloud_environment.environment_status",
+        "presets": [
+          "package_managers"
+        ],
+        "source_config_id": "5c33fc12-3c6c-4925-af68-8f84d833fb3a~cecfg_6ad1ae699700819ebdb6586f3752b5de",
+        "source_config_version_id": "5c33fc12-3c6c-4925-af68-8f84d833fb3a~cecfgver_6ad1ae6997f4819e9b4e9b0a8bb20912",
+        "spec_revision": "1"
+      },
+      "blocker": "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution.",
+      "checks_performed": [
+        "Read published configuration metadata and attached runtime metadata through supported read-only tools.",
+        "Read actual /etc/codex/network-policy.json.",
+        "Read two preserved preflight receipts plus their stderr/events files; no retries.",
+        "Check historical pricing labels in existing research/protocol/runner and preflight receipts."
+      ],
+      "diagnosis": {
+        "attached_runtime_contains_any_required_host": false,
+        "authentication_status": "Unverified. No401 was observed in either stderr, but proxy403 does not establish credential validity or expiry. No auth files or secret values inspected.",
+        "current_instance_model_ready": false,
+        "current_instance_pricing_host_ready": false,
+        "local_policy_contains_any_required_host": false,
+        "new_task_restoration_verified": false,
+        "new_task_success_guaranteed": false,
+        "observed_failure_layer": "HTTPS proxy CONNECT destination-policy denial, before a completed native model turn; attached policy/source version still old.",
+        "published_and_attached_source_versions_match": false,
+        "published_configuration_contains_all_required_hosts": true
+      },
+      "diagnostic_files_written_only": [
+        ".local/router-v4/publication-readiness.json",
+        ".local/router-v4/publication-readiness.md"
+      ],
+      "executor_policy": {
+        "bytes": 7994,
+        "http_network_policy_type": "restricted",
+        "path": "/etc/codex/network-policy.json",
+        "required_host_presence": {
+          "auth.openai.com": false,
+          "chatgpt.com": false,
+          "developers.openai.com": false
+        },
+        "scope": "Startup policy file independently agrees with current supported runtime metadata for the three required hosts. No policy file was edited.",
+        "sha256": "30f2ede0cbbeec2304389d374bab11bf356191d6899a460ad332815774b844e2",
+        "tcp_domains": [],
+        "tcp_ip_ranges": [],
+        "version": 1,
+        "vpn_configured": false
+      },
+      "formal_execution_gate": {
+        "formal_dispatch_allowed": false,
+        "historical_unrun_and_failed_records_must_remain_immutable": true,
+        "no_coding_latency_token_cost_or_savings_result_from_preflights": true,
+        "planned_formal_slots_from_protocol": 72,
+        "required_status_until_successful_current_preflight": "UNRUN"
+      },
+      "historical_pricing_check": {
+        "actual_billing_usd": null,
+        "applicability": "Historical Oct18 API list-price scenario only; current tariff and actual account charges remain unverified. No new pricing host request was made.",
+        "checked_at_utc": "2026-10-19T20:51:46.282153+00:00",
+        "fresh_current_pricing_verified": false,
+        "historical_model": "gpt-6.1-sol",
+        "historical_retrieved_at_utc": "2026-10-18T16:24:05.775122+00:00",
+        "historical_service_tier": "standard",
+        "label_checks": {
+          "both_native_receipts_historical_and_unknown": true,
+          "protocol_historical_scenario_and_current_unknown": true,
+          "research_json_current_applicability_unverified": true,
+          "research_json_fresh_verified_false": true,
+          "research_md_historical_unrefreshed": true,
+          "runner_historical_interpretation": true
+        },
+        "price_file_sha256": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634"
+      },
+      "model": "gpt-6.1-sol",
+      "model_calls": null,
+      "native_preflight_attempts": 2,
+      "observed_at_utc": "2026-10-19T21:02:17.603249+00:00",
+      "preflight_accounting": {
+        "all_preflight_actual_billed_cost_usd": null,
+        "all_preflight_estimated_cost_usd": null,
+        "complete_attempt_usage": false,
+        "completed_turns": 0,
+        "meaning": "Both separately counted CLI access checks are retained. SDK reconnect/error counts do not establish model/API request counts. Missing usage and charges remain unknown, not zero.",
+        "native_cli_invocations": 2,
+        "underlying_model_requests": null
+      },
+      "preflight_history": [
+        {
+          "actual_cost": null,
+          "completed_turns": 0,
+          "cost_unavailable_reason": "Whole-attempt usage is incomplete; unknown spend is not zero",
+          "estimated_cost": null,
+          "event_type_counts": {
+            "error": 7,
+            "item.completed": 1,
+            "thread.started": 1,
+            "turn.started": 1
+          },
+          "events_path": ".local/router-v4/native-preflight/attempt/events.jsonl",
+          "events_sha256": "f6c0d16fa62c4dc6fb0ca19b2294a568a879360120b79fd7d5041a55d564f833",
+          "exit_code": -15,
+          "historical_tariff_scope": "Oct18 historical provenance; no fresh verification yet",
+          "kind": "separate_native_access_check",
+          "native_model_call_count": null,
+          "ordinal": 1,
+          "original_receipt_unchanged": true,
+          "ready": false,
+          "receipt_path": ".local/router-v4/native-preflight/receipt.json",
+          "receipt_sha256": "de14ec9b1e6863e626901cf038738a4ef1a9b4f346326b3cb24572557999857d",
+          "safe_error_signatures": [
+            "Connection failed: error sending request",
+            "HTTP CONNECT failed with status 403",
+            "Proxy connection failed"
+          ],
+          "stderr_401_occurrences": 0,
+          "stderr_connect_403_occurrences": 7,
+          "stderr_path": ".local/router-v4/native-preflight/attempt/stderr.log",
+          "stderr_sha256": "9778d0392d1d8d5a80f0b142e292aebd323f616d247f3692f3f87cbedc8014f4",
+          "timed_out": true,
+          "usage": null,
+          "usage_coverage_complete": false,
+          "wall_time_seconds": 45.00763740000002
+        },
+        {
+          "actual_cost": null,
+          "completed_turns": 0,
+          "cost_unavailable_reason": "Whole-attempt usage is incomplete; unknown spend is not zero",
+          "estimated_cost": null,
+          "event_type_counts": {
+            "error": 7,
+            "item.completed": 1,
+            "thread.started": 1,
+            "turn.started": 1
+          },
+          "events_path": ".local/router-v4/native-preflight-after-publish/attempt/events.jsonl",
+          "events_sha256": "c766c2ef1782ea25d3f8f804c546b3f7f55c5163b5c583ac49849aae48277369",
+          "exit_code": -15,
+          "historical_tariff_scope": "Oct18 historical provenance; no fresh verification yet",
+          "kind": "separate_native_access_check",
+          "native_model_call_count": null,
+          "ordinal": 2,
+          "original_receipt_unchanged": true,
+          "ready": false,
+          "receipt_path": ".local/router-v4/native-preflight-after-publish/receipt.json",
+          "receipt_sha256": "e6d2c007872c8b07432740e6e1131297c915d4affe82276bf8ac07f873c26912",
+          "safe_error_signatures": [
+            "Connection failed: error sending request",
+            "HTTP CONNECT failed with status 403",
+            "Proxy connection failed"
+          ],
+          "stderr_401_occurrences": 0,
+          "stderr_connect_403_occurrences": 7,
+          "stderr_path": ".local/router-v4/native-preflight-after-publish/attempt/stderr.log",
+          "stderr_sha256": "0ecaa9a2e23d1a231abc2e08a7e72e8ae9bd3201ec061fa06780b19c13100a4c",
+          "timed_out": true,
+          "usage": null,
+          "usage_coverage_complete": false,
+          "wall_time_seconds": 45.01635118300004
+        }
+      ],
+      "preflight_price_equivalent_upper_usd": null,
+      "protected_source_sha256": {
+        "benchmarks/cost-pricing.json": "4e89f76cb9d0d18058279bf00400034b5febd16f55488477eeef6fc43fbd8634",
+        "benchmarks/router-coding-protocol.md": "6f6b29041912b4d9d69daf26f5e7e3ef36e9d317e4447a66bbd45c6f6c5d5d34",
+        "benchmarks/router-v4-research.json": "e5ed718d402c563c9b25fe4f6895d1907ff827a530aa482f6a42cb78249fd1da",
+        "benchmarks/router-v4-research.md": "9d95c1ab01a0a2d3d00feaf02ea3ecc8876500ad2bd847452b81b9c3c0305922",
+        "benchmarks/run_automatic_v4.py": "a93288de55ad04bcc86c8e2afb121cdd73867c36471b181786c5a1cdedd0a1fa",
+        "benchmarks/run_router_coding.py": "ccc745471e5328bd974a3abc43803bf3a0aa35e7b1363bd1bf34e2db02d8ff64",
+        "src/memglide/__init__.py": "2892ab3612d318a128ceb8996e9d91ce6a2d8ec71bde7a055c9551579c2d0896",
+        "src/memglide/__main__.py": "04d6a5692ef6d9a9c21343ce931fd8cb1da94f71f85770a8f08e4cab87a78637",
+        "src/memglide/api/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/api/app.py": "11729dc77f84f912d2b0e2998ce885b45e28c7c0330925dc48f1af15dc1a5fb4",
+        "src/memglide/cli.py": "ebdc8c3e647af25afca6ab2a53c372fea7c6578541770ad4b3e8540aad04a691",
+        "src/memglide/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/core/agent_context.py": "3969dc826768da0718608e869aa8cdb8c2d7d2da62cf4b3cae77e8f65c2f7fb9",
+        "src/memglide/core/context.py": "9e52cd9bf65e7b1eac37ae792135870a9eab91e4a90a3453df8ab3d1604d5a72",
+        "src/memglide/core/indexer.py": "9f76e10c9dc29b80a49973a38a656aaab15f6a6c34332a0a8acede1ee5dc3820",
+        "src/memglide/core/parsing.py": "75984e1fec6e56e889bbeb0d344c16b9a1b9b793aabae8fd34fcec7a241012b4",
+        "src/memglide/core/query.py": "fd52ce9baaf673ac00ecbcdbf7bd434eefa7ca57025092642b6e2a6cfe1f28e9",
+        "src/memglide/core/watcher.py": "4a06c71b08789e8ca49a4b984c8aeeac2178a4b52bbe7122c011f7aecfbb52eb",
+        "src/memglide/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/integrations/auto_preload.py": "fea98fde8b67dfb954ec447a7a83ae79129e43335557e5a69d7ad662afae2975",
+        "src/memglide/integrations/bounded_router.py": "95f2f9cc044078828f0c3ec2a9d1c22eb943819ff999ca75d01b9998f5097acb",
+        "src/memglide/integrations/codex.py": "aa810dd1f7e1bfa30b4f20a2b49515a93282ff68ca931c914126ee6549e644d5",
+        "src/memglide/integrations/codex_preload.py": "10dd39d532488bdd0a616ca3ab0e92e82900fc1468b87187c88dab6eb04fc5ca",
+        "src/memglide/integrations/mcp_server.py": "b5398c1480e0074ceb22519624834c34f79b71d63e652ed3d499a91d07523831",
+        "src/memglide/integrations/memory_preload.py": "d610f86bdf71b5e3ef2722b35485f2d6f231258402f6b4174d197463bb4c5479",
+        "src/memglide/integrations/preload.py": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+        "src/memglide/integrations/runtime_evidence.py": "72b40da257093187ee02b0d543e4b19abb623aa74c2d6ee4e69147e3d886fe35",
+        "src/memglide/integrations/runtime_syntax.py": "3cf852ccf834dcf0f2fec95a80a4a1f4b5fd46a2038dc1cb3f89f17dc9d5ce27",
+        "src/memglide/integrations/source_evidence.py": "3c2a97f2607b6ba59763f7bf47115b70380fa856e4bd5231a1a530e9d6336dfc",
+        "src/memglide/integrations/source_excerpts.py": "4cd5481ebf43a204993396edae03343c0297db199c3e825d2263948ad0b23497",
+        "src/memglide/integrations/syntax_identifiers.py": "989d3083f9f620bc34435051d2bdfd8611d9d0b6593376ecaeda7e1341830d2f",
+        "src/memglide/memory/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/memory/engine.py": "cb79c7791c57f9498f13419010c26f0bc804053b427a1256c5abc8e2461e5f19",
+        "src/memglide/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/security/paths.py": "3b75ec6217650eaecad4344cf614e4d73e2e7c5b5a1b98cd8a51272c733fcd38",
+        "src/memglide/service.py": "518f1d0a7d57027ae31d585807ab76aec3a0ec021509b146c89ce75819fe6a58",
+        "src/memglide/storage/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "src/memglide/storage/database.py": "403820dcaeadf0b1d67cb0691ce1c922eda34cbc7252b3e8cb7cc7607d2c703d"
+      },
+      "protected_sources_unchanged_across_diagnostic": true,
+      "published_configuration": {
+        "base_version_id": "5c33fc12-3c6c-4925-af68-8f84d833fb3a~cecfgver_6ad67f9a7158819e95747debdfba49d2",
+        "custom_allowed_hosts": [
+          "auth.openai.com",
+          "chatgpt.com",
+          "developers.openai.com"
+        ],
+        "draft_id": null,
+        "meaning": "The reader returned the published configuration because draft_id and revision are null; this is configuration persistence, not proof that this attached worker migrated.",
+        "network_type": "restricted",
+        "observed_via": "cloud_environment_onboarding.read_environment_config_draft",
+        "presets": [
+          "package_managers"
+        ],
+        "revision": null
+      },
+      "ready": false,
+      "reasoning_effort": "low",
+      "requested_service_tier": "default",
+      "schema_version": 1,
+      "scope": "Formal native coding admission: not eligible",
+      "supported_remedy": {
+        "action": "Start a new cloud task using the published environment/configuration version, preserving the reviewed checkout and evidence if newer than its snapshot.",
+        "before_any_native_or_pricing_retry": [
+          "Use supported environment_status and read-only policy inspection in the new task; require current/enforced policy with auth.openai.com, chatgpt.com and developers.openai.com present and source version matching the published version.",
+          "Revalidate reviewed source/runtime seals and existing authentication through normal supported CLI operation without credential-file inspection or login changes.",
+          "After an observed applied-policy/runtime change, perform at most one bounded separately recorded native eligibility check; retain both original failed receipts and count any new invocation separately."
+        ],
+        "fallback_if_new_task_still_reports_old_version": "Report published-versus-runtime version IDs and policy mismatch to the product/platform support path. Do not bypass proxy/TLS, edit local policy, fabricate readiness or repeat unchanged denied requests.",
+        "published_version_to_select": "5c33fc12-3c6c-4925-af68-8f84d833fb3a~cecfgver_6ad67f9a7158819e95747debdfba49d2",
+        "scope": "This is the supported next environment action, not a claim that task migration, credential readiness or benchmark execution has already succeeded.",
+        "source_contract": "cloud-environment-onboarding:setup references/onboarding.md: publishing a version does not migrate unrelated running tasks; product owns publication/reconnection and later-task restoration requires verification."
+      },
+      "v4_offline_gate_passed": false,
+      "publication_receipt_sha256": "2867ba5f4a8b364989e287ace23f2da7c23988c7e4294b6a14d200bea29efe1a",
+      "offline_report_sha256": "7e9850cc8e45580c274b1e6dedf7e49ae8efa7c0cd7c720d86ea4949e3632744",
+      "offline_gate": {
+        "passed": false,
+        "positive_runs_per_arm": 24,
+        "complete_scope": {
+          "B": 6,
+          "V3": 0,
+          "C": 0
+        },
+        "coding_correctness": null,
+        "model_cost_savings": null,
+        "native_cohort_dispatch_permitted": false
+      },
+      "preserved_original_inputs": [
+        ".local/router-v4/publication-readiness.json",
+        ".local/router-v4-offline/report.json"
+      ],
+      "no_new_native_calls": true,
+      "earlier_admission_sha256": "28c58db8fdc882a1edfa1ade23b1814e1a3b717fc336260335f187044dc8828b",
+      "independent_grader_review_sha256": "1529e919afbecbd8bd14ec7c3737bac218dba4d7dbcf0abef5553a9a590848da",
+      "grader_review_complete": false,
+      "grader_execution_eligibility": false
+    },
+    "report_only_projection": true,
+    "original_pending_plan_directory": "/workspace/Memglide/.local/router-v4-native-plan",
+    "native_assignment_launches": 0,
+    "projection_scope": "Actual frozen assignment plan; every slot unrun. No dispatcher, source preparation or grader was called. Original pending state is unchanged."
+  },
+  "tasks": [
+    {
+      "id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "prompt": "Add a strict keyword option, defaulting to False, to chunked_iter and its chunked convenience API. When strict=True, emit complete chunks normally but raise ValueError upon encountering a nonempty incomplete final chunk. Empty input and exact multiples should succeed. Explicit fill and strict=True are incompatible and must raise ValueError, even if fill is None. Preserve normal list, string, and bytes chunk types, existing default behavior, and laziness: a count-limited chunked call must not inspect a later tail beyond the requested complete chunks."
+    },
+    {
+      "id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "prompt": "Add an optional keyword mtime argument to gzip_bytes so callers can choose the gzip header modification timestamp. Keep mtime=None as the current wall-clock behavior, support mtime=0 for reproducible output, and honor an explicitly supplied positive integer timestamp. Preserve the existing compression level argument and produce gzip data that decompresses to the original bytes, including empty input. Document the new argument."
+    },
+    {
+      "id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "prompt": "Fix OrderedSet.pop so removing an item by a nonfinal positive or negative index keeps all remaining index lookups correct. Subsequent membership, fancy index queries, add, discard, and another pop must agree with the remaining sequence. Preserve the returned element, relative order, default removal of the last element, support for objects implementing the integer index protocol, KeyError for an empty set, and IndexError for an invalid index without mutating the set."
+    },
+    {
+      "id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "prompt": "Make OrderedSet.symmetric_difference_update accept an arbitrary finite iterable, including a generator that can be consumed only once. Treat repeated values in the incoming iterable with set semantics: each new value appears at most once. Preserve the original order of surviving receiver values, then append previously absent values in their first encounter order. An update with the receiver itself should clear it, the method should return None, and all index lookups must remain consistent. Preserve existing behavior for normal distinct iterable inputs."
+    },
+    {
+      "id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "prompt": "Tighten constrained_batches so a negative size returned by get_len raises ValueError instead of letting an item reduce a batch's accumulated size. Reject a negative size even when strict is false, and do not yield a batch containing that item. Preserve zero-size items, max_count, normal size-limited grouping, and the existing handling of oversized positive items. Make the code change; the acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies."
+    },
+    {
+      "id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "prompt": "Fix sort_together so empty sorted data preserves the number of input columns: two empty input columns should produce two empty tuples, and a nonempty column paired with an empty column under the default non-strict mode should do the same. An empty outer iterable should still produce an empty list. Support an outer iterable that can be consumed only once, retain strict mismatch errors, and preserve existing key, reverse, and nonempty sorting behavior. Make the code change; acceptance checks are external and unavailable during coding. You may run your own local Python checks without installing dependencies."
+    },
+    {
+      "id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "prompt": "Require Bag.add and Bag.remove copy counts to be positive safe integers. Zero, negatives, fractions, NaN, either infinity, and integers outside the safe range must return false before changing any state. Keep the default count of one, existing undefined-element rejection, valid duplicate counting, custom key conversion, and removal that clamps at the available count."
+    },
+    {
+      "id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "prompt": "Add drain(maxItems?: number): T[] to Queue. It must remove and return the oldest items in FIFO order, with an omitted or undefined limit draining everything. An explicit limit must be a nonnegative safe integer; otherwise throw RangeError before changing the queue, including when empty. Zero returns an empty array, limits beyond the current size drain everything, and retained items must preserve their order and object identity. Preserve existing enqueue, add, peek, dequeue, and size behavior."
+    },
+    {
+      "id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "prompt": "Make the synchronous Result.fromThrowable wrapper preserve its dynamic call receiver when invoking the wrapped function. Calling the wrapper as a method, with call, or with apply must let the original function use that receiver. Keep argument forwarding, Ok wrapping, thrown-value conversion with the optional error mapper, and the exported fromThrowable alias working. Each invocation must use its own receiver rather than capturing one when the wrapper is created."
+    },
+    {
+      "id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "prompt": "Make ResultAsync.fromPromise and its exported fromPromise alias accept arbitrary thenables using standard native Promise assimilation semantics. In particular, a then-only object need not provide catch or return a native Promise from then. Fulfillment should become Ok; rejection, a throwing then getter, or a throw before settlement should become Err via the mapper exactly once. Honor first settlement when a thenable calls both callbacks or throws after resolving, assimilate nested thenables, and preserve native Promise handling."
+    },
+    {
+      "id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "prompt": "Extend AVLTree.at to support negative integer indexes counted from the end of comparator order: -1 selects the last node and -size selects the first. An index outside the tree, a fractional index, or a non-finite index must return null. Preserve nonnegative indexing, node identity, duplicate-key nodes, comparator order, and the tree contents. Make the code change; acceptance checks are external and unavailable during coding. You may run local Node checks without installing dependencies."
+    },
+    {
+      "id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "prompt": "Update AVLTree.range callback stopping semantics: a callback that returns false must stop traversal immediately, just as returning true already does. A callback returning undefined must continue. Preserve inclusive comparator-based bounds, callback receiver binding, traversal order, an empty range, and returning the tree for chaining. Make the code change; acceptance checks are external and unavailable during coding. You may run local Node checks without installing dependencies."
+    }
+  ],
+  "arms": {
+    "A": {
+      "planned_runs": 24,
+      "attempted_runs": 0,
+      "not_run": 24,
+      "graded_runs": 0,
+      "successful_runs": 0,
+      "behavior_grade_pass_count": 0,
+      "failed_grades": 0,
+      "ungraded_runs": 0,
+      "successful_task_completion_rate": null,
+      "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+      "execution_status_counts": {
+        "not_run": 24
+      },
+      "treatment_valid_runs": 0,
+      "metrics": {
+        "input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "cached_input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "uncached_input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "output_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "wall_time_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "end_to_end_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "native_exec_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "approval_index_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "approval_index_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "context_preparation_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "context_preparation_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "total_observed_local_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "mcp_calls": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "model_calls": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "repeated_file_reads": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_repeated_read_commands": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "actual_cost_usd": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "computed_cost_usd": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      },
+      "actual_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "No successful tasks",
+        "attempted_runs_in_numerator": 0,
+        "successful_runs_in_denominator": 0
+      },
+      "computed_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "No successful tasks",
+        "attempted_runs_in_numerator": 0,
+        "successful_runs_in_denominator": 0
+      },
+      "completion_rate_scope": "successful_task_completion_rate is conditional on attempted assignments; unrun correctness is unknown",
+      "planned_assignment_execution_coverage": 0.0,
+      "observed_success_yield_per_planned_assignment": null,
+      "api_price_equivalent": {
+        "known_total_usd": null,
+        "total_usd": null,
+        "coverage_attempts": 0,
+        "attempts_including_failures": 0,
+        "cost_per_success_usd": null,
+        "possible_write_upper_total_usd": null
+      },
+      "source_delivery_counts": {
+        "standard": 0,
+        "preloaded": 0,
+        "passthrough": 0
+      }
+    },
+    "B": {
+      "planned_runs": 24,
+      "attempted_runs": 0,
+      "not_run": 24,
+      "graded_runs": 0,
+      "successful_runs": 0,
+      "behavior_grade_pass_count": 0,
+      "failed_grades": 0,
+      "ungraded_runs": 0,
+      "successful_task_completion_rate": null,
+      "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+      "execution_status_counts": {
+        "not_run": 24
+      },
+      "treatment_valid_runs": 0,
+      "metrics": {
+        "input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "cached_input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "uncached_input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "output_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "wall_time_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "end_to_end_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "native_exec_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "approval_index_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "approval_index_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "context_preparation_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "context_preparation_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "total_observed_local_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "mcp_calls": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "model_calls": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "repeated_file_reads": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_repeated_read_commands": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "actual_cost_usd": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "computed_cost_usd": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      },
+      "actual_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "No successful tasks",
+        "attempted_runs_in_numerator": 0,
+        "successful_runs_in_denominator": 0
+      },
+      "computed_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "No successful tasks",
+        "attempted_runs_in_numerator": 0,
+        "successful_runs_in_denominator": 0
+      },
+      "completion_rate_scope": "successful_task_completion_rate is conditional on attempted assignments; unrun correctness is unknown",
+      "planned_assignment_execution_coverage": 0.0,
+      "observed_success_yield_per_planned_assignment": null,
+      "api_price_equivalent": {
+        "known_total_usd": null,
+        "total_usd": null,
+        "coverage_attempts": 0,
+        "attempts_including_failures": 0,
+        "cost_per_success_usd": null,
+        "possible_write_upper_total_usd": null
+      },
+      "source_delivery_counts": {
+        "standard": 0,
+        "preloaded": 0,
+        "passthrough": 0
+      }
+    },
+    "C": {
+      "planned_runs": 24,
+      "attempted_runs": 0,
+      "not_run": 24,
+      "graded_runs": 0,
+      "successful_runs": 0,
+      "behavior_grade_pass_count": 0,
+      "failed_grades": 0,
+      "ungraded_runs": 0,
+      "successful_task_completion_rate": null,
+      "completion_rate_denominator": "All attempted original assignments, including unknown/ungraded failures",
+      "execution_status_counts": {
+        "not_run": 24
+      },
+      "treatment_valid_runs": 0,
+      "metrics": {
+        "input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "cached_input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "uncached_input_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "output_tokens": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "wall_time_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "end_to_end_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "native_exec_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "approval_index_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "approval_index_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "context_preparation_wall_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "context_preparation_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "process_tree_peak_rss_bytes": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "total_observed_local_cpu_seconds": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "mcp_calls": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "model_calls": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "repeated_file_reads": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_file_read_commands": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "observed_repeated_read_commands": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "actual_cost_usd": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        },
+        "computed_cost_usd": {
+          "n": 0,
+          "missing": 0,
+          "mean": null,
+          "median": null,
+          "p95": null,
+          "min": null,
+          "max": null,
+          "known_total": null,
+          "total": null
+        }
+      },
+      "actual_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "No successful tasks",
+        "attempted_runs_in_numerator": 0,
+        "successful_runs_in_denominator": 0
+      },
+      "computed_cost_per_successful_task_usd": {
+        "value": null,
+        "reason": "No successful tasks",
+        "attempted_runs_in_numerator": 0,
+        "successful_runs_in_denominator": 0
+      },
+      "completion_rate_scope": "successful_task_completion_rate is conditional on attempted assignments; unrun correctness is unknown",
+      "planned_assignment_execution_coverage": 0.0,
+      "observed_success_yield_per_planned_assignment": null,
+      "api_price_equivalent": {
+        "known_total_usd": null,
+        "total_usd": null,
+        "coverage_attempts": 0,
+        "attempts_including_failures": 0,
+        "cost_per_success_usd": null,
+        "possible_write_upper_total_usd": null
+      },
+      "source_delivery_counts": {
+        "standard": 0,
+        "preloaded": 0,
+        "passthrough": 0
+      }
+    }
+  },
+  "paired_effects": {
+    "C_minus_A:end_to_end_wall_seconds": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_A:input_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_A:cached_input_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_A:uncached_input_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_A:output_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_A:api_price_equivalent_usd": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_B:end_to_end_wall_seconds": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_B:input_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_B:cached_input_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_B:uncached_input_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_B:output_tokens": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    },
+    "C_minus_B:api_price_equivalent_usd": {
+      "task_clusters": 0,
+      "pairs": 0,
+      "mean_delta": null,
+      "median_delta": null,
+      "mean_bootstrap95": null,
+      "median_bootstrap95": null
+    }
+  },
+  "paired_strict_success": {
+    "C_vs_A": {
+      "both": 0,
+      "C_only": 0,
+      "baseline_only": 0,
+      "neither": 0,
+      "unpaired_or_unrun": 24
+    },
+    "C_vs_B": {
+      "both": 0,
+      "C_only": 0,
+      "baseline_only": 0,
+      "neither": 0,
+      "unpaired_or_unrun": 24
+    }
+  },
+  "runs": [
+    {
+      "run_id": "coding-0001",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 1,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0002",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 2,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0003",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 3,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0004",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 4,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0005",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 5,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0006",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 6,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0007",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 7,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0008",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 8,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0009",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 9,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0010",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 10,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0011",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 11,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0012",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 12,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0013",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 13,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0014",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 14,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0015",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 15,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0016",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 16,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0017",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 17,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0018",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 18,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0019",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 19,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0020",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 20,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0021",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 21,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0022",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 22,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0023",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 23,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0024",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 24,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0025",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 25,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0026",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 26,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0027",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 27,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0028",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 28,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0029",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 29,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0030",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 30,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0031",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 31,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0032",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 32,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0033",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 33,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0034",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 1,
+      "order": 34,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0035",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 1,
+      "order": 35,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0036",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 1,
+      "order": 36,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0037",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 37,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0038",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 38,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0039",
+      "task_id": "n07",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 39,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0040",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 40,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0041",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 41,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0042",
+      "task_id": "n09",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 42,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0043",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 43,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0044",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 44,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0045",
+      "task_id": "n12",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 45,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0046",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 46,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0047",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 47,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0048",
+      "task_id": "n01",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 48,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0049",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 49,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0050",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 50,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0051",
+      "task_id": "n11",
+      "repository": "r06",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 51,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0052",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 52,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0053",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 53,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0054",
+      "task_id": "n03",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 54,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0055",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 55,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0056",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 56,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0057",
+      "task_id": "n05",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 57,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0058",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 58,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0059",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 59,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0060",
+      "task_id": "n08",
+      "repository": "r04",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 60,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0061",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 61,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0062",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 62,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0063",
+      "task_id": "n04",
+      "repository": "r02",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 63,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0064",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 64,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0065",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 65,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0066",
+      "task_id": "n02",
+      "repository": "r01",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 66,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0067",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 67,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0068",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 68,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0069",
+      "task_id": "n06",
+      "repository": "r03",
+      "language": "python",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 69,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0070",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "C",
+      "repeat": 2,
+      "order": 70,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0071",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "B",
+      "repeat": 2,
+      "order": 71,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    },
+    {
+      "run_id": "coding-0072",
+      "task_id": "n10",
+      "repository": "r05",
+      "language": "typescript",
+      "configuration": "A",
+      "repeat": 2,
+      "order": 72,
+      "status": "not_run",
+      "attempted": false,
+      "errors": [
+        "Fresh v4 source-selection gate failed: C0/24 equals V30/24 and is below known-path B6/24, with additional local preparation overhead. This candidate must not enter paid matched coding evaluation. Independently, this worker still enforces the older network policy and both access checks failed at proxy HTTP CONNECT403. Native graders retain documented coverage/isolation gaps and an unrun security control; standard baseline/reference replays do not clear formal native execution."
+      ],
+      "grader": {
+        "success": null,
+        "reason": "Run was not attempted"
+      },
+      "wall_time_seconds": null,
+      "telemetry": {},
+      "overhead": {},
+      "actual_cost_usd": null,
+      "computed_cost_usd": null
+    }
+  ],
+  "actual_billing_usd": null,
+  "pricing_interpretation": "Historically verified tariff scenario from the frozen pricing evidence; current applicability and actual account charges are unknown unless separately refreshed evidence establishes them.",
+  "preflight_accounting": {
+    "native_invocations": 2,
+    "current_admission_upper_usd": null,
+    "history": [
+      {
+        "actual_cost": null,
+        "completed_turns": 0,
+        "cost_unavailable_reason": "Whole-attempt usage is incomplete; unknown spend is not zero",
+        "estimated_cost": null,
+        "event_type_counts": {
+          "error": 7,
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.started": 1
+        },
+        "events_path": ".local/router-v4/native-preflight/attempt/events.jsonl",
+        "events_sha256": "f6c0d16fa62c4dc6fb0ca19b2294a568a879360120b79fd7d5041a55d564f833",
+        "exit_code": -15,
+        "historical_tariff_scope": "Oct18 historical provenance; no fresh verification yet",
+        "kind": "separate_native_access_check",
+        "native_model_call_count": null,
+        "ordinal": 1,
+        "original_receipt_unchanged": true,
+        "ready": false,
+        "receipt_path": ".local/router-v4/native-preflight/receipt.json",
+        "receipt_sha256": "de14ec9b1e6863e626901cf038738a4ef1a9b4f346326b3cb24572557999857d",
+        "safe_error_signatures": [
+          "Connection failed: error sending request",
+          "HTTP CONNECT failed with status 403",
+          "Proxy connection failed"
+        ],
+        "stderr_401_occurrences": 0,
+        "stderr_connect_403_occurrences": 7,
+        "stderr_path": ".local/router-v4/native-preflight/attempt/stderr.log",
+        "stderr_sha256": "9778d0392d1d8d5a80f0b142e292aebd323f616d247f3692f3f87cbedc8014f4",
+        "timed_out": true,
+        "usage": null,
+        "usage_coverage_complete": false,
+        "wall_time_seconds": 45.00763740000002
+      },
+      {
+        "actual_cost": null,
+        "completed_turns": 0,
+        "cost_unavailable_reason": "Whole-attempt usage is incomplete; unknown spend is not zero",
+        "estimated_cost": null,
+        "event_type_counts": {
+          "error": 7,
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.started": 1
+        },
+        "events_path": ".local/router-v4/native-preflight-after-publish/attempt/events.jsonl",
+        "events_sha256": "c766c2ef1782ea25d3f8f804c546b3f7f55c5163b5c583ac49849aae48277369",
+        "exit_code": -15,
+        "historical_tariff_scope": "Oct18 historical provenance; no fresh verification yet",
+        "kind": "separate_native_access_check",
+        "native_model_call_count": null,
+        "ordinal": 2,
+        "original_receipt_unchanged": true,
+        "ready": false,
+        "receipt_path": ".local/router-v4/native-preflight-after-publish/receipt.json",
+        "receipt_sha256": "e6d2c007872c8b07432740e6e1131297c915d4affe82276bf8ac07f873c26912",
+        "safe_error_signatures": [
+          "Connection failed: error sending request",
+          "HTTP CONNECT failed with status 403",
+          "Proxy connection failed"
+        ],
+        "stderr_401_occurrences": 0,
+        "stderr_connect_403_occurrences": 7,
+        "stderr_path": ".local/router-v4/native-preflight-after-publish/attempt/stderr.log",
+        "stderr_sha256": "0ecaa9a2e23d1a231abc2e08a7e72e8ae9bd3201ec061fa06780b19c13100a4c",
+        "timed_out": true,
+        "usage": null,
+        "usage_coverage_complete": false,
+        "wall_time_seconds": 45.01635118300004
+      }
+    ],
+    "all_study_spend_usd": null,
+    "scope": "Formal-attempt API equivalents are separate from all preflight invocations. Any earlier failed preflight with unknown usage leaves whole-study spending unknown."
+  },
+  "default_promotion": false,
+  "limitations": [
+    "B receives privileged oracle-known paths unavailable to A/C; C versus A is the path-free automatic integration comparison.",
+    "All assignments including skips/failures remain in intent-to-treat results; behavioral passes require native integrity, source fidelity and protected-file checks for completion.",
+    "Cold B/C production approval/index, preparation and native execution are timed; independent grading/worktree creation are excluded.",
+    "Provider/OS caches are uncontrolled; order is counterbalanced, native state/worktrees are fresh, and cached input is observed separately.",
+    "Model call counts and actual billing are unknown. Separate verified-rate API equivalents include failed attempts and remain null with missing usage; they do not measure invoiced savings.",
+    "Dollar budget is a soft pre-launch admission breaker using possible-write estimates and a reserve, not a hard provider charge limit.",
+    "Private grading is kept outside every indexed/agent worktree; this is procedural separation, not an OS read-access security boundary.",
+    "This evaluates upfront source preparation without MCP or automatic memory. No benefit or default promotion is assumed."
+  ],
+  "record_kind": "blocked_native_plan_snapshot",
+  "artifact_provenance": {
+    "original_plan_files_sha256": {
+      "/workspace/Memglide/.local/router-v4-native-plan/plan.json": "08ad6d65711e8e08488667e44b2eec580a0cc4969fb0c12d2020a49eb3ce8405",
+      "/workspace/Memglide/.local/router-v4-native-plan/state.json": "90fd2d1c764302d45783850bd564cbbb4768da0b7564da01d19db9912007223f",
+      "/workspace/Memglide/.local/router-v4-native-plan/metadata.json": "498890465c6460cabf60f08a6d1cd04196cdcfabda2161477c9e47fe7160c10b"
+    },
+    "preflight_path": "/workspace/Memglide/.local/router-v4/native-admission-final.json",
+    "preflight_sha256": "8618a589e61d5bb465c48d840ca3aebdd0ccb573937e74b3d1ca467bba251369",
+    "report_only_helper_sha256": "f78d9c93cbe8f42ab8c3a26630b02b7cad41693bb10520fbee72790d17f2e182"
+  }
+}

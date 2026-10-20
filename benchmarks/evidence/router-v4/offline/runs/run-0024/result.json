@@ -1,0 +1,73 @@
+{
+  "arm": "B",
+  "cleanup_error": null,
+  "fidelity": {
+    "selected_paths": [],
+    "selected_source_bytes": 0,
+    "source_versions": {},
+    "valid": true
+  },
+  "halt_after_failure": false,
+  "kind": "positive",
+  "metrics": {
+    "context_bytes": 0,
+    "max_waited_child_rss_bytes": 19677184,
+    "preparation_cpu_seconds": 0.0014673799999999904,
+    "preparation_waited_child_cpu_seconds": 0.0,
+    "preparation_wall_seconds": 0.0014671910000743082,
+    "selected_source_bytes": 0,
+    "self_peak_rss_bytes": 20217856,
+    "setup_cpu_seconds": 0.029726360999999993,
+    "setup_plus_preparation_wall_seconds": 0.06338326300010522,
+    "setup_waited_child_cpu_seconds": 0.012785
+  },
+  "observation": {
+    "dispatched_model_requests": 0,
+    "preparation": {
+      "context_bytes": 0,
+      "context_format": "compact-prefix",
+      "files": [],
+      "mode": "passthrough",
+      "preparation_cpu_seconds": 0.0014569650000000045,
+      "preparation_wall_seconds": 0.0014557389999936277,
+      "prepared_prompt_sha256": "c8244dbf50aafc10aa800e39b80952b8b6841722eb4f42d5bd5d934897a5f8ee",
+      "prompt": "Let OrderedSet.intersection_update accept zero or more input iterables. With no arguments it should leave the set unchanged; with several arguments it should retain only members found in every input while preserving the receiver's order. Accept one-shot generators, handle an input that is the receiver itself, return None, and keep membership, positional access, and index lookup consistent after the update. Existing single-input behavior must remain compatible.",
+      "prompt_layout": "unchanged",
+      "reason": "source_unavailable",
+      "task_prompt_sha256": "c8244dbf50aafc10aa800e39b80952b8b6841722eb4f42d5bd5d934897a5f8ee"
+    },
+    "resources": {
+      "max_waited_child_rss_bytes": 19677184,
+      "self_peak_rss_bytes": 20217856,
+      "waited_child_cpu_seconds": 0.012785
+    },
+    "setup": {
+      "cpu_seconds": 0.029726360999999993,
+      "waited_child_cpu_seconds": 0.012785,
+      "wall_seconds": 0.06191607200003091
+    },
+    "source_mutations": "",
+    "timing": {
+      "cpu_seconds": 0.0014673799999999904,
+      "waited_child_cpu_seconds": 0.0,
+      "wall_seconds": 0.0014671910000743082
+    }
+  },
+  "ordinal": 24,
+  "process_wall_seconds": 0.21448209200002566,
+  "repeat": 1,
+  "returncode": 0,
+  "scope_grade": {
+    "declared_path_precision_proxy": null,
+    "declared_path_recall_proxy": 0.0,
+    "declared_scope_complete": false,
+    "expected_bypass": null,
+    "extra_paths": [],
+    "kind": "positive",
+    "missing_paths": [
+      "ordered_set/__init__.py"
+    ]
+  },
+  "task_id": "t04",
+  "worker_completed": true
+}

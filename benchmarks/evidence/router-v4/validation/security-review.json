@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "status": "cleared_for_pre_corpus_code_freeze_with_stated_limits",
+  "role": "independent read-only production safety/screen soundness review; reviewer changed local artifacts only",
+  "reviewed_at_utc": "2026-10-19T20:18:18Z",
+  "git_head": "4758550be8366efa5a9f86735625e67ab71ed6a4",
+  "reviewed_file_sha256": {
+    "src/memglide/integrations/bounded_router.py": "95f2f9cc044078828f0c3ec2a9d1c22eb943819ff999ca75d01b9998f5097acb",
+    "src/memglide/core/indexer.py": "9f76e10c9dc29b80a49973a38a656aaab15f6a6c34332a0a8acede1ee5dc3820",
+    "src/memglide/integrations/auto_preload.py": "fea98fde8b67dfb954ec447a7a83ae79129e43335557e5a69d7ad662afae2975",
+    "src/memglide/integrations/codex_preload.py": "10dd39d532488bdd0a616ca3ab0e92e82900fc1468b87187c88dab6eb04fc5ca",
+    "src/memglide/integrations/preload.py": "916dfcf1360dc3c2c207fd67dd5cea210dc88c194a2bd7e12a5e90e1d584ef1b",
+    "src/memglide/integrations/runtime_evidence.py": "72b40da257093187ee02b0d543e4b19abb623aa74c2d6ee4e69147e3d886fe35",
+    "src/memglide/integrations/runtime_syntax.py": "3cf852ccf834dcf0f2fec95a80a4a1f4b5fd46a2038dc1cb3f89f17dc9d5ce27",
+    "tests/test_bounded_router.py": "b18115789ca14c816834879507d18025af759ce80f2d71ac2bb729d8e51f3fce",
+    "tests/test_auto_preload_v4.py": "d686f12a1c7d79723c8ee22b0dd8e6ff4b1cb52ac95cd426ef10a0dfa00a0203"
+  },
+  "unchanged_from_current_HEAD": {
+    "src/memglide/integrations/preload.py": true,
+    "src/memglide/integrations/runtime_evidence.py": true,
+    "src/memglide/integrations/runtime_syntax.py": true
+  },
+  "prospective_holdout_task_or_grade_reads": 0,
+  "model_calls": 0,
+  "original_v3_study_reruns": 0,
+  "independent_synthetic_controls": {
+    "path": ".local/router-v4/reviewer-controls.json",
+    "sha256": "4107888828f5dea3e9dcec43b58817aa6c55208d23325bbf639a1f82a701997e",
+    "soundness_cases": 29,
+    "delivery_race_cases": 8,
+    "all_passed": true,
+    "scope": "New development cases, not held-out efficacy evidence"
+  },
+  "development_findings_resolved": [
+    {
+      "finding": "XID maximal query runs could conceal core regex explicit suffix anchors after # or combining marks",
+      "evidence": "query-boundary-control-initial.json",
+      "repair": "Union XID and core word-boundary query runs; existing v3 exact evidence unchanged"
+    },
+    {
+      "finding": "Maximal dotted query runs could miss explicit native numeric method names, including dot-prefix/# prefixes",
+      "evidence": [
+        "numeric-anchor-control-initial.json",
+        "dotted-boundary-control-initial.json"
+      ],
+      "repair": "Conservative numeric-dot query + source-dot escape hatch; false positives remain eligible for original AST gate"
+    },
+    {
+      "finding": "Original error-provenance negative tests used a production path, masking intended nonproduction allowlist coverage",
+      "repair": "Owner changed development fixture to docs/broken.py and added mismatched/duplicate unknown reporting controls"
+    }
+  ],
+  "verified_invariants": [
+    "V4 is explicit opt-in; existing v1 default and v1/v2/v3 selection branches remain available.",
+    "Private Indexer file_scope is parameterized and applied before symbol, dependency/caller, FTS100 and files retrieval output bounds; None constructs equivalent original SQL.",
+    "Only exhaustive <200 known nonproduction parse diagnostics with exact indexed path/error/hash can be exempted. Production, partial, scanner/read, unknown, mismatched and truncated errors still decline.",
+    "Exempt nonproduction files and all weak/supported/unsupported coarse competitors share <=100 current-body rows and cumulative <=2MiB; <=24 potential supported sources then use unchanged syntax worker. No AST batching or silent top-k truncation.",
+    "Unsupported files remain a bounded frontier: possible explicit/two-term competitors decline; only provably insufficient lexical upper bounds can be set aside.",
+    "Every initial coarse source hash and relevant ignore policy, including rejected unsupported files and exempt parser warnings, is combined into final all-loser/current-policy verification. Eight independent edit/delete/ignore/symlink controls returned exact original prompts and zero released sources.",
+    "Coarse-to-AST and post-AST SQL phases recheck settings and project root/index identity before continuing; each reader retains its bounded query/VM/row/value controls.",
+    "Source delivery still uses unchanged complete-file preparer and unchanged runtime evidence/syntax worker; no memory injection, model-assisted selection or additional model calls.",
+    "V4 private receipt validates new bounded counters/frontier, selected complete-source ABI and policy version before native handoff."
+  ],
+  "owner_tests_read_not_independently_rerun": {
+    "path": ".local/router-v4/owned-tests-final-frozen.log",
+    "text": ".........................................................                [100%]\n57 passed in 3.65s"
+  },
+  "limitations": [
+    "This is a pragmatic code review plus 37 synthetic controls, not a formal proof across every supported grammar or a production-readiness certification.",
+    "The lexical screen deliberately retains comments, literals, quoted strings, patterns, escapes, numeric-dot forms and some substring matches as safe false positives; this may still hit caps or increase overhead.",
+    "scope_complete covers the bounded retrieved supported pool, explicit unsupported frontier and exempt parse diagnostics; it is not global semantic repository completeness. Global project document-frequency scoring remains unchanged.",
+    "The new coarse phase can securely read up to100 source files/2MiB before the separate old24-file/2MiB AST phase and final current-version re-reads; do not describe this as an unchanged24-read cap.",
+    "Coarse2s checks occur between bounded synchronous operations; index refresh/Git/ignore verification, parser subprocess and delivery have distinct scopes. There is no newly established hard end-to-end latency or RSS ceiling.",
+    "Exact v3 evidence sufficiency/ambiguity remains a syntax heuristic, not behavioral correctness or relevant dependency completeness. Independent fresh evaluation is required before any coverage/performance claim.",
+    "Reviewer temporary fixture initially omitted git init; this local harness setup failure is preserved in reviewer-controls-initial-failure.json and was fixed before final controls.",
+    "No prospective task, frozen original study rerun, paid/model/native benchmark or billing measurement was performed."
+  ]
+}
