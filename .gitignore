@@ -35,6 +35,7 @@ src/memglide/web/
 /benchmarks/*.txt
 /benchmarks/*.zip
 /benchmarks/*.pdf
+/benchmarks/native-vitest.config.mjs
 !/benchmarks/README.md
 !/benchmarks/*protocol*.md
 !/benchmarks/*protocol*.json

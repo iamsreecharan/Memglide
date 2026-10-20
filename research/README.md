@@ -6,7 +6,8 @@ they do not train or modify the model's weights.
 
 ## Paper and downloads
 
-**Memglide: Auditable, Bounded Repository Context for Coding Agents**  
+**Memglide: Auditable, Bounded Repository Context for Coding Agents**
+
 Sree Charan Reddy Kailasam · srcharan014@gmail.com
 
 The manuscript is a research draft for author review, with AI assistance
@@ -47,7 +48,7 @@ The study therefore provides a panel-specific estimate, not established savings.
 It did not establish a workflow speed advantage. Passing these finite checks
 does not establish correctness beyond the tested tasks.
 
-Cost is a common accounting convention applied to recorded input, cached input
+Cost is a common accounting convention applied to recorded uncached input, cached input
 and output tokens: $5, $0.20 and $15 per million respectively. It is not an
 invoice or a claim about a current provider price. Fresh command verification
 is included in the workflow time. Seven tasks activated source preparation;

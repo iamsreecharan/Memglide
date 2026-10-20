@@ -52,7 +52,7 @@ artifacts = ["src/memglide/web/**"]
 include = [
   "/src", "/frontend", "/scripts", "/tests", "/examples", "/docs",
   "/*.md", "/LICENSE", "/uv.lock", "/pyproject.toml", "/.python-version", "/.gitignore",
-  "/benchmarks/*.py", "/benchmarks/*.mjs", "/benchmarks/.ruff.toml",
+  "/benchmarks/*.py", "/benchmarks/.ruff.toml",
   "/benchmarks/README.md", "/benchmarks/*protocol*.md", "/benchmarks/*protocol*.json",
   "/benchmarks/tasks*.json", "/benchmarks/automatic*-fixtures/**",
   "/benchmarks/automatic-v[34]-grading.json", "/benchmarks/automatic-v[34]-provenance.json",
@@ -63,4 +63,5 @@ include = [
   "/benchmarks/workflow-assessment.json", "/benchmarks/workflow-assessment.md",
   "/benchmarks/workflow-contract-issue.json", "/benchmarks/workflow-contract-issue.md",
   "/benchmarks/evidence/README.md",
+  "/research/README.md",
 ]
