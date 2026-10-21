@@ -1,0 +1,25 @@
+\documentclass[manuscript,screen,nonacm]{acmart}
+\setcopyright{none}
+\settopmatter{printacmref=false,printccs=true}
+\usepackage{longtable,array,calc,xurl}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\title[Memglide: Bounded Repository Context]{$title$}
+\author{Sree Charan Reddy Kailasam}
+\email{srcharan014@gmail.com}
+\renewcommand{\shortauthors}{S. C. R. Kailasam}
+\ccsdesc[500]{Software and its engineering~Software testing and debugging}
+\ccsdesc[300]{Information systems~Information retrieval}
+\keywords{coding agents, repository context, source retrieval, reproducibility,
+  software engineering}
+\begin{document}
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+\maketitle
+$body$
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+\end{document}

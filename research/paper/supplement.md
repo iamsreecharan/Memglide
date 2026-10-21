@@ -1,0 +1,640 @@
+---
+title: "Memglide: Cost and Latency Evaluation — Supplementary Material"
+abstract: |
+  This supplement documents the amended fixed-panel comparison of pass-through
+  Codex and Memglide: 28 primary tasks, two methods and two repetitions, or
+  112 sessions. It separates 16 auxiliary sessions on eight exposed tasks,
+  retains the study amendments and strict failures, and reproduces the public
+  task prompts and repository commitments. All monetary values are measured
+  token-price equivalents, not account invoices.
+---
+
+# Scope and cohort accounting
+
+The main paper reports 112 primary sessions, not the earlier 72-session,
+three-arm study. The original v7 allocation covered 36 tasks and 144 unique
+assignments. Its first 15 model sessions exposed eight tasks; assignment 0016
+failed before the native bridge. The 28 other tasks form the fixed primary
+panel, with both methods repeated twice. The remaining two sessions per
+exposed task contribute 16 descriptive records. The final 128-record pool
+therefore covers 36 tasks with unequal repeat coverage and is not pooled
+with earlier model outcomes.
+
+The primary panel comprises 15 Python and 13 JavaScript/TypeScript tasks.
+These author-designed features on small public libraries are a purposive panel,
+not a random sample of maintenance issues or evidence that the model never saw
+the repositories in training. Public readiness and task-informed engineering
+preceded collection. Unlike SWE-bench, the panel does not consist of real
+GitHub issue-to-patch tasks [@jimenez2024swebench]. The term primary does not imply a fully prospective
+confirmation after the later amendments.
+
+# Candidate and treatment
+
+The evaluated implementation is commit `3c3f82b68778f6fb156394594bef3d6ec7118023`.
+A uses its installed off/pass-through path. M uses bounded v4 discovery with
+the opt-in commands-first workflow. Among the 28 primary tasks, six receive
+source plus command context, nine receive commands only, and thirteen pass
+through. With two repetitions, these correspond to 12, 18 and 26 M sessions.
+Every primary task remains in the analysis. The modes are policy outcomes,
+not randomized component arms, and cannot identify separate source or command
+effects. There is no auxiliary model call or model-weight training.
+
+Both methods request the `gpt-6.1-sol` alias, low reasoning effort and default
+service tier through Codex CLI 0.159.2. The CLI version does not identify a
+frozen provider backend snapshot. A fresh local project, thread and run state
+are used for each coding session. Provider prefix caches, OS page caches,
+provider load and backend changes are uncontrolled.
+
+# Amendments and preserved failures
+
+After 25 primary measurements, a baseline production-role audit corrected five
+paths that an overly broad rule had treated as protected test/build material:
+`u10:src/click/testing.py`, `u32:lib/defu.cjs`, `u32:lib/defu.d.cts`,
+`u34:lib/index.cjs` and `u35:utils.d.ts`. The audit used baseline source and
+public metadata across all 36 tasks. It did not inspect candidate patches,
+feature-grade outcomes or resource contrasts to choose exceptions. The trigger
+was an observed stop, so this is not a pre-outcome protocol correction.
+Original raw flags remain intact, and the same exact-path rule is applied to
+all pooled records. Feature-oracle assertions were not relaxed.
+
+After 52 measurements, a strict parser stopped on a reconnect warning despite
+a completed turn. Source inspection of CLI commit
+`ff6aec96948b70d94983af2641a6b67c94faeff5` established a narrow recoverable retry
+grammar. The adapter requires one fresh completed thread/turn, complete matching
+native counters, valid identity, exit status and final capture. It applies to
+all records and preserves raw events and prior verdicts. Arbitrary errors and
+unfinished turns remain invalid. Completed-thread cumulative usage does not
+establish the provider's request count or independently billed retry charges.
+
+An additional slot-0069 launcher attempt failed because a local schema file was
+missing. Source evidence places that exit before model-turn creation. Its raw
+usage remains null; a separate operational ledger records the source-proven
+zero model-generation requests. The canonical assignment ran after deployment
+repair. A descriptive sensitivity adds the entire 2.637254565-second startup
+duration to that M session, increasing the observed workflow slowdown to
+approximately 1.25%. Diagnosis and repair labor are excluded and unmeasured.
+
+Original stopped protocol decisions remain stopped. No measured coding trial
+was retried, discarded or repaired to change its score, and no additional
+repetitions were scheduled to obtain significance. Product source and the
+fixed primary cohort were unchanged during primary collection. These
+amendments nevertheless require nominal, model-based interpretation rather
+than a retrospective prospective-confirmation claim.
+
+# Measurement, grading and interpretation
+
+Full-workflow timing begins after common source copying and Git-baseline
+construction but before registration, indexing, eligibility planning and
+verification; it ends after native process cleanup. Fresh eligible public
+verification, preparation and generated-file cleanup count toward M's time.
+Environment acquisition, source copying, private grading, packaging and
+operator diagnosis are excluded. Native execution alone is not full-workflow
+latency or isolated provider inference time.
+
+The fixed API-equivalent accounting convention is
+
+\[
+C=(5(I-K)+0.20K+15O)/10^6,
+\]
+
+where I is total reported input tokens, K is cached input tokens and O is output
+tokens, including the reported output category used in the native counters.
+Reasoning output is not charged again. This convention measures resources
+using a common tariff, not a provider invoice or a current-price guarantee.
+Per-record tokens are cumulative across the coding agent's model steps.
+
+Private grader/reference/control plaintext was sequestered during collection
+and restored and verified after native closure. Candidate source was
+reconstructed for grading without reusing model-created caches. Strict success
+requires execution/treatment integrity, intact protections and passing original
+public and private feature checks. All 128 comparison records have valid
+measurements and grading; 124 strictly pass, 62/64 in each method. The primary
+counts are 54/56 per method. Equality of observed counts does not establish
+quality equivalence, noninferiority or correctness beyond finite checks.
+
+All four strict failures are u21, in both methods and both repetitions. Each
+passes 111 original public tests and 26/30 private feature checks. The private
+oracle expects TypeError for `safeInteger` values null, 1, 'yes' and an object;
+the implementations return false. The exact public instruction says “reject
+nonboolean safeInteger values” without explicitly requiring an exception.
+This task–oracle ambiguity limits interpretation. All four frozen failures
+are retained without a post hoc rescore.
+
+For each primary task, both repetitions are averaged within each method before
+forming M-minus-A differences. The primary analysis uses 28 paired task means
+and 27 degrees of freedom. Joint superiority requires both one-sided tests at
+alpha 0.025, both corresponding 95% interval upper limits below zero, complete
+integrity and at least as many observed strict successes with M. Neither
+resource test passes. A 10,000-replicate task-cluster bootstrap, seed 20261102,
+is a descriptive sensitivity and cannot replace the primary decision rule.
+Omitting the whole task affected by the recovered retry is also descriptive.
+
+The mean API equivalents are $0.16094230 and $0.15316045 per session; the
+observed reduction is 4.83518%. The paired difference is -$0.00778185 with nominal
+95% interval [-$0.02524202, $0.00967832] and one-sided p=0.184279. Full-workflow
+means are 59.59018 and 60.28628 seconds; the difference is +0.69610 seconds,
+interval [-3.02400, 4.41620], p=0.647984. Neither reliable savings nor faster
+completion is established by this panel.
+
+# Public artifact and reproduction boundaries
+
+The portable results directory contains primary and auxiliary numeric rows,
+paired task means, public task provenance, protocol information, hashes and a
+standalone reproduction script. Its README gives the exact command and pinned
+SciPy/NumPy versions. Recomputing statistics and figures requires no native
+coding-model request. Every public export has its own hash; sanitizing runtime
+paths does not preserve an original private artifact's byte identity.
+
+The original final analysis commitment is
+`fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26`.
+The independent automated audit matched the original 128 source/grade bindings
+and all 28 paired task calculations. This is a computational crosscheck, not
+independent human replication. The new public numeric export does not include
+complete native transcripts or private graders; it supports arithmetic
+reproduction rather than complete public replay of the evaluation.
+
+The complete ZIP retains the prior v6 capsule under `historical-v6/` with its
+old files and checksums. That older capsule describes the separate 12-task,
+72-session three-arm study and its development history, including the
+30-round exploratory search. Its protocols, arms and exact/Holm tests must not
+be substituted for the present paired-t analysis. Installed dependencies,
+authentication and the provider backend are not packaged as an execution image.
+
+# Public task inventory
+
+The following prompts are reproduced from the frozen public input catalog.
+Commit identifiers pin public source; obtaining and installing the separately
+declared tools is required for a new native replication. Public commands and
+environment templates are in `public-task-catalog.json`; the inventory below
+reports their expected behavioral-test counts, not counts of all feature
+requirements. Exposed tasks appear for complete accounting, not as additional
+primary independent clusters. No code in a task prompt is an instruction to
+the reader or to this document's build process.
+
+## u01: six
+
+Repository: <https://github.com/benjaminp/six>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `c8e394065cd541a16c040515dc0afb85cf22a7c3`.
+
+Exact feature prompt:
+
+> Extend six's ensure_binary, ensure_str, and ensure_text conversion helpers to accept bytearray and memoryview inputs on Python 3. Treat these inputs as a snapshot of their bytes: ensure_binary returns immutable bytes, and the two text helpers decode with their existing encoding/errors arguments. Preserve existing bytes/text behavior, including identity where the helpers currently return the supplied bytes or text, and continue rejecting unsupported types with TypeError. Noncontiguous memoryview slices should convert their logical bytes in order. Add focused regression tests; keep existing tests and configuration intact.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 199, timeout 90 seconds.
+
+## u02: astpretty
+
+Repository: <https://github.com/asottile/astpretty>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `1fb4135054e6ef00173f556908c17e6807d26c52`.
+
+Exact feature prompt:
+
+> Add an optional keyword-only show_empty=True argument to astpretty.pformat. With show_empty=False, omit AST fields and attributes whose value is None or an empty list, recursively, while retaining false, zero, empty strings, and empty tuples. A leaf whose fields are all omitted prints as ClassName(). Respect show_offsets and the existing indentation options. The default output must remain byte-for-byte compatible, pprint must forward the option, and formatting must not change the input AST. Add regression tests and preserve existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 22, timeout 90 seconds.
+
+## u03: natsort
+
+Repository: <https://github.com/SethMMorton/natsort>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `e9a3a2a307580a1f2be8c57bba50fba45789ada0`.
+
+Exact feature prompt:
+
+> Add a keyword-only unique=False option to natsort.natsorted. When enabled, keep only the first input element from each equality group before sorting naturally. Equality is ordinary Python equality, not equality of the natural-sort key; support unhashable elements and one-shot input iterators. Apply the key function only once per retained element and preserve the original retained objects. Existing key, reverse, and alg behavior still applies, including stable ties. Leave the default behavior unchanged. Add regression tests without editing existing tests or configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 81, timeout 90 seconds.
+
+## u04: bracex
+
+Repository: <https://github.com/facelessuser/bracex>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `1f32d6964da400ef55fb17db46df4ceb01177957`.
+
+Exact feature prompt:
+
+> Add public expand_many and iexpand_many helpers to bracex. They accept a one-shot iterable of patterns and the same keep_escapes, limit, and return_empty options as expand/iexpand. Concatenate each pattern's expansions in input order, retaining each pattern's str/bytes output type. expand_many returns a list; iexpand_many must be lazy, must not pre-read later patterns, and must propagate input exceptions. A positive limit is a shared output budget across all patterns: emit at most that many results and raise ExpansionLimitException if another result is requested. As with the existing API, a nonpositive limit is unlimited. Empty pattern collections return no results; preserve existing single-pattern behavior and add regression tests without editing existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 321, timeout 90 seconds.
+
+## u05: schedule
+
+Repository: <https://github.com/dbader/schedule>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `82a43db1b938d8fdf60103bd41f329e06c8d3651`.
+
+Exact feature prompt:
+
+> Allow schedule.Scheduler.run_all and the module-level schedule.run_all to accept an optional keyword-only tag=None filter. None retains the existing behavior of running all jobs. A supplied hashable tag runs only jobs carrying that tag, in registration order, using a snapshot so cancellation or registration during a callback cannot skip or add jobs in the current pass. Preserve CancelJob handling. Apply the existing delay_seconds sleep once after each selected job and never for an unselected job. Add regression tests and preserve the existing tests and configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 81, timeout 90 seconds.
+
+## u06: python-sortedcontainers
+
+Repository: <https://github.com/grantjenks/python-sortedcontainers>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `3ac358631f58c1347f1d6d2d92784117db0f38ed`.
+
+Exact feature prompt:
+
+> Add remove_all(value) to SortedList and SortedKeyList. Remove every element equal to value, return the number removed, and return zero without mutation if none match. For a SortedKeyList, other values with the same sort key must remain. Preserve ordering, internal invariants, and the existing remove/discard/count behavior; the method should work across multiple internal blocks and through a SortedList created with key=. Add regression tests without changing existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 113, timeout 90 seconds.
+
+## u07: decorator
+
+Repository: <https://github.com/micheles/decorator>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `956b6396c7369aab4acc7a44851572fcb92fb34a`.
+
+Exact feature prompt:
+
+> Add an unregister(*types) method to functions created by decorator.dispatch_on. It removes only the implementation registered for that exact type tuple and returns the removed callable. Raise KeyError for an unregistered tuple and TypeError for the wrong number of dispatch types; either error must leave the registry unchanged. Subsequent calls must immediately use the remaining ancestor/virtual-ancestor dispatch or the default implementation. The existing register, typemap, dispatch_info, function metadata, and multiple-argument dispatch must keep working. Add regression tests and preserve existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 28, timeout 90 seconds.
+
+## u08: backoff
+
+Repository: <https://github.com/litl/backoff>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `d82b23c42d7a7e2402903e71e7a7f03014a00076`.
+
+Exact feature prompt:
+
+> Add a public backoff.linear(step=1, start=1, max_value=None) wait generator, exported alongside the existing generators. Follow the library's generator protocol: the first next() primes it with None; later next()/send() calls yield start, start+step, and so on. If max_value is supplied, cap each emitted interval at it indefinitely, including when start already exceeds the cap. Zero step/start/cap are valid; negative step, start, or cap must raise ValueError when the generator is first advanced. It must work as the wait generator for the existing retry decorators with their normal keyword forwarding. Preserve existing generators and add regression tests without modifying existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 14, timeout 90 seconds.
+
+## u09: funcy
+
+Repository: <https://github.com/Suor/funcy>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `e8febffd57f80db8ca3a55fb1edd0feee2290d61`.
+
+Exact feature prompt:
+
+> Add scan_until(predicate, seq, inclusive=False) and lscan_until(predicate, seq, inclusive=False) to funcy's public sequence helpers. They return items before the first item for which the predicate is truthy, including that boundary item only if inclusive is true. scan_until must be lazy, consume a one-shot input only once, evaluate the predicate once per examined item, and never read past the boundary. lscan_until returns the corresponding list. Use the same predicate shorthand conventions as the library's other sequence helpers. Empty/no-match inputs work normally; predicate/input exceptions propagate. Add regression tests while preserving existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 48, timeout 90 seconds.
+
+## u10: click
+
+Repository: <https://github.com/pallets/click>. Language: python. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `2247b35ea1c47c727d7a06e51fa280e12a863ff6`.
+
+Exact feature prompt:
+
+> Extend click.Choice with a keyword-only aliases=None mapping from extra input strings to existing choices. Snapshot this mapping at construction; require string alias keys (TypeError otherwise), and reject a target that does not equal any declared choice with ValueError. An alias must return the original declared choice object, including enum choices. Match aliases through the same context token normalization and case-sensitivity rules as ordinary choices; an ordinary choice match takes precedence over an alias. Keep help/metavars, choices, invalid-input messages, and behavior without aliases unchanged. Add direct-conversion and command-line regression tests without editing existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 274, timeout 90 seconds.
+
+## u11: python-json-pointer
+
+Repository: <https://github.com/stefankoegl/python-json-pointer>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `fb771073c8b1b05f0e1d82a8c0608968a65b0a90`.
+
+Exact feature prompt:
+
+> Add JsonPointer.relative_to(base), where base is a pointer string or a JsonPointer. If base's decoded path components are a prefix of this pointer, return a new pointer for the remaining components, using this pointer's concrete class. An identical base produces the root pointer; the root base leaves the path unchanged. Compare components rather than raw string prefixes, so escaping and component boundaries remain correct. Raise JsonPointerException for a valid base that is not an ancestor, and preserve existing parsing errors for an invalid string base. Do not mutate either pointer. Add regression tests and preserve existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 62, timeout 90 seconds.
+
+## u12: python-json-patch
+
+Repository: <https://github.com/stefankoegl/python-json-patch>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `c39058eabd7e50e92e6a6fd7e915c0218c7284f3`.
+
+Exact feature prompt:
+
+> Add JsonPatch.prefixed(prefix), accepting a JSON Pointer string or an instance of the patch's pointer_cls. Return a new patch of the same concrete patch class, retaining pointer_cls, with prefix prepended component-wise to every operation's path and to from for move/copy. Correctly handle root pointers, escaped components, and array paths. Deep-copy operation data so neither the original patch nor nested values are shared with the result. Existing validation/error types still apply to invalid prefixes and operations; do not modify apply or the original operations. Add regression tests without changing existing tests/configuration.
+
+- Public check `original-public-tests-1`: kind `tests`, expected test count 205, timeout 90 seconds.
+
+## u13: p-limit
+
+Repository: <https://github.com/sindresorhus/p-limit>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `a8a6fbec4e0e866d6d779b10889bb4f5567e70eb`.
+
+Exact feature prompt:
+
+> Add limit.onIdle(), returning a promise that resolves when both active and queued work are empty. It must support multiple waiters, failures, queue clearing, and later reuse without rejecting on task errors. Preserve existing behavior and update TypeScript declarations.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 30, timeout 90 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
+
+## u14: p-map
+
+Repository: <https://github.com/sindresorhus/p-map>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `d61b6a33cc1d5533ad5711b435959f3f78c3d2fe`.
+
+Exact feature prompt:
+
+> Export pFilter(input, predicate, options), retaining values whose asynchronous predicate is truthy. Accept synchronous or asynchronous iterables and promised values; pass original indexes, preserve value identity and input order, honor pMap concurrency and abort options, reject invalid predicates, and add generic declarations.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 424, timeout 90 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
+
+## u15: escape-string-regexp
+
+Repository: <https://github.com/sindresorhus/escape-string-regexp>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `a7f7dabaf336bda98d2166848af15d9168b10bcf`.
+
+Exact feature prompt:
+
+> Add optional {escapeSlash:true} to escapeStringRegexp for safe interpolation into slash-delimited RegExp literals. Escape every slash while preserving existing metacharacter escaping and default behavior. Reject nonboolean escapeSlash values and update the TypeScript declaration.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 3, timeout 60 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 60 seconds.
+
+## u16: strip-indent
+
+Repository: <https://github.com/sindresorhus/strip-indent>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `a554228432c72f531fc93041d711399001ffffa9`.
+
+Exact feature prompt:
+
+> Add optional {maxIndent} to stripIndent and dedent, limiting removed indentation characters to that nonnegative safe integer. Preserve default full removal, tabs, line endings, and existing blank-line handling. dedent must still trim surrounding blank lines when maxIndent is zero. Reject invalid limits with RangeError and update declarations.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 2, timeout 60 seconds.
+
+## u17: yocto-queue
+
+Repository: <https://github.com/sindresorhus/yocto-queue>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `72a8fa96a9d389765cdf2bb9c6daba8302fc375d`.
+
+Exact feature prompt:
+
+> Add Queue.enqueueFront(value) to prepend an item while preserving the order of existing items. Support empty queues, undefined values, subsequent tail enqueues, iteration, draining, and clearing. Preserve queue invariants and add the generic TypeScript declaration.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 7, timeout 90 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
+
+## u18: indent-string
+
+Repository: <https://github.com/sindresorhus/indent-string>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `7e6c356c4a8425b06efb5c031479304ee0bd67ea`.
+
+Exact feature prompt:
+
+> Add optional {skipFirstLine:true} to indentString, leaving the first physical line unchanged while indenting subsequent lines normally. Preserve line endings, custom indent strings, count zero, and includeEmptyLines behavior. Reject nonboolean skipFirstLine values and update the TypeScript declaration.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 10, timeout 60 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 60 seconds.
+
+## u19: isarray
+
+Repository: <https://github.com/juliangruber/isarray>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `8c8dd70d48ad5d0897733ca6726302a54ca9e177`.
+
+Exact feature prompt:
+
+> Add isArray.isArrayOf(value, predicate) to the CommonJS export. Return false for nonarrays; otherwise require every indexed element to satisfy the predicate. Visit sparse holes as undefined, pass value/index/array, short circuit on false, propagate predicate errors, and reject nonfunction predicates. Preserve default classification.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 28, timeout 90 seconds.
+
+## u20: is-promise
+
+Repository: <https://github.com/then/is-promise>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `ec9bd8a3f576324a1343069a2d6c2fa35a623939`.
+
+Exact feature prompt:
+
+> Export isPromiseSafe from both CommonJS and ESM entry points. Preserve existing thenable recognition, returning false when property inspection throws, including hostile or revoked proxies. Preserve the default function and its existing error behavior; add a TypeScript type guard declaration.
+
+- Public check `upstream_complete_assertion_script`: kind `tests`, expected test count 1, timeout 90 seconds.
+
+## u21: is-number
+
+Repository: <https://github.com/jonschlinkert/is-number>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `98e8ff1da1a89f93d1397a24d7413ed15421c139`.
+
+Exact feature prompt:
+
+> Add optional {safeInteger:true} mode to isNumber, accepting only safely representable integer numbers or numeric strings under existing conversion rules. Preserve default behavior and explicit false, reject nonboolean safeInteger values, and keep all other inputs false.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 111, timeout 90 seconds.
+
+## u22: emitter
+
+Repository: <https://github.com/component/emitter>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `af0c3af0a7df701db79a8923fbae4708d4479fc4`.
+
+Exact feature prompt:
+
+> Add prependListener(event, listener) to Emitter instances and mixins. Insert handlers before existing handlers, preserve registration order among ordinary listeners, support chaining and removal, and retain receiver, arguments, and once behavior. Update TypeScript declarations.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 30, timeout 90 seconds.
+
+## u23: dlv
+
+Repository: <https://github.com/developit/dlv>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `3212139c05647ffe3f1b095acd46afa2f5f635dd`.
+
+Exact feature prompt:
+
+> Add optional fourth options argument {own:true} to dlv for own-property-only traversal at every path component. Support string and array paths, null-prototype objects, falsey terminal values, and defaults for missing values. Preserve legacy inherited-property access when the option is absent or false.
+
+- Public check `upstream_microbundle_build`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
+- Public check `upstream_complete_assertion_script`: kind `tests`, expected test count 1, timeout 90 seconds.
+
+## u24: is-buffer
+
+Repository: <https://github.com/feross/is-buffer>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `ec4bf3415108e8971375e6717ad63dde752faebf`.
+
+Exact feature prompt:
+
+> Add isBuffer.isUint8Array(value) to the CommonJS export. Recognize genuine Uint8Array views and Buffers across realms, while rejecting other views, proxy wrappers, and spoofed tags. Preserve default Buffer detection and add a TypeScript type guard declaration.
+
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 17, timeout 60 seconds.
+
+## u25: boltons
+
+Repository: <https://github.com/mahmoud/boltons>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d`.
+
+Exact feature prompt:
+
+> Add chunked_by_weight(src, max_weight, key=None) to the iterable utilities. It lazily yields nonempty lists in input order, greedily adding items while their total weight stays at most max_weight. key(item) supplies the weight, defaulting to the item itself; evaluate it once per consumed item. A single overweight item is yielded alone. Empty input yields nothing, zero-weight items are valid, and the source may be a one-shot iterator. max_weight must be a finite positive numbers.Real value; item weights must be finite nonnegative numbers.Real values. Reject booleans and nonnumeric values with TypeError and invalid numeric ranges with ValueError. Validate the limit before consuming source input; validate weights lazily. Keep existing chunking helpers unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `original-public-python-tests`: kind `tests`, expected test count 514, timeout 45 seconds.
+
+## u26: more-itertools
+
+Repository: <https://github.com/more-itertools/more-itertools>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `4aeb4338ae1407d8da9723e86da99efeb446f719`.
+
+Exact feature prompt:
+
+> Add merge_unique(*iterables, key=None) to the public iterable API. Each input is already sorted in nondecreasing key order. Lazily merge them into one sorted iterator and emit only the first item for each equal key, without hashing keys or comparing the items themselves. Equal keys prefer the earlier input iterable, and within it the earlier item. key defaults to identity and is called once for each consumed item. Accept empty inputs, no inputs, generators, and unhashable comparable keys. Keep no more than one pending item from each input and preserve existing utilities. Document this new function.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `original-public-python-tests`: kind `tests`, expected test count 765, timeout 45 seconds.
+
+## u27: humanize
+
+Repository: <https://github.com/python-humanize/humanize>. Language: python. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `785e5dcc0d0308ad0dff3f6cc0faa7085ad0375b`.
+
+Exact feature prompt:
+
+> Extend natural_list with keyword-only conjunction="and", separator=", ", and oxford_comma=False. Preserve its default output. For two items join them using a single space, the conjunction, and a single space. For three or more, join the initial items using separator, then use either a single space plus conjunction plus a single space, or (when oxford_comma is true) separator plus conjunction plus a single space before the last item. Empty and singleton iterables remain unchanged. Convert each item to text once and accept one-shot iterables. conjunction must be a nonempty string and separator must be a string, raising TypeError for nonstrings and ValueError for an empty conjunction; validate before consuming the iterable.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `original-public-python-tests`: kind `tests`, expected test count 729, timeout 45 seconds.
+
+## u28: itsdangerous
+
+Repository: <https://github.com/pallets/itsdangerous>. Language: python. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `672971d66a2ef9f85151e53283113f33d642dabd`.
+
+Exact feature prompt:
+
+> Add Serializer.loads_many(tokens, *, salt=None, errors="raise") for batch verification of signed tokens. Return a list of values in token order using the same instance loads behavior and per-call salt. Accept one-shot token iterables. errors="raise" propagates the first error immediately and does not consume later tokens; errors="skip" omits only tokens rejected with a BadData exception and keeps valid values including None and False. Other exception types must still propagate. Reject other errors policies with ValueError before consuming tokens. Preserve key rotation, fallback verification, custom serializers, and existing single-token APIs.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `original-public-python-tests`: kind `tests`, expected test count 297, timeout 45 seconds.
+
+## u29: blinker
+
+Repository: <https://github.com/pallets-eco/blinker>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `c3364059663df1ddce32799d6b1922af89a345f6`.
+
+Exact feature prompt:
+
+> Add Signal.send_robust(sender=None, /, **kwargs). Like send, it delivers to receivers matching that sender or ANY and returns (receiver, outcome) pairs. It continues after ordinary receiver exceptions, placing the exact Exception object in the outcome instead of raising it; successful return values are unchanged. BaseException subclasses must propagate. Muted signals return an empty list. Synchronous delivery of an async receiver must produce a RuntimeError outcome without creating an unawaited coroutine, then continue. Keep normal send and send_async behavior unchanged. No receiver-order guarantee is added.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `original-public-python-tests`: kind `tests`, expected test count 25, timeout 45 seconds.
+
+## u30: cachetools
+
+Repository: <https://github.com/tkem/cachetools>. Language: python. Primary (four sessions).
+
+Pinned upstream commit: `eba200635273fe45b67e669b84cb45f995b27c24`.
+
+Exact feature prompt:
+
+> Add Cache.peek(key[, default]) as a non-touching lookup inherited by the cache classes. Return a live cached value without updating eviction ordering or frequency, calling __missing__, or removing expired entries. A missing or expired key raises KeyError unless a default is supplied, in which case return that exact default. Expiry-aware caches must use their normal current-time membership semantics. Preserve size accounting and all existing get/indexing behavior. In particular, peeking must not rescue an old LRU entry from the next eviction.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `original-public-python-tests`: kind `tests`, expected test count 360, timeout 45 seconds.
+
+## u31: mitt
+
+Repository: <https://github.com/developit/mitt>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `6b41670516ed8e8b738612f60491995470aa63b3`.
+
+Exact feature prompt:
+
+> Add emitter.once(type, handler), returning an idempotent disposer. It registers one delivery for a named or symbol event, or for the wildcard event. The listener unregisters before invoking its handler, so a recursive emit cannot invoke it twice. A wildcard handler still receives (type, payload). Disposing before delivery cancels that registration; disposing afterwards is harmless. Multiple once registrations of the same callback are independent. Preserve on/off/emit behavior, the caller-supplied event map, and expose the new method in the TypeScript API.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `all-original-mitt-behavior-tests`: kind `tests`, expected test count 19, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
+
+## u32: defu
+
+Repository: <https://github.com/unjs/defu>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `82632b66f5914e9946edce300e10633a3d5c0cb7`.
+
+Exact feature prompt:
+
+> Export defuReplaceArrays(...layers), a defaults-merge variant with the same left-to-right precedence and nullish fallback as defu, except arrays replace lower-precedence arrays instead of concatenating. Apply replacement at every nesting depth. Returned plain objects and arrays, including objects inside arrays, must not share mutable containers with any input. Preserve class instances as atomic values. Ignore __proto__ and constructor keys throughout the new variant. Empty input returns an empty object. Leave existing defu variants unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 23, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
+
+## u33: hookable
+
+Repository: <https://github.com/unjs/hookable>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
+
+Pinned upstream commit: `6815e4fed0411f3e2f91a31bdb107d8aeac0a266`.
+
+Exact feature prompt:
+
+> Export hookWithSignal(hooks, name, callback, signal: AbortSignal), returning an idempotent disposer. The hooks argument is a Hookable instance, including one returned by createHooks. It behaves like ordinary hook registration while the signal is live, automatically unregisters when aborted, and registers nothing if already aborted. Manual disposal unregisters the hook and removes the abort listener. Abort or disposal must not remove other registrations of the same callback. The callback keeps normal arguments, ordering and async behavior. Leave existing hook APIs unchanged and preserve the existing bundle-size checks through tree shaking.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 44, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
+
+## u34: destr
+
+Repository: <https://github.com/unjs/destr>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `541b6f9aeada9fc30de9c5a7e086dbfc1c6fcdc7`.
+
+Exact feature prompt:
+
+> Export parseJSONLines(value, options={}) for newline-delimited data. Require a string input; otherwise throw TypeError. Split on LF (accepting CRLF), remove an optional leading document BOM, trim each line, ignore blank lines, and return parsed values in order. Use the existing destr semantics for each record, with strict parsing enabled by default. options.strict=false enables the same permissive fallback and prototype-key sanitization as destr. A strict record error must throw SyntaxError whose message contains the one-based physical line number; preserve the original error as cause. Empty documents return an empty array. Existing destr and safeDestr behavior must remain unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 22, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
+
+## u35: pathe
+
+Repository: <https://github.com/unjs/pathe>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `bc7477a01f0bd60ada017add8142c9f9d69ccdc5`.
+
+Exact feature prompt:
+
+> Export isPathInside(parent, candidate), a lexical containment predicate that performs no filesystem access. Both arguments must be absolute POSIX paths or absolute Windows drive paths; return false for relative paths. Normalize dot segments, repeated separators and Windows backslashes using the library conventions. Return true for the parent itself and descendants, including when the parent has a trailing separator. Reject sibling prefix matches and escapes through .. . Windows drive letters are case-insensitive, but remaining path segments are case-sensitive; different drives and POSIX-versus-drive roots do not contain one another. Preserve all existing path APIs.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 467, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
+
+## u36: ufo
+
+Repository: <https://github.com/unjs/ufo>. Language: javascript-typescript. Primary (four sessions).
+
+Pinned upstream commit: `f06c800d0c59f2a4a1b9ba65eb6cb61a84419be6`.
+
+Exact feature prompt:
+
+> Export withoutQueryKeys(input, keys), removing all URL query fields whose decoded key is present in an iterable of strings. Decode keys with the library query-key semantics, including plus-as-space, while preserving every byte of retained fields (escaping, values, order, duplicates and empty fields). Preserve pathname, origin and fragment verbatim; a question mark within the fragment is not a query. If no key matches, return the original string exactly. If all fields are removed, remove the query question mark. Accept one-shot key iterables, an empty key name, relative URLs and empty input. Leave existing query utilities unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
+
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 489, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.

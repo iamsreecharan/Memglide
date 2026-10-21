@@ -1,0 +1,1362 @@
+{
+  "command_scope": "Faithful frozen argv/env templates; runtime placeholders require the separately pinned evaluation tooling. This pack reproduces statistics without executing these commands.",
+  "tasks": [
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "test_six.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 199,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "c8e394065cd541a16c040515dc0afb85cf22a7c3",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Extend six's ensure_binary, ensure_str, and ensure_text conversion helpers to accept bytearray and memoryview inputs on Python 3. Treat these inputs as a snapshot of their bytes: ensure_binary returns immutable bytes, and the two text helpers decode with their existing encoding/errors arguments. Preserve existing bytes/text behavior, including identity where the helpers currently return the supplied bytes or text, and continue rejecting unsupported types with TypeError. Noncontiguous memoryview slices should convert their logical bytes in order. Add focused regression tests; keep existing tests and configuration intact.",
+      "repository": "https://github.com/benjaminp/six",
+      "task_id": "u01"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests/astpretty_test.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 22,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "1fb4135054e6ef00173f556908c17e6807d26c52",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add an optional keyword-only show_empty=True argument to astpretty.pformat. With show_empty=False, omit AST fields and attributes whose value is None or an empty list, recursively, while retaining false, zero, empty strings, and empty tuples. A leaf whose fields are all omitted prints as ClassName(). Respect show_offsets and the existing indentation options. The default output must remain byte-for-byte compatible, pprint must forward the option, and formatting must not change the input AST. Add regression tests and preserve existing tests/configuration.",
+      "repository": "https://github.com/asottile/astpretty",
+      "task_id": "u02"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "-p",
+            "pytest_mock",
+            "tests/test_natsorted.py",
+            "tests/test_natsort_keygen.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 81,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "e9a3a2a307580a1f2be8c57bba50fba45789ada0",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add a keyword-only unique=False option to natsort.natsorted. When enabled, keep only the first input element from each equality group before sorting naturally. Equality is ordinary Python equality, not equality of the natural-sort key; support unhashable elements and one-shot input iterators. Apply the key function only once per retained element and preserve the original retained objects. Existing key, reverse, and alg behavior still applies, including stable ties. Leave the default behavior unchanged. Add regression tests without editing existing tests or configuration.",
+      "repository": "https://github.com/SethMMorton/natsort",
+      "task_id": "u03"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 321,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "1f32d6964da400ef55fb17db46df4ceb01177957",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add public expand_many and iexpand_many helpers to bracex. They accept a one-shot iterable of patterns and the same keep_escapes, limit, and return_empty options as expand/iexpand. Concatenate each pattern's expansions in input order, retaining each pattern's str/bytes output type. expand_many returns a list; iexpand_many must be lazy, must not pre-read later patterns, and must propagate input exceptions. A positive limit is a shared output budget across all patterns: emit at most that many results and raise ExpansionLimitException if another result is requested. As with the existing API, a nonpositive limit is unlimited. Empty pattern collections return no results; preserve existing single-pattern behavior and add regression tests without editing existing tests/configuration.",
+      "repository": "https://github.com/facelessuser/bracex",
+      "task_id": "u04"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "test_schedule.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 81,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "82a43db1b938d8fdf60103bd41f329e06c8d3651",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Allow schedule.Scheduler.run_all and the module-level schedule.run_all to accept an optional keyword-only tag=None filter. None retains the existing behavior of running all jobs. A supplied hashable tag runs only jobs carrying that tag, in registration order, using a snapshot so cancellation or registration during a callback cannot skip or add jobs in the current pass. Preserve CancelJob handling. Apply the existing delay_seconds sleep once after each selected job and never for an unselected job. Add regression tests and preserve the existing tests and configuration.",
+      "repository": "https://github.com/dbader/schedule",
+      "task_id": "u05"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests/test_coverage_sortedlist.py",
+            "tests/test_coverage_sortedkeylist_negate.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 113,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "3ac358631f58c1347f1d6d2d92784117db0f38ed",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add remove_all(value) to SortedList and SortedKeyList. Remove every element equal to value, return the number removed, and return zero without mutation if none match. For a SortedKeyList, other values with the same sort key must remain. Preserve ordering, internal invariants, and the existing remove/discard/count behavior; the method should work across multiple internal blocks and through a SortedList created with key=. Add regression tests without changing existing tests/configuration.",
+      "repository": "https://github.com/grantjenks/python-sortedcontainers",
+      "task_id": "u06"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests/test.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 28,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "956b6396c7369aab4acc7a44851572fcb92fb34a",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add an unregister(*types) method to functions created by decorator.dispatch_on. It removes only the implementation registered for that exact type tuple and returns the removed callable. Raise KeyError for an unregistered tuple and TypeError for the wrong number of dispatch types; either error must leave the registry unchanged. Subsequent calls must immediately use the remaining ancestor/virtual-ancestor dispatch or the default implementation. The existing register, typemap, dispatch_info, function metadata, and multiple-argument dispatch must keep working. Add regression tests and preserve existing tests/configuration.",
+      "repository": "https://github.com/micheles/decorator",
+      "task_id": "u07"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests/test_wait_gen.py",
+            "tests/test_jitter.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 14,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "d82b23c42d7a7e2402903e71e7a7f03014a00076",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add a public backoff.linear(step=1, start=1, max_value=None) wait generator, exported alongside the existing generators. Follow the library's generator protocol: the first next() primes it with None; later next()/send() calls yield start, start+step, and so on. If max_value is supplied, cap each emitted interval at it indefinitely, including when start already exceeds the cap. Zero step/start/cap are valid; negative step, start, or cap must raise ValueError when the generator is first advanced. It must work as the wait generator for the existing retry decorators with their normal keyword forwarding. Preserve existing generators and add regression tests without modifying existing tests/configuration.",
+      "repository": "https://github.com/litl/backoff",
+      "task_id": "u08"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests/test_seqs.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 48,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "e8febffd57f80db8ca3a55fb1edd0feee2290d61",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add scan_until(predicate, seq, inclusive=False) and lscan_until(predicate, seq, inclusive=False) to funcy's public sequence helpers. They return items before the first item for which the predicate is truthy, including that boundary item only if inclusive is true. scan_until must be lazy, consume a one-shot input only once, evaluate the predicate once per examined item, and never read past the boundary. lscan_until returns the corresponding list. Use the same predicate shorthand conventions as the library's other sequence helpers. Empty/no-match inputs work normally; predicate/input exceptions propagate. Add regression tests while preserving existing tests/configuration.",
+      "repository": "https://github.com/Suor/funcy",
+      "task_id": "u09"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests/test_types",
+            "tests/test_arguments.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 274,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+      "language": "python",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Extend click.Choice with a keyword-only aliases=None mapping from extra input strings to existing choices. Snapshot this mapping at construction; require string alias keys (TypeError otherwise), and reject a target that does not equal any declared choice with ValueError. An alias must return the original declared choice object, including enum choices. Match aliases through the same context token normalization and case-sensitivity rules as ordinary choices; an ordinary choice match takes precedence over an alias. Keep help/metavars, choices, invalid-input messages, and behavior without aliases unchanged. Add direct-conversion and command-line regression tests without editing existing tests/configuration.",
+      "repository": "https://github.com/pallets/click",
+      "task_id": "u10"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 62,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "fb771073c8b1b05f0e1d82a8c0608968a65b0a90",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add JsonPointer.relative_to(base), where base is a pointer string or a JsonPointer. If base's decoded path components are a prefix of this pointer, return a new pointer for the remaining components, using this pointer's concrete class. An identical base produces the root pointer; the root base leaves the path unchanged. Compare components rather than raw string prefixes, so escaping and component boundaries remain correct. Raise JsonPointerException for a valid base that is not an ancestor, and preserve existing parsing errors for an invalid string base. Do not mutate either pointer. Add regression tests and preserve existing tests/configuration.",
+      "repository": "https://github.com/stefankoegl/python-json-pointer",
+      "task_id": "u11"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/python/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-c",
+            "/dev/null",
+            "-p",
+            "no:cacheprovider",
+            "tests.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{root}/src:{root}:{runtime_cohort_a}/public/dependency-sources:{runtime_cohort_a}/public/runtime:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 205,
+          "kind": "tests",
+          "name": "original-public-tests-1",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "c39058eabd7e50e92e6a6fd7e915c0218c7284f3",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add JsonPatch.prefixed(prefix), accepting a JSON Pointer string or an instance of the patch's pointer_cls. Return a new patch of the same concrete patch class, retaining pointer_cls, with prefix prepended component-wise to every operation's path and to from for move/copy. Correctly handle root pointers, escaped components, and array paths. Deep-copy operation data so neither the original patch nor nested values are shared with the result. Existing validation/error types still apply to invalid prefixes and operations; do not modify apply or the original operations. Add regression tests without changing existing tests/configuration.",
+      "repository": "https://github.com/stefankoegl/python-json-patch",
+      "task_id": "u12"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/ava/entrypoints/cli.mjs",
+            "--tap",
+            "--serial",
+            "--config",
+            "{runtime_cohort_b}/tooling/ava-no-cache.config.mjs"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 30,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 90
+        },
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/tsd/dist/cli.js",
+            "--typings",
+            "index.d.ts",
+            "--files",
+            "index.test-d.ts"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "kind": "typecheck",
+          "name": "upstream_declaration_tests",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "a8a6fbec4e0e866d6d779b10889bb4f5567e70eb",
+      "language": "javascript-typescript",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Add limit.onIdle(), returning a promise that resolves when both active and queued work are empty. It must support multiple waiters, failures, queue clearing, and later reuse without rejecting on task errors. Preserve existing behavior and update TypeScript declarations.",
+      "repository": "https://github.com/sindresorhus/p-limit",
+      "task_id": "u13"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/ava/entrypoints/cli.mjs",
+            "--tap",
+            "--serial",
+            "--config",
+            "{runtime_cohort_b}/tooling/ava-no-cache.config.mjs"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 424,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 90
+        },
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/tsd/dist/cli.js",
+            "--typings",
+            "index.d.ts",
+            "--files",
+            "index.test-d.ts"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "kind": "typecheck",
+          "name": "upstream_declaration_tests",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "d61b6a33cc1d5533ad5711b435959f3f78c3d2fe",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Export pFilter(input, predicate, options), retaining values whose asynchronous predicate is truthy. Accept synchronous or asynchronous iterables and promised values; pass original indexes, preserve value identity and input order, honor pMap concurrency and abort options, reject invalid predicates, and add generic declarations.",
+      "repository": "https://github.com/sindresorhus/p-map",
+      "task_id": "u14"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/ava/entrypoints/cli.mjs",
+            "--tap",
+            "--serial",
+            "--config",
+            "{runtime_cohort_b}/tooling/ava-no-cache.config.mjs"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 3,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 60
+        },
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/tsd/dist/cli.js",
+            "--typings",
+            "index.d.ts",
+            "--files",
+            "index.test-d.ts"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "kind": "typecheck",
+          "name": "upstream_declaration_tests",
+          "timeout_seconds": 60
+        }
+      ],
+      "commit": "a7f7dabaf336bda98d2166848af15d9168b10bcf",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add optional {escapeSlash:true} to escapeStringRegexp for safe interpolation into slash-delimited RegExp literals. Escape every slash while preserving existing metacharacter escaping and default behavior. Reject nonboolean escapeSlash values and update the TypeScript declaration.",
+      "repository": "https://github.com/sindresorhus/escape-string-regexp",
+      "task_id": "u15"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/ava/entrypoints/cli.mjs",
+            "--tap",
+            "--serial",
+            "--config",
+            "{runtime_cohort_b}/tooling/ava-no-cache.config.mjs"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 2,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 60
+        }
+      ],
+      "commit": "a554228432c72f531fc93041d711399001ffffa9",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add optional {maxIndent} to stripIndent and dedent, limiting removed indentation characters to that nonnegative safe integer. Preserve default full removal, tabs, line endings, and existing blank-line handling. dedent must still trim surrounding blank lines when maxIndent is zero. Reject invalid limits with RangeError and update declarations.",
+      "repository": "https://github.com/sindresorhus/strip-indent",
+      "task_id": "u16"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/ava/entrypoints/cli.mjs",
+            "--tap",
+            "--serial",
+            "--config",
+            "{runtime_cohort_b}/tooling/ava-no-cache.config.mjs"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 7,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 90
+        },
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/tsd/dist/cli.js",
+            "--typings",
+            "index.d.ts",
+            "--files",
+            "index.test-d.ts"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "kind": "typecheck",
+          "name": "upstream_declaration_tests",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "72a8fa96a9d389765cdf2bb9c6daba8302fc375d",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add Queue.enqueueFront(value) to prepend an item while preserving the order of existing items. Support empty queues, undefined values, subsequent tail enqueues, iteration, draining, and clearing. Preserve queue invariants and add the generic TypeScript declaration.",
+      "repository": "https://github.com/sindresorhus/yocto-queue",
+      "task_id": "u17"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/ava/entrypoints/cli.mjs",
+            "--tap",
+            "--serial",
+            "--config",
+            "{runtime_cohort_b}/tooling/ava-no-cache.config.mjs"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 10,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 60
+        },
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/tsd/dist/cli.js",
+            "--typings",
+            "index.d.ts",
+            "--files",
+            "index.test-d.ts"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "kind": "typecheck",
+          "name": "upstream_declaration_tests",
+          "timeout_seconds": 60
+        }
+      ],
+      "commit": "7e6c356c4a8425b06efb5c031479304ee0bd67ea",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add optional {skipFirstLine:true} to indentString, leaving the first physical line unchanged while indenting subsequent lines normally. Preserve line endings, custom indent strings, count zero, and includeEmptyLines behavior. Reject nonboolean skipFirstLine values and update the TypeScript declaration.",
+      "repository": "https://github.com/sindresorhus/indent-string",
+      "task_id": "u18"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "test.js"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 28,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "8c8dd70d48ad5d0897733ca6726302a54ca9e177",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add isArray.isArrayOf(value, predicate) to the CommonJS export. Return false for nonarrays; otherwise require every indexed element to satisfy the predicate. Visit sparse holes as undefined, pass value/index/array, short circuit on false, propagate predicate errors, and reject nonfunction predicates. Preserve default classification.",
+      "repository": "https://github.com/juliangruber/isarray",
+      "task_id": "u19"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "--test",
+            "--test-reporter=tap",
+            "test.js"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 1,
+          "kind": "tests",
+          "name": "upstream_complete_assertion_script",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "ec9bd8a3f576324a1343069a2d6c2fa35a623939",
+      "language": "javascript-typescript",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Export isPromiseSafe from both CommonJS and ESM entry points. Preserve existing thenable recognition, returning false when property inspection throws, including hostile or revoked proxies. Preserve the default function and its existing error behavior; add a TypeScript type guard declaration.",
+      "repository": "https://github.com/then/is-promise",
+      "task_id": "u20"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/mocha",
+            "--reporter",
+            "dot",
+            "test.js"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 111,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "98e8ff1da1a89f93d1397a24d7413ed15421c139",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add optional {safeInteger:true} mode to isNumber, accepting only safely representable integer numbers or numeric strings under existing conversion rules. Preserve default behavior and explicit false, reject nonboolean safeInteger values, and keep all other inputs false.",
+      "repository": "https://github.com/jonschlinkert/is-number",
+      "task_id": "u21"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/ava/entrypoints/cli.mjs",
+            "--tap",
+            "--serial",
+            "--config",
+            "{runtime_cohort_b}/tooling/ava-no-cache.config.mjs"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 30,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "af0c3af0a7df701db79a8923fbae4708d4479fc4",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add prependListener(event, listener) to Emitter instances and mixins. Insert handlers before existing handlers, preserve registration order among ordinary listeners, support chaining and removal, and retain receiver, arguments, and once behavior. Update TypeScript declarations.",
+      "repository": "https://github.com/component/emitter",
+      "task_id": "u22"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "{runtime_cohort_b}/node_modules/microbundle/dist/cli.js"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "kind": "typecheck",
+          "name": "upstream_microbundle_build",
+          "timeout_seconds": 90
+        },
+        {
+          "argv": [
+            "{node}",
+            "--test",
+            "--test-reporter=tap",
+            "test.js"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 1,
+          "kind": "tests",
+          "name": "upstream_complete_assertion_script",
+          "timeout_seconds": 90
+        }
+      ],
+      "commit": "3212139c05647ffe3f1b095acd46afa2f5f635dd",
+      "language": "javascript-typescript",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Add optional fourth options argument {own:true} to dlv for own-property-only traversal at every path component. Support string and array paths, null-prototype objects, falsey terminal values, and defaults for missing values. Preserve legacy inherited-property access when the option is absent or false.",
+      "repository": "https://github.com/developit/dlv",
+      "task_id": "u23"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{node}",
+            "test/basic.js"
+          ],
+          "env_updates": {
+            "CI": "1",
+            "NODE_PATH": "{runtime_cohort_b}/node_modules:{runtime_v5}/node/node_modules",
+            "NO_COLOR": "1"
+          },
+          "expected_tests": 17,
+          "kind": "tests",
+          "name": "upstream_behavioral_tests",
+          "timeout_seconds": 60
+        }
+      ],
+      "commit": "ec4bf3415108e8971375e6717ad63dde752faebf",
+      "language": "javascript-typescript",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Add isBuffer.isUint8Array(value) to the CommonJS export. Recognize genuine Uint8Array views and Buffers across realms, while rejecting other views, proxy wrappers, and spoofed tags. Preserve default Buffer detection and add a TypeScript type guard declaration.",
+      "repository": "https://github.com/feross/is-buffer",
+      "task_id": "u24"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/python",
+            "-m",
+            "pytest",
+            "-q",
+            "-o",
+            "addopts=",
+            "tests",
+            "--deselect=tests/test_socketutils.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{runtime_cohort_c}/public/runtime/python-site:{root}/src:{root}:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 514,
+          "kind": "tests",
+          "name": "original-public-python-tests",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add chunked_by_weight(src, max_weight, key=None) to the iterable utilities. It lazily yields nonempty lists in input order, greedily adding items while their total weight stays at most max_weight. key(item) supplies the weight, defaulting to the item itself; evaluate it once per consumed item. A single overweight item is yielded alone. Empty input yields nothing, zero-weight items are valid, and the source may be a one-shot iterator. max_weight must be a finite positive numbers.Real value; item weights must be finite nonnegative numbers.Real values. Reject booleans and nonnumeric values with TypeError and invalid numeric ranges with ValueError. Validate the limit before consuming source input; validate weights lazily. Keep existing chunking helpers unchanged.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/mahmoud/boltons",
+      "task_id": "u25"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/python",
+            "-m",
+            "pytest",
+            "-q",
+            "-o",
+            "addopts=",
+            "tests"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{runtime_cohort_c}/public/runtime/python-site:{root}/src:{root}:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 765,
+          "kind": "tests",
+          "name": "original-public-python-tests",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "4aeb4338ae1407d8da9723e86da99efeb446f719",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add merge_unique(*iterables, key=None) to the public iterable API. Each input is already sorted in nondecreasing key order. Lazily merge them into one sorted iterator and emit only the first item for each equal key, without hashing keys or comparing the items themselves. Equal keys prefer the earlier input iterable, and within it the earlier item. key defaults to identity and is called once for each consumed item. Accept empty inputs, no inputs, generators, and unhashable comparable keys. Keep no more than one pending item from each input and preserve existing utilities. Document this new function.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/more-itertools/more-itertools",
+      "task_id": "u26"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/python",
+            "-m",
+            "pytest",
+            "-q",
+            "-o",
+            "addopts=",
+            "tests",
+            "--ignore=tests/test_benchmarks.py"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{runtime_cohort_c}/public/runtime/python-site:{root}/src:{root}:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 729,
+          "kind": "tests",
+          "name": "original-public-python-tests",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "785e5dcc0d0308ad0dff3f6cc0faa7085ad0375b",
+      "language": "python",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Extend natural_list with keyword-only conjunction=\"and\", separator=\", \", and oxford_comma=False. Preserve its default output. For two items join them using a single space, the conjunction, and a single space. For three or more, join the initial items using separator, then use either a single space plus conjunction plus a single space, or (when oxford_comma is true) separator plus conjunction plus a single space before the last item. Empty and singleton iterables remain unchanged. Convert each item to text once and accept one-shot iterables. conjunction must be a nonempty string and separator must be a string, raising TypeError for nonstrings and ValueError for an empty conjunction; validate before consuming the iterable.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/python-humanize/humanize",
+      "task_id": "u27"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/python",
+            "-m",
+            "pytest",
+            "-q",
+            "-o",
+            "addopts=",
+            "tests"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{runtime_cohort_c}/public/runtime/python-site:{root}/src:{root}:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 297,
+          "kind": "tests",
+          "name": "original-public-python-tests",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "672971d66a2ef9f85151e53283113f33d642dabd",
+      "language": "python",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Add Serializer.loads_many(tokens, *, salt=None, errors=\"raise\") for batch verification of signed tokens. Return a list of values in token order using the same instance loads behavior and per-call salt. Accept one-shot token iterables. errors=\"raise\" propagates the first error immediately and does not consume later tokens; errors=\"skip\" omits only tokens rejected with a BadData exception and keeps valid values including None and False. Other exception types must still propagate. Reject other errors policies with ValueError before consuming tokens. Preserve key rotation, fallback verification, custom serializers, and existing single-token APIs.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/pallets/itsdangerous",
+      "task_id": "u28"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/python",
+            "-m",
+            "pytest",
+            "-q",
+            "-o",
+            "addopts=",
+            "tests",
+            "-p",
+            "pytest_asyncio.plugin"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{runtime_cohort_c}/public/runtime/python-site:{root}/src:{root}:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 25,
+          "kind": "tests",
+          "name": "original-public-python-tests",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "c3364059663df1ddce32799d6b1922af89a345f6",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add Signal.send_robust(sender=None, /, **kwargs). Like send, it delivers to receivers matching that sender or ANY and returns (receiver, outcome) pairs. It continues after ordinary receiver exceptions, placing the exact Exception object in the outcome instead of raising it; successful return values are unchanged. BaseException subclasses must propagate. Muted signals return an empty list. Synchronous delivery of an async receiver must produce a RuntimeError outcome without creating an unawaited coroutine, then continue. Keep normal send and send_async behavior unchanged. No receiver-order guarantee is added.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/pallets-eco/blinker",
+      "task_id": "u29"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/python",
+            "-m",
+            "pytest",
+            "-q",
+            "-o",
+            "addopts=",
+            "tests"
+          ],
+          "env_updates": {
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "{runtime_cohort_c}/public/runtime/python-site:{root}/src:{root}:{runtime_v6}/tooling/python-extensions"
+          },
+          "expected_tests": 360,
+          "kind": "tests",
+          "name": "original-public-python-tests",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "eba200635273fe45b67e669b84cb45f995b27c24",
+      "language": "python",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add Cache.peek(key[, default]) as a non-touching lookup inherited by the cache classes. Return a live cached value without updating eviction ordering or frequency, calling __missing__, or removing expired entries. A missing or expired key raises KeyError unless a default is supplied, in which case return that exact default. Expiry-aware caches must use their normal current-time membership semantics. Preserve size accounting and all existing get/indexing behavior. In particular, peeking must not rescue an old LRU entry from the next eviction.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/tkem/cachetools",
+      "task_id": "u30"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/python",
+            "{runtime_cohort_c}/public/runtime/mitt_public.py",
+            "{root}"
+          ],
+          "expected_tests": 19,
+          "kind": "tests",
+          "name": "all-original-mitt-behavior-tests",
+          "timeout_seconds": 45
+        },
+        {
+          "argv": [
+            "{runtime_v5}/bin/tsc",
+            "--noEmit",
+            "--target",
+            "ESNext",
+            "--module",
+            "Preserve",
+            "--moduleResolution",
+            "Bundler",
+            "--strict",
+            "--allowImportingTsExtensions",
+            "--lib",
+            "ESNext,DOM",
+            "src/index.ts"
+          ],
+          "kind": "typecheck",
+          "name": "strict-public-source-typecheck",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "6b41670516ed8e8b738612f60491995470aa63b3",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Add emitter.once(type, handler), returning an idempotent disposer. It registers one delivery for a named or symbol event, or for the wildcard event. The listener unregisters before invoking its handler, so a recursive emit cannot invoke it twice. A wildcard handler still receives (type, payload). Disposing before delivery cancels that registration; disposing afterwards is harmless. Multiple once registrations of the same callback are independent. Preserve on/off/emit behavior, the caller-supplied event map, and expose the new method in the TypeScript API.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/developit/mitt",
+      "task_id": "u31"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/node",
+            "{repository_root}/frontend/node_modules/vitest/vitest.mjs",
+            "--config",
+            "{runtime_cohort_c}/public/runtime/vitest.config.mjs",
+            "--configLoader",
+            "native",
+            "--pool",
+            "threads",
+            "run",
+            "--reporter=verbose"
+          ],
+          "env_updates": {
+            "NODE_PATH": "{runtime_cohort_c}/public/runtime/node/node_modules:{repository_root}/frontend/node_modules:{runtime_v5}/node/node_modules"
+          },
+          "expected_tests": 23,
+          "kind": "tests",
+          "name": "all-original-vitest-tests",
+          "timeout_seconds": 45
+        },
+        {
+          "argv": [
+            "{runtime_v5}/bin/tsc",
+            "--noEmit",
+            "--target",
+            "ESNext",
+            "--module",
+            "Preserve",
+            "--moduleResolution",
+            "Bundler",
+            "--strict",
+            "--allowImportingTsExtensions",
+            "--lib",
+            "ESNext,DOM",
+            "src/defu.ts"
+          ],
+          "kind": "typecheck",
+          "name": "strict-public-source-typecheck",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "82632b66f5914e9946edce300e10633a3d5c0cb7",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Export defuReplaceArrays(...layers), a defaults-merge variant with the same left-to-right precedence and nullish fallback as defu, except arrays replace lower-precedence arrays instead of concatenating. Apply replacement at every nesting depth. Returned plain objects and arrays, including objects inside arrays, must not share mutable containers with any input. Preserve class instances as atomic values. Ignore __proto__ and constructor keys throughout the new variant. Empty input returns an empty object. Leave existing defu variants unchanged.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/unjs/defu",
+      "task_id": "u32"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/node",
+            "{repository_root}/frontend/node_modules/vitest/vitest.mjs",
+            "--config",
+            "{runtime_cohort_c}/public/runtime/vitest.config.mjs",
+            "--configLoader",
+            "native",
+            "--pool",
+            "threads",
+            "run",
+            "--reporter=verbose"
+          ],
+          "env_updates": {
+            "NODE_PATH": "{runtime_cohort_c}/public/runtime/node/node_modules:{repository_root}/frontend/node_modules:{runtime_v5}/node/node_modules"
+          },
+          "expected_tests": 44,
+          "kind": "tests",
+          "name": "all-original-vitest-tests",
+          "timeout_seconds": 45
+        },
+        {
+          "argv": [
+            "{runtime_v5}/bin/tsc",
+            "--noEmit",
+            "--target",
+            "ESNext",
+            "--module",
+            "Preserve",
+            "--moduleResolution",
+            "Bundler",
+            "--strict",
+            "--allowImportingTsExtensions",
+            "--lib",
+            "ESNext,DOM",
+            "src/index.ts"
+          ],
+          "kind": "typecheck",
+          "name": "strict-public-source-typecheck",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "6815e4fed0411f3e2f91a31bdb107d8aeac0a266",
+      "language": "javascript-typescript",
+      "previously_exposed_task": true,
+      "primary": false,
+      "prompt": "Export hookWithSignal(hooks, name, callback, signal: AbortSignal), returning an idempotent disposer. The hooks argument is a Hookable instance, including one returned by createHooks. It behaves like ordinary hook registration while the signal is live, automatically unregisters when aborted, and registers nothing if already aborted. Manual disposal unregisters the hook and removes the abort listener. Abort or disposal must not remove other registrations of the same callback. The callback keeps normal arguments, ordering and async behavior. Leave existing hook APIs unchanged and preserve the existing bundle-size checks through tree shaking.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/unjs/hookable",
+      "task_id": "u33"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/node",
+            "{repository_root}/frontend/node_modules/vitest/vitest.mjs",
+            "--config",
+            "{runtime_cohort_c}/public/runtime/vitest.config.mjs",
+            "--configLoader",
+            "native",
+            "--pool",
+            "threads",
+            "run",
+            "--reporter=verbose"
+          ],
+          "env_updates": {
+            "NODE_PATH": "{runtime_cohort_c}/public/runtime/node/node_modules:{repository_root}/frontend/node_modules:{runtime_v5}/node/node_modules"
+          },
+          "expected_tests": 22,
+          "kind": "tests",
+          "name": "all-original-vitest-tests",
+          "timeout_seconds": 45
+        },
+        {
+          "argv": [
+            "{runtime_v5}/bin/tsc",
+            "--noEmit",
+            "--target",
+            "ESNext",
+            "--module",
+            "Preserve",
+            "--moduleResolution",
+            "Bundler",
+            "--strict",
+            "--allowImportingTsExtensions",
+            "--lib",
+            "ESNext,DOM",
+            "src/index.ts"
+          ],
+          "kind": "typecheck",
+          "name": "strict-public-source-typecheck",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "541b6f9aeada9fc30de9c5a7e086dbfc1c6fcdc7",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Export parseJSONLines(value, options={}) for newline-delimited data. Require a string input; otherwise throw TypeError. Split on LF (accepting CRLF), remove an optional leading document BOM, trim each line, ignore blank lines, and return parsed values in order. Use the existing destr semantics for each record, with strict parsing enabled by default. options.strict=false enables the same permissive fallback and prototype-key sanitization as destr. A strict record error must throw SyntaxError whose message contains the one-based physical line number; preserve the original error as cause. Empty documents return an empty array. Existing destr and safeDestr behavior must remain unchanged.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/unjs/destr",
+      "task_id": "u34"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/node",
+            "{repository_root}/frontend/node_modules/vitest/vitest.mjs",
+            "--config",
+            "{runtime_cohort_c}/public/runtime/vitest.config.mjs",
+            "--configLoader",
+            "native",
+            "--pool",
+            "threads",
+            "run",
+            "--reporter=verbose"
+          ],
+          "env_updates": {
+            "NODE_PATH": "{runtime_cohort_c}/public/runtime/node/node_modules:{repository_root}/frontend/node_modules:{runtime_v5}/node/node_modules"
+          },
+          "expected_tests": 467,
+          "kind": "tests",
+          "name": "all-original-vitest-tests",
+          "timeout_seconds": 45
+        },
+        {
+          "argv": [
+            "{runtime_v5}/bin/tsc",
+            "--noEmit",
+            "--target",
+            "ESNext",
+            "--module",
+            "Preserve",
+            "--moduleResolution",
+            "Bundler",
+            "--strict",
+            "--allowImportingTsExtensions",
+            "--lib",
+            "ESNext,DOM",
+            "src/index.ts"
+          ],
+          "kind": "typecheck",
+          "name": "strict-public-source-typecheck",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "bc7477a01f0bd60ada017add8142c9f9d69ccdc5",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Export isPathInside(parent, candidate), a lexical containment predicate that performs no filesystem access. Both arguments must be absolute POSIX paths or absolute Windows drive paths; return false for relative paths. Normalize dot segments, repeated separators and Windows backslashes using the library conventions. Return true for the parent itself and descendants, including when the parent has a trailing separator. Reject sibling prefix matches and escapes through .. . Windows drive letters are case-insensitive, but remaining path segments are case-sensitive; different drives and POSIX-versus-drive roots do not contain one another. Preserve all existing path APIs.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/unjs/pathe",
+      "task_id": "u35"
+    },
+    {
+      "commands": [
+        {
+          "argv": [
+            "{runtime_v5}/bin/node",
+            "{repository_root}/frontend/node_modules/vitest/vitest.mjs",
+            "--config",
+            "{runtime_cohort_c}/public/runtime/vitest.config.mjs",
+            "--configLoader",
+            "native",
+            "--pool",
+            "threads",
+            "run",
+            "--reporter=verbose"
+          ],
+          "env_updates": {
+            "NODE_PATH": "{runtime_cohort_c}/public/runtime/node/node_modules:{repository_root}/frontend/node_modules:{runtime_v5}/node/node_modules"
+          },
+          "expected_tests": 489,
+          "kind": "tests",
+          "name": "all-original-vitest-tests",
+          "timeout_seconds": 45
+        },
+        {
+          "argv": [
+            "{runtime_v5}/bin/tsc",
+            "--noEmit",
+            "--target",
+            "ESNext",
+            "--module",
+            "Preserve",
+            "--moduleResolution",
+            "Bundler",
+            "--strict",
+            "--allowImportingTsExtensions",
+            "--lib",
+            "ESNext,DOM",
+            "src/index.ts"
+          ],
+          "kind": "typecheck",
+          "name": "strict-public-source-typecheck",
+          "timeout_seconds": 45
+        }
+      ],
+      "commit": "f06c800d0c59f2a4a1b9ba65eb6cb61a84419be6",
+      "language": "javascript-typescript",
+      "previously_exposed_task": false,
+      "primary": true,
+      "prompt": "Export withoutQueryKeys(input, keys), removing all URL query fields whose decoded key is present in an iterable of strings. Decode keys with the library query-key semantics, including plus-as-space, while preserving every byte of retained fields (escaping, values, order, duplicates and empty fields). Preserve pathname, origin and fragment verbatim; a question mark within the fragment is not a query. If no key matches, return the original string exactly. If all fields are removed, remove the query question mark. Accept one-shot key iterables, an empty key name, relative URLs and empty input. Leave existing query utilities unchanged.\n\nImplement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.",
+      "repository": "https://github.com/unjs/ufo",
+      "task_id": "u36"
+    }
+  ],
+  "version": "portable-public-tasks-1"
+}

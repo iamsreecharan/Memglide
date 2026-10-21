@@ -1,0 +1,21 @@
+{
+  "absolute_executor_paths_in_data": [],
+  "complete_pool_rows": 128,
+  "credentials_included": false,
+  "exact_source_metric_quality_provenance_comparisons": 2944,
+  "frozen_experiments_modified": false,
+  "full_native_transcripts_included": false,
+  "model_calls": 0,
+  "numpy": "2.3.5",
+  "original_analysis_hash_verified": true,
+  "paired_tasks": 28,
+  "primary_rows": 112,
+  "private_graders_included": false,
+  "public_catalog_tasks": 36,
+  "public_catalog_upstream_commits": 36,
+  "python": "3.12.14",
+  "scipy": "1.17.0",
+  "source_analysis_sha256": "fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26",
+  "statistical_reproduction_all_checks_pass": true,
+  "version": "portable-v7-export-verification-1"
+}

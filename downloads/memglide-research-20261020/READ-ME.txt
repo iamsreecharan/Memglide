@@ -1,17 +1,24 @@
-Memglide research draft
-Author: Sree Charan Reddy Kailasam
-Email: srcharan014@gmail.com
+Memglide research revision: 21 October 2026
 
-The PDF files contain the 13-page manuscript and 24-page supplement.
-Plain-text versions are included for reading without a PDF viewer.
-Markdown sources are included; figure/TeX source and the full evidence archive
-remain in the repository under research/paper and benchmarks/evidence.
+The main paper now reports the amended v7 comparison: 28 primary tasks,
+112 sessions, plus 16 descriptive sessions on eight previously exposed tasks.
+Observed API-equivalent cost is 4.84% lower; full workflow is 1.17% slower.
+Both nominal 95% intervals include zero. Costs are token-price estimates,
+not invoices; equal strict pass counts do not prove quality equivalence.
 
-Final comparison: all three conditions passed 24/24 strict evaluations.
-The source-and-command workflow had 13.69% lower observed fixed-tariff cost
-than pass-through Codex. Prespecified tests did not confirm savings
-(Holm-adjusted p=0.1481), and no speed advantage was established.
-Actual billing was not observed. This remains a manuscript for author review.
+Open Memglide-paper.pdf and Memglide-supplement.pdf. Editable sources and the
+portable results/reproduction instructions are under research/. All 128 current
+numeric records are included; new native transcripts/private graders are not.
+No account credentials, native runtime installation or provider backend is
+included. Statistical reproduction and PDF builds make no model calls.
 
-These are copies of the previously verified files. This package is local;
-creating it does not publish the work or register a chat attachment.
+The complete ZIP also contains evaluated-source/ (exact candidate source) and
+historical-v6/ (the unchanged contents of the previous complete ZIP, with its
+separate 72-session study and older evidence capsule). These historical results
+are not pooled with v7. The smaller paper-and-supplement ZIP omits those two
+large historical/source directories. The dated download path is unchanged for
+compatibility; its contents have been replaced with this revision.
+
+Verify each extracted ZIP's members against CHECKSUMS.sha256. For the ZIP
+file itself, use the SHA-256 in the adjacent download-manifest.json.
+This is an AI-assisted preprint for author review, not an accepted publication.

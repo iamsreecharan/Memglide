@@ -1,0 +1,1669 @@
+{
+  "analysis_design_status": "Amended fixed panel: 25 of 128 measurements preceded the baseline source-policy correction; 52 preceded the recovered-transport parser clarification; a later zero-model schema-startup failure is retained separately. The same 28 tasks, 112 primary sessions, endpoints and stopping plan are retained. Intervals and t tests are nominal model-based inference, not original prospective confirmation.",
+  "analysis_environment": {
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "scipy": "1.17.0"
+  },
+  "arm_labels": {
+    "A": "Codex",
+    "M": "Codex + Memglide"
+  },
+  "arms": {
+    "A": {
+      "actual_billed_cost_usd": null,
+      "allocated": 56,
+      "bridge_handoffs": 56,
+      "complete_usage": 56,
+      "graded": 56,
+      "metrics": {
+        "cache_write_input_tokens": {
+          "complete_total": 0.0,
+          "known": 56,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_ids": []
+        },
+        "cached_input_tokens": {
+          "complete_total": 6165120.0,
+          "known": 56,
+          "known_mean": 110091.42857142857,
+          "known_subtotal": 6165120.0,
+          "missing_ids": []
+        },
+        "cleanup_wall_seconds": {
+          "complete_total": 0.0,
+          "known": 56,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_ids": []
+        },
+        "command_count": {
+          "complete_total": 329.0,
+          "known": 56,
+          "known_mean": 5.875,
+          "known_subtotal": 329.0,
+          "missing_ids": []
+        },
+        "index_wall_seconds": {
+          "complete_total": 0.0,
+          "known": 56,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_ids": []
+        },
+        "input_tokens": {
+          "complete_total": 7341887.0,
+          "known": 56,
+          "known_mean": 131105.125,
+          "known_subtotal": 7341887.0,
+          "missing_ids": []
+        },
+        "installed_launcher_preparation_wall_seconds": {
+          "complete_total": 11.188451084000917,
+          "known": 56,
+          "known_mean": 0.19979376935715923,
+          "known_subtotal": 11.188451084000917,
+          "missing_ids": []
+        },
+        "native_reported_price_equivalent_usd": {
+          "complete_total": null,
+          "known": 55,
+          "known_mean": 0.07485658181818182,
+          "known_subtotal": 4.117112,
+          "missing_ids": [
+            "v7-final-0068"
+          ]
+        },
+        "native_wall_seconds": {
+          "complete_total": 3324.794232824004,
+          "known": 56,
+          "known_mean": 59.37132558614293,
+          "known_subtotal": 3324.794232824004,
+          "missing_ids": []
+        },
+        "observed_file_read_commands": {
+          "complete_total": 83.0,
+          "known": 56,
+          "known_mean": 1.4821428571428572,
+          "known_subtotal": 83.0,
+          "missing_ids": []
+        },
+        "observed_repeated_read_commands": {
+          "complete_total": 16.0,
+          "known": 56,
+          "known_mean": 0.2857142857142857,
+          "known_subtotal": 16.0,
+          "missing_ids": []
+        },
+        "output_tokens": {
+          "complete_total": 126394.0,
+          "known": 56,
+          "known_mean": 2257.035714285714,
+          "known_subtotal": 126394.0,
+          "missing_ids": []
+        },
+        "possible_write_price_lower_usd": {
+          "complete_total": null,
+          "known": 55,
+          "known_mean": 0.07485658181818182,
+          "known_subtotal": 4.117112,
+          "missing_ids": [
+            "v7-final-0068"
+          ]
+        },
+        "possible_write_price_upper_usd": {
+          "complete_total": null,
+          "known": 55,
+          "known_mean": 0.08520751818181818,
+          "known_subtotal": 4.6864135,
+          "missing_ids": [
+            "v7-final-0068"
+          ]
+        },
+        "reasoning_output_tokens": {
+          "complete_total": 7104.0,
+          "known": 56,
+          "known_mean": 126.85714285714286,
+          "known_subtotal": 7104.0,
+          "missing_ids": []
+        },
+        "uniform_long_usd": {
+          "complete_total": 9.012769,
+          "known": 56,
+          "known_mean": 0.16094230357142858,
+          "known_subtotal": 9.012769,
+          "missing_ids": []
+        },
+        "verification_wall_seconds": {
+          "complete_total": 0.0,
+          "known": 56,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_ids": []
+        },
+        "workflow_wall_seconds": {
+          "complete_total": 3337.050141186004,
+          "known": 56,
+          "known_mean": 59.59018109260722,
+          "known_subtotal": 3337.050141186004,
+          "missing_ids": []
+        }
+      },
+      "native_valid": 56,
+      "raw_terminal_results": 56,
+      "scheduled": 56,
+      "strict_failures": 2,
+      "strict_successes": 54,
+      "unavailable_strict_ids": []
+    },
+    "M": {
+      "actual_billed_cost_usd": null,
+      "allocated": 56,
+      "bridge_handoffs": 56,
+      "complete_usage": 56,
+      "graded": 56,
+      "metrics": {
+        "cache_write_input_tokens": {
+          "complete_total": 0.0,
+          "known": 56,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_ids": []
+        },
+        "cached_input_tokens": {
+          "complete_total": 5556352.0,
+          "known": 56,
+          "known_mean": 99220.57142857143,
+          "known_subtotal": 5556352.0,
+          "missing_ids": []
+        },
+        "cleanup_wall_seconds": {
+          "complete_total": 0.6291520210052113,
+          "known": 56,
+          "known_mean": 0.011234857517950201,
+          "known_subtotal": 0.6291520210052113,
+          "missing_ids": []
+        },
+        "command_count": {
+          "complete_total": 283.0,
+          "known": 56,
+          "known_mean": 5.053571428571429,
+          "known_subtotal": 283.0,
+          "missing_ids": []
+        },
+        "index_wall_seconds": {
+          "complete_total": 13.61896727700696,
+          "known": 56,
+          "known_mean": 0.24319584423226712,
+          "known_subtotal": 13.61896727700696,
+          "missing_ids": []
+        },
+        "input_tokens": {
+          "complete_total": 6681908.0,
+          "known": 56,
+          "known_mean": 119319.78571428571,
+          "known_subtotal": 6681908.0,
+          "missing_ids": []
+        },
+        "installed_launcher_preparation_wall_seconds": {
+          "complete_total": 45.79556066299301,
+          "known": 56,
+          "known_mean": 0.8177778689820181,
+          "known_subtotal": 45.79556066299301,
+          "missing_ids": []
+        },
+        "native_reported_price_equivalent_usd": {
+          "complete_total": null,
+          "known": 55,
+          "known_mean": 0.07120630545454545,
+          "known_subtotal": 3.9163468,
+          "missing_ids": [
+            "v7-final-0074"
+          ]
+        },
+        "native_wall_seconds": {
+          "complete_total": 3209.510837927004,
+          "known": 56,
+          "known_mean": 57.31269353441079,
+          "known_subtotal": 3209.510837927004,
+          "missing_ids": []
+        },
+        "observed_file_read_commands": {
+          "complete_total": 83.0,
+          "known": 56,
+          "known_mean": 1.4821428571428572,
+          "known_subtotal": 83.0,
+          "missing_ids": []
+        },
+        "observed_repeated_read_commands": {
+          "complete_total": 20.0,
+          "known": 56,
+          "known_mean": 0.35714285714285715,
+          "known_subtotal": 20.0,
+          "missing_ids": []
+        },
+        "output_tokens": {
+          "complete_total": 122529.0,
+          "known": 56,
+          "known_mean": 2188.0178571428573,
+          "known_subtotal": 122529.0,
+          "missing_ids": []
+        },
+        "possible_write_price_lower_usd": {
+          "complete_total": null,
+          "known": 55,
+          "known_mean": 0.07120630545454545,
+          "known_subtotal": 3.9163468,
+          "missing_ids": [
+            "v7-final-0074"
+          ]
+        },
+        "possible_write_price_upper_usd": {
+          "complete_total": null,
+          "known": 55,
+          "known_mean": 0.08119360545454546,
+          "known_subtotal": 4.4656483,
+          "missing_ids": [
+            "v7-final-0074"
+          ]
+        },
+        "reasoning_output_tokens": {
+          "complete_total": 6727.0,
+          "known": 56,
+          "known_mean": 120.125,
+          "known_subtotal": 6727.0,
+          "missing_ids": []
+        },
+        "uniform_long_usd": {
+          "complete_total": 8.5769854,
+          "known": 56,
+          "known_mean": 0.15316045357142857,
+          "known_subtotal": 8.5769854,
+          "missing_ids": []
+        },
+        "verification_wall_seconds": {
+          "complete_total": 78.85557947399502,
+          "known": 56,
+          "known_mean": 1.408135347749911,
+          "known_subtotal": 78.85557947399502,
+          "missing_ids": []
+        },
+        "workflow_wall_seconds": {
+          "complete_total": 3376.031779468003,
+          "known": 56,
+          "known_mean": 60.286281776214345,
+          "known_subtotal": 3376.031779468003,
+          "missing_ids": []
+        }
+      },
+      "native_valid": 56,
+      "raw_terminal_results": 56,
+      "scheduled": 56,
+      "strict_failures": 2,
+      "strict_successes": 54,
+      "unavailable_strict_ids": []
+    }
+  },
+  "attempt_accounting": {
+    "additional_certified_zero_model_startup_attempts": 1,
+    "allocation_attempts_if_fullcompletion": 145,
+    "model_turn_sessions_if_fullcompletion": 143,
+    "native_cli_processes_if_fullcompletion": 144,
+    "original_failed_pre_bridge_attempts": 1,
+    "scope": "Unique master model cells unchanged; additional0069startup never reached a model request. Original0016unknown usage is unchanged.",
+    "unique_master_assignments": 144
+  },
+  "cohort_selection": "Exactly 28 tasks had no native launch in the first 15 assignments. Membership was fixed before their 112 model sessions; the policy correction removes no task.",
+  "cost_definition": {
+    "actual_invoice_cost_available": false,
+    "basis": "Measured native token counters, fixed uniform conservative API tariffs",
+    "scope": "Token-price equivalents, not ChatGPT/Codex subscription bills or proven cash savings",
+    "tariff_usd_per_million_tokens": {
+      "cached_input": 0.2,
+      "output": 15,
+      "uncached_input": 5
+    }
+  },
+  "exposed_task_ids": [
+    "u10",
+    "u13",
+    "u20",
+    "u23",
+    "u24",
+    "u27",
+    "u28",
+    "u33"
+  ],
+  "failure_review": {
+    "failed_run_ids": [
+      "v7-final-0059",
+      "v7-final-0060",
+      "v7-final-0085",
+      "v7-final-0086"
+    ],
+    "failed_task_ids": [
+      "u21"
+    ],
+    "finding": "Both methods in both repetitions returned false for invalid safeInteger flags. The private checker expected TypeError. The public instruction said reject but did not specify throwing. Strict failures are preserved; no grading changes or model repair."
+  },
+  "grading_version_scope": "Version 3 corrects source-edit metadata only; feature assertions are unchanged. All 52 prior and 76 new records use the same source-policy and native-reported-usage adjudication, without replacing source, timing or counters. Original 15-run quality remains unattested.",
+  "joint_decision": {
+    "both_resource_tests_and_intervals_pass": false,
+    "full_panel_integrity_valid": true,
+    "joint_efficiency_supported_on_this_panel": false,
+    "no_durable_stop": true,
+    "observed_quality_count_guard_met": true,
+    "scope": "Nominal paired-t IUT on the amended fixed panel with unchanged endpoints/N/alpha; not a new fully prospective confirmation, original closed protocol decisions remain unavailable"
+  },
+  "original_analysis_sha256_is_not_this_export_sha256": true,
+  "pooled_all128_descriptive": {
+    "A": {
+      "actual_billed_cost_usd": null,
+      "allocated": 64,
+      "complete_usage": 64,
+      "evidence_preservation_valid": 64,
+      "metrics": {
+        "cache_write_input_tokens": {
+          "complete_total": 0.0,
+          "known_count": 64,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_run_ids": []
+        },
+        "cached_input_tokens": {
+          "complete_total": 7143296.0,
+          "known_count": 64,
+          "known_mean": 111614,
+          "known_subtotal": 7143296.0,
+          "missing_run_ids": []
+        },
+        "cleanup_wall_seconds": {
+          "complete_total": 0.0,
+          "known_count": 64,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_run_ids": []
+        },
+        "command_count": {
+          "complete_total": 380.0,
+          "known_count": 64,
+          "known_mean": 5.9375,
+          "known_subtotal": 380.0,
+          "missing_run_ids": []
+        },
+        "index_wall_seconds": {
+          "complete_total": 0.0,
+          "known_count": 64,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_run_ids": []
+        },
+        "input_tokens": {
+          "complete_total": 8447559.0,
+          "known_count": 64,
+          "known_mean": 131993.109375,
+          "known_subtotal": 8447559.0,
+          "missing_run_ids": []
+        },
+        "installed_launcher_preparation_wall_seconds": {
+          "complete_total": 12.382713291002801,
+          "known_count": 64,
+          "known_mean": 0.19347989517191877,
+          "known_subtotal": 12.382713291002801,
+          "missing_run_ids": []
+        },
+        "native_reported_price_equivalent_usd": {
+          "complete_total": null,
+          "known_count": 62,
+          "known_mean": 0.07279445161290322,
+          "known_subtotal": 4.513256,
+          "missing_run_ids": [
+            "v7-final-0068",
+            "v7-final-0130"
+          ]
+        },
+        "native_wall_seconds": {
+          "complete_total": 3776.6325105370033,
+          "known_count": 64,
+          "known_mean": 59.00988297714068,
+          "known_subtotal": 3776.6325105370033,
+          "missing_run_ids": []
+        },
+        "observed_file_read_commands": {
+          "complete_total": 91.0,
+          "known_count": 64,
+          "known_mean": 1.421875,
+          "known_subtotal": 91.0,
+          "missing_run_ids": []
+        },
+        "observed_repeated_read_commands": {
+          "complete_total": 17.0,
+          "known_count": 64,
+          "known_mean": 0.265625,
+          "known_subtotal": 17.0,
+          "missing_run_ids": []
+        },
+        "output_tokens": {
+          "complete_total": 144317.0,
+          "known_count": 64,
+          "known_mean": 2254.953125,
+          "known_subtotal": 144317.0,
+          "missing_run_ids": []
+        },
+        "possible_write_price_lower_usd": {
+          "complete_total": null,
+          "known_count": 62,
+          "known_mean": 0.07279445161290322,
+          "known_subtotal": 4.513256,
+          "missing_run_ids": [
+            "v7-final-0068",
+            "v7-final-0130"
+          ]
+        },
+        "possible_write_price_upper_usd": {
+          "complete_total": null,
+          "known_count": 62,
+          "known_mean": 0.08274062903225807,
+          "known_subtotal": 5.129919,
+          "missing_run_ids": [
+            "v7-final-0068",
+            "v7-final-0130"
+          ]
+        },
+        "reasoning_output_tokens": {
+          "complete_total": 7927.0,
+          "known_count": 64,
+          "known_mean": 123.859375,
+          "known_subtotal": 7927.0,
+          "missing_run_ids": []
+        },
+        "uniform_long_usd": {
+          "complete_total": 10.1147292,
+          "known_count": 64,
+          "known_mean": 0.15804264375,
+          "known_subtotal": 10.1147292,
+          "missing_run_ids": []
+        },
+        "verification_wall_seconds": {
+          "complete_total": 0.0,
+          "known_count": 64,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_run_ids": []
+        },
+        "workflow_wall_seconds": {
+          "complete_total": 3790.226950399001,
+          "known_count": 64,
+          "known_mean": 59.22229609998439,
+          "known_subtotal": 3790.226950399001,
+          "missing_run_ids": []
+        }
+      },
+      "native_valid": 64,
+      "scheduled": 64,
+      "strict_failures_known": 2,
+      "strict_successes_known": 62,
+      "strict_unknown_ids": []
+    },
+    "M": {
+      "actual_billed_cost_usd": null,
+      "allocated": 64,
+      "complete_usage": 64,
+      "evidence_preservation_valid": 64,
+      "metrics": {
+        "cache_write_input_tokens": {
+          "complete_total": 0.0,
+          "known_count": 64,
+          "known_mean": 0,
+          "known_subtotal": 0.0,
+          "missing_run_ids": []
+        },
+        "cached_input_tokens": {
+          "complete_total": 6327168.0,
+          "known_count": 64,
+          "known_mean": 98862,
+          "known_subtotal": 6327168.0,
+          "missing_run_ids": []
+        },
+        "cleanup_wall_seconds": {
+          "complete_total": 0.7435997949996818,
+          "known_count": 64,
+          "known_mean": 0.011618746796870028,
+          "known_subtotal": 0.7435997949996818,
+          "missing_run_ids": []
+        },
+        "command_count": {
+          "complete_total": 323.0,
+          "known_count": 64,
+          "known_mean": 5.046875,
+          "known_subtotal": 323.0,
+          "missing_run_ids": []
+        },
+        "index_wall_seconds": {
+          "complete_total": 15.592981663010505,
+          "known_count": 64,
+          "known_mean": 0.24364033848453914,
+          "known_subtotal": 15.592981663010505,
+          "missing_run_ids": []
+        },
+        "input_tokens": {
+          "complete_total": 7624179.0,
+          "known_count": 64,
+          "known_mean": 119127.796875,
+          "known_subtotal": 7624179.0,
+          "missing_run_ids": []
+        },
+        "installed_launcher_preparation_wall_seconds": {
+          "complete_total": 55.049119975001304,
+          "known_count": 64,
+          "known_mean": 0.8601424996093954,
+          "known_subtotal": 55.049119975001304,
+          "missing_run_ids": []
+        },
+        "native_reported_price_equivalent_usd": {
+          "complete_total": null,
+          "known_count": 63,
+          "known_mean": 0.07151426031746032,
+          "known_subtotal": 4.5053984,
+          "missing_run_ids": [
+            "v7-final-0074"
+          ]
+        },
+        "native_wall_seconds": {
+          "complete_total": 3637.9205539809973,
+          "known_count": 64,
+          "known_mean": 56.84250865595308,
+          "known_subtotal": 3637.9205539809973,
+          "missing_run_ids": []
+        },
+        "observed_file_read_commands": {
+          "complete_total": 93.0,
+          "known_count": 64,
+          "known_mean": 1.453125,
+          "known_subtotal": 93.0,
+          "missing_run_ids": []
+        },
+        "observed_repeated_read_commands": {
+          "complete_total": 20.0,
+          "known_count": 64,
+          "known_mean": 0.3125,
+          "known_subtotal": 20.0,
+          "missing_run_ids": []
+        },
+        "output_tokens": {
+          "complete_total": 139435.0,
+          "known_count": 64,
+          "known_mean": 2178.671875,
+          "known_subtotal": 139435.0,
+          "missing_run_ids": []
+        },
+        "possible_write_price_lower_usd": {
+          "complete_total": null,
+          "known_count": 63,
+          "known_mean": 0.07151426031746032,
+          "known_subtotal": 4.5053984,
+          "missing_run_ids": [
+            "v7-final-0074"
+          ]
+        },
+        "possible_write_price_upper_usd": {
+          "complete_total": null,
+          "known_count": 63,
+          "known_mean": 0.08159408571428571,
+          "known_subtotal": 5.1404274,
+          "missing_run_ids": [
+            "v7-final-0074"
+          ]
+        },
+        "reasoning_output_tokens": {
+          "complete_total": 7575.0,
+          "known_count": 64,
+          "known_mean": 118.359375,
+          "known_subtotal": 7575.0,
+          "missing_run_ids": []
+        },
+        "uniform_long_usd": {
+          "complete_total": 9.8420136,
+          "known_count": 64,
+          "known_mean": 0.1537814625,
+          "known_subtotal": 9.8420136,
+          "missing_run_ids": []
+        },
+        "verification_wall_seconds": {
+          "complete_total": 104.3500459749921,
+          "known_count": 64,
+          "known_mean": 1.6304694683592516,
+          "known_subtotal": 104.3500459749921,
+          "missing_run_ids": []
+        },
+        "workflow_wall_seconds": {
+          "complete_total": 3846.092751611004,
+          "known_count": 64,
+          "known_mean": 60.09519924392194,
+          "known_subtotal": 3846.092751611004,
+          "missing_run_ids": []
+        }
+      },
+      "native_valid": 64,
+      "scheduled": 64,
+      "strict_failures_known": 2,
+      "strict_successes_known": 62,
+      "strict_unknown_ids": []
+    }
+  },
+  "primary": {
+    "uniform_long_usd": {
+      "bootstrap_sensitivity": {
+        "mean_delta_percentile_95_interval": [
+          -0.023638511249999997,
+          0.009079970982142853
+        ],
+        "relative_change_percentile_95_interval_percent": [
+          -14.188936193198625,
+          5.840061053152957
+        ],
+        "replicates": 10000,
+        "scope": "Pointwise descriptive robustness; not an alternative primary pass route",
+        "seed": 20261102
+      },
+      "complete_full_panel": true,
+      "complete_task_clusters": 28,
+      "confirmatory_panel_integrity_valid": true,
+      "distribution_diagnostics": {
+        "leave_one_task_mean_range": [
+          -0.011607048148148145,
+          -0.0043849851851851815
+        ],
+        "qq_sorted_delta": [
+          -0.09949720000000001,
+          -0.06589389999999998,
+          -0.06150550000000002,
+          -0.0574288,
+          -0.056537299999999985,
+          -0.05138489999999998,
+          -0.04092870000000001,
+          -0.03235970000000002,
+          -0.030303200000000002,
+          -0.024638300000000002,
+          -0.020202200000000003,
+          -0.019288699999999992,
+          -0.016941999999999985,
+          -0.011936500000000017,
+          -0.006205200000000022,
+          -0.004185899999999965,
+          -0.0019891999999999965,
+          0.0004799000000000053,
+          0.002671400000000018,
+          0.0044632000000000005,
+          0.009779200000000016,
+          0.015565400000000007,
+          0.025688299999999997,
+          0.0406956,
+          0.05696190000000001,
+          0.06000310000000003,
+          0.0715289,
+          0.09549849999999999
+        ],
+        "qq_standard_normal_blom": [
+          -2.0117358669653087,
+          -1.5759199711980354,
+          -1.3229839722514805,
+          -1.1343752695464289,
+          -0.9792962388346732,
+          -0.8447864371507149,
+          -0.7240638305684132,
+          -0.613080657835286,
+          -0.5091894047102011,
+          -0.4105317344283314,
+          -0.3157234981370301,
+          -0.2236767356769889,
+          -0.13349071142839178,
+          -0.044379665933282283,
+          0.044379665933282283,
+          0.13349071142839164,
+          0.2236767356769889,
+          0.31572349813702993,
+          0.4105317344283314,
+          0.509189404710201,
+          0.613080657835286,
+          0.7240638305684132,
+          0.8447864371507149,
+          0.9792962388346732,
+          1.134375269546429,
+          1.3229839722514805,
+          1.5759199711980354,
+          2.0117358669653083
+        ],
+        "sample_excess_kurtosis_bias_corrected": 0.09094629265449639,
+        "sample_skew_bias_corrected": 0.36743458849883587,
+        "scope": "Descriptive; no test switching/outlier exclusion",
+        "shapiro_W": 0.9789925593635418,
+        "shapiro_diagnostic_p": 0.8256212221809127
+      },
+      "metrics_complete_full_panel": true,
+      "missing_cells": [],
+      "paired_task_values": [
+        {
+          "A": 0.12373139999999999,
+          "M": 0.1335106,
+          "delta": 0.009779200000000016,
+          "task_id": "u01"
+        },
+        {
+          "A": 0.1256187,
+          "M": 0.151307,
+          "delta": 0.025688299999999997,
+          "task_id": "u02"
+        },
+        {
+          "A": 0.1581208,
+          "M": 0.1278176,
+          "delta": -0.030303200000000002,
+          "task_id": "u03"
+        },
+        {
+          "A": 0.1785164,
+          "M": 0.1271315,
+          "delta": -0.05138489999999998,
+          "task_id": "u04"
+        },
+        {
+          "A": 0.14658870000000002,
+          "M": 0.10566,
+          "delta": -0.04092870000000001,
+          "task_id": "u05"
+        },
+        {
+          "A": 0.1979743,
+          "M": 0.2579774,
+          "delta": 0.06000310000000003,
+          "task_id": "u06"
+        },
+        {
+          "A": 0.1178865,
+          "M": 0.1223497,
+          "delta": 0.0044632000000000005,
+          "task_id": "u07"
+        },
+        {
+          "A": 0.1512886,
+          "M": 0.09475130000000001,
+          "delta": -0.056537299999999985,
+          "task_id": "u08"
+        },
+        {
+          "A": 0.11609,
+          "M": 0.1876189,
+          "delta": 0.0715289,
+          "task_id": "u09"
+        },
+        {
+          "A": 0.1793392,
+          "M": 0.16239720000000002,
+          "delta": -0.016941999999999985,
+          "task_id": "u11"
+        },
+        {
+          "A": 0.1942355,
+          "M": 0.1695972,
+          "delta": -0.024638300000000002,
+          "task_id": "u12"
+        },
+        {
+          "A": 0.1786351,
+          "M": 0.2741336,
+          "delta": 0.09549849999999999,
+          "task_id": "u14"
+        },
+        {
+          "A": 0.0747343,
+          "M": 0.1316962,
+          "delta": 0.05696190000000001,
+          "task_id": "u15"
+        },
+        {
+          "A": 0.12292259999999999,
+          "M": 0.1036339,
+          "delta": -0.019288699999999992,
+          "task_id": "u16"
+        },
+        {
+          "A": 0.11637800000000001,
+          "M": 0.10444149999999999,
+          "delta": -0.011936500000000017,
+          "task_id": "u17"
+        },
+        {
+          "A": 0.1715567,
+          "M": 0.16535149999999998,
+          "delta": -0.006205200000000022,
+          "task_id": "u18"
+        },
+        {
+          "A": 0.1463181,
+          "M": 0.08481259999999999,
+          "delta": -0.06150550000000002,
+          "task_id": "u19"
+        },
+        {
+          "A": 0.09462519999999999,
+          "M": 0.092636,
+          "delta": -0.0019891999999999965,
+          "task_id": "u21"
+        },
+        {
+          "A": 0.1198868,
+          "M": 0.0996846,
+          "delta": -0.020202200000000003,
+          "task_id": "u22"
+        },
+        {
+          "A": 0.2105471,
+          "M": 0.15311829999999998,
+          "delta": -0.0574288,
+          "task_id": "u25"
+        },
+        {
+          "A": 0.20343419999999998,
+          "M": 0.2061056,
+          "delta": 0.002671400000000018,
+          "task_id": "u26"
+        },
+        {
+          "A": 0.1638428,
+          "M": 0.17940820000000002,
+          "delta": 0.015565400000000007,
+          "task_id": "u29"
+        },
+        {
+          "A": 0.1704601,
+          "M": 0.17094,
+          "delta": 0.0004799000000000053,
+          "task_id": "u30"
+        },
+        {
+          "A": 0.24184060000000002,
+          "M": 0.1423434,
+          "delta": -0.09949720000000001,
+          "task_id": "u31"
+        },
+        {
+          "A": 0.24907859999999998,
+          "M": 0.24489270000000002,
+          "delta": -0.004185899999999965,
+          "task_id": "u32"
+        },
+        {
+          "A": 0.2041335,
+          "M": 0.13823960000000002,
+          "delta": -0.06589389999999998,
+          "task_id": "u34"
+        },
+        {
+          "A": 0.216946,
+          "M": 0.18458629999999998,
+          "delta": -0.03235970000000002,
+          "task_id": "u35"
+        },
+        {
+          "A": 0.1316547,
+          "M": 0.1723503,
+          "delta": 0.0406956,
+          "task_id": "u36"
+        }
+      ],
+      "primary_t": {
+        "A_mean": 0.16094230357142858,
+        "M_mean": 0.15316045357142857,
+        "df": 27,
+        "inference_available": true,
+        "mean_delta": -0.007781849999999997,
+        "n": 28,
+        "one_sided_p_M_less_A": 0.1842788776910095,
+        "paired_sd": 0.04502833684648336,
+        "passes_one_sided_alpha_0_025_and_upper_below_zero": false,
+        "pointwise_95_t_interval": [
+          -0.025242016278967522,
+          0.009678316278967529
+        ],
+        "relative_change_percent": -4.835179954129531,
+        "standard_error": 0.008509555803331525,
+        "t_statistic": -0.9144836910233755
+      },
+      "scheduled_task_clusters": 28
+    },
+    "workflow_wall_seconds": {
+      "bootstrap_sensitivity": {
+        "mean_delta_percentile_95_interval": [
+          -2.796424845047474,
+          4.170257916652249
+        ],
+        "relative_change_percentile_95_interval_percent": [
+          -4.584724391443489,
+          7.198781413247947
+        ],
+        "replicates": 10000,
+        "scope": "Pointwise descriptive robustness; not an alternative primary pass route",
+        "seed": 20261102
+      },
+      "complete_full_panel": true,
+      "complete_task_clusters": 28,
+      "confirmatory_panel_integrity_valid": true,
+      "distribution_diagnostics": {
+        "leave_one_task_mean_range": [
+          -0.02303984946293322,
+          1.3435335620369424
+        ],
+        "qq_sorted_delta": [
+          -16.784587033997923,
+          -15.587485561501126,
+          -15.15741874449941,
+          -14.971775122499821,
+          -10.747035201500694,
+          -5.681264069500685,
+          -5.342786651998722,
+          -3.200154542499149,
+          -1.6564798534982401,
+          -1.6051824815012878,
+          -1.2667378759997519,
+          -0.4286003029983476,
+          0.009723448497425125,
+          0.08425809099935577,
+          0.7441358244996081,
+          1.7949921480012563,
+          2.811114736999116,
+          3.1545932410017485,
+          4.667028678000861,
+          4.798540469500949,
+          6.7121484130011595,
+          7.809439251499498,
+          8.99217116699856,
+          9.676025292001214,
+          11.202097149498513,
+          11.618203176500174,
+          17.73296041949652,
+          20.112895076498717
+        ],
+        "qq_standard_normal_blom": [
+          -2.0117358669653087,
+          -1.5759199711980354,
+          -1.3229839722514805,
+          -1.1343752695464289,
+          -0.9792962388346732,
+          -0.8447864371507149,
+          -0.7240638305684132,
+          -0.613080657835286,
+          -0.5091894047102011,
+          -0.4105317344283314,
+          -0.3157234981370301,
+          -0.2236767356769889,
+          -0.13349071142839178,
+          -0.044379665933282283,
+          0.044379665933282283,
+          0.13349071142839164,
+          0.2236767356769889,
+          0.31572349813702993,
+          0.4105317344283314,
+          0.509189404710201,
+          0.613080657835286,
+          0.7240638305684132,
+          0.8447864371507149,
+          0.9792962388346732,
+          1.134375269546429,
+          1.3229839722514805,
+          1.5759199711980354,
+          2.0117358669653083
+        ],
+        "sample_excess_kurtosis_bias_corrected": -0.21852961841033558,
+        "sample_skew_bias_corrected": -0.1266533333741545,
+        "scope": "Descriptive; no test switching/outlier exclusion",
+        "shapiro_W": 0.9665654200637632,
+        "shapiro_diagnostic_p": 0.4921117645136485
+      },
+      "metrics_complete_full_panel": true,
+      "missing_cells": [],
+      "paired_task_values": [
+        {
+          "A": 38.51541675399949,
+          "M": 41.67000999500124,
+          "delta": 3.1545932410017485,
+          "task_id": "u01"
+        },
+        {
+          "A": 53.26850064100108,
+          "M": 51.663318159499795,
+          "delta": -1.6051824815012878,
+          "task_id": "u02"
+        },
+        {
+          "A": 70.7290412329994,
+          "M": 55.757266110499586,
+          "delta": -14.971775122499821,
+          "task_id": "u03"
+        },
+        {
+          "A": 79.60415791699961,
+          "M": 62.81957088300169,
+          "delta": -16.784587033997923,
+          "task_id": "u04"
+        },
+        {
+          "A": 46.983494484499715,
+          "M": 41.30223041499903,
+          "delta": -5.681264069500685,
+          "task_id": "u05"
+        },
+        {
+          "A": 90.11172922249898,
+          "M": 88.45524936900074,
+          "delta": -1.6564798534982401,
+          "task_id": "u06"
+        },
+        {
+          "A": 53.96222026550004,
+          "M": 62.954391432498596,
+          "delta": 8.99217116699856,
+          "task_id": "u07"
+        },
+        {
+          "A": 50.69333951450062,
+          "M": 50.77759760549998,
+          "delta": 0.08425809099935577,
+          "task_id": "u08"
+        },
+        {
+          "A": 52.20120133599903,
+          "M": 58.91334974900019,
+          "delta": 6.7121484130011595,
+          "task_id": "u09"
+        },
+        {
+          "A": 42.21916390749902,
+          "M": 40.95242603149927,
+          "delta": -1.2667378759997519,
+          "task_id": "u11"
+        },
+        {
+          "A": 69.72093436749856,
+          "M": 70.46507019199817,
+          "delta": 0.7441358244996081,
+          "task_id": "u12"
+        },
+        {
+          "A": 59.584755069499806,
+          "M": 69.26078036150102,
+          "delta": 9.676025292001214,
+          "task_id": "u14"
+        },
+        {
+          "A": 53.87823275749997,
+          "M": 58.545261435500834,
+          "delta": 4.667028678000861,
+          "task_id": "u15"
+        },
+        {
+          "A": 53.52167086500049,
+          "M": 50.32151632250134,
+          "delta": -3.200154542499149,
+          "task_id": "u16"
+        },
+        {
+          "A": 34.770959444001164,
+          "M": 54.88385452049988,
+          "delta": 20.112895076498717,
+          "task_id": "u17"
+        },
+        {
+          "A": 66.67521275600029,
+          "M": 78.29341593250047,
+          "delta": 11.618203176500174,
+          "task_id": "u18"
+        },
+        {
+          "A": 50.497268928001176,
+          "M": 34.90978336650005,
+          "delta": -15.587485561501126,
+          "task_id": "u19"
+        },
+        {
+          "A": 39.51640788900022,
+          "M": 42.327522625999336,
+          "delta": 2.811114736999116,
+          "task_id": "u21"
+        },
+        {
+          "A": 44.141474486501465,
+          "M": 44.15119793499889,
+          "delta": 0.009723448497425125,
+          "task_id": "u22"
+        },
+        {
+          "A": 60.599272453501726,
+          "M": 71.80136960300024,
+          "delta": 11.202097149498513,
+          "task_id": "u25"
+        },
+        {
+          "A": 89.66756773249926,
+          "M": 84.32478108050054,
+          "delta": -5.342786651998722,
+          "task_id": "u26"
+        },
+        {
+          "A": 59.4789729464992,
+          "M": 61.273965094500454,
+          "delta": 1.7949921480012563,
+          "task_id": "u29"
+        },
+        {
+          "A": 53.50724013949912,
+          "M": 53.07863983650077,
+          "delta": -0.4286003029983476,
+          "task_id": "u30"
+        },
+        {
+          "A": 91.14427043899923,
+          "M": 75.98685169449982,
+          "delta": -15.15741874449941,
+          "task_id": "u31"
+        },
+        {
+          "A": 86.91957006650136,
+          "M": 104.65253048599789,
+          "delta": 17.73296041949652,
+          "task_id": "u32"
+        },
+        {
+          "A": 54.96160120150125,
+          "M": 44.21456600000056,
+          "delta": -10.747035201500694,
+          "task_id": "u34"
+        },
+        {
+          "A": 70.43265465300101,
+          "M": 78.2420939045005,
+          "delta": 7.809439251499498,
+          "task_id": "u35"
+        },
+        {
+          "A": 51.218739122499755,
+          "M": 56.017279592000705,
+          "delta": 4.798540469500949,
+          "task_id": "u36"
+        }
+      ],
+      "primary_t": {
+        "A_mean": 59.59018109260722,
+        "M_mean": 60.286281776214345,
+        "df": 27,
+        "inference_available": true,
+        "mean_delta": 0.6961006836071257,
+        "n": 28,
+        "one_sided_p_M_less_A": 0.6479836721791254,
+        "paired_sd": 9.593828029547945,
+        "passes_one_sided_alpha_0_025_and_upper_below_zero": false,
+        "pointwise_95_t_interval": [
+          -3.0239974674488073,
+          4.416198834663059
+        ],
+        "relative_change_percent": 1.168146615505905,
+        "standard_error": 1.8130630776646208,
+        "t_statistic": 0.38393627457449664
+      },
+      "scheduled_task_clusters": 28
+    }
+  },
+  "primary_design": {
+    "analysis_scope": "112 fixed-cohort cells support the amended 28-task analysis with nominal intervals; no fully prospective confirmation. Original15,failedpre-native0016 andremaining16 exposed-task cells remain descriptive; no original confirmation or general savings claim.",
+    "distinct_tasks": 28,
+    "repeats_per_task_per_arm": 2,
+    "sessions_per_arm": 56,
+    "total_sessions": 112,
+    "unit_of_inference": "task, averaging two repetitions per arm"
+  },
+  "primary_task_ids": [
+    "u01",
+    "u02",
+    "u03",
+    "u04",
+    "u05",
+    "u06",
+    "u07",
+    "u08",
+    "u09",
+    "u11",
+    "u12",
+    "u14",
+    "u15",
+    "u16",
+    "u17",
+    "u18",
+    "u19",
+    "u21",
+    "u22",
+    "u25",
+    "u26",
+    "u29",
+    "u30",
+    "u31",
+    "u32",
+    "u34",
+    "u35",
+    "u36"
+  ],
+  "product_commit": "3c3f82b68778f6fb156394594bef3d6ec7118023",
+  "quality": {
+    "beneficial_discordant_tasks": 0,
+    "both_repeat_task_successes": {
+      "A": 27,
+      "M": 27
+    },
+    "complete_valid_grading": true,
+    "continuation_integrity_valid": true,
+    "formal_noninferiority_or_equivalence_established": false,
+    "harmful_bound_scope": "Conservative descriptive upper harmful-discordance probability, ignoring beneficial tasks; no NI test/power claim",
+    "harmful_discordant_tasks": 0,
+    "harmful_loss_exact_one_sided_97_5_upper": 0.12343611850026381,
+    "observed_count_guard_met": true,
+    "panel_integrity_valid": true,
+    "strict_success_counts_of_56": {
+      "A": 54,
+      "M": 54
+    },
+    "task_matrix": [
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u01"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u02"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u03"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u04"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u05"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u06"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u07"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u08"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u09"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u11"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u12"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u14"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u15"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u16"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u17"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u18"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u19"
+      },
+      {
+        "A_both_pass": false,
+        "A_repeat_outcomes": [
+          false,
+          false
+        ],
+        "M_both_pass": false,
+        "M_repeat_outcomes": [
+          false,
+          false
+        ],
+        "task_id": "u21"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u22"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u25"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u26"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u29"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u30"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u31"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u32"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u34"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u35"
+      },
+      {
+        "A_both_pass": true,
+        "A_repeat_outcomes": [
+          true,
+          true
+        ],
+        "M_both_pass": true,
+        "M_repeat_outcomes": [
+          true,
+          true
+        ],
+        "task_id": "u36"
+      }
+    ],
+    "task_success_wilson_95": {
+      "A": [
+        0.8228780225664668,
+        0.9936674801509623
+      ],
+      "M": [
+        0.8228780225664668,
+        0.9936674801509623
+      ]
+    },
+    "unknown_task_arm_outcomes": []
+  },
+  "scope": "112 fixed-cohort cells support the amended 28-task analysis with nominal intervals; no fully prospective confirmation. Original15,failedpre-native0016 andremaining16 exposed-task cells remain descriptive; no original confirmation or general savings claim.",
+  "source_analysis_sha256": "fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26",
+  "transport_warning_summary": {
+    "A": {
+      "original_native_invalid_run_ids": [
+        "v7-final-0068"
+      ],
+      "recovered_warning_run_ids": [
+        "v7-final-0068"
+      ]
+    },
+    "M": {
+      "original_native_invalid_run_ids": [],
+      "recovered_warning_run_ids": []
+    }
+  },
+  "version": "portable-v7-publication-summary-1"
+}

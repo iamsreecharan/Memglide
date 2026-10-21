@@ -1,0 +1,60 @@
+{
+  "original_protocol_sha256": "7334662fe380e23449215c032a9bc09a651c54189a30cc6d513af4abfc8b84fc",
+  "source_fields": {
+    "arms": {
+      "A": "Installed launcher explicit off/pass-through",
+      "M": "Commands-first candidate with demand-driven provider verification: index then unchanged production v4 source/workflow eligibility check; only workflow-ineligible/no-card path skips full provider binding and public verification. Eligible preload or commands-only paths retain fresh full verification, binding and final installedCLI validation; all overhead timed. Product candidate bytes unchanged; prospective helper frozen before new outcomes."
+    },
+    "assignment_seed": 20261101,
+    "effort": "low",
+    "failures": "Retain measured costs and wall times of ordinary unsuccessful coding attempts. A fast failure is not successful work completed faster. Report outcome-conditioned timing only as labeled secondary sensitivity; it cannot replace the primary or repair a failed quality guard.",
+    "grading": "Version3 changesdeployment/source-editprotectedmetadata only; allfeatureoracleassertions/referencecases unchanged. Systematicbaseline-only36Node+Pythonaudit certifiesonlyexactexistingproductioncode/typepathsdeclaredbyactualpublicentrypoints/publicationmetadata, pinnedtooriginalSHAsinthecomplete36-taskmanifest. Originalpublictaskcontractsallowproductionedits; formerbroadprefixroleomissions correcteduniformly. PrivatecohortCprotectedmapmetadata only versioned; freshbaseline/reference/incorrectcontrolreadiness beforefuturemodels. Every128case re-adjudicatedagainstsamefrozenpolicy; rawrecords/errors/mapsneverrewritten. Safecache-free reconstruction stillmandatory evenwhenregularownedsourcecodingpolicyviolationconcludesstrictfalse andskipspublic/private. Unsafe/Git/shareddeps/capture/nativefaultsremainhard. Ordinarycandidatepublicfail validexecution stillstrictfalse/privatenotattempted; potentialstrictsuccess requiresfullunchangedpublic+privatefeaturechecks. Allprivateplaintextsequesteredbefore76futuremodels andexactv3restoredafterclosure.",
+    "missingness": "All144 original assignments retained. Failed0016native usage unknown prevents complete144cost claim. All112 fixedprimary and all128 effective hard-integrity/grade/native-adjudication guards mandatory; no complete-case inference. If reported-counter completeness cannot be certified, unknown usage remains unknown with any observed counters only a lower bound, and joint cost/speed claim unavailable.",
+    "model": "gpt-6.1-sol",
+    "primary_analysis": {
+      "alpha_each": 0.025,
+      "assumptions": "Independent task-cluster differences; normal paired differences for exact finite-sample t calibration, approximate robustness otherwise. Purposive tasks limit generalization.",
+      "eligibility": "All128 intact raw records re-evaluated uniformly by exact sealed native-transport and source-policy helpers; all112primarycells complete. Certified final cumulative native-reported counters value fixeduniformcost without changing counters/timers. Raw arrays/errors/maps preserved. Every128grade binds raw, native/source adjudications, source policy, grading3manifest and cache-free exact reconstruction. Ordinarycodingfailures eligible; everyother hardguard remainsmandatory.",
+      "interval": "Pointwise95% two-sided Student t interval for mean paired difference; upper endpoint below0 required for each endpoint",
+      "joint_rule": "Same fixed28/112primary; all128 native-reported transport/source-policy/evidence/identity/treatment/grade integrity valid and nullnewstop; both pairedt p<=.025 and both95%upper<0; Mstrictsuccess>=A among56/arm. Nominal amended-panel inference, never originalfullyprospectiveconfirmation.",
+      "multiplicity": "Intersection-union claim: require BOTH superiority components. No Holm/Bonferroni penalty required for the single conjunctive claim; do not claim stand-alone success from only one endpoint or introduce alternative pass routes.",
+      "test": "Paired task-mean Student t test, one-sided alternative M-A<0, df27",
+      "zero_variance": "If paired sample SD is zero, report descriptive difference but mark parametric inference unavailable; no automatic efficiency pass"
+    },
+    "primary_estimands": [
+      "Mean over28previously unexecuted tasks of(two-repeat M uniform-equivalent cost mean minus two-repeat A mean)",
+      "Mean over28previously unexecuted tasks of(two-repeat M full workflow wall mean minus two-repeat A mean)"
+    ],
+    "primary_task_clusters": 28,
+    "quality_guard": {
+      "intervals": "Descriptive Wilson95% on28independent both-repeat-success task indicators and exact one-sided97.5% upper harmful-discordance bound.",
+      "rule": "All128 effective native-transport/source-policy/identity/treatment/evidence/grade integrity plus nullnewstop; same112 strictANDcoding outcomes, Mcount>=A among56/arm. Unchanged public/private criteria and valid ordinarycodingfailure rules. No quality equivalence/noninferiority claim.",
+      "scope": "No powered noninferiority/equivalence. Zero harmful discordances at28tasks gives12.3436%upper loss, not5ppNI. All144unknown-quality bounds adverse toM: unknownA=pass,unknownM=fail; opposite bound also shown, neither repairs original stop."
+    },
+    "repeats_per_arm": 2,
+    "secondary_diagnostics": {
+      "balanced_order_randomization": "Omitted prospectively: original18/18allocation sensitivity does not apply to remaining13/15conditional cohort. No alternate pass route.",
+      "certified_pre_model_startup_workflow_charge": "Descriptive conservative operational sensitivity: add exact failedstartupworkflowduration to canonical0069M; do not alterprimarycost/time, strictoutcomes ordecision; report nominalpointwise pairedworkflowinterval only/no p/pass. Operatorrepairtimingunmeasured/outofscope.",
+      "components": [],
+      "distribution": "Paired-difference skew/kurtosis, Shapiro diagnostic and leave-one-task mean range; do not switch tests, drop outliers or select results based on diagnostics",
+      "other": [
+        "native-only and preparation/verification components",
+        "tokens/cache reads/native-price and write sensitivities",
+        "completion and strict outcomes",
+        "source/card fidelity and abstentions",
+        "jointly successful timing with selection caveat",
+        "Original15/failedlocal1/remaining16/all144mixed-runtime descriptive accounting; no pooled confirmatory claim",
+        "Original15quality defaultunknown and candidate-adverse/opposite missing-quality bounds",
+        "Measured25vsnew103epochs andraw/effectivesourcepolicyclasses; no adjustedtime/cost",
+        "Original15/failed0016andpriorclosed25decisionsunavailable; amendedfixedpanelnominalinferenceonly"
+      ],
+      "paired_task_bootstrap": "10000draws, seed20261102, random.Random.randrange, both repeats/arms retained, pointwise95% percentile linear(n-1)p intervals",
+      "retry_affected_cluster_omission": "Descriptive robustness only: omit the complete4session task cluster containing ANY certified recovered retry warning in either arm/repeat; report omitted IDs, remainingn, paired means/deltas/nominal95tintervals and strict counts, no p/pass/alternative primary route. All28/112primary and all128integrity unchanged; defined before future76outcomes without current effect/gradecomparisons."
+    },
+    "task_clusters": 36,
+    "tier": "default",
+    "uniform_tariff": "((input-cached_input)*5+cached_input*0.20+output*15)/1000000; historical accounting convention, not actual charges",
+    "version": "v7-completion-amended-fixed28-6"
+  },
+  "version": "portable-protocol-excerpt-1"
+}

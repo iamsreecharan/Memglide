@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/borisveytsman/acmart",
+  "commit": "cb4bea05438ac81de82df97e8b15326df5e602b3",
+  "class_generated_from_dtx_with_ins": true,
+  "files_sha256": {
+    "acmart.cls": "22d3bc6308fb8f64aa38b69bedc5ff5f311bbfd71f02f4af3746ae7a91ac3585",
+    "acmart.ins": "fa7daaa9375775ce699f33f909667bdb83c0408fd8d67606926df86c346c4044",
+    "acmart.dtx": "8780f6b7763852a290b0fcbc5d53a7209e324569a082aaa95ade79d2e7f7db8f",
+    "ACM-Reference-Format.bst": "4342d27456645567ef1a027f6474e894715bc31d468f040142fa54540440ad04"
+  },
+  "scope": "Official development source; named preprint. Verify production template against selected venue before submission."
+}

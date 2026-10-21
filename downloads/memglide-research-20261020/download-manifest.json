@@ -1,34 +1,50 @@
 {
-  "Memglide-paper.md": {
-    "bytes": 42659,
-    "sha256": "3199be1be32a0f1a01372b80e19f5417baf84b44543c0b98181288f7ed28a254"
-  },
-  "Memglide-paper.pdf": {
-    "bytes": 500086,
-    "sha256": "b63c51fa9af90cf7da76e4d34f590880a59b0d18c0b5c48de6f8d46e23c65d1f"
-  },
-  "Memglide-paper.txt": {
-    "bytes": 48940,
-    "sha256": "16ab4a7902035dffa9e6e2bd02a44c8ea7400031cc8f2a532dbaa9bb555fcdd0"
-  },
-  "Memglide-supplement.md": {
-    "bytes": 73266,
-    "sha256": "4824b0272ecbb7358bb73ac9bcfd44adb4703f1361faf7649b9751fd33496e01"
-  },
-  "Memglide-supplement.pdf": {
-    "bytes": 458679,
-    "sha256": "1d3934fd5cdd7684cd9fe1e5646e1ab5014f6bb72a9eac4091899af85131547f"
-  },
-  "Memglide-supplement.txt": {
-    "bytes": 78358,
-    "sha256": "efd1dba510d8506e0c6f8af4fe6de2e798cc92993e8ddbcd80a92524ae510813"
-  },
-  "READ-ME.txt": {
-    "bytes": 880,
-    "sha256": "abaf74444d0fcea062af9f6280f5b239f4b8e45f5fe56da64ccd46bdb5a35c96"
-  },
-  "Memglide-paper-and-supplement.zip": {
-    "bytes": 999707,
-    "sha256": "675d75449fb12560c93e822ab70917b45df1ce648259c857d9a56c615d5bfb2e"
+  "release": "v7-amended-comparison-20261021",
+  "primary_sessions": 112,
+  "comparison_sessions": 128,
+  "evaluated_candidate_commit": "3c3f82b68778f6fb156394594bef3d6ec7118023",
+  "original_analysis_sha256": "fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26",
+  "historical_zip_sha256": "51e030257f7d07cda71f851a3e45fb136ec99a18408bb93bf77823fbae6eda6f",
+  "files": {
+    "DELIVERY-NOTE.txt": {
+      "bytes": 235,
+      "sha256": "86c1a01772e9536f295cb83f657757bc3ff2dfa789e8eade275a1ccccf832ff6"
+    },
+    "Memglide-complete-research.zip": {
+      "bytes": 117965887,
+      "sha256": "5fb40ddbb47eabd34b3e6ed4f411e994bf76d3effb61243f1171cb98af46aa0d"
+    },
+    "Memglide-paper-and-supplement.zip": {
+      "bytes": 2792537,
+      "sha256": "b4378b3256ea650e8f2568e7c96a63f90aeb5821cd0f6bef220f5630f9ef7e18"
+    },
+    "Memglide-paper.md": {
+      "bytes": 54112,
+      "sha256": "7c6b082d156eceb0050586ec204bb5b0478c1a0e2743ea21346ca08e54ad6bd6"
+    },
+    "Memglide-paper.pdf": {
+      "bytes": 532454,
+      "sha256": "ef4670051b3a77dcbdebb52dfb6ec72bf6f2fbf67ff249873989f363218c3f24"
+    },
+    "Memglide-paper.txt": {
+      "bytes": 60220,
+      "sha256": "fd4c9b9902621d9fe0d7596a74524f8b82d9a586ff03f9df1ac7ba1a07c3d833"
+    },
+    "Memglide-supplement.md": {
+      "bytes": 45028,
+      "sha256": "2ec657bd2d1b5850574ae454aacab86cfcc41861aa3f6fc2c0d13699b9ab6daa"
+    },
+    "Memglide-supplement.pdf": {
+      "bytes": 426987,
+      "sha256": "05f4e945044b8306d9da7e40eea5a8f8bad9d56d94cfc5059c527a4ddc19d425"
+    },
+    "Memglide-supplement.txt": {
+      "bytes": 50138,
+      "sha256": "7dd7ff99293a92d2c21173f2654bfbce0039ed278219f39c77328c1f52e6eee4"
+    },
+    "READ-ME.txt": {
+      "bytes": 1484,
+      "sha256": "003293eb079365f1020c245019a6d6ca4f610ff3ee40aac54213a9ae0b6e1520"
+    }
   }
 }

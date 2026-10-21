@@ -1,0 +1,81 @@
+{
+  "all_checks_pass": true,
+  "complete_pool_rows": 128,
+  "harmful_discordant_tasks": 0,
+  "harmful_loss_exact_one_sided_97_5_upper": 0.12343611850026381,
+  "joint_efficiency_supported_on_this_panel": false,
+  "model_calls": 0,
+  "paired_task_clusters": 28,
+  "primary": {
+    "uniform_long_usd": {
+      "A_mean": 0.16094230357142858,
+      "M_mean": 0.15316045357142857,
+      "bootstrap_sensitivity": {
+        "mean_delta_percentile_95_interval": [
+          -0.02363851125,
+          0.009079970982142856
+        ],
+        "relative_change_percentile_95_interval_percent": [
+          -14.188936193198625,
+          5.840061053152946
+        ]
+      },
+      "df": 27,
+      "mean_delta": -0.007781849999999997,
+      "n": 28,
+      "one_sided_p_M_less_A": 0.1842788776910095,
+      "paired_sd": 0.04502833684648336,
+      "passes_one_sided_alpha_0_025_and_upper_below_zero": false,
+      "pointwise_95_t_interval": [
+        -0.025242016278967522,
+        0.009678316278967529
+      ],
+      "relative_change_percent": -4.835179954129522,
+      "standard_error": 0.008509555803331525,
+      "t_statistic": -0.9144836910233755
+    },
+    "workflow_wall_seconds": {
+      "A_mean": 59.59018109260722,
+      "M_mean": 60.286281776214345,
+      "bootstrap_sensitivity": {
+        "mean_delta_percentile_95_interval": [
+          -2.7964248450474747,
+          4.170257916652249
+        ],
+        "relative_change_percentile_95_interval_percent": [
+          -4.584724391443487,
+          7.198781413247952
+        ]
+      },
+      "df": 27,
+      "mean_delta": 0.6961006836071257,
+      "n": 28,
+      "one_sided_p_M_less_A": 0.6479836721791254,
+      "paired_sd": 9.593828029547945,
+      "passes_one_sided_alpha_0_025_and_upper_below_zero": false,
+      "pointwise_95_t_interval": [
+        -3.0239974674488073,
+        4.416198834663059
+      ],
+      "relative_change_percent": 1.1681466155058964,
+      "standard_error": 1.8130630776646208,
+      "t_statistic": 0.38393627457449664
+    }
+  },
+  "primary_rows": 112,
+  "quality": {
+    "A": {
+      "complete_pool_sessions": 64,
+      "complete_pool_strict_successes": 62,
+      "primary_sessions": 56,
+      "primary_strict_successes": 54
+    },
+    "M": {
+      "complete_pool_sessions": 64,
+      "complete_pool_strict_successes": 62,
+      "primary_sessions": 56,
+      "primary_strict_successes": 54
+    }
+  },
+  "version": "portable-v7-statistical-reproduction-1"
+}

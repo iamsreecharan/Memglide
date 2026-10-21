@@ -1,1359 +1,640 @@
 ---
-title: "Memglide: Auditable, Bounded Repository Context for Coding Agents — Supplementary Material"
-author: "Sree Charan Reddy Kailasam"
-email: "srcharan014@gmail.com"
-date: "20 October 2026"
-bibliography: references.bib
+title: "Memglide: Cost and Latency Evaluation — Supplementary Material"
 abstract: |
-  This supplement records the twelve prospective task contracts, pinned public
-  inputs, original public-check counts, allocation and measurement protocol,
-  source revisions, and reproducibility boundaries for the installed Memglide
-  ablation. It also retains twenty-three historical study stages and all thirty
-  adaptive development rounds, including rejected candidates and failed
-  attempts. Native coding outcomes are reported in the accompanying paper;
-  historical cohorts and local controls are kept separate.
+  This supplement documents the amended fixed-panel comparison of pass-through
+  Codex and Memglide: 28 primary tasks, two methods and two repetitions, or
+  112 sessions. It separates 16 auxiliary sessions on eight exposed tasks,
+  retains the study amendments and strict failures, and reproduces the public
+  task prompts and repository commitments. All monetary values are measured
+  token-price equivalents, not account invoices.
 ---
 
-# Scope and reading guide
-
-The accompanying paper studies repository-context preparation around the
-installed Codex coding agent. This supplement makes the task contracts and
-measurement lineage readable without treating every development observation as
-independent confirmation. Its public-library feature tasks differ from the
-historical GitHub issues evaluated by SWE-bench [@jimenez2024swebench]. The
-underlying model weights were not trained or changed for this work.
-
-Identifiers p01–p06 refer to the Python lane; t01–t06 refer to the
-JavaScript/TypeScript lane. Repository IDs pr01–pr06 and r07–r12 are local
-provenance identifiers, not experimental outcomes. “Native session” means a
-coding-agent evaluation through `codex exec`. Source preparation, SDK calls,
-zero-model handoffs, local component tests and `codex sandbox` grader processes
-are different forms of evidence. Their counts must not be added to native
-session counts. Internal provider inference counts and account billing are
-unavailable.
-
-All monetary figures below are observed-token tariff equivalents under the
-stated accounting convention. Missing usage remains unknown. A failed attempt
-retains its cost when usage is known. Reused-task repairs, post-hoc subsets and
-alternate tariffs remain labeled. The history inventory records 66 matching
-report/research files, including two archived duplicates; this inventory is a
-report review rather than an independent replay of every historical stream.
-
-# Prospective task panel
-
-## Selection and preserved inputs
-
-The panel contains one author-designed extension in each of twelve small,
-pinned public repositories. Six are Python projects. Two JavaScript/TypeScript
-tasks require JavaScript changes only; four require runtime and declaration
-changes. Four roots share the maintainer Sindre Sorhus. This purposive panel is
-not a representative sample of software maintenance, and repository novelty is
-relative to the earlier recorded Memglide roots rather than the model's unknown
-training data.
-
-The original archive, retained-file hashes, public source, tests,
-configurations, dependency manifests, lockfiles and license notices were kept.
-The Python provenance records no excluded files. Full file-level manifests in
-the public provenance documents are the authority for exact bytes. A public
-baseline count measures existing behavior; it is not a count of feature
-requirements or proof of complete compatibility. Across the twelve roots,
-original behavioral baselines contain 443 passing checks, with 14 intrinsic
-platform skips in Colorama. Four roots additionally run their original
-TypeScript declaration assertions.
-
-Two candidates were rejected before model outcomes. The pinned
-`jdunck/python-unicodecsv` candidate at
-`cedbcc7f9642e6040b1a579152baf0bfce9a815a` depended on unchanged unittest2
-1.1.0 tests that could not import on Python 3.12 because
-`collections.MutableMapping` had been removed. Its obsolete dependency target,
-including an argparse package that could shadow the standard library, was
-isolated from the final profile. Colorama was the predeclared compatibility
-backup. The initial `lukeed/totalist` candidate at
-`4b071d3e54d466a4059de89006c752da782c8b02` had an upstream ESM test setup
-incompatible with the common Node 24 runtime and was replaced before outcomes.
-The original fixtures and screening failures remain in the authoring record.
-Neither rejection was based on a coding-model result.
-
-Public readiness also required environment corrections. TERM=xterm is shared
-by every arm and grader. Termcolor's 89 functional checks and 10 benchmark
-smoke checks run in separate processes to avoid an upstream color-detection
-cache interaction; all 99 assertions remain. Benchmark assertions run with
-`--benchmark-disable`, so these are behavioral smoke checks rather than
-performance measurements. AVA uses the supported external `{cache: false}`
-configuration. Exact test-name/count parity with original discovery was
-checked; source, public tests and repository configuration were unchanged.
-Initial unsupported-cache failures and a separately recorded pre-execution
-sandbox retry were retained. The escape-html quoteStyle values were clarified
-before freeze, with the prior wording preserved; task prompts were not tuned
-after readiness to force source delivery.
-
-## Public command conventions
-
-The exact atomic argument vectors, environment updates, expected positive test
-counts and timeouts are in the frozen per-lane task/command JSON files. The
-short forms below are a readable transcription, not new commands substituted
-for those vectors. `{root}` denotes the fresh assignment repository.
-
-Python commands use the pinned Python executable to run pytest with
-`-q -c /dev/null --rootdir {root} -p no:cacheprovider`. They set
-PYTHONDONTWRITEBYTECODE=1, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 and an explicit
-PYTHONPATH containing the isolated extensions, `{root}/src` and `{root}`.
-Each Python atomic public command has a 45-second limit. Benchmark smoke
-commands also load `pytest_benchmark.plugin` explicitly and use
-`--benchmark-disable`.
+# Scope and cohort accounting
+
+The main paper reports 112 primary sessions, not the earlier 72-session,
+three-arm study. The original v7 allocation covered 36 tasks and 144 unique
+assignments. Its first 15 model sessions exposed eight tasks; assignment 0016
+failed before the native bridge. The 28 other tasks form the fixed primary
+panel, with both methods repeated twice. The remaining two sessions per
+exposed task contribute 16 descriptive records. The final 128-record pool
+therefore covers 36 tasks with unequal repeat coverage and is not pooled
+with earlier model outcomes.
+
+The primary panel comprises 15 Python and 13 JavaScript/TypeScript tasks.
+These author-designed features on small public libraries are a purposive panel,
+not a random sample of maintenance issues or evidence that the model never saw
+the repositories in training. Public readiness and task-informed engineering
+preceded collection. Unlike SWE-bench, the panel does not consist of real
+GitHub issue-to-patch tasks [@jimenez2024swebench]. The term primary does not imply a fully prospective
+confirmation after the later amendments.
+
+# Candidate and treatment
+
+The evaluated implementation is commit `3c3f82b68778f6fb156394594bef3d6ec7118023`.
+A uses its installed off/pass-through path. M uses bounded v4 discovery with
+the opt-in commands-first workflow. Among the 28 primary tasks, six receive
+source plus command context, nine receive commands only, and thirteen pass
+through. With two repetitions, these correspond to 12, 18 and 26 M sessions.
+Every primary task remains in the analysis. The modes are policy outcomes,
+not randomized component arms, and cannot identify separate source or command
+effects. There is no auxiliary model call or model-weight training.
+
+Both methods request the `gpt-6.1-sol` alias, low reasoning effort and default
+service tier through Codex CLI 0.159.2. The CLI version does not identify a
+frozen provider backend snapshot. A fresh local project, thread and run state
+are used for each coding session. Provider prefix caches, OS page caches,
+provider load and backend changes are uncontrolled.
+
+# Amendments and preserved failures
+
+After 25 primary measurements, a baseline production-role audit corrected five
+paths that an overly broad rule had treated as protected test/build material:
+`u10:src/click/testing.py`, `u32:lib/defu.cjs`, `u32:lib/defu.d.cts`,
+`u34:lib/index.cjs` and `u35:utils.d.ts`. The audit used baseline source and
+public metadata across all 36 tasks. It did not inspect candidate patches,
+feature-grade outcomes or resource contrasts to choose exceptions. The trigger
+was an observed stop, so this is not a pre-outcome protocol correction.
+Original raw flags remain intact, and the same exact-path rule is applied to
+all pooled records. Feature-oracle assertions were not relaxed.
+
+After 52 measurements, a strict parser stopped on a reconnect warning despite
+a completed turn. Source inspection of CLI commit
+`ff6aec96948b70d94983af2641a6b67c94faeff5` established a narrow recoverable retry
+grammar. The adapter requires one fresh completed thread/turn, complete matching
+native counters, valid identity, exit status and final capture. It applies to
+all records and preserves raw events and prior verdicts. Arbitrary errors and
+unfinished turns remain invalid. Completed-thread cumulative usage does not
+establish the provider's request count or independently billed retry charges.
+
+An additional slot-0069 launcher attempt failed because a local schema file was
+missing. Source evidence places that exit before model-turn creation. Its raw
+usage remains null; a separate operational ledger records the source-proven
+zero model-generation requests. The canonical assignment ran after deployment
+repair. A descriptive sensitivity adds the entire 2.637254565-second startup
+duration to that M session, increasing the observed workflow slowdown to
+approximately 1.25%. Diagnosis and repair labor are excluded and unmeasured.
+
+Original stopped protocol decisions remain stopped. No measured coding trial
+was retried, discarded or repaired to change its score, and no additional
+repetitions were scheduled to obtain significance. Product source and the
+fixed primary cohort were unchanged during primary collection. These
+amendments nevertheless require nominal, model-based interpretation rather
+than a retrospective prospective-confirmation claim.
+
+# Measurement, grading and interpretation
+
+Full-workflow timing begins after common source copying and Git-baseline
+construction but before registration, indexing, eligibility planning and
+verification; it ends after native process cleanup. Fresh eligible public
+verification, preparation and generated-file cleanup count toward M's time.
+Environment acquisition, source copying, private grading, packaging and
+operator diagnosis are excluded. Native execution alone is not full-workflow
+latency or isolated provider inference time.
+
+The fixed API-equivalent accounting convention is
+
+\[
+C=(5(I-K)+0.20K+15O)/10^6,
+\]
+
+where I is total reported input tokens, K is cached input tokens and O is output
+tokens, including the reported output category used in the native counters.
+Reasoning output is not charged again. This convention measures resources
+using a common tariff, not a provider invoice or a current-price guarantee.
+Per-record tokens are cumulative across the coding agent's model steps.
+
+Private grader/reference/control plaintext was sequestered during collection
+and restored and verified after native closure. Candidate source was
+reconstructed for grading without reusing model-created caches. Strict success
+requires execution/treatment integrity, intact protections and passing original
+public and private feature checks. All 128 comparison records have valid
+measurements and grading; 124 strictly pass, 62/64 in each method. The primary
+counts are 54/56 per method. Equality of observed counts does not establish
+quality equivalence, noninferiority or correctness beyond finite checks.
 
-The two Mocha commands use `--reporter dot test/`. AVA commands use
-`--tap --serial --config` with the frozen external no-cache configuration.
-Declaration commands use tsd with `--typings index.d.ts --files index.test-d.ts`;
-the strip-final-newline command explicitly selects its compatible tsd-legacy
-0.31.0 entry point. Other declaration commands retain their frozen executable
-binding. JavaScript/TypeScript public commands have 60-second limits.
+All four strict failures are u21, in both methods and both repetitions. Each
+passes 111 original public tests and 26/30 private feature checks. The private
+oracle expects TypeError for `safeInteger` values null, 1, 'yes' and an object;
+the implementations return false. The exact public instruction says “reject
+nonboolean safeInteger values” without explicitly requiring an exception.
+This task–oracle ambiguity limits interpretation. All four frozen failures
+are retained without a post hoc rescore.
 
-Every feature prompt below is reproduced verbatim. The common developer
-contract additionally requires production-only edits, relevant public and new
-regression checks, preservation of existing behavior, and exact protection of
-all existing tests, snapshots, configurations, manifests, lockfiles,
-documentation, license files and Git metadata. New regression-test files are
-allowed. Network use, package installation, Git staging/commits and reading
-outside the repository except declared tools/profile are prohibited. Every
-shell sources the same declared profile. The final structured response reports
-a concise change summary and commands actually run; it does not supply a grade
-or usage claim.
+For each primary task, both repetitions are averaged within each method before
+forming M-minus-A differences. The primary analysis uses 28 paired task means
+and 27 degrees of freedom. Joint superiority requires both one-sided tests at
+alpha 0.025, both corresponding 95% interval upper limits below zero, complete
+integrity and at least as many observed strict successes with M. Neither
+resource test passes. A 10,000-replicate task-cluster bootstrap, seed 20261102,
+is a descriptive sensitivity and cannot replace the primary decision rule.
+Omitting the whole task affected by the recovered retry is also descriptive.
 
-## p01: termcolor/termcolor
+The mean API equivalents are $0.16094230 and $0.15316045 per session; the
+observed reduction is 4.83518%. The paired difference is -$0.00778185 with nominal
+95% interval [-$0.02524202, $0.00967832] and one-sided p=0.184279. Full-workflow
+means are 59.59018 and 60.28628 seconds; the difference is +0.69610 seconds,
+interval [-3.02400, 4.41620], p=0.647984. Neither reliable savings nor faster
+completion is established by this panel.
 
-Repository: <https://github.com/termcolor/termcolor>. Pinned commit: `c7d0b8e8a42f417ec0c07fd846138b0a19b24d36`.
-Local repository ID: pr01. The retained tree has 28 files and
-54,049 bytes. Original license text: `COPYING.txt`.
+# Public artifact and reproduction boundaries
 
-Archive SHA-256: `381e51325937b9f9af44f50b43afec28c7bb42d0852d9494b726fe76eec2d148`.
+The portable results directory contains primary and auxiliary numeric rows,
+paired task means, public task provenance, protocol information, hashes and a
+standalone reproduction script. Its README gives the exact command and pinned
+SciPy/NumPy versions. Recomputing statistics and figures requires no native
+coding-model request. Every public export has its own hash; sanitizing runtime
+paths does not preserve an original private artifact's byte identity.
 
-> Add exported termcolor.colored_lines with colored's arguments. Color each nonempty line independently, preserving CRLF, CR, LF and empty lines exactly; treat other separators as content. Honor existing color flags, support iterable attrs, and leave colored unchanged. Add regression tests.
+The original final analysis commitment is
+`fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26`.
+The independent automated audit matched the original 128 source/grade bindings
+and all 28 paired task calculations. This is a computational crosscheck, not
+independent human replication. The new public numeric export does not include
+complete native transcripts or private graders; it supports arithmetic
+reproduction rather than complete public replay of the evaluation.
 
-Original public baseline: 99 passing behavioral checks; 0 original declaration-check suites. Frozen B/C readiness: Source preload.
+The complete ZIP retains the prior v6 capsule under `historical-v6/` with its
+old files and checksums. That older capsule describes the separate 12-task,
+72-session three-arm study and its development history, including the
+30-round exploratory search. Its protocols, arms and exact/Holm tests must not
+be substituted for the present paired-t analysis. Installed dependencies,
+authentication and the provider backend are not packaged as an execution image.
 
-- pytest on `tests/test_termcolor.py` (89 expected behavioral checks).
-- pytest on `tests/test_benchmarks.py` with the explicit benchmark plugin and disabled benchmarking (10 expected behavioral checks).
+# Public task inventory
 
-## p02: mbr/asciitree
+The following prompts are reproduced from the frozen public input catalog.
+Commit identifiers pin public source; obtaining and installing the separately
+declared tools is required for a new native replication. Public commands and
+environment templates are in `public-task-catalog.json`; the inventory below
+reports their expected behavioral-test counts, not counts of all feature
+requirements. Exposed tasks appear for complete accounting, not as additional
+primary independent clusters. No code in a task prompt is an instruction to
+the reader or to this document's build process.
 
-Repository: <https://github.com/mbr/asciitree>. Pinned commit: `66a66b2c3323c77aa52f927dbbd818e396b8e457`.
-Local repository ID: pr02. The retained tree has 16 files and
-25,287 bytes. Original license text: `LICENSE`.
+## u01: six
 
-Archive SHA-256: `1a9bdb63388decb1740efc646bc8907e2a721b91372533c2b0579fd6b71c3c60`.
+Repository: <https://github.com/benjaminp/six>. Language: python. Primary (four sessions).
 
-> Add exported asciitree.SortedDictTraversal with optional key and reverse arguments. Sort each node's children by their labels, applying key to labels when supplied; preserve equal-key order and caller data. Keep existing DictTraversal and root selection unchanged, and support LeftAligned rendering. Add regression tests.
+Pinned upstream commit: `c8e394065cd541a16c040515dc0afb85cf22a7c3`.
 
-Original public baseline: 2 passing behavioral checks; 0 original declaration-check suites. Frozen B/C readiness: Source preload.
+Exact feature prompt:
 
-- pytest on `tests` (2 expected behavioral checks).
+> Extend six's ensure_binary, ensure_str, and ensure_text conversion helpers to accept bytearray and memoryview inputs on Python 3. Treat these inputs as a snapshot of their bytes: ensure_binary returns immutable bytes, and the two text helpers decode with their existing encoding/errors arguments. Preserve existing bytes/text behavior, including identity where the helpers currently return the supplied bytes or text, and continue rejecting unsupported types with TypeError. Noncontiguous memoryview slices should convert their logical bytes in order. Add focused regression tests; keep existing tests and configuration intact.
 
-## p03: patrys/httmock
+- Public check `original-public-tests-1`: kind `tests`, expected test count 199, timeout 90 seconds.
 
-Repository: <https://github.com/patrys/httmock>. Pinned commit: `98269075d0c36a0e87e2b6b7ad9c6a16622aba58`.
-Local repository ID: pr03. The retained tree has 9 files and
-25,691 bytes. Original license text: `LICENSE`.
+## u02: astpretty
 
-Archive SHA-256: `78f648904f6076742de7ffcd96fbfbefa5f817d28322de3ea9763b104c7a175e`.
+Repository: <https://github.com/asottile/astpretty>. Language: python. Primary (four sessions).
 
-> Extend httmock.urlmatch method matching to accept a string or iterable of strings, case-insensitively. None remains unrestricted; an empty iterable never matches. Consume generators once when decorating, reject non-string members with TypeError, and preserve other URL filters and bound-method use. Add regression tests.
+Pinned upstream commit: `1fb4135054e6ef00173f556908c17e6807d26c52`.
 
-Original public baseline: 33 passing behavioral checks; 0 original declaration-check suites. Frozen B/C readiness: Source preload.
+Exact feature prompt:
 
-- pytest on `tests.py` (33 expected behavioral checks).
+> Add an optional keyword-only show_empty=True argument to astpretty.pformat. With show_empty=False, omit AST fields and attributes whose value is None or an empty list, recursively, while retaining false, zero, empty strings, and empty tuples. A leaf whose fields are all omitted prints as ClassName(). Respect show_offsets and the existing indentation options. The default output must remain byte-for-byte compatible, pprint must forward the option, and formatting must not change the input AST. Add regression tests and preserve existing tests/configuration.
 
-## p04: keis/base58
+- Public check `original-public-tests-1`: kind `tests`, expected test count 22, timeout 90 seconds.
 
-Repository: <https://github.com/keis/base58>. Pinned commit: `2fae7065e3446e69e5d748c767011f05eee8400e`.
-Local repository ID: pr04. The retained tree has 15 files and
-23,864 bytes. Original license text: `COPYING`.
+## u03: natsort
 
-Archive SHA-256: `8d0d211e6186404a882e865576c6a998bfb949b5facb850f230f6458b88af537`.
+Repository: <https://github.com/SethMMorton/natsort>. Language: python. Primary (four sessions).
 
-> Add keyword-only max_output_bytes to base58.b58decode and b58decode_check. None preserves behavior; a nonnegative integer bounds returned payload bytes before allocation, excluding the checksum for checked decoding. Reject booleans/nonintegers with TypeError and negative or exceeded bounds with ValueError. Preserve alphabets, autofix and leading zeros. Add regression tests.
+Pinned upstream commit: `e9a3a2a307580a1f2be8c57bba50fba45789ada0`.
 
-Original public baseline: 48 passing behavioral checks; 0 original declaration-check suites. Frozen B/C readiness: Source preload.
+Exact feature prompt:
 
-- pytest on `test_base58.py`, `test_base45.py` with the explicit benchmark plugin and disabled benchmarking (48 expected behavioral checks).
+> Add a keyword-only unique=False option to natsort.natsorted. When enabled, keep only the first input element from each equality group before sorting naturally. Equality is ordinary Python equality, not equality of the natural-sort key; support unhashable elements and one-shot input iterators. Apply the key function only once per retained element and preserve the original retained objects. Existing key, reverse, and alg behavior still applies, including stable ties. Leave the default behavior unchanged. Add regression tests without editing existing tests or configuration.
 
-The feature contract asks for bounds before allocation. The committed
-black-box oracle checks limits, outputs and error behavior, but cannot prove
-allocation order. Passing this rubric therefore does not establish that entire
-implementation-order requirement.
+- Public check `original-public-tests-1`: kind `tests`, expected test count 81, timeout 90 seconds.
 
-## p05: mewwts/addict
+## u04: bracex
 
-Repository: <https://github.com/mewwts/addict>. Pinned commit: `75284f9593dfb929cadd900aff9e35e7c7aec54b`.
-Local repository ID: pr05. The retained tree has 10 files and
-34,317 bytes. Original license text: `LICENSE`.
+Repository: <https://github.com/facelessuser/bracex>. Language: python. Primary (four sessions).
 
-Archive SHA-256: `d425fb9a924867b1071d85e10bdac19172215460cc5bc8417d6f24c9b8a6cf61`.
+Pinned upstream commit: `1f32d6964da400ef55fb17db46df4ceb01177957`.
 
-> Make addict.Dict.freeze and unfreeze traverse nested lists and tuples as well as Dict values, including cyclic/shared containers, without converting containers or looping. Preserve existing-key updates, reject new keys while frozen, and restore auto-vivification when unfrozen. Add regression tests.
+Exact feature prompt:
 
-Original public baseline: 128 passing behavioral checks; 0 original declaration-check suites. Frozen B/C readiness: Source preload.
+> Add public expand_many and iexpand_many helpers to bracex. They accept a one-shot iterable of patterns and the same keep_escapes, limit, and return_empty options as expand/iexpand. Concatenate each pattern's expansions in input order, retaining each pattern's str/bytes output type. expand_many returns a list; iexpand_many must be lazy, must not pre-read later patterns, and must propagate input exceptions. A positive limit is a shared output budget across all patterns: emit at most that many results and raise ExpansionLimitException if another result is requested. As with the existing API, a nonpositive limit is unlimited. Empty pattern collections return no results; preserve existing single-pattern behavior and add regression tests without editing existing tests/configuration.
 
-- pytest on `test_addict.py` (128 expected behavioral checks).
+- Public check `original-public-tests-1`: kind `tests`, expected test count 321, timeout 90 seconds.
 
-## p06: tartley/colorama
+## u05: schedule
 
-Repository: <https://github.com/tartley/colorama>. Pinned commit: `841634ed2a0da5d5ac2d867db533da8131266cb2`.
-Local repository ID: pr06. The retained tree has 49 files and
-198,802 bytes. Original license text: `LICENSE.txt`.
+Repository: <https://github.com/dbader/schedule>. Language: python. Primary (four sessions).
 
-Archive SHA-256: `ef126ce6e701c5521bfdfec6df98aa0082961a1689d2c875dc030d735bde69a9`.
+Pinned upstream commit: `82a43db1b938d8fdf60103bd41f329e06c8d3651`.
 
-> Add rgb(red, green, blue, *, background=False) to colorama.ansi and export it from colorama. Return the ANSI 24-bit foreground escape by default, or background escape when requested. Accept only integer channels from 0 to 255; booleans/nonintegers raise TypeError and out-of-range values raise ValueError. Preserve existing constants and add regression tests.
+Exact feature prompt:
 
-Original public baseline: 38 passing behavioral checks and 14 platform skips; 0 original declaration-check suites. Frozen B/C readiness: Exact-task passthrough because candidates are ambiguous.
+> Allow schedule.Scheduler.run_all and the module-level schedule.run_all to accept an optional keyword-only tag=None filter. None retains the existing behavior of running all jobs. A supplied hashable tag runs only jobs carrying that tag, in registration order, using a snapshot so cancellation or registration during a callback cannot skip or add jobs in the current pass. Preserve CancelJob handling. Apply the existing delay_seconds sleep once after each selected job and never for an unselected job. Add regression tests and preserve the existing tests and configuration.
 
-- pytest on `colorama/tests` (38 expected behavioral checks).
+- Public check `original-public-tests-1`: kind `tests`, expected test count 81, timeout 90 seconds.
 
-## t01: jonschlinkert/kind-of
+## u06: python-sortedcontainers
 
-Repository: <https://github.com/jonschlinkert/kind-of>. Pinned commit: `3c7e8fd86094cfdb1b1bd048a39f699161da62e4`.
-Local repository ID: r07. The retained tree has 46 files and
-55,783 bytes. Original license text: `LICENSE`.
+Repository: <https://github.com/grantjenks/python-sortedcontainers>. Language: python. Primary (four sessions).
 
-Archive SHA-256: `e0dea9237fc2edfa97f8611a14f2ea8f9dad534a1fa25befe87b0cf97a6c9e16`.
+Pinned upstream commit: `3ac358631f58c1347f1d6d2d92784117db0f38ed`.
 
-> Extend kindOf to distinguish async functions, async generator functions, and async generator objects as asyncfunction, asyncgeneratorfunction, and asyncgenerator. Preserve synchronous classifications and existing behavior.
+Exact feature prompt:
 
-Original public baseline: 36 passing behavioral checks; 0 original declaration-check suites. Frozen B/C readiness: Exact-task passthrough because candidates are ambiguous.
+> Add remove_all(value) to SortedList and SortedKeyList. Remove every element equal to value, return the number removed, and return zero without mutation if none match. For a SortedKeyList, other values with the same sort key must remain. Preserve ordering, internal invariants, and the existing remove/discard/count behavior; the method should work across multiple internal blocks and through a SortedList created with key=. Add regression tests without changing existing tests/configuration.
 
-- Mocha on `test/` with the dot reporter (36 expected behavioral checks).
+- Public check `original-public-tests-1`: kind `tests`, expected test count 113, timeout 90 seconds.
 
-## t02: sindresorhus/split-on-first
+## u07: decorator
 
-Repository: <https://github.com/sindresorhus/split-on-first>. Pinned commit: `e426fc23a83abf43f99c3f5bc36e66d3e841906f`.
-Local repository ID: r08. The retained tree has 13 files and
-6,716 bytes. Original license text: `license`.
+Repository: <https://github.com/micheles/decorator>. Language: python. Primary (four sessions).
 
-Archive SHA-256: `211a7d76711fa99bd26e01cfec52d89016daddec0e151563436a4dffc5db8dc4`.
+Pinned upstream commit: `956b6396c7369aab4acc7a44851572fcb92fb34a`.
 
-> Extend splitOnFirst with optional {fromEnd:true} for string separators, splitting at the last occurrence. Regular-expression separators must still split at the first match. Reject nonboolean fromEnd values and update the TypeScript declaration.
+Exact feature prompt:
 
-Original public baseline: 2 passing behavioral checks; 1 original declaration-check suite. Frozen B/C readiness: Exact-task passthrough because candidates are ambiguous.
+> Add an unregister(*types) method to functions created by decorator.dispatch_on. It removes only the implementation registered for that exact type tuple and returns the removed callable. Raise KeyError for an unregistered tuple and TypeError for the wrong number of dispatch types; either error must leave the registry unchanged. Subsequent calls must immediately use the remaining ancestor/virtual-ancestor dispatch or the default implementation. The existing register, typemap, dispatch_info, function metadata, and multiple-argument dispatch must keep working. Add regression tests and preserve existing tests/configuration.
 
-- AVA with original test discovery and the external no-cache setting (2 expected behavioral checks).
-- tsd on `index.test-d.ts` against `index.d.ts` through the frozen executable binding.
+- Public check `original-public-tests-1`: kind `tests`, expected test count 28, timeout 90 seconds.
 
-## t03: sindresorhus/strip-final-newline
+## u08: backoff
 
-Repository: <https://github.com/sindresorhus/strip-final-newline>. Pinned commit: `4e80ba16dc381d4b86f5fb686cf66805d83a9c12`.
-Local repository ID: r09. The retained tree has 13 files and
-7,406 bytes. Original license text: `license`.
+Repository: <https://github.com/litl/backoff>. Language: python. Primary (four sessions).
 
-Archive SHA-256: `6cffe5bccdcf3acd1d97b6d7f554659cfd430ddeffcd98cedfb9b7038237c6b5`.
+Pinned upstream commit: `d82b23c42d7a7e2402903e71e7a7f03014a00076`.
 
-> Add an optional {all:true} mode to stripFinalNewline that removes every trailing LF or CRLF sequence from strings and Uint8Array views. Preserve default single-newline behavior and zero-copy binary results; update the generic TypeScript declaration.
+Exact feature prompt:
 
-Original public baseline: 15 passing behavioral checks; 1 original declaration-check suite. Frozen B/C readiness: Exact-task passthrough because candidates are ambiguous.
+> Add a public backoff.linear(step=1, start=1, max_value=None) wait generator, exported alongside the existing generators. Follow the library's generator protocol: the first next() primes it with None; later next()/send() calls yield start, start+step, and so on. If max_value is supplied, cap each emitted interval at it indefinitely, including when start already exceeds the cap. Zero step/start/cap are valid; negative step, start, or cap must raise ValueError when the generator is first advanced. It must work as the wait generator for the existing retry decorators with their normal keyword forwarding. Preserve existing generators and add regression tests without modifying existing tests/configuration.
 
-- AVA with original test discovery and the external no-cache setting (15 expected behavioral checks).
-- tsd on `index.test-d.ts` against `index.d.ts` through the explicit 0.31.0 legacy entry point.
+- Public check `original-public-tests-1`: kind `tests`, expected test count 14, timeout 90 seconds.
 
-## t04: sindresorhus/path-key
+## u09: funcy
 
-Repository: <https://github.com/sindresorhus/path-key>. Pinned commit: `b63661d152c4c881861361a2c03fbbbcc3aaf8e1`.
-Local repository ID: r10. The retained tree has 13 files and
-6,923 bytes. Original license text: `license`.
+Repository: <https://github.com/Suor/funcy>. Language: python. Primary (four sessions).
 
-Archive SHA-256: `3d3ddde174859db95939057f9c69f3051681c3716d609c881f1be43813813cc4`.
+Pinned upstream commit: `e8febffd57f80db8ca3a55fb1edd0feee2290d61`.
 
-> Export pathKeys(options) alongside default pathKey. Return all existing PATH keys in reverse insertion priority on Windows, and only an existing literal PATH on other platforms. Never fabricate fallback entries; preserve pathKey and update declarations.
+Exact feature prompt:
 
-Original public baseline: 5 passing behavioral checks; 1 original declaration-check suite. Frozen B/C readiness: Exact-task passthrough because candidates are ambiguous.
+> Add scan_until(predicate, seq, inclusive=False) and lscan_until(predicate, seq, inclusive=False) to funcy's public sequence helpers. They return items before the first item for which the predicate is truthy, including that boundary item only if inclusive is true. scan_until must be lazy, consume a one-shot input only once, evaluate the predicate once per examined item, and never read past the boundary. lscan_until returns the corresponding list. Use the same predicate shorthand conventions as the library's other sequence helpers. Empty/no-match inputs work normally; predicate/input exceptions propagate. Add regression tests while preserving existing tests/configuration.
 
-- AVA with original test discovery and the external no-cache setting (5 expected behavioral checks).
-- tsd on `index.test-d.ts` against `index.d.ts` through the frozen executable binding.
+- Public check `original-public-tests-1`: kind `tests`, expected test count 48, timeout 90 seconds.
 
-## t05: component/escape-html
+## u10: click
 
-Repository: <https://github.com/component/escape-html>. Pinned commit: `b42947eefa79efff01b3fe988c4c7e7b051ec8d8`.
-Local repository ID: r11. The retained tree has 14 files and
-17,024 bytes. Original license text: `LICENSE`.
+Repository: <https://github.com/pallets/click>. Language: python. Exposed auxiliary (two remaining sessions).
 
-Archive SHA-256: `615623c15cb33c081c2d77ad45fcd2ce3169e54fa01e40a46ac208a94a4b313c`.
+Pinned upstream commit: `2247b35ea1c47c727d7a06e51fa280e12a863ff6`.
 
-> Extend escapeHtml with an optional quoteStyle option: 'single', 'double', 'both', or 'none'. Escape only selected quotes while always escaping ampersands and angle brackets. Preserve defaults and input coercion; reject other quoteStyle values.
+Exact feature prompt:
 
-Original public baseline: 30 passing behavioral checks; 0 original declaration-check suites. Frozen B/C readiness: Source preload.
+> Extend click.Choice with a keyword-only aliases=None mapping from extra input strings to existing choices. Snapshot this mapping at construction; require string alias keys (TypeError otherwise), and reject a target that does not equal any declared choice with ValueError. An alias must return the original declared choice object, including enum choices. Match aliases through the same context token normalization and case-sensitivity rules as ordinary choices; an ordinary choice match takes precedence over an alias. Keep help/metavars, choices, invalid-input messages, and behavior without aliases unchanged. Add direct-conversion and command-line regression tests without editing existing tests/configuration.
 
-- Mocha on `test/` with the dot reporter (30 expected behavioral checks).
+- Public check `original-public-tests-1`: kind `tests`, expected test count 274, timeout 90 seconds.
 
-## t06: sindresorhus/yocto-queue
+## u11: python-json-pointer
 
-Repository: <https://github.com/sindresorhus/yocto-queue>. Pinned commit: `72a8fa96a9d389765cdf2bb9c6daba8302fc375d`.
-Local repository ID: r12. The retained tree has 13 files and
-10,855 bytes. Original license text: `license`.
+Repository: <https://github.com/stefankoegl/python-json-pointer>. Language: python. Primary (four sessions).
 
-Archive SHA-256: `950ca6b5d09edc628c05bb3c7d149d26749f89223683f397d9f36e197c1fde1d`.
+Pinned upstream commit: `fb771073c8b1b05f0e1d82a8c0608968a65b0a90`.
 
-> Add Queue.dequeueMany(maxCount), removing and returning up to maxCount values in FIFO order, including undefined entries. Require a nonnegative safe integer and throw RangeError otherwise. Preserve queue invariants and add the generic TypeScript declaration.
+Exact feature prompt:
 
-Original public baseline: 7 passing behavioral checks; 1 original declaration-check suite. Frozen B/C readiness: Source preload.
+> Add JsonPointer.relative_to(base), where base is a pointer string or a JsonPointer. If base's decoded path components are a prefix of this pointer, return a new pointer for the remaining components, using this pointer's concrete class. An identical base produces the root pointer; the root base leaves the path unchanged. Compare components rather than raw string prefixes, so escaping and component boundaries remain correct. Raise JsonPointerException for a valid base that is not an ancestor, and preserve existing parsing errors for an invalid string base. Do not mutate either pointer. Add regression tests and preserve existing tests/configuration.
 
-- AVA with original test discovery and the external no-cache setting (7 expected behavioral checks).
-- tsd on `index.test-d.ts` against `index.d.ts` through the frozen executable binding.
+- Public check `original-public-tests-1`: kind `tests`, expected test count 62, timeout 90 seconds.
 
-# Frozen installed-system protocol
+## u12: python-json-patch
 
-## Conditions and expected activation
+Repository: <https://github.com/stefankoegl/python-json-patch>. Language: python. Primary (four sessions).
 
-A is the installed launcher in explicit off/pass-through mode. B enables v4
-source discovery and compact complete selected source. C uses the same source
-policy and adds the locked public-command/baseline-count card from a fresh,
-explicitly verified receipt. The intervention changes context preparation
-around the same coding model. The two primary contrasts are C minus A and C
-minus B.
+Pinned upstream commit: `c39058eabd7e50e92e6a6fd7e915c0218c7284f3`.
 
-Zero-model installed readiness fixes the expected treatment for every task.
-p01–p05, t05 and t06 preload source. p06 and t01–t04 preserve the exact task
-because candidates are ambiguous. These seven active and five abstaining
-tasks define descriptive readiness strata. All twelve remain in the primary
-intention-to-treat panel, including preparation overhead on abstentions. There
-are no subgroup hypothesis tests, and the active subset cannot replace the
-primary panel.
+Exact feature prompt:
 
-The same short feature request enters each launcher. Common safety/tool
-instructions use native `developer_instructions`, and
-`project_doc_max_bytes=0` disables uncontrolled project-document injection in
-all arms. Added context changes the actual native prompt only as assigned.
-Thirty-six zero-model installed handoffs establish treatment before freeze.
-The bridge records actual native prompt bytes and arguments, validates their
-bindings, and executes the installed Codex once in the same process. The first
-scheduled assignment also serves as connectivity verification; no additional
-paid smoke session is added.
+> Add JsonPatch.prefixed(prefix), accepting a JSON Pointer string or an instance of the patch's pointer_cls. Return a new patch of the same concrete patch class, retaining pointer_cls, with prefix prepended component-wise to every operation's path and to from for move/copy. Correctly handle root pointers, escaped components, and array paths. Deep-copy operation data so neither the original patch nor nested values are shared with the result. Existing validation/error types still apply to invalid prefixes and operations; do not modify apply or the original operations. Add regression tests without changing existing tests/configuration.
 
-## Allocation and stopping
+- Public check `original-public-tests-1`: kind `tests`, expected test count 205, timeout 90 seconds.
 
-One task in each repository receives three arms and two repeats, giving
-72 scheduled workflows and 24 cells per arm. Seed 20261027 shuffles tasks and
-a multiset containing every arm permutation twice. The first-repeat order is:
+## u13: p-limit
 
-| Task block | Task | Arm order |
-| ---: | --- | --- |
-| 1 | t04 | C → A → B |
-| 2 | p05 | B → C → A |
-| 3 | t01 | B → A → C |
-| 4 | p06 | C → A → B |
-| 5 | p02 | A → C → B |
-| 6 | t05 | B → C → A |
-| 7 | t02 | C → B → A |
-| 8 | t03 | A → C → B |
-| 9 | p04 | A → B → C |
-| 10 | t06 | B → A → C |
-| 11 | p01 | C → B → A |
-| 12 | p03 | A → B → C |
+Repository: <https://github.com/sindresorhus/p-limit>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
 
-Repeat two reverses the complete first-repeat assignment sequence, including
-both task-block order and within-task arm order. Assignments execute
-sequentially. Each receives a fresh source copy, Git baseline, local project
-state and native thread. This balances order under the saved design but cannot
-eliminate filesystem or provider-cache carryover.
+Pinned upstream commit: `a8a6fbec4e0e866d6d779b10889bb4f5567e70eb`.
 
-An assignment is durably allocated once. There are no native retries,
-replacements or outcome-driven extra repeats. The next-unused-assignment
-controller stops on unknown whole-attempt usage, native lifecycle failure,
-integrity failure or exhausted admission allowance. Unrun cells remain
-unavailable. The planned maximum is 72 coding-agent dispatches, with a soft
-USD 18 allowance in uniform tariff equivalents and a USD 0.25 next-call
-reserve. Neither value bounds account billing or an admitted call's cost.
+Exact feature prompt:
 
-## Time boundaries and caches
+> Add limit.onIdle(), returning a promise that resolves when both active and queued work are empty. It must support multiple waiters, failures, queue clearing, and later reuse without rejecting on task errors. Preserve existing behavior and update TypeScript declarations.
 
-Public-source copying and Git-baseline construction are excluded from all
-workflow timers. Timing starts before arm-specific registration, indexing or
-verification, and ends after native process-group cleanup. C includes public
-baseline verification and removal of only newly generated logs, build outputs
-and caches. Source/Git bytes and the provider manifest are checked afterward.
-This cleanup is an experimental control, not automatic shipping behavior.
-Indexing, verification, cleanup, launcher preparation and native intervals are
-recorded separately.
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 30, timeout 90 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
 
-A shared absolute 90-second allowance covers setup through launcher
-preparation; it is not 90 seconds for each component. Every native process has
-a separate 300-second allowance beginning at the recorded bridge handoff.
-Native wall time includes final local exec setup and cleanup, not isolated
-remote inference. Independent grading, environment acquisition, coordinator
-engineering and artifact packaging are excluded. No unrelated heavy validation
-runs during measured execution.
+## u14: p-map
 
-The profile fixes TERM=xterm and disables supported runtime caches. Projects
-and run caches are fresh, while operating-system page caches, provider prefix
-caches, cloud load and model-backend revisions remain uncontrolled. Reported
-cached input is retained rather than attributed to a particular causal source.
+Repository: <https://github.com/sindresorhus/p-map>. Language: javascript-typescript. Primary (four sessions).
 
-## Author controls, private inputs and grading
+Pinned upstream commit: `d61b6a33cc1d5533ad5711b435959f3f78c3d2fe`.
 
-Separate AI authoring roles proposed tasks and constructed reference, baseline
-and plausibly incorrect variants; an additional agent reviewed agreement and
-records. This is automated role separation, not independent human replication.
-Across twelve tasks there are 36 expected control outcomes: baseline fails the
-feature, reference passes, and the incorrect variant fails while original
-public tests remain unchanged. Feature, public and declaration checks are
-finite and cannot establish exhaustive correctness.
+Exact feature prompt:
 
-Before native collection, all new private grader/reference/control plaintext,
-compiled copies and revealing logs were removed from the executor. The
-3,151 committed files were packed, encrypted and authenticated with AES-GCM. A
-random 256-bit key remained only in the external orchestrator store. Ciphertext
-and hash commitments could remain locally; every private plaintext root had to
-be absent before each dispatch. This sequesters these oracles without claiming
-kernel-level isolation from arbitrary local data. Restoration occurs only
-after all native timings close or a durable stop, and exact committed file
-hashes must match before restored graders execute.
+> Export pFilter(input, predicate, options), retaining values whose asynchronous predicate is truthy. Accept synchronous or asynchronous iterables and promised values; pass original indexes, preserve value identity and input order, honor pMap concurrency and abort options, reject invalid predicates, and add generic declarations.
 
-Before grading native patches, all 36 original author variants were replayed
-successfully through the same final frozen sandbox wrapper. TypeScript
-control-helper working-directory/module-ancestry diagnostics were retained;
-only the location of that unsealed control helper was corrected to the actual
-grading ancestor. The frozen private cases, feature oracles, original public
-checks and runtime were unchanged. These control processes made no model
-requests. The final wrapper had been tightened before freeze; there was no
-post-freeze study/grading amendment.
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 424, timeout 90 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
 
-Independent feature and original-public grading use candidate source read-only,
-network disabled and only grader artifacts writable. Inherited global temporary
-write roots are disabled. Candidate and protected-input hashes are checked
-before and after grading. The strict gate requires valid native completion and
-whole-attempt usage, faithful treatment, intact protected inputs, valid grading
-infrastructure, committed feature checks and original public checks.
-Regression-test presence and execution remain diagnostics. A passing rubric
-cannot certify semantic test quality, full free-form instruction compliance or
-the unobservable base58 allocation order.
+## u15: escape-string-regexp
 
-## Accounting and inference
+Repository: <https://github.com/sindresorhus/escape-string-regexp>. Language: javascript-typescript. Primary (four sessions).
 
-The primary accounting convention is
-[(input − cached input) × 5 + cached input × 0.20 + output × 15] / 1,000,000,
-in API-equivalent dollars. Cached input is part of total input; reasoning
-output is included in output counters. These fixed historical rates do not
-represent current prices, invoices, subscription charges or all provider
-computation. Ordinary failed attempts retain observed costs. Unknown usage is
-never replaced with zero.
+Pinned upstream commit: `a7f7dabaf336bda98d2166848af15d9168b10bcf`.
 
-For each primary contrast, both repeats are averaged within each task before
-forming the paired arm difference. A complete estimate requires all twelve
-task clusters and both repeated costs for both contrasted arms. Otherwise the
-primary total, effect and test are unavailable; known subtotals and missing
-identifiers remain reportable. The primary family is the two contrasts C–A and
-C–B, not a collection selected after results.
+Exact feature prompt:
 
-Complete contrasts receive pointwise 95% paired task-bootstrap intervals using
-10,000 resamples, seed 20261029 and linear interpolation at (n−1)p. Each draw
-retains repeats and paired arms. Exact two-sided tests condition on the third
-arm's first-repeat position, creating three strata of four tasks with two
-relative orders each. Enumerating choose(4,2)^3 = 216 legal allocations and
-jointly swapping repeat labels respects the balanced design. Ties count.
-Pairwise sharp-null and no-cross-arm/provider-cache-carryover assumptions are
-required. Holm adjustment covers the two predeclared cost tests at familywise
-0.05; missingness does not shrink that family.
+> Add optional {escapeSlash:true} to escapeStringRegexp for safe interpolation into slash-delimited RegExp literals. Escape every slash while preserving existing metacharacter escaping and default behavior. Reject nonboolean escapeSlash values and update the TypeScript declaration.
 
-Native-price/cache-write sensitivities, tokens, workflow components, readiness
-strata and joint-success time are secondary descriptive analyses. Command-text
-read/test counts are heuristic and do not trace all file I/O or provider
-inferences. Cheaper failed work is not evidence of greater efficiency. Matching
-strict-success counts does not establish population quality equivalence or
-formal noninferiority.
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 3, timeout 60 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 60 seconds.
 
-Precision planning used seven earlier complete two-repeat task clusters. Their
-unstable cost-difference standard deviation was 0.03441 dollars. An optimistic
-normal approximation suggests a detectable difference near 0.03063 dollars,
-roughly 25% of the earlier A mean, for twelve clusters at 80% power and
-first-step two-sided alpha 0.025. This is not achieved power or a guarantee for
-the exact test. Adaptive prototype observations are not pooled with this new
-installed-system panel.
+## u16: strip-indent
 
-# Historical evaluation lineage
+Repository: <https://github.com/sindresorhus/strip-indent>. Language: javascript-typescript. Primary (four sessions).
 
-Each stage below has its own corpus, treatment, source version and measurement
-boundary. Some entries are local engineering or derived analyses; their
-observations are not new coding-agent sessions. An unsuccessful original
-attempt remains in its cohort even when a later repair succeeds. Figures and
-percentages are reported under their original definitions, with scope limits
-retained. The detailed history inventory binds the source report bytes.
+Pinned upstream commit: `a554228432c72f531fc93041d711399001ffffa9`.
 
-## Historical stage 1: Initial access attempt
+Exact feature prompt:
 
-96 planned coding assignments remained not_run; 168 real SDK calls on 24 tasks, target-file hit 16/24 (66.7%).
+> Add optional {maxIndent} to stripIndent and dedent, limiting removed indentation characters to that nonnegative safe integer. Preserve default full removal, tabs, line endings, and existing blank-line handling. dedent must still trim surrounding blank lines when maxIndent is zero. Reject invalid limits with RangeError and update declarations.
 
-Scope and interpretation: No completed native A/B pair; SDK retrieval, byte estimates and 203 engineering checks are not model efficacy or billing evidence.
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 2, timeout 60 seconds.
 
-Original report: `benchmarks/assessment.md`.
+## u17: yocto-queue
 
-## Historical stage 2: Native MCP v1
+Repository: <https://github.com/sindresorhus/yocto-queue>. Language: javascript-typescript. Primary (four sessions).
 
-96 original attempts: A 48/48 graded passes, B 47/48 plus one harness interruption; 47 matched pairs: B 2.751x total input, 1.465x Codex-plus-index time, no observed correctness gain.
+Pinned upstream commit: `72a8fa96a9d389765cdf2bb9c6daba8302fc375d`.
 
-Scope and interpretation: 24 synthetic tasks and correlated repeats; one interrupted B has unknown usage/time/cost; 97th supplemental B pass has no fresh comparator and is excluded. Exact call-time freshness and semantic completeness unavailable.
+Exact feature prompt:
 
-Original report: `benchmarks/live-ab-assessment.md`.
+> Add Queue.enqueueFront(value) to prepend an item while preserving the order of existing items. Support empty queues, undefined values, subsequent tail enqueues, iteration, draining, and clearing. Preserve queue invariants and add the generic TypeScript declaration.
 
-## Historical stage 3: Optimized native MCP
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 7, timeout 90 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
 
-160 attempts, A 80/80 and B 80/80 strict passes; B total input +32.82%, output +5.31%, uncached input +2.17%, Codex-plus-index time +17.88%.
+## u18: indent-string
 
-Scope and interpretation: 40 small synthetic tasks with correlated repeats and success ceiling; actual cost unavailable. Two old-task development A/B pilots are separate. Complete declared bodies do not prove semantic completeness or live call-time freshness.
+Repository: <https://github.com/sindresorhus/indent-string>. Language: javascript-typescript. Primary (four sessions).
 
-Original report: `benchmarks/optimized-ab-assessment.md`.
+Pinned upstream commit: `7e6c356c4a8425b06efb5c031479304ee0bd67ea`.
 
-## Historical stage 4: Known-path daily preload
+Exact feature prompt:
 
-80/80 strict passes on 20 tasks x2 arms x2 repeats; B total input -2.94%, output -6.15%, full time -4.76%, uncached input +27.14%; input worse in 25/40 pairs.
+> Add optional {skipFirstLine:true} to indentString, leaving the first physical line unchanged while indenting subsequent lines normally. Preserve line endings, custom indent strings, count zero, and includeEmptyLines behavior. Reject nonboolean skipFirstLine values and update the TypeScript declaration.
 
-Scope and interpretation: Legacy suffix layout, tiny known-file synthetic tasks, no MCP or memory reuse; actual and price-equivalent cost unavailable in this study. Read-command proxies are not actual I/O.
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 10, timeout 60 seconds.
+- Public check `upstream_declaration_tests`: kind `typecheck`, expected test count not supplied, timeout 60 seconds.
 
-Original report: `benchmarks/daily-ab-assessment.md`.
+## u19: isarray
 
-## Historical stage 5: Prefix/suffix format
+Repository: <https://github.com/juliangruber/isarray>. Language: javascript-typescript. Primary (four sessions).
 
-40/40 strict passes; compact prefix vs legacy suffix: total input -2.01%, uncached input +3.90%, full time -11.16%. The 16 actual source-format pairs have input +0.63%, uncached +1.53%; aggregate input drop comes from 4 identical-prompt controls.
+Pinned upstream commit: `8c8dd70d48ad5d0897733ca6726302a54ca9e177`.
 
-Scope and interpretation: Neither arm is bare Codex; one repeat, tiny known-file tasks, no same-file reuse condition. 31.04% envelope-byte reduction is not model token reduction. Different corpus/arms prohibit treating +27.14% to +3.90% as iteration gain.
+Exact feature prompt:
 
-Original report: `benchmarks/cache-refinement-assessment.md`.
+> Add isArray.isArrayOf(value, predicate) to the CommonJS export. Return false for nonarrays; otherwise require every indexed element to satisfy the predicate. Visit sparse holes as undefined, pass value/index/array, short circuit on false, propagate predicate errors, and reject nonfunction predicates. Preserve default classification.
 
-## Historical stage 6: Ten-task tariff analysis
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 28, timeout 90 seconds.
 
-20/20 strict passes; pooled B cost/success estimate 2.28% lower; 8 source-preload tasks 4.43% higher, 2 identical-prompt controls 33.27% lower. B cheaper in 5/10 pairs.
+## u20: is-promise
 
-Scope and interpretation: One synthetic repeat; controls account for apparent pooled benefit. Unknown cache-write attribution allows -15.47% to +16.99% saving scenarios, not a confidence interval; no actual invoice.
+Repository: <https://github.com/then/is-promise>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
 
-Original report: `benchmarks/cost-assessment.md`.
+Pinned upstream commit: `ec9bd8a3f576324a1343069a2d6c2fa35a623939`.
 
-## Historical stage 7: Original workflow contract
+Exact feature prompt:
 
-60 native attempts, 20 per A/B/C; all behavior/smoke checks passed but all 60 strict failures changed protected existing tests. Cost/success unavailable with zero strict successes.
+> Export isPromiseSafe from both CommonJS and ESM entry points. Preserve existing thenable recognition, returning false when property inspection throws, including hostile or revoked proxies. Preserve the default function and its existing error behavior; add a TypeScript type guard declaration.
 
-Scope and interpretation: Shared prompt was insufficiently explicit about exact test bytes; behavior-only results cannot replace frozen strict outcomes. Per-arm attempt cost remains charged.
+- Public check `upstream_complete_assertion_script`: kind `tests`, expected test count 1, timeout 90 seconds.
 
-Original report: `benchmarks/workflow-assessment.md`.
+## u21: is-number
 
-## Historical stage 8: Fresh workflow confirmation
+Repository: <https://github.com/jonschlinkert/is-number>. Language: javascript-typescript. Primary (four sessions).
 
-60/60 strict passes on 10 fresh tasks x3 arms x2 repeats. All-task B vs A estimated cost/success -2.475%; focused 16/arm B cost -10.19% but mean full time +3.18%; C vs B focused cost +8.66%, time +9.16%.
+Pinned upstream commit: `98e8ff1da1a89f93d1397a24d7413ed15421c139`.
 
-Scope and interpretation: Small synthetic tasks; known paths/support caller selected, zero configured MCP; support promotion gate false. Focused B cache-write scenario saving -3.54% to +22.49%; no actual bill or joint cost/speed win.
+Exact feature prompt:
 
-Original report: `benchmarks/workflow-confirmation-assessment.md`.
+> Add optional {safeInteger:true} mode to isNumber, accepting only safely representable integer numbers or numeric strings under existing conversion rules. Preserve default behavior and explicit false, reject nonboolean safeInteger values, and keep all other inputs false.
 
-## Historical stage 9: Workflow accounting
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 111, timeout 90 seconds.
 
-120 original assignments (the preceding two cohorts), 40/arm with 20 strict successes/arm; all failed-attempt costs included. Estimated total A 1.2889548/B 1.2826008/C 1.2474700 USD.
+## u22: emitter
 
-Scope and interpretation: Do not count another 120 sessions or pool distinct corpora for efficacy/time. Local source-reader 55 to 15 and 1, 200 synthetic cases are separate component evidence.
+Repository: <https://github.com/component/emitter>. Language: javascript-typescript. Primary (four sessions).
 
-Original report: `benchmarks/efficiency-assessment.md`.
+Pinned upstream commit: `af0c3af0a7df701db79a8923fbae4708d4479fc4`.
 
-## Historical stage 10: Local efficiency work
+Exact feature prompt:
 
-600-file graph mean wall -11.75%, unchanged secure reads 600; 40-file/20MiB scan Python allocation peak -92.56%, reads 40; virtual scheduler connections 120 to 12; dashboard rows 500 to 20; SQLite instruction reductions with larger DB and insert 44 to 55 instructions.
+> Add prependListener(event, listener) to Emitter instances and mixins. Insert handlers before existing handlers, preserve registration order among ordinary listeners, support chaining and removal, and retain receiver, arguments, and once behavior. Update TypeScript declarations.
 
-Scope and interpretation: Zero new native efficacy requests. tracemalloc is not RSS; graph old branch emulation, scan/graph overlap, virtual ticks and SQLite VM instructions are not production task latency/throughput/model tokens. Hosted SaaS readiness unproven.
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 30, timeout 90 seconds.
 
-Original report: `benchmarks/saas-efficiency-assessment.md`.
+## u23: dlv
 
-## Historical stage 11: Warm-study access failure
+Repository: <https://github.com/developit/dlv>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
 
-216 planned; 1 original auth failure before a completed model turn; 215 unrun; zero warm stages/quotes.
+Pinned upstream commit: `3212139c05647ffe3f1b095acd46afa2f5f635dd`.
 
-Scope and interpretation: Unknown tokens/cost are not zero; auth-failure seconds are not coding latency. Capability checks establish reuse only inside same active Memglide session.
+Exact feature prompt:
 
-Original report: `benchmarks/warm-study-assessment.md`.
+> Add optional fourth options argument {own:true} to dlv for own-property-only traversal at every path component. Support string and array paths, null-prototype objects, falsey terminal values, and defaults for missing values. Preserve legacy inherited-property access when the option is absent or false.
 
-## Historical stage 12: Partial warm study
+- Public check `upstream_microbundle_build`: kind `typecheck`, expected test count not supplied, timeout 90 seconds.
+- Public check `upstream_complete_assertion_script`: kind `tests`, expected test count 1, timeout 90 seconds.
 
-80 completed strict passes; 81st user-interrupted with unknown usage; 135 unrun. Post-hoc first 72 matched runs:24 tasks/arm in 8 sequences; B vs A cost -9.055%, instrumented mean time -6.892%; warm C vs B cost +12.346%, time +3.396%.
+## u24: is-buffer
 
-Scope and interpretation: Post-hoc partial first repeat, unequal full observed task mixes, small synthetic roots, uncontrolled caches. C full attempted cost unknown; same active Memglide session, not durable cross-session memory; cache-write scenarios can reverse ranking.
+Repository: <https://github.com/feross/is-buffer>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
 
-Original report: `benchmarks/warm-80-analysis.md`.
+Pinned upstream commit: `ec4bf3415108e8971375e6717ad63dde752faebf`.
 
-## Historical stage 13: Automatic v1
+Exact feature prompt:
 
-12 path-free tasks: C delivers0/12, known-path B 9/12; 24 exact-source/passthrough checks pass. Local setup+prep C 1.048s vs B 0.728s.72 planned native assignments not run.
+> Add isBuffer.isUint8Array(value) to the CommonJS export. Recognize genuine Uint8Array views and Buffers across realms, while rejecting other views, proxy wrappers, and spoofed tags. Preserve default Buffer detection and add a TypeScript type guard declaration.
 
-Scope and interpretation: C zero added bytes means no source delivered, not savings; fixed B-before-C one repeat and tiny mutation tasks. Grader baseline/reference/partial-fix controls are author controls, not model-generated repairs.
+- Public check `upstream_behavioral_tests`: kind `tests`, expected test count 17, timeout 60 seconds.
 
-Original report: `benchmarks/automatic-assessment.md`.
+## u25: boltons
 
-## Historical stage 14: Router v2
+Repository: <https://github.com/mahmoud/boltons>. Language: python. Primary (four sessions).
 
-72 offline observations: B 24/24 target scope, V1 zero, C 2/24 preloads but wrong type-only file, target0/24; fixed gate failed, 72 authorized native slots unrun. C cold mean 2.098610s vs B 1.216337s (+72.54%).
+Pinned upstream commit: `4e5faa3d7e4008d89e0d8bf1ea87b6d9a061a16d`.
 
-Scope and interpretation: 12 mutation tasks/4 small roots, 2 correlated repeats; B human discovery effort omitted; easier 18-observation Python synthetic profile had 18 target deliveries but did not predict held-out. Source-fidelity72/72 is not relevance or coding success.
+Exact feature prompt:
 
-Original report: `benchmarks/router-v2-assessment.md`.
+> Add chunked_by_weight(src, max_weight, key=None) to the iterable utilities. It lazily yields nonempty lists in input order, greedily adding items while their total weight stays at most max_weight. key(item) supplies the weight, defaulting to the item itself; evaluate it once per consumed item. A single overweight item is yielded alone. Empty input yields nothing, zero-weight items are valid, and the source may be a one-shot iterator. max_weight must be a finite positive numbers.Real value; item weights must be finite nonnegative numbers.Real values. Reject booleans and nonnumeric values with TypeError and invalid numeric ranges with ValueError. Validate the limit before consuming source input; validate weights lazily. Keep existing chunking helpers unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-## Historical stage 15: Local source refinement
+- Public check `original-public-python-tests`: kind `tests`, expected test count 514, timeout 45 seconds.
 
-72 timing+6 diagnostic workers, 468 preparations, 24 fallback controls preserve exact source/prompt; compilation 6 to 3 typical/2 to 1 dense. Typical warm mean -2.08% but all primary mean intervals include zero; dense warm median improves while mean+10.14%.
+## u26: more-itertools
 
-Scope and interpretation: No model or real indexing; synthetic approvals. Five calls form one worker mean, not 5 independent observations. Outliers retained; 77.9% no-ignore apparent mean gain is no-effect control confounding. RSS whole worker, API reads not actual I/O.
+Repository: <https://github.com/more-itertools/more-itertools>. Language: python. Primary (four sessions).
 
-Original report: `benchmarks/source-only-refinement-assessment.md`.
+Pinned upstream commit: `4aeb4338ae1407d8da9723e86da99efeb446f719`.
 
-## Historical stage 16: Router v3
+Exact feature prompt:
 
-96 offline observations, 12 tasks x4 arms x2 repeats; positives C 6/16 (3/8 unique) vs V2 4/16, V1 zero, known-path B 16/16; all arms8/8 negative bypasses. Positive C prep mean+7.00% vsV2, setup+prep+1.12%, intervals cross zero.
+> Add merge_unique(*iterables, key=None) to the public iterable API. Each input is already sorted in nondecreasing key order. Lazily merge them into one sorted iterator and emit only the first item for each equal key, without hashing keys or comparing the items themselves. Equal keys prefer the earlier input iterable, and within it the earlier item. key defaults to identity and is called once for each consumed item. Accept empty inputs, no inputs, generators, and unhashable comparable keys. Keep no more than one pending item from each input and preserve existing utilities. Document this new function.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-Scope and interpretation: 8 positive tasks share7 bundles/4 roots including2 related unjs roots; source-scope proxy only. Negative bypass never offsets positive miss; no token/cost/coding-success evidence.
+- Public check `original-public-python-tests`: kind `tests`, expected test count 765, timeout 45 seconds.
 
-Original report: `benchmarks/router-v3-assessment.md`.
+## u27: humanize
 
-## Historical stage 17: Router v4 checkpoint
+Repository: <https://github.com/python-humanize/humanize>. Language: python. Exposed auxiliary (two remaining sessions).
 
-No authored fresh held-out at checkpoint; 27 fake-native runner controls are harness checks; one real access probe timed out with proxy403 and no completed model turn.
+Pinned upstream commit: `785e5dcc0d0308ad0dff3f6cc0faa7085ad0375b`.
 
-Scope and interpretation: Checkpoint status is historical; later native studies supersede pending wording without overwriting it. No measured efficacy, and unknown usage is not zero.
+Exact feature prompt:
 
-Original report: `benchmarks/router-v4-checkpoint.md`.
+> Extend natural_list with keyword-only conjunction="and", separator=", ", and oxford_comma=False. Preserve its default output. For two items join them using a single space, the conjunction, and a single space. For three or more, join the initial items using separator, then use either a single space plus conjunction plus a single space, or (when oxford_comma is true) separator plus conjunction plus a single space before the last item. Empty and singleton iterables remain unchanged. Convert each item to text once and accept one-shot iterables. conjunction must be a nonempty string and separator must be a string, raising TypeError for nonstrings and ValueError for an empty conjunction; validate before consuming the iterable.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-## Historical stage 18: Router v4 blocked
+- Public check `original-public-python-tests`: kind `tests`, expected test count 729, timeout 45 seconds.
 
-6/72 scheduled attempts (2/arm) runtime blocked shell/patch; 66 unrun, 0 strict passes; measured tariff point 0.1881096 USD, possible-write 0.2259976.
+## u28: itsdangerous
 
-Scope and interpretation: No patch and no valid coding-performance comparison. Offline gate not met and explicitly waived before corpus; two failed earlier access preflights have unknown costs. Later successful runtime fix does not replace these 6.
+Repository: <https://github.com/pallets/itsdangerous>. Language: python. Exposed auxiliary (two remaining sessions).
 
-Original report: `benchmarks/router-v4-native-blocked-assessment.md`.
+Pinned upstream commit: `672971d66a2ef9f85151e53283113f33d642dabd`.
 
-## Historical stage 19: Router v4 recovery
+Exact feature prompt:
 
-72/72 attempts produce patches: strict A 0/24 B 1/24 C 0/24; raw behavior22/24 each; 68 existing-test byte violations. C input -2.06%, execution+prep -8.42%, mean cluster intervals cross zero; C preload 8/24.
+> Add Serializer.loads_many(tokens, *, salt=None, errors="raise") for batch verification of signed tokens. Return a list of values in token order using the same instance loads behavior and per-call salt. Accept one-shot token iterables. errors="raise" propagates the first error immediately and does not consume later tokens; errors="skip" omits only tokens rejected with a BadData exception and keeps valid values including None and False. Other exception types must still propagate. Reject other errors policies with ValueError before consuming tokens. Preserve key rotation, fallback verification, custom serializers, and existing single-token APIs.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-Scope and interpretation: Exposed reused 12 tasks, offline eligibility waived, ambiguous byte-preservation prompt, native tool discovery incomplete. Raw behavior is diagnostic and not substituted for strict.312857-token aggregate creates unknown point price for coding-0044.
+- Public check `original-public-python-tests`: kind `tests`, expected test count 297, timeout 45 seconds.
 
-Original report: `benchmarks/router-v4-native-recovery-assessment.md`.
+## u29: blinker
 
-## Historical stage 20: Router v4 confirmation
+Repository: <https://github.com/pallets-eco/blinker>. Language: python. Primary (four sessions).
 
-72 attempts: strict A 22/24 B 20/24 C 23/24; 6 ordinary failures+1 A timeout; C source 0/24 and every C prompt matches A; B preload 16/24.11 cost-complete task clusters: C-A point+0.00207484 USD/attempt, CI[-0.00506235,+0.00811680].
+Pinned upstream commit: `c3364059663df1ddce32799d6b1922af89a345f6`.
 
-Scope and interpretation: C abstention cannot establish preload mechanism efficacy.12 authored tasks/6 small roots, partial upstream snapshots. Timeout unknown cost makes whole 72 total and A cost/success unavailable. Timing 12clusters mean-3.911s CI crosses zero; median+2.687s slower. Original 16-row prefix imported unchanged once.
+Exact feature prompt:
 
-Original report: `benchmarks/router-v4-native-confirmation-assessment.md`.
+> Add Signal.send_robust(sender=None, /, **kwargs). Like send, it delivers to receivers matching that sender or ANY and returns (receiver, outcome) pairs. It continues after ordinary receiver exceptions, placing the exact Exception object in the outcome instead of raising it; successful return values are unchanged. BaseException subclasses must propagate. Muted signals return an empty list. Synchronous delivery of an async receiver must produce a RuntimeError outcome without creating an unawaited coroutine, then continue. Keep normal send and send_async behavior unchanged. No receiver-order guarantee is added.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-## Historical stage 21: Active v4 pilot
+- Public check `original-public-python-tests`: kind `tests`, expected test count 25, timeout 45 seconds.
 
-32 native attempts on 8 fresh task clusters x2 arms x2 repeats; A 16/16 C 15/16; C source 16/16. C attempt tariff cost-2.88%, cold time-4.74%, cost per strict pass+3.59%; mean cost/time CIs cross zero.
+## u30: cachetools
 
-Scope and interpretation: Conditional eligibility; 17 candidate repositories with query screening, declines and pre-paid wording revisions, not blind activation prevalence. Failure n04 malformed1s, preserved. Historical incomplete charges stay unknown.
+Repository: <https://github.com/tkem/cachetools>. Language: python. Primary (four sessions).
 
-Original report: `benchmarks/router-v4-active-pilot-assessment.md`.
+Pinned upstream commit: `eba200635273fe45b67e669b84cb45f995b27c24`.
 
-## Historical stage 22: Diagnostic repair
+Exact feature prompt:
 
-One diagnostic native session repairs known failed n04 patch; 115 original+19 boundary checks pass. Charging failure+repair makes C workflow cost+1.69% and time+1.47% vs original A; pilot staysA16/16 C 15/16. Local 100-file early-fallback mean 48.60ms to 0.187ms, 10 pairs.
+> Add Cache.peek(key[, default]) as a non-touching lookup inherited by the cache classes. Return a live cached value without updating eviction ordering or frequency, calling __missing__, or removing expired entries. A missing or expired key raises KeyError unless a default is supplied, in which case return that exact default. Expiry-aware caches must use their normal current-time membership semantics. Preserve size accounting and all existing get/indexing behavior. In particular, peeking must not rescue an old LRU entry from the next eviction.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-Scope and interpretation: Feedback-informed asymmetric repair is development, not new independent A/C confirmation; local fallback result is not Codex speed/tokens. Original 32 outcomes not rescored.
+- Public check `original-public-python-tests`: kind `tests`, expected test count 360, timeout 45 seconds.
 
-Original report: `benchmarks/router-v4-repair-assessment.md`.
+## u31: mitt
 
-## Historical stage 23: Adaptive v5 and fresh comparison
+Repository: <https://github.com/developit/mitt>. Language: javascript-typescript. Primary (four sessions).
 
-30 candidate rounds x3 development tasks+3 source-only reference =93 native sessions; 32 fresh A/C attempts; 125 scheduled terminal records, 124 valid native completions. Fresh strict 15/16 each. Primary 7 complete task clusters/14 pairs:18.7260405% lower C uniform-tariff cost; mean delta-0.0226900 USD, 95%[-0.0469470,+0.0010488].
+Pinned upstream commit: `6b41670516ed8e8b738612f60491995470aa63b3`.
 
-Scope and interpretation: Winner selected adaptively on 3 seen tasks; 8 screened small preload-eligible fresh roots, 2 repeats; C capacity failure v5-final-0031 unknown usage/cost, no retry. Primary CI crosses zero; secondary tariff CI excludes zero does not supersede primary. Equal strict counts do not establish quality equivalence. Not source-only ablation; verified public-command workflow package.
+Exact feature prompt:
 
-Original report: `benchmarks/router-v5-search-assessment.md`.
+> Add emitter.once(type, handler), returning an idempotent disposer. It registers one delivery for a named or symbol event, or for the wildcard event. The listener unregisters before invoking its handler, so a recursive emit cannot invoke it twice. A wildcard handler still receives (type, payload). Disposing before delivery cancels that registration; disposing afterwards is harmless. Multiple once registrations of the same callback are independent. Preserve on/off/emit behavior, the caller-supplied event map, and expose the new method in the TypeScript API.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-Historical conversions that are not supported include equating duplicate MCP
-transport JSON with duplicate model input, envelope-byte reductions with token
-savings, Python allocation peaks with RSS, or command text with complete
-filesystem traces. Source hashes and complete selected files establish a
-narrower property than complete task understanding. Equal finite pass counts
-do not establish quality equivalence.
+- Public check `all-original-mitt-behavior-tests`: kind `tests`, expected test count 19, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
 
-# The thirty-round v5 development search
+## u32: defu
 
-## Rules and interpretation
+Repository: <https://github.com/unjs/defu>. Language: javascript-typescript. Primary (four sessions).
 
-The v5 development screen used three fixed tasks, three initial reference
-sessions and 30 candidates with one native session per task. Each candidate
-was frozen before its round. Ninety candidate sessions plus three references
-give 93 development sessions. Reference and candidate rounds used the same
-three-worker submission policy; recorded submission order did not guarantee
-native start order. Cached provider state and concurrent contention remained
-uncontrolled. Final v5 evaluation ran sequentially after the winner lock.
+Pinned upstream commit: `82632b66f5914e9946edce300e10633a3d5c0cb7`.
 
-Candidate changes were portable prompt/preparation/workflow changes. They did
-not retrain the coding model. The candidate had to preserve task text and
-source provenance and could not encode task IDs, private expectations or
-reference solutions. A candidate branched from the current incumbent; rejected
-versions and their measurements were retained rather than destructively reset.
+Exact feature prompt:
 
-Promotion first required valid complete native/treatment/usage records and no
-protected-input or infrastructure failure. A candidate could not lose a task
-passed by its incumbent. Before the incumbent reached 3/3, promotion required
-strict pass-vector dominance. At 3/3, a candidate had to keep 3/3 and improve
-aggregate cost or time by at least 5%, while the counterpart worsened by at most
-5%. Each task passed by both versions also had to remain within 130% of its
-incumbent cost and time. Exact thresholds were admitted; ties kept the
-incumbent. These fixed engineering screens over three observations were not
-significance tests. Thirty adaptive looks create selection bias and
-winner's-curse risk.
+> Export defuReplaceArrays(...layers), a defaults-merge variant with the same left-to-right precedence and nullish fallback as defu, except arrays replace lower-precedence arrays instead of concatenating. Apply replacement at every nesting depth. Returned plain objects and arrays, including objects inside arrays, must not share mutable containers with any input. Preserve class instances as atomic values. Ignore __proto__ and constructor keys throughout the new variant. Empty input returns an empty object. Leave existing defu variants unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-The entries below reproduce each saved hypothesis, effective configuration
-change, strict outcome, both tariff conventions, summed preparation-plus-native
-time, parent and recorded decision. Every aggregate includes all three
-attempts, including failures. Times are sums of the three preparation/native
-components, not the wall-clock duration of a parallel round. Promotion used the
-separately retained frozen controller timing measure. The original strict
-grader is unchanged; the later compiler-alignment diagnostic does not rescore
-these primary rounds.
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 23, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
 
-## Reference round 0: v00
+## u33: hookable
 
-Hypothesis: Current production automatic source with the common baseline instructions
+Repository: <https://github.com/unjs/hookable>. Language: javascript-typescript. Exposed auxiliary (two remaining sessions).
 
-Configuration: the then-current production automatic source and common baseline instructions; no candidate change.
+Pinned upstream commit: `6815e4fed0411f3e2f91a31bdb107d8aeac0a266`.
 
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4047176 dollars;
-native point-price equivalent: 0.1916088 dollars.
-Summed preparation plus native time: 151.546 seconds.
+Exact feature prompt:
 
-Decision: Retained as the initial reference. Incumbent afterward: `v00`.
+> Export hookWithSignal(hooks, name, callback, signal: AbortSignal), returning an idempotent disposer. The hooks argument is a Hookable instance, including one returned by createHooks. It behaves like ordinary hook registration while the signal is live, automatically unregisters when aborted, and registers nothing if already aborted. Manual disposal unregisters the hook and removes the abort listener. Abort or disposal must not remove other registrations of the same callback. The callback keeps normal arguments, ordering and async behavior. Leave existing hook APIs unchanged and preserve the existing bundle-size checks through tree shaking.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-## Candidate round 1: v01
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 44, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
 
-Hypothesis: Verified public commands remove exploratory setup commands.
+## u34: destr
 
-Effective change: `command_card=commands`. Parent: `v00`.
+Repository: <https://github.com/unjs/destr>. Language: javascript-typescript. Primary (four sessions).
 
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5471604 dollars;
-native point-price equivalent: 0.2499032 dollars.
-Summed preparation plus native time: 152.229 seconds.
+Pinned upstream commit: `541b6f9aeada9fc30de9c5a7e086dbfc1c6fcdc7`.
 
-Decision: Promoted for strict correctness dominance. Incumbent afterward: `v01`.
+Exact feature prompt:
 
-## Candidate round 2: v02
+> Export parseJSONLines(value, options={}) for newline-delimited data. Require a string input; otherwise throw TypeError. Split on LF (accepting CRLF), remove an optional leading document BOM, trim each line, ignore blank lines, and return parsed values in order. Use the existing destr semantics for each record, with strict parsing enabled by default. options.strict=false enables the same permissive fallback and prototype-key sanitization as destr. A strict record error must throw SyntaxError whose message contains the one-based physical line number; preserve the original error as cause. Empty documents return an empty array. Existing destr and safeDestr behavior must remain unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-Hypothesis: Baseline test counts prevent zero-discovery false confidence.
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 22, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
 
-Effective change: `command_card=commands_counts`. Parent: `v01`.
+## u35: pathe
 
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.3970016 dollars;
-native point-price equivalent: 0.1866728 dollars.
-Summed preparation plus native time: 132.879 seconds.
+Repository: <https://github.com/unjs/pathe>. Language: javascript-typescript. Primary (four sessions).
 
-Decision: Promoted under the fixed cost/time screen. Incumbent afterward: `v02`.
+Pinned upstream commit: `bc7477a01f0bd60ada017add8142c9f9d69ccdc5`.
 
-## Candidate round 3: v03
+Exact feature prompt:
 
-Hypothesis: Readiness and unavailable-check facts avoid dependency/config retries.
+> Export isPathInside(parent, candidate), a lexical containment predicate that performs no filesystem access. Both arguments must be absolute POSIX paths or absolute Windows drive paths; return false for relative paths. Normalize dot segments, repeated separators and Windows backslashes using the library conventions. Return true for the parent itself and descendants, including when the parent has a trailing separator. Reject sibling prefix matches and escapes through .. . Windows drive letters are case-insensitive, but remaining path segments are case-sensitive; different drives and POSIX-versus-drive roots do not contain one another. Preserve all existing path APIs.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-Effective change: `command_card=readiness`. Parent: `v02`.
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 467, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.
 
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5032054 dollars;
-native point-price equivalent: 0.2346772 dollars.
-Summed preparation plus native time: 150.208 seconds.
+## u36: ufo
 
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
+Repository: <https://github.com/unjs/ufo>. Language: javascript-typescript. Primary (four sessions).
 
-## Candidate round 4: v04
+Pinned upstream commit: `f06c800d0c59f2a4a1b9ba65eb6cb61a84419be6`.
 
-Hypothesis: One complete related public test clarifies retained behavior without discovery.
+Exact feature prompt:
 
-Effective change: `public_tests=one_import_linked`. Parent: `v02`.
+> Export withoutQueryKeys(input, keys), removing all URL query fields whose decoded key is present in an iterable of strings. Decode keys with the library query-key semantics, including plus-as-space, while preserving every byte of retained fields (escaping, values, order, duplicates and empty fields). Preserve pathname, origin and fragment verbatim; a question mark within the fragment is not a query. If no key matches, return the original string exactly. If all fields are removed, remove the query question mark. Accept one-shot key iterables, an empty key name, relative URLs and empty input. Leave existing query utilities unchanged.
+> 
+> Implement this feature without new runtime dependencies. Preserve existing behavior and all existing tests, manifests, lockfiles, documentation and licenses. Add regression tests in new files. Work only in the supplied repository.
 
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4461438 dollars;
-native point-price equivalent: 0.2100484 dollars.
-Summed preparation plus native time: 159.906 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Candidate round 5: v05
-
-Hypothesis: A second complete related public test exposes more compatibility behavior.
-
-Effective change: `public_tests=two_import_linked`. Parent: `v02`.
-
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4422368 dollars;
-native point-price equivalent: 0.2078944 dollars.
-Summed preparation plus native time: 146.099 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Candidate round 6: v06
-
-Hypothesis: Public tests and readiness facts jointly reduce inspection and setup work.
-
-Effective change: `command_card=readiness`, `public_tests=two_import_linked`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4784382 dollars;
-native point-price equivalent: 0.2196036 dollars.
-Summed preparation plus native time: 139.667 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 7: v07
-
-Hypothesis: An executable public feature expectation constrains implementation.
-
-Effective change: `regression_stage=feature_first`. Parent: `v02`.
-
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4237386 dollars;
-native point-price equivalent: 0.1992868 dollars.
-Summed preparation plus native time: 152.417 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Candidate round 8: v08
-
-Hypothesis: Testing both new behavior and preserved boundaries reduces regressions.
-
-Effective change: `regression_stage=feature_boundary_first`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4199908 dollars;
-native point-price equivalent: 0.2020104 dollars.
-Summed preparation plus native time: 186.140 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 9: v09
-
-Hypothesis: A short contract ledger makes test expectations independent of the patch.
-
-Effective change: `regression_stage=contract_then_tests`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5260136 dollars;
-native point-price equivalent: 0.2382728 dollars.
-Summed preparation plus native time: 143.742 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 10: v10
-
-Hypothesis: A separate diff review finds changed-branch mistakes.
-
-Effective change: `compatibility_review=changed_diff`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5420548 dollars;
-native point-price equivalent: 0.2521064 dollars.
-Summed preparation plus native time: 178.913 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 11: v11
-
-Hypothesis: A dedicated retained-API review catches untested old behavior.
-
-Effective change: `compatibility_review=preserved_api`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5613492 dollars;
-native point-price equivalent: 0.2576256 dollars.
-Summed preparation plus native time: 161.221 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 12: v12
-
-Hypothesis: A lifecycle/fallback review catches mutation and asynchronous edge cases.
-
-Effective change: `compatibility_review=state_lifecycle`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5342374 dollars;
-native point-price equivalent: 0.2512932 dollars.
-Summed preparation plus native time: 188.855 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 13: v13
-
-Hypothesis: Summarizing successful checks reduces tool-output context.
-
-Effective change: `check_output=success_summary`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.519543 dollars;
-native point-price equivalent: 0.238814 dollars.
-Summed preparation plus native time: 154.433 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 14: v14
-
-Hypothesis: Counts and complete relevant failure diagnostics reduce output without false passes.
-
-Effective change: `check_output=counts_and_failures`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.6026306 dollars;
-native point-price equivalent: 0.2740788 dollars.
-Summed preparation plus native time: 161.689 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 15: v15
-
-Hypothesis: A structured receipt reduces repeated status parsing and long logs.
-
-Effective change: `check_output=structured`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5032658 dollars;
-native point-price equivalent: 0.2373484 dollars.
-Summed preparation plus native time: 180.802 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 16: v16
-
-Hypothesis: Targeted checks during editing reduce repeated full-suite work.
-
-Effective change: `verification=targeted_then_full`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4506736 dollars;
-native point-price equivalent: 0.2145088 dollars.
-Summed preparation plus native time: 172.311 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 17: v17
-
-Hypothesis: A targeted baseline run reveals setup problems before code changes.
-
-Effective change: `verification=baseline_targeted_then_full`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5471944 dollars;
-native point-price equivalent: 0.2564632 dollars.
-Summed preparation plus native time: 187.634 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 18: v18
-
-Hypothesis: A full baseline separates preexisting failures from new regressions.
-
-Effective change: `verification=baseline_full_then_full`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.399274 dollars;
-native point-price equivalent: 0.187932 dollars.
-Summed preparation plus native time: 148.519 seconds.
-
-Decision: Rejected because it did not meet the fixed practical-improvement thresholds. Incumbent afterward: `v02`.
-
-## Candidate round 19: v19
-
-Hypothesis: Using readiness diagnostics first avoids repeated setup debugging.
-
-Effective change: `diagnostics=tool_error_first`. Parent: `v02`.
-
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4708998 dollars;
-native point-price equivalent: 0.2153484 dollars.
-Summed preparation plus native time: 135.433 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Candidate round 20: v20
-
-Hypothesis: Failure-local inspection reduces broad rereads and repeated passing checks.
-
-Effective change: `diagnostics=failure_localized`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4253618 dollars;
-native point-price equivalent: 0.1987844 dollars.
-Summed preparation plus native time: 147.746 seconds.
-
-Decision: Rejected because it did not meet the fixed practical-improvement thresholds. Incumbent afterward: `v02`.
-
-## Candidate round 21: v21
-
-Hypothesis: Batching independent inspections reduces tool round trips without a hard call limit.
-
-Effective change: `diagnostics=batch_readonly`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.6204032 dollars;
-native point-price equivalent: 0.2822176 dollars.
-Summed preparation plus native time: 165.744 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 22: v22
-
-Hypothesis: Raw complete blocks avoid JSON escape syntax while retaining exact content.
-
-Effective change: `layout=v5_raw_task_last`. Parent: `v02`.
-
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4005532 dollars;
-native point-price equivalent: 0.1867416 dollars.
-Summed preparation plus native time: 136.111 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Candidate round 23: v23
-
-Hypothesis: An anchor/helper manifest makes the dependency bundle easier to navigate.
-
-Effective change: `layout=v5_manifest_anchor_first`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4054448 dollars;
-native point-price equivalent: 0.1961344 dollars.
-Summed preparation plus native time: 168.149 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 24: v24
-
-Hypothesis: Task-first framing changes attention without changing task or source bytes.
-
-Effective change: `layout=v5_task_first_raw`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.3875766 dollars;
-native point-price equivalent: 0.1860068 dollars.
-Summed preparation plus native time: 161.370 seconds.
-
-Decision: Rejected because it did not meet the fixed practical-improvement thresholds. Incumbent afterward: `v02`.
-
-## Candidate round 25: v25
-
-Hypothesis: Comparing public baseline examples detects unlisted compatibility changes.
-
-Effective change: `differential=baseline_examples`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4006566 dollars;
-native point-price equivalent: 0.1986068 dollars.
-Summed preparation plus native time: 204.223 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 26: v26
-
-Hypothesis: Baseline error/default comparisons catch preserved negative contracts.
-
-Effective change: `differential=baseline_errors`. Parent: `v02`.
-
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5451874 dollars;
-native point-price equivalent: 0.2607692 dollars.
-Summed preparation plus native time: 208.256 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Candidate round 27: v27
-
-Hypothesis: Short baseline call sequences expose fallback and state regressions.
-
-Effective change: `differential=baseline_sequences`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5411756 dollars;
-native point-price equivalent: 0.2596328 dollars.
-Summed preparation plus native time: 223.631 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 28: v28
-
-Hypothesis: Boundary-first tests plus compact targeted verification improve quality per attempt cost.
-
-Effective change: `check_output=counts_and_failures`, `command_card=readiness`, `regression_stage=feature_boundary_first`, `verification=targeted_then_full`. Parent: `v02`.
-
-Outcome: 3/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.478787 dollars;
-native point-price equivalent: 0.22709 dollars.
-Summed preparation plus native time: 171.868 seconds.
-
-Decision: Rejected because at least one both-passing task exceeded the 30% cost/time regression guard. Incumbent afterward: `v02`.
-
-## Candidate round 29: v29
-
-Hypothesis: One public test plus API review and structured baseline validation balances context and correctness.
-
-Effective change: `check_output=structured`, `compatibility_review=preserved_api`, `public_tests=one_import_linked`, `verification=baseline_targeted_then_full`. Parent: `v02`.
-
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.4193652 dollars;
-native point-price equivalent: 0.2043616 dollars.
-Summed preparation plus native time: 190.367 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Candidate round 30: v30
-
-Hypothesis: Complete raw context plus baseline boundary comparisons and compact checks combine complementary mechanisms.
-
-Effective change: `check_output=counts_and_failures`, `differential=baseline_errors`, `layout=v5_raw_task_last`, `verification=targeted_then_full`. Parent: `v02`.
-
-Outcome: 2/3 strict passes in 3 native sessions.
-Uniform tariff equivalent: 0.5410302 dollars;
-native point-price equivalent: 0.2624196 dollars.
-Summed preparation plus native time: 240.056 seconds.
-
-Decision: Rejected because it lost a task passed by the incumbent. Incumbent afterward: `v02`.
-
-## Selected recipe and development cost
-
-Rounds 1 and 2 were promoted; the remaining 28 candidates were rejected. The
-locked v02 recipe combines verified public commands and observed baseline
-counts with ordinary regression/review instructions, full check output, final
-verification, compact v4 layout, no public-test-body addition and no
-differential baseline comparison. Its full configuration records
-`command_card=commands_counts`, `public_tests=none`,
-`regression_stage=ordinary`, `compatibility_review=ordinary`,
-`check_output=full`, `verification=full_final`, `diagnostics=ordinary`,
-`layout=v4_compact` and `differential=none`.
-
-The 93 development sessions contain 84 strict passes and a known uniform
-tariff subtotal of 14.8853110 dollars. The native point-price subtotal is
-6.9882620 dollars. Rejected hypotheses and failed attempts are included.
-Coordinator assistance, engineering time and account charges are not valued by
-these figures. A selected development recipe is not a validated efficiency
-claim.
-
-The separate eight-task v5 comparison retained both 15/16 strict counts and
-its one assisted provider-capacity failure with unknown usage. Its complete-case
-primary cost interval crossed zero. A secondary native-price interval and a
-later compiler-alignment diagnostic remain secondary. They do not replace the
-original strict scores or justify pooling v5 with the installed-system panel.
-
-# Source revision and environment
-
-## Pre-study source-role correction
-
-Public readiness found that root `tests.py` could compete with production and
-legacy demo material could enter production guards. The two-line shared
-classifier change adds exact `demo`/`demos` directory components and exact
-`test.py`/`tests.py` basenames to existing nonproduction exclusions. It does not
-branch on repository names or task terms, alter scores or thresholds, enlarge
-budgets, edit fixtures or change private expectations.
-
-Seven new regression cases failed before the correction while seven
-conservative controls passed. Afterward, all fourteen new cases and all 214
-focused v1–v4/query/launcher checks passed; Ruff and mypy passed. Similarly
-named production modules continue to compete, while unsupported production
-files and production parse failures can still force abstention. The classifier
-is shared by explicitly invoked v1–v4 policies. Old results remain bound to old
-source snapshots and are not rescored.
-
-The source before the correction hashes to
-`fe19959e2d29b9461d674fcfa9c549b5da7064ff160739201e4ed21d5bd99546`;
-the new auto-preload source hashes to
-`e2eaa00847838af3c99dc93683bceff55b7284904f5b7c5cf9a507de8ab37a82`.
-The patch hashes to
-`844b525863bcdbb0d2880c1a9f6631b90ee4cae11c8a81b1c81d6edb67ef7e0a`.
-The existing early-query preflight optimization and selected workflow modules
-were preserved. This was task-informed public-readiness engineering before
-coding outcomes, not a blind test of an untouched selector.
-
-## Runtime and tool profile
-
-The measured environment was a managed Linux x86_64 container, kernel 6.18.55,
-with controller Python 3.12.14 and Node 24.19.0. Five logical CPUs were visible;
-the cgroup CPU quota was 400000/100000, equivalent to four CPU-seconds per
-second, and the memory limit was 34,359,738,368 bytes. Shared host and provider
-load were not controlled. The coding model alias was gpt-6.1-sol with low
-effort and default tier, through Codex CLI 0.159.2. Alias identity does not pin
-the provider's underlying model revision.
-
-The additive frozen profile exposes the earlier declared Python/Node tools,
-the isolated v6 node_modules tree and Python extensions. Pinned tools include
-pytest 9.0.2, Mocha 10.3.0, AVA 6.4.1, TypeScript 5.9.3, tsd 0.33.0 and the
-explicit tsd-legacy 0.31.0 compatibility entry point. The new Node package
-manifest also pins uvu 0.3.3, esm 3.2.25 and Node type declarations 24.3.0;
-installed availability does not mean a tool was used by an eligible task.
-Python extensions are PyHamcrest 2.1.0, pytest-benchmark 5.2.3 and py-cpuinfo
-9.0.0. Exact resolved dependencies, executable bindings and symlink targets
-are retained in lockfiles and the input freeze. No package installation occurs
-inside a native assignment.
-
-Before collection, product validation passed frozen dependency sync, 2,474
-Python tests, Ruff, mypy, frontend installation/build, 24 frontend tests and
-frontend bundling. These are implementation checks, not additional coding-model
-successes. A first validation attempt encountered a read-only default uv cache;
-the retained successful attempt used an explicit workspace cache. No test,
-source fixture or benchmark outcome was changed to resolve that environment
-issue.
-
-## Freeze commitments
-
-The input freeze binds 23,485 files, 55 symlink targets, 36 production Python
-paths and six previous archive hashes. Its operational record is local rather
-than a public preregistration. The following SHA-256 values identify the
-principal committed inputs; full file-level bindings remain machine-readable:
-
-- Infrastructure/source/tool freeze: `c6ba872dfb29ab70569af91c213e57785a13871b22208cbcfcb87993ffd34001`.
-
-- Prospective protocol: `9a7c23c65d04af3da24e7eb6c02c012d2d483f7993407cf831fe57b00833b244`.
-
-- 72-assignment schedule: `407695021e5af78e1d7b04170cff13846428db1b27149e3244d513cfd1349f74`.
-
-- Combined public tasks and protection metadata: `bc8a0aa5db5351381e7355e0a832118d8f05cf1cf1d2128d7c76678f6327ea4b`.
-
-- Expected installed treatments: `890b2362d82aab6ef47a60ba58696f5af25404c8d609e3e621e21e4336e78d8f`.
-
-- Private grading invocation manifest: `186248c69f9371ef08a5144f8b367cb50feab71b5bbc5fbcd654c658bdca6461`.
-
-- Private-isolation commitment: `c6bd646f308e8344d4803cc8d1978fd7f40f8940a26c54db8c6843c897b940ce`.
-
-- Common developer contract: `948578f133e46545e62c0615576f0268162019ca4e8c967d798859b8e6c38b81`.
-
-- Common additive profile: `bce5de4c83b17672770a6a275f2999ce8ad05bf88efb534b9c7ceea4e217cb3a`.
-
-- Native response schema: `c61f58ddd76140be76c3672d206dd37d704494e850150fc2a053dd896ec37936`.
-
-- Isolated v6 Node dependency lock: `cda9f270b591326b833a799d08dd9731171cb858aacd2a0dc9da2fef00c8bcdc`.
-
-The private bundle's pre-encryption hash is
-`c34daffad040793ef2a6b49ce68a9d54318089a60e8e95c04d9eefec5207df98`;
-the authenticated ciphertext hash is
-`68741b1c6a86f6ef1f4b6c11d9cddc119e0e01097ae19d1c995be6246443b758`.
-The file commitment records all 3,151 plaintext hashes. The random
-experiment-only decryption key was released to an append-only artifact record
-after all 72 native assignments had durably closed and exact restoration was
-verified. This enables authenticated ciphertext-to-plaintext verification.
-It is unrelated to account credentials; runtime authentication state is not
-distributed. The original isolation metadata remains unchanged.
-
-The final frozen sandbox's postcollection author-control receipts are bound by
-`fa3f226891d6e93dc2a574113c79bc126f721d2b5cd827a8bdd400fdf19d8130`
-for Python and
-`97c4b817901d1d08701ce8fabf0c8d89b5e2f39feb1f8d873942d27d02d335ae`
-for JavaScript/TypeScript. They validate the grading route with known author
-variants, not new coding-model predictions.
-
-The base checkout commit is
-`0b8e3586554a5002b6d49ded21d64b923a27a99c`. The evaluated revision also
-includes the retained working-tree implementation and source-role patch, so
-checking out that commit or the later moving main branch alone does not
-reproduce the study. Exact source bytes and committed hash bindings identify
-the evaluation version.
-
-# Reproducibility and artifact interpretation
-
-## What can be replayed
-
-The machine-readable record preserves task/command manifests, complete public
-fixtures and acquisition hashes, expected handoffs, installed runtime sources,
-control commitments, actual request/response captures, grades, accounting and
-analysis rules. Replay begins by verifying manifest hashes and separating
-historical snapshots from the new installed-system revision. The original
-working layout uses `/workspace/Memglide`; saved absolute executable paths and
-ancestor-based Node resolution are part of that environment. A relocated
-reproduction requires an explicit documented rebinding and fresh verification,
-not a claim of byte-identical frozen execution.
-
-Analysis and grading of retained outputs do not require new coding-model
-requests. A new native replication requires its own authenticated supported
-Codex connection, the declared runtime/profile and a new prospectively frozen
-schedule/state. It must not overwrite original slots or treat provider,
-backend, account or cache differences as controlled. Credentials and account
-configuration are not scientific evidence and are not distributed.
-
-The controller exposes separate `prepare-public`, `preflight`, `seal`, `verify`,
-`run` and `grade` phases. Public preparation combines task/protection metadata;
-readiness uses a separate zero-model executable; sealing binds inputs; `verify`
-checks that commitment. `run` allocates only unused assignments and honors
-stopping rules. `grade` requires native closure and exact private restoration.
-The bridge captures actual installed handoff rather than inferring treatment
-from the outer launcher's original stdin. The final analysis keeps unavailable
-cells explicit and applies the predeclared paired design.
-
-For product reconstruction, use the retained source revision with frozen uv and
-frontend locks. The documented checks are `uv sync --frozen`, `uv run pytest`,
-`uv run ruff check .` and `uv run mypy src`; in frontend, run `npm ci`,
-`npm run build` and `npm test -- --run`, then bundle through
-`uv run python scripts/bundle_frontend.py` at the repository root. Workspace
-runtime/cache directories isolate setup state. Independent transport/frontend
-integration claims require their relevant integration checks in addition to
-these general commands.
-
-The original six earlier evidence ZIPs are immutable. The v5 search archive is
-identified by
-`fcf9609f8b751ed8b0e4d451068a3da46040f68a10a768187ac93dd76eec687d`.
-Its collector-recovery amendment, unknown provider usage, original strict
-scores and supplemental compiler diagnostics remain separate records. The
-history inventory and per-cohort manifests identify earlier artifacts; their
-reported totals must not be added as if derived rows were new sessions.
-
-## Manuscript production and external sources
-
-The paper and this supplement are Markdown sources with a shared bibliography
-and an acmart-based LaTeX build. `build.py` runs Pandoc, pdflatex and BibTeX,
-then records output hashes. No conference name, publisher DOI, acceptance date,
-affiliation or ORCID is invented. The named author is Sree Charan Reddy Kailasam,
-with the supplied email srcharan014@gmail.com.
-
-The official acmart source commit is
-`cb4bea05438ac81de82df97e8b15326df5e602b3`. Fresh downloads from the original
-repository matched the existing installer, bibliography style, class source
-and previously saved pinned source byte for byte. The copied verification
-receipt is `supplement/acmart-source-pin-verification.json`. Its exact source
-identities are:
-
-- acmart.ins:
-  `fa7daaa9375775ce699f33f909667bdb83c0408fd8d67606926df86c346c4044`.
-- ACM-Reference-Format.bst:
-  `4342d27456645567ef1a027f6474e894715bc31d468f040142fa54540440ad04`.
-- acmart.dtx:
-  `8780f6b7763852a290b0fcbc5d53a7209e324569a082aaa95ade79d2e7f7db8f`.
-
-The font setup uses isolated hash-verified Debian packages. The class source
-is an official development revision; production-template and submission
-requirements still depend on the selected venue. A successful named-preprint
-build is not certification of a future journal's or conference's current rules.
-The official class manual/sample guidance was read, and publisher-maintained
-ACL metadata/abstracts and identified author repositories support the
-bibliography. Complete article retrieval is not claimed where only abstracts,
-metadata or project READMEs were available.
-
-Wikipedia's requested “Signs of AI writing” essay was not read because its
-domain remained blocked by the managed environment policy. No network bypass
-was attempted. The publication/editorial notes distinguish this missing source
-from actual readings of detector-bias and detector-reliability research
-repositories. Detector outputs do not certify authorship, and no detector-proof
-or unassisted-human-writing claim is made.
-
-## Licenses, privacy and author responsibility
-
-Memglide's project license is MIT. Third-party repositories, test fixtures,
-dependencies, fonts and class sources retain their own licenses and copyright
-notices. The corpus is not relicensed wholesale under the manuscript's terms.
-The retained httmock notice identifies Apache License 2.0; Colorama retains its
-BSD-style notice; the other retained source notices are preserved in their
-original files. Artifact reuse must follow those notices. Complete restrictive
-external research READMEs, illustrations or code are not needed for a citation
-and should not be bundled automatically. In particular, the official
-detector-reliability repository contains copying/distribution restrictions.
-
-The corpus uses public repository material. Native source context is still
-transmitted to an external coding model. Local index/state placement does not
-make inference local, and sensitive-content filtering is heuristic. Hashes bind
-checked files, policy and declared tools rather than all dependencies,
-undeclared environment settings or semantic safety. Public-command execution
-requires authorization; its time/output limits are not an operating-system
-sandbox. The stronger read-only grading boundary is an evaluation control.
-
-OpenAI Codex assistants supported implementation, task/control generation,
-experiment orchestration, analysis code, source checks and manuscript drafting.
-Separate agents reviewed records; this does not constitute independent human
-replication. No AI tool is listed as an author. Verification of final claims,
-citations, records and text, and responsibility for any submission, rest with
-Sree Charan Reddy Kailasam. No completed human review or publication acceptance
-is asserted on the author's behalf.
+- Public check `all-original-vitest-tests`: kind `tests`, expected test count 489, timeout 45 seconds.
+- Public check `strict-public-source-typecheck`: kind `typecheck`, expected test count not supplied, timeout 45 seconds.

@@ -1,24 +1,27 @@
 ---
-title: "Memglide: Auditable, Bounded Repository Context for Coding Agents"
+title: "Memglide: Measuring the Cost and Latency of Bounded Repository Context for Coding Agents"
 abstract: |
-  Repository context can reduce a coding agent's search work, but selection,
-  verification and added prompt text also have costs. Memglide prepares bounded
-  current-source context using lexical and static syntax evidence, abstains when
-  selection is ambiguous, and optionally supplies explicitly verified public
-  commands and baseline counts. We evaluate its installed launcher against
-  pass-through Codex and source-only preloading on twelve custom feature tasks
-  in newly pinned public repositories. A prospectively frozen balanced design
-  assigns three arms twice per task, producing 72 native workflows. All 72 pass
-  finite feature, original public-check and integrity requirements, with complete
-  usage telemetry. The source-and-command workflow has 13.69% lower observed
-  uniform token-tariff-equivalent cost than pass-through and 10.04% lower cost
-  than source alone. The exact conditional tests yield Holm-adjusted p=0.148
-  for both contrasts; neither establishes a reduction under the prespecified rule.
-  Mean workflow times are 40.56, 39.00 and 40.03 seconds for pass-through,
-  source-only and source-and-command modes. Source activates on seven tasks and
-  abstains on five. The implementation and evidence support a functioning,
-  auditable context policy, while the small task-informed panel, finite checks
-  and uncontrolled caches limit claims about general savings or speed.
+  Providing repository context before a coding task can reduce search work,
+  but preparation and verification also consume time. Memglide selects bounded
+  current-source context using lexical and static syntax evidence and can supply
+  verified public commands even when source selection abstains. We compare the
+  installed workflow with pass-through Codex on an amended fixed panel of 28
+  author-designed feature tasks, with two repetitions per method: 112 native
+  sessions. Both methods pass 54 of 56 frozen strict assessments. At fixed prices
+  applied to measured tokens, mean API-equivalent cost is $0.16094 for Codex and
+  $0.15316 with Memglide, an observed 4.84% reduction. Mean full-workflow time is
+  59.59 and 60.29 seconds, respectively, an observed 1.17% increase. Paired
+  task-level 95% intervals for Memglide minus Codex are [-$0.02524, $0.00968]
+  and [-3.02, 4.42] seconds; neither resource-superiority test passes. Native
+  execution is 2.06 seconds shorter on average, offset by 2.75 seconds of added
+  workflow overhead. All 128 sessions in the completed comparison pool have
+  valid measurement and grading records; 16 previously exposed task sessions
+  remain descriptive. Source-policy and transport-handling amendments followed
+  partial collection, so inference is nominal rather than a fully prospective
+  confirmation. The study identifies an overhead bottleneck and preserves the
+  uncertainty: token-price estimates are not invoices, equal observed success
+  counts do not establish quality equivalence, and joint cost-and-speed
+  superiority is not established.
 ---
 
 
@@ -34,12 +37,13 @@ bundle or shorter serialized response cannot settle that question.
 
 Memglide is a local repository-context system with a native coding-agent
 launcher. The launcher uses lexical and static syntax evidence to select
-current source, delivers complete selected files within fixed limits, and
-preserves the original task when the evidence is insufficient. An optional
-workflow supplies public test commands and observed baseline counts from an
-explicitly verified receipt. Preparation uses no auxiliary language model or
-embedding service. The external coding model interprets the task, edits the
-code and runs checks.
+current source and delivers complete selected files within fixed limits. Its
+opt-in `commands-first` workflow can supply verified public test commands and
+observed baseline counts even when source selection abstains. Source selection
+and command assistance therefore have separate activation conditions: an
+ambiguous source target need not make current, verified commands unusable.
+Preparation uses no auxiliary language model or embedding service. The external
+coding model interprets the task, edits the code and runs checks.
 
 Earlier experiments revealed gaps between a working context system and an
 efficiency claim. Interactive MCP retrieval could increase tokens and elapsed
@@ -51,34 +55,49 @@ motivated a comparison of the installed system with explicit records of
 activation, source protection, timing and missing data.
 
 Development included a 30-round search over prompt and verification approaches
-on three tasks, followed by a two-arm comparison on eight new tasks. We treat
-that work as exploratory. The new study compares pass-through Codex, source
-preloading, and source plus verified public-command context. Two repeats on
-twelve newly selected public repositories yield 72 scheduled workflows.
-Private grading is deferred until native collection closes. The private
-reference implementations, oracles and revealing plaintext logs are
-unavailable to the coding agent during collection.
+on three tasks and subsequent native comparisons. We retain those experiments
+as exploratory evidence. The latest comparison evaluates pass-through Codex
+against the installed `commands-first` candidate, with demand-driven public
+verification. The primary cohort contains 28 tasks, each run twice per
+condition, for 112 sessions. A further 16 sessions on previously exposed tasks
+remain in the 128-session amended analysis. Private grading occurs after native
+collection closes; reference implementations, oracles and revealing plaintext
+logs are sequestered during collection.
 
-The tasks are author-designed feature additions to small public libraries.
+The tasks are feature additions to small public libraries, designed with AI
+assistance.
 SWE-bench, by comparison, evaluates patches for real GitHub issues
-[@jimenez2024swebench]. Public task readiness informed a small production-file
-classification fix before this comparison. Coding outcomes were unobserved at
-the freeze, but the retrieval algorithm had already received task-informed
-engineering. The study is therefore a prospective installed-system ablation.
-Its small, purposive panel limits generalization to other coding workloads.
+[@jimenez2024swebench]. The primary cohort was fixed before its native sessions,
+but collection required subsequent corrections to evaluation infrastructure.
+These included identifying published production files that an edit-protection
+rule had misclassified, and distinguishing completed-turn transport retries
+from fatal failures. Original records, failures and amendments remain in the
+evidence. The analysis is an amended fixed-panel comparison with nominal
+inference, rather than an untouched prospective confirmation. Its purposive
+task selection also limits generalization to other coding workloads.
 
-We ask three questions. First, when does the installed policy deliver source
-and command context, and when does it abstain? Second, how do the modes compare
+On the 28-task primary cohort, Memglide's mean uniform API-price equivalent was
+4.84% lower, while mean measured workflow time was 1.17% higher. Both conditions
+passed the strict finite correctness checks in 54 of 56 sessions. The resource
+intervals include zero, and the specified joint cost-and-time superiority
+criterion was not met. The lower tariff point estimate does not establish
+reliable savings; the timing result does not support a speedup. The tariff is
+computed from native-reported tokens under a fixed rate schedule, not from
+provider invoices.
+
+We ask three questions. First, when does the installed policy deliver source,
+verified commands, both or neither? Second, how do the conditions compare
 under finite feature, original public-check and source-integrity requirements?
 Third, how do native token-tariff equivalents and workflow time change when
 fresh indexing and public baseline verification are included?
 
-The contributions are an implementation of bounded context preparation with
-verifiable receipts; an evaluation method that separates activation, functional
-outcomes, timing and unavailable telemetry; and a development-to-evaluation
-record that retains unsuccessful approaches. The study does not introduce new
-model weights, measure memory-reuse benefits or establish a benchmark-leading
-coding agent.
+The contributions are an implementation that separates bounded source selection
+from verified command assistance; an evaluation method that records activation,
+functional outcomes, timing and telemetry provenance; and a development-to-
+evaluation record that retains unsuccessful approaches and collection repairs.
+The study evaluates context and workflow preparation around an existing model.
+It does not train model weights, measure memory-reuse benefits or establish a
+benchmark-leading coding agent.
 
 
 # Related work
@@ -112,7 +131,7 @@ supplying source and optional verified-command context while leaving
 investigation and editing to the agent. SWE-bench evaluates issue-to-patch
 behavior on real GitHub issues [@jimenez2024swebench]. The present panel uses
 author-designed extensions to public repositories. Its results describe an
-installed-system ablation within that panel; they supply neither a SWE-bench
+installed-system comparison within that panel; they supply neither a SWE-bench
 score nor a direct performance comparison with these systems.
 
 
@@ -131,9 +150,11 @@ service through a command-line interface, loopback HTTP API or MCP STDIO
 server. The service combines repository indexing, context retrieval, a SQLite
 database and explicit session memory; a dashboard uses the HTTP API. The native
 launcher, `memglide-codex`, calls the source-preparation libraries directly
-before executing Codex. The experiment measures this prelaunch path, shown in
-Figure 1. Interactive retrieval, the dashboard and session-memory reuse require
-separate evaluation.
+before executing Codex. The latest comparison evaluates this path with the
+opt-in `commands-first` candidate at commit `3c3f82b`, together with the measured
+setup planner described below. Figure 1 distinguishes this path from the
+interactive services. Interactive retrieval, the dashboard and session-memory
+reuse require separate evaluation.
 
 Repository registration resolves the Git root and records project state. The
 SQLite FTS5 index stores searchable source, file hashes and metadata, symbol
@@ -156,13 +177,16 @@ inject session observations.
 
 Prelaunch selection first checks whether preparation is enabled, context has
 already been supplied, and an approved project and eligible task are
-available. Ineligible requests retain the exact original task. The v4 policy
+available. Explicit off/context-supplied modes and requests failing these initial
+approval or task gates preserve the original task. The v4 policy
 then securely refreshes the index and screens production files. Known tests,
 examples and demonstration directories are excluded from production
 competition. Potentially relevant unsupported files, partial indexing or an
-overfull candidate frontier cause abstention. Coverage is therefore an
-observable policy outcome: reading source successfully does not establish that
-the task received useful context.
+overfull candidate frontier cause source-selection abstention. Under
+`commands-first`, a completed content-selection abstention may still be eligible
+for verified command assistance. Source activation and command activation are
+recorded separately; reading source successfully does not establish that the
+task received useful context.
 
 Remaining supported candidates are parsed into runtime or declaration syntax
 units. Normalized query terms receive candidate-set frequency weights
@@ -196,24 +220,73 @@ characters. Coarse screening permits 100 files and 2 MiB; syntax analysis permit
 This proxy is not a provider token measurement. Repeated freshness checks mean
 that phase byte limits are not whole-workflow I/O or memory bounds.
 
-The selected workflow adds public-command assistance through explicit
-verification. The caller declares atomic argument lists and allowed
+Public-command assistance requires explicit verification. The caller declares
+atomic argument lists and allowed
 environment updates. A verifier records a fresh bounded public-text tree,
 fingerprints declared executable files, runs the checks, and records exit
 status, positive behavioral-test counts and log hashes. It checks the tree,
 policy and tools again before writing a canonical receipt outside the project.
 The caller retains the trusted receipt hash. Because public tests may execute
 repository code, verification is a separate authorized action; context
-preparation does not itself run those commands.
+preparation does not itself run those commands. Public-tree binding is limited
+to 20,000 directory entries, depth 12 and 16 MiB of eligible text; individual
+reads also obey the project's source-size limit. A receipt is at most 4 MiB,
+with at most 16 declared commands and bounded arguments. Declared executable
+fingerprints use a separate 256 MiB per-tool limit. These limits describe
+different inputs and are not a combined workflow resource budget.
 
-The launcher loads the pinned receipt, checks its current bindings, and places
-the declared commands and observed baseline results beside the selected source.
-Allowed environment updates appear explicitly in the card. These results
-concern the starting repository, before the feature is implemented. Stale,
-unavailable or oversized optional facts leave ordinary source preparation
-available. An invalid explicitly pinned receipt on an active workflow path is
-an error. Before native execution, the launcher repeats source selection and
-checks the exact rendered transformation. Abstention preserves the task bytes.
+The evaluated candidate separates source selection from command delivery.
+Its three final modes are:
+
+- `preloaded`: complete selected source is delivered; a current verified
+  command card may accompany it.
+- `commands_only`: a card is delivered without selected source. The receipt
+  retains the source-decline reason and selection proof, and its source list is
+  empty.
+- `passthrough`: neither source nor a command card is delivered, and the original
+  task bytes are preserved.
+
+Command-only eligibility is limited to explicit content-selection declines,
+including ambiguity, weak or missing production evidence, an unsupported
+competitor and bounded candidate, dependency or context limits. It requires a
+completed v4 decision with a refreshed index and no selected files. Explicit
+caller skip gates, an over-limit query, missing approval and freshness or policy
+failures do not authorize a command card. This exception changes which verified
+facts can be delivered; it does not relax the v4 source-selection threshold or
+substitute guessed source.
+
+The launcher loads the receipt against the caller's trusted hash and rechecks
+its public-tree, approval, policy and tool bindings. The card gives atomic
+commands, allowed environment settings and observed baseline results. Its
+`commands-first` instruction says that the listed checks passed on the current
+starting tree, asks the agent to use that baseline without repeating it before
+editing, and requires the listed checks after changes with their full results.
+This is an instruction backed by observed baseline facts, not evidence that the
+agent obeyed it or that the future implementation passes.
+
+Unavailable or stale optional facts, or a card that exceeds the unchanged
+whole-context caps, leave the underlying source preparation available. For a
+command-only candidate, this means returning to the original task when no card
+can be delivered. Invalid explicitly pinned receipt input is rejected on an
+active workflow path. Before native execution, the launcher repeats source
+selection, validates the complete source or source-decline proof, reconstructs
+the rendered payload exactly, checks its hashes and rechecks the provider's
+current bindings. Even an empty source list does not exempt the eligible public
+tree or executable tools from this final freshness check.
+
+The evaluated setup orchestration adds a demand-driven planner before optional
+provider creation. After indexing, it invokes the installed v4 preparation and
+validation functions, then applies the same command-only eligibility predicate.
+If neither complete source nor command-only assistance is eligible, setup skips
+public-command execution and supplies no provider to the ordinary launcher.
+Eligible routes still require the full fresh binding, public checks, cleanup and
+current-manifest validation. A typed initial binding unavailability can omit the
+optional provider; failed checks and later integrity failures remain errors.
+The launcher subsequently repeats routing and final validation. The planner's
+observation is not a reusable receipt. This optimization belongs to the measured
+setup workflow; the shipping launcher still consumes an explicitly verified
+provider rather than silently running repository tests. Planning, indexing and
+verification time are included in the workflow measurement.
 
 The trust boundary separates local preparation from an external coding model.
 Selected source is sent to Codex; local-first describes where the index and
@@ -223,471 +296,566 @@ patterns are filtered heuristically. Hashes establish equality at checked
 reads, not semantic safety, permanent freshness or universal secret detection.
 A command receipt covers eligible public text and declared executable bytes,
 not every transitive dependency, binary resource or undeclared environment
-setting. Command-runner time and output limits also differ from
-operating-system isolation.
+setting. Sensitive or unreadable eligible text can make the provider
+unavailable; the system then makes no verified-command claim. Command-runner
+time and output limits also differ from operating-system isolation.
 
 These boundaries motivate separate evaluation of activation, functional
 success, preparation time, native execution time and token-tariff equivalents.
-The source-and-command workflow incurs verification and freshness costs.
+The source-and-command workflow incurs planning, verification and freshness costs.
 Finite public and hidden checks do not establish universal correctness,
 semantic quality of new tests or general coding superiority. Natural
-abstentions and unknown telemetry remain in the record. In particular, the
-base58 oracle's output-bound checks cannot prove the requested allocation
-order. Launcher results do not establish benefits for unmeasured memory, API or
-dashboard features.
+abstentions, functional failures and unavailable telemetry remain in the record.
+The measured native path provides no evidence of benefits for the implemented
+memory, interactive API or dashboard features.
 
 
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=.92\textwidth,height=0.70\textheight,keepaspectratio]{figures/architecture.pdf}
-\caption{Memglide components and the evaluated installed path. Blue denotes native prelaunch; orange denotes separately authorized public verification and its receipt. Gray interactive services and session memory are implemented but unmeasured. Native discovery accesses the shared index directly. Pass-through and abstention preserve the task. The dashed rectangle is a component boundary, not an operating-system sandbox; Codex uses a local CLI and an external model.}
-\Description{The installed launcher selects source, optionally adds verified command facts and revalidates the handoff. A separate verifier records a pinned receipt outside the project. Interactive clients use a context service and expiring memory. Shared source readers, an index and the approved repository support these paths. The coding model is outside Memglide.}
+\includegraphics[width=.95\textwidth,height=0.70\textheight,keepaspectratio]{figures/v7-architecture.pdf}
+\caption{The evaluated A/M workflow. A disables preparation. M uses bounded source selection and opt-in verified commands, including a commands-only route after source abstention. The separately authorized verifier produces baseline facts; it is not an automatic model call. Interactive memory and dashboard services are outside the measured path.}
+\Description{Pass-through Codex is compared with a launcher that may supply source and commands, commands alone, or the unchanged task. Verified receipts and current-source checks precede the same external coding agent.}
 \end{figure}
 
 
 # Evaluation design
 
-## Tasks and prospective readiness
+## Task panel and conditions
 
-The panel contains one author-designed feature addition in each of twelve newly
-pinned public repositories: six Python projects and six JavaScript/TypeScript
-projects. Two of the latter tasks require only JavaScript changes; four require
-runtime and declaration changes. Four JavaScript/TypeScript roots share a
-maintainer. The projects are small and purposively selected for executable
-upstream checks. They are not a sample of historical issues.
+The v7 experiment started with 36 author-designed feature tasks in 36 pinned
+public repositories: 18 Python projects and 18 JavaScript/TypeScript projects.
+Tasks were selected for executable upstream checks, not sampled from historical
+issues. Several repositories share maintainers or development conventions.
+The model's prior familiarity with their source is unknown. AI agents assisted
+with task writing, feature oracles, reference implementations, deliberately
+incorrect controls and review. Separate authoring roles and control outcomes
+provide checks on the evaluation; they are not independent human replication.
+Public task inputs, dependency profiles, commands and original protected-file
+hashes were fixed before collection. Each task had baseline, reference and
+incorrect-implementation controls. Private tests remain finite specifications,
+and the wording ambiguity discussed in the results limits one task's rubric.
 
-Repository provenance, commit hashes, retained public inputs, prompts and
-commands are committed before native outcomes. This local hash freeze is not a
-public preregistration. Screening records retain acquisition and compatibility
-rejections, including an obsolete Python testing dependency and an incompatible
-upstream Node execution setup. Repository novelty is relative to the earlier
-Memglide evaluation roots; the model's training data are unknown.
+The comparison uses the installed candidate whose source bytes are preserved
+at commit `3c3f82b`. Arm A invokes its explicit off/pass-through mode. Arm M
+uses the commands-first policy: bounded v4 source discovery can preload source;
+when source discovery abstains but the production workflow is eligible, a
+verified public-command card can be supplied without source. Otherwise the
+original task passes through. All assigned tasks remain in the comparison,
+including abstentions. Source, command-only and pass-through decisions are
+policy outcomes, not separate randomized arms.
 
-Tasks and checks were developed with AI assistance. Separate Codex agents
-proposed prompts and prepared feature oracles, reference implementations and
-plausibly incorrect controls. Another agent reviewed task–oracle agreement and
-control records. These are separate authoring roles, not independent human
-replication. Baseline, reference and incorrect variants across twelve tasks
-provide thirty-six expected control outcomes, with positive original
-public-test counts: the baseline fails the feature, the reference passes, and
-the incorrect implementation can fail without changing upstream tests. These
-controls do not establish exhaustive coverage. Original tests, configurations
-and provenance are retained; public declaration compilation is enforced where
-applicable. Regression tests are requested, but their presence and execution
-are separate diagnostics rather than part of the primary functional gate. For
-base58, black-box checks establish output bounds and error behavior, not the
-requested order of allocation and validation.
+M indexes the project and checks actual production eligibility before creating
+the command provider. Full public baseline verification and binding are skipped
+only when no eligible card would attach. Eligible source or command-only paths
+still require fresh verification, cleanup, manifest binding and validation by
+the installed launcher. This demand-driven setup policy was fixed before the
+28-task primary cohort began. Product source did not change during that
+cohort; later repairs concerned the harness, source-role metadata and telemetry
+interpretation. The experiment measures the combined installed policy, not the
+isolated effect of a source excerpt or command card.
 
-Public readiness exposed source-role classification errors involving
-root-level test files and demo directories. Minimal shared B/C fixes and
-independent production-competitor controls were completed before any new native
-outcome. This task-informed engineering means the panel is not a blinded test
-of algorithm generalization. Queries, ranking thresholds and context caps were
-not adjusted to force preloading. Seven tasks preload at readiness and five
-abstain because of candidate ambiguity. All twelve remain in the
-intention-to-treat panel. The frozen activation strata are descriptive, with no
-subgroup hypothesis tests or replacement of the primary panel.
+## Allocation and the fixed primary cohort
 
-## Conditions, allocation and execution
+The original schedule contained two arms and two repeats per task, or 144
+unique assignments. Seed 20261101 determined a sequential, balanced first-repeat
+schedule with 18 A–M and 18 M–A task orders. Repeat two reversed the full
+first-repeat task/arm sequence. Every coding session used a fresh project copy,
+local native state and thread.
 
-Arm A runs the installed launcher in explicit off/pass-through mode. Arm B
-enables v4 discovery and compact source context. Arm C uses the same source
-policy plus the selected verified public-command card. C versus A measures the
-overall installed intervention; C versus B compares the added card and fresh-verification
-workflow. Abstention remains a policy outcome, and its indexing and
-verification overhead belongs to the assigned workflow.
+The first 15 assignments exposed eight tasks before an infrastructure stop.
+Assignment 0016, on an already exposed task, then failed locally before the
+native bridge because its copied executable lacked execute permission. Its
+recorded usage remains unknown. Before any of the remaining tasks had a model
+session, the primary cohort was defined as the 28 tasks outside that exposure
+prefix: 15 Python and 13 JavaScript/TypeScript projects. Each contributes both
+arms twice, giving 112 sessions and 28 analysis clusters. This membership rule
+used exposure, not observed savings, speed or grading outcomes.
 
-Each task receives all three arms twice: seventy-two scheduled workflows and
-twenty-four cells per arm. Before outcomes, seed 20261027 shuffles the task
-sequence and a multiset containing each of the six arm orders twice. Repeat
-two reverses the entire first-repeat task/arm sequence. Assignments run
-sequentially, each with a fresh project copy, native state and thread. The model
-alias is gpt-6.1-sol, with low effort and the default service tier, using Codex
-CLI 0.159.2. Each launcher receives the same feature-request stdin and developer
-instructions. Native prompts differ by assigned context; response schema, tools
-and network-disabled workspace-write configuration are shared. Project-document
-injection is disabled identically. Thirty-six installed
-zero-model handoffs establish expected treatment before sealing. Actual prompt
-bytes and arguments are captured during native execution and checked against
-that commitment.
+The same 112 primary assignments occupy slots 0017–0128. The final 16 slots are
+the remaining second-repeat sessions on the eight exposed tasks; these are
+auxiliary descriptive evidence. The completed 128-record comparison pool
+therefore spans 36 tasks with unequal repeat coverage. Statistical inference
+uses the 28 complete task clusters; the other 16 records are descriptive.
+No primary task was removed because retrieval abstained, coding failed or a
+measurement appeared unfavorable. The primary cohort retains 13 A–M and 15 M–A
+first-repeat orders.
 
-Session counts refer to the coding-agent `codex exec` evaluation path.
-Authoring controls, handoff checks and public/private graders can use local
-`codex sandbox` processes without making model requests; these processes are
-not additional coding-model sessions. Neither CLI process counts nor observed
-agent commands reveal internal provider inference counts.
+## Collection, amendments and isolation
 
-Each assignment is allocated durably once. There are no retries, replacements
-or outcome-driven repeats, and the controller admits only the next unused
-assignment. Missing whole-attempt usage, lifecycle failure or integrity failure
-causes a durable stop; unrun cells remain unavailable. The maximum is
-seventy-two scheduled native dispatches. A soft USD 18 allowance uses the
-uniform accounting convention, with a USD 0.25 reserve before another call is
-admitted. It bounds neither account charges nor the cost of an admitted call.
+All coding sessions requested `gpt-6.1-sol`, low reasoning effort and the default
+service tier through Codex CLI 0.159.2. This fixes the requested alias, not a
+provider backend or model-weight snapshot. Both arms received the same task and
+common developer contract, response schema, tools and network-disabled
+workspace-write configuration. Project-document injection was disabled in both.
+Actual prompt bytes and native arguments were checked against installed
+zero-model handoff receipts. These are coding-agent `codex exec` sessions;
+local sandbox processes used for controls or grading do not themselves make
+additional coding-model requests. Neither process counts nor agent commands
+identify the provider's internal inference count.
 
-## Timing, isolation and grading
+Collection required several versioned amendments. After 25 primary
+measurements, a broad protected-file rule incorrectly classified published
+production files as tests or build material. A baseline-only audit of all 36
+repositories certified five exact production code/type paths. It used original
+package metadata and public module documentation, not candidate patches,
+private grades or resource contrasts. The correction was applied uniformly to
+all 128 records while preserving the original raw flags. Feature assertions
+and reference cases were unchanged. Ordinary edits to owned protected tests,
+documentation or configuration still imply strict coding failure; unsafe
+paths, Git/shared-dependency changes and evidence corruption remain hard
+integrity failures.
 
-Public-source copying and Git-baseline construction occur outside every
-workflow timer. Timing starts before arm-specific registration, indexing or
-verification and ends after native process-group cleanup. C includes public
-baseline verification and removal of its newly generated logs, build outputs
-and caches. Original source and Git bytes, and the provider manifest, are
-checked afterward. This cleanup is an experimental control, not automatic
-shipping behavior. Component measurements separate indexing, verification,
-cleanup, launcher preparation and native execution. An absolute ninety-second
-setup allowance covers setup through launcher preparation. Native execution
-receives a separate three-hundred-second allowance from the recorded local
-bridge handoff. Native wall time includes final local exec setup and cleanup;
-it does not isolate remote inference latency. Grading and evidence packaging
-are excluded.
+After 52 measurements, the usage parser stopped on an intermediate reconnect
+warning even though its turn completed. The pinned CLI source distinguishes
+retry notifications from fatal failures but renders both through the same
+JSONL error shape. A separate, source-verified adapter accepts only the narrow
+retry constructions within one fresh, completed thread/turn, with matching
+full token counters, telemetry, process identity and final-output evidence.
+It recomputes every pooled record and preserves the original parser verdict
+and events. Arbitrary errors or unfinished turns remain invalid. The resulting
+estimand is native-reported completed-thread usage, not proof that every
+underlying provider attempt is accounted for in an invoice.
 
-All arms use a frozen environment profile, including TERM=xterm and disabled
-supported runtime caches. Projects and run caches are fresh. Operating-system
-page caches and provider prefix caches are uncontrolled; observed cached input
-is reported. No unrelated heavy validation runs during measured execution.
+A subsequent slot-0069 CLI startup failed on a missing local output-schema file.
+Pinned source established that this exit precedes model-turn creation. That
+extra process remains a separate operational failure with its original null
+usage; only its separate ledger records source-proven zero generation requests
+and zero model-generation tariff. The canonical model assignment proceeded
+after deployment repair. A declared sensitivity charges the full failed
+startup duration to that M assignment. Operator diagnosis and repair time was
+not measured. Overall accounting retains 144 unique master assignments, 145
+allocation attempts, 143 coding-model turns and 144 native CLI processes. These
+counts exclude separate development and connectivity probes.
 
-Before launch, private grader/reference/control bundles and revealing logs
-are encrypted and authenticated with AES-GCM. A random 256-bit key remains only in
-the external orchestrator store. Ciphertext and hash commitments may remain
-locally, but every private plaintext root is absent before dispatch. This
-sequesters the new oracle plaintext; it is not an operating-system isolation
-claim. Exact committed bytes are restored after native closure or a durable
-stop.
+The final pool combines the first 52 measurements with the remaining 76 canonical
+sessions. There were no retries of measured coding trials, replacement tasks,
+additional outcome-driven repeats or significance-based stopping. Original
+stopped states and protocol decisions remain unchanged and cannot acquire a
+retrospective confirmatory pass. Because 25 measurements preceded the
+source-role correction and 52 preceded the parser amendment, the final study
+is an **amended fixed-panel evaluation**. Its local hashes and analysis freezes
+are audit commitments, not a public preregistration or a fully prospective
+confirmation.
 
-Private and public grading then runs with candidate source read-only, network
-disabled and only grader artifacts writable. Inherited global temporary write
-roots are disabled. Source and protection hashes are checked before and after
-grading. Strict success requires valid native completion and usage, treatment
-fidelity, intact protected inputs, valid grading infrastructure, and passing
-committed feature and original public checks.
+Private grader, reference and control plaintext was absent during model
+collection. Authenticated AES-GCM ciphertext and per-file commitments could
+remain locally, while keys were held outside the model executor. A historical
+key-loss incident required reconstruction against original hash commitments
+before the primary cohort began; later versioning changed source-protection
+metadata and deployment paths, not feature assertions. The final private bundle
+was restored and byte-verified after collection closed. This is a documented
+plaintext-sequestration procedure, not proof of complete operating-system
+isolation.
 
-## Accounting and statistical analysis
+## Timing and strict assessment
 
-The two primary contrasts are C minus A and C minus B in uniform API-equivalent
-dollars. Repeated costs are averaged within each task before computing its
-paired arm difference. The fixed convention is [(input minus cached input) × 5
-+ cached input × 0.20 + output × 15] / 1,000,000. This historical tariff
-convention is neither an invoice nor a current-price claim. Ordinary coding
-failures retain observed costs; unknown usage is never replaced with zero. A
-complete-panel estimate requires all twelve task clusters and both repeats for
-the contrasted arms. Otherwise the primary total, effect and test are
-unavailable, and known subtotals and missing identifiers are reported. Actual
-billing and internal provider request counts are unavailable.
+Timing begins after identical public-source copying and Git-baseline creation,
+before registration, indexing, eligibility planning or verification. It ends
+after native process-group cleanup. All M preparation, fresh eligible public
+checks, generated-file cleanup and installed-launcher work are included.
+Grading, environment acquisition, source/Git copying and evidence packaging are
+excluded. Setup has a 90-second allowance; native execution has a separate
+600-second allowance from the recorded bridge handoff. Native wall time is a
+local process measurement, not isolated remote inference latency.
 
-Complete contrasts receive pointwise 95% paired task-bootstrap intervals from
-10,000 resamples, using seed 20261029. Resampling retains both repeats and
-paired arms. For exact tests, conditioning on the third arm's first-repeat
-position creates three strata of four tasks, each containing two relative
-orders of the compared arms. Enumerating choose(4,2)^3 = 216 legal allocations,
-with joint repeat-label swaps, respects the balanced design. Two-sided tests
-count ties and require a pairwise sharp null and no cross-arm/provider-cache
-carryover. Holm adjustment covers the two predeclared cost tests; missingness
-does not reduce the family. Native-price/cache-write sensitivities, tokens,
-workflow components, readiness strata and joint-success timing are secondary
-descriptive analyses. Command-text read/test counts are heuristic. Cheaper
-failures cannot establish efficiency, and matching observed success counts
-does not establish population quality equivalence.
+Environment profiles and developer instructions were shared. Projects and
+run-local caches were fresh; OS page caches, provider prefix caches and backend
+load were uncontrolled. Allocation order was retained across amendments, but
+interruptions and clock-time effects cannot be removed by reversing order.
 
-The study is precision limited. Planning from seven earlier complete
-two-repeat task clusters gives an unstable cost-difference standard deviation
-of USD 0.03441. An optimistic normal approximation suggests a detectable
-difference near USD 0.03063, about 25% of the earlier A mean, for twelve clusters
-at 80% power and first-step two-sided alpha 0.025. This is not achieved power or
-a guarantee for the exact test. Earlier adaptive prototype results remain
-exploratory and are not pooled with the installed-system panel.
+After closure, each final source tree was reconstructed without reusing
+model-generated caches. Public and private checks ran with candidate source
+read-only, network disabled and bounded artifact write roots. Raw hashes,
+source-role adjudication, native adjudication and version 3 grading metadata
+are bound to every result. Strict success requires valid execution and usage,
+correct treatment, intact hard protections, valid unchanged-source grading and
+passing original public plus feature checks. A valid public coding failure can
+conclude strict failure without running private tests. Failures retain their
+observed cost and time; unknown values are never filled with zero. All 128
+pooled records must satisfy integrity and grading prerequisites before the
+primary inference is eligible.
+
+## Accounting and analysis
+
+For each task and arm, the two repeats are averaged first. The analysis uses the
+28 paired task differences M minus A for two primary endpoints: uniform
+API-equivalent dollars and full workflow seconds. The dollar convention is
+[(input minus cached input) × 5 + cached input × 0.20 + output × 15] / 1,000,000.
+These are native-reported cumulative token counters under a fixed historical
+tariff, not current prices, subscription charges or actual billing.
+
+Each endpoint receives a paired Student t test with 27 degrees of freedom,
+one-sided alternative M minus A below zero and alpha 0.025, together with a
+pointwise 95% two-sided t interval. The joint efficiency claim requires both
+tests to pass, both upper interval endpoints below zero, complete primary
+metrics, all 128 integrity/grade gates and M's strict-success count at least A's
+among 56 sessions per arm. This intersection-union rule tests a single claim
+of simultaneous cost and speed superiority; one favorable endpoint cannot
+replace the other. Equal observed pass counts are a quality-count guard, not
+a noninferiority or equivalence test.
+
+Intervals and tests are nominal model-based summaries. Their finite-sample
+calibration assumes independent, normally distributed task differences;
+repeats do not increase the independent cluster count above 28. Pointwise
+10,000-resample task-bootstrap intervals, distribution/influence diagnostics,
+workflow components and jointly successful timing are secondary. A further
+secondary summary omits the entire four-session task cluster containing any
+certified retry warning, symmetrically across arms and repeats. It cannot
+change the primary decision. Soft known-tariff allowances and admission
+reserves controlled further dispatch, not actual account charges. The old
+0016 unknown usage prevents a complete 144-assignment cost claim even though
+all 112 primary and all 128 pooled comparison records have complete uniform
+accounting. The [public result package](https://github.com/iamsreecharan/Memglide/blob/main/research/results/router-v7-20261021/README.md)
+contains the portable export and reproduction instructions.
 
 
 # Development history
 
-The final configuration emerged through unsuccessful and partly successful
-evaluations. The supplement inventories 23 historical stages and their
-reports. Some rows reanalyze earlier attempts and must not be counted as new
-model sessions. The stages explain the implementation and measurement choices;
-their different conditions and task sets do not form a common representative
-benchmark.
+Memglide's earlier evaluations motivated the installed-policy comparison but
+are not pooled with it. Historical capsules preserve source snapshots, tasks,
+original outcomes and analysis rules. Some stages reanalyze existing attempts;
+they must not be added to model-session counts as new trials. These studies
+provide engineering context rather than a common representative benchmark.
 
-Early native MCP experiments showed that retrieval could be costly. In one
-matched cohort, the context-assisted condition used 2.751 times the input
-tokens and 1.465 times the Codex-plus-index time. An optimized cohort still
-increased input by 32.82% and Codex-plus-index time by 17.88%, although both
-conditions passed their finite checks. Known-path source preloading later
-reduced some aggregate measures, without establishing automatic discovery or a
-joint cost and speed improvement. A partial memory study also failed to
-establish a warm-memory benefit.
+Early native MCP experiments found that retrieval could increase resource use.
+One matched cohort used 2.751 times the input tokens and 1.465 times the
+Codex-plus-index time; an optimized cohort still increased input by 32.82% and
+time by 17.88%. Automatic source delivery also needed validation: an earlier
+v4 comparison added source on none of its 24 assisted assignments, so its
+between-arm differences could not establish a preloading benefit. Later active
+pilots exposed both delivery failures and the danger of treating cheap
+unsuccessful attempts as efficient coding.
 
-Source delivery needed its own verification. Earlier automatic policies often
-abstained or selected an incorrect target in local tests. In a fresh v4 native
-comparison, the automatic condition added source on none of its 24
-assignments, leaving task prompts identical to the pass-through baseline.
-Agent differences in that cohort cannot establish a source-preloading effect.
-A subsequent active pilot delivered source, but one failure changed a lower
-observed cost per attempt into a higher cost per strict success. A
-feedback-informed repair was retained as development evidence, without
-replacing the original attempt.
+The v5 development search evaluated 30 workflow changes on three tasks, with
+three reference sessions and 90 candidate sessions. It changed prompts and
+workflow construction, not model weights. Verified public commands and then
+baseline counts were promoted; the remaining 28 variants were rejected under
+the development rules. A separate eight-task comparison scheduled 32 attempts.
+One assisted provider failure had unknown usage and was not replaced. Its
+seven complete task clusters showed an 18.726% lower uniform equivalent, with
+a paired-bootstrap interval crossing zero. Public verification was outside
+that prototype's timer, and the generation framework was broader than the
+installed policy, limiting comparison with later studies.
 
-The v5 search tested 30 candidate workflow changes on three development tasks:
-three reference sessions and 90 candidate sessions. It varied command cards,
-baseline counts, public-test inclusion, regression instructions, compatibility
-review, output handling, context layout, and other prompt or verification
-choices. Model weights were unchanged. The first candidate added verified
-public commands; the second added observed baseline counts. Both were
-promoted, and the remaining 28 were rejected under the frozen development
-rules. The selected configuration retained ordinary testing and review
-instructions and omitted public test bodies from added context. The supplement
-records each round's hypothesis, outcome, resource measurement and decision.
+The v6 installed-system study used twelve new tasks, three arms and two repeats,
+for 72 completed sessions. All three arms passed 24 of 24 finite strict
+assessments. Source-plus-command C had 13.69% lower observed uniform cost than
+pass-through A and 10.04% lower cost than source-only B. Neither exact cost
+contrast passed the two-test Holm rule; workflow timing did not establish a
+speed improvement. Seven tasks preloaded and five abstained. This separate
+exploratory result suggested that preparation overhead and abstention deserved
+attention. It is not the main result of this paper and is not pooled with v7.
 
-A separate v5 comparison scheduled two conditions and two repeats on eight new
-tasks, for 32 attempts. Both conditions passed 15 of 16 strict assessments. One
-pass-through patch passed behavioral checks but added a test that broke the
-repository's original TypeScript compilation. One assisted attempt ended with
-a provider-capacity error and unknown usage. Neither was replaced by a
-successful retry.
+The v7 candidate at `3c3f82b` added an opt-in verified command-only path after
+source abstention. A separate operational planner creates the provider only
+when the actual installed source/workflow checks make a card eligible. These
+choices were made before the primary cohort's coding outcomes. The candidate
+preserves the ordinary source policy's guards; it does not force source
+selection when competing files make discovery abstain. The new comparison
+therefore measures a combined commands-first installed policy against explicit
+pass-through, rather than reproducing v6's three-arm component contrast.
 
-Among the seven task clusters with complete usage, the assisted condition's
-uniform token-tariff equivalent was 18.726% lower. The mean paired difference
-was −0.02269 dollars per attempt, with a 95% task-bootstrap interval from
-−0.04695 to +0.00105 dollars. This complete-case result did not establish a
-general cost reduction. A secondary native-price convention produced a
-different interval and retained its secondary status. Account billing was not
-observed.
+The original v7 36-task schedule stopped after 15 assignments when source-local
+Vitest cache artifacts interacted with protection/capture rules. Those records
+remain historical evidence, and the eight tasks exposed by that prefix were
+excluded from the subsequently fixed primary cohort. A copied bridge's missing
+execute permission then stopped assignment 0016 before native execution. Its
+unknown usage was preserved. Source capture and cache-free deferred
+reconstruction were repaired before primary collection. A separate key-loss
+incident was resolved by recovering grader/oracle bytes against their original
+commitments before the primary cohort began.
 
-The v5 timer omitted public baseline verification required by the installed
-workflow, and its prompt-generation framework was broader than the selected
-shipping modules. The new study therefore measures the installed launcher and
-includes fresh verification and cleanup in workflow time. It also sequesters
-all new private oracle plaintext during collection. Earlier results remain
-bound to their original source snapshots and scoring rules; the new
-classification fix does not rescore them.
+Further corrections occurred after partial collection. A baseline-only
+publication audit corrected five exact production paths misclassified by broad
+protection metadata; feature assertions were unchanged. A version-pinned CLI
+source audit then distinguished recovered retry warnings from fatal native
+failures and retained completed-thread counters without editing raw events.
+Finally, an absent output-schema file caused a separate pre-model startup
+failure; source ordering established that no user generation turn began. The
+missing deployment inputs and preflight inventory were repaired before the
+remaining canonical model assignments.
+
+These repairs retained the same 28-task primary panel, all previous primary
+measurements and the original assignment order. Fifty-two measured records
+were combined with the final 76 canonical sessions, yielding the complete
+128-record pool. Raw stopped states and original decisions were never rewritten
+as successes. The final analysis accordingly uses nominal amended-panel
+inference, not a claim that the original prospective protocol completed without
+intervention. The [v7 result package](https://github.com/iamsreecharan/Memglide/blob/main/research/results/router-v7-20261021/README.md)
+records this lineage separately from the historical studies.
 
 
 # Results
 
-All 72 scheduled assignments completed with valid native telemetry and complete
-whole-attempt usage. Each arm passed 24 of 24 strict assessments. There were no
-unavailable outcomes, protected-file violations or grading-infrastructure
-failures. Before candidate grading, all 36 author controls were rechecked
-through the final frozen sandbox: references passed the feature checks,
-baselines and deliberately incorrect variants failed them, and original
-public checks passed throughout. These outcomes show that all submitted patches
-passed the committed rubric on this panel; the saturated scores cannot establish population
-quality equivalence or distinguish the arms' general coding ability.
+The amended v7 comparison completed all 128 canonical records with valid
+effective native telemetry, complete uniform accounting and valid deferred
+grading. The primary panel contains 112 sessions on 28 tasks, with 56 sessions
+per arm. Each arm passed 54 of 56 strict assessments. The full descriptive pool
+passed 124 of 128 assessments, or 62 of 64 per arm. Its eight previously exposed
+tasks contribute only their remaining second-repeat sessions; the primary
+inference uses the 28 complete task clusters.
 
 \begin{table}[tbp]
 \centering
-\caption{All assigned attempts. A: pass-through; B: source; C: source and command workflow. Costs are means under the fixed uniform tariff.}
+\caption{V7 primary panel: all 112 assigned attempts on 28 tasks. A is installed pass-through; M is the commands-first installed policy. Costs use the fixed uniform token tariff, not billing.}
+\label{tab:v7-arm-means}
 \begin{tabular}{lrrrr}
 \toprule
 Arm & Strict pass & Uniform USD & Workflow (s) & Native (s) \\
 \midrule
-A & 24/24 & 0.132553 & 40.564 & 40.450 \\
-B & 24/24 & 0.127168 & 39.004 & 38.503 \\
-C & 24/24 & 0.114403 & 40.025 & 37.909 \\
+A & 54/56 & 0.1609423 & 59.5902 & 59.3713 \\
+M & 54/56 & 0.1531605 & 60.2863 & 57.3127 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table 1 reports all assigned attempts. Workflow time includes preparation and
-cleanup; native time begins at the recorded local bridge handoff. Costs use the
-fixed uniform tariff and are not account charges.
+## Primary cost and latency
 
-## Primary cost contrasts
-
-The complete-panel uniform equivalents total USD 3.181276 for A, 3.052038 for B
-and 2.745678 for C. Thus the observed C total is USD 0.435598 lower than A and
-USD 0.306360 lower than B over 24 attempts. No cost is imputed. Across twelve
-paired task means, the C-minus-A estimate is -0.018150 dollars per attempt
-(-13.69%); C-minus-B is -0.012765 dollars (-10.04%).
+The primary uniform equivalents total USD 9.012769 for A and USD 8.5769854 for
+M. The observed mean difference is −0.00778185 dollars per attempt, or 4.84%
+lower for M. Mean workflow time is 59.5902 seconds for A and 60.2863 seconds for
+M: an observed increase of 0.6961 seconds, or 1.17%. These are averages over all
+assigned primary attempts, including the four strict-assessment failures.
 
 \begin{table}[tbp]
 \centering
-\caption{Complete-panel primary contrasts: mean dollar difference per attempt, relative change, pointwise bootstrap interval and prespecified exact tests.}
-\begin{tabular}{lrrrrr}
+\caption{V7 paired task-mean contrasts, M minus A; 28 clusters, 27 degrees of freedom. The joint rule requires both one-sided tests at alpha 0.025 and both upper interval endpoints below zero.}
+\label{tab:v7-primary-contrasts}
+\begin{tabular}{lrrrr}
 \toprule
-Contrast & Delta, USD & Change & 95\% CI, USD & Exact $p$ & Holm $p$ \\
+Endpoint & Mean difference & Change & Pointwise 95\% CI & One-sided $p$ \\
 \midrule
-C--A & $-0.018150$ & $-13.69\%$ & [$-0.035594$, $-0.000315$] & 0.0741 & 0.1481 \\
-C--B & $-0.012765$ & $-10.04\%$ & [$-0.027778$, $+0.001526$] & 0.1389 & 0.1481 \\
+Uniform USD & $-0.007782$ & $-4.84\%$ & [$-0.025242$, $+0.009678$] & 0.1843 \\
+Workflow seconds & $+0.696101$ & $+1.17\%$ & [$-3.023997$, $+4.416199$] & 0.6480 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table 2 retains the two prespecified tests. The exact conditional tests count
-16 and 30 extreme allocations, respectively, among 216 legal allocations.
-Neither rejects at familywise alpha 0.05 after Holm adjustment. The C-minus-A
-bootstrap interval is below zero, but it is a pointwise task-resampling interval
-with different assumptions from the design-based test. It does not supersede
-the fixed testing rule or establish general savings. Figure 2 shows the task
-variation behind the aggregate estimates.
+Neither endpoint meets the declared superiority rule. Both nominal intervals
+include zero, and joint cost-and-speed superiority is not established. The
+cost estimate favors M, while the workflow point estimate favors A; the data
+do not establish either a population cost reduction or a population slowdown.
+The bootstrap sensitivity agrees about uncertainty: its cost interval is
+[−0.023639, +0.009080] dollars and its workflow interval is [−2.796425, +4.170258]
+seconds. It does not replace the primary t analysis.
 
-## Time and preparation overhead
+## Coding outcomes and delivered context
 
-For workflow wall time, C minus A is -0.539 seconds per attempt (-1.33%), with
-a pointwise 95% task-bootstrap interval of [-4.648, +2.778] seconds. C minus B
-is +1.021 seconds (+2.62%), with an interval of [-0.903, +2.940] seconds.
-These descriptive intervals do not establish a workflow speed improvement.
-Because all attempts pass, the prespecified jointly successful timing subset
-contains the same twelve tasks and produces the same values.
+All four strict failures are the two repeats in each arm on task u21
+(`is-number`). Original public checks passed in all four cases. The private
+feature oracle expected a TypeError for four nonboolean `safeInteger` options;
+the submitted implementations returned false instead. The public request said
+“reject nonboolean safeInteger values” without specifying an exception. The
+frozen rubric therefore contains an ambiguity that limits interpretation of
+these failures. Each implementation passed 111 upstream tests and 26 of 30
+private checks; only the four TypeError assertions failed. All four remain
+strict failures, with their measured costs and times retained. The u21 exception
+assertions and these four strict outcomes were not changed or rescored.
 
-C's mean native time is 2.540 seconds below A and 0.594 seconds below B. Fresh
-public verification takes a mean 1.363 seconds per C assignment, while indexing
-takes 0.101 seconds and launcher preparation 0.425 seconds. Verification cleanup
-and other local overhead are also counted. Figure 3 separates these components.
-The source-and-command workflow's shorter observed native time is therefore
-partly offset before and around native execution. A command-card benefit cannot
-be separated here from fresh verification and receipt handling.
+M actually preloaded source on 12 primary sessions covering six tasks, supplied
+command-only context on 18 sessions covering nine tasks, and passed through on
+26 sessions covering thirteen tasks. A passed through on all 56. Captured
+handoffs matched the committed treatment receipts. This mixed policy exposure
+is part of the primary comparison. It does not identify a causal effect of
+source alone, command cards alone or active retrieval alone. Both-repeat strict
+success occurred on the same 27 of 28 tasks in each arm. Equal counts and zero
+harmful task discordances do not establish quality equivalence; the descriptive
+one-sided 97.5% harmful-discordance upper bound remains 12.34%.
 
-## Activation and secondary observations
+## Native time, preparation and robustness
 
-Actual captured handoffs match readiness. B and C each preload source on 14 of
-24 assignments, covering seven tasks twice, and preserve the original task on
-the other ten. A passes through all 24. The five abstaining tasks remain in
-every primary comparison. On the seven source-active tasks, mean uniform
-equivalents are 0.130432, 0.124227 and 0.108905 dollars for A, B and C;
-mean workflow times are 39.567, 38.975 and 38.627 seconds. These fixed-stratum
-summaries are descriptive and receive no subgroup test.
+M's observed mean native wall time is 2.0586 seconds shorter than A's. Its total
+workflow time nevertheless is longer. Workflow minus native time averages
+2.9736 seconds for M and 0.2189 seconds for A. M's measured components include
+1.4081 seconds of public verification, 0.2432 seconds of indexing and 0.8178
+seconds of installed-launcher preparation per primary assignment; planning,
+cleanup and other local work also belong to the workflow clock. This
+decomposition describes where time was spent. It does not establish that any
+individual preparation component caused a change in agent behavior.
 
-Cost variation also occurs without added source. The largest C-minus-A task
-difference, -0.069921 dollars per attempt on colorama, occurs in the abstaining
-stratum. It cannot be interpreted as a direct source-preloading effect.
-Stochastic agent behavior, shared caches and other uncontrolled execution
-variation remain plausible contributors; this experiment does not identify
-their separate effects.
+The recorded reconnect warning occurred in A on task u26. Omitting that whole
+four-session task cluster, as declared for descriptive robustness, leaves 27
+tasks: observed uniform cost is 5.13% lower and workflow time 1.57% higher for M.
+Both nominal paired intervals still include zero. The primary retains u26.
+Charging the separate failed schema startup's full 2.6373 workflow seconds to
+canonical u08-M changes the observed workflow increase to 1.25%, with an
+interval of [−2.976951, +4.463340] seconds. Operator repair time was not measured.
+Neither sensitivity changes the primary decision. Restricting timing to the
+27 tasks passing both repeats in both arms also remains secondary and
+outcome-conditioned.
 
-Mean reported whole-attempt input is 85,333 tokens for A, 84,521 for B and
-80,328 for C; most input is reported cached. Mean output is 1,743, 1,689 and
-1,652 tokens, respectively. These are cumulative native counters, rather than
-unique source tokens. Under the separate native-price convention, C minus A
-is -12.49% and C minus B is -8.97%; these secondary calculations remain
-distinct from the uniform primary metric and from unknown actual invoices.
-The companion tables retain cached/uncached partitions, cache-write
-sensitivities and command-text diagnostics. They do not establish avoided
-filesystem reads or lower provider computation.
+Primary input counters average 131,105 tokens for A and 119,320 for M; output
+averages 2,257 and 2,188 tokens. Cached input averages 110,091 and 99,221 tokens.
+These are cumulative native counters, not unique source tokens or provider
+computation. The alternate native-price/write scenarios remain incomplete for
+one primary record in each arm and are not presented as complete comparative
+costs. A separately implemented automated audit reproduced the complete pool,
+primary estimates, intervals, grading counts and accounting from retained
+records. It is an internal consistency check, not external replication.
 
-A separately implemented automated auditor reproduced all tariff totals, both exact tests,
-Holm adjustment, bootstrap endpoints and timing scopes from the saved records.
-It also checked the 72 unique threads, captured task transformations,
-source/Git protection and raw-to-grade bindings without importing the frozen
-statistical functions. This automated audit improves internal consistency; it
-is not external replication.
+The reported values come from the frozen assessment with SHA-256
+`fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26`.
+The portable [analysis summary](https://github.com/iamsreecharan/Memglide/blob/main/research/results/router-v7-20261021/analysis-summary.json)
+and [result package](https://github.com/iamsreecharan/Memglide/blob/main/research/results/router-v7-20261021/README.md) are separate public
+exports with their own hashes.
 
 
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/paired-costs.pdf}
-\caption{Task-level cost differences, averaging both repeats before comparison. Filled circles identify the seven source-active tasks; open circles identify the five policy abstentions. Negative values favor C under the fixed uniform tariff. Diamonds and bars show the complete twelve-task mean and pointwise 95\% bootstrap interval. The Holm-adjusted exact tests do not reject.}
-\Description{Two panels show C minus A and C minus B for all twelve tasks. Differences occur on both preloaded and abstaining tasks. Aggregate pointwise intervals appear beneath the task rows.}
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v7-paired-differences.pdf}
+\caption{Task-level Memglide-minus-Codex differences for all 28 primary tasks, averaging two repeats per method. Negative values favor Memglide. The aggregate mean and nominal 95\% paired-t interval use tasks as clusters; both resource intervals cross zero.}
+\Description{Two panels show each task's token-price difference and complete-workflow time difference. The overall mean cost is lower and overall workflow time higher; both intervals include zero.}
 \end{figure}
 
 
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/workflow-components.pdf}
-\caption{Mean workflow components over all 24 assigned attempts per arm. C includes fresh public baseline verification and cleanup. Other local overhead is the measured workflow total less the nonoverlapping recorded components. Source copying, grading and packaging are excluded. Native execution includes local process handling and external-model waiting; it is not isolated inference latency.}
-\Description{Three horizontal stacked bars compare pass-through, source-only and source-and-command workflows. Native execution dominates. Verification and preparation add overhead to C, leaving a mean workflow near forty seconds for each arm.}
+\includegraphics[width=\textwidth,height=0.70\textheight,keepaspectratio]{figures/v7-workflow-components.pdf}
+\caption{Mean complete-workflow components over 56 sessions per method. Fresh indexing, public baseline verification, cleanup and launcher preparation are included. Other overhead is the workflow total less nonoverlapping recorded components. Native execution includes process handling and external-model waiting; it is not isolated inference latency.}
+\Description{Two stacked bars compare Codex and Memglide. Native execution is shorter with Memglide, while additional preparation makes the complete workflow slightly longer.}
 \end{figure}
 
 
 # Interpretation and limitations
 
-The experiment measures a context-preparation policy around one installed
-coding-agent configuration. Source hashes identify supplied bytes; command
-receipts describe checks on the starting repository; finite grades assess
-specified behavior; native counters support tariff calculations. None alone
-establishes better coding in general.
+The result is an observed cost reduction with uncertain magnitude and no
+established workflow speed benefit. It supports neither a joint efficiency
+claim nor a conclusion that the policies are equivalent. The intervals allow
+meaningful differences in either direction. Repeated sessions improve the
+measurement of each task but leave only 28 primary task clusters. The
+zero-discordance quality result still permits a substantial harmful-task
+probability under the descriptive bound.
 
-Coverage limits the intervention. Seven of twelve tasks preload at readiness
-and five abstain. Runtime and declaration files can compete, and source-role
-classification remains heuristic. The primary intention-to-treat comparison
-retains abstentions and their overhead. Activation strata describe
-heterogeneity without making the active subset representative. Coordinated
-runtime/declaration selection or verification deferred until source eligibility
-would require new evaluation.
+The primary panel was fixed by an exposure rule before its tasks had coding
+sessions, but the eventual evaluation is amended rather than fully
+prospective. Source-role classification changed after 25 measurements and
+retry-warning interpretation changed after 52. A local schema deployment error
+also required a source-certified pre-model exception. Original stopped states,
+raw verdicts and measurements were retained, and the amendments did not use
+resource contrasts or private candidate grades to choose changes. Those
+safeguards limit favorable selection; they do not restore the status of the
+original stopped protocols or create an independent confirmation. Local hash
+freezes are not a public preregistration. The nominal t inference should be read
+with this chronology, the custom task design and its distributional assumptions.
 
-The panel is small and purposive, with four JavaScript/TypeScript roots sharing
-a maintainer. Tasks, references and checks were AI-assisted, and public
-readiness informed a classification fix before outcomes. Separate agent roles
-and negative controls do not replace human review or external replication.
-Base-repository familiarity to the model is unknown. Findings cannot estimate
-performance on large repositories, historical issues, unfamiliar languages or
-other models. Task-bootstrap intervals describe panel resampling variation
-under limited independence assumptions; they do not remove selection bias.
+Tasks are author-designed feature additions in small public repositories,
+selected for runnable checks. They are not a representative issue benchmark.
+Several projects share maintainers and conventions, so treating task
+differences as independent is an approximation. Tasks, references and graders
+were AI-assisted. Distinct authoring agents and negative controls do not
+replace independent human task review or external replication. “Unexecuted”
+means no earlier study coding session on that task; it does not imply source
+unseen by the model, a blinded retrieval algorithm or an unknown task to all
+engineering agents. Results cannot establish performance on large codebases,
+other languages, other model configurations or arbitrary historical issues.
 
-Public, private and declaration checks can miss defects. The base58 oracle
-cannot prove validation-before-allocation order. Regression-test presence and
-execution do not establish test quality or full instruction compliance.
-Matching strict-success counts would not establish population quality
-equivalence or noninferiority. A provider failure remains a failed workflow,
-even if a partial patch passes a supplemental check.
+The u21 failure pattern exposes a specific validity limit. The phrase “reject
+nonboolean safeInteger values” permits reasonable readings that the private
+oracle did not treat equally. All four implementations passed original public
+checks but failed the oracle's exception requirement. Retaining the frozen
+failures avoids favorable rescoring, yet the resulting strict-success count
+cannot by itself distinguish a coding defect from that specification ambiguity.
+Other finite oracles may also miss defects, and passing public or declaration
+checks does not establish complete instruction compliance or regression-test
+quality.
 
-The fixed tariff is not an invoice or current-price claim. Actual subscription
-charges, coordinator effort, engineering, hosting and provider computation are
-outside the ledger. Agent commands reveal neither internal provider inferences
-nor all file I/O. Command-text read classifications cannot establish avoided
-reads. Local CPU and sampled RSS omit remote inference and can miss short
-peaks. Phase byte caps and the bytes-divided-by-three planning proxy are not
-model token measurements.
+The policy is heterogeneous: source preloading, verified command-only context
+and pass-through all occur in M. Its contrast with A measures their combined
+installed workflow. Natural activation is not randomized, and subgroup or
+cross-study differences cannot isolate the benefit of any component. The older
+v6 three-arm study used different tasks and delivery behavior; it cannot supply
+the missing causal ablation for v7. Demand-driven verification was implemented
+before the primary cohort, but its improvement over eager verification is not
+measured by a separate v7 arm.
 
-Timing covers fresh projects and run-cache preparation, excluding source/Git
-copying, grading and packaging. Page caches, provider prefix caches, cloud load
-and backend model revisions remain uncontrolled. Reversing the schedule
-balances order but cannot remove persistent carryover. Exact tests assume a
-sharp null and no cross-arm carryover; remote-provider behavior does not verify
-these assumptions. Warm-receipt reuse and long-lived project amortization may
-change the tradeoff but are unmeasured.
+Uniform dollars value native-reported completed-thread tokens at the fixed
+5/0.20/15 tariff. They are not invoices, subscription charges, current model
+prices or proof that all unsuccessful underlying provider attempts are counted.
+The source-backed retry amendment establishes the meaning of the retained CLI
+counters, not the provider's billing behavior. Secondary price scenarios have
+missing records and cannot be promoted into a complete cost claim. The old
+0016 usage remains unknown, preventing a complete 144-assignment accounting
+claim. Engineering, hosting, operator diagnosis and repair effort are not
+priced. Command-text diagnostics do not measure all file I/O or avoided model
+inference; reported zero cache writes may reflect upstream defaulting.
 
-Finally, selected source is sent to the external model. Local state placement
-and heuristic sensitive-content filtering do not make inference local or
-ensure privacy. Receipts bind checked source, policy, eligible public text and
-declared executables, not every dependency or environment setting. The command
-provider requires authorization and bounds time/output; its product interface
-does not itself provide operating-system isolation. Stronger grading sandboxes
-are experimental controls. The source, trust and measurement boundaries in
-the architecture and methods remain part of interpreting these results.
+Workflow latency includes index, planning, eligible verification, preparation,
+native execution and cleanup, but excludes source/Git copying, environment
+acquisition, grading and packaging. The additional failed schema startup is
+reported separately and charged in a sensitivity; repair minutes were not
+timed. Fresh project/run caches do not control OS caches, provider prefix
+caches, backend revisions or cloud load. Sequential execution, reversed orders
+and retained pauses do not remove all temporal dependence. Native wall time
+includes local process work and is not pure remote inference time. Amortized
+verification or long-lived-project operation may change the tradeoff but is
+unmeasured here.
+
+Finally, bounded source and command receipts do not make model inference local
+or guarantee privacy. Selected text is supplied to an external model. Hashes
+and receipts bind declared inputs and executables rather than every dependency
+or environment property. Authenticated private-bundle sequestration and stronger
+read-only grading sandboxes are experimental controls with documented scopes,
+not comprehensive operating-system security proofs. Published reproduction
+artifacts therefore separate portable measurement data from account state,
+private keys and executor-specific runtime material.
 
 
 # Conclusion
 
-Memglide implements bounded source discovery and optional verified public-command
-context around an existing coding agent. The installed-system comparison
-completed all 72 assignments with known usage and passing finite functional,
-public and integrity checks. Source was supplied on seven of twelve tasks;
-the policy abstained on five.
+Memglide provides bounded source discovery and optional verified public-command
+context around an installed coding agent. The amended v7 evaluation retained
+28 complete task clusters and all 112 primary sessions, including abstentions
+and coding failures. Each arm passed 54 of 56 strict assessments; the full
+128-record comparison pool passed 124. One task's ambiguous exception wording
+limits interpretation of its four retained failures.
 
-The source-and-command workflow had a 13.69% lower observed uniform cost than
-pass-through and a 10.04% lower cost than source alone. Neither prespecified
-familywise test established a reduction, and workflow timing did not establish
-a speed advantage. Fresh verification partly offset the shorter observed
-native execution. These results support reporting a functioning, auditable
-implementation and a measured cost estimate with uncertainty. Broader claims
-require a larger, independently designed task panel and additional models.
-Coordinated runtime/declaration selection, verification deferred until source
-eligibility, and amortized receipt reuse are concrete directions for a new
-evaluation; none is credited with an unmeasured benefit here.
+The commands-first policy had a 4.84% lower observed uniform API-equivalent
+cost and a 1.17% higher observed workflow time than pass-through. Both nominal
+95% paired intervals include zero. The study therefore does not establish
+simultaneous cost and speed superiority, a general cost saving, or quality
+equivalence. Shorter observed native execution was offset by preparation and
+verification work in the measured workflow.
+
+The contribution is an auditable implementation and an explicit measurement
+of its resource tradeoff with uncertainty. Subsequent
+work should use independently reviewed task contracts, a prospectively fixed
+panel and additional models, and should compare specific preparation choices
+in randomized arms before attributing benefits to source selection, command
+cards or deferred verification.
 
 
 # Artifact and reproducibility
 
-The companion evidence capsule contains the frozen protocol and allocation,
-public task fixtures and their upstream provenance, licenses and commands,
-the exact postclosure-released private grading bundle, captured native prompts
-and events, token counters, source changes, protection checks, all grading
-records, analysis source, derived tables and figure sources. Six earlier
-evidence archives and the historical report inventory are retained with their
-original hashes. Installed dependencies, native executables, runtime caches
-and authentication state are excluded. The capsule is an evidence/source
-artifact, rather than a self-contained execution image.
+The public repository is <https://github.com/iamsreecharan/Memglide>.
+The updated release contains the manuscript and supplement, editable section
+sources, bibliography, figure sources, the evaluated Memglide implementation,
+and a portable numeric export in `research/results/router-v7-20261021/`.
+The export includes all 112 primary session measurements, the full 128-session
+comparison pool, task-paired values, public task descriptions and provenance,
+protocol information, checksums and an offline statistical reproduction script.
+It distinguishes original evidence commitments from hashes of the portable
+export. The original final assessment has SHA-256
+`fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26`.
 
-The supplement documents the environment, source change, control runs,
-measurement boundaries and reproduction commands. Archive verification and
-statistical reproduction require no model calls. Repeating native collection
-requires the declared tools, a separately authenticated account and a new
-study allocation; the completed allocation rejects retries and overwrites.
-The project repository is https://github.com/iamsreecharan/Memglide.
-This prepared manuscript and companion capsule have not been deposited under
-a public archive DOI, submitted to a venue or independently replicated.
+The numeric export permits reproduction of the reported arithmetic; it is not
+an independent replication or a complete execution image. Authentication,
+installed dependency trees and platform state are excluded. Private grading
+material and complete native transcripts from the new comparison are not
+part of this public numeric export. Source commitments identify the preserved
+records without claiming that a checksum alone makes unpublished material
+publicly auditable. The complete download retains the earlier v6 evidence
+capsule in a clearly marked historical directory, separate from the new data.
+That capsule also remains available at its immutable historical GitHub revision.
+
+The supplement describes cohort accounting, amendments, timing, grading and
+reproduction boundaries. Recomputing tables and rebuilding the PDFs make no
+model calls. Repeating native collection requires separately authenticated
+Codex access, the declared runtime and a new allocation; the sealed allocation
+is not reopened. No submission, acceptance, peer review, archive DOI or
+independent human replication is claimed.
 
 
 # AI assistance

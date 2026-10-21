@@ -1,0 +1,16 @@
+{
+  "analysis_code_sha256": {
+    "paired_analysis.py": "46a9d83beb16db5e18f422e6f1a7af85e2f633e2ab1ae555440dc489c427de9a"
+  },
+  "export_rule": "Explicit scalar/table allowlists. No credentials, private graders, full transcripts, native auth selectors or executor-root paths.",
+  "original_analysis_sha256": "fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26",
+  "original_compact_summary_sha256": "e1f3b21e8bbc47deca45d47f34459c8799805a02ef2d971f76fc79f4825a5c2c",
+  "original_protocol_sha256": "7334662fe380e23449215c032a9bc09a651c54189a30cc6d513af4abfc8b84fc",
+  "original_public_author_task_manifests_sha256": {
+    "cohort_1": "0c1fe5834dfb508fa9bb5c3833f5efe92b496c1e49f6dcfd08b487e09d524358",
+    "cohort_2": "7b0b28db8798118294c2642c16bac7666660bd610d1522c3f54dac062198d0f7",
+    "cohort_3": "db9381d1e042fdfbdd66d9121ff45dcadbe226a3c51a78cde54dc7d13cf91f88"
+  },
+  "original_public_tasks_sha256": "0e4600ddc607deddfb6f8fb1698703e5fa25ff6e094aedc6e1f36c937766b77a",
+  "seal_sha256": "0dff077a2513266c16f1b73f277dfa733cb4c2e44cb54c18825a9588777737e1"
+}

@@ -1,0 +1,44 @@
+{
+  "frozen_analysis_sha256": "fcd5ded7f3c73799cad03a1fda0554294bc974ba34625b6680ee323ef5c94b26",
+  "inputs_sha256": {
+    "summary.json": "610d927476891369975f130c24c74106bee2d05eaa5b62a1f4f9bdc4dce0c8ef",
+    "paired-28-tasks.csv": "7467a2270ea046891fca8d4d0a25f28eb1d216164144a670513dabc448b2a625"
+  },
+  "renderer_sha256": "5fa0c2042d4df8806cae3385eae9c2e2673cdb8b4f442ddab26b412ec28863b5",
+  "main_panel_sessions": 112,
+  "task_clusters": 28,
+  "workflow_component_means": {
+    "A": {
+      "native_wall_seconds": 59.37132558614293,
+      "index_wall_seconds": 0,
+      "verification_wall_seconds": 0,
+      "cleanup_wall_seconds": 0,
+      "installed_launcher_preparation_wall_seconds": 0.19979376935715923,
+      "workflow": 59.59018109260722,
+      "other": 0.019061737107129773,
+      "local": 0.21885550646428698
+    },
+    "M": {
+      "native_wall_seconds": 57.31269353441079,
+      "index_wall_seconds": 0.24319584423226712,
+      "verification_wall_seconds": 1.408135347749911,
+      "cleanup_wall_seconds": 0.011234857517950201,
+      "installed_launcher_preparation_wall_seconds": 0.8177778689820181,
+      "workflow": 60.286281776214345,
+      "other": 0.4932443233214059,
+      "local": 2.9735882418035544
+    }
+  },
+  "figure_scope": "Recorded data and nominal frozen intervals; no new hypothesis tests, model calls, or outcome selection",
+  "files_sha256": {
+    "v7-paired-differences.pdf": "78aa9db34cd3f8c0e2f500f6d1c0263b0522b55e318e82df3f08614659e93283",
+    "v7-paired-differences.png": "5335c3bd506b89ef35d2f84ba07cee34580ead825dc0a50192b9d3f4911f30e7",
+    "v7-paired-differences.svg": "f5169e0f7b62fb1c4ab6eb0449ee933ac42a3eecb365d37a466d823945fa1845",
+    "v7-workflow-components.pdf": "d70f6d260ac355a66b09ed27e592283c13af40626948264c64b10a7c11ee4843",
+    "v7-workflow-components.png": "19016b97ff1c5a4eeffdb786c215ddc7ceaefda3612837c1f064de9098c5f3ba",
+    "v7-workflow-components.svg": "291c5c3eb0a2f8e7fc9e0d06b43ffd43c878fd7286b6c42b4a2e827d431a8eda",
+    "v7-architecture.pdf": "cdbe1c49dd1b7d1142082e84b606c5bbada89bbb0bcd00bcce171d30b1a0904c",
+    "v7-architecture.png": "74059b022eedbbf4f7eb245d391f3c0bd401c17828257b368f8b5d9ed35b37bf",
+    "v7-architecture.svg": "b7bb988416ad812041119910c25e70494b2bf32cee24d6c01cde3b2a3501904f"
+  }
+}

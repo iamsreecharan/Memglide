@@ -115,20 +115,26 @@ See [known limitations](docs/limitations.md) and [security](SECURITY.md).
 
 ## Research
 
-The installed comparison used twelve author-designed tasks, three conditions
-and two repeats: 72 native Codex runs. Each condition passed 24/24 finite strict
-assessments. Source plus verified-command context had 13.69% lower observed
-fixed-tariff-equivalent cost than pass-through Codex. Neither prespecified cost
-test rejected after Holm adjustment (p=0.1481), and no workflow speed advantage
-was established. Actual billing was not measured.
+The latest comparison completed 128 real Codex sessions. Its primary panel
+contains 28 author-designed tasks, two methods and two repeats: 112 sessions.
+Codex and Codex + Memglide each passed 54/56 strict assessments. Memglide's
+observed fixed-price API equivalent was **4.84% lower** ($0.16094 to $0.15316
+per session); complete workflow time was **1.17% slower** (59.59 to 60.29 s).
+Both nominal 95% intervals include zero, so neither superiority test passes.
+These are token-price estimates, not invoices. The paper explains the amended
+protocol, finite grading and cache limitations.
 
-- [Paper, methods and retained findings](research/README.md)
-- [Paper and supplement ZIP](https://github.com/iamsreecharan/Memglide/raw/525f92d5ed63dcffbe0c6164fe951117f854dfdd/downloads/memglide-research-20261020/Memglide-paper-and-supplement.zip)
-- [Complete verified research ZIP — 125.3 MB](https://github.com/iamsreecharan/Memglide/raw/525f92d5ed63dcffbe0c6164fe951117f854dfdd/downloads/memglide-research-20261020/Memglide-complete-research.zip)
+- [Revised paper and supplement](research/paper/README.md)
+- [Results tables, task catalog and offline statistical reproduction](research/results/router-v7-20261021/README.md)
+- [Paper, supplement and results ZIP](https://github.com/iamsreecharan/Memglide/raw/refs/heads/main/downloads/memglide-research-20261020/Memglide-paper-and-supplement.zip)
+- [Complete research ZIP](https://github.com/iamsreecharan/Memglide/raw/refs/heads/main/downloads/memglide-research-20261020/Memglide-complete-research.zip)
+- [Download contents and checksums](downloads/memglide-research-20261020/README.md)
 
-The complete ZIP includes the paper, supplement and evidence. It is stored with
-Git LFS on the downloads branch; use the direct link above. The manuscript
-records AI assistance and remains a research draft for author review.
+The replacement complete ZIP includes the revised paper, all current numeric
+results and reproduction code, evaluated source, and the previous v6 capsule
+under a historical label. The dated download path is retained for compatibility;
+its current contents are the v7 revision. The manuscript discloses AI assistance
+and remains a preprint for author review.
 
 ## Development and documentation
 

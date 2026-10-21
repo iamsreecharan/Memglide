@@ -1,23 +1,37 @@
-# Memglide research downloads
+# Updated Memglide research downloads
 
-Author: Sree Charan Reddy Kailasam · srcharan014@gmail.com
+This directory contains the **21 October 2026 v7 revision**. The dated path is
+retained for compatibility; its former downloads have been replaced.
 
-- [Complete research ZIP — 125.3 MB](https://github.com/iamsreecharan/Memglide/raw/refs/heads/codex/paper-downloads-20261020/downloads/memglide-research-20261020/Memglide-complete-research.zip)
-- [Paper and supplement ZIP — 1 MB](https://github.com/iamsreecharan/Memglide/raw/refs/heads/codex/paper-downloads-20261020/downloads/memglide-research-20261020/Memglide-paper-and-supplement.zip)
-- [Paper PDF — 13 pages](https://github.com/iamsreecharan/Memglide/raw/refs/heads/codex/paper-downloads-20261020/downloads/memglide-research-20261020/Memglide-paper.pdf)
-- [Supplement PDF — 24 pages](https://github.com/iamsreecharan/Memglide/raw/refs/heads/codex/paper-downloads-20261020/downloads/memglide-research-20261020/Memglide-supplement.pdf)
+- [Revised paper](Memglide-paper.pdf)
+- [Revised supplement](Memglide-supplement.pdf)
+- [Paper, supplement, results and editable sources ZIP](https://github.com/iamsreecharan/Memglide/raw/refs/heads/main/downloads/memglide-research-20261020/Memglide-paper-and-supplement.zip)
+- [Complete replacement research ZIP](https://github.com/iamsreecharan/Memglide/raw/refs/heads/main/downloads/memglide-research-20261020/Memglide-complete-research.zip)
+- [All file sizes and checksums](download-manifest.json)
 
-The complete ZIP includes both PDFs and text/Markdown copies, plus the full
-verified evidence capsule containing source, analysis, native evaluation
-records and all six earlier evidence archives. The large ZIP is stored with
-Git LFS. Use its direct link above or the file page's raw download button;
-a repository source-code ZIP may contain an LFS pointer instead.
+Both archives contain the revised PDFs, editable sources and all current
+numeric results with offline reproduction code. The complete ZIP also includes
+the exact evaluated candidate source and the previous complete release under
+`historical-v6/`. Those historical results remain separate. New private graders,
+complete new native transcripts, account credentials and installed runtimes
+are not included.
 
-Complete ZIP SHA-256: `51e030257f7d07cda71f851a3e45fb136ec99a18408bb93bf77823fbae6eda6f`
+The main comparison has 112 sessions on 28 tasks; 16 additional sessions on
+exposed tasks remain descriptive. Observed token-price cost is 4.84% lower and
+complete workflow is 1.17% slower. Both nominal intervals include zero; no joint
+cost-and-speed superiority is established. Costs are estimates, not invoices.
 
-This is a research draft for author review. All three conditions passed
-24/24 strict evaluations. Source-and-command context had 13.69% lower
-observed fixed-tariff-equivalent cost than pass-through Codex, but neither
-prespecified cost test rejected after Holm adjustment (p=0.1481). No workflow
-speed advantage was established. Actual billing was not observed.
-No venue acceptance, peer review or public archive DOI is claimed.
+## ZIP verification
+
+| Archive | Bytes | SHA-256 |
+| --- | ---: | --- |
+| Memglide-paper-and-supplement.zip | 2,792,537 | `b4378b3256ea650e8f2568e7c96a63f90aeb5821cd0f6bef220f5630f9ef7e18` |
+| Memglide-complete-research.zip | 117,965,887 | `5fb40ddbb47eabd34b3e6ed4f411e994bf76d3effb61243f1171cb98af46aa0d` |
+
+The complete ZIP uses Git LFS. Use the raw GitHub download link above;
+a small text LFS pointer is not the archive. CRC and every member's SHA-256
+were verified. Each ZIP contains `CHECKSUMS.sha256` for its payload members.
+The old capsule's original files are preserved byte for byte.
+
+The [previous release](https://github.com/iamsreecharan/Memglide/tree/525f92d5ed63dcffbe0c6164fe951117f854dfdd/downloads/memglide-research-20261020)
+remains available in immutable Git history.
